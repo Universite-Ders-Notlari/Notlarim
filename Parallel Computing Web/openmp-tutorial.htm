@@ -1,0 +1,4482 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<head>
+<meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="/openmp-tutorial" />
+<link rel="shortlink" href="/node/857" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="shortcut icon" href="https://hpc.llnl.gov/sites/all/themes/tid/favicon.ico" type="image/vnd.microsoft.icon" />
+<title>OpenMP Tutorial | High Performance Computing</title>
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_kShW4RPmRstZ3SpIC-ZvVGNFVAi0WEMuCnI0ZkYIaFw.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_bq48Es_JAifg3RQWKsTF9oq1S79uSN2WHxC3KV06fK0.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_vAm-LJc0tkC-w_c6v7Ekq0bW26Pzl31HvPM6kbvK-pc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_ca6tstDbY9-H23Ty8uKiDyFQLT1AZftZKldhbTPPnm8.css" media="all" />
+<!--[if lt IE 9]><script src="/sites/all/themes/tid/js/html5.js"></script><![endif]-->
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-857 node-type-user-portal-one-column-page">
+  <div aria="contentinfo"><noscript><img src="https://analytics.llnl.gov/piwik.php?idsite=149" class="no-border" alt="" /></noscript></div>
+    <div id="page">
+	<div class="unclassified"></div>
+	<div class="headertop">
+					<div id="skip-nav" role="navigation" aria-labelledby="skip-nav" class="reveal">
+  			<a href="#main-content">Skip to main content</a>
+			</div>
+					</div>
+        <div class="headerwrapbg">
+                        <div class="headerwrap-portal">
+                <div id="masthead" class="site-header container" role="banner">
+                    <div class="row">
+                        <div class="llnl-logo col-sm-3">
+                            <a href="https://www.llnl.gov" target="_blank" title="Lawrence Livermore National Laboratory">
+                                <img src="/sites/all/themes/tid/images/llnl-tab-portal.png" alt="LLNL Home" />
+                            </a>
+                        </div>
+                        <div id="logo" class="site-branding col-sm-4">
+                                                            <div id="site-logo">
+                                        <!--High Performance Computing<br />Livermore Computing Center-->
+                                        																					<a href="/user-portal" class="text-dark" title="Livermore Computing Center High Performance Computing">
+                                            <img src="/sites/all/themes/tid/images/hpc.png" alt="Portal Home" />
+																					</a>
+																				
+                                </div>
+                                                    </div>
+                        <div class="col-sm-5">
+                            <div id="top-search">
+															<div class="input-group">
+																	<form class="navbar-form navbar-search navbar-right" action="/openmp-tutorial" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <div class="element-invisible">Search form</div>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-itX8w36IX6kAjlaAVYvDrfG4yL_AlylHWg1mz-YGPj0" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="mainnav">
+                    <div class="container">
+                        <div class="row">
+                            <nav id="Menu" aria-label="Mobile Menu" class="mobilenavi col-md-12"></nav>
+                            <nav id="navigation" aria-label="Main Menu">
+                                <div id="main-menu" class="main-menu-portal">
+                                    <ul class="menu"><li class="first collapsed"><a href="/user-portal">Portal</a></li>
+<li class="expanded"><a href="/accounts">Accounts</a><ul class="menu"><li class="first leaf"><a href="/accounts/new-account-setup">New Account Setup</a></li>
+<li class="leaf"><a href="/accounts/idm-account-management">IdM Account Management</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/manuals/access-lc-systems" title="">Access to LC Systems</a></li>
+<li class="leaf"><a href="/accounts/computer-coordinator-roles">Computer Coordinator Roles</a></li>
+<li class="collapsed"><a href="/accounts/forms">Forms</a></li>
+<li class="collapsed"><a href="/accounts/policies">Policies</a></li>
+<li class="last leaf"><a href="/accounts/mailing-lists">Mailing Lists</a></li>
+</ul></li>
+<li class="expanded"><a href="/banks-jobs">Banks &amp; Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/allocations">Allocations</a></li>
+<li class="expanded"><a href="/banks-jobs/running-jobs">Running Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/running-jobs/batch-system-primer">Batch System Primer</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-user-manual">LSF User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-quick-start-guide">LSF Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-commands">LSF Commands</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-user-manual" title="Guide to using the Slurm Workload/Resource Manager">Slurm User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-quick-start-guide">Slurm Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-commands">Slurm Commands</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/batch-system-commands">Batch System Cross-Reference</a></li>
+<li class="last leaf"><a href="/banks-jobs/running-jobs/slurm-srun-versus-ibm-csm-jsrun">Slurm srun versus IBM CSM jsrun</a></li>
+</ul></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/accounts/forms/asc-dat" title="">ASC DAT Request</a></li>
+<li class="last leaf"><a href="https://hpc.llnl.gov/accounts/forms/mic-dat" title="">M&amp;IC DAT Request</a></li>
+</ul></li>
+<li class="expanded"><a href="/hardware">Hardware</a><ul class="menu"><li class="first collapsed"><a href="/hardware/archival-storage-hardware">Archival Storage Hardware</a></li>
+<li class="collapsed"><a href="/hardware/platforms">Compute Platforms</a></li>
+<li class="leaf"><a href="/hardware/compute-platforms-gpus">Compute Platforms with GPUs</a></li>
+<li class="collapsed"><a href="/hardware/file-systems">File Systems</a></li>
+<li class="leaf"><a href="/hardware/testbeds">Testbeds</a></li>
+<li class="collapsed"><a href="/hardware/zones">Zones (aka &quot;The Enclave&quot;)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/cgi-bin/lccgi/customstatus.cgi?" title="">CZ Compute Platform Status</a></li>
+<li class="leaf"><a href="https://rzlc.llnl.gov/cgi-bin/lccgi/customstatus.cgi" title="">RZ Compute System Status</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/fsstatus/fsstatus.cgi" title="">CZ File System Status</a></li>
+<li class="last leaf"><a href="https://rzlc.llnl.gov/fsstatus/fsstatus.cgi" title="">RZ File System Status</a></li>
+</ul></li>
+<li class="expanded"><a href="/services">Services</a><ul class="menu"><li class="first collapsed"><a href="/services/green-data-oasis">Green Data Oasis (GDO)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="last leaf"><a href="/services/visualization-services">Visualization Services</a></li>
+</ul></li>
+<li class="expanded"><a href="/software">Software</a><ul class="menu"><li class="first leaf"><a href="/software/archival-storage-software">Archival Storage Software</a></li>
+<li class="collapsed"><a href="/software/data-management-tools-projects">Data Management Tools</a></li>
+<li class="collapsed"><a href="/software/development-environment-software">Development Environment Software</a></li>
+<li class="leaf"><a href="/software/mathematical-software">Mathematical Software</a></li>
+<li class="leaf"><a href="/software/modules-and-software-packaging">Modules and Software Packaging</a></li>
+<li class="collapsed"><a href="/software/visualization-software">Visualization Software</a></li>
+<li class="last leaf"><a href="https://computing.llnl.gov/projects/radiuss" title="">RADIUSS</a></li>
+</ul></li>
+<li class="last expanded"><a href="/training">Training</a><ul class="menu"><li class="first collapsed"><a href="/training/tutorials">Tutorials</a></li>
+<li class="collapsed"><a href="/training/documentation">Documentation &amp; User Manuals</a></li>
+<li class="leaf"><a href="/training/technical-bulletins-catalog">Technical Bulletins Catalog</a></li>
+<li class="collapsed"><a href="/training/workshop-schedule">Training Events</a></li>
+<li class="last leaf"><a href="/training/user-meeting-presentations-archive">User Meeting Presentation Archive</a></li>
+</ul></li>
+</ul>                                                                            <div id="pagetoggle" class="btn-group btn-toggle pull-right" style="margin-right: 15px;">
+                                            <a href="/" class="btn btn-default gs">General Site</a>
+                                            <a href="/user-portal" class="btn btn-primary up active">User Portal</a>
+                                        </div>
+                                                                    </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+		<div id="main-content" class="l2content">
+        <div class="container">
+    		<div class="row">
+        		                <div id="primary" class="content-area col-sm-12">
+					                                        <section id="content" role="nav" class="clearfix col-sm-12">
+
+                                                                                    <div id="breadcrumbs">
+                                    <h2 class="element-invisible">breadcrumb menu</h2><nav class="breadcrumb" aria-label="breadcrumb-navigation"><a href="/">Home</a> » OpenMP Tutorial</nav>                                </div>
+                                                    
+                                            </section>
+                  <main>
+
+                                              <div id="content_top">
+                                <div class="region region-content-top">
+  <div id="block-print-ui-print-links" class="block block-print-ui">
+
+    
+    
+  
+  <div class="content">
+    <span class="print_html"><a href="https://hpc.llnl.gov/print/857" title="Display a printer-friendly version of this page." class="print-page" onclick="window.open(this.href); return false" rel="nofollow">Printer-friendly</a></span>  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                            </div>
+                        
+                        <div id="content-wrap">
+                                                                                                                <div class="region region-content">
+  <div id="block-system-main" class="block block-system">
+
+    
+    
+  
+  <div class="content">
+    
+
+<div  about="/openmp-tutorial" typeof="sioc:Item foaf:Document" class="node node-user-portal-one-column-page node-full view-mode-full">
+    <div class="row">
+    <div class="col-sm-12 ">
+      <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even" property="dc:title"><h1 class="title">OpenMP Tutorial</h1></div></div></div><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p><a name="top" id="top"> </a></p>
+<h2>Table of Contents</h2>
+<ol><li><a href="#Abstract">Abstract</a></li>
+<li><a href="#Introduction">Introduction</a></li>
+<li><a href="#ProgrammingModel">OpenMP Programming Model</a></li>
+<li><a href="#API">OpenMP API Overview</a></li>
+<li><a href="#Compiling">Compiling OpenMP Programs</a></li>
+<li><a href="#Directives">OpenMP Directives</a>
+<ol><li><a href="#Directives">Directive Format</a></li>
+<li><a href="#CFormat">C/C++ Directive Format</a></li>
+<li><a href="#Scoping">Directive Scoping</a></li>
+<li><a href="#ParallelRegion">PARALLEL Construct</a></li>
+<li><a href="#Exercise1">Exercise 1</a></li>
+<li><a href="#WorkSharing">Work-Sharing Constructs</a>
+<ol><li><a href="#DO">DO / for Directive</a></li>
+<li><a href="#SECTIONS">SECTIONS Directive</a></li>
+<li><a href="#SINGLE">SINGLE Directive</a></li>
+</ol></li>
+<li><a href="#Combined">Combined Parallel Work-Sharing Constructs</a></li>
+<li><a href="#Task">TASK Construct</a></li>
+<li><a href="#Exercise2">Exercise 2</a></li>
+<li><a href="#Synchronization">Synchronization Constructs</a>
+<ol><li><a href="#MASTER">MASTER Directive</a></li>
+<li><a href="#CRITICAL">CRITICAL Directive</a></li>
+<li><a href="#BARRIER">BARRIER Directive</a></li>
+<li><a href="#TASKWAIT">TASKWAIT Directive</a></li>
+<li><a href="#ATOMIC">ATOMIC Directive</a></li>
+<li><a href="#FLUSH">FLUSH Directive</a></li>
+<li><a href="#ORDERED">ORDERED Directive</a></li>
+</ol></li>
+<li><a href="#THREADPRIVATE">THREADPRIVATE Directive</a></li>
+<li><a href="#Clauses">Data Scope Attribute Clauses</a>
+<ol><li><a href="#PRIVATE">PRIVATE Clause</a></li>
+<li><a href="#SHARED">SHARED Clause</a></li>
+<li><a href="#DEFAULT">DEFAULT Clause</a></li>
+<li><a href="#FIRSTPRIVATE">FIRSTPRIVATE Clause</a></li>
+<li><a href="#LASTPRIVATE">LASTPRIVATE Clause</a></li>
+<li><a href="#COPYIN">COPYIN Clause</a></li>
+<li><a href="#COPYPRIVATE">COPYPRIVATE Clause</a></li>
+<li><a href="#REDUCTION">REDUCTION Clause</a></li>
+</ol></li>
+<li><a href="#ClausesDirectives">Clauses / Directives Summary</a></li>
+<li><a href="#BindingNesting">Directive Binding and Nesting Rules</a></li>
+</ol></li>
+<li><a href="#RunTimeLibrary">Run-Time Library Routines</a></li>
+<li><a href="#EnvironmentVariables">Environment Variables</a></li>
+<li><a href="#Stack">Thread Stack Size and Thread Binding</a></li>
+<li><a href="#Tools">Monitoring, Debugging and Performance Analysis Tools for OpenMP </a></li>
+<li><a href="#Exercise3">Exercise 3</a></li>
+<li><a href="#References">References and More Information</a></li>
+<li>Appendix A: Run-Time Library Routines</li>
+</ol><p> </p>
+<h2>Abstract</h2>
+<p>OpenMP is an Application Program Interface (API), jointly defined by a group of major computer hardware and software vendors. OpenMP provides a portable, scalable model for developers of shared memory parallel applications. The API supports C/C++ and Fortran on a wide variety of architectures. This tutorial covers most of the major features of OpenMP 3.1, including its various constructs and directives for specifying parallel regions, work sharing, synchronization and data environment. Runtime library functions and environment variables are also covered. This tutorial includes both C and Fortran example codes and a lab exercise.</p>
+<p><em>Level/Prerequisites:</em> This tutorial is ideal for those who are new to parallel programming with OpenMP. A basic understanding of parallel programming in C or Fortran is required. For those who are unfamiliar with Parallel Programming in general, the material covered in <a href="/training/tutorials/introduction-parallel-computing-tutorial">EC3500: Introduction to Parallel Computing</a> would be helpful.</p>
+<h2><a name="Introduction" id="Introduction"></a>Introduction</h2>
+<h3>What is OpenMP?</h3>
+<h4>OpenMP Is:</h4>
+<ul><li>An Application Program Interface (API) that may be used to explicitly direct multi-threaded, shared memory parallelism.</li>
+<li>Comprised of three primary API components:
+<ul><li>Compiler Directives</li>
+<li>Runtime Library Routines</li>
+<li>Environment Variables</li>
+</ul></li>
+<li>An abbreviation for: Open Multi-Processing</li>
+</ul><h4>OpenMP Is Not:</h4>
+<ul><li>Meant for distributed memory parallel systems (by itself)</li>
+<li>Necessarily implemented identically by all vendors</li>
+<li>Guaranteed to make the most efficient use of shared memory</li>
+<li>Required to check for data dependencies, data conflicts, race conditions, deadlocks, or code sequences that cause a program to be classified as non-conforming</li>
+<li>Designed to handle parallel I/O.</li>
+<li>The programmer is responsible for synchronizing input and output.</li>
+</ul><h4>Goals of OpenMP:</h4>
+<ul><li>Standardization:
+<ul><li>Provide a standard among a variety of shared memory architectures/platforms</li>
+<li>Jointly defined and endorsed by a group of major computer hardware and software vendors</li>
+</ul></li>
+<li>Lean and Mean:
+<ul><li>Establish a simple and limited set of directives for programming shared memory machines.</li>
+<li>Significant parallelism can be implemented by using just 3 or 4 directives.</li>
+<li>This goal is becoming less meaningful with each new release, apparently.</li>
+</ul></li>
+<li>Ease of Use:
+<ul><li>Provide capability to incrementally parallelize a serial program, unlike message-passing libraries which typically require an all or nothing approach</li>
+<li>Provide the capability to implement both coarse-grain and fine-grain parallelism</li>
+</ul></li>
+<li>Portability:
+<ul><li>The API is specified for C/C++ and Fortran</li>
+<li>Public forum for API and membership</li>
+<li>Most major platforms have been implemented including Unix/Linux platforms and Windows</li>
+</ul></li>
+</ul><h4>History:</h4>
+<ul><li>In the early 90's, vendors of shared-memory machines supplied similar, directive-based, Fortran programming extensions:
+<ul><li>The user would augment a serial Fortran program with directives specifying which loops were to be parallelized</li>
+<li>The compiler would be responsible for automatically parallelizing such loops across the SMP processors</li>
+</ul></li>
+<li>Implementations were all functionally similar, but were diverging (as usual)</li>
+<li>First attempt at a standard was the draft for ANSI X3H5 in 1994. It was never adopted, largely due to waning interest as distributed memory machines became popular.</li>
+<li>However, not long after this, newer shared memory machine architectures started to become prevalent, and interest resumed.</li>
+<li>The OpenMP standard specification started in the spring of 1997, taking over where ANSI X3H5 had left off.</li>
+<li>Led by the OpenMP Architecture Review Board (ARB). Original ARB members and contributors are shown below. (Disclaimer: all partner names derived from the OpenMP web site)</li>
+</ul><table class="table table-striped table-bordered"><tr><th>APR Members</th>
+<th>Endorsing Application Developers</th>
+<th>Endorsing Software Vendors</th>
+</tr><tr><td>
+<ul><li>Compaq / Digital</li>
+<li>Hewlett-Packard Company</li>
+<li>Intel Corporation</li>
+<li>International Business Machines (IBM)</li>
+<li>Kuck &amp; Associates, Inc. (KAI)</li>
+<li>Silicon Graphics, Inc.</li>
+<li>Sun Microsystems, Inc.</li>
+<li>U.S. Department of Energy ASCI program</li>
+</ul></td>
+<td>
+<p>ADINA R&amp;D, Inc.<br />ANSYS, Inc.<br />Dash Associates<br />Fluent, Inc.<br />ILOG CPLEX Division<br />Livermore Software Technology Corporation (LSTC)<br />MECALOG SARL<br />Oxford Molecular Group PLC<br />The Numerical Algorithms Group Ltd.(NAG)</p>
+</td>
+<td>
+<p>Absoft Corporation<br />Edinburgh Portable Compilers<br />GENIAS Software GmBH<br />Myrias Computer Technologies, Inc.<br />The Portland Group, Inc. (PGI)</p>
+</td>
+</tr></table><h4>Release History</h4>
+<ul><li>OpenMP continues to evolve - new constructs and features are added with each release.</li>
+<li>Initially, the API specifications were released separately for C and Fortran. Since 2005, they have been released together.</li>
+<li>The table below chronicles the OpenMP API release history.<br /><table><tr><th>Date</th>
+<th>Version</th>
+</tr><tr><td>Oct 1997<br />Oct 1998<br />Nov 1999<br />Nov 2000<br />Mar 2002<br />May 2005<br />May 2008<br />Jul 2011<br />Jul 2013<br />Nov 2015<br />Nov 2018</td>
+<td>Fortran 1.0<br />C/C++ 1.0<br />Fortran 1.1<br />Fortran 2.0<br />C/C++ 2.0<br />OpenMP 2.5<br />OpenMP 3.0<br />OpenMP 3.1<br />OpenMP 4.0<br />OpenMP 4.5<br />OpenMP 5.0</td>
+</tr></table><h2>OpenMP Programming Model</h2>
+<h3>Shared Memory Model:</h3>
+<ul><li>OpenMP is designed for multi-processor/core, shared memory machines. The underlying architecture can be shared memory UMA or NUMA.<br /><table><tr><td><div class="media media-element-container media-default"><div id="file-736" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/sharedmemgif">shared_mem.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Diagram of shared memory (UMA) " height="285" width="414" class="media-element file-default" data-delta="1" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/shared_mem.gif" /></div>
+
+  
+</div>
+</div></td>
+<td><div class="media media-element-container media-default"><div id="file-737" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/numagif">numa.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Diagram of shared memory (NUMA)" title="Shared Memory (NUMA)" height="196" width="484" class="media-element file-default" data-delta="2" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/numa.gif" /></div>
+
+  
+</div>
+</div></td>
+</tr><tr><td align="center"><strong>Uniform Memory Access</strong></td>
+<td align="center"><strong>Non-Uniform Memory Access</strong></td>
+</tr></table></li>
+<li>Because OpenMP is designed for shared memory parallel programming, it largely limited to single node parallelism. Typically, the number of processing elements (cores) on a node determine how much parallelism can be implemented.</li>
+</ul></li>
+</ul><h3>Motivation for Using OpenMP in HPC:</h3>
+<ul><li>By itself, OpenMP parallelism is limited to a single node.</li>
+<li>For High Performance Computing (HPC) applications, OpenMP is combined with MPI for the distributed memory parallelism. This is often referred to as Hybrid Parallel Programming.
+<ul><li>OpenMP is used for computationally intensive work on each node</li>
+<li>MPI is used to accomplish communications and data sharing between nodes</li>
+</ul></li>
+<li>This allows parallelism to be implemented to the full scale of a cluster.
+<p></p><div class="media media-element-container media-default"><div id="file-749" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/hybridmodelgif">hybrid_model.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Hybrid model diagram" height="241" width="485" class="media-element file-default" data-delta="3" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/hybrid_model.gif" /></div>
+
+  
+</div>
+</div><br />Hybrid OpenMP-MPI Parallelism
+</li>
+</ul><p> </p>
+<ul></ul><h3>Thread Based Parallelism:</h3>
+<ul><li>OpenMP programs accomplish parallelism exclusively through the use of threads.</li>
+<li>A thread of execution is the smallest unit of processing that can be scheduled by an operating system. The idea of a subroutine that can be scheduled to run autonomously might help explain what a thread is.</li>
+<li>Threads exist within the resources of a single process. Without the process, they cease to exist.</li>
+<li>Typically, the number of threads match the number of machine processors/cores. However, the actual use of threads is up to the application.</li>
+</ul><h3>Explicit Parallelism:</h3>
+<ul><li>OpenMP is an explicit (not automatic) programming model, offering the programmer full control over parallelization.</li>
+<li>Parallelization can be as simple as taking a serial program and inserting compiler directives....</li>
+<li>Or as complex as inserting subroutines to set multiple levels of parallelism, locks and even nested locks.</li>
+</ul><h3>Fork - Join Model:</h3>
+<ul><li>OpenMP uses the fork-join model of parallel execution:
+<p></p><div class="media media-element-container media-default"><div id="file-2247" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/fork-join2-gif">fork_join2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Fork-Join Model of parallel execution" height="226" width="800" class="media-element file-default" data-delta="4" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/fork_join2.gif" /></div>
+
+  
+</div>
+</div>
+<p> </p>
+</li>
+<li>All OpenMP programs begin as a single process: the master thread. The master thread executes sequentially until the first parallel region construct is encountered.</li>
+<li>FORK: the master thread then creates a team of parallel <em>threads</em>.</li>
+<li>The statements in the program that are enclosed by the parallel region construct are then executed in parallel among the various team threads.</li>
+<li>JOIN: When the team threads complete the statements in the parallel region construct, they synchronize and terminate, leaving only the master thread.</li>
+<li>The number of parallel regions and the threads that comprise them are arbitrary.</li>
+</ul><h3>Data Scoping:</h3>
+<ul><li>Because OpenMP is a shared memory programming model, most data within a parallel region is shared by default.</li>
+<li>All threads in a parallel region can access this shared data simultaneously.</li>
+<li>OpenMP provides a way for the programmer to explicitly specify how data is "scoped" if the default shared scoping is not desired.</li>
+<li>This topic is covered in more detail in the <a href="#Clauses">Data Scope Attribute Clauses</a> section.</li>
+</ul><h3>Nested Parallelism:</h3>
+<ul><li>The API provides for the placement of parallel regions inside other parallel regions.</li>
+<li>Implementations may or may not support this feature.</li>
+</ul><h3>Dynamic Threads:</h3>
+<ul><li>The API provides for the runtime environment to dynamically alter the number of threads used to execute parallel regions. Intended to promote more efficient use of resources, if possible.</li>
+<li>Implementations may or may not support this feature.</li>
+</ul><h3>I/O:</h3>
+<ul><li>OpenMP specifies nothing about parallel I/O. This is particularly important if multiple threads attempt to write/read from the same file.</li>
+<li>If every thread conducts I/O to a different file, the issues are not as significant.</li>
+<li>It is entirely up to the programmer to ensure that I/O is conducted correctly within the context of a multi-threaded program.</li>
+</ul><h3>Memory Model: FLUSH Often?</h3>
+<ul><li>OpenMP provides a "relaxed-consistency" and "temporary" view of thread memory (in their words). In other words, threads can "cache" their data and are not required to maintain exact consistency with real memory all of the time.</li>
+<li>When it is critical that all threads view a shared variable identically, the programmer is responsible for insuring that the variable is FLUSHed by all threads as needed.</li>
+<li>More on this later...</li>
+</ul><h2><a href="#AppendixA"> </a><a name="API" id="API"> </a>OpenMP API Overview</h2>
+<h3>Three Components:</h3>
+<ul><li>The OpenMP 3.1 API is comprised of three distinct components:
+<ul><li>Compiler Directives (19)</li>
+<li>Runtime Library Routines (32)</li>
+<li>Environment Variables (9)</li>
+</ul><p>Later APIs include the same three components, but increase the number of directives, runtime library routines and environment variables.</p>
+</li>
+<li>The application developer decides how to employ these components. In the simplest case, only a few of them are needed.</li>
+<li>Implementations differ in their support of all API components. For example, an implementation may state that it supports nested parallelism, but the API makes it clear that may be limited to a single thread - the master thread. Not exactly what the developer might expect?</li>
+</ul><h3>Compiler Directives:</h3>
+<ul><li>Compiler directives appear as comments in your source code and are ignored by compilers unless you tell them otherwise - usually by specifying the appropriate compiler flag, as discussed in the <a href="#Compiling">Compiling</a> section later.</li>
+<li>OpenMP compiler directives are used for various purposes:
+<ul><li>Spawning a parallel region</li>
+<li>Dividing blocks of code among threads</li>
+<li>Distributing loop iterations between threads</li>
+<li>Serializing sections of code</li>
+<li>Synchronization of work among threads</li>
+</ul></li>
+</ul><p>Compiler directives have the following syntax:</p>
+<pre><em>sentinel       directive-name      [clause, ...]</em>
+</pre><p> </p>
+<p>For example:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>!$OMP PARALLEL DEFAULT(SHARED) PRIVATE(BETA,PI)
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#pragma omp parallel default(shared) private(beta,pi)
+</pre></td>
+</tr></table><p> </p>
+<ul><li>Compiler directives are covered in detail later.</li>
+</ul><p> </p>
+<h3>Run-time Library Routines:</h3>
+<p> </p>
+<ul><li>The OpenMP API includes an ever-growing number of run-time library routines.</li>
+<li>These routines are used for a variety of purposes:
+<ul><li>Setting and querying the number of threads
+<ul><li>Querying a thread's unique identifier (thread ID), a thread's ancestor's identifier, the thread team size</li>
+<li>Setting and querying the dynamic threads feature</li>
+<li>Querying if in a parallel region, and at what level</li>
+<li>Setting and querying nested parallelism</li>
+<li>Setting, initializing and terminating locks and nested locks</li>
+<li>Querying wall clock time and resolution</li>
+</ul></li>
+</ul></li>
+<li>For C/C++, all of the run-time library routines are actual subroutines. For Fortran, some are actually functions, and some are subroutines. For example:<br /><table><tr><th>Fortran</th>
+<td>
+<pre>INTEGER FUNCTION OMP_GET_NUM_THREADS()
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+int omp_get_num_threads(void)
+</pre></td>
+</tr></table></li>
+<li>Note that for C/C++, you usually need to include the <span class="file">&lt;omp.h&gt;</span> header file.</li>
+<li>Fortran routines are not case sensitive, but C/C++ routines are.</li>
+<li>
+<p>The run-time library routines are briefly discussed as an overview in the <a href="#RunTimeLibrary">Run-Time Library Routines</a> section, and in more detail in Appendix A.</p>
+</li>
+</ul><p> </p>
+<h3>Environment Variables:</h3>
+<p> </p>
+<ul><li>OpenMP provides several environment variables for controlling the execution of parallel code at run-time.</li>
+<li>These environment variables can be used to control such things as:
+<ul><li>Setting the number of threads</li>
+<li>Specifying how loop iterations are divided</li>
+<li>Binding threads to processors</li>
+<li>Enabling/disabling nested parallelism; setting the maximum levels of nested parallelism</li>
+<li>Enabling/disabling dynamic threads</li>
+<li>Setting thread stack size</li>
+<li>Setting thread wait policy</li>
+</ul></li>
+</ul><p> </p>
+<p>Setting OpenMP environment variables is done the same way you set any other environment variables, and depends upon which shell you use. For example:</p>
+<p> </p>
+<table><tr><th>csh/tcsh</th>
+<td>
+<pre>setenv OMP_NUM_THREADS 8
+</pre></td>
+</tr><tr><th>sh/bash</th>
+<td>
+<pre>export OMP_NUM_THREADS=8
+</pre></td>
+</tr></table><p> </p>
+<ul><li>OpenMP environment variables are discussed in the <a href="#EnvironmentVariables">Environment Variables</a> section later.</li>
+</ul><p> </p>
+<h3>Example OpenMP Code Structure:</h3>
+<p> </p>
+<table><tr><td colspan="2">Fortran - General Code Structure</td>
+<td> </td>
+</tr><tr><td>
+<pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></td>
+<td>
+<pre>   PROGRAM HELLO
+   INTEGER VAR1, VAR2, VAR3
+
+   <em>Serial code </em>
+         .
+         .
+         .
+
+   <em>Beginning of parallel region. Fork a team of threads.
+   Specify variable scoping </em>
+
+   !$OMP PARALLEL PRIVATE(VAR1, VAR2) SHARED(VAR3)
+
+      <em>Parallel region executed by all threads </em>
+            .
+      <em>Other OpenMP directives</em>
+            .
+      <em>Run-time Library calls</em>
+            .
+      <em>All threads join master thread and disband </em>
+
+   !$OMP END PARALLEL
+
+   <em>Resume serial code </em>
+         .
+         .
+         .
+
+   END
+
+</pre></td>
+</tr></table><p> </p>
+<p><a name="Compiling" id="Compiling"> </a></p>
+<p> </p>
+<h2>Compiling OpenMP Programs</h2>
+<p> </p>
+<h3>LC OpenMP Implementations:</h3>
+<p> </p>
+<ul><li>As of June 2019, the documentation sources for LC's default compilers claim the following OpenMP support:<br /><table><tr><th>Platform</th>
+<th>Compiler</th>
+<th>Version<br />Flag</th>
+<th>Default<br />Version</th>
+<th>Supports</th>
+</tr><tr><td rowspan="4">Linux</td>
+<td>Intel C/C++, Fortran</td>
+<td>--version</td>
+<td>18.0.1</td>
+<td>OpenMP 4.5 (most)</td>
+</tr><tr><td>GNU C/C++, Fortran</td>
+<td>--version</td>
+<td>4.9.3</td>
+<td>OpenMP 4.0</td>
+</tr><tr><td>PGI C/C++, Fortran</td>
+<td>-V<br />--version</td>
+<td>19.4</td>
+<td>OpenMP 4.5 (limitations - no GPU offloading)</td>
+</tr><tr><td>Clang C/C++</td>
+<td>--version</td>
+<td>6.0.0</td>
+<td>OpenMP 4.5 (limitations - no GPU offloading or device support</td>
+</tr><tr><td rowspan="6">SIERRA<br />CORAL EA</td>
+<td>IBM XL C/C++</td>
+<td>-qversion</td>
+<td>16.1.1</td>
+<td>OpenMP 4.5</td>
+</tr><tr><td>IBM XL Fortran</td>
+<td>-qversion</td>
+<td>16.1.1</td>
+<td>OpenMP 4.5</td>
+</tr><tr><td>GNU C/C++</td>
+<td>--version</td>
+<td>4.9.3</td>
+<td>OpenMP 4.0</td>
+</tr><tr><td>GNU Fortran</td>
+<td>--version</td>
+<td>4.9.3</td>
+<td>OpenMP 4.0</td>
+</tr><tr><td>PGI C/C++, Fortran</td>
+<td>-V<br />--version</td>
+<td>18.10</td>
+<td>OpenMP 4.5 (limitations - no GPU offloading)</td>
+</tr><tr><td>Clang C/C++ (IBM)</td>
+<td>--version</td>
+<td>9.0</td>
+<td>OpenMP 4.5</td>
+</tr></table></li>
+<li>To view all LC compiler versions, use the command: <span class="cmd">module avail</span></li>
+<li>Best place to view OpenMP support by a range of compilers: <a href="https://www.openmp.org/resources/openmp-compilers-tools/" target="_blank"> https://www.openmp.org/resources/openmp-compilers-tools/</a>.</li>
+</ul><p> </p>
+<p>Compiling:</p>
+<p> </p>
+<ul><li>All of LC's compilers require you to use the appropriate compiler flag to "turn on" OpenMP compilations. The table below shows what to use for each compiler.</li>
+<li>For MPI compiler commands, see: <a href="https://computing.llnl.gov/tutorials/mpi/#BuildScripts" target="_blank"> https://computing.llnl.gov/tutorials/mpi/#BuildScripts</a><br /><table class="table table-striped table-bordered"><tr><th>Compiler / Platform</th>
+<th>Compiler Commands</th>
+<th>OpenMP Flag</th>
+</tr><tr><td>Intel<br />Linux</td>
+<td>icc<br />icpc<br />ifort</td>
+<td>-qopenmp</td>
+</tr><tr><td>GNU<br />Linux<br />IBM Blue Gene<br />Sierra, CORAL EA</td>
+<td>gcc<br />g++<br />g77<br />gfortran</td>
+<td>-fopenmp</td>
+</tr><tr><td>PGI<br />Linux<br />Sierra, CORAL EA</td>
+<td>pgcc<br />pgCC<br />pgf77<br />pgf90</td>
+<td>-mp</td>
+</tr><tr><td>Clang<br />Linux<br />Sierra, CORAL EA</td>
+<td>clang<br />clang++</td>
+<td>-fopenmp</td>
+</tr><tr><td>IBM XL<br />Blue Gene</td>
+<td>
+<pre>bgxlc_r, bgcc_r
+bgxlC_r, bgxlc++_r
+bgxlc89_r
+bgxlc99_r
+bgxlf_r
+bgxlf90_r
+bgxlf95_r
+bgxlf2003_r
+</pre></td>
+<td>-qsmp=omp</td>
+</tr><tr><td>IBM XL<br />Sierra, CORAL EA</td>
+<td>
+<pre>xlc_r
+xlC_r, xlc++_r
+xlf_r
+xlf90_r
+xlf95_r
+xlf2003_r
+xlf2008_r
+</pre></td>
+<td>-qsmp=omp</td>
+</tr></table></li>
+<li>Compiler Documentation:
+<ul><li>IBM Sierra, CORAL EA: Select the relevant version of Little Endian documents at <a href="http://www-01.ibm.com/support/docview.wss?uid=swg27036675" target="_blank">http://www-01.ibm.com/support/docview.wss?uid=swg27036675</a> (C/C++) and <a href="http://www-01.ibm.com/support/docview.wss?uid=swg27036672" target="_blank">http://www-01.ibm.com/support/docview.wss?uid=swg27036672</a> (Fortran).</li>
+<li>Intel and PGI: compiler docs are included in the /opt/compilername directory. Otherwise, see Intel or PGI web pages.</li>
+<li>GNU: <a href="http://gnu.org" target="_blank">gnu.org</a></li>
+<li>Clang: <a href="http://clang.llvm.org/docs/" target="_blank"> http://clang.llvm.org/docs/</a></li>
+<li>IBM BlueGene Fortran: <a href="http://www-01.ibm.com/support/docview.wss?uid=swg27027154" target="_blank">http://www-01.ibm.com/support/docview.wss?uid=swg27027154</a> and C/C++: <a href="http://www-01.ibm.com/support/docview.wss?uid=swg27027155" target="_blank">http://www-01.ibm.com/support/docview.wss?uid=swg27027155</a></li>
+</ul></li>
+</ul><p> </p>
+<h2><a name="Directives" id="Directives"> </a>OpenMP Directives</h2>
+<p> </p>
+<h3>Fortran Directives Format</h3>
+<p> </p>
+<p>Format: (case insensitive)</p>
+<p> </p>
+<table><tr><th>sentinel</th>
+<th>directive-name</th>
+<th>[clause ...]</th>
+</tr><tr><td>All Fortran OpenMP directives must begin with a sentinel. The accepted sentinels depend upon the type of Fortran source. Possible sentinels are:
+<pre>    !$OMP
+    C$OMP
+    *$OMP </pre></td>
+<td>A valid OpenMP directive. Must appear after the sentinel and before any clauses.</td>
+<td>Optional. Clauses can be in any order, and repeated as necessary unless otherwise restricted.</td>
+</tr></table><p> </p>
+<p><br />Example:</p>
+<p> </p>
+<table><tr><td>
+<pre>
+!$OMP PARALLEL DEFAULT(SHARED) PRIVATE(BETA,PI)
+
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Fixed Form Source:</p>
+<p> </p>
+<ul><li>!$OMP C$OMP *$OMP are accepted sentinels and must start in column 1</li>
+<li>All Fortran fixed form rules for line length, white space, continuation and comment columns apply for the entire directive line</li>
+<li>Initial directive lines must have a space/zero in column 6.</li>
+<li>Continuation lines must have a non-space/zero in column 6.</li>
+</ul><p> </p>
+<p>Free Form Source:</p>
+<p> </p>
+<ul><li>!$OMP is the only accepted sentinel. Can appear in any column, but must be preceded by white space only.</li>
+<li>All Fortran free form rules for line length, white space, continuation and comment columns apply for the entire directive line</li>
+<li>
+<p>Initial directive lines must have a space after the sentinel.</p>
+</li>
+<li>
+<p>Continuation lines must have an ampersand as the last non-blank character in a line. The following line must begin with a sentinel and then the continuation directives.</p>
+</li>
+</ul><p> </p>
+<p>General Rules:</p>
+<p> </p>
+<ul><li>Comments can not appear on the same line as a directive</li>
+<li>Only one directive-name may be specified per directive</li>
+<li>
+<p>Fortran compilers which are OpenMP enabled generally include a command line option which instructs the compiler to activate and interpret all OpenMP directives.</p>
+</li>
+<li>Several Fortran OpenMP directives come in pairs and have the form shown below. The "end" directive is optional but advised for readability.<br /><table><tr><td>
+<pre>
+!$OMP  <em>directive </em>
+
+    <em>[ structured block of code ]</em>
+
+!$OMP end  <em>directive</em>
+
+</pre></td>
+</tr></table></li>
+</ul><p> </p>
+<h2><a name="CFormat" id="CFormat"> </a>OpenMP Directives</h2>
+<p> </p>
+<h3><span>C / C++ Directives Format</span></h3>
+<p> </p>
+<h4>Format:</h4>
+<p> </p>
+<table><tr><th>#pragma omp</th>
+<th>directive-name</th>
+<th>[clause, ...]</th>
+<th>newline</th>
+</tr><tr><td>Required for all OpenMP C/C++ directives.</td>
+<td>A valid OpenMP directive. Must appear after the pragma and before any clauses.</td>
+<td>Optional. Clauses can be in any order, and repeated as necessary unless otherwise restricted.</td>
+<td>Required. Precedes the structured block which is enclosed by this directive.</td>
+</tr></table><p> </p>
+<p>Example:</p>
+<p> </p>
+<table><tr><td>
+<pre>
+#pragma omp parallel default(shared) private(beta,pi)
+
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>General Rules:</p>
+<p> </p>
+<ul><li>Case sensitive</li>
+<li>Directives follow conventions of the C/C++ standards for compiler directives</li>
+<li>Only one directive-name may be specified per directive</li>
+<li>Each directive applies to at most one succeeding statement, which must be a structured block.</li>
+<li>Long directive lines can be "continued" on succeeding lines by escaping the newline character with a backslash ("\") at the end of a directive line.</li>
+</ul><p> </p>
+<p><a name="Scoping" id="Scoping"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Directives</td>
+</tr></table><p> </p>
+<h2>Directive Scoping</h2>
+<p> </p>
+<p>Do we do this now...or do it later? Oh well, let's get it over with early...</p>
+<p> </p>
+<p>Static (Lexical) Extent:</p>
+<p> </p>
+<ul><li>The code textually enclosed between the beginning and the end of a structured block following a directive.
+<p> </p>
+</li>
+<li>The static extent of a directives does not span multiple routines or code files</li>
+</ul><p> </p>
+<p>Orphaned Directive:</p>
+<p> </p>
+<ul><li>An OpenMP directive that appears independently from another enclosing directive is said to be an orphaned directive. It exists outside of another directive's static (lexical) extent.
+<p> </p>
+</li>
+<li>Will span routines and possibly code files</li>
+</ul><p> </p>
+<p>Dynamic Extent:</p>
+<p> </p>
+<ul><li>The dynamic extent of a directive includes both its static (lexical) extent and the extents of its orphaned directives.</li>
+</ul><p> </p>
+<p>Example:</p>
+<p> </p>
+<table><tr><td>
+<pre>      PROGRAM TEST
+      ...
+      !$OMP PARALLEL
+      ...
+      !$OMP DO
+      DO I=...
+      ...
+      CALL SUB1
+      ...
+      ENDDO
+      !$OMP END DO
+      ...
+      CALL SUB2
+      ...
+      !$OMP END PARALLEL
+</pre></td>
+<td>
+<pre>      SUBROUTINE SUB1
+      ...
+      !$OMP CRITICAL
+      ...
+      !$OMP END CRITICAL
+      END
+
+
+      SUBROUTINE SUB2
+      ...
+      !$OMP SECTIONS
+      ...
+      !$OMP END SECTIONS
+      ...
+      END
+</pre></td>
+</tr><tr><td>STATIC EXTENT<br />The DO directive occurs within an enclosing parallel region</td>
+<td>ORPHANED DIRECTIVES<br />The CRITICAL and SECTIONS directives occur outside an enclosing parallel region</td>
+</tr><tr><td colspan="2">DYNAMIC EXTENT<br />The CRITICAL and SECTIONS directives occur within the dynamic extent of the DO and PARALLEL directives.</td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Why Is This Important?</p>
+<p> </p>
+<ul><li>OpenMP specifies a number of scoping rules on how directives may associate (bind) and nest within each other
+<p> </p>
+</li>
+<li>Illegal and/or incorrect programs may result if the OpenMP binding and nesting rules are ignored
+<p> </p>
+</li>
+<li>See <a href="#BindingNesting"> Directive Binding and Nesting Rules</a> for specific details</li>
+</ul><p> </p>
+<p><a name="ParallelRegion" id="ParallelRegion"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Directives</td>
+</tr></table><p> </p>
+<h2>PARALLEL Region Construct</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>A parallel region is a block of code that will be executed by multiple threads. This is the fundamental OpenMP parallel construct.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>!$OMP PARALLEL <em>[clause ...] </em>
+               IF <em>(scalar_logical_expression) </em>
+               PRIVATE <em>(list) </em>
+               SHARED <em>(list) </em>
+               DEFAULT (PRIVATE | FIRSTPRIVATE | SHARED | NONE)
+               FIRSTPRIVATE <em>(list) </em>
+               REDUCTION <em>(operator: list) </em>
+               COPYIN <em>(list) </em>
+               NUM_THREADS <em>(scalar-integer-expression)</em>
+
+   <em>block</em>
+
+!$OMP END PARALLEL
+
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#pragma omp parallel <em>[clause ...]  newline </em>
+                     if <em>(scalar_expression) </em>
+                     private <em>(list) </em>
+                     shared <em>(list) </em>
+                     default (shared | none)
+                     firstprivate <em>(list) </em>
+                     reduction <em>(operator: list) </em>
+                     copyin <em>(list) </em>
+                     num_threads <em>(integer-expression)</em>
+
+
+   <em>structured_block</em>
+
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes:</p>
+<p> </p>
+<ul><li>When a thread reaches a PARALLEL directive, it creates a team of threads and becomes the master of the team. The master is a member of that team and has thread number 0 within that team.
+<p> </p>
+</li>
+<li>Starting from the beginning of this parallel region, the code is duplicated and all threads will execute that code.
+<p> </p>
+</li>
+<li>There is an implied barrier at the end of a parallel region. Only the master thread continues execution past this point.
+<p> </p>
+</li>
+<li>If any thread terminates within a parallel region, all threads in the team will terminate, and the work done up until that point is undefined.</li>
+</ul><p> </p>
+<p>How Many Threads?</p>
+<p> </p>
+<ul><li>The number of threads in a parallel region is determined by the following factors, in order of precedence:
+<ol><li>Evaluation of the IF clause
+<p> </p>
+</li>
+<li>Setting of the NUM_THREADS clause
+<p> </p>
+</li>
+<li>Use of the omp_set_num_threads() library function
+<p> </p>
+</li>
+<li>Setting of the OMP_NUM_THREADS environment variable
+<p> </p>
+</li>
+<li>Implementation default - usually the number of CPUs on a node, though it could be dynamic (see next bullet).</li>
+</ol><p> </p>
+</li>
+<li>Threads are numbered from 0 (master thread) to N-1</li>
+</ul><p> </p>
+<p>Dynamic Threads:</p>
+<p> </p>
+<ul><li>Use the omp_get_dynamic() library function to determine if dynamic threads are enabled.
+<p> </p>
+</li>
+<li>If supported, the two methods available for enabling dynamic threads are:
+<ol><li>The omp_set_dynamic() library routine
+<p> </p>
+</li>
+<li>Setting of the OMP_DYNAMIC environment variable to TRUE</li>
+</ol></li>
+</ul><p> </p>
+<p>Nested Parallel Regions:</p>
+<p> </p>
+<ul><li>Use the omp_get_nested() library function to determine if nested parallel regions are enabled.
+<p> </p>
+</li>
+<li>The two methods available for enabling nested parallel regions (if supported) are:
+<ol><li>The omp_set_nested() library routine
+<p> </p>
+</li>
+<li>Setting of the OMP_NESTED environment variable to TRUE</li>
+</ol><p> </p>
+</li>
+<li>If not supported, a parallel region nested within another parallel region results in the creation of a new team, consisting of one thread, by default.</li>
+</ul><p> </p>
+<p>Clauses:</p>
+<p> </p>
+<ul><li>IF clause: If present, it must evaluate to .TRUE. (Fortran) or non-zero (C/C++) in order for a team of threads to be created. Otherwise, the region is executed serially by the master thread.
+<p> </p>
+</li>
+<li>The remaining clauses are described in detail later, in the <a href="#Clauses">Data Scope Attribute Clauses</a> section.</li>
+</ul><p> </p>
+<p>Restrictions:</p>
+<p> </p>
+<ul><li>A parallel region must be a structured block that does not span multiple routines or code files
+<p> </p>
+</li>
+<li>It is illegal to branch (goto) into or out of a parallel region
+<p> </p>
+</li>
+<li>Only a single IF clause is permitted
+<p> </p>
+</li>
+<li>Only a single NUM_THREADS clause is permitted
+<p> </p>
+</li>
+<li>A program must not depend upon the ordering of the clauses</li>
+</ul><p> </p>
+<hr /><p> </p>
+<h2>Example: Parallel Region</h2>
+<p> </p>
+<ul><li>Simple "Hello World" program
+<ul><li>Every thread executes all code enclosed in the parallel region</li>
+<li>OpenMP library routines are used to obtain thread identifiers and total number of threads</li>
+</ul><table><tr><td>
+<table><tr><td colspan="2"></td>
+<td><br />     Fortran - Parallel Region Example 
+<p> </p>
+</td>
+</tr><tr><td colspan="3">
+<p> </p>
+</td>
+</tr><tr><td>
+<pre>   1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></td>
+<td> </td>
+<td>
+<pre>        PROGRAM HELLO
+
+        INTEGER NTHREADS, TID, OMP_GET_NUM_THREADS,
+      +   OMP_GET_THREAD_NUM
+
+   !     Fork a team of threads with each thread having a private TID variable
+ !$OMP PARALLEL PRIVATE(TID)
+
+   !     Obtain and print thread id
+       TID = OMP_GET_THREAD_NUM()
+       PRINT *, 'Hello World from thread = ', TID
+
+   !     Only master thread does this
+       IF (TID .EQ. 0) THEN
+         NTHREADS = OMP_GET_NUM_THREADS()
+         PRINT *, 'Number of threads = ', NTHREADS
+       END IF
+
+   !     All threads join master thread and disband
+ !$OMP END PARALLEL
+
+        END
+
+</pre></td>
+</tr></table></td>
+</tr></table><p> <br /><br /> <br /></p><table><tr><td>
+<table><tr><td colspan="2"></td>
+<td><br />     C / C++ - Parallel Region Example 
+<p> </p>
+</td>
+</tr><tr><td colspan="3">
+<p> </p>
+</td>
+</tr><tr><td>
+<pre>   1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></td>
+<td> </td>
+<td>
+<pre> #include &lt;omp.h&gt;
+
+ main(int argc, char *argv[]) {
+
+ int nthreads, tid;
+
+   /* Fork a team of threads with each thread having a private tid variable */
+ #pragma omp parallel private(tid)
+   {
+
+     /* Obtain and print thread id */
+   tid = omp_get_thread_num();
+   printf("Hello World from thread = %d\n", tid);
+
+     /* Only master thread does this */
+   if (tid == 0)
+     {
+     nthreads = omp_get_num_threads();
+     printf("Number of threads = %d\n", nthreads);
+     }
+
+   }    /* All threads join master thread and terminate */
+
+ }
+
+</pre></td>
+</tr></table></td>
+</tr></table></li>
+</ul><p> </p>
+<p><a name="Exercise1" id="Exercise1"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Exercise 1</td>
+</tr></table><p> </p>
+<h2>Getting Started</h2>
+<p> </p>
+<dl><dd>
+<table><tr><td>Overview: 
+<ul><li>Login to the workshop cluster using your workshop username and OTP token </li>
+<li>Copy the exercise files to your home directory </li>
+<li>Familiarize yourself with LC's OpenMP environment </li>
+<li>Write a simple "Hello World" OpenMP program </li>
+<li>Successfully compile your program </li>
+<li>Successfully run your program </li>
+<li>Modify the number of threads used to run your program </li>
+</ul><p> <a href="exercise.html" target="_blank">GO TO THE EXERCISE HERE</a> </p>
+<h3>Approx. 20 minutes</h3>
+<ul></ul></td>
+</tr></table></dd>
+</dl><p> </p>
+<p><a name="WorkSharing" id="WorkSharing"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Directives</td>
+</tr></table><p> </p>
+<h2>Work-Sharing Constructs</h2>
+<p> </p>
+<ul><li>A work-sharing construct divides the execution of the enclosed code region among the members of the team that encounter it.
+<p> </p>
+</li>
+<li>Work-sharing constructs do not launch new threads
+<p> </p>
+</li>
+<li>There is no implied barrier upon entry to a work-sharing construct, however there is an implied barrier at the end of a work sharing construct.</li>
+</ul><p> </p>
+<p>Types of Work-Sharing Constructs:</p>
+<p> </p>
+<ul><li>NOTE: The Fortran workshare construct is not shown here.
+<table class="table table-striped table-bordered"><tr><td width="33%">DO / for - shares iterations of a loop across the team. Represents a type of "data parallelism".</td>
+<td width="33%">SECTIONS - breaks work into separate, discrete sections. Each section is executed by a thread. Can be used to implement a type of "functional parallelism".</td>
+<td width="33%">SINGLE - serializes a section of code</td>
+</tr><tr><td></td>
+<td></td>
+<td></td>
+</tr></table></li>
+</ul><p> </p>
+<p>Restrictions:</p>
+<p> </p>
+<ul><li>A work-sharing construct must be enclosed dynamically within a parallel region in order for the directive to execute in parallel.
+<p> </p>
+</li>
+<li>Work-sharing constructs must be encountered by all members of a team or none at all
+<p> </p>
+</li>
+<li>Successive work-sharing constructs must be encountered in the same order by all members of a team</li>
+</ul><p> </p>
+<p><a name="DO" id="DO"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Directives</td>
+</tr></table><p> </p>
+<h2>Work-Sharing Constructs<br />DO / for Directive</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>The DO / for directive specifies that the iterations of the loop immediately following it must be executed in parallel by the team. This assumes a parallel region has already been initiated, otherwise it executes in serial on a single processor.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>!$OMP DO <em>[clause ...] </em>
+         SCHEDULE <em>(type [,chunk]) </em>
+         ORDERED
+         PRIVATE <em>(list) </em>
+         FIRSTPRIVATE <em>(list) </em>
+         LASTPRIVATE <em>(list) </em>
+         SHARED <em>(list) </em>
+         REDUCTION <em>(operator : list) </em>
+         COLLAPSE <em>(n) </em>
+
+   <em>do_loop</em>
+
+!$OMP END DO  [ NOWAIT ]
+
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#pragma omp for <em>[clause ...]  newline </em>
+                schedule <em>(type [,chunk]) </em>
+                ordered
+                private <em>(list) </em>
+                firstprivate <em>(list) </em>
+                lastprivate <em>(list) </em>
+                shared <em>(list) </em>
+                reduction <em>(operator: list) </em>
+                collapse <em>(n) </em>
+                nowait
+
+   <em>for_loop</em>
+
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Clauses:</p>
+<p> </p>
+<ul><li>SCHEDULE: Describes how iterations of the loop are divided among the threads in the team. The default schedule is implementation dependent. For a discussion on how one type of scheduling may be more optimal than others, see <a href="http://openmp.org/forum/viewtopic.php?f=3&amp;t=83" target="_blank"> http://openmp.org/forum/viewtopic.php?f=3&amp;t=83</a>.
+<dl><dt>STATIC</dt>
+<dd>Loop iterations are divided into pieces of size <em>chunk</em> and then statically assigned to threads. If chunk is not specified, the iterations are evenly (if possible) divided contiguously among the threads.
+<p> </p>
+</dd>
+<dt>DYNAMIC</dt>
+<dd>Loop iterations are divided into pieces of size <em>chunk</em>, and dynamically scheduled among the threads; when a thread finishes one chunk, it is dynamically assigned another. The default chunk size is 1.
+<p> </p>
+</dd>
+<dt>GUIDED</dt>
+<dd>Iterations are dynamically assigned to threads in blocks as threads request them until no blocks remain to be assigned. Similar to DYNAMIC except that the block size decreases each time a parcel of work is given to a thread.<br />The size of the initial block is proportional to: number_of_iterations / number_of_threads<br />Subsequent blocks are proportional to number_of_iterations_remaining / number_of_threads<br />The chunk parameter defines the minimum block size. The default chunk size is 1.<br />Note: compilers differ in how GUIDED is implemented as shown in the "Guided A" and "Guided B" examples below.
+<p> </p>
+</dd>
+<dt>RUNTIME</dt>
+<dd>The scheduling decision is deferred until runtime by the environment variable OMP_SCHEDULE. It is illegal to specify a chunk size for this clause.
+<p> </p>
+</dd>
+<dt>AUTO</dt>
+<dd>The scheduling decision is delegated to the compiler and/or runtime system.</dd>
+</dl><p> </p>
+</li>
+<li>NO WAIT / nowait: If specified, then threads do not synchronize at the end of the parallel loop.
+<p> </p>
+</li>
+<li>ORDERED: Specifies that the iterations of the loop must be executed as they would be in a serial program.
+<p> </p>
+</li>
+<li>COLLAPSE: Specifies how many loops in a nested loop should be collapsed into one large iteration space and divided according to the schedule clause. The order of the iterations in the collapsed iteration space is determined as though they were executed sequentially. May improve performance.
+<p> </p>
+</li>
+<li>Other clauses are described in detail later, in the <a href="#Clauses">Data Scope Attribute Clauses</a> section.</li>
+</ul><p> </p>
+<p>Restrictions:</p>
+<p> </p>
+<ul><li>The DO loop can not be a DO WHILE loop, or a loop without loop control. Also, the loop iteration variable must be an integer and the loop control parameters must be the same for all threads.
+<p> </p>
+</li>
+<li>Program correctness must not depend upon which thread executes a particular iteration.
+<p> </p>
+</li>
+<li>It is illegal to branch (goto) out of a loop associated with a DO/for directive.
+<p> </p>
+</li>
+<li>The chunk size must be specified as a loop invariant integer expression, as there is no synchronization during its evaluation by different threads.
+<p> </p>
+</li>
+<li>ORDERED, COLLAPSE and SCHEDULE clauses may appear once each.
+<p> </p>
+</li>
+<li>See the OpenMP specification document for additional restrictions.</li>
+</ul><p> </p>
+<hr /><p> </p>
+<h2>Example: DO / for Directive</h2>
+<p> </p>
+<ul><li>Simple vector-add program
+<ul><li>Arrays A, B, C, and variable N will be shared by all threads.</li>
+<li>Variable I will be private to each thread; each thread will have its own unique copy.</li>
+<li>The iterations of the loop will be distributed dynamically in CHUNK sized pieces.</li>
+<li>Threads will not synchronize upon completing their individual pieces of work (NOWAIT).</li>
+</ul><p> </p>
+<p> </p>
+<table><tr><td>
+<table><tr><td colspan="2"></td>
+<td><br />     Fortran - DO Directive Example 
+<p> </p>
+</td>
+</tr><tr><td colspan="3">
+<p> </p>
+</td>
+</tr><tr><td>
+<pre>   1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></td>
+<td> </td>
+<td>
+<pre>       PROGRAM VEC_ADD_DO
+
+       INTEGER N, CHUNKSIZE, CHUNK, I
+       PARAMETER (N=1000)
+       PARAMETER (CHUNKSIZE=100)
+       REAL A(N), B(N), C(N)
+
+   !     Some initializations
+       DO I = 1, N
+         A(I) = I * 1.0
+         B(I) = A(I)
+       ENDDO
+       CHUNK = CHUNKSIZE
+
+ !$OMP PARALLEL SHARED(A,B,C,CHUNK) PRIVATE(I)
+
+ !$OMP DO SCHEDULE(DYNAMIC,CHUNK)
+       DO I = 1, N
+          C(I) = A(I) + B(I)
+       ENDDO
+ !$OMP END DO NOWAIT
+
+ !$OMP END PARALLEL
+
+       END
+
+</pre></td>
+</tr></table></td>
+</tr></table><p> <br /><br /> <br /></p><table><tr><td>
+<table><tr><td colspan="2"></td>
+<td><br />     C / C++ - for Directive Example 
+<p> </p>
+</td>
+</tr><tr><td colspan="3">
+<p> </p>
+</td>
+</tr><tr><td>
+<pre>   1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></td>
+<td> </td>
+<td>
+<pre> #include &lt;omp.h&gt;
+ #define N 1000
+ #define CHUNKSIZE 100
+
+ main(int argc, char *argv[]) {
+
+ int i, chunk;
+ float a[N], b[N], c[N];
+
+   /* Some initializations */
+ for (i=0; i &lt; N; i++)
+   a[i] = b[i] = i * 1.0;
+ chunk = CHUNKSIZE;
+
+ #pragma omp parallel shared(a,b,c,chunk) private(i)
+   {
+
+   #pragma omp for schedule(dynamic,chunk) nowait
+   for (i=0; i &lt; N; i++)
+     c[i] = a[i] + b[i];
+
+   }     /* end of parallel region */
+
+ }
+
+</pre></td>
+</tr></table></td>
+</tr></table></li>
+</ul><p> </p>
+<p><a name="SECTIONS" id="SECTIONS"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Directives</td>
+</tr></table><p> </p>
+<h2>Work-Sharing Constructs<br />SECTIONS Directive</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>The SECTIONS directive is a non-iterative work-sharing construct. It specifies that the enclosed section(s) of code are to be divided among the threads in the team.
+<p> </p>
+</li>
+<li>Independent SECTION directives are nested within a SECTIONS directive. Each SECTION is executed once by a thread in the team. Different sections may be executed by different threads. It is possible for a thread to execute more than one section if it is quick enough and the implementation permits such.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>!$OMP SECTIONS <em>[clause ...] </em>
+               PRIVATE <em>(list) </em>
+               FIRSTPRIVATE <em>(list) </em>
+               LASTPRIVATE <em>(list) </em>
+               REDUCTION <em>(operator | intrinsic : list) </em>
+
+!$OMP  SECTION
+
+   <em>block</em>
+
+!$OMP  SECTION
+
+    <em>block</em>
+
+!$OMP END SECTIONS  [ NOWAIT ]
+
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#pragma omp sections <em>[clause ...]  newline </em>
+                     private <em>(list) </em>
+                     firstprivate <em>(list) </em>
+                     lastprivate <em>(list) </em>
+                     reduction <em>(operator: list) </em>
+                     nowait
+  {
+
+  #pragma omp section   <em>newline </em>
+
+     <em>structured_block</em>
+
+  #pragma omp section   <em>newline </em>
+
+     <em>structured_block</em>
+
+  }
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Clauses:</p>
+<p> </p>
+<ul><li>There is an implied barrier at the end of a SECTIONS directive, unless the NOWAIT/nowait clause is used.
+<p> </p>
+</li>
+<li>Clauses are described in detail later, in the <a href="#Clauses">Data Scope Attribute Clauses</a> section.</li>
+</ul><p> </p>
+<p>Questions:</p>
+<p> </p>
+<table><tr><td></td>
+<td>What happens if the number of threads and the number of SECTIONs are different? More threads than SECTIONs? Less threads than SECTIONs?<br /></td>
+</tr><tr><td> </td>
+</tr><tr><td></td>
+<td>Which thread executes which SECTION?<br /></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Restrictions:</p>
+<p> </p>
+<ul><li>It is illegal to branch (goto) into or out of section blocks.
+<p> </p>
+</li>
+<li>SECTION directives must occur within the lexical extent of an enclosing SECTIONS directive (no orphan SECTIONs).</li>
+</ul><p> </p>
+<hr /><p> </p>
+<h2>Example: SECTIONS Directive</h2>
+<p> </p>
+<ul><li>Simple program demonstrating that different blocks of work will be done by different threads.
+<p> </p>
+<p> </p>
+<table><tr><td>
+<table><tr><td colspan="2"></td>
+<td><br />     Fortran - SECTIONS Directive Example 
+<p> </p>
+</td>
+</tr><tr><td colspan="3">
+<p> </p>
+</td>
+</tr><tr><td>
+<pre>   1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></td>
+<td> </td>
+<td>
+<pre>       PROGRAM VEC_ADD_SECTIONS
+
+       INTEGER N, I
+       PARAMETER (N=1000)
+       REAL A(N), B(N), C(N), D(N)
+
+   !     Some initializations
+       DO I = 1, N
+         A(I) = I * 1.5
+         B(I) = I + 22.35
+       ENDDO
+
+ !$OMP PARALLEL SHARED(A,B,C,D), PRIVATE(I)
+
+ !$OMP SECTIONS
+
+ !$OMP SECTION
+       DO I = 1, N
+          C(I) = A(I) + B(I)
+       ENDDO
+
+ !$OMP SECTION
+       DO I = 1, N
+          D(I) = A(I) * B(I)
+       ENDDO
+
+ !$OMP END SECTIONS NOWAIT
+
+ !$OMP END PARALLEL
+
+       END
+
+</pre></td>
+</tr></table></td>
+</tr></table><p> <br /><br /> <br /></p><table><tr><td>
+<table><tr><td colspan="2"></td>
+<td><br />     C / C++ - sections Directive Example 
+<p> </p>
+</td>
+</tr><tr><td colspan="3">
+<p> </p>
+</td>
+</tr><tr><td>
+<pre>   1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</pre></td>
+<td> </td>
+<td>
+<pre> #include &lt;omp.h&gt;
+ #define N 1000
+
+ main(int argc, char *argv[]) {
+
+ int i;
+ float a[N], b[N], c[N], d[N];
+
+   /* Some initializations */
+ for (i=0; i &lt; N; i++) {
+   a[i] = i * 1.5;
+   b[i] = i + 22.35;
+   }
+
+ #pragma omp parallel shared(a,b,c,d) private(i)
+   {
+
+   #pragma omp sections nowait
+     {
+
+     #pragma omp section
+     for (i=0; i &lt; N; i++)
+       c[i] = a[i] + b[i];
+
+     #pragma omp section
+     for (i=0; i &lt; N; i++)
+       d[i] = a[i] * b[i];
+
+     }    /* end of sections */
+
+   }    /* end of parallel region */
+
+ }
+
+</pre></td>
+</tr></table></td>
+</tr></table></li>
+</ul><p> </p>
+<p><a name="SINGLE" id="SINGLE"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Directives</td>
+</tr></table><p> </p>
+<h2>Work-Sharing Constructs<br />SINGLE Directive</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>The SINGLE directive specifies that the enclosed code is to be executed by only one thread in the team.
+<p> </p>
+</li>
+<li>May be useful when dealing with sections of code that are not thread safe (such as I/O)</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>!$OMP SINGLE <em>[clause ...] </em>
+             PRIVATE <em>(list) </em>
+             FIRSTPRIVATE <em>(list) </em>
+
+   <em>block</em>
+
+!$OMP END SINGLE [ NOWAIT ]
+
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#pragma omp single <em>[clause ...]  newline </em>
+                   private <em>(list) </em>
+                   firstprivate <em>(list) </em>
+                   nowait
+
+     <em>structured_block</em>
+
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Clauses:</p>
+<p> </p>
+<ul><li>Threads in the team that do not execute the SINGLE directive, wait at the end of the enclosed code block, unless a NOWAIT/nowait clause is specified.
+<p> </p>
+</li>
+<li>Clauses are described in detail later, in the <a href="#Clauses">Data Scope Attribute Clauses</a> section.</li>
+</ul><p> </p>
+<p>Restrictions:</p>
+<p> </p>
+<ul><li>It is illegal to branch into or out of a SINGLE block.</li>
+</ul><p> </p>
+<p><a name="Combined" id="Combined"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Directives</td>
+</tr></table><p> </p>
+<h2>Combined Parallel Work-Sharing Constructs</h2>
+<p> </p>
+<ul><li>OpenMP provides three directives that are merely conveniences:
+<ul><li>PARALLEL DO / parallel for</li>
+<li>PARALLEL SECTIONS</li>
+<li>PARALLEL WORKSHARE (fortran only)</li>
+</ul><p> </p>
+</li>
+<li>For the most part, these directives behave identically to an individual PARALLEL directive being immediately followed by a separate work-sharing directive.
+<p> </p>
+</li>
+<li>Most of the rules, clauses and restrictions that apply to both directives are in effect. See the OpenMP API for details.
+<p> </p>
+</li>
+<li>An example using the PARALLEL DO / parallel for combined directive is shown below.
+<p> </p>
+<p> </p>
+<table><tr><td>
+<table><tr><td colspan="2"></td>
+<td><br />     Fortran - PARALLEL DO Directive Example 
+<p> </p>
+</td>
+</tr><tr><td colspan="3">
+<p> </p>
+</td>
+</tr><tr><td>
+<pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></td>
+<td> </td>
+<td>
+<pre>       PROGRAM VECTOR_ADD
+
+       INTEGER N, I, CHUNKSIZE, CHUNK
+       PARAMETER (N=1000)
+       PARAMETER (CHUNKSIZE=100)
+       REAL A(N), B(N), C(N)
+
+   !     Some initializations
+       DO I = 1, N
+         A(I) = I * 1.0
+         B(I) = A(I)
+       ENDDO
+       CHUNK = CHUNKSIZE
+
+ !$OMP PARALLEL DO
+ !$OMP&amp; SHARED(A,B,C,CHUNK) PRIVATE(I)
+ !$OMP&amp; SCHEDULE(STATIC,CHUNK)
+
+       DO I = 1, N
+          C(I) = A(I) + B(I)
+       ENDDO
+
+ !$OMP END PARALLEL DO
+
+       END
+
+</pre></td>
+</tr></table></td>
+</tr></table><p> <br /><br /> <br /></p><table><tr><td>
+<table><tr><td colspan="2"></td>
+<td><br />     C / C++ - parallel for Directive Example 
+<p> </p>
+</td>
+</tr><tr><td colspan="3">
+<p> </p>
+</td>
+</tr><tr><td>
+<pre>   1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td>
+<td> </td>
+<td>
+<pre> #include &lt;omp.h&gt;
+ #define N       1000
+ #define CHUNKSIZE   100
+
+ main(int argc, char *argv[]) {
+
+ int i, chunk;
+ float a[N], b[N], c[N];
+
+   /* Some initializations */
+ for (i=0; i &lt; N; i++)
+   a[i] = b[i] = i * 1.0;
+ chunk = CHUNKSIZE;
+
+ #pragma omp parallel for \
+   shared(a,b,c,chunk) private(i) \
+   schedule(static,chunk)
+   for (i=0; i &lt; N; i++)
+     c[i] = a[i] + b[i];
+ }
+
+</pre></td>
+</tr></table></td>
+</tr></table></li>
+</ul><p> </p>
+<p><a name="Task" id="Task"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Directives</td>
+</tr></table><p> </p>
+<h2>TASK Construct</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>The TASK construct defines an explicit task, which may be executed by the encountering thread, or deferred for execution by any other thread in the team.
+<p> </p>
+</li>
+<li>The data environment of the task is determined by the data sharing attribute clauses.
+<p> </p>
+</li>
+<li>Task execution is subject to task scheduling - see the OpenMP 3.1 specification document for details.
+<p> </p>
+</li>
+<li>Also see the OpenMP 3.1 documentation for the associated taskyield and taskwait directives.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>!$OMP TASK <em>[clause ...] </em>
+             IF <em>(scalar logical expression) </em>
+             FINAL <em>(scalar logical expression) </em>
+             UNTIED
+             DEFAULT (PRIVATE | FIRSTPRIVATE | SHARED | NONE)
+             MERGEABLE
+             PRIVATE <em>(list) </em>
+             FIRSTPRIVATE <em>(list) </em>
+             SHARED <em>(list) </em>
+
+   <em>block</em>
+
+!$OMP END TASK
+
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#pragma omp task <em>[clause ...]  newline </em>
+                   if <em>(scalar expression) </em>
+                   final <em>(scalar expression) </em>
+                   untied
+                   default (shared | none)
+                   mergeable
+                   private <em>(list) </em>
+                   firstprivate <em>(list) </em>
+                   shared <em>(list) </em>
+
+     <em>structured_block</em>
+
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Clauses and Restrictions:</p>
+<p> </p>
+<ul><li>Please consult the OpenMP 3.1 specifications document for details.</li>
+</ul><p> </p>
+<p><a name="Exercise2" id="Exercise2"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Exercise 2</td>
+</tr></table><p> </p>
+<h2>Work-Sharing Constructs</h2>
+<p> </p>
+<dl><dd>
+<table><tr><td>Overview: 
+<ul><li>Login to the LC workshop cluster, if you are not already logged in </li>
+<li>Work-Sharing DO/for construct examples: review, compile and run </li>
+<li>Work-Sharing SECTIONS construct example: review, compile and run </li>
+</ul><p> <a href="exercise.html#Exercise2" target="_blank">GO TO THE EXERCISE HERE</a> </p>
+<h3>Approx. 20 minutes</h3>
+<ul></ul></td>
+</tr></table></dd>
+</dl><p> </p>
+<p><a name="Synchronization" id="Synchronization"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Directives</td>
+</tr></table><p> </p>
+<h2>Synchronization Constructs</h2>
+<p> </p>
+<ul><li>Consider a simple example where two threads are both trying to update variable x at the same time:<br /><table><tr><td>THREAD 1:
+<pre>update(x)
+{
+    x = x + 1
+}
+
+
+x = 0
+update(x)
+print(x)
+</pre></td>
+<td>THREAD 2:
+<pre>update(x)
+{
+    x = x + 1
+}
+
+
+x = 0
+update(x)
+print(x)
+</pre></td>
+</tr></table><p> </p>
+</li>
+<li>One possible execution sequence:
+<ol><li>Thread 1 initializes x to 0 and calls update(x)</li>
+<li>Thread 1 adds 1 to x.<br />x now equals 1</li>
+<li>Thread 2 initializes x to 0 and calls update(x)<br />x now equals 0</li>
+<li>Thread 1 prints x, which is equal to 0 instead of 1</li>
+<li>Thread 2 adds 1 to x.<br />x now equals 1.</li>
+<li>Thread 2 prints x as 1.</li>
+</ol><p> </p>
+</li>
+<li>To avoid a situation like this, the updating of x must be synchronized between the two threads to ensure that the correct result is produced.
+<p> </p>
+</li>
+<li>OpenMP provides a variety of Synchronization Constructs that control how the execution of each thread proceeds relative to other team threads.</li>
+</ul><p> </p>
+<p><a name="MASTER" id="MASTER"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Directives</td>
+</tr></table><p> </p>
+<h2>Synchronization Constructs<br />MASTER Directive</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>The MASTER directive specifies a region that is to be executed only by the master thread of the team. All other threads on the team skip this section of code
+<p> </p>
+</li>
+<li>There is no implied barrier associated with this directive</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>!$OMP MASTER
+
+   <em>block</em>
+
+!$OMP END MASTER
+
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#pragma omp master  <em>newline</em>
+
+   <em>structured_block</em>
+
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Restrictions:</p>
+<p> </p>
+<ul><li>It is illegal to branch into or out of MASTER block.</li>
+</ul><p> </p>
+<p><a name="CRITICAL" id="CRITICAL"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Directives</td>
+</tr></table><p> </p>
+<h2>Synchronization Constructs<br />CRITICAL Directive</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>The CRITICAL directive specifies a region of code that must be executed by only one thread at a time.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>!$OMP CRITICAL <em>[ name ]</em>
+
+   <em>block</em>
+
+!$OMP END CRITICAL <em>[ name ]</em>
+
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#pragma omp critical <em>[ name ]  newline</em>
+
+   <em>structured_block</em>
+
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes:</p>
+<p> </p>
+<ul><li>If a thread is currently executing inside a CRITICAL region and another thread reaches that CRITICAL region and attempts to execute it, it will block until the first thread exits that CRITICAL region.
+<p> </p>
+</li>
+<li>The optional name enables multiple different CRITICAL regions to exist:
+<ul><li>Names act as global identifiers. Different CRITICAL regions with the same name are treated as the same region.</li>
+<li>All CRITICAL sections which are unnamed, are treated as the same section.</li>
+</ul></li>
+</ul><p> </p>
+<p>Restrictions:</p>
+<p> </p>
+<ul><li>It is illegal to branch into or out of a CRITICAL block.
+<p> </p>
+</li>
+<li>Fortran only: The names of critical constructs are global entities of the program. If a name conflicts with any other entity, the behavior of the program is unspecified.</li>
+</ul><p> </p>
+<hr /><p> </p>
+<h2>Example: CRITICAL Construct</h2>
+<p> </p>
+<ul><li>All threads in the team will attempt to execute in parallel, however, because of the CRITICAL construct surrounding the increment of x, only one thread will be able to read/increment/write x at any time
+<p> </p>
+<p> </p>
+<table><tr><td>
+<table><tr><td colspan="2"></td>
+<td><br />     Fortran - CRITICAL Directive Example 
+<p> </p>
+</td>
+</tr><tr><td colspan="3">
+<p> </p>
+</td>
+</tr><tr><td>
+<pre>   1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></td>
+<td> </td>
+<td>
+<pre>       PROGRAM CRITICAL
+
+       INTEGER X
+       X = 0
+
+ !$OMP PARALLEL SHARED(X)
+
+ !$OMP CRITICAL
+       X = X + 1
+ !$OMP END CRITICAL
+
+ !$OMP END PARALLEL
+
+       END
+
+</pre></td>
+</tr></table></td>
+</tr></table><p> <br /><br /> <br /></p><table><tr><td>
+<table><tr><td colspan="2"></td>
+<td><br />     C / C++ - critical Directive Example 
+<p> </p>
+</td>
+</tr><tr><td colspan="3">
+<p> </p>
+</td>
+</tr><tr><td>
+<pre>   1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></td>
+<td> </td>
+<td>
+<pre> #include &lt;omp.h&gt;
+
+ main(int argc, char *argv[]) {
+
+ int x;
+ x = 0;
+
+ #pragma omp parallel shared(x)
+   {
+
+   #pragma omp critical
+   x = x + 1;
+
+   }    /* end of parallel region */
+
+ }
+
+</pre></td>
+</tr></table></td>
+</tr></table></li>
+</ul><p> </p>
+<p><a name="BARRIER" id="BARRIER"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Directives</td>
+</tr></table><p> </p>
+<h2>Synchronization Constructs<br />BARRIER Directive</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>The BARRIER directive synchronizes all threads in the team.
+<p> </p>
+</li>
+<li>When a BARRIER directive is reached, a thread will wait at that point until all other threads have reached that barrier. All threads then resume executing in parallel the code that follows the barrier.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>!$OMP BARRIER
+
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#pragma omp barrier  <em>newline</em>
+
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Restrictions:</p>
+<p> </p>
+<ul><li>All threads in a team (or none) must execute the BARRIER region.
+<p> </p>
+</li>
+<li>The sequence of work-sharing regions and barrier regions encountered must be the same for every thread in a team.</li>
+</ul><p> </p>
+<p><a name="TASKWAIT" id="TASKWAIT"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Directives</td>
+</tr></table><p> </p>
+<h2>Synchronization Constructs<br />TASKWAIT Directive</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>OpenMP 3.1 feature
+<p> </p>
+</li>
+<li>The TASKWAIT construct specifies a wait on the completion of child tasks generated since the beginning of the current task.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>!$OMP TASKWAIT
+
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#pragma omp taskwait  <em>newline</em>
+
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Restrictions:</p>
+<p> </p>
+<ul><li>Because the taskwait construct is a stand-alone directive, there are some restrictions on its placement within a program. The taskwait directive may be placed only at a point where a base language statement is allowed. The taskwait directive may not be used in place of the statement following an if, while, do, switch, or label. See the OpenMP 3.1 specifications document for details.</li>
+</ul><p> </p>
+<p><a name="ATOMIC" id="ATOMIC"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Directives</td>
+</tr></table><p> </p>
+<h2>Synchronization Constructs<br />ATOMIC Directive</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>The atomic construct ensures that a specific storage location is accessed atomically, rather than exposing it to the possibility of multiple, simultaneous reading and writing threads that may result in indeterminate values. In essence, this directive provides a mini-CRITICAL section.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>!$OMP ATOMIC [ read | write | update | capture ]
+
+   <em>statement_expression</em>
+
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#pragma omp atomic  [ read | write | update | capture ] <em>newline</em>
+
+   <em>statement_expression</em>
+
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Restrictions:</p>
+<p> </p>
+<ul><li>The directive applies only to a single, immediately following statement
+<p> </p>
+</li>
+<li>An atomic statement must follow a specific syntax. See the most recent OpenMP specs for this.</li>
+</ul><p> </p>
+<p><a name="FLUSH" id="FLUSH"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Directives</td>
+</tr></table><p> </p>
+<h2>Synchronization Constructs<br />FLUSH Directive</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>The FLUSH directive identifies a synchronization point at which the implementation must provide a consistent view of memory. Thread-visible variables are written back to memory at this point.
+<p> </p>
+</li>
+<li>There is a fair amount of discussion on this directive within OpenMP circles that you may wish to consult for more information. Some of it is hard to understand? Per the API:<br /><dl><dd>If the intersection of the flush-sets of two flushes performed by two different threads is non-empty, then the two flushes must be completed as if in some sequential order, seen by all threads.</dd>
+<dd>Say what?
+<p> </p>
+</dd>
+</dl></li>
+<li>To quote from the openmp.org FAQ:
+<p>Q17: Is the !$omp flush directive necessary on a cache coherent system?</p>
+<p><em>A17: Yes the flush directive is necessary. Look in the OpenMP specifications for examples of it's uses. The directive is necessary to instruct the compiler that the variable must be written to/read from the memory system, i.e. that the variable can not be kept in a local CPU register over the flush "statement" in your code. </em></p>
+<p><em>Cache coherency makes certain that if one CPU executes a read or write instruction from/to memory, then all other CPUs in the system will get the same value from that memory address when they access it. All caches will show a coherent value. However, in the OpenMP standard there must be a way to instruct the compiler to actually insert the read/write machine instruction and not postpone it. Keeping a variable in a register in a loop is very common when producing efficient machine language code for a loop. </em></p>
+<p> </p>
+</li>
+<li>Also see the most recent OpenMP specs for details.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>!$OMP FLUSH  <em>(list)</em>
+
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#pragma omp flush <em>(list)  newline</em>
+
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes:</p>
+<p> </p>
+<ul><li>The optional list contains a list of named variables that will be flushed in order to avoid flushing all variables. For pointers in the list, note that the pointer itself is flushed, not the object it points to.
+<p> </p>
+</li>
+<li>Implementations must ensure any prior modifications to thread-visible variables are visible to all threads after this point; ie. compilers must restore values from registers to memory, hardware might need to flush write buffers, etc
+<p> </p>
+</li>
+<li>The FLUSH directive is implied for the directives shown in the table below. The directive is not implied if a NOWAIT clause is present.<br /><table><tr><th>Fortran</th>
+<th>C / C++</th>
+</tr><tr><td>
+<ul><li>BARRIER<br />END PARALLEL<br />CRITICAL and END CRITICAL<br />END DO<br />END SECTIONS<br />END SINGLE<br />ORDERED and END ORDERED</li>
+</ul></td>
+<td>
+<ul><li>barrier<br />parallel - upon entry and exit<br />critical - upon entry and exit<br />ordered - upon entry and exit<br />for - upon exit<br />sections - upon exit<br />single - upon exit</li>
+<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> 
+</p><li> </li>
+<li> </li>
+<li> </li>
+<li> </li>
+<li> </li>
+<li> </li>
+<li> </li>
+<li> </li>
+<li> </li>
+<li> </li>
+<li> </li>
+<li> </li>
+<li> </li>
+<li> </li>
+<li> </li>
+<li> </li>
+</ul></td>
+</tr></table></li>
+</ul><p> </p>
+<p><a name="ORDERED" id="ORDERED"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Directives</td>
+</tr></table><p> </p>
+<h2>Synchronization Constructs<br />ORDERED Directive</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>The ORDERED directive specifies that iterations of the enclosed loop will be executed in the same order as if they were executed on a serial processor.
+<p> </p>
+</li>
+<li>Threads will need to wait before executing their chunk of iterations if previous iterations haven't completed yet.
+<p> </p>
+</li>
+<li>Used within a DO / for loop with an ORDERED clause
+<p> </p>
+</li>
+<li>The ORDERED directive provides a way to "fine tune" where ordering is to be applied within a loop. Otherwise, it is not required.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>!$OMP DO ORDERED <em>[clauses...]</em>
+   <em>(loop region)</em>
+
+!$OMP ORDERED
+
+   <em>(block)</em>
+
+!$OMP END ORDERED
+
+   <em>(end of loop region)</em>
+!$OMP END DO
+
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#pragma omp for ordered <em>[clauses...]</em>
+   <em>(loop region)</em>
+
+#pragma omp ordered  <em>newline</em>
+
+   <em>structured_block</em>
+
+   <em>(endo of loop region)</em>
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Restrictions:</p>
+<p> </p>
+<ul><li>An ORDERED directive can only appear in the dynamic extent of the following directives:
+<ul><li>DO or PARALLEL DO (Fortran)</li>
+<li>for or parallel for (C/C++)</li>
+</ul><p> </p>
+</li>
+<li>Only one thread is allowed in an ordered section at any time
+<p> </p>
+</li>
+<li>It is illegal to branch into or out of an ORDERED block.
+<p> </p>
+</li>
+<li>An iteration of a loop must not execute the same ORDERED directive more than once, and it must not execute more than one ORDERED directive.
+<p> </p>
+</li>
+<li>A loop which contains an ORDERED directive, must be a loop with an ORDERED clause.</li>
+</ul><p> </p>
+<p><a name="THREADPRIVATE" id="THREADPRIVATE"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Directives</td>
+</tr></table><p> </p>
+<h2>THREADPRIVATE Directive</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>The THREADPRIVATE directive specifies that variables are replicated, with each thread having its own copy.</li>
+<li>Can be used to make global file scope variables (C/C++/Fortran) or common blocks (Fortran) local and persistent to a thread through the execution of multiple parallel regions.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>!$OMP THREADPRIVATE <em>(list)</em>
+
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#pragma omp threadprivate <em>(list)</em>
+
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes:</p>
+<p> </p>
+<ul><li>The directive must appear after the declaration of listed variables/common blocks. Each thread then gets its own copy of the variable/common block, so data written by one thread is not visible to other threads.
+<p> </p>
+</li>
+<li>On first entry to a parallel region, data in THREADPRIVATE variables and common blocks should be assumed undefined, unless a COPYIN clause is specified in the PARALLEL directive
+<p> </p>
+</li>
+<li>THREADPRIVATE variables differ from PRIVATE variables (discussed later) because they are able to persist between different parallel regions of a code.
+<p> </p>
+</li>
+<li>Examples: <a name="ThreadprivateExamples" id="ThreadprivateExamples"> </a>
+<p> </p>
+<p> </p>
+<table><tr><td>
+<table><tr><td colspan="2"></td>
+<td><br />     Fortran - THREADPRIVATE Directive Example 
+<p> </p>
+</td>
+</tr><tr><td colspan="3">
+<p> </p>
+</td>
+</tr><tr><td>
+<pre>   1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></td>
+<td> </td>
+<td>
+<pre>       PROGRAM THREADPRIV
+
+       INTEGER A, B, I, TID, OMP_GET_THREAD_NUM
+       REAL*4 X
+       COMMON /C1/ A
+
+ !$OMP THREADPRIVATE(/C1/, X)
+
+   !     Explicitly turn off dynamic threads
+       CALL OMP_SET_DYNAMIC(.FALSE.)
+
+       PRINT *, '1st Parallel Region:'
+ !$OMP PARALLEL PRIVATE(B, TID)
+       TID = OMP_GET_THREAD_NUM()
+       A = TID
+       B = TID
+       X = 1.1 * TID + 1.0
+       PRINT *, 'Thread',TID,':   A,B,X=',A,B,X
+ !$OMP END PARALLEL
+
+       PRINT *, '************************************'
+       PRINT *, 'Master thread doing serial work here'
+       PRINT *, '************************************'
+
+       PRINT *, '2nd Parallel Region: '
+ !$OMP PARALLEL PRIVATE(TID)
+       TID = OMP_GET_THREAD_NUM()
+       PRINT *, 'Thread',TID,':   A,B,X=',A,B,X
+ !$OMP END PARALLEL
+
+       END
+
+</pre><hr />Output: 1st Parallel Region: Thread 0 : A,B,X= 0 0 1.000000000 Thread 1 : A,B,X= 1 1 2.099999905 Thread 3 : A,B,X= 3 3 4.300000191 Thread 2 : A,B,X= 2 2 3.200000048 ************************************ Master thread doing serial work here ************************************ 2nd Parallel Region: Thread 0 : A,B,X= 0 0 1.000000000 Thread 2 : A,B,X= 2 0 3.200000048 Thread 3 : A,B,X= 3 0 4.300000191 Thread 1 : A,B,X= 1 0 2.099999905</td>
+</tr></table></td>
+</tr></table><p> <br /><br /> <br /></p><table><tr><td>
+<table><tr><td colspan="2"></td>
+<td><br />     C/C++ - threadprivate Directive Example 
+<p> </p>
+</td>
+</tr><tr><td colspan="3">
+<p> </p>
+</td>
+</tr><tr><td>
+<pre>   1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre></td>
+<td> </td>
+<td>
+<pre> #include &lt;omp.h&gt;
+
+ int  a, b, i, tid;
+ float x;
+
+ #pragma omp threadprivate(a, x)
+
+ main(int argc, char *argv[]) {
+
+     /* Explicitly turn off dynamic threads */
+   omp_set_dynamic(0);
+
+   printf("1st Parallel Region:\n");
+ #pragma omp parallel private(b,tid)
+   {
+   tid = omp_get_thread_num();
+   a = tid;
+   b = tid;
+   x = 1.1 * tid +1.0;
+   printf("Thread %d:   a,b,x= %d %d %f\n",tid,a,b,x);
+   }    /* end of parallel region */
+
+   printf("************************************\n");
+   printf("Master thread doing serial work here\n");
+   printf("************************************\n");
+
+   printf("2nd Parallel Region:\n");
+ #pragma omp parallel private(tid)
+   {
+   tid = omp_get_thread_num();
+   printf("Thread %d:   a,b,x= %d %d %f\n",tid,a,b,x);
+   }  /* end of parallel region */
+
+ }
+
+</pre><hr />Output: 1st Parallel Region: Thread 0: a,b,x= 0 0 1.000000 Thread 2: a,b,x= 2 2 3.200000 Thread 3: a,b,x= 3 3 4.300000 Thread 1: a,b,x= 1 1 2.100000 ************************************ Master thread doing serial work here ************************************ 2nd Parallel Region: Thread 0: a,b,x= 0 0 1.000000 Thread 3: a,b,x= 3 0 4.300000 Thread 1: a,b,x= 1 0 2.100000 Thread 2: a,b,x= 2 0 3.200000</td>
+</tr></table></td>
+</tr></table></li>
+</ul><p> </p>
+<p>Restrictions:</p>
+<p> </p>
+<ul><li>Data in THREADPRIVATE objects is guaranteed to persist only if the dynamic threads mechanism is "turned off" and the number of threads in different parallel regions remains constant. The default setting of dynamic threads is undefined.
+<p> </p>
+</li>
+<li>Fortran: common block names must appear between slashes: /cb/
+<p> </p>
+</li>
+<li>See the most recent OpenMP specs for additional restrictions not listed here.</li>
+</ul><p> </p>
+<p><a name="Clauses" id="Clauses"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Directives</td>
+</tr></table><p> </p>
+<h2>Data Scope Attribute Clauses</h2>
+<p> </p>
+<ul><li>Also called Data-sharing Attribute Clauses
+<p> </p>
+</li>
+<li>An important consideration for OpenMP programming is the understanding and use of data scoping
+<p> </p>
+</li>
+<li>Because OpenMP is based upon the shared memory programming model, most variables are shared by default
+<p> </p>
+</li>
+<li>Global variables include:
+<ul><li>Fortran: COMMON blocks, SAVE variables, MODULE variables</li>
+<li>C: File scope variables, static</li>
+</ul><p> </p>
+</li>
+<li>Private variables include:
+<ul><li>Loop index variables</li>
+<li>Stack variables in subroutines called from parallel regions</li>
+<li>Fortran: Automatic variables within a statement block</li>
+</ul><p> </p>
+</li>
+<li>The OpenMP Data Scope Attribute Clauses are used to explicitly define how variables should be scoped. They include:
+<ul><li>PRIVATE</li>
+<li>FIRSTPRIVATE</li>
+<li>LASTPRIVATE</li>
+<li>SHARED</li>
+<li>DEFAULT</li>
+<li>REDUCTION</li>
+<li>COPYIN</li>
+</ul><p> </p>
+</li>
+<li>Data Scope Attribute Clauses are used in conjunction with several directives (PARALLEL, DO/for, and SECTIONS) to control the scoping of enclosed variables.
+<p> </p>
+</li>
+<li>These constructs provide the ability to control the data environment during execution of parallel constructs.
+<ul><li>They define how and which data variables in the serial section of the program are transferred to the parallel regions of the program (and back)
+<p> </p>
+</li>
+<li>They define which variables will be visible to all threads in the parallel regions and which variables will be privately allocated to all threads.</li>
+</ul><p> </p>
+</li>
+<li>Data Scope Attribute Clauses are effective only within their lexical/static extent.
+<p> </p>
+</li>
+<li>Important: Please consult the latest OpenMP specs for important details and discussion on this topic.
+<p> </p>
+</li>
+<li>A <a href="#ClausesDirectives">Clauses / Directives Summary Table</a> is provided for convenience.</li>
+</ul><p> </p>
+<hr /><p><a name="PRIVATE" id="PRIVATE"> </a></p>
+<p> </p>
+<h2>PRIVATE Clause</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>The PRIVATE clause declares variables in its list to be private to each thread.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>PRIVATE <em>(list)</em>
+
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>private <em>(list)</em>
+
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes:</p>
+<p> </p>
+<ul><li>PRIVATE variables behave as follows:
+<ul><li>A new object of the same type is declared once for each thread in the team</li>
+<li>All references to the original object are replaced with references to the new object</li>
+<li>Should be assumed to be uninitialized for each thread</li>
+</ul></li>
+</ul><p> </p>
+<p><a name="SHARED" id="SHARED"> </a></p>
+<p> </p>
+<hr /><p> </p>
+<h2>SHARED Clause</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>The SHARED clause declares variables in its list to be shared among all threads in the team.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>SHARED <em>(list)</em>
+
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>shared <em>(list)</em>
+
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes:</p>
+<p> </p>
+<ul><li>A shared variable exists in only one memory location and all threads can read or write to that address
+<p> </p>
+</li>
+<li>It is the programmer's responsibility to ensure that multiple threads properly access SHARED variables (such as via CRITICAL sections)</li>
+</ul><p> </p>
+<p><a name="DEFAULT" id="DEFAULT"> </a></p>
+<p> </p>
+<hr /><p> </p>
+<h2>DEFAULT Clause</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>The DEFAULT clause allows the user to specify a default scope for all variables in the lexical extent of any parallel region.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>DEFAULT (PRIVATE | FIRSTPRIVATE | SHARED | NONE)
+
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>default (shared | none)
+
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes:</p>
+<p> </p>
+<ul><li>Specific variables can be exempted from the default using the PRIVATE, SHARED, FIRSTPRIVATE, LASTPRIVATE, and REDUCTION clauses
+<p> </p>
+</li>
+<li>The C/C++ OpenMP specification does not include private or firstprivate as a possible default. However, actual implementations may provide this option.
+<p> </p>
+</li>
+<li>Using NONE as a default requires that the programmer explicitly scope all variables.</li>
+</ul><p> </p>
+<p>Restrictions:</p>
+<p> </p>
+<ul><li>Only one DEFAULT clause can be specified on a PARALLEL directive</li>
+</ul><p> </p>
+<p><a name="FIRSTPRIVATE" id="FIRSTPRIVATE"> </a></p>
+<p> </p>
+<hr /><p> </p>
+<h2>FIRSTPRIVATE Clause</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>The FIRSTPRIVATE clause combines the behavior of the PRIVATE clause with automatic initialization of the variables in its list.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>FIRSTPRIVATE <em>(list)</em>
+
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>firstprivate <em>(list)</em>
+
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes:</p>
+<p> </p>
+<ul><li>Listed variables are initialized according to the value of their original objects prior to entry into the parallel or work-sharing construct.</li>
+</ul><p> </p>
+<p><a name="LASTPRIVATE" id="LASTPRIVATE"> </a></p>
+<p> </p>
+<hr /><p> </p>
+<h2>LASTPRIVATE Clause</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>The LASTPRIVATE clause combines the behavior of the PRIVATE clause with a copy from the last loop iteration or section to the original variable object.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>LASTPRIVATE <em>(list)</em>
+
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>lastprivate <em>(list)</em>
+
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes:</p>
+<p> </p>
+<ul><li>The value copied back into the original variable object is obtained from the last (sequentially) iteration or section of the enclosing construct.
+<p>For example, the team member which executes the final iteration for a DO section, or the team member which does the last SECTION of a SECTIONS context performs the copy with its own values</p>
+</li>
+</ul><p> </p>
+<p><a name="COPYIN" id="COPYIN"> </a></p>
+<p> </p>
+<hr /><p> </p>
+<h2>COPYIN Clause</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>The COPYIN clause provides a means for assigning the same value to THREADPRIVATE variables for all threads in the team.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>COPYIN <em>(list)</em>
+
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>copyin  <em>(list)</em>
+
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes:</p>
+<p> </p>
+<ul><li>List contains the names of variables to copy. In Fortran, the list can contain both the names of common blocks and named variables.
+<p> </p>
+</li>
+<li>The master thread variable is used as the copy source. The team threads are initialized with its value upon entry into the parallel construct.</li>
+</ul><p> </p>
+<p><a name="COPYPRIVATE" id="COPYPRIVATE"> </a></p>
+<p> </p>
+<hr /><p> </p>
+<h2>COPYPRIVATE Clause</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>The COPYPRIVATE clause can be used to broadcast values acquired by a single thread directly to all instances of the private variables in the other threads.
+<p> </p>
+</li>
+<li>Associated with the SINGLE directive
+<p> </p>
+</li>
+<li>See the most recent OpenMP specs document for additional discussion and examples.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>COPYPRIVATE <em>(list)</em>
+
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>copyprivate  <em>(list)</em>
+
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p><a name="REDUCTION" id="REDUCTION"> </a></p>
+<p> </p>
+<hr /><p> </p>
+<h2>REDUCTION Clause</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>The REDUCTION clause performs a reduction operation on the variables that appear in its list.
+<p> </p>
+</li>
+<li>A private copy for each list variable is created and initialized for each thread. At the end of the reduction, the reduction variable is applied to all private copies of the shared variable, and the final result is written to the global shared variable.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>REDUCTION <em>(operator: list)</em>
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>reduction <em>(operator: list)</em>
+</pre></td>
+</tr></table><p> </p>
+<table><tr><th colspan="4">Valid Operators and Initialization Values</th>
+</tr><tr><th>Operation</th>
+<th>Fortran</th>
+<th>C/C++</th>
+<th>Initialization</th>
+</tr><tr><td>Addition</td>
+<td>+</td>
+<td>+</td>
+<td>0</td>
+</tr><tr><td>Multiplication</td>
+<td>*</td>
+<td>*</td>
+<td>1</td>
+</tr><tr><td>Subtraction</td>
+<td>-</td>
+<td>-</td>
+<td>0</td>
+</tr><tr><td>Logical AND</td>
+<td>.and.</td>
+<td>&amp;&amp;</td>
+<td>.true. / 1</td>
+</tr><tr><td>Logical OR</td>
+<td>.or.</td>
+<td>||</td>
+<td>.false. / 0</td>
+</tr><tr><td>AND bitwise</td>
+<td>iand</td>
+<td>&amp;</td>
+<td>all bits on / ~0</td>
+</tr><tr><td>OR bitwise</td>
+<td>ior</td>
+<td>|</td>
+<td>0</td>
+</tr><tr><td>Exclusive OR bitwise</td>
+<td>ieor</td>
+<td>^</td>
+<td>0</td>
+</tr><tr><td>Equivalent</td>
+<td>.eqv.</td>
+<td> </td>
+<td>.true.</td>
+</tr><tr><td>Not Equivalent</td>
+<td>.neqv.</td>
+<td> </td>
+<td>.false.</td>
+</tr><tr><td>Maximum</td>
+<td>max</td>
+<td>max</td>
+<td>Most negative #</td>
+</tr><tr><td>Minimum</td>
+<td>min</td>
+<td>min</td>
+<td>Largest positive #</td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Example: REDUCTION - Vector Dot Product:</p>
+<p> </p>
+<ul><li>Iterations of the parallel loop will be distributed in equal sized blocks to each thread in the team (SCHEDULE STATIC)
+<p> </p>
+</li>
+<li>At the end of the parallel loop construct, all threads will add their values of "result" to update the master thread's global copy.
+<p> </p>
+<p> </p>
+<table><tr><td>
+<table><tr><td colspan="2"></td>
+<td><br />     Fortran - REDUCTION Clause Example 
+<p> </p>
+</td>
+</tr><tr><td colspan="3">
+<p> </p>
+</td>
+</tr><tr><td>
+<pre>   1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></td>
+<td> </td>
+<td>
+<pre>        PROGRAM DOT_PRODUCT
+
+        INTEGER N, CHUNKSIZE, CHUNK, I
+        PARAMETER (N=100)
+        PARAMETER (CHUNKSIZE=10)
+        REAL A(N), B(N), RESULT
+
+   !      Some initializations
+        DO I = 1, N
+          A(I) = I * 1.0
+          B(I) = I * 2.0
+        ENDDO
+        RESULT= 0.0
+        CHUNK = CHUNKSIZE
+
+ !$OMP  PARALLEL DO
+ !$OMP&amp; DEFAULT(SHARED) PRIVATE(I)
+ !$OMP&amp; SCHEDULE(STATIC,CHUNK)
+ !$OMP&amp; REDUCTION(+:RESULT)
+
+        DO I = 1, N
+          RESULT = RESULT + (A(I) * B(I))
+        ENDDO
+
+ !$OMP  END PARALLEL DO
+
+        PRINT *, 'Final Result= ', RESULT
+        END
+
+</pre></td>
+</tr></table></td>
+</tr></table><p> <br /><br /> <br /></p><table><tr><td>
+<table><tr><td colspan="2"></td>
+<td><br />     C / C++ - reduction Clause Example 
+<p> </p>
+</td>
+</tr><tr><td colspan="3">
+<p> </p>
+</td>
+</tr><tr><td>
+<pre>   1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></td>
+<td> </td>
+<td>
+<pre> #include &lt;omp.h&gt;
+
+ main(int argc, char *argv[])  {
+
+ int   i, n, chunk;
+ float a[100], b[100], result;
+
+   /* Some initializations */
+ n = 100;
+ chunk = 10;
+ result = 0.0;
+ for (i=0; i &lt; n; i++) {
+   a[i] = i * 1.0;
+   b[i] = i * 2.0;
+   }
+
+ #pragma omp parallel for      \
+   default(shared) private(i)  \
+   schedule(static,chunk)      \
+   reduction(+:result)
+
+   for (i=0; i &lt; n; i++)
+     result = result + (a[i] * b[i]);
+
+ printf("Final result= %f\n",result);
+
+ }
+
+</pre></td>
+</tr></table></td>
+</tr></table></li>
+</ul><p> </p>
+<p>Restrictions:</p>
+<p> </p>
+<ul><li>The type of a list item must be valid for the reduction operator.
+<p> </p>
+</li>
+<li>List items/variables can not be declared shared or private.
+<p> </p>
+</li>
+<li>Reduction operations may not be associative for real numbers.
+<p> </p>
+</li>
+<li>See the OpenMP standard API for additional restrictions.</li>
+</ul><p> </p>
+<p><a name="ClausesDirectives" id="ClausesDirectives"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Directives</td>
+</tr></table><p> </p>
+<h2>Clauses / Directives Summary</h2>
+<p> </p>
+<ul><li>The table below summarizes which clauses are accepted by which OpenMP directives.<br /><table><tr><th rowspan="2">Clause</th>
+<th colspan="6">Directive</th>
+</tr><tr><th>PARALLEL</th>
+<th>DO/for</th>
+<th>SECTIONS</th>
+<th>SINGLE</th>
+<th>PARALLEL<br />DO/for</th>
+<th>PARALLEL<br />SECTIONS</th>
+</tr><tr><td>IF</td>
+<td></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td></td>
+<td></td>
+</tr><tr><td>PRIVATE</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr><tr><td>SHARED</td>
+<td></td>
+<td></td>
+<td> </td>
+<td> </td>
+<td></td>
+<td></td>
+</tr><tr><td>DEFAULT</td>
+<td></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td></td>
+<td></td>
+</tr><tr><td>FIRSTPRIVATE</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr><tr><td>LASTPRIVATE</td>
+<td> </td>
+<td></td>
+<td></td>
+<td> </td>
+<td></td>
+<td></td>
+</tr><tr><td>REDUCTION</td>
+<td></td>
+<td></td>
+<td></td>
+<td> </td>
+<td></td>
+<td></td>
+</tr><tr><td>COPYIN</td>
+<td></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td></td>
+<td></td>
+</tr><tr><td>COPYPRIVATE</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td></td>
+<td> </td>
+<td> </td>
+</tr><tr><td>SCHEDULE</td>
+<td> </td>
+<td></td>
+<td> </td>
+<td> </td>
+<td></td>
+<td> </td>
+</tr><tr><td>ORDERED</td>
+<td> </td>
+<td></td>
+<td> </td>
+<td> </td>
+<td></td>
+<td> </td>
+</tr><tr><td>NOWAIT</td>
+<td> </td>
+<td></td>
+<td></td>
+<td></td>
+<td> </td>
+<td> </td>
+</tr></table><p> </p>
+</li>
+<li>The following OpenMP directives do not accept clauses:
+<ul><li>MASTER</li>
+<li>CRITICAL</li>
+<li>BARRIER</li>
+<li>ATOMIC</li>
+<li>FLUSH</li>
+<li>ORDERED</li>
+<li>THREADPRIVATE</li>
+</ul><p> </p>
+</li>
+<li>Implementations may (and do) differ from the standard in which clauses are supported by each directive.</li>
+</ul><p> </p>
+<p><a name="BindingNesting" id="BindingNesting"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Directives</td>
+</tr></table><p> </p>
+<h2>Directive Binding and Nesting Rules</h2>
+<p> </p>
+<table><tr><td></td>
+<td>This section is provided mainly as a quick reference on rules which govern OpenMP directives and binding. Users should consult their implementation documentation and the OpenMP standard for other rules and restrictions.</td>
+</tr></table><p> </p>
+<ul><li>Unless indicated otherwise, rules apply to both Fortran and C/C++ OpenMP implementations.
+<p> </p>
+</li>
+<li>Note: the Fortran API also defines a number of Data Environment rules. Those have not been reproduced here.</li>
+</ul><p> </p>
+<p>Directive Binding:</p>
+<p> </p>
+<ul><li>The DO/for, SECTIONS, SINGLE, MASTER and BARRIER directives bind to the dynamically enclosing PARALLEL, if one exists. If no parallel region is currently being executed, the directives have no effect.
+<p> </p>
+</li>
+<li>The ORDERED directive binds to the dynamically enclosing DO/for.
+<p> </p>
+</li>
+<li>The ATOMIC directive enforces exclusive access with respect to ATOMIC directives in all threads, not just the current team.
+<p> </p>
+</li>
+<li>The CRITICAL directive enforces exclusive access with respect to CRITICAL directives in all threads, not just the current team.
+<p> </p>
+</li>
+<li>A directive can never bind to any directive outside the closest enclosing PARALLEL.</li>
+</ul><p> </p>
+<p>Directive Nesting:</p>
+<p> </p>
+<ul><li>A worksharing region may not be closely nested inside a worksharing, explicit task, critical, ordered, atomic, or master region.
+<p> </p>
+</li>
+<li>A barrier region may not be closely nested inside a worksharing, explicit task, critical, ordered, atomic, or master region.
+<p> </p>
+</li>
+<li>A master region may not be closely nested inside a worksharing, atomic, or explicit task region.
+<p> </p>
+</li>
+<li>An ordered region may not be closely nested inside a critical, atomic, or explicit task region.
+<p> </p>
+</li>
+<li>An ordered region must be closely nested inside a loop region (or parallel loop region) with an ordered clause.
+<p> </p>
+</li>
+<li>A critical region may not be nested (closely or otherwise) inside a critical region with the same name. Note that this restriction is not sufficient to prevent deadlock.
+<p> </p>
+</li>
+<li>parallel, flush, critical, atomic, taskyield, and explicit task regions may not be closely nested inside an atomic region.</li>
+</ul><p> </p>
+<p><a name="RunTimeLibrary" id="RunTimeLibrary"> </a></p>
+<p> </p>
+<table><tr><td>Run-Time Library Routines</td>
+</tr></table><p> </p>
+<p><br />Overview:</p>
+<p> </p>
+<ul><li>The OpenMP API includes an ever-growing number of run-time library routines.
+<p> </p>
+</li>
+<li>These routines are used for a variety of purposes as shown in the table below:<br /><table><tr><th>Routine</th>
+<th>Purpose</th>
+</tr><tr><td><a href="#OMP_SET_NUM_THREADS">OMP_SET_NUM_THREADS</a></td>
+<td>Sets the number of threads that will be used in the next parallel region</td>
+</tr><tr><td><a href="#OMP_GET_NUM_THREADS">OMP_GET_NUM_THREADS</a></td>
+<td>Returns the number of threads that are currently in the team executing the parallel region from which it is called</td>
+</tr><tr><td><a href="#OMP_GET_MAX_THREADS">OMP_GET_MAX_THREADS</a></td>
+<td>Returns the maximum value that can be returned by a call to the OMP_GET_NUM_THREADS function</td>
+</tr><tr><td><a href="#OMP_GET_THREAD_NUM">OMP_GET_THREAD_NUM</a></td>
+<td>Returns the thread number of the thread, within the team, making this call.</td>
+</tr><tr><td><a href="#OMP_GET_THREAD_LIMIT">OMP_GET_THREAD_LIMIT</a></td>
+<td>Returns the maximum number of OpenMP threads available to a program</td>
+</tr><tr><td><a href="#OMP_GET_NUM_PROCS">OMP_GET_NUM_PROCS</a></td>
+<td>Returns the number of processors that are available to the program</td>
+</tr><tr><td><a href="#OMP_IN_PARALLEL">OMP_IN_PARALLEL</a></td>
+<td>Used to determine if the section of code which is executing is parallel or not</td>
+</tr><tr><td><a href="#OMP_SET_DYNAMIC">OMP_SET_DYNAMIC</a></td>
+<td>Enables or disables dynamic adjustment (by the run time system) of the number of threads available for execution of parallel regions</td>
+</tr><tr><td><a href="#OMP_GET_DYNAMIC">OMP_GET_DYNAMIC</a></td>
+<td>Used to determine if dynamic thread adjustment is enabled or not</td>
+</tr><tr><td><a href="#OMP_SET_NESTED">OMP_SET_NESTED</a></td>
+<td>Used to enable or disable nested parallelism</td>
+</tr><tr><td><a href="#OMP_GET_NESTED">OMP_GET_NESTED</a></td>
+<td>Used to determine if nested parallelism is enabled or not</td>
+</tr><tr><td><a href="#OMP_SET_SCHEDULE">OMP_SET_SCHEDULE</a></td>
+<td>Sets the loop scheduling policy when "runtime" is used as the schedule kind in the OpenMP directive</td>
+</tr><tr><td><a href="#OMP_GET_SCHEDULE">OMP_GET_SCHEDULE</a></td>
+<td>Returns the loop scheduling policy when "runtime" is used as the schedule kind in the OpenMP directive</td>
+</tr><tr><td><a href="#OMP_SET_MAX_ACTIVE_LEVELS">OMP_SET_MAX_ACTIVE_LEVELS</a></td>
+<td>Sets the maximum number of nested parallel regions</td>
+</tr><tr><td><a href="#OMP_GET_MAX_ACTIVE_LEVELS">OMP_GET_MAX_ACTIVE_LEVELS</a></td>
+<td>Returns the maximum number of nested parallel regions</td>
+</tr><tr><td><a href="#OMP_GET_LEVEL">OMP_GET_LEVEL</a></td>
+<td>Returns the current level of nested parallel regions</td>
+</tr><tr><td><a href="#OMP_GET_ANCESTOR_THREAD_NUM">OMP_GET_ANCESTOR_THREAD_NUM</a></td>
+<td>Returns, for a given nested level of the current thread, the thread number of ancestor thread</td>
+</tr><tr><td><a href="#OMP_GET_TEAM_SIZE">OMP_GET_TEAM_SIZE</a></td>
+<td>Returns, for a given nested level of the current thread, the size of the thread team</td>
+</tr><tr><td><a href="#OMP_GET_ACTIVE_LEVEL">OMP_GET_ACTIVE_LEVEL</a></td>
+<td>Returns the number of nested, active parallel regions enclosing the task that contains the call</td>
+</tr><tr><td><a href="#OMP_IN_FINAL">OMP_IN_FINAL</a></td>
+<td>Returns true if the routine is executed in the final task region; otherwise it returns false</td>
+</tr><tr><td><a href="#OMP_INIT_LOCK">OMP_INIT_LOCK</a></td>
+<td>Initializes a lock associated with the lock variable</td>
+</tr><tr><td><a href="#OMP_DESTROY_LOCK">OMP_DESTROY_LOCK</a></td>
+<td>Disassociates the given lock variable from any locks</td>
+</tr><tr><td><a href="#OMP_SET_LOCK">OMP_SET_LOCK</a></td>
+<td>Acquires ownership of a lock</td>
+</tr><tr><td><a href="#OMP_UNSET_LOCK">OMP_UNSET_LOCK</a></td>
+<td>Releases a lock</td>
+</tr><tr><td><a href="#OMP_TEST_LOCK">OMP_TEST_LOCK</a></td>
+<td>Attempts to set a lock, but does not block if the lock is unavailable</td>
+</tr><tr><td><a href="#OMP_INIT_LOCK">OMP_INIT_NEST_LOCK</a></td>
+<td>Initializes a nested lock associated with the lock variable</td>
+</tr><tr><td><a href="#OMP_DESTROY_LOCK">OMP_DESTROY_NEST_LOCK</a></td>
+<td>Disassociates the given nested lock variable from any locks</td>
+</tr><tr><td><a href="#OMP_SET_LOCK">OMP_SET_NEST_LOCK</a></td>
+<td>Acquires ownership of a nested lock</td>
+</tr><tr><td><a href="#OMP_UNSET_LOCK">OMP_UNSET_NEST_LOCK</a></td>
+<td>Releases a nested lock</td>
+</tr><tr><td><a href="#OMP_TEST_LOCK">OMP_TEST_NEST_LOCK</a></td>
+<td>Attempts to set a nested lock, but does not block if the lock is unavailable</td>
+</tr><tr><td><a href="#OMP_GET_WTIME">OMP_GET_WTIME</a></td>
+<td>Provides a portable wall clock timing routine</td>
+</tr><tr><td><a href="#OMP_GET_WTICK">OMP_GET_WTICK</a></td>
+<td>Returns a double-precision floating point value equal to the number of seconds between successive clock ticks</td>
+</tr></table><p> </p>
+</li>
+<li>For C/C++, all of the run-time library routines are actual subroutines. For Fortran, some are actually functions, and some are subroutines. For example:<br /><table><tr><th>Fortran</th>
+<td>
+<pre>INTEGER FUNCTION OMP_GET_NUM_THREADS()
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+int omp_get_num_threads(void)
+</pre></td>
+</tr></table><p> </p>
+</li>
+<li>Note that for C/C++, you usually need to include the <span class="file">&lt;omp.h&gt;</span> header file.
+<p> </p>
+</li>
+<li>Fortran routines are not case sensitive, but C/C++ routines are.
+<p> </p>
+</li>
+<li>For the Lock routines/functions:
+<ul><li>The lock variable must be accessed only through the locking routines</li>
+<li>For Fortran, the lock variable should be of type integer and of a kind large enough to hold an address.</li>
+<li>For C/C++, the lock variable must have type omp_lock_t or type omp_nest_lock_t, depending on the function being used.</li>
+</ul><p> </p>
+</li>
+<li>Implementation notes:
+<ul><li>Implementations may or may not support all OpenMP API features. For example, if nested parallelism is supported, it may be only nominal, in that a nested parallel region may only have one thread.</li>
+<li>Consult your implementation's documentation for details - or experiment and find out for yourself if you can't find it in the documentation.</li>
+</ul><p> </p>
+</li>
+<li>The run-time library routines are discussed in more detail in Appendix A.</li>
+</ul><p> </p>
+<p><a name="EnvironmentVariables" id="EnvironmentVariables"> </a></p>
+<p> </p>
+<table><tr><td>Environment Variables</td>
+</tr></table><p> </p>
+<ul><li>OpenMP provides the following environment variables for controlling the execution of parallel code.
+<p> </p>
+</li>
+<li>All environment variable names are uppercase. The values assigned to them are not case sensitive.</li>
+</ul><p> </p>
+<dl><dt>OMP_SCHEDULE
+<p> </p>
+</dt>
+<dd>Applies only to DO, PARALLEL DO (Fortran) and for, parallel for (C/C++) directives which have their schedule clause set to RUNTIME. The value of this variable determines how iterations of the loop are scheduled on processors. For example:
+<p>setenv OMP_SCHEDULE "guided, 4"<br />setenv OMP_SCHEDULE "dynamic" </p>
+<p> </p>
+</dd>
+<dt>OMP_NUM_THREADS
+<p> </p>
+</dt>
+<dd>Sets the maximum number of threads to use during execution. For example:
+<p>setenv OMP_NUM_THREADS 8 </p>
+<p> </p>
+</dd>
+<dt>OMP_DYNAMIC
+<p> </p>
+</dt>
+<dd>Enables or disables dynamic adjustment of the number of threads available for execution of parallel regions. Valid values are TRUE or FALSE. For example:
+<p>setenv OMP_DYNAMIC TRUE </p>
+<p> </p>
+</dd>
+<dt>OMP_PROC_BIND
+<p> </p>
+</dt>
+<dd>Enables or disables threads binding to processors. Valid values are TRUE or FALSE. For example:
+<p>setenv OMP_PROC_BIND TRUE </p>
+<p> </p>
+</dd>
+<dt>OMP_NESTED
+<p> </p>
+</dt>
+<dd>Enables or disables nested parallelism. Valid values are TRUE or FALSE. For example:
+<p>setenv OMP_NESTED TRUE </p>
+<p> </p>
+</dd>
+<dt>OMP_STACKSIZE
+<p> </p>
+</dt>
+<dd>Controls the size of the stack for created (non-Master) threads. Examples:
+<p>setenv OMP_STACKSIZE 2000500B<br />setenv OMP_STACKSIZE "3000 k "<br />setenv OMP_STACKSIZE 10M<br />setenv OMP_STACKSIZE " 10 M "<br />setenv OMP_STACKSIZE "20 m "<br />setenv OMP_STACKSIZE " 1G"<br />setenv OMP_STACKSIZE 20000 </p>
+<p> </p>
+</dd>
+<dt>OMP_WAIT_POLICY
+<p> </p>
+</dt>
+<dd>Provides a hint to an OpenMP implementation about the desired behavior of waiting threads. A compliant OpenMP implementation may or may not abide by the setting of the environment variable. Valid values are ACTIVE and PASSIVE. ACTIVE specifies that waiting threads should mostly be active, i.e., consume processor cycles, while waiting. PASSIVE specifies that waiting threads should mostly be passive, i.e., not consume processor cycles, while waiting. The details of the ACTIVE and PASSIVE behaviors are implementation defined. Examples:
+<p>setenv OMP_WAIT_POLICY ACTIVE<br />setenv OMP_WAIT_POLICY active<br />setenv OMP_WAIT_POLICY PASSIVE<br />setenv OMP_WAIT_POLICY passive </p>
+<p> </p>
+</dd>
+<dt>OMP_MAX_ACTIVE_LEVELS
+<p> </p>
+</dt>
+<dd>Controls the maximum number of nested active parallel regions. The value of this environment variable must be a non-negative integer. The behavior of the program is implementation defined if the requested value of OMP_MAX_ACTIVE_LEVELS is greater than the maximum number of nested active parallel levels an implementation can support, or if the value is not a non-negative integer. Example:
+<p>setenv OMP_MAX_ACTIVE_LEVELS 2 </p>
+<p> </p>
+</dd>
+<dt>OMP_THREAD_LIMIT
+<p> </p>
+</dt>
+<dd>Sets the number of OpenMP threads to use for the whole OpenMP program. The value of this environment variable must be a positive integer. The behavior of the program is implementation defined if the requested value of OMP_THREAD_LIMIT is greater than the number of threads an implementation can support, or if the value is not a positive integer. Example:
+<p>setenv OMP_THREAD_LIMIT 8 </p>
+</dd>
+</dl><p> </p>
+<p><a name="Stack" id="Stack"> </a></p>
+<p> </p>
+<table><tr><td>Thread Stack Size and Thread Binding</td>
+</tr></table><p> </p>
+<p><br />Thread Stack Size:</p>
+<p> </p>
+<ul><li>The OpenMP standard does not specify how much stack space a thread should have. Consequently, implementations will differ in the default thread stack size.
+<p> </p>
+</li>
+<li>Default thread stack size can be easy to exhaust. It can also be non-portable between compilers. Using past versions of LC compilers as an example:<br /><table><tr><th>Compiler</th>
+<th>Approx. Stack Limit</th>
+<th>Approx. Array Size (doubles)</th>
+</tr><tr><td>Linux icc, ifort</td>
+<td>4 MB</td>
+<td>700 x 700</td>
+</tr><tr><td>Linux pgcc, pgf90</td>
+<td>8 MB</td>
+<td>1000 x 1000</td>
+</tr><tr><td>Linux gcc, gfortran</td>
+<td>2 MB</td>
+<td>500 x 500</td>
+</tr></table><p> </p>
+</li>
+<li>Threads that exceed their stack allocation may or may not seg fault. An application may continue to run while data is being corrupted.
+<p> </p>
+</li>
+<li>Statically linked codes may be subject to further stack restrictions.
+<p> </p>
+</li>
+<li>A user's login shell may also restrict stack size
+<p> </p>
+</li>
+<li>If your OpenMP environment supports the OpenMP 3.0 OMP_STACKSIZE environment variable (covered in previous section), you can use it to set the thread stack size prior to program execution. For example:<br /><pre>setenv OMP_STACKSIZE 2000500B
+setenv OMP_STACKSIZE "3000 k "
+setenv OMP_STACKSIZE 10M
+setenv OMP_STACKSIZE " 10 M "
+setenv OMP_STACKSIZE "20 m "
+setenv OMP_STACKSIZE " 1G"
+setenv OMP_STACKSIZE 20000
+</pre></li>
+<li>Otherwise, at LC, you should be able to use the method below for Linux clusters. The example shows setting the thread stack size to 12 MB, and as a precaution, setting the shell stack size to unlimited.<br /><table><tr><th>csh/tcsh</th>
+<td>
+<pre>setenv KMP_STACKSIZE 12000000
+limit stacksize unlimited </pre></td>
+</tr><tr><th>ksh/sh/bash</th>
+<td>
+<pre>export KMP_STACKSIZE=12000000
+ulimit -s unlimited </pre></td>
+</tr></table><p> </p>
+</li>
+</ul><p> </p>
+<p>Thread Binding:</p>
+<p> </p>
+<ul><li>In some cases, a program will perform better if its threads are bound to processors/cores.
+<p> </p>
+</li>
+<li>"Binding" a thread to a processor means that a thread will be scheduled by the operating system to always run on a the same processor. Otherwise, threads can be scheduled to execute on any processor and "bounce" back and forth between processors with each time slice.
+<p> </p>
+</li>
+<li>Also called "thread affinity" or "processor affinity"
+<p> </p>
+</li>
+<li>Binding threads to processors can result in better cache utilization, thereby reducing costly memory accesses. This is the primary motivation for binding threads to processors.
+<p> </p>
+</li>
+<li>Depending upon your platform, operating system, compiler and OpenMP implementation, binding threads to processors can be done several different ways.
+<p> </p>
+</li>
+<li>The OpenMP version 3.1 API provides an environment variable to turn processor binding "on" or "off". For example:<br /><pre><span class="cmd">setenv OMP_PROC_BIND  TRUE
+setenv OMP_PROC_BIND  FALSE</span></pre><p> </p>
+</li>
+<li>At a higher level, processes can also be bound to processors.
+<p> </p>
+</li>
+<li>Detailed information about process and thread binding to processors on LC Linux clusters can be found at <a href="https://lc.llnl.gov/confluence/display/TLCC2/mpibind" target="_blank"> https://lc.llnl.gov/confluence/display/TLCC2/mpibind</a>.</li>
+</ul><p> </p>
+<p><a name="Tools" id="Tools"> </a></p>
+<p> </p>
+<table><tr><td>Monitoring, Debugging and Performance Analysis Tools for OpenMP</td>
+</tr></table><p> </p>
+<p><br />Monitoring and Debugging Threads:</p>
+<p> </p>
+<ul><li>Debuggers vary in their ability to handle threads. The TotalView debugger is LC's recommended debugger for parallel programs. It is well suited for both monitoring and debugging threaded programs.
+<p> </p>
+</li>
+<li>An example screenshot from a TotalView session using an OpenMP code is shown below.
+<ol><li>Master thread Stack Trace Pane showing original routine</li>
+<li>Process/thread status bars differentiating threads</li>
+<li>Master thread Stack Frame Pane showing shared variables</li>
+<li>Worker thread Stack Trace Pane showing outlined routine.</li>
+<li>Worker thread Stack Frame Pane</li>
+<li>Root Window showing all threads</li>
+<li>Threads Pane showing all threads plus selected thread</li>
+</ol><p> </p>
+</li>
+<li>See the <a href="../totalview/index.html" target="tv">TotalView Debugger tutorial</a> for details.
+<p> </p>
+</li>
+<li>The Linux ps command provides several flags for viewing thread information. Some examples are shown below. See the <a href="../pthreads/man/ps.txt" target="ps">man page</a> for details.<br /><table><tr><td>
+<pre>% ps -Lf
+UID        PID  PPID   LWP  C NLWP STIME TTY          TIME CMD
+blaise   22529 28240 22529  0    5 11:31 pts/53   00:00:00 a.out
+blaise   22529 28240 22530 99    5 11:31 pts/53   00:01:24 a.out
+blaise   22529 28240 22531 99    5 11:31 pts/53   00:01:24 a.out
+blaise   22529 28240 22532 99    5 11:31 pts/53   00:01:24 a.out
+blaise   22529 28240 22533 99    5 11:31 pts/53   00:01:24 a.out
+
+% ps -T
+  PID  SPID TTY          TIME CMD
+22529 22529 pts/53   00:00:00 a.out
+22529 22530 pts/53   00:01:49 a.out
+22529 22531 pts/53   00:01:49 a.out
+22529 22532 pts/53   00:01:49 a.out
+22529 22533 pts/53   00:01:49 a.out
+
+% ps -Lm
+  PID   LWP TTY          TIME CMD
+22529     - pts/53   00:18:56 a.out
+    - 22529 -        00:00:00 -
+    - 22530 -        00:04:44 -
+    - 22531 -        00:04:44 -
+    - 22532 -        00:04:44 -
+    - 22533 -        00:04:44 -
+</pre></td>
+</tr></table><p> </p>
+</li>
+<li>LC's Linux clusters also provide the top command to monitor processes on a node. If used with the -H flag, the threads contained within a process will be visible. An example of the top -H command is shown below. The parent process is PID 18010 which spawned three threads, shown as PIDs 18012, 18013 and 18014.
+
+</li>
+</ul><p> </p>
+<p><br />Performance Analysis Tools:</p>
+<p> </p>
+<ul><li>There are a variety of performance analysis tools that can be used with OpenMP programs. Searching the web will turn up a wealth of information.
+<p> </p>
+</li>
+<li>At LC, the list of supported computing tools can be found at: <a href="https://hpc.llnl.gov/software/development-environment-software" target="_blank"> https://hpc.llnl.gov/software/development-environment-software</a>.
+<p> </p>
+</li>
+<li>These tools vary significantly in their complexity, functionality and learning curve. Covering them in detail is beyond the scope of this tutorial.
+<p> </p>
+</li>
+<li>Some tools worth investigating, specifically for OpenMP codes, include:
+<ul><li>Open|SpeedShop</li>
+<li>TAU</li>
+<li>PAPI</li>
+<li>Intel VTune Amplifier</li>
+<li>ThreadSpotter</li>
+</ul></li>
+</ul><p> </p>
+<p><a name="Exercise3" id="Exercise3"> </a></p>
+<p> </p>
+<table><tr><td>OpenMP Exercise 3</td>
+</tr></table><p> </p>
+<h2>Assorted</h2>
+<p> </p>
+<dl><dd>
+<table><tr><td>Overview: 
+<ul><li>Login to the workshop cluster, if you are not already logged in </li>
+<li>Orphaned directive example: review, compile, run </li>
+<li>Get OpenMP implementation environment information </li>
+<li>Hybrid OpenMP + MPI programs </li>
+<li>Check out the "bug" programs </li>
+</ul><p> <a href="exercise.html#Exercise3" target="_blank">GO TO THE EXERCISE HERE</a> </p>
+</td>
+</tr></table></dd>
+<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> <br /></p><dd> </dd>
+<dd> </dd>
+<dd> </dd>
+<dd> </dd>
+<dd> </dd>
+<dd> </dd>
+<dd> </dd>
+<dd> </dd>
+<dd> </dd>
+<dd> </dd>
+<dd> </dd>
+<dd> </dd>
+<dd> </dd>
+<dd> </dd>
+<dd> </dd>
+<dd> </dd>
+</dl><p> </p>
+<hr /><p>This completes the tutorial.</p>
+<p> </p>
+<table><tr><td><a href="../evaluation/index.html" target="evalForm"></a>      </td>
+<td>Please complete the online evaluation form - unless you are doing the exercise, in which case please complete it at the end of the exercise.</td>
+</tr></table><p> </p>
+<p>Where would you like to go now?</p>
+<p> </p>
+<p><a name="References" id="References"><br /><br />  </a></p>
+<p> </p>
+<table><tr><td>References and More Information</td>
+</tr></table><p> </p>
+<ul><li>Original Author: Blaise Barney; Contact: <a href="mailto:hpc-tutorials@llnl.gov">hpc-tutorials@llnl.gov</a>, Livermore Computing.
+<p> </p>
+</li>
+<li>The OpenMP web site, which includes the C/C++ and Fortran Application Program Interface documents.<br /><a href="http://www.openmp.org" target="W9">www.openmp.org</a></li>
+</ul><p> </p>
+<p><a name="AppendixA" id="AppendixA"> </a></p>
+<p> </p>
+<table><tr><td>Appendix A: Run-Time Library Routines</td>
+</tr></table><p> </p>
+<p><br /><a name="OMP_SET_NUM_THREADS" id="OMP_SET_NUM_THREADS"> </a></p>
+<p> </p>
+<h2>OMP_SET_NUM_THREADS</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>Sets the number of threads that will be used in the next parallel region. Must be a positive integer.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>SUBROUTINE OMP_SET_NUM_THREADS(scalar_integer_expression)
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+void omp_set_num_threads(int num_threads)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes &amp; Restrictions:</p>
+<p> </p>
+<ul><li>The dynamic threads mechanism modifies the effect of this routine.
+<ul><li>Enabled: specifies the maximum number of threads that can be used for any parallel region by the dynamic threads mechanism.</li>
+<li>Disabled: specifies exact number of threads to use until next call to this routine.</li>
+</ul><p> </p>
+</li>
+<li>This routine can only be called from the serial portions of the code
+<p> </p>
+</li>
+<li>This call has precedence over the OMP_NUM_THREADS environment variable</li>
+</ul><p> </p>
+<hr /><p><a name="OMP_GET_NUM_THREADS" id="OMP_GET_NUM_THREADS"> </a></p>
+<p> </p>
+<h2>OMP_GET_NUM_THREADS</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>Returns the number of threads that are currently in the team executing the parallel region from which it is called.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>INTEGER FUNCTION OMP_GET_NUM_THREADS()
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+int omp_get_num_threads(void)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes &amp; Restrictions:</p>
+<p> </p>
+<ul><li>If this call is made from a serial portion of the program, or a nested parallel region that is serialized, it will return 1.
+<p> </p>
+</li>
+<li>The default number of threads is implementation dependent.</li>
+</ul><p> </p>
+<hr /><p><a name="OMP_GET_MAX_THREADS" id="OMP_GET_MAX_THREADS"> </a></p>
+<p> </p>
+<h2>OMP_GET_MAX_THREADS</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>Returns the maximum value that can be returned by a call to the OMP_GET_NUM_THREADS function.<br /><table><tr><th>Fortran</th>
+<td>
+<pre>INTEGER FUNCTION OMP_GET_MAX_THREADS()
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+int omp_get_max_threads(void)
+</pre></td>
+</tr></table></li>
+</ul><p> </p>
+<p>Notes &amp; Restrictions:</p>
+<p> </p>
+<ul><li>Generally reflects the number of threads as set by the OMP_NUM_THREADS environment variable or the OMP_SET_NUM_THREADS() library routine.
+<p> </p>
+</li>
+<li>May be called from both serial and parallel regions of code.</li>
+</ul><p> </p>
+<hr /><p><a name="OMP_GET_THREAD_NUM" id="OMP_GET_THREAD_NUM"> </a></p>
+<p> </p>
+<h2>OMP_GET_THREAD_NUM</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>Returns the thread number of the thread, within the team, making this call. This number will be between 0 and OMP_GET_NUM_THREADS-1. The master thread of the team is thread 0</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>INTEGER FUNCTION OMP_GET_THREAD_NUM()
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+int omp_get_thread_num(void)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes &amp; Restrictions:</p>
+<p> </p>
+<ul><li>If called from a nested parallel region, or a serial region, this function will return 0.</li>
+</ul><p> </p>
+<p>Examples:</p>
+<p> </p>
+<ul><li>Example 1 is the correct way to determine the number of threads in a parallel region.</li>
+<li>Example 2 is incorrect - the TID variable must be PRIVATE</li>
+<li>Example 3 is incorrect - the OMP_GET_THREAD_NUM call is outside the parallel region<br /><table><tr><td> <span class="heading3"> Fortran - determining the number of threads in a parallel region</span>
+<hr /> Example 1: Correct
+<pre>      PROGRAM HELLO
+
+      INTEGER TID, OMP_GET_THREAD_NUM
+
+!$OMP PARALLEL PRIVATE(TID)
+
+      TID = OMP_GET_THREAD_NUM()
+      PRINT *, 'Hello World from thread = ', TID
+
+      ...
+
+!$OMP END PARALLEL
+
+      END
+</pre><hr /> Example 2: Incorrect
+<pre>      PROGRAM HELLO
+
+      INTEGER TID, OMP_GET_THREAD_NUM
+
+!$OMP PARALLEL
+
+      TID = OMP_GET_THREAD_NUM()
+      PRINT *, 'Hello World from thread = ', TID
+
+      ...
+
+!$OMP END PARALLEL
+
+      END
+</pre><hr /> Example 3: Incorrect
+<pre>      PROGRAM HELLO
+
+      INTEGER TID, OMP_GET_THREAD_NUM
+
+      TID = OMP_GET_THREAD_NUM()
+      PRINT *, 'Hello World from thread = ', TID
+
+!$OMP PARALLEL
+
+      ...
+
+!$OMP END PARALLEL
+
+      END
+</pre></td>
+</tr></table></li>
+</ul><p> </p>
+<hr /><p><a name="OMP_GET_THREAD_LIMIT" id="OMP_GET_THREAD_LIMIT"> </a></p>
+<p> </p>
+<h2>OMP_GET_THREAD_LIMIT</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>Returns the maximum number of OpenMP threads available to a program.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>INTEGER FUNCTION OMP_GET_THREAD_LIMIT
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+int omp_get_thread_limit (void)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes:</p>
+<p> </p>
+<ul><li>Also see the OMP_THREAD_LIMIT environment variable.</li>
+</ul><p> </p>
+<hr /><p><a name="OMP_GET_NUM_PROCS" id="OMP_GET_NUM_PROCS"> </a></p>
+<p> </p>
+<h2>OMP_GET_NUM_PROCS</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>Returns the number of processors that are available to the program.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>INTEGER FUNCTION OMP_GET_NUM_PROCS()
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+int omp_get_num_procs(void)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<hr /><p><a name="OMP_IN_PARALLEL" id="OMP_IN_PARALLEL"> </a></p>
+<p> </p>
+<h2>OMP_IN_PARALLEL</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>May be called to determine if the section of code which is executing is parallel or not.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>LOGICAL FUNCTION OMP_IN_PARALLEL()
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+int omp_in_parallel(void)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes &amp; Restrictions:</p>
+<p> </p>
+<ul><li>For Fortran, this function returns .TRUE. if it is called from the dynamic extent of a region executing in parallel, and .FALSE. otherwise. For C/C++, it will return a non-zero integer if parallel, and zero otherwise.</li>
+</ul><p> </p>
+<hr /><p><a name="OMP_SET_DYNAMIC" id="OMP_SET_DYNAMIC"> </a></p>
+<p> </p>
+<h2>OMP_SET_DYNAMIC</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>Enables or disables dynamic adjustment (by the run time system) of the number of threads available for execution of parallel regions.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>SUBROUTINE OMP_SET_DYNAMIC(scalar_logical_expression)
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+void omp_set_dynamic(int dynamic_threads)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes &amp; Restrictions:</p>
+<p> </p>
+<ul><li>For Fortran, if called with .TRUE. then the number of threads available for subsequent parallel regions can be adjusted automatically by the run-time environment. If called with .FALSE., dynamic adjustment is disabled.
+<p> </p>
+</li>
+<li>For C/C++, if dynamic_threads evaluates to non-zero, then the mechanism is enabled, otherwise it is disabled.
+<p> </p>
+</li>
+<li>The OMP_SET_DYNAMIC subroutine has precedence over the OMP_DYNAMIC environment variable.
+<p> </p>
+</li>
+<li>The default setting is implementation dependent.
+<p> </p>
+</li>
+<li>Must be called from a serial section of the program.</li>
+</ul><p> </p>
+<hr /><p><a name="OMP_GET_DYNAMIC" id="OMP_GET_DYNAMIC"> </a></p>
+<p> </p>
+<h2>OMP_GET_DYNAMIC</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>Used to determine if dynamic thread adjustment is enabled or not.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>LOGICAL FUNCTION OMP_GET_DYNAMIC()
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+int omp_get_dynamic(void)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes &amp; Restrictions:</p>
+<p> </p>
+<ul><li>For Fortran, this function returns .TRUE. if dynamic thread adjustment is enabled, and .FALSE. otherwise.
+<p> </p>
+</li>
+<li>For C/C++, non-zero will be returned if dynamic thread adjustment is enabled, and zero otherwise.</li>
+</ul><p> </p>
+<hr /><p><a name="OMP_SET_NESTED" id="OMP_SET_NESTED"> </a></p>
+<p> </p>
+<h2>OMP_SET_NESTED</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>Used to enable or disable nested parallelism.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>SUBROUTINE OMP_SET_NESTED(scalar_logical_expression)
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+void omp_set_nested(int nested)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes &amp; Restrictions:</p>
+<p> </p>
+<ul><li>For Fortran, calling this function with .FALSE. will disable nested parallelism, and calling with .TRUE. will enable it.
+<p> </p>
+</li>
+<li>For C/C++, if nested evaluates to non-zero, nested parallelism is enabled; otherwise it is disabled.
+<p> </p>
+</li>
+<li>The default is for nested parallelism to be disabled.
+<p> </p>
+</li>
+<li>This call has precedence over the OMP_NESTED environment variable</li>
+</ul><p> </p>
+<hr /><p><a name="OMP_GET_NESTED" id="OMP_GET_NESTED"> </a></p>
+<p> </p>
+<h2>OMP_GET_NESTED</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>Used to determine if nested parallelism is enabled or not.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>LOGICAL FUNCTION OMP_GET_NESTED
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+int omp_get_nested (void)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes &amp; Restrictions:</p>
+<p> </p>
+<ul><li>For Fortran, this function returns .TRUE. if nested parallelism is enabled, and .FALSE. otherwise.
+<p> </p>
+</li>
+<li>For C/C++, non-zero will be returned if nested parallelism is enabled, and zero otherwise.</li>
+</ul><p> </p>
+<hr /><p><a name="OMP_SET_SCHEDULE" id="OMP_SET_SCHEDULE"> </a></p>
+<p> </p>
+<h2>OMP_SET_SCHEDULE</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>This routine sets the schedule type that is applied when the loop directive specifies a runtime schedule.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>SUBROUTINE OMP_SET_SCHEDULE(KIND, MODIFIER)
+INTEGER (KIND=OMP_SCHED_KIND) KIND
+INTEGER MODIFIER
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+void omp_set_schedule(omp_sched_t kind, int modifier)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<hr /><p><a name="OMP_GET_SCHEDULE" id="OMP_GET_SCHEDULE"> </a></p>
+<p> </p>
+<h2>OMP_GET_SCHEDULE</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>This routine returns the schedule that is applied when the loop directive specifies a runtime schedule.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>SUBROUTINE OMP_GET_SCHEDULE(KIND, MODIFIER)
+INTEGER (KIND=OMP_SCHED_KIND) KIND
+INTEGER MODIFIER
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+void omp_get_schedule(omp_sched_t * kind, int * modifier )
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<hr /><p><a name="OMP_SET_MAX_ACTIVE_LEVELS" id="OMP_SET_MAX_ACTIVE_LEVELS"> </a></p>
+<p> </p>
+<h2>OMP_SET_MAX_ACTIVE_LEVELS</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>This routine limits the number of nested active parallel regions.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>SUBROUTINE OMP_SET_MAX_ACTIVE_LEVELS (MAX_LEVELS)
+INTEGER MAX_LEVELS
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+void omp_set_max_active_levels (int max_levels)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes &amp; Restrictions:</p>
+<p> </p>
+<ul><li>If the number of parallel levels requested exceeds the number of levels of parallelism supported by the implementation, the value will be set to the number of parallel levels supported by the implementation.
+<p> </p>
+</li>
+<li>This routine has the described effect only when called from the sequential part of the program. When called from within an explicit parallel region, the effect of this routine is implementation defined.</li>
+</ul><p> </p>
+<hr /><p><a name="OMP_GET_MAX_ACTIVE_LEVELS" id="OMP_GET_MAX_ACTIVE_LEVELS"> </a></p>
+<p> </p>
+<h2>OMP_GET_MAX_ACTIVE_LEVELS</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>This routine returns the maximum number of nested active parallel regions.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>INTEGER FUNCTION OMP_GET_MAX_ACTIVE_LEVELS()
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+int omp_get_max_active_levels(void)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<hr /><p><a name="OMP_GET_LEVEL" id="OMP_GET_LEVEL"> </a></p>
+<p> </p>
+<h2>OMP_GET_LEVEL</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>This routine returns the number of nested parallel regions enclosing the task that contains the call.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>INTEGER FUNCTION OMP_GET_LEVEL()
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+int omp_get_level(void)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes &amp; Restrictions:</p>
+<p> </p>
+<ul><li>The omp_get_level routine returns the number of nested parallel regions (whether active or inactive) enclosing the task that contains the call, not including the implicit parallel region. The routine always returns a non-negative integer, and returns 0 if it is called from the sequential part of the program.</li>
+</ul><p> </p>
+<hr /><p><a name="OMP_GET_ANCESTOR_THREAD_NUM" id="OMP_GET_ANCESTOR_THREAD_NUM"> </a></p>
+<p> </p>
+<h2>OMP_GET_ANCESTOR_THREAD_NUM</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>This routine returns, for a given nested level of the current thread, the thread number of the ancestor or the current thread.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>INTEGER FUNCTION OMP_GET_ANCESTOR_THREAD_NUM(LEVEL)
+INTEGER LEVEL
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+int omp_get_ancestor_thread_num(int level)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes &amp; Restrictions:</p>
+<p> </p>
+<ul><li>If the requested nest level is outside the range of 0 and the nest level of the current thread, as returned by the omp_get_level routine, the routine returns -1.</li>
+</ul><p> </p>
+<hr /><p><a name="OMP_GET_TEAM_SIZE" id="OMP_GET_TEAM_SIZE"> </a></p>
+<p> </p>
+<h2>OMP_GET_TEAM_SIZE</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>This routine returns, for a given nested level of the current thread, the size of the thread team to which the ancestor or the current thread belongs.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>INTEGER FUNCTION OMP_GET_TEAM_SIZE(LEVEL)
+INTEGER LEVEL
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+int omp_get_team_size(int level);
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes &amp; Restrictions:</p>
+<p> </p>
+<ul><li>If the requested nested level is outside the range of 0 and the nested level of the current thread, as returned by the omp_get_level routine, the routine returns -1. Inactive parallel regions are regarded like active parallel regions executed with one thread.</li>
+</ul><p> </p>
+<hr /><p><a name="OMP_GET_ACTIVE_LEVEL" id="OMP_GET_ACTIVE_LEVEL"> </a></p>
+<p> </p>
+<h2>OMP_GET_ACTIVE_LEVEL</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>The omp_get_active_level routine returns the number of nested, active parallel regions enclosing the task that contains the call.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>INTEGER FUNCTION OMP_GET_ACTIVE_LEVEL()
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+int omp_get_active_level(void);
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes &amp; Restrictions:</p>
+<p> </p>
+<ul><li>The routine always returns a nonnegative integer, and returns 0 if it is called from the sequential part of the program.</li>
+</ul><p> </p>
+<hr /><p><a name="OMP_IN_FINAL" id="OMP_IN_FINAL"> </a></p>
+<p> </p>
+<h2>OMP_IN_FINAL</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>This routine returns true if the routine is executed in a final task region; otherwise, it returns false.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>LOGICAL FUNCTION OMP_IN_FINAL()
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+int omp_in_final(void)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<hr /><p><a name="OMP_INIT_LOCK" id="OMP_INIT_LOCK"> </a></p>
+<p> </p>
+<h2>OMP_INIT_LOCK<br />OMP_INIT_NEST_LOCK</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>This subroutine initializes a lock associated with the lock variable.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>SUBROUTINE OMP_INIT_LOCK(var)
+SUBROUTINE OMP_INIT_NEST_LOCK(var)
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+void omp_init_lock(omp_lock_t *lock)
+void omp_init_nest_lock(omp_nest_lock_t *lock)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes &amp; Restrictions:</p>
+<p> </p>
+<ul><li>The initial state is unlocked
+<p> </p>
+</li>
+<li>For Fortran, <em>var</em> must be an integer large enough to hold an address, such as INTEGER*8 on 64-bit systems.</li>
+</ul><p> </p>
+<hr /><p><a name="OMP_DESTROY_LOCK" id="OMP_DESTROY_LOCK"> </a></p>
+<p> </p>
+<h2>OMP_DESTROY_LOCK<br />OMP_DESTROY_NEST_LOCK</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>This subroutine disassociates the given lock variable from any locks.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>SUBROUTINE OMP_DESTROY_LOCK(var)
+SUBROUTINE OMP_DESTROY_NEST_LOCK(var)
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+void omp_destroy_lock(omp_lock_t *lock)
+void omp_destroy_nest_lock(omp_nest_lock_t *lock)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes &amp; Restrictions:</p>
+<p> </p>
+<ul><li>It is illegal to call this routine with a lock variable that is not initialized.
+<p> </p>
+</li>
+<li>For Fortran, <em>var</em> must be an integer large enough to hold an address, such as INTEGER*8 on 64-bit systems.</li>
+</ul><p> </p>
+<hr /><p><a name="OMP_SET_LOCK" id="OMP_SET_LOCK"> </a></p>
+<p> </p>
+<h2>OMP_SET_LOCK<br />OMP_SET_NEST_LOCK</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>This subroutine forces the executing thread to wait until the specified lock is available. A thread is granted ownership of a lock when it becomes available.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>SUBROUTINE OMP_SET_LOCK(var)
+SUBROUTINE OMP_SET_NEST_LOCK(var)
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+void omp_set_lock(omp_lock_t *lock)
+void omp_set_nest__lock(omp_nest_lock_t *lock)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes &amp; Restrictions:</p>
+<p> </p>
+<ul><li>It is illegal to call this routine with a lock variable that is not initialized.
+<p> </p>
+</li>
+<li>For Fortran, <em>var</em> must be an integer large enough to hold an address, such as INTEGER*8 on 64-bit systems.</li>
+</ul><p> </p>
+<hr /><p><a name="OMP_UNSET_LOCK" id="OMP_UNSET_LOCK"> </a></p>
+<p> </p>
+<h2>OMP_UNSET_LOCK<br />OMP_UNSET_NEST_LOCK</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>This subroutine releases the lock from the executing subroutine.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>SUBROUTINE OMP_UNSET_LOCK(var)
+SUBROUTINE OMP_UNSET_NEST_LOCK(var)
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+void omp_unset_lock(omp_lock_t *lock)
+void omp_unset_nest__lock(omp_nest_lock_t *lock)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes &amp; Restrictions:</p>
+<p> </p>
+<ul><li>It is illegal to call this routine with a lock variable that is not initialized.
+<p> </p>
+</li>
+<li>For Fortran, <em>var</em> must be an integer large enough to hold an address, such as INTEGER*8 on 64-bit systems.</li>
+</ul><p> </p>
+<hr /><p><a name="OMP_TEST_LOCK" id="OMP_TEST_LOCK"> </a></p>
+<p> </p>
+<h2>OMP_TEST_LOCK<br />OMP_TEST_NEST_LOCK</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>This subroutine attempts to set a lock, but does not block if the lock is unavailable.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>SUBROUTINE OMP_TEST_LOCK(var)
+SUBROUTINE OMP_TEST_NEST_LOCK(var)
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+int omp_test_lock(omp_lock_t *lock)
+int omp_test_nest__lock(omp_nest_lock_t *lock)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<p>Notes &amp; Restrictions:</p>
+<p> </p>
+<ul><li>For Fortran, .TRUE. is returned if the lock was set successfully, otherwise .FALSE. is returned.
+<p> </p>
+</li>
+<li>For Fortran, <em>var</em> must be an integer large enough to hold an address, such as INTEGER*8 on 64-bit systems.
+<p> </p>
+</li>
+<li>For C/C++, non-zero is returned if the lock was set successfully, otherwise zero is returned.
+<p> </p>
+</li>
+<li>It is illegal to call this routine with a lock variable that is not initialized.</li>
+</ul><p> </p>
+<hr /><p><a name="OMP_GET_WTIME" id="OMP_GET_WTIME"> </a></p>
+<p> </p>
+<h2>OMP_GET_WTIME</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>Provides a portable wall clock timing routine
+<p> </p>
+</li>
+<li>Returns a double-precision floating point value equal to the number of elapsed seconds since some point in the past. Usually used in "pairs" with the value of the first call subtracted from the value of the second call to obtain the elapsed time for a block of code.
+<p> </p>
+</li>
+<li>Designed to be "per thread" times, and therefore may not be globally consistent across all threads in a team - depends upon what a thread is doing compared to other threads.</li>
+</ul><p> </p>
+<p>Format:</p>
+<p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>DOUBLE PRECISION FUNCTION OMP_GET_WTIME()
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+double omp_get_wtime(void)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+<hr /><p><a name="OMP_GET_WTICK" id="OMP_GET_WTICK"> </a></p>
+<p> </p>
+<h2>OMP_GET_WTICK</h2>
+<p> </p>
+<p>Purpose:</p>
+<p> </p>
+<ul><li>Provides a portable wall clock timing routine
+<p> </p>
+</li>
+<li>Returns a double-precision floating point value equal to the number of seconds between successive clock ticks.</li>
+</ul><p> </p>
+<table><tr><th>Fortran</th>
+<td>
+<pre>DOUBLE PRECISION FUNCTION OMP_GET_WTICK()
+</pre></td>
+</tr><tr><th>C/C++</th>
+<td>
+<pre>#include &lt;omp.h&gt;
+double omp_get_wtick(void)
+</pre></td>
+</tr></table><p> </p>
+<ul></ul><p> </p>
+</div></div></div>    </div>
+  </div>
+</div>
+
+
+<!-- Needed to activate display suite support on forms -->
+  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                   		</div>
+                  </main>
+                </div>
+      		</div>
+    	</div>
+	</div>
+  	
+	
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 footer-top">
+
+                    <a class="llnl" href="https://www.llnl.gov/" target="_blank"><img src="/sites/all/themes/tid/images/llnl.png" alt="LLNL"></a>
+                    <p>
+                        Lawrence Livermore National Laboratory
+                        <br>7000 East Avenue • Livermore, CA 94550
+                    </p>
+                    <p>
+                        Operated by Lawrence Livermore National Security, LLC, for the
+                        <br>Department of Energy's National Nuclear Security Administration.
+                    </p>
+                    <div class="footer-top-logos">
+                        <a class="nnsa" href="https://www.energy.gov/nnsa/national-nuclear-security-administration" target="_blank"><img src="/sites/all/themes/tid/images/nnsa2.png" alt="NNSA"></a>
+                        <a class="doe" href="https://www.energy.gov/" target="_blank"><img src="/sites/all/themes/tid/images/doe_small.png" alt="U.S. DOE"></a>
+                        <a class="llns" href="https://www.llnsllc.com/" target="_blank"><img src="/sites/all/themes/tid/images/llns.png" alt="LLNS"></a>
+                	</div>
+
+
+
+                </div>
+                <div class="col-sm-12 footer-bottom">
+                	
+
+                    <span>UCRL-MI-131558  &nbsp;|&nbsp;&nbsp;</span><a href="https://www.llnl.gov/disclaimer" target="_blank">Privacy &amp; Legal Notice</a>	 &nbsp;|&nbsp;&nbsp; <a href="mailto:webmaster-comp@llnl.gov">Website Query</a> &nbsp;|&nbsp;&nbsp;<a href="/about-us/contact-us" >Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+  </body>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/jquery_update/replace/jquery/2.1/jquery.min.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-extend-3.4.0.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-html-prefilter-3.5.0-backport.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/drupal.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/extlink/extlink.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/jquery.flexslider.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/slide.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/lightbox2/js/lightbox.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/matomo/matomo.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _paq = _paq || [];(function(){var u=(("https:" == document.location.protocol) ? "https://analytics.llnl.gov/" : "http://analytics.llnl.gov/");_paq.push(["setSiteId", "149"]);_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setDoNotTrack", 1]);_paq.push(["trackPageView"]);_paq.push(["setIgnoreClasses", ["no-tracking","colorbox"]]);_paq.push(["enableLinkTracking"]);var d=document,g=d.createElement("script"),s=d.getElementsByTagName("script")[0];g.type="text/javascript";g.defer=true;g.async=true;g.src="https://hpc.llnl.gov/sites/default/files/matomo/piwik.js?qsohrw";s.parentNode.insertBefore(g,s);})();
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/bootstrap.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mobilemenu.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/custom.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mods.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"tid","theme_token":"K-suHcRUkCTn-f3hHqJJRtWDvetRF9ZS91vXdtXqP-0","js":{"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/2.1\/jquery.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/contrib\/extlink\/extlink.js":1,"sites\/all\/themes\/tid\/js\/jquery.flexslider.js":1,"sites\/all\/themes\/tid\/js\/slide.js":1,"sites\/all\/modules\/contrib\/lightbox2\/js\/lightbox.js":1,"sites\/all\/modules\/contrib\/matomo\/matomo.js":1,"0":1,"sites\/all\/themes\/tid\/js\/bootstrap.js":1,"sites\/all\/themes\/tid\/js\/mobilemenu.js":1,"sites\/all\/themes\/tid\/js\/custom.js":1,"sites\/all\/themes\/tid\/js\/mods.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/book\/book.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/extlink\/extlink.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/lightbox2\/css\/lightbox.css":1,"sites\/all\/modules\/contrib\/print\/print_ui\/css\/print_ui.theme.css":1,"sites\/all\/themes\/tid\/css\/bootstrap.css":1,"sites\/all\/themes\/tid\/css\/flexslider.css":1,"sites\/all\/themes\/tid\/css\/system.menus.css":1,"sites\/all\/themes\/tid\/css\/style.css":1,"sites\/all\/themes\/tid\/font-awesome\/css\/font-awesome.css":1,"sites\/all\/themes\/tid\/css\/treewalk.css":1,"sites\/all\/themes\/tid\/css\/popup.css":1,"sites\/all\/themes\/tid\/css\/mods.css":1}},"lightbox2":{"rtl":0,"file_path":"\/(\\w\\w\/)public:\/","default_image":"\/sites\/all\/modules\/contrib\/lightbox2\/images\/brokenimage.jpg","border_size":10,"font_color":"000","box_color":"fff","top_position":"","overlay_opacity":"0.8","overlay_color":"000","disable_close_click":true,"resize_sequence":0,"resize_speed":400,"fade_in_speed":400,"slide_down_speed":600,"use_alt_layout":false,"disable_resize":false,"disable_zoom":false,"force_show_nav":false,"show_caption":true,"loop_items":false,"node_link_text":"View Image Details","node_link_target":false,"image_count":"Image !current of !total","video_count":"Video !current of !total","page_count":"Page !current of !total","lite_press_x_close":"press \u003Ca href=\u0022#\u0022 onclick=\u0022hideLightbox(); return FALSE;\u0022\u003E\u003Ckbd\u003Ex\u003C\/kbd\u003E\u003C\/a\u003E to close","download_link_text":"","enable_login":false,"enable_contact":false,"keys_close":"c x 27","keys_previous":"p 37","keys_next":"n 39","keys_zoom":"z","keys_play_pause":"32","display_image_size":"original","image_node_sizes":"()","trigger_lightbox_classes":"","trigger_lightbox_group_classes":"","trigger_slideshow_classes":"","trigger_lightframe_classes":"","trigger_lightframe_group_classes":"","custom_class_handler":0,"custom_trigger_classes":"","disable_for_gallery_lists":true,"disable_for_acidfree_gallery_lists":true,"enable_acidfree_videos":true,"slideshow_interval":5000,"slideshow_automatic_start":true,"slideshow_automatic_exit":true,"show_play_pause":true,"pause_on_next_click":false,"pause_on_previous_click":true,"loop_slides":false,"iframe_width":600,"iframe_height":400,"iframe_border":1,"enable_video":false,"useragent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/90.0.4430.93 Safari\/537.36"},"extlink":{"extTarget":0,"extClass":"ext","extLabel":"(link is external)","extImgClass":0,"extIconPlacement":0,"extSubdomains":1,"extExclude":".gov|.com|.org|.io|.be|.us|.edu","extInclude":"-int.llnl.gov|lc.llnl.gov|caas.llnl.gov|exchangetools.llnl.gov","extCssExclude":"","extCssExplicit":"","extAlert":"_blank","extAlertText":"This page is routing you to a page which requires extra authentication. You must have on-site or VPN access.\r\n\r\nPress OK to continue or cancel to return.\r\n\r\nIf this fails or times-out, you are not allowed access to the internal page or the server may be temporarily unavailable.\r\n\r\nIf you have an on-site or VPN account and are still having trouble, please send e-mail to lc-hotline@llnl.gov or call 925-422-4531 for further assistance.","mailtoClass":"mailto","mailtoLabel":"(link sends e-mail)"},"matomo":{"trackMailto":1},"urlIsAjaxTrusted":{"\/openmp-tutorial":true}});
+//--><!]]>
+</script>
+</html>

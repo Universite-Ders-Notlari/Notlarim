@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<head>
+<meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="/training/tutorials/totalview-part-3-debugging-parallel-programs" />
+<link rel="shortlink" href="/node/664" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="shortcut icon" href="https://hpc.llnl.gov/sites/all/themes/tid/favicon.ico" type="image/vnd.microsoft.icon" />
+<title>TotalView Part 3: Debugging Parallel Programs | High Performance Computing</title>
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_kShW4RPmRstZ3SpIC-ZvVGNFVAi0WEMuCnI0ZkYIaFw.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_bq48Es_JAifg3RQWKsTF9oq1S79uSN2WHxC3KV06fK0.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_vAm-LJc0tkC-w_c6v7Ekq0bW26Pzl31HvPM6kbvK-pc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_ca6tstDbY9-H23Ty8uKiDyFQLT1AZftZKldhbTPPnm8.css" media="all" />
+<!--[if lt IE 9]><script src="/sites/all/themes/tid/js/html5.js"></script><![endif]-->
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-664 node-type-user-portal-one-column-page">
+  <div aria="contentinfo"><noscript><img src="https://analytics.llnl.gov/piwik.php?idsite=149" class="no-border" alt="" /></noscript></div>
+    <div id="page">
+	<div class="unclassified"></div>
+	<div class="headertop">
+					<div id="skip-nav" role="navigation" aria-labelledby="skip-nav" class="reveal">
+  			<a href="#main-content">Skip to main content</a>
+			</div>
+					</div>
+        <div class="headerwrapbg">
+                        <div class="headerwrap-portal">
+                <div id="masthead" class="site-header container" role="banner">
+                    <div class="row">
+                        <div class="llnl-logo col-sm-3">
+                            <a href="https://www.llnl.gov" target="_blank" title="Lawrence Livermore National Laboratory">
+                                <img src="/sites/all/themes/tid/images/llnl-tab-portal.png" alt="LLNL Home" />
+                            </a>
+                        </div>
+                        <div id="logo" class="site-branding col-sm-4">
+                                                            <div id="site-logo">
+                                        <!--High Performance Computing<br />Livermore Computing Center-->
+                                        																					<a href="/user-portal" class="text-dark" title="Livermore Computing Center High Performance Computing">
+                                            <img src="/sites/all/themes/tid/images/hpc.png" alt="Portal Home" />
+																					</a>
+																				
+                                </div>
+                                                    </div>
+                        <div class="col-sm-5">
+                            <div id="top-search">
+															<div class="input-group">
+																	<form class="navbar-form navbar-search navbar-right" action="/training/tutorials/totalview-part-3-debugging-parallel-programs" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <div class="element-invisible">Search form</div>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-MNWoACjYxL6zfzN8N6RE1bkCeHc6BXnVFYKBJOOme5I" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="mainnav">
+                    <div class="container">
+                        <div class="row">
+                            <nav id="Menu" aria-label="Mobile Menu" class="mobilenavi col-md-12"></nav>
+                            <nav id="navigation" aria-label="Main Menu">
+                                <div id="main-menu" class="main-menu-portal">
+                                    <ul class="menu"><li class="first collapsed"><a href="/user-portal">Portal</a></li>
+<li class="expanded"><a href="/accounts">Accounts</a><ul class="menu"><li class="first leaf"><a href="/accounts/new-account-setup">New Account Setup</a></li>
+<li class="leaf"><a href="/accounts/idm-account-management">IdM Account Management</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/manuals/access-lc-systems" title="">Access to LC Systems</a></li>
+<li class="leaf"><a href="/accounts/computer-coordinator-roles">Computer Coordinator Roles</a></li>
+<li class="collapsed"><a href="/accounts/forms">Forms</a></li>
+<li class="collapsed"><a href="/accounts/policies">Policies</a></li>
+<li class="last leaf"><a href="/accounts/mailing-lists">Mailing Lists</a></li>
+</ul></li>
+<li class="expanded"><a href="/banks-jobs">Banks &amp; Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/allocations">Allocations</a></li>
+<li class="expanded"><a href="/banks-jobs/running-jobs">Running Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/running-jobs/batch-system-primer">Batch System Primer</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-user-manual">LSF User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-quick-start-guide">LSF Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-commands">LSF Commands</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-user-manual" title="Guide to using the Slurm Workload/Resource Manager">Slurm User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-quick-start-guide">Slurm Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-commands">Slurm Commands</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/batch-system-commands">Batch System Cross-Reference</a></li>
+<li class="last leaf"><a href="/banks-jobs/running-jobs/slurm-srun-versus-ibm-csm-jsrun">Slurm srun versus IBM CSM jsrun</a></li>
+</ul></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/accounts/forms/asc-dat" title="">ASC DAT Request</a></li>
+<li class="last leaf"><a href="https://hpc.llnl.gov/accounts/forms/mic-dat" title="">M&amp;IC DAT Request</a></li>
+</ul></li>
+<li class="expanded"><a href="/hardware">Hardware</a><ul class="menu"><li class="first collapsed"><a href="/hardware/archival-storage-hardware">Archival Storage Hardware</a></li>
+<li class="collapsed"><a href="/hardware/platforms">Compute Platforms</a></li>
+<li class="leaf"><a href="/hardware/compute-platforms-gpus">Compute Platforms with GPUs</a></li>
+<li class="collapsed"><a href="/hardware/file-systems">File Systems</a></li>
+<li class="leaf"><a href="/hardware/testbeds">Testbeds</a></li>
+<li class="collapsed"><a href="/hardware/zones">Zones (aka &quot;The Enclave&quot;)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/cgi-bin/lccgi/customstatus.cgi?" title="">CZ Compute Platform Status</a></li>
+<li class="leaf"><a href="https://rzlc.llnl.gov/cgi-bin/lccgi/customstatus.cgi" title="">RZ Compute System Status</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/fsstatus/fsstatus.cgi" title="">CZ File System Status</a></li>
+<li class="last leaf"><a href="https://rzlc.llnl.gov/fsstatus/fsstatus.cgi" title="">RZ File System Status</a></li>
+</ul></li>
+<li class="expanded"><a href="/services">Services</a><ul class="menu"><li class="first collapsed"><a href="/services/green-data-oasis">Green Data Oasis (GDO)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="last leaf"><a href="/services/visualization-services">Visualization Services</a></li>
+</ul></li>
+<li class="expanded"><a href="/software">Software</a><ul class="menu"><li class="first leaf"><a href="/software/archival-storage-software">Archival Storage Software</a></li>
+<li class="collapsed"><a href="/software/data-management-tools-projects">Data Management Tools</a></li>
+<li class="collapsed"><a href="/software/development-environment-software">Development Environment Software</a></li>
+<li class="leaf"><a href="/software/mathematical-software">Mathematical Software</a></li>
+<li class="leaf"><a href="/software/modules-and-software-packaging">Modules and Software Packaging</a></li>
+<li class="collapsed"><a href="/software/visualization-software">Visualization Software</a></li>
+<li class="last leaf"><a href="https://computing.llnl.gov/projects/radiuss" title="">RADIUSS</a></li>
+</ul></li>
+<li class="last expanded active-trail"><a href="/training" class="active-trail">Training</a><ul class="menu"><li class="first expanded active-trail"><a href="/training/tutorials" class="active-trail">Tutorials</a><ul class="menu"><li class="first leaf"><a href="/training/tutorials/introduction-parallel-computing-tutorial">Introduction to Parallel Computing Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/llnl-covid-19-hpc-resource-guide">LLNL Covid-19 HPC Resource Guide for New Livermore Computing Users</a></li>
+<li class="leaf"><a href="/training/tutorials/using-lcs-sierra-system">Using LC&#039;s Sierra System</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-psaap3-quick-start-tutorial">Livermore Computing PSAAP3 Quick Start Tutorial</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/sites/default/files/PSAAP-alliance-quickguide.docx" title="">PSAAP Alliance Quick Guide</a></li>
+<li class="leaf"><a href="/training/tutorials/linux-tutorial-exercises">Linux Tutorial Exercise One</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-one">Livermore Computing Linux Clusters Overview Part One</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two">Livermore Computing Linux Clusters Overview Part Two</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-resources-and-environment">Livermore Computing Resources and Environment</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab-exercise">Slurm and Moab Exercise</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-part-2-common-functions">TotalView Part 2:  Common Functions</a></li>
+<li class="leaf active-trail"><a href="/training/tutorials/totalview-part-3-debugging-parallel-programs" class="active-trail active">TotalView Part 3: Debugging Parallel Programs</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-tutorial">TotalView Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/evaluation-form">Tutorial Evaluation Form</a></li>
+<li class="leaf"><a href="/training/tutorials/srun-auto-affinity">srun --auto-affinity</a></li>
+<li class="last leaf"><a href="/training/tutorials/srun-multi-prog">srun --multi-prog</a></li>
+</ul></li>
+<li class="collapsed"><a href="/training/documentation">Documentation &amp; User Manuals</a></li>
+<li class="leaf"><a href="/training/technical-bulletins-catalog">Technical Bulletins Catalog</a></li>
+<li class="collapsed"><a href="/training/workshop-schedule">Training Events</a></li>
+<li class="last leaf"><a href="/training/user-meeting-presentations-archive">User Meeting Presentation Archive</a></li>
+</ul></li>
+</ul>                                                                            <div id="pagetoggle" class="btn-group btn-toggle pull-right" style="margin-right: 15px;">
+                                            <a href="/" class="btn btn-default gs">General Site</a>
+                                            <a href="/user-portal" class="btn btn-primary up active">User Portal</a>
+                                        </div>
+                                                                    </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+		<div id="main-content" class="l2content">
+        <div class="container">
+    		<div class="row">
+        		                <div id="primary" class="content-area col-sm-12">
+					                                        <section id="content" role="nav" class="clearfix col-sm-12">
+
+                                                                                    <div id="breadcrumbs">
+                                    <h2 class="element-invisible">breadcrumb menu</h2><nav class="breadcrumb" aria-label="breadcrumb-navigation"><a href="/">Home</a> » <a href="/training">Training</a> » <a href="/training/tutorials">Tutorials</a> » TotalView Part 3: Debugging Parallel Programs</nav>                                </div>
+                                                    
+                                            </section>
+                  <main>
+
+                                              <div id="content_top">
+                                <div class="region region-content-top">
+  <div id="block-print-ui-print-links" class="block block-print-ui">
+
+    
+    
+  
+  <div class="content">
+    <span class="print_html"><a href="https://hpc.llnl.gov/print/664" title="Display a printer-friendly version of this page." class="print-page" onclick="window.open(this.href); return false" rel="nofollow">Printer-friendly</a></span>  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                            </div>
+                        
+                        <div id="content-wrap">
+                                                                                                                <div class="region region-content">
+  <div id="block-system-main" class="block block-system">
+
+    
+    
+  
+  <div class="content">
+    
+
+<div  about="/training/tutorials/totalview-part-3-debugging-parallel-programs" typeof="sioc:Item foaf:Document" class="node node-user-portal-one-column-page node-full view-mode-full">
+    <div class="row">
+    <div class="col-sm-12 ">
+      <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even" property="dc:title"><h1 class="title">TotalView Part 3: Debugging Parallel Programs</h1></div></div></div><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><h2>Part 3 Contents</h2>
+<ol><li><a href="#Process_Thread_Groups">Process/Thread Groups</a></li>
+<li><a href="#Debugging_Threaded_Codes">Debugging Threaded Codes</a>
+<ol><li><a href="#Debugging_Threaded_Codes_Overview">Debugging Threaded Codes Overview</a></li>
+<li><a href="#Finding_Thread_Information">Finding Thread Information</a></li>
+<li><a href="#Selecting_a_Thread">Selecting a Thread</a></li>
+<li><a href="#Execution_Control_for_Threaded_Programs">Execution Control for Threaded Programs</a></li>
+<li><a href="#Viewing_and_Modifying_Thread_Data">Viewing and Modifying Thread Data</a></li>
+</ol></li>
+<li><a href="#Debugging_OpenMP_Codes">Debugging OpenMP Codes</a>
+<ol><li><a href="#Debugging_OpenMP_Codes_Overview">Debugging OpenMP Codesverview</a></li>
+<li><a href="#Debugging_OpenMP_Programs">Debugging OpenMP Programs</a></li>
+</ol></li>
+<li><a href="#Debugging_MPI_Codes">Debugging MPI Codes</a>
+<ol><li><a href="#Debugging_MPI_Codes_Overview">Debugging MPI Codes Overview</a></li>
+<li><a href="#Starting_an_MPI_Debug_Session">Starting an MPI Debug Session</a></li>
+<li><a href="#Selecting_an_MPI_Process">Selecting an MPI Process</a></li>
+<li><a href="#Controlling_MPI_Process_Execution">Controlling MPI Process Execution</a></li>
+<li><a href="#Viewing_and_Modifying_Multi-process_Data">Viewing and Modifying Multi-process Data</a></li>
+<li><a href="#Displaying_Message_Queue_State">Displaying Message Queue State</a></li>
+</ol></li>
+<li><a href="#Debugging_Hybrid_Codes">Debugging Hybrid Codes</a>
+<ol><li><a href="#Debugging_Hybrid_Codes_Overview">Debugging Hybrid Codes Overview</a></li>
+<li><a href="#Debugging_Hybrid_Programs">Debugging Hybrid Programs</a></li>
+</ol></li>
+<li><a href="#Batch_System_Debugging">Batch System Debugging</a></li>
+<li><a href="#Topics_Not_Covered">Topics Not Covered</a></li>
+<li><a href="#References_and_More_Information">References and More Information</a></li>
+</ol><ul><li>Back to <a href="/totalview">Part 1: The Very Basics</a></li>
+<li>Back to <a href="/totalview-part-2-common-functions">Part 2: Common Functions</a></li>
+</ul><h2>Preface</h2>
+<ul><li>TotalView supports most HPC parallel programming models/APIs:
+<ul><li>MPI</li>
+<li>Pthreads</li>
+<li>OpenMP</li>
+<li>Intel Xeon Phi</li>
+<li>NVIDIA CUDA, OpenACC</li>
+<li>PVM</li>
+<li>SHMEM</li>
+<li>Fork/exec</li>
+<li>Hybrid</li>
+</ul></li>
+<li>This tutorial will only cover the parallel models of Pthreads, MPI, OpenMP, and hybrids of these three models.</li>
+<li>Most examples, commands and images shown are for an LC Linux platform. However, TotalView's appearance and behavior are fairly consistent across all platforms.</li>
+<li>Please consult the TotalView Documentation located at <a href="https://www.roguewave.com">Rogue Wave Software</a>, Inc. for platform specific details.</li>
+</ul><h2><a name="Process_Thread_Groups" id="Process_Thread_Groups"></a>Process/Thread Groups</h2>
+<h4>TotalView P/T Groups</h4>
+<ul><li>Process/Thread (P/T) groups are a TotalView fabrication. Their purpose is to organize processes and threads into associations that a user can operate on.</li>
+<li>Dynamic membership: TotalView automatically creates these P/T groups and places processes and threads in them as they are created.</li>
+<li><strong>Motivation</strong>: TotalView commands typically act upon a specific P/T group. <strong>It is important for parallel program users to know which P/T group is being acted upon!</strong></li>
+<li>User-defined P/T Groups:
+<ul><li>In most cases, the default TotalView P/T groups are sufficient - however...</li>
+<li>TotalView provides a way for users to create their own P/T groups.</li>
+<li>Non-trivial and not covered here.</li>
+</ul></li>
+<li>TotalView's P/T groups are described very well in the "TotalView User Guide".</li>
+</ul><h4>Types of P/T Groups</h4>
+<ul><li><strong>Control Group</strong>:
+<ul><li>Contains all processes and threads created by the program across all processors</li>
+</ul></li>
+<li><strong>Share Group</strong>:
+<ul><li>Contains all of the processes and their threads, that are running the same executable</li>
+<li>A program may have multiple Share Groups. For example all processes executing <span class="fixed">a.out </span>would be in one Share Group, and all processes executing <span class="fixed">b.out</span> would be in another Share Group</li>
+</ul></li>
+<li><strong>Workers Group</strong>:
+<ul><li>Contains all threads that are executing user code</li>
+<li>May span multiple process Share Groups</li>
+<li>Does not contain kernel-level manager threads</li>
+</ul></li>
+<li><strong>Lockstep Group</strong>:
+<ul><li>Includes all threads in a Share Group that are at the same PC (program counter) address</li>
+<li>A subset of the Workers Group</li>
+<li>Only valid for stopped threads - meaningless otherwise</li>
+</ul></li>
+</ul><h4>Selecting P/T Groups</h4>
+<ul><li>When you select a P/T group, you are telling TotalView which set of processes and threads to act upon.</li>
+<li>You can select any of the available predefined P/T groups. The default is Control Group.</li>
+<li>Always relative to the Thread-of-Interest (TOI) and the Process-of-Interest (POI), which are the thread and process being viewed in the current Process Window.</li>
+<li>P/T groups can be selected from the Process Window's P/T Selection menu as shown below.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1537" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/processthreadgroups1-gif">processThreadGroups1.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Process Thread Groups" height="332" width="676" class="media-element file-default" data-delta="1" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/processThreadGroups1.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>The table below describes what happens when a particular P/T group is selected.</li>
+</ul><table class="table table-bordered table-striped"><tr><th scope="col">P/T Selection</th>
+<th scope="col">What is affected by any execution Command</th>
+</tr><tr><td>Group (Control)</td>
+<td>Default. All processes and their threads.</td>
+</tr><tr><td>Group (Share)</td>
+<td>All processes and their threads that are in the same share group as the POI (process-of-interest)</td>
+</tr><tr><td>Group (Workers)</td>
+<td>All threads that are executing user code</td>
+</tr><tr><td>Group (Lockstep)</td>
+<td>All user threads that are stopped at the same PC</td>
+</tr><tr><td>Rank 1</td>
+<td>Only the POI and its threads. In the above example, the POI happens to have an MPI rank of 1</td>
+</tr><tr><td>Process (Workers)</td>
+<td>User threads in the POI</td>
+</tr><tr><td>Process (Lockstep)</td>
+<td>User threads stopped at the same PC in the POI</td>
+</tr><tr><td>Thread 3.1</td>
+<td>Only the TOI (thread-of-interest). In the above example, the TOI happens to be 3.1</td>
+</tr></table><ul><li>P/T groups can also be selected from other locations, such as the Evaluate Dialog Box:</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1538" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/processthreadgroups2-gif">processThreadGroups2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Process Thread Groups2" height="515" width="440" class="media-element file-default" data-delta="2" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/processThreadGroups2.gif" /></div>
+
+  
+</div>
+</div>
+<h4>Important</h4>
+<ul><li>For most users (especially new users), just accepting the TotalView default <strong>Control </strong>P/T group does the trick.</li>
+<li>There is quite a bit more to TotalView's P/T groups than what is described above. See the <a href="#References_and_More_Information">TotalView documentation </a>for details.</li>
+</ul><h2><a name="Debugging_Threaded_Codes" id="Debugging_Threaded_Codes"></a>Debugging Threaded Codes</h2>
+<h3><a name="Debugging_Threaded_Codes_Overview" id="Debugging_Threaded_Codes_Overview"></a>Overview</h3>
+<h4>General Threads Model</h4>
+<ul><li>Most operating systems support programs that have multiple threads of execution. Although implementations differ, they usually possess the following common characteristics:
+<ul><li>Shared address space - threads can read/write the same variables and execute the same code.</li>
+<li>Private execution context - every thread has its own set of registers</li>
+<li>Private execution stack - every thread has address space reserved for its stack</li>
+<li>Thread - process association - threads exist within and use the resources of a process. They cannot exist outside of a process.</li>
+</ul></li>
+<li>The diagram below depicts the general threads model. TotalView follows this general model.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1539" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/threadsmodel-gif">threadsModel.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Threads Model" height="398" width="450" class="media-element file-default" data-delta="3" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/threadsModel.gif" /></div>
+
+  
+</div>
+</div>
+<h4>Supported Platforms</h4>
+<ul><li>TotalView supports debugging threaded applications on all of its supported platforms.</li>
+</ul><h4>Important Differences</h4>
+<ul><li>Threads are implemented differently by different operating systems. Also, different versions of the same operating system may differ in the way threads are handled.</li>
+<li>Because of this, some thread behavior within TotalView is both architecture and software version dependent:
+<ul><li>Not all features are implemented, or implemented identically on all platforms</li>
+<li>Patches and/or upgrades to the OS and other software may be required</li>
+<li>Hardware requirements vary between platforms (minimum disk, memory, etc.)</li>
+<li>Restrictions and known problems vary between platforms</li>
+</ul></li>
+<li>Please consult the <a href="#References_and_More_Information">TotalView documentation</a> for important details.</li>
+</ul><h3><a name="Finding_Thread_Information" id="Finding_Thread_Information"></a>Finding Thread Information</h3>
+<h4>Root Window</h4>
+<ul><li>Thread information is visible in the Root Window, as shown below</li>
+<li>The amount of thread related information displayed can be selected by clicking on the "Configure" button, which opens a checkbox menu.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1540" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/windowrootthreadinfo-gif">windowRootThreadInfo.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Root tread Window" height="338" width="811" class="media-element file-default" data-delta="4" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/windowRootThreadInfo.gif" /></div>
+
+  
+</div>
+</div>
+<h4>Process Window</h4>
+<ul><li>Most of what TotalView knows about a thread is able to be found in the Process Window's panes.
+<ol><li>Status Bars: Show status information for the selected thread and its associated process.</li>
+<li>Stack Trace Pane: Displays the call stack of routines that the selected thread is executing.</li>
+<li>Stack Frame Pane: Shows a selected thread's stack variables, registers, etc.</li>
+<li>Source Pane: Shows the source code for the selected thread.</li>
+<li>Threads Pane: Shows threads associated with the selected process.</li>
+</ol></li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1541" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/windowprocessthreadinfo-gif">windowProcessThreadInfo.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Process Thread Window" height="695" width="676" class="media-element file-default" data-delta="5" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/windowProcessThreadInfo.gif" /></div>
+
+  
+</div>
+</div>
+<h3><a name="Selecting_a_Thread" id="Selecting_a_Thread"></a>Selecting a Thread</h3>
+<h4>By Diving</h4>
+<ul><li>After selecting a thread in either the <a href="/sites/default/files/windowRoot_5.gif">Root Window</a> or the <a href="/sites/default/files/threadsPane.gif">Process Window Threads Pane</a>, you can dive on it by three different methods:</li>
+<li>Double left clicking</li>
+<li>Right clicking and then selecting <strong>Dive</strong> from the pop-up menu</li>
+<li>Selecting <strong>Dive</strong> from the Root Window's <a href="/sites/default/files/menuRootView.gif">View Menu</a>.</li>
+<li>That thread's information will then be displayed in the current Process Window.</li>
+<li>To force a new Process Window for a thread, use <strong>Dive in New Window</strong> from the <a href="/sites/default/files/menuRootView.gif">View Menu</a> or pop-up menu. Multiple Process Windows, one for each thread, can be created this way.</li>
+</ul><h4>By Thread Navigation Buttons</h4>
+<ul><li>Use the thread navigation control buttons (below) located in the bottom right corner of the <a href="/sites/default/files/windowProcess_3.gif">Process Window</a>.</li>
+<li>"Cycle-through" the threads until the desired thread's information fills the Process Window.</li>
+</ul><h4>Differentiating Threads</h4>
+<ul><li>Debugging multi-threaded programs can be confusing - especially if you've opened multiple Process Windows for the different threads. TotalView provides two easy ways for you to differentiate threads from each other:</li>
+<li>Every thread has a unique "Thread ID" number assigned by TotalView. The TID appears in several locations, such as the Root Window, Process Window Threads Pane and Process Window Status Bar.</li>
+<li>Different threads are given different pane "trim", as shown below.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1542" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/threadspanetrim-gif">threadsPaneTrim.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Pane trim" height="176" width="673" class="media-element file-default" data-delta="6" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/threadsPaneTrim.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>The examples below demonstrate how threads are differentiated from each other as just described.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1543" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/threadsexample-gif">threadsExample.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Example Threads" height="923" width="930" class="media-element file-default" data-delta="7" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/threadsExample.gif" /></div>
+
+  
+</div>
+</div>
+<p> </p>
+<h3><a name="Execution_Control_for_Threaded_Programs" id="Execution_Control_for_Threaded_Programs"></a>Execution Control for Threaded Programs</h3>
+<h4>Three Scopes of Influence</h4>
+<ul><li>Depending upon the type of parallel application, TotalView can provide up to three different levels of control for thread execution commands. The table below describes these.</li>
+</ul><table class="table table-bordered table-striped"><tr><th scope="col">Scope</th>
+<th scope="col">Description</th>
+</tr><tr><td><strong>Group</strong></td>
+<td>Typically used for multi-process, multi-threaded codes<br />Execution commands apply to all threads in all processes<br />PATH: <a href="/sites/default/files/windowProcess_3.gif">Process Window</a> &gt;  <a href="/sites/default/files/menuProcessGroup_1.gif">Group Menu</a></td>
+</tr><tr><td><strong>Process</strong></td>
+<td>Typically used for a multi-threaded process<br />Applies to all threads in a single process<br />PATH: <a href="/sites/default/files/windowProcess_3.gif">Process Window</a> &gt;  <a href="/sites/default/files/menuProcessProcess_3.gif">Process Menu</a></td>
+</tr><tr><td><strong>Thread</strong></td>
+<td>
+<p>Applies to a single thread within a single process<br />PATH: <a href="/sites/default/files/windowProcess_3.gif">Process Window</a> &gt;  <a href="/sites/default/files/menuProcessThread_1.gif">Thread Menu</a><br />Note that the thread specific execution control commands are not available on all platforms. They will appear to be dimmed in the menu if they are not available on the platform you are using.</p>
+</td>
+</tr></table><ul><li>Note that command scope is constrained to the selected TotalView P/T group (Control, Share, Workers, Lockstep) as discussed in the <a href="#Process_Thread_Groups">Process/Thread Groups section.</a></li>
+</ul><h4>Synchronous vs. Asynchronous</h4>
+<ul><li><strong>Synchronous</strong>: if one thread in a process runs/stops, all threads must do likewise.</li>
+<li><strong>Asynchronous</strong>: threads within a process can run/stop independently of each other.</li>
+<li>Platforms may differ in the way individual threads can be stopped and made to run.</li>
+<li>For asynchronous thread control, unexpected program behavior (like hanging) can occur if some threads step or run while others are stopped - particularly in library routines.<span class="fixed"> CTRL-C</span> may be able to be used to cancel the command that caused the hang.</li>
+</ul><h4>Thread-specific Breakpoints</h4>
+<ul><li>Normally, all threads in a process stop when any one of them encounters a breakpoint.</li>
+<li>Thread-specific breakpoints are implemented through evaluation points and the use of TotalView expressions that include intrinsic variables and built-in statements.</li>
+<li>For example, the following expression will cause the process to stop only when thread 3 encounters it as part of an evaluation point:
+<ul><li><span class="fixed">if ($tid == 3) $stop</span></li>
+</ul></li>
+</ul><h3><a name="Viewing_and_Modifying_Thread_Data" id="Viewing_and_Modifying_Thread_Data"></a>Viewing and Modifying Thread Data</h3>
+<ul><li>Most of the basics of viewing and modifying data as covered in <a href="/totalview">Part I</a> hold true for threads.</li>
+<li>Beyond the basics, TotalView allows you to go a bit further with threads. You can display/modify "Laminated" variables and on some platforms you can display Thread Object data.</li>
+</ul><h4>Laminated Variables</h4>
+<ul><li>Often times in a parallel program, the same variable will have multiple instances across threads and/or processes. In such cases, it is frequently desirable to view all occurrences simultaneously.</li>
+<li>TotalView provides a way for you to do this by "laminating" the variable. Laminating a variable means to display all occurrences simultaneously in a <a href="/sites/default/files/windowVariable_4.gif">Variable Window</a>.</li>
+<li>Laminated variables can include scalars, arrays, structures and pointers.</li>
+<li>TotalView also enables you to edit laminated variables - either collectively (same value applies to all instances) or individually.</li>
+<li>Method 1: Right click on the variable and select "Across Threads" from the <a href="/sites/default/files/menuPopUp5.gif">pop-up menu</a>. A new Variable Window will appear showing the laminated variable (example below).</li>
+<li>Method 2: Dive on the variable so that it appears in a new Variable Window. Then:
+<ul><li><strong>PATH</strong>: <a href="/sites/default/files/windowVariable_4.gif">Variable Window</a> &gt;  <a href="/sites/default/files/menuVariableView.gif">View Menu</a> <strong> &gt; Show Across &gt; Thread</strong></li>
+</ul></li>
+<li>Example of a laminated variable. Note that when laminating a variable, not all threads may be at a point in the program yet where the variable has a value. In such cases, the "Has no matching call frame" message will appear.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1544" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/laminatedthread1-gif">laminatedThread1.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Laminated thread" height="315" width="616" class="media-element file-default" data-delta="8" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/laminatedThread1.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>After laminating a variable, you can return to the non-laminated view by:
+<ul><li><strong>PATH</strong>: <a href="/sites/default/files/windowVariable_4.gif">Variable Window</a> &gt;  <a href="/sites/default/files/menuVariableView.gif">View Menu</a><strong>  &gt; Show Across &gt; None</strong></li>
+</ul></li>
+</ul><h4>In the Kernel</h4>
+<ul><li>The Process Window below shows what can happen when a thread calls a system kernel routine. The debugger may not have full access to thread state information when it executes within the kernel. There's not much you can do at this point, debugging wise.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1545" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/threadkernel-gif">threadKernel.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="thread Kernal" height="384" width="651" class="media-element file-default" data-delta="9" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/threadKernel.gif" /></div>
+
+  
+</div>
+</div>
+<table class="table table-bordered table-striped"><tr><th scope="col">
+<h2><a name="Debugging_OpenMP_Codes" id="Debugging_OpenMP_Codes"></a>Debugging OpenMP Codes</h2>
+</th>
+</tr></table><h3><a name="Debugging_OpenMP_Codes_Overview" id="Debugging_OpenMP_Codes_Overview"></a>Overview</h3>
+<h4>OpenMP Threads Model</h4>
+<ul><li>The OpenMP programming model is intrinsically based on threads.</li>
+<li>All OpenMP programs begin with a single master thread (usually the original executable) that executes serially until a PARALLEL region in the program is encountered.</li>
+<li>When a PARALLEL region is encountered, the master thread forks a team of worker threads to execute that region in parallel.</li>
+<li>At the end of the PARALLEL region, the team joins/disbands and serial execution resumes by the master thread (see diagram below).</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1547" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/openmpmodel-gif">openmpModel.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Open MP Model" height="226" width="800" class="media-element file-default" data-delta="10" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/openmpModel.gif" /></div>
+
+  
+</div>
+</div>
+<h4>Supported Platforms</h4>
+<ul><li>TotalView provides support for OpenMP on most of its supported platforms, however there are differences between implementations.</li>
+<li>Please consult the TotalView documentation for important platform / compiler specific requirements and limitations.</li>
+</ul><h4>Supported Features</h4>
+<ul><li>Source level debugging of the original OpenMP code</li>
+<li>Ability to place breakpoints throughout the OpenMP code, including lines that are executed in parallel.</li>
+<li>Visibility of worker threads</li>
+<li>Access to PRIVATE and SHARED variables in PARALLEL regions - for both master and worker threads.</li>
+<li>Access to THREADPRIVATE data on some platforms</li>
+</ul><h3><a name="Debugging_OpenMP_Programs" id="Debugging_OpenMP_Programs"></a>Debugging OpenMP Programs</h3>
+<h4>Just Like Threads (sorta)</h4>
+<ul><li>Because OpenMP is fundamentally thread-based, debugging OpenMP codes with TotalView is very similar to debugging threaded codes. In fact, Pthreads are often used by vendors to implement OpenMP.</li>
+<li>Most of what was covered previously in the <a href="#Debugging_Threaded_Codes">Debugging Threaded Codes</a> section holds true for OpenMP:
+<ul><li><a href="#Finding_Thread_Information">Finding Thread Information</a></li>
+<li><a href="#Selecting_a_Thread">Selecting a Thread</a></li>
+<li><a href="#Execution_Control_for_Threaded_Programs">Execution Control for Threaded Programs</a></li>
+<li><a href="#Viewing_and_Modifying_Thread_Data">Viewing and Modifying Thread Data</a></li>
+</ul></li>
+<li>Because of this, only the important differences between OpenMP and threaded debugging will be covered here.</li>
+</ul><h4>Setting the Number of Threads</h4>
+<ul><li>Setting the number of threads to use during a debug session is handled exactly as specified by the OpenMP standard. In order of precedence (lowest to highest):
+<ol><li>Default: usually equal to the number of cpus on the machine</li>
+<li>OMP_NUM_THREADS environment variable at run time</li>
+<li>OMP_SET_NUM_THREADS routine within the source code</li>
+</ol></li>
+</ul><h4>Code Transformation</h4>
+<ul><li>Probably the most obvious difference between OpenMP codes and other threaded codes is the compiler's creation of <strong>outlined routines</strong>.</li>
+<li>Outlined routines are created when the compiler replicates the body of a PARALLEL region into a new, compiler created routine. This process is called outlining because it is the inverse of inlining a subroutine into its call site.</li>
+<li>In place of the parallel region, the compiler inserts a call to a run-time library routine. As the master thread creates worker threads, it dispatches them to the outlined routine, and then actually calls the outlined routine itself.</li>
+<li>Outlined Routine Names: These vary by compiler/platform. An example from the Intel Linux C compiler is shown below:</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1548" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/outlinedroutinenames2-gif">outlinedRoutineNames2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="outlined Routine Names" height="275" width="760" class="media-element file-default" data-delta="11" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/outlinedRoutineNames2.gif" /></div>
+
+  
+</div>
+</div>
+<h4>Master Thread vs. Worker Threads</h4>
+<ul><li>Thread Identifiers:
+<ul><li>In TotalView, the OpenMP master thread always has a thread id of 1, and the worker threads greater than 1.</li>
+<li>They do NOT match the actual OpenMP thread number. For example, in OpenMP, the master thread's id is zero.</li>
+</ul></li>
+<li>Depending upon the platform/compiler, the master thread may look different than the worker threads. The most important difference is how shared variables are displayed in the Stack Frame.</li>
+<li><strong>Case 1 </strong>- Different: Only the master thread displays a program's shared variables. Worker threads are limited to displaying their private variables. This is the case when using the IBM compilers on BG/Q systems at LC. The master/worker Stack Frames below demonstrate this:</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1549" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/masterworkerstackframes1-gif">masterWorkerStackFrames1.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="master Worker Stack Frames 1" height="199" width="670" class="media-element file-default" data-delta="12" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/masterWorkerStackFrames1.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li><strong>Case 2</strong> - Same: Both master and worker threads are enabled to display a program's shared variables. They also display their private variables identically. This is the case when using Intel compilers on Linux systems at LC. The master/worker Stack Frames below demonstrate this.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1550" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/masterworkerstackframes2-gif">masterWorkerStackFrames2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="master Worker Stack Frames 2" height="196" width="660" class="media-element file-default" data-delta="13" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/masterWorkerStackFrames2.gif" /></div>
+
+  
+</div>
+</div>
+<h4>Example OpenMP Session</h4>
+<ol><li>Master thread Stack Trace Pane showing original routine (highlighted) and the outlined routine above it</li>
+<li>Process/thread status bars differentiating threads</li>
+<li>Master thread Stack Frame Pane showing shared variables</li>
+<li>Worker thread Stack Trace Pane showing outlined routine.</li>
+<li>Worker thread Stack Frame Pane, in this case showing both private and shared variables</li>
+<li>Root Window showing all threads</li>
+<li>Threads Pane showing all threads plus selected thread</li>
+</ol><p></p><div class="media media-element-container media-default"><div id="file-1551" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/openmpwindows-gif">openmpWindows.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="open mp windows" height="1000" width="930" class="media-element file-default" data-delta="14" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/openmpWindows.gif" /></div>
+
+  
+</div>
+</div>
+<h4>Execution Control</h4>
+<ul><li>Similar to threads as discussed previously.</li>
+<li>Stepping: you can not step into or out of a PARALLEL region. Instead, set a breakpoint within the parallel region and allow the process to run to it. From there you can single step within the parallel region.</li>
+<li>Asynchronous execution: single stepping or running one OpenMP thread while others are stopped can lead to unexpected program behavior (like hanging). <span class="fixed">CTRL-C</span> may be able to be used to cancel the command that caused the hang.</li>
+</ul><h4>Viewing and Modifying Data</h4>
+<ul><li>Viewing and displaying data behaves the same as for other threaded codes.</li>
+<li>As with other threaded codes, TotalView supports laminated variable displays for OpenMP also.</li>
+</ul><h4>Manager Threads</h4>
+<ul><li>Some platforms create additional threads for management purposes. Manager threads are given a negative thread id by TotalView.</li>
+<li>Manager threads should be ignored - do not try to debug them.</li>
+<li>Example showing manager threads in addition to OpenMP threads. The Process Window Threads Pane is shown.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1552" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/managerthreads-gif">managerThreads.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Manager Threads" height="186" width="676" class="media-element file-default" data-delta="15" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/managerThreads.gif" /></div>
+
+  
+</div>
+</div>
+<h2><a name="Debugging_MPI_Codes" id="Debugging_MPI_Codes"></a>Debugging MPI Codes</h2>
+<h3><a name="Debugging_MPI_Codes_Overview" id="Debugging_MPI_Codes_Overview"></a>Overview</h3>
+<h4>Multi-Process</h4>
+<ul><li>MPI programs behave as multiple processes within TotalView:
+<ul><li>Each MPI task comprises its own process.</li>
+<li>Every MPI task can run/stop and be debugged independently from other MPI tasks.</li>
+<li>MPI tasks can also be debugged collectively with related MPI tasks.</li>
+</ul></li>
+<li>As discussed in the <a href="#Process_Thread_Groups">Process/Thread Groups section</a> , TotalView assigns processes into Share groups. In most cases, if all of your MPI tasks are running the same executable, (SPMD Model) they will all be in the same Share Group. Otherwise, MPI tasks running different executables (MPMD Model) will be in different Share groups.</li>
+<li>Most of the usual TotalView commands/features behave as would be expected with an individual MPI process. However, there are several important considerations and unique features associated with multi-process MPI debugging.</li>
+<li>MPI codes can be combined with threads and OpenMP (covered later) to create multi-threaded, multi-process programs.</li>
+</ul><h4>Supported Platforms</h4>
+<ul><li>TotalView supports the native vendor MPI implementation and also the MPICH implementation. For platform specifics, see the TotalView User Guide.</li>
+</ul><h3><a name="Starting_an_MPI_Debug_Session" id="Starting_an_MPI_Debug_Session"></a>Starting an MPI Debug Session</h3>
+<h4>Just a Little Bit Different</h4>
+<ul><li>MPI manager process:
+<ul><li>Typically, MPI programs run under a "manager" process, such as poe, srun, prun, mpirun, dmpirun, etc.</li>
+<li>Because of this, you must start TotalView with the manager process, NOT the name of your MPI executable.</li>
+</ul></li>
+<li>Automatic process acquisition:
+<ul><li>Most MPI programs run on multiple hosts, however when you start TotalView it is on a single host.</li>
+<li>TotalView is able to automatically acquire all parallel processes at start-up.</li>
+<li>TotalView is also able to attach to an already running parallel program and automatically acquire all of its processes.</li>
+<li>This is accomplished by TotalView starting a <strong>tvdsvr</strong> process on each machine where it must acquire and manage a parallel task.</li>
+</ul></li>
+<li>Configuration Details:
+<ul><li>There are several issues involved in configuring TotalView to run multi-process jobs, most of which should normally be transparent to the user. See the TotalView User Guide for details if problems arise with starting MPI sessions under TotalView.</li>
+</ul></li>
+</ul><h4>Example</h4>
+<ul><li>Start TotalView with the parallel task manager process. Note that the order of arguments and executables is important, and differs between platforms.</li>
+</ul><p>Examples:</p>
+<table class="table table-bordered table-striped"><tr><th scope="row">MVAPICH<br />Linux<br />under SLURM</th>
+<td><span class="fixed">totalview srun -a -n 16 -p pdebug myprog</span></td>
+</tr><tr><th scope="row">IBM AIX</th>
+<td><span class="fixed">totalview poe -a myprog -procs 4 -rmpool 0</span></td>
+</tr><tr><th scope="row">SGI</th>
+<td><span class="fixed">totalview mpirun -a myprog -np 16</span></td>
+</tr><tr><th scope="row">Sun</th>
+<td><span class="fixed">totalview mprun -a myprog -np 16</span></td>
+</tr><tr><th scope="row">MPICH</th>
+<td><span class="fixed">mpirun -np 16 -tv myprog</span></td>
+</tr></table><ul><li>The Root Window and Process Window will appear as usual, however it will be the <strong>manager</strong> process that will be loaded, not your program. Start the manager process by typing <strong>g</strong> in the Process Window or by:
+<ul><li><strong>PATH</strong>: <a href="/sites/default/files/windowProcess_3.gif">Process Window</a> &gt;  <a href="/sites/default/files/menuProcessProcess_3.gif">Process Menu</a> <strong> &gt;  Go</strong></li>
+</ul></li>
+<li>A dialog window will then appear notifying you that it is a parallel job and asking whether or not you wish to stop the job now. Click on <strong>Yes</strong> (see below). Note: if you click on <strong>No</strong> the job will begin to immediately execute before you have a chance to set breakpoints, etc.</li>
+<li>TotalView will then acquire the MPI tasks which are running under the manager process. When this is done, the Process Window will default to displaying the state information and source for MPI task 0. You are now ready to begin debugging your program.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1553" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/mpistartupwindows-gif">mpiStartupWindows.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="MPI Start up window" height="769" width="690" class="media-element file-default" data-delta="16" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/mpiStartupWindows.gif" /></div>
+
+  
+</div>
+</div>
+<h3><a name="Selecting_an_MPI_Process" id="Selecting_an_MPI_Process"></a>Selecting an MPI Process</h3>
+<h4>By Diving</h4>
+<ul><li>After selecting a process in the <a href="/sites/default/files/windowRoot_5.gif">Root Window</a>, you can dive on it by three different methods:</li>
+<li>
+<ul><li>Double left clicking</li>
+<li>Right clicking and then selecting <strong>Dive</strong> from the pop-up menu</li>
+<li>Selecting <strong>Dive</strong> from the Root Window's <a href="/sites/default/files/menuRootView_0.gif">View Menu</a>.</li>
+</ul></li>
+<li>That process's information will then be displayed in the current Process Window.</li>
+<li>To force a new Process Window for a process, use Dive In New Window from the <a href="/sites/default/files/menuRootView_0.gif">View Menu</a> or right click pop-up menu. Multiple Process Windows, one for each MPI task, can be created this way.</li>
+</ul><h4>By Process Navigation Buttons</h4>
+<ul><li>Use the process navigation control buttons (below) located in the bottom right corner of the <a href="/sites/default/files/windowProcess_3.gif">Process Window</a>.</li>
+<li>"Cycle-through" the processes until the desired task's information fills the Process Window.</li>
+</ul><h4>Example</h4>
+<ul><li>The example below demonstrates an MPI debug session. Some items of interest:
+<ol><li>Process Windows differentiated by pane trim and status bars.</li>
+<li>Multiple process windows - one for MPI task 0 and one for MPI task 3</li>
+<li>Root Window MPI task information for multiple MPI processes</li>
+<li>Navigation buttons enabled for processes</li>
+<li>MPI rank/thread identifiers under Members column</li>
+</ol></li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1554" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/mpiwindows-gif">mpiWindows.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="mpi Windows" height="966" width="860" class="media-element file-default" data-delta="17" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/mpiWindows.gif" /></div>
+
+  
+</div>
+</div>
+<h3><a name="Controlling_MPI_Process_Execution" id="Controlling_MPI_Process_Execution"></a>Controlling MPI Process Execution</h3>
+<ul><li>MPI task execution can be controlled at the individual process level, or collectively as a "group".</li>
+<li>TotalView provides two different levels of control for MPI process execution commands. The table below describes these.</li>
+</ul><table class="table table-bordered table-striped"><tr><th scope="col">Scope</th>
+<th scope="col">Description</th>
+</tr><tr><td><strong>Group</strong></td>
+<td>Execution commands apply to all MPI processes<br /><strong>PATH</strong>: <a href="/sites/default/files/windowProcess_3.gif">Process Window</a> &gt;  <a href="/sites/default/files/menuProcessGroup_1.gif">Group Menu</a></td>
+</tr><tr><td><strong>Process</strong></td>
+<td>Applies to a single MPI process<br /><strong>PATH</strong>: <a href="/sites/default/files/windowProcess_3.gif">Process Window</a> &gt;  <a href="/sites/default/files/menuProcessProcess_3.gif">Process Menu</a></td>
+</tr></table><ul><li>Note that command scope is constrained to the selected TotalView P/T group (Control, Share, Workers, Lockstep) as discussed in the <a href="#Process_Thread_Groups">Process/Thread Groups section</a>.</li>
+</ul><h4>Starting and Stopping Processes</h4>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-1555" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/dialogstopparalleljob-gif-0">dialogStopParallelJob.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Stop Parallel Job Dialog Box" height="214" width="318" class="media-element file-default" data-delta="18" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/dialogStopParallelJob_0.gif" /></div>
+
+  
+</div>
+</div></div>
+<p> </p>
+<ul><li>As seen previously, TotalView will ask you whether or not you wish to stop your parallel job before it starts to execute. Saying "Yes" to this allows you to set breakpoints and do other things before your tasks actually start running.</li>
+<li>Starting your program and controlling its execution is then up to you, using either the <a href="/sites/default/files/menuProcessGroup_1.gif">Group Menu</a> or the <a href="/sites/default/files/menuProcessProcess_3.gif">Process Menu</a> from the Process Window.</li>
+<li>If you use accelerator keys to control execution, be sure to type the right key! It is a fairly common accident to use a process level command instead of group level command (and vice-versa). For example, typing <strong>g</strong> instead of <strong>G</strong>.</li>
+</ul><h4>Holding and Releasing Processes</h4>
+<ul><li>When a process is held, it is unresponsive to commands that would cause it to run, such as Go, Step, Next...</li>
+<li>Processes are automatically placed in a hold state when they encounter a barrier point. They can also be placed on hold manually by either method below, depending upon whether you want to hold all processes or just one:</li>
+<li><strong>PATH</strong>: <a href="/sites/default/files/windowProcess_3.gif">Process Window</a> &gt;  <a href="/sites/default/files/menuProcessGroup_1.gif">Group Menu</a>  &gt;<strong>  Hold</strong></li>
+<li><strong>PATH</strong>: <a href="/sites/default/files/windowProcess_3.gif">Process Window</a> &gt;  <a href="/sites/default/files/menuProcessProcess_3.gif">Process Menu</a>  &gt; <strong> Hold</strong></li>
+<li>Held processes will display an <strong>Held</strong> state in the Root Window (below).</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1556" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/heldprocess-gif">heldProcess.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Held Process" height="338" width="823" class="media-element file-default" data-delta="19" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/heldProcess.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>Processes are released automatically whenever all processes have reached the same barrier point. They can also be released manually:
+<ul><li><strong>PATH</strong>: <a href="/sites/default/files/windowProcess_3.gif">Process Window</a> &gt;  <a href="/sites/default/files/menuProcessGroup_1.gif">Group Menu</a> <strong> &gt;  Release</strong></li>
+<li><strong>PATH</strong>: <a href="/sites/default/files/windowProcess_3.gif">Process Window </a>&gt;  <a href="/sites/default/files/menuProcessProcess_3.gif">Process Menu</a>  <strong>&gt;  Hold (toggle) </strong></li>
+</ul></li>
+<li>Note that releasing a process does not make it "Go". It only allows it to respond again to run type commands.</li>
+</ul><h4>Breakpoints and Barrier Points</h4>
+<ul><li>TotalView provides two options that control the behavior of breakpoints and barrier points:
+<ul><li><strong>Sharing</strong>: Should the action point be "planted" in all processes of the group? Planting means that if you set the action point in one MPI task, TotalView will automatically replicate it in all MPI tasks. The default behavior for both breakpoints and barrier points is to automatically plant the action point in all processes.</li>
+<li><strong>Scoping</strong>: Should the action point affect the group, the process or the thread(s)? The default behavior for both breakpoints and barrier points is to stop the process.</li>
+</ul></li>
+<li>Individual breakpoint and barrier point behavior can be customized via the Action Point Properties Dialog Box. To open this window, first select a source line with a breakpoint or barrier point. Then do either:
+<ul><li>Dive (right-mouse) click on the source code line and then select Properties from the resulting pop-up menu.
+<ul><li><strong>PATH</strong>: <a href="/sites/default/files/windowProcess_3.gif">Process Window</a> &gt;  <a href="/sites/default/files/menuProcessAction_1.gif">Action Point Menu </a>&gt;  Properti<strong>es</strong></li>
+</ul></li>
+</ul></li>
+<li>Action Point Properties Dialog Boxes for both breakpoints and barrier points are shown below.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1557" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/dialogactionpointproperties2-gif">dialogActionPointProperties2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="dialog Action Point Properties 2" height="463" width="1021" class="media-element file-default" data-delta="20" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/dialogActionPointProperties2.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>You can also customize the default behavior for all breakpoints and barrier points:</li>
+<li>Use either:</li>
+<li><strong>PATH</strong>: <a href="/sites/default/files/windowRoot_5.gif">Root Window</a>  &gt;  <a href="/sites/default/files/menuRootFile_3.gif">File Menu</a>  &gt; <strong> Preferences</strong></li>
+<li><strong>PATH</strong>: <a href="/sites/default/files/windowProcess_3.gif">Process Window</a> &gt;  <a href="/sites/default/files/menuProcessFile_2.gif">File Menu </a> &gt; <strong> Preferences</strong></li>
+<li>Select the <a href="/sites/default/files/preferencesActionPoints_0.gif">Action Points Page </a>and then choose your desired options.</li>
+<li>See the previous discussion on <a href="/totalview-part-2-common-functions#More_on_Action_Points">Action Points</a> for more information on using Breakpoints and Barrier Points.</li>
+</ul><h4>Warning About Single Process Commands</h4>
+<ul><li>If you use a process-level single stepping command in a multi-process MPI program, it is possible that TotalView will appear to hang. This happens when you step over a statement that can not complete because the process it depends upon is stopped (as in communications).</li>
+<li>Using <span class="fixed">CTRL-C</span> may be able to be used to cancel the step command that caused the hang.</li>
+</ul><h3><a name="Viewing_and_Modifying_Multi-process_Data" id="Viewing_and_Modifying_Multi-process_Data"></a>Viewing and Modifying Multi-process Data</h3>
+<ul><li>Most of the basics of the viewing and modifying data as covered in Part I hold true for multi-process MPI programs.</li>
+</ul><h4>Laminated Variables</h4>
+<ul><li>Often times in a parallel program, the same variable will have multiple instances across threads and/or processes. In such cases, it is frequently desirable to view all occurrences simultaneously.</li>
+<li>TotalView provides a way for you to this by "laminating" the variable. Laminating a variable means to display all occurrences simultaneously in a Variable Window.</li>
+<li>Laminated variables can include scalars, arrays, structures and pointers.</li>
+<li>TotalView also enables you to edit laminated variables - either collectively (same value applies to all instances) or individually.</li>
+<li><strong>Method 1</strong>: Right click on the variable and select "Across Processes" from the pop-up menu. A new Variable Window will appear showing the laminated variable (examples below).</li>
+<li><strong>Method 2</strong>:Dive on the variable so that it appears in a new Variable Window. Then:
+<ul><li><strong>PATH</strong>: <a href="/sites/default/files/windowVariable_4.gif">Variable Window</a> &gt;  <a href="/sites/default/files/menuVariableView_0.gif">View Menu</a>  &gt; <strong>Show Across </strong>&gt;<strong>  Process</strong></li>
+</ul></li>
+<li>Two examples are shown below - the first is a laminated scalar variable and the second is a laminated array variable.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1558" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/laminatedprocess1-gif">laminatedProcess1.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Laminated Process " height="375" width="616" class="media-element file-default" data-delta="21" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/laminatedProcess1.gif" /></div>
+
+  
+</div>
+</div>
+<p></p><div class="media media-element-container media-default"><div id="file-1559" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/laminatedprocess2-gif">laminatedProcess2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="laminated Process 2" height="375" width="616" class="media-element file-default" data-delta="22" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/laminatedProcess2.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>The laminated variable view is a toggle display. After laminating a variable, you can return to the non-laminated view by:
+<ul><li><strong>PATH</strong>: <a href="/sites/default/files/windowVariable_4.gif">Variable Window</a> &gt;  <a href="/sites/default/files/menuVariableView_0.gif">View Menu </a><strong> </strong>&gt;<strong> Show Across </strong>&gt; <strong> None</strong></li>
+</ul></li>
+</ul><h3><a name="Displaying_Message_Queue_State" id="Displaying_Message_Queue_State"></a>Displaying Message Queue State</h3>
+<ul><li>TotalView allows you to examine the run-time state of your MPI program's message passing. This can be helpful when debugging deadlocked programs.</li>
+<li>To view the message queue state for a selected MPI process, first stop execution, then:
+<ul><li><strong>PATH</strong>: <a href="/sites/default/files/windowProcess_3.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessTools_1.gif"> Tools Menu</a>  &gt;  <strong>Message Queue</strong></li>
+</ul></li>
+<li>The Message Queue Window will then appear - an example is shown below.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1560" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/windowmessagequeue-gif">windowMessageQueue.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Message Queue Window" height="455" width="466" class="media-element file-default" data-delta="23" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/windowMessageQueue.gif" /></div>
+
+  
+</div>
+</div>
+<h4>Types of Messages Displayed</h4>
+<ul><li>Pending receives - non-blocking and blocking.</li>
+<li>Pending sends - non-blocking and blocking.</li>
+<li>Unexpected messages - messages sent to this process which do not yet have a matching receive operation.</li>
+<li>Normally completed messages are not saved or viewable.</li>
+</ul><h4>Actions</h4>
+<ul><li>Because the Message Queue Window information is actually derived from the MPI library, the data is view only - no modification is permitted.</li>
+<li>Diving on the "Source" field will refocus the current Process Window with that task's information or else open a new window for the source task.</li>
+<li>Diving on the "Buffer" field will allow you to see the message's contents in a Variable Window. This data can then be treated as normal data - modify values, type, laminate, etc.</li>
+</ul><h4>Message Queue Graph</h4>
+<ul><li>TotalView also provides a graphical representation of your program's message queue state at a given instant.</li>
+<li>To view your program's message queue state graph, first stop execution. Then select:
+<ul><li><strong>PATH</strong>: <a href="/sites/default/files/windowProcess_3.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessTools_1.gif"> Tools Menu</a>  &gt;  <strong>Message Queue Graph</strong></li>
+</ul></li>
+<li>The Message Queue Graph Window will then appear - an example is shown below.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1561" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/windowmessagequeuegraph-gif">windowMessageQueueGraph.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Message Queue Graph Window" height="489" width="491" class="media-element file-default" data-delta="24" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/windowMessageQueueGraph.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>Clicking on the "Options" tab will open the Options dialog box, shown below.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1562" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/windowmessagequeuegraphoptions-gif">windowMessageQueueGraphOptions.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Message Queue Graph Options Window" height="379" width="691" class="media-element file-default" data-delta="25" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/windowMessageQueueGraphOptions.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>Some usage notes:
+<ul><li>Processes are indicated by yellow boxes in the graph, and as blocks in the communicator box on the right side. Task ranks are the numbers that appear in both locations.</li>
+<li>Select/deselect types of messages to display then click on Update button</li>
+<li>Red = Unexpected, Blue = Pending Receive, Green = Pending Send</li>
+<li>Numbers next to arrow points indicate the message tag</li>
+<li>Diving on a box causes that task's information to appear in a Process Window</li>
+<li>Diving on an arc/arrow point will open the detailed Message Queue Window for that task</li>
+<li>Boxes and arcs can be repositioned by dragging them with the mouse, however clicking on the Update button will reset the view back to the original object positions</li>
+<li>See the built-in Help for additional information</li>
+</ul></li>
+</ul><h4>Notes</h4>
+<ul><li>The information displayed in the Message Queue Window may vary slightly between platforms and MPI implementations.</li>
+<li>There are several important platform and implementation prerequisites and limitations. See the TotalView documentation for details.</li>
+</ul><h2><a name="Debugging_Hybrid_Codes" id="Debugging_Hybrid_Codes"></a>Debugging Hybrid Codes</h2>
+<h3><a name="Debugging_Hybrid_Codes_Overview" id="Debugging_Hybrid_Codes_Overview"></a>Overview</h3>
+<h4>What are "Hybrid" Codes?</h4>
+<ul><li>Hybrid codes are programs that use more than one type of parallelism. This programming model is becoming increasingly popular as systems comprised of clusters of SMPs are now very common.</li>
+<li>Probably the most frequently used type of hybrid programming is MPI with Pthreads or MPI with OpenMP. One scenario (there are certainly others):
+<ul><li>A large problem is decomposed for execution on a cluster of SMP machines.</li>
+<li>A single MPI process is started on each SMP machine.</li>
+<li>Each MPI process divides up its work between multiple threads.</li>
+<li>Threads execute on the CPUs of a single SMP machine, using shared memory parallelism.</li>
+<li>When data needs to be exchanged between machines, one of the threads uses MPI to communicate with the MPI tasks on other machines.</li>
+</ul></li>
+</ul><h4>Nothing New (Just More of It)</h4>
+<ul><li>TotalView includes no new "features" or special functions to handle hybrid codes. There is nothing new to learn.</li>
+<li>Everything that applies to MPI, threads and OpenMP holds true essentially unaltered for hybrid codes.</li>
+<li>The real challenge is managing and understanding the increased complexity that arises from combining two different types of parallelism.</li>
+</ul><h4>Supported Platforms</h4>
+<ul><li>Basically, whatever is supported / restricted for MPI, threads and OpenMP on any given platform will hold true for hybrid programs on that platform.</li>
+<li>See the TotalView documentation for details.</li>
+</ul><h3><a name="Debugging_Hybrid_Programs" id="Debugging_Hybrid_Programs"></a>Debugging Hybrid Programs</h3>
+<h4>Starting a Hybrid Code Debug Session</h4>
+<ul><li>If your hybrid code is a combination of MPI with either OpenMP or Pthreads, then you will most likely start your debug session as you would for MPI. See <a href="#Starting_an_MPI_Debug_Session">Starting an MPI Debug Session</a> for examples.</li>
+<li>OpenMP programs will typically follow the usual convention for setting the number of threads as defined by the OpenMP standard: In order of precedence (lowest to highest):
+<ol><li>Default: usually equal to the number of cpus on the machine</li>
+<li>OMP_NUM_THREADS environment variable at run time</li>
+<li>OMP_SET_NUM_THREADS routine within the source code</li>
+</ol></li>
+</ul><h4>Tying it All Together</h4>
+<ul><li>Debugging hybrid programs combines everything previously discussed in <a href="#Debugging_Threaded_Codes">Debugging Threaded Codes</a>, <a href="#Debugging_MPI_Codes">Debugging MPI Codes</a> and <a href="#Debugging_OpenMP_Codes">Debugging OpenMP Codes</a>.</li>
+<li>MPI tasks behave individually as processes and collectively as a group</li>
+<li>Threads exist within an MPI process</li>
+<li>Execution control can be specified at the thread, process or group level within the selected P/T group</li>
+<li>Action points can be shared across a group or remain local to a process</li>
+<li>Every thread and process can have its own Process Window here.</li>
+<li>Selection and navigation between threads and processes works as usual</li>
+</ul><h4>Example</h4>
+<ul><li>An example debug session with a hybrid MPI / Pthreads program is shown below. Some details of interest:
+<ol><li>Each MPI task / thread can have its own Process Window - two are shown here</li>
+<li>Processes and threads are differentiated by pane trim and status bars</li>
+<li>Root Window showing MPI processes and associated threads.</li>
+<li>Process barrier point in effect across multiple processes</li>
+<li>MPI process (not rank) identifiers and thread identifiers are the same as usual</li>
+<li>Both process and thread navigation buttons are active</li>
+<li>MPI rank/thread identifiers under Members column</li>
+</ol></li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1563" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/hybridwindows-gif">hybridWindows.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Hybrid Windows " height="852" width="918" class="media-element file-default" data-delta="26" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/hybridWindows.gif" /></div>
+
+  
+</div>
+</div>
+<p> </p>
+<h2><a name="Batch_System_Debugging" id="Batch_System_Debugging"></a>Batch System Debugging</h2>
+<h4>Why Debug in Batch?</h4>
+<ul><li>LC's <span class="fixed">pdebug</span> queues are intended to facilitate short, small, interactive sessions, including debugging.</li>
+<li>However, the number of nodes available in the typical <span class="fixed">pdebug</span> queue is small, making it impossible to debug most "real size" parallel applications.</li>
+<li>It is common for large parallel problems to encounter bugs that are not seen with small interactive parallel runs. Debugging the application while it is running in the larger batch system may be the only means of diagnosing and fixing the problem.</li>
+<li>Fortunately, at LC, it is relatively easy to conduct a debug session on batch jobs.</li>
+</ul><h4>Using LC's mxterm / sxterm Utilities</h4>
+<ul><li>Most of LC's production clusters provide two simple utilities called <span class="fixed">mxterm</span> and <span class="fixed">sxterm</span>, which makes it easy for users to initiate a batch job debugging session. These utilities are equivalent:
+<ul><li><span class="fixed">mxterm</span> uses Moab syntax</li>
+<li><span class="fixed">sxterm</span> uses Slurm syntax</li>
+</ul></li>
+<li>Syntax:
+<ul><li><span class="fixed">mxterm #nodes #tasks #minutes msub_argument_list</span></li>
+<li><span class="fixed">sxterm #nodes #tasks #minutes sbatch_argument_list</span></li>
+</ul></li>
+<li>Examples:
+<ul><li>Get 8 nodes with 128 tasks for 4 hours:
+<ul><li><span class="fixed">mxterm 8 128 240</span></li>
+<li><span class="fixed">sxterm 8 128 240</span></li>
+</ul></li>
+<li>Similar, but showing use of Moab/Slurm options:
+<ul><li><span class="fixed">mxterm 8 128 30 -l qos=standby -q pdebug</span></li>
+<li><span class="fixed">sxterm 8 128 30 --qos=standby -p pdebug</span></li>
+</ul></li>
+</ul></li>
+<li>After successfully issuing the command, the utility will submit a batch job for you. You'll then see the usual batch job identifier displayed back to you. For example:</li>
+</ul><pre>% mxterm 16 256 60
+
+330648</pre><ul><li>At this point, your batch debug session is actually queued as a batch job, and must wait in the job queue until its time to run occurs. You can use all of the usual job monitoring commands to track its progress.</li>
+<li>Assuming that you have your X11 environment setup correctly on your desktop, you will eventually see an <span class="fixed">xterm</span> window appear on your screen. This means that your batch partition has been acquired and you can now run commands in it just as though you were having an interactive session.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1564" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/xterm1-gif">xterm1.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="xterm " height="250" width="515" class="media-element file-default" data-delta="27" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/xterm1.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>Within the new xterm window, you can now start totalview with your executable, just as you would an interactive session. For example:</li>
+</ul><pre>totalview srun -a -n 256 myprog</pre><h4>Attaching to a Running Batch Job</h4>
+<ul><li>If you have a batch job that is already running, you can start TotalView on one of the cluster's login nodes and then attach to it.</li>
+</ul><ol><li>Login to the cluster where your job is running</li>
+<li>Set up your X11 display environment</li>
+<li>Determine where your job is running by using a command such as mjstat or squeue. For example:</li>
+</ol><pre>cab669% <span class="text-danger">mjstat</span> | grep joeuser
+331894   joeuser        2 pbatch    R            10:15  cab430
+
+cab669% <span class="text-danger">squeue</span> | grep user2
+329921    pbatch    pmin0   user2   R    9:39:59      4 cab[756,816-817,863]</pre><ul><li>Note that for multi-node, parallel MPI jobs
+<ul><li><span class="fixed">mjstat</span> only shows the node where the MPI manager task (srun) is running</li>
+<li><span class="fixed">squeue</span> will show all nodes, but the first node in the list is where the MPI manager process is running.</li>
+</ul></li>
+<li>Start TotalView alone: <span class="fixed">totalview</span></li>
+<li>When the <strong>Session Manager</strong> dialog box appears (below), select<strong> A running program (attach)</strong>:</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1565" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/batchdebug01-gif">batchDebug01.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Batch Debug" height="683" width="699" class="media-element file-default" data-delta="28" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/batchDebug01.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>An <strong>Attach to running program(s)</strong> dialog box will then appear (below):
+<ol><li>Click on the <strong>H+</strong> button to add a host</li>
+<li>An <strong>Add Host </strong>dialog box will appear. Enter the name of the node obtained from the <span class="fixed">mjstat </span>or <span class="fixed">squeue</span> command above. Then click <strong>OK</strong>.</li>
+</ol></li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1566" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/batchdebug02-gif">batchDebug02.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Batch Debug 2" height="639" width="889" class="media-element file-default" data-delta="29" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/batchDebug02.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>The contents of the <strong>Attach to running program(s)</strong> dialog box will change after a connection is made to the specified node (below):
+<ol><li>Click on the name of your executable in the process list. If it is an MPI job, click on the <span class="fixed">srun</span> process.</li>
+<li>Click on the <strong>Start Session</strong> button.</li>
+</ol></li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1567" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/batchdebug03-gif">batchDebug03.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="batch debug 3" height="639" width="889" class="media-element file-default" data-delta="30" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/batchDebug03.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>A <strong>Process Window </strong>will then appear with the selected executable now attached to TotalView. If you are running an MPI job, it will be the manager task. You can now debug as usual.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1568" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/batchdebug04-gif">batchDebug04.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="batch debug 4" height="856" width="812" class="media-element file-default" data-delta="31" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/batchDebug04.gif" /></div>
+
+  
+</div>
+</div>
+<table class="table table-bordered table-striped"><tr><th scope="col">
+<h2><a name="Topics_Not_Covered" id="Topics_Not_Covered"></a>Topics Not Covered</h2>
+</th>
+</tr></table><p>TotalView includes a number of other features and functions not covered in this tutorial. A partial list of these appears below. Please consult the TotalView Documentation for more information.</p>
+<ul><li>Most of the CLI is not covered</li>
+<li>Setting up remote debugging sessions</li>
+<li>Most platform specific information</li>
+<li>Debugging PVM / DPVM applications</li>
+<li>Debugging MPICH applications</li>
+<li>Debugging SHMEM applications</li>
+<li>Debugging UPC applications</li>
+<li>Memory debugging</li>
+<li>Replay engine</li>
+<li>Operating system features</li>
+<li>Visualizer Details</li>
+</ul><h3>Where would you like to go now?</h3>
+<p><a href="#Process_Thread_Groups">Back to the beginning of Part 3</a><br />Back to <a href="/totalview">Part 1: The Very Basics</a><br />Back to <a href="/totalview-part-2-common-functions">Part 2: Common Functions</a><br /> </p>
+<h2><a name="References_and_More_Information" id="References_and_More_Information"></a>References and More Information</h2>
+<p>The most useful documentation and reference material is from TotalView's vendor site. You can download this from the TotalView section of their website at <a href="https://www.roguewave.com">Rogue Wave Software, Inc.</a></p>
+<p>If you already have TotalView installed, the same documentation comes with the installation and is available from the install directory and by using TotalView's "Help" menu.</p>
+</div></div></div>    </div>
+  </div>
+</div>
+
+
+<!-- Needed to activate display suite support on forms -->
+  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                   		</div>
+                  </main>
+                </div>
+      		</div>
+    	</div>
+	</div>
+  	
+	
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 footer-top">
+
+                    <a class="llnl" href="https://www.llnl.gov/" target="_blank"><img src="/sites/all/themes/tid/images/llnl.png" alt="LLNL"></a>
+                    <p>
+                        Lawrence Livermore National Laboratory
+                        <br>7000 East Avenue • Livermore, CA 94550
+                    </p>
+                    <p>
+                        Operated by Lawrence Livermore National Security, LLC, for the
+                        <br>Department of Energy's National Nuclear Security Administration.
+                    </p>
+                    <div class="footer-top-logos">
+                        <a class="nnsa" href="https://www.energy.gov/nnsa/national-nuclear-security-administration" target="_blank"><img src="/sites/all/themes/tid/images/nnsa2.png" alt="NNSA"></a>
+                        <a class="doe" href="https://www.energy.gov/" target="_blank"><img src="/sites/all/themes/tid/images/doe_small.png" alt="U.S. DOE"></a>
+                        <a class="llns" href="https://www.llnsllc.com/" target="_blank"><img src="/sites/all/themes/tid/images/llns.png" alt="LLNS"></a>
+                	</div>
+
+
+
+                </div>
+                <div class="col-sm-12 footer-bottom">
+                	
+
+                    <span>UCRL-MI-131558  &nbsp;|&nbsp;&nbsp;</span><a href="https://www.llnl.gov/disclaimer" target="_blank">Privacy &amp; Legal Notice</a>	 &nbsp;|&nbsp;&nbsp; <a href="mailto:webmaster-comp@llnl.gov">Website Query</a> &nbsp;|&nbsp;&nbsp;<a href="/about-us/contact-us" >Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+  </body>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/jquery_update/replace/jquery/2.1/jquery.min.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-extend-3.4.0.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-html-prefilter-3.5.0-backport.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/drupal.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/extlink/extlink.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/jquery.flexslider.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/slide.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/lightbox2/js/lightbox.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/matomo/matomo.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _paq = _paq || [];(function(){var u=(("https:" == document.location.protocol) ? "https://analytics.llnl.gov/" : "http://analytics.llnl.gov/");_paq.push(["setSiteId", "149"]);_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setDoNotTrack", 1]);_paq.push(["trackPageView"]);_paq.push(["setIgnoreClasses", ["no-tracking","colorbox"]]);_paq.push(["enableLinkTracking"]);var d=document,g=d.createElement("script"),s=d.getElementsByTagName("script")[0];g.type="text/javascript";g.defer=true;g.async=true;g.src="https://hpc.llnl.gov/sites/default/files/matomo/piwik.js?qsohrw";s.parentNode.insertBefore(g,s);})();
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/bootstrap.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mobilemenu.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/custom.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mods.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"tid","theme_token":"gVEL-ZBOe1FHhsrzisk0N_8F5Qq49hMnBtQBalO4eIc","js":{"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/2.1\/jquery.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/contrib\/extlink\/extlink.js":1,"sites\/all\/themes\/tid\/js\/jquery.flexslider.js":1,"sites\/all\/themes\/tid\/js\/slide.js":1,"sites\/all\/modules\/contrib\/lightbox2\/js\/lightbox.js":1,"sites\/all\/modules\/contrib\/matomo\/matomo.js":1,"0":1,"sites\/all\/themes\/tid\/js\/bootstrap.js":1,"sites\/all\/themes\/tid\/js\/mobilemenu.js":1,"sites\/all\/themes\/tid\/js\/custom.js":1,"sites\/all\/themes\/tid\/js\/mods.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/book\/book.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/extlink\/extlink.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/lightbox2\/css\/lightbox.css":1,"sites\/all\/modules\/contrib\/print\/print_ui\/css\/print_ui.theme.css":1,"sites\/all\/themes\/tid\/css\/bootstrap.css":1,"sites\/all\/themes\/tid\/css\/flexslider.css":1,"sites\/all\/themes\/tid\/css\/system.menus.css":1,"sites\/all\/themes\/tid\/css\/style.css":1,"sites\/all\/themes\/tid\/font-awesome\/css\/font-awesome.css":1,"sites\/all\/themes\/tid\/css\/treewalk.css":1,"sites\/all\/themes\/tid\/css\/popup.css":1,"sites\/all\/themes\/tid\/css\/mods.css":1}},"lightbox2":{"rtl":0,"file_path":"\/(\\w\\w\/)public:\/","default_image":"\/sites\/all\/modules\/contrib\/lightbox2\/images\/brokenimage.jpg","border_size":10,"font_color":"000","box_color":"fff","top_position":"","overlay_opacity":"0.8","overlay_color":"000","disable_close_click":true,"resize_sequence":0,"resize_speed":400,"fade_in_speed":400,"slide_down_speed":600,"use_alt_layout":false,"disable_resize":false,"disable_zoom":false,"force_show_nav":false,"show_caption":true,"loop_items":false,"node_link_text":"View Image Details","node_link_target":false,"image_count":"Image !current of !total","video_count":"Video !current of !total","page_count":"Page !current of !total","lite_press_x_close":"press \u003Ca href=\u0022#\u0022 onclick=\u0022hideLightbox(); return FALSE;\u0022\u003E\u003Ckbd\u003Ex\u003C\/kbd\u003E\u003C\/a\u003E to close","download_link_text":"","enable_login":false,"enable_contact":false,"keys_close":"c x 27","keys_previous":"p 37","keys_next":"n 39","keys_zoom":"z","keys_play_pause":"32","display_image_size":"original","image_node_sizes":"()","trigger_lightbox_classes":"","trigger_lightbox_group_classes":"","trigger_slideshow_classes":"","trigger_lightframe_classes":"","trigger_lightframe_group_classes":"","custom_class_handler":0,"custom_trigger_classes":"","disable_for_gallery_lists":true,"disable_for_acidfree_gallery_lists":true,"enable_acidfree_videos":true,"slideshow_interval":5000,"slideshow_automatic_start":true,"slideshow_automatic_exit":true,"show_play_pause":true,"pause_on_next_click":false,"pause_on_previous_click":true,"loop_slides":false,"iframe_width":600,"iframe_height":400,"iframe_border":1,"enable_video":false,"useragent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64; trendictionbot0.5.0; trendiction search; http:\/\/www.trendiction.de\/bot; please let us know of any problems; web at trendiction.com) Gecko\/20170101 Firefox\/67.0"},"extlink":{"extTarget":0,"extClass":"ext","extLabel":"(link is external)","extImgClass":0,"extIconPlacement":0,"extSubdomains":1,"extExclude":".gov|.com|.org|.io|.be|.us|.edu","extInclude":"-int.llnl.gov|lc.llnl.gov|caas.llnl.gov|exchangetools.llnl.gov","extCssExclude":"","extCssExplicit":"","extAlert":"_blank","extAlertText":"This page is routing you to a page which requires extra authentication. You must have on-site or VPN access.\r\n\r\nPress OK to continue or cancel to return.\r\n\r\nIf this fails or times-out, you are not allowed access to the internal page or the server may be temporarily unavailable.\r\n\r\nIf you have an on-site or VPN account and are still having trouble, please send e-mail to lc-hotline@llnl.gov or call 925-422-4531 for further assistance.","mailtoClass":"mailto","mailtoLabel":"(link sends e-mail)"},"matomo":{"trackMailto":1},"urlIsAjaxTrusted":{"\/training\/tutorials\/totalview-part-3-debugging-parallel-programs":true}});
+//--><!]]>
+</script>
+</html>

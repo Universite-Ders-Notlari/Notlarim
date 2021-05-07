@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html  lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"b0f2e6793d",applicationID:"501478135"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<link rel="canonical" href="https://www.llnl.gov/disclaimer" />
+<meta name="description" content="Notice to Users
+Security Notice
+This Website is part of a Federal computer system used to accomplish Federal functions. Lawrence Livermore National Laboratory (LLNL) uses software programs to monitor this Website for security purposes to ensure it remains available to all users and to protect information in the system. By accessing this Website, you are expressly consenting to these monitoring activities." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="Notice to Users
+Security Notice
+This Website is part of a Federal computer system used to accomplish Federal functions. Lawrence Livermore National Laboratory (LLNL) uses software programs to monitor this Website for security purposes to ensure it remains available to all users and to protect information in the system. By accessing this Website, you are expressly consenting to these monitoring activities." />
+<meta name="twitter:site" content="@Livermore_Lab" />
+<meta name="twitter:title" content="Disclaimer" />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="im-release" content="LLNL-WEB-458451" />
+<link rel="shortcut icon" href="/themes/custom/sienna/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="revision" href="https://www.llnl.gov/disclaimer" />
+
+    <title>Disclaimer | Lawrence Livermore National Laboratory</title>
+    <link rel="stylesheet" media="all" href="/core/modules/system/css/components/align.module.css?qspefe" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/fieldgroup.module.css?qspefe" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/container-inline.module.css?qspefe" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/clearfix.module.css?qspefe" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/details.module.css?qspefe" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/hidden.module.css?qspefe" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/item-list.module.css?qspefe" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/js.module.css?qspefe" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/nowrap.module.css?qspefe" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/position-container.module.css?qspefe" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/progress.module.css?qspefe" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/reset-appearance.module.css?qspefe" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/resize.module.css?qspefe" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/sticky-header.module.css?qspefe" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/system-status-counter.css?qspefe" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/system-status-report-counters.css?qspefe" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/system-status-report-general-info.css?qspefe" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/tablesort.module.css?qspefe" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/tree-child.module.css?qspefe" />
+<link rel="stylesheet" media="all" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+<link rel="stylesheet" media="all" href="https://use.fontawesome.com/releases/v5.8.2/css/v4-shims.css" />
+<link rel="stylesheet" media="all" href="/modules/contrib/social_media_links/css/social_media_links.theme.css?qspefe" />
+<link rel="stylesheet" media="all" href="/modules/contrib/extlink/extlink.css?qspefe" />
+<link rel="stylesheet" media="all" href="/modules/contrib/webform/modules/webform_bootstrap/css/webform_bootstrap.css?qspefe" />
+<link rel="stylesheet" media="all" href="/modules/contrib/paragraphs/css/paragraphs.unpublished.css?qspefe" />
+<link rel="stylesheet" media="all" href="/themes/custom/sienna/css/3.4.1/bootstrap.css?qspefe" />
+<link rel="stylesheet" media="all" href="/themes/custom/sienna/css/style.css?qspefe" />
+<link rel="stylesheet" media="all" href="/themes/custom/sienna/css/paragraphs.css?qspefe" />
+<link rel="stylesheet" media="all" href="/themes/custom/sienna/css/hero_banner.css?qspefe" />
+<link rel="stylesheet" media="all" href="/themes/custom/sienna/css/news_article.css?qspefe" />
+<link rel="stylesheet" media="all" href="/themes/custom/sienna/css/ckeditor.css?qspefe" />
+<link rel="stylesheet" media="print" href="/themes/custom/sienna/css/print.css?qspefe" />
+
+    
+  </head>
+  <body class="path-node page-node-type-page navbar-is-fixed-top has-glyphicons">
+    <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+    </a>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    			
+		<header class="navbar navbar-default navbar-fixed-top" id="navbar" role="banner">
+        <div id="llnl-menu" >
+        <div class="container">
+            <ul class="llnl-nav">
+                <li><a href="https://www.llnl.gov/missions">Missions</a></li>
+                <li><a href="https://st.llnl.gov/">Research</a></li>
+                <li><a href="https://www.llnl.gov/doing-business">Doing Business</a></li>
+                <li><a href="https://www.llnl.gov/news">News</a></li>
+                <li><a href="https://www.llnl.gov/about">About</a></li>
+                <li><a href="https://careers.llnl.gov/">Careers</a></li>
+                <li><a href="https://www.llnl.gov/community">Community</a></li>
+            </ul>
+        </div>
+    </div>
+
+        <div class="container menu-wrap">
+        
+        <div class="llnl-logo-wrap">
+            <div id="llnl-logo">
+                <a href="https://www.llnl.gov"><img src="/themes/custom/sienna/assets/images/llnl-logo.png" alt="LLNL Logo" /></a>
+            </div>
+        </div>
+        <div class="nav-wrap">
+                        
+            <div class="navbar-header">
+                  <div class="region region-navigation">
+    <nav role="navigation" aria-labelledby="block-primary-menu-menu" id="block-primary-menu" data-block-plugin-id="menu_block:main">
+            
+  <h2 class="visually-hidden" id="block-primary-menu-menu">Primary Menu</h2>
+  
+
+        
+      <ul class="menu menu--main nav navbar-nav">
+                        <li class="expanded dropdown">
+        <a href="/missions" aria-label="Missions - Main Nav">Missions </a>
+                          <ul class="dropdown-menu">
+                        <li>
+        <a href="/missions/biosecurity" aria-label="Biosecurity - Main Nav" data-drupal-link-system-path="node/566">Biosecurity</a>
+                  </li>
+                        <li>
+        <a href="/missions/counterterrorism" aria-label="Counterterrorism - Main Nav" data-drupal-link-system-path="node/561">Counterterrorism</a>
+                  </li>
+                        <li>
+        <a href="/missions/defense" aria-label="Defense - Main Nav" data-drupal-link-system-path="node/556">Defense</a>
+                  </li>
+                        <li>
+        <a href="/missions/energy" aria-label="Energy - Main Nav" data-drupal-link-system-path="node/551">Energy</a>
+                  </li>
+                        <li>
+        <a href="/missions/intelligence" aria-label="Intelligence - Main Nav" data-drupal-link-system-path="node/546">Intelligence</a>
+                  </li>
+                        <li>
+        <a href="/missions/nonproliferation" aria-label="Nonproliferation - Main Nav" data-drupal-link-system-path="node/541">Nonproliferation</a>
+                  </li>
+                        <li>
+        <a href="/missions/science" aria-label="Science - Main Nav" data-drupal-link-system-path="node/536">Science</a>
+                  </li>
+                        <li>
+        <a href="/missions/weapons" aria-label="Weapons - Main Nav" data-drupal-link-system-path="node/531">Weapons</a>
+                  </li>
+        </ul>
+  
+            </li>
+                        <li class="expanded dropdown">
+        <a href="https://st.llnl.gov" aria-label="Science &amp; Technology - Main Nav">Science &amp; Technology </a>
+                          <ul class="dropdown-menu">
+                        <li>
+        <a href="https://st.llnl.gov/research" aria-label="Research - Main Nav">Research</a>
+                  </li>
+                        <li>
+        <a href="https://st.llnl.gov/news-center" aria-label="S&amp;T News - Main Nav">S&amp;T News</a>
+                  </li>
+                        <li>
+        <a href="https://st.llnl.gov/partnerships" aria-label="Partnerships - Main Nav">Partnerships</a>
+                  </li>
+                        <li>
+        <a href="https://st.llnl.gov/opportunities" aria-label="Opportunities - Main Nav">Opportunities</a>
+                  </li>
+        </ul>
+  
+            </li>
+                        <li class="expanded dropdown">
+        <a href="/programs" aria-label="Programs - Main Nav">Programs </a>
+                          <ul class="dropdown-menu">
+                        <li>
+        <a href="https://www-gs.llnl.gov/" aria-label="Global Security - Main Nav">Global Security</a>
+                  </li>
+                        <li>
+        <a href="https://lasers.llnl.gov/" aria-label="NIF &amp; Photon Science - Main Nav">NIF &amp; Photon Science</a>
+                  </li>
+                        <li>
+        <a href="https://wci.llnl.gov/" aria-label="Weapons &amp; Complex Integration - Main Nav">Weapons &amp; Complex Integration</a>
+                  </li>
+                        <li>
+        <a href="https://computing.llnl.gov/" aria-label="Computing - Main Nav">Computing</a>
+                  </li>
+                        <li>
+        <a href="https://engineering.llnl.gov/" aria-label="Engineering - Main Nav">Engineering</a>
+                  </li>
+                        <li>
+        <a href="https://pls.llnl.gov/" aria-label="Physical and Life Sciences - Main Nav">Physical and Life Sciences</a>
+                  </li>
+        </ul>
+  
+            </li>
+                        <li class="expanded dropdown">
+        <a href="/doing-business" aria-label="Doing Business - Main Nav">Doing Business </a>
+                          <ul class="dropdown-menu">
+                        <li>
+        <a href="/doing-business/economic-impact" aria-label="Economic Impact - Main Nav" data-drupal-link-system-path="node/736">Economic Impact</a>
+                  </li>
+                        <li>
+        <a href="http://hpcinnovationcenter.llnl.gov/" aria-label="HPC Innovation Center - Main Nav">HPC Innovation Center</a>
+                  </li>
+                        <li>
+        <a href="https://lvoc.org/" aria-label="Open Campus - Main Nav">Open Campus</a>
+                  </li>
+                        <li>
+        <a href="https://ipo.llnl.gov/" aria-label="Industrial Partnerships - Main Nav">Industrial Partnerships</a>
+                  </li>
+                        <li>
+        <a href="https://supplychain.llnl.gov/" aria-label="Supplier Resources - Main Nav">Supplier Resources</a>
+                  </li>
+        </ul>
+  
+            </li>
+                        <li class="expanded dropdown">
+        <a href="/news" aria-label="News - Main Nav">News </a>
+                          <ul class="dropdown-menu">
+                        <li>
+        <a href="/news/media-contacts" aria-label="Media Contacts - Main Nav" data-drupal-link-system-path="node/756">Media Contacts</a>
+                  </li>
+                        <li>
+        <a href="/news/media-library" aria-label="Media Library - Main Nav" data-drupal-link-system-path="node/666">Media Library</a>
+                  </li>
+                        <li>
+        <a href="/news/publications" aria-label="Publications - Main Nav" data-drupal-link-system-path="node/576">Publications</a>
+                  </li>
+                        <li>
+        <a href="/news/lab-report" aria-label="Lab Report - Main Nav" data-drupal-link-system-path="node/37616">Lab Report</a>
+                  </li>
+                        <li>
+        <a href="/news/social-media" aria-label="Social Media - Main Nav" data-drupal-link-system-path="node/671">Social Media</a>
+                  </li>
+                        <li>
+        <a href="/news/releases" aria-label="News Index - Main Nav" data-drupal-link-system-path="node/38696">News Index</a>
+                  </li>
+        </ul>
+  
+            </li>
+                        <li class="expanded dropdown">
+        <a href="/about" aria-label="About - Main Nav">About </a>
+                          <ul class="dropdown-menu">
+                        <li>
+        <a href="/about/organization" aria-label="Organization - Main Nav" data-drupal-link-system-path="node/701">Organization</a>
+                  </li>
+                        <li>
+        <a href="/about/management-and-sponsors" aria-label="Management and Sponsors - Main Nav" data-drupal-link-system-path="node/726">Management and Sponsors</a>
+                  </li>
+                        <li>
+        <a href="/about/history" aria-label="History - Main Nav" data-drupal-link-system-path="node/721">History</a>
+                  </li>
+                        <li>
+        <a href="/about/visiting" aria-label="Visiting - Main Nav" data-drupal-link-system-path="node/711">Visiting</a>
+                  </li>
+                        <li>
+        <a href="/about/directions" aria-label="Directions - Main Nav" data-drupal-link-system-path="node/661">Directions</a>
+                  </li>
+                        <li>
+        <a href="/about/protocol-and-special-events" aria-label="Protocol and Special Events - Main Nav" data-drupal-link-system-path="node/71">Protocol and Special Events</a>
+                  </li>
+                        <li>
+        <a href="/about/contact" aria-label="Contact - Main Nav" data-drupal-link-system-path="node/751">Contact</a>
+                  </li>
+        </ul>
+  
+            </li>
+                        <li class="expanded dropdown">
+        <a href="/join-our-team" aria-label="Join Our Team - Main Nav">Join Our Team </a>
+                          <ul class="dropdown-menu">
+                        <li>
+        <a href="/join-our-team/careers" aria-label="Careers - Main Nav" data-drupal-link-system-path="node/40596">Careers</a>
+                  </li>
+                        <li>
+        <a href="/join-our-team/culture-0" aria-label="Culture - Main Nav" data-drupal-link-system-path="node/40796">Culture</a>
+                  </li>
+                        <li>
+        <a href="/diversity" aria-label="Diversity - Main Nav" data-drupal-link-system-path="node/39671">Diversity</a>
+                  </li>
+        </ul>
+  
+            </li>
+                        <li class="expanded dropdown">
+        <a href="/community" aria-label="Community - Main Nav">Community </a>
+                          <ul class="dropdown-menu">
+                        <li>
+        <a href="/community/community-giving" aria-label="Community Giving - Main Nav" data-drupal-link-system-path="node/746">Community Giving</a>
+                  </li>
+                        <li>
+        <a href="/community/discovery-center" aria-label="Discovery Center - Main Nav" data-drupal-link-system-path="node/676">Discovery Center</a>
+                  </li>
+                        <li>
+        <a href="https://education.llnl.gov/" aria-label="Science Education - Main Nav">Science Education</a>
+                  </li>
+                        <li>
+        <a href="https://enviroinfo.llnl.gov/" aria-label="Environment, Safety, and Health - Main Nav">Environment, Safety, and Health</a>
+                  </li>
+                        <li>
+        <a href="/community/retiree-and-employee-resources" aria-label="Retiree and Employee Resources - Main Nav" data-drupal-link-system-path="node/581">Retiree and Employee Resources</a>
+                  </li>
+                        <li>
+        <a href="/community/tours" aria-label="Tours - Main Nav" data-drupal-link-system-path="node/771">Tours</a>
+                  </li>
+                        <li>
+        <a href="/community/site-wide-environmental-impact-statement-sweis" title="Site Wide Environmental Impact Statement" aria-label="SWEIS - Main Nav" data-drupal-link-system-path="node/39261">SWEIS</a>
+                  </li>
+        </ul>
+  
+            </li>
+        </ul>
+  
+
+  </nav>
+
+  </div>
+
+                                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                            </div>
+
+                                        <div id="navbar-collapse" class="navbar-collapse collapse">
+                    <div id="search-button">
+                        <section data-drupal-selector="llnl-header-search-form-3" data-block-plugin-id="header_search_block" class="block block-llnl-search block-header-search-block clearfix">
+  
+    
+
+      <form action="/llnl_search" method="post" id="llnl-header-search-form--3" accept-charset="UTF-8">
+  <div class="search-form">
+    <div id="edit-description--3" class="form-item js-form-item form-type-item js-form-type-item form-item-description js-form-item-description form-no-label form-group">
+  
+  
+  
+
+  
+  
+  </div>
+<div class="form-group form-group-search has-feedback"><div class="sr-only">Search</div><div class="form-item js-form-item form-type-textfield js-form-type-textfield form-item-googlesearchterm js-form-item-googlesearchterm form-no-label form-group">
+  
+  
+  <input aria-label="Search" title="Search" data-drupal-selector="edit-googlesearchterm" class="form-text form-control" type="text" id="edit-googlesearchterm--3" name="googlesearchterm" value="" size="60" maxlength="128" />
+
+  
+  
+  </div>
+<span class="glyphicon glyphicon-search form-control-feedback"></span></div><input data-drupal-selector="edit-searchspace" type="hidden" name="searchspace" value="site" /><button class="block-btn button js-form-submit form-submit btn-primary btn icon-before" data-drupal-selector="edit-submit" type="submit" id="edit-submit--3" name="op" value="Search"><span class="icon glyphicon glyphicon-search" aria-hidden="true"></span>
+Search</button><input autocomplete="off" data-drupal-selector="form-u1ghgelzenfjfqzerdsezjbyblugh4nggooaoxvjrvg" type="hidden" name="form_build_id" value="form-U1gHgELzenFJfQzeRdSeZjbyblUGh4NGgOOAOXvjRVg" /><input data-drupal-selector="edit-llnl-header-search-form-3" type="hidden" name="form_id" value="llnl_header_search_form" />
+</div>
+</form>
+
+  </section>
+
+
+                    </div>
+                      <div class="region region-navigation-collapsible">
+    <nav role="navigation" aria-labelledby="block-mobile-menu-menu" id="block-mobile-menu" data-block-plugin-id="menu_block:main">
+            
+  <h2 class="visually-hidden" id="block-mobile-menu-menu">Mobile Menu</h2>
+  
+
+        <div class="panel panel-default">
+	<div class="content panel-body">
+		<h5>Site Menu</h5>
+
+      <ul class="menu menu--mobile nav navbar-nav">
+			                    <li>
+        <a href="/missions" aria-label="Missions - Mobile Nav" data-drupal-link-system-path="node/571">Missions</a>
+                  </li>
+                        <li>
+        <a href="https://st.llnl.gov" aria-label="Science &amp; Technology - Mobile Nav">Science &amp; Technology</a>
+                  </li>
+                        <li>
+        <a href="/programs" aria-label="Programs - Mobile Nav" data-drupal-link-system-path="node/21">Programs</a>
+                  </li>
+                        <li>
+        <a href="/doing-business" aria-label="Doing Business - Mobile Nav" data-drupal-link-system-path="node/651">Doing Business</a>
+                  </li>
+                        <li>
+        <a href="/news" aria-label="News - Mobile Nav" data-drupal-link-system-path="node/9886">News</a>
+                  </li>
+                        <li>
+        <a href="/about" aria-label="About - Mobile Nav" data-drupal-link-system-path="node/681">About</a>
+                  </li>
+                        <li>
+        <a href="/join-our-team" aria-label="Join Our Team - Mobile Nav" data-drupal-link-system-path="node/40586">Join Our Team</a>
+                  </li>
+                        <li>
+        <a href="/community" aria-label="Community - Mobile Nav" data-drupal-link-system-path="node/586">Community</a>
+                  </li>
+    		</ul>
+  
+
+
+	<div id="llnl-mobile-menu" >
+		<h5>LLNL Menu</h5>
+		<ul>
+			<li><a href="https://www.llnl.gov/missions">Missions</a></li>
+			<li><a href="https://st.llnl.gov/">Research</a></li>
+			<li><a href="https://www.llnl.gov/doing-business">Doing Business</a></li>
+			<li><a href="https://www.llnl.gov/news">News</a></li>
+			<li><a href="https://www.llnl.gov/about">About</a></li>
+			<li><a href="https://careers.llnl.gov/">Careers</a></li>
+			<li><a href="https://www.llnl.gov/community">Community</a></li>
+		</ul>
+	</div>
+
+	</div>
+</div>
+
+  </nav>
+
+  </div>
+
+                </div>
+                                </div>
+    </div>
+
+    </header>
+
+	
+  <div role="main" class="main-container container js-quickedit-main-content">
+    <div class="row">
+
+						
+						
+						      <section class="col-sm-12">
+													            <div class="highlighted">  <div class="region region-highlighted">
+        <ol class="breadcrumb">
+          <li >
+                  <a href="/">Home</a>
+              </li>
+          <li  class="active">
+                  Disclaimer
+              </li>
+      </ol>
+
+
+  </div>
+</div>
+									
+																			
+									
+								          <a id="main-content"></a>
+          <div id="onelab-content">
+						  <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>    <h1 class="page-header"><span>Disclaimer</span>
+</h1>
+
+<article role="article" about="/disclaimer" class="page full clearfix">
+
+  
+    
+
+  
+  <div class="content">
+    
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"><h2 class="text-center">Notice to Users</h2>
+<h3>Security Notice</h3>
+<p>This Website is part of a Federal computer system used to accomplish Federal functions. Lawrence Livermore National Laboratory (LLNL) uses software programs to monitor this Website for security purposes to ensure it remains available to all users and to protect information in the system. By accessing this Website, you are expressly consenting to these monitoring activities.</p>
+<p>Unauthorized attempts to defeat or circumvent security features, to use the system for other than intended purposes, to deny service to authorized users, to access, obtain, alter, damage, or destroy information, or otherwise to interfere with the system or its operation is prohibited. Evidence of such acts may be disclosed to law enforcement authorities and result in criminal prosecution under the Computer Fraud and Abuse Act of 1986 and the National Information Infrastructure Protection Act of 1996, codified at section 1030 of Title 18 of the United States Code, or other applicable criminal laws.</p>
+<h3>Disclaimers</h3>
+<p><strong>Disclaimer of Liability</strong></p>
+<p>With respect to documents available from this server, neither the U.S. government nor the Lawrence Livermore National Security, LLC, nor any of their employees, makes any warranty, express or implied, including the warranties of merchantability and fitness for a particular purpose, or assumes any legal liability or responsibility for the accuracy, completeness, or usefulness of any information, apparatus, product, or process disclosed, or represents that its use would not infringe privately owned rights.</p>
+<p><strong>Disclaimer of Endorsement</strong></p>
+<p>Reference herein to any specific commercial products, process, or service by trade name, trademark, manufacturer, or otherwise, does not necessarily constitute or imply its endorsement, recommendation, or favoring by the U.S. government or the Lawrence Livermore National Security, LLC. The views and opinions of authors expressed herein do not necessarily state or reflect those of the U.S. government or the Lawrence Livermore National Security, LLC, and shall not be used for advertising or product endorsement purposes.</p>
+<p><strong>Copyright Status</strong></p>
+<p>LLNL-authored documents including, but not limited to, articles, photographs, drawings, and other information subsisting in text, images, and/or other media, are sponsored by the U.S. Department of Energy under Contract DE-AC52-07NA27344. Accordingly, the U.S. government retains a nonexclusive, royalty-free license to publish or reproduce these documents, or allow others to do so, for U.S. government purposes. All documents available from this server may be protected under the U.S. and Foreign Copyright Laws. Permission to reproduce may be required.</p>
+<p>LLNL is not responsible for the contents of any off-site pages referenced.</p>
+<p><strong>Privacy Notice</strong></p>
+<p>LLNL utilizes web measurement technology in order to improve this website and provide a better user experience for customers. The Office of Management and Budget (OMB) classifies this as a Tier 2 usage, since LLNL is utilizing a multi-session web measurement technology that does not collect any personally identifiable information (PII).  This technology anonymously tracks how visitors interact with llnl.gov, including where they came from, what they did on the site, and whether they completed any pre-determined tasks while on the site.</p>
+<p>This website uses Piwik open analytics technology to collect information used to optimize this website; help determine top tasks, improve user interface and diversify content offerings to meet the needs of customers. No personally identifiable information is collected, so the anonymity of the end user is protected.  The measurement data that is collected is only retained for as long as is needed for proper analysis and optimization of the website and is not shared with anyone beyond the support staff to this website, except when required by law enforcement investigation.</p>
+<p>Since disabling this web measurement technology requires modifying individual browser settings, it is enabled by default. If you wish to opt-out, you can read <a href="https://www.usa.gov/optout_instructions.shtml">step-by-step instructions for changing your settings</a>. In addition, Piwik provides a mechanism that allows you to opt-out of all Piwik analytics measurements.</p>
+<iframe title="Disclaimer" style="border: 0; width: 100%;" src="https://analytics.llnl.gov/index.php?module=CustomOptOut&amp;action=optOut&amp;idSite=1&amp;language=en"></iframe>
+<p><strong>Comments Sent by E-Mail</strong></p>
+<p>You may choose to provide personal information, as in an email message containing your comments or questions. This information is used to improve service to you or to respond to your request. There are times when your message is forwarded, as email, to other LLNL employees who may be better able to help you. Except for authorized law enforcement investigations, LLNL does not share email with any other outside organizations.</p>
+</div>
+      
+  </div>
+
+</article>
+
+  </div>
+
+          </div>
+				      </section>
+
+						    </div>
+  </div>
+
+            <footer class="footer" role="contentinfo">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                	
+<div class="row">
+			
+		
+													
+		<div class="col-sm-3 col-xs-12 footer-column first">
+			  <div class="paragraph paragraph--type--footer-column paragraph--view-mode--default">
+          
+            <div class="field field--name-field-footer-column-content field--type-entity-reference-revisions field--label-hidden field--item"><div class="clearfix footer-llnl-links">
+	<h4>LLNL.GOV</h4>
+	<ul>
+		<li><a href="https://www.llnl.gov/missions" title="Missions" target="_blank">Missions</a></li>
+		<li><a href="https://st.llnl.gov" title="Science &amp; Technology" target="_blank">Science &amp; Technology</a></li>
+		<li><a href="https://www.llnl.gov/programs" title="Programs" target="_blank">Programs</a></li>
+		<li><a href="https://www.llnl.gov/doing-business" title="Doing Business" target="_blank">Doing Business</a></li>
+		<li><a href="https://www.llnl.gov/news" title="News" target="_blank">News</a></li>
+		<li><a href="https://www.llnl.gov/about" title="About" target="_blank">About</a></li>
+		<li><a href="https://careers.llnl.gov" title="Careers" target="_blank">Careers</a></li>
+		<li><a href="https://www.llnl.gov/community" title="Community" target="_blank">Community</a></li>
+	</ul>
+</div>
+</div>
+      
+      </div>
+
+		</div>
+			
+		
+													
+		<div class="col-sm-3 col-xs-12 footer-column first footer-column mid">
+			  <div class="paragraph paragraph--type--footer-column paragraph--view-mode--default">
+          
+            <div class="field field--name-field-footer-column-content field--type-entity-reference-revisions field--label-hidden field--item"><div class="clearfix footer-mission-areas">
+	<h4>PROGRAMS</h4>
+	<ul>
+		<li><a href="https://wci.llnl.gov" title="Weapons" target="_blank">Weapons</a></li>
+		<li><a href="https://www-gs.llnl.gov/" title="Global Security" target="_blank">Global Security</a></li>
+		<li><a href="https://lasers.llnl.gov" title="Lasers" target="_blank">Lasers</a></li>
+		<li><a href="https://pls.llnl.gov/" title="Physical and Life Sciences" target="_blank">Physical and Life Sciences</a></li>
+		<li><a href="https://engineering.llnl.gov/" title="Engineering" target="_blank">Engineering</a></li>
+		<li><a href="https://computing.llnl.gov/" title="Computation" target="_blank">Computing</a></li>
+	</ul>
+</div>
+</div>
+      
+      </div>
+
+		</div>
+			
+		
+													
+		<div class="col-sm-3 col-xs-12 footer-column first footer-column mid footer-column mid">
+			  <div class="paragraph paragraph--type--footer-column paragraph--view-mode--default">
+          
+            <div class="field field--name-field-footer-column-content field--type-entity-reference-revisions field--label-hidden field--item"><div class="clearfix footer-about-llnl">
+	<h4>RESOURCES</h4>
+	<ul>
+		<li><a href="https://www.llnl.gov/about/contact" title="Contact" target="_blank">Contact</a></li>
+		<li><a href="https://www.llnl.gov/about/visiting" title="Visiting" target="_blank">Visiting</a></li>
+		<li><a href="https://www.llnl.gov/about/emergency-communication" title="Emergency Communication" target="_blank">Emergency Communication</a></li>
+		<li><a href="https://fcoi.llnl.gov/" title="Research Ethics" target="_blank">Research Ethics</a></li>
+		<li><a href="https://www.llnl.gov/disclaimer" title="Privacy" target="_blank">Privacy</a></li>
+		<li><a href="https://www.llnl.gov/copyright-and-reuse" title="Copyright and Reuse" target="_blank">Copyright and Reuse</a></li>
+		<li><a href="https://www.llnl.gov/sitemap" title="Site Map" target="_blank">Site Map</a></li>
+	</ul>
+</div>
+</div>
+      
+      </div>
+
+		</div>
+			
+		
+													
+		<div class="col-sm-3 col-xs-12 footer-column first footer-column mid footer-column mid footer-column last">
+			  <div class="paragraph paragraph--type--footer-column paragraph--view-mode--default">
+          
+            <div class="field field--name-field-footer-column-content field--type-entity-reference-revisions field--label-hidden field--item"><div class="clearfix footer-social-media">
+	<h4>STAY CONNECTED</h4>
+	
+		<a href="https://www.facebook.com/livermore.lab" target="_blank">
+			<img src="/themes/custom/sienna/assets/images/facebook.png" class="social-icon" alt="Facebook" />
+		</a>
+
+		
+		<a href="https://www.instagram.com/livermore_lab/" target="_blank">
+			<img src="/themes/custom/sienna/assets/images/instagram.png" class="social-icon" alt="Instagram" />
+		</a>
+
+		
+		<a href="https://www.linkedin.com/company/4994?trk=tyah" target="_blank">
+			<img src="/themes/custom/sienna/assets/images/linkedin.png" class="social-icon" alt="Linkedin" />
+		</a>
+
+		
+		<a href="https://www.twitter.com/Livermore_Lab" target="_blank">
+			<img src="/themes/custom/sienna/assets/images/twitter.png" class="social-icon" alt="Twitter" />
+		</a>
+
+		
+		<a href="https://www.youtube.com/user/LivermoreLab" target="_blank">
+			<img src="/themes/custom/sienna/assets/images/youtube.png" class="social-icon" alt="Youtube" />
+		</a>
+
+		
+		<a href="https://www.glassdoor.com/Reviews/Lawrence-Livermore-National-Laboratory-Reviews-E35235.htm" target="_blank">
+			<img src="/themes/custom/sienna/assets/images/glassdoor.png" class="social-icon" alt="Glassdoor" />
+		</a>
+
+	</div>
+</div>
+      
+      </div>
+
+		</div>
+	</div>
+
+              </div>
+            </div>
+          </div>
+        </footer>
+    
+
+<div class="footer-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-4 col-xs-12">
+                <a class="llnl" href="https://www.llnl.gov/" target="_blank"><img src="/themes/custom/sienna/assets/images/llnl-logo-text.png" alt="LLNL"></a>
+            </div>
+
+            <div class="col-lg-5 col-sm-4 col-xs-12">
+                <p>Lawrence Livermore National Laboratory</p>
+                <p>7000 East Avenue • Livermore, CA 94550</p>
+                <p>Operated by the Lawrence Livermore National Security, LLC for the
+                    Department of Energy's National Nuclear Security Administration</p>
+            </div>
+
+            <div class="col-lg-4 col-sm-4 col-xs-12">
+                <a class="llns" href="http://www.llnsllc.com/" target="_blank" rel="noopener noreferrer"><img src="/themes/custom/sienna/assets/images/llns.png" alt="LLNS"></a>
+                <a class="doe" href="https://www.energy.gov/" target="_blank" rel="noopener noreferrer"><img src="/themes/custom/sienna/assets/images/doe_small.png" alt="U.S. DOE"></a>
+                <a class="nnsa" href="https://www.energy.gov/nnsa/national-nuclear-security-administration/" target="_blank" rel="noopener noreferrer"><img src="/themes/custom/sienna/assets/images/nnsa.png" alt="NNSA"></a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <span class="disclaimer">LLNL-WEB-458451&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://www.llnl.gov/disclaimer" target="_blank">Privacy &amp; Legal Notice</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+  </div>
+
+    
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/646","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"data":{"extlink":{"extTarget":false,"extTargetNoOverride":false,"extNofollow":false,"extNoreferrer":false,"extFollowNoOverride":false,"extClass":"ext","extLabel":"(link is external)","extImgClass":false,"extSubdomains":true,"extExclude":"","extInclude":"","extCssExclude":"ul.menu, #block-secondary-menu","extCssExplicit":"","extAlert":false,"extAlertText":"This link will take you to an external web site. We are not responsible for their content.","mailtoClass":"mailto","mailtoLabel":"(link sends email)","extUseFontAwesome":false,"extIconPlacement":"append","extFaLinkClasses":"fa fa-external-link","extFaMailtoClasses":"fa fa-envelope-o","whitelistedDomains":[]}},"bootstrap":{"forms_has_error_value_toggle":1,"modal_animation":1,"modal_backdrop":"true","modal_focus_input":1,"modal_keyboard":1,"modal_select_text":1,"modal_show":1,"modal_size":"","popover_enabled":1,"popover_animation":1,"popover_auto_close":1,"popover_container":"body","popover_content":"","popover_delay":"0","popover_html":0,"popover_placement":"right","popover_selector":"","popover_title":"","popover_trigger":"click","tooltip_enabled":1,"tooltip_animation":1,"tooltip_container":"body","tooltip_delay":"0","tooltip_html":0,"tooltip_placement":"auto left","tooltip_selector":"","tooltip_trigger":"hover"},"ajaxTrustedUrl":{"\/llnl_search":true},"ajax":[],"user":{"uid":0,"permissionsHash":"f52abfb673d26d665eb4f84f094d9648b7d4cc10577f7e9de657ff127a9e3538"}}</script>
+<script src="/core/assets/vendor/jquery/jquery.min.js?v=3.5.1"></script>
+<script src="/core/assets/vendor/underscore/underscore-min.js?v=1.11.0"></script>
+<script src="/core/assets/vendor/jquery-once/jquery.once.min.js?v=2.2.3"></script>
+<script src="/core/misc/drupalSettingsLoader.js?v=9.1.7"></script>
+<script src="/core/misc/drupal.js?v=9.1.7"></script>
+<script src="/core/misc/drupal.init.js?v=9.1.7"></script>
+<script src="/themes/contrib/bootstrap/js/drupal.bootstrap.js?qspefe"></script>
+<script src="/themes/contrib/bootstrap/js/attributes.js?qspefe"></script>
+<script src="/themes/contrib/bootstrap/js/theme.js?qspefe"></script>
+<script src="/themes/custom/sienna/js/3.4.1/bootstrap.js?v=1.x"></script>
+<script src="/themes/custom/sienna/js/main.js?v=1.x"></script>
+<script src="/themes/custom/sienna/js/smooth-scroll.polyfills.min.js?v=1.x"></script>
+<script src="/themes/custom/sienna/js/anchor-scroll-external.js?v=1.x"></script>
+<script src="/modules/contrib/extlink/extlink.js?v=9.1.7"></script>
+<script src="/modules/contrib/webform/js/webform.behaviors.js?v=9.1.7"></script>
+<script src="/core/misc/states.js?v=9.1.7"></script>
+<script src="/themes/contrib/bootstrap/js/misc/states.js?qspefe"></script>
+<script src="/modules/contrib/webform/js/webform.states.js?v=9.1.7"></script>
+<script src="/modules/contrib/webform/modules/webform_bootstrap/js/webform_bootstrap.states.js?v=9.1.7"></script>
+<script src="/themes/contrib/bootstrap/js/popover.js?qspefe"></script>
+<script src="/themes/contrib/bootstrap/js/tooltip.js?qspefe"></script>
+<script src="https://analytics.llnl.gov/matomo.js"></script>
+
+       <script>
+      var siteName = document.domain;
+      var siteID;
+      var user = "Anonymous";
+
+      //builds a function that will provide a cached copy of the tracker for a given ID
+      function cached_tracker_generator(id) {
+          return function() {
+              var tracker = null;
+              return function(){
+                  if (tracker === null) {
+                      tracker = Piwik.getTracker("https://analytics.llnl.gov/matomo.php", id);
+                  }
+                  return tracker;
+              }
+          }();
+      }
+
+      var get_global_tracker = cached_tracker_generator(1);
+
+      function initial_tracking(error_message) {
+          var current_path = location.pathname;
+          var search = false;
+          current_path = current_path.split("/");
+          if (current_path.length > 1) {
+              if (current_path[1] == "llnl_search") {
+                  search = true;
+              }
+          }
+          try {
+              var llnl = get_global_tracker();
+              llnl.setCustomVariable(1, "drupal", window.location.hostname, "visit");
+              llnl.enableLinkTracking();
+              if (!search) {
+                  llnl.trackPageView();
+              }
+              if (error_message !== undefined) {
+                  llnl.setCustomVariable(1, "error", error_message, "page");
+              }
+          } catch(err){}
+
+          try {
+              jQuery.getJSON(
+                  "https://analytics.llnl.gov" + "/get_id.php?name=" + siteName + "&callback=?",
+                  function (data){
+                      if (!isNaN(data.id)) {
+                          siteID = data.id;
+                          var get_local_tracker = cached_tracker_generator(siteID);
+                          var site = get_local_tracker();
+                          site.enableLinkTracking();
+                          if (!search) {
+                              site.trackPageView();
+                          }
+                          if (user !== "Anonymous" && user !== "") {
+                              site.setUserId(user);
+                          }
+                          if (error_message !== undefined) {
+                              site.setCustomVariable(1, "error", error_message, "page");
+                          }
+                      }
+                  }
+              );
+          } catch(err){}
+      }
+
+            initial_tracking();
+        </script>
+  <noscript>
+    <p>
+      <img src="https://analytics.llnl.gov/matomo.php?idsite=1" style="border:0" alt="" />
+    </p>
+  </noscript>
+        <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"b0f2e6793d","applicationID":"501478135","transactionName":"NVZXZRBQWUEEWxVQWQwcdFIWWFhcSnwTTEYDX2lfDVVSbiZXD01EDV9ZVBBteV0BXTdQUxVwWl8WQ1heCV0TFAgUWlBG","queueTime":0,"applicationTime":1803,"atts":"GRFUE1hKSk8=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

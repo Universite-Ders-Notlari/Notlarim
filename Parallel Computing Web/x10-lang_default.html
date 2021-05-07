@@ -1,0 +1,5012 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>The X10 Programming Language</title>
+
+    
+    <meta name="description" content="X10 programming language">
+    
+
+    
+    <meta name="keywords" content="X10,X10 Language,parallelism,parallel programming,programming language,X10 programming language,MPI,multicore,scale out,partitioned global address space,PGAS">
+    
+
+
+  <link rel="stylesheet" href="/css/theme/grid-12.css" type="text/css" />
+  <link rel="stylesheet" href="/css/theme/gantry.css" type="text/css" />
+  <link rel="stylesheet" href="/css/theme/joomla.css" type="text/css" />
+  <link rel="stylesheet" href="/css/theme/template.css" type="text/css" />
+  <link rel="stylesheet" href="/css/theme/typography.css" type="text/css" />
+  <link rel="stylesheet" href="/css/theme/fusionmenu.css" type="text/css" />
+
+  <link rel="stylesheet" href="/css/main.css">
+
+  <link rel="canonical" href="http://x10-lang.org/">
+
+  <script src="/js/mootools-core.js" type="text/javascript"></script>
+  <script src="/js/core.js" type="text/javascript"></script>
+  <script src="/js/caption.js" type="text/javascript"></script>
+  <script src="/js/mootools-more.js" type="text/javascript"></script>
+  <script src="/js/gantry-buildspans.js" type="text/javascript"></script>
+  <script src="/js/browser-engines.js" type="text/javascript"></script>
+  <script src="/js/fusion.js" type="text/javascript"></script>
+  <script src="/js/fusion.js" type="text/javascript"></script>
+  <script src="/js/fusionstart.js" type="text/javascript"></script>
+  
+
+</head>
+
+<body class="font-family-helvetica font-size-is-default menu-type-fusionmenu col12">
+
+  <!--    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">X10: Performance and Productivity at Scale</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/articles/1.html">Introducing X10 Old</a>
+          
+        
+          
+          <a class="page-link" href="/articles/10.html">X10 API</a>
+          
+        
+          
+          <a class="page-link" href="/articles/100.html">X10 Workshop at PLDI'11</a>
+          
+        
+          
+          <a class="page-link" href="/articles/101.html">Directed Graph and Breadth-First Search</a>
+          
+        
+          
+          <a class="page-link" href="/articles/102.html">Concurrency Types for X10: Race-freedom, atomicity and determinism</a>
+          
+        
+          
+          <a class="page-link" href="/articles/103.html">Compute Pi, Monte Carlo Method using Places &amp; Threads</a>
+          
+        
+          
+          <a class="page-link" href="/articles/104.html">File I/O </a>
+          
+        
+          
+          <a class="page-link" href="/articles/105.html">Directed Graph, Depth First Search</a>
+          
+        
+          
+          <a class="page-link" href="/articles/106.html">Simpsons Rule</a>
+          
+        
+          
+          <a class="page-link" href="/articles/107.html">Array Builder</a>
+          
+        
+          
+          <a class="page-link" href="/articles/108.html">At Expression</a>
+          
+        
+          
+          <a class="page-link" href="/articles/109.html">Atomic Cell</a>
+          
+        
+          
+          <a class="page-link" href="/articles/11.html">Hello World</a>
+          
+        
+          
+          <a class="page-link" href="/articles/110.html">Atomic Queue</a>
+          
+        
+          
+          <a class="page-link" href="/articles/111.html">Finish</a>
+          
+        
+          
+          <a class="page-link" href="/articles/112.html">X10 at SPLASH!</a>
+          
+        
+          
+          <a class="page-link" href="/articles/113.html">X10 Programmer's Guide</a>
+          
+        
+          
+          <a class="page-link" href="/articles/114.html">ICSE 2011 </a>
+          
+        
+          
+          <a class="page-link" href="/articles/115.html">﻿﻿﻿X10 2.1.1 Released </a>
+          
+        
+          
+          <a class="page-link" href="/articles/116.html">X10 Workshop at PLDI</a>
+          
+        
+          
+          <a class="page-link" href="/articles/118.html">Jens Palsberg (UCLA) on X10 at Splash 2010</a>
+          
+        
+          
+          <a class="page-link" href="/articles/119.html">Eli Tilevich (Virginia Tech) on X10 at Splash 2010</a>
+          
+        
+          
+          <a class="page-link" href="/articles/12.html">Async Expression</a>
+          
+        
+          
+          <a class="page-link" href="/articles/120.html">Daniel Frampton (ANU) on X10 at Splash 2010</a>
+          
+        
+          
+          <a class="page-link" href="/articles/121.html">Tetsu Soh (Univ of Tokyo) on Ruby &amp; X10 at Splash 2010</a>
+          
+        
+          
+          <a class="page-link" href="/articles/122.html">X10 Releases</a>
+          
+        
+          
+          <a class="page-link" href="/articles/123.html">Programmer's Guide</a>
+          
+        
+          
+          <a class="page-link" href="/articles/124.html">X10 Jeopardy  Contest Winner Is Chris Bunch</a>
+          
+        
+          
+          <a class="page-link" href="/articles/125.html">X10 Release 1.7.1</a>
+          
+        
+          
+          <a class="page-link" href="/articles/126.html">X10 Release 1.7.2 </a>
+          
+        
+          
+          <a class="page-link" href="/articles/127.html">X10 Release 1.7.3</a>
+          
+        
+          
+          <a class="page-link" href="/articles/128.html">X10 Release 1.7.4</a>
+          
+        
+          
+          <a class="page-link" href="/articles/129.html">X10 Release 1.7.5</a>
+          
+        
+          
+          <a class="page-link" href="/articles/13.html">Advanced Example 1</a>
+          
+        
+          
+          <a class="page-link" href="/articles/130.html">X10 Release 1.7.6</a>
+          
+        
+          
+          <a class="page-link" href="/articles/131.html">X10 Release 1.7.7</a>
+          
+        
+          
+          <a class="page-link" href="/articles/132.html">X10 Release 2.0.0</a>
+          
+        
+          
+          <a class="page-link" href="/articles/133.html">X10 Release 2.0.1</a>
+          
+        
+          
+          <a class="page-link" href="/articles/134.html">X10 Release 2.0.2</a>
+          
+        
+          
+          <a class="page-link" href="/articles/135.html">X10 Release 2.0.3</a>
+          
+        
+          
+          <a class="page-link" href="/articles/136.html">X10 Release 2.0.4</a>
+          
+        
+          
+          <a class="page-link" href="/articles/137.html">X10 Release 2.0.5</a>
+          
+        
+          
+          <a class="page-link" href="/articles/138.html">X10 Release 2.0.5.1</a>
+          
+        
+          
+          <a class="page-link" href="/articles/139.html">X10 Release 2.0.6</a>
+          
+        
+          
+          <a class="page-link" href="/articles/14.html">HPC Challenge 1</a>
+          
+        
+          
+          <a class="page-link" href="/articles/140.html">X10 Release 2.1.0</a>
+          
+        
+          
+          <a class="page-link" href="/articles/141.html">X10 Release 2.1.1</a>
+          
+        
+          
+          <a class="page-link" href="/articles/142.html">Making an X10 Release</a>
+          
+        
+          
+          <a class="page-link" href="/articles/143.html">X10 Release 2.1.2</a>
+          
+        
+          
+          <a class="page-link" href="/articles/144.html">PLDI Workshop</a>
+          
+        
+          
+          <a class="page-link" href="/articles/146.html">X10 Release 2.0.5.1</a>
+          
+        
+          
+          <a class="page-link" href="/articles/149.html">X10 2.1.2 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/15.html">HPC Challenge 2</a>
+          
+        
+          
+          <a class="page-link" href="/articles/150.html">Simple Snippets</a>
+          
+        
+          
+          <a class="page-link" href="/articles/151.html">Assorted Examples</a>
+          
+        
+          
+          <a class="page-link" href="/articles/152.html">Videos</a>
+          
+        
+          
+          <a class="page-link" href="/articles/154.html">Frequently Asked Questions</a>
+          
+        
+          
+          <a class="page-link" href="/articles/155.html">X10 DT (IDE)</a>
+          
+        
+          
+          <a class="page-link" href="/articles/156.html">X10DT Release List</a>
+          
+        
+          
+          <a class="page-link" href="/articles/157.html">X10+DT Release 2.1.2</a>
+          
+        
+          
+          <a class="page-link" href="/articles/159.html">Accepted Papers</a>
+          
+        
+          
+          <a class="page-link" href="/articles/16.html">Benchmark 1</a>
+          
+        
+          
+          <a class="page-link" href="/articles/160.html">SC2010 Tutorial Materials</a>
+          
+        
+          
+          <a class="page-link" href="/articles/166.html">X10 Innovation Awards</a>
+          
+        
+          
+          <a class="page-link" href="/articles/169.html">X10DT Development Setup</a>
+          
+        
+          
+          <a class="page-link" href="/articles/17.html">Benchmark 2</a>
+          
+        
+          
+          <a class="page-link" href="/articles/170.html">Front Page Intro</a>
+          
+        
+          
+          <a class="page-link" href="/articles/171.html">X10'11 Program</a>
+          
+        
+          
+          <a class="page-link" href="/articles/172.html">Demo of X10 Running KMeans on 2 CPU cores</a>
+          
+        
+          
+          <a class="page-link" href="/articles/173.html">X10 Release 2.2.0</a>
+          
+        
+          
+          <a class="page-link" href="/articles/174.html">X10 2.2.0 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/175.html">X10 in a Nutshell (from 2011 X10 Workshop)</a>
+          
+        
+          
+          <a class="page-link" href="/articles/176.html">SPLASH'2010 BoF Intro,</a>
+          
+        
+          
+          <a class="page-link" href="/articles/177.html">SPLASH'2010 BoF Intro, Part 2</a>
+          
+        
+          
+          <a class="page-link" href="/articles/178.html">SPLASH'2010 BoF Q&amp;A</a>
+          
+        
+          
+          <a class="page-link" href="/articles/179.html">SPLASH'2010 BoF Q&amp;A, Part 2</a>
+          
+        
+          
+          <a class="page-link" href="/articles/18.html">Linux X86</a>
+          
+        
+          
+          <a class="page-link" href="/articles/180.html">Open Parallel presents an introduction to X10</a>
+          
+        
+          
+          <a class="page-link" href="/articles/181.html">Talks and Papers from 2011 X10 Workshop Available</a>
+          
+        
+          
+          <a class="page-link" href="/articles/182.html">X10 Workshop at PLDI'12</a>
+          
+        
+          
+          <a class="page-link" href="/articles/183.html">X10 in the News</a>
+          
+        
+          
+          <a class="page-link" href="/articles/184.html">Leveraging X10 for Open-Source, Platform-Level, Cloud Computing</a>
+          
+        
+          
+          <a class="page-link" href="/articles/185.html">Systematic Testing in and for X10</a>
+          
+        
+          
+          <a class="page-link" href="/articles/186.html">A Quick Tour Through X10</a>
+          
+        
+          
+          <a class="page-link" href="/articles/187.html">Upcoming X10 Events</a>
+          
+        
+          
+          <a class="page-link" href="/articles/188.html">X10 Release 2.2.1</a>
+          
+        
+          
+          <a class="page-link" href="/articles/189.html">X10 tutorial at SC 2011</a>
+          
+        
+          
+          <a class="page-link" href="/articles/19.html">Linux X86 64bit</a>
+          
+        
+          
+          <a class="page-link" href="/articles/190.html">SC2011 Tutorial Materials</a>
+          
+        
+          
+          <a class="page-link" href="/articles/191.html">X10 Debugger</a>
+          
+        
+          
+          <a class="page-link" href="/articles/192.html">X10 2.2.1 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/193.html">First release of X10 Debugger on IBM developerWorks</a>
+          
+        
+          
+          <a class="page-link" href="/articles/194.html">Re:</a>
+          
+        
+          
+          <a class="page-link" href="/articles/195.html"> Oct, 2011 Newsletter</a>
+          
+        
+          
+          <a class="page-link" href="/articles/196.html">Newsletter</a>
+          
+        
+          
+          <a class="page-link" href="/articles/197.html">Coding Conventions</a>
+          
+        
+          
+          <a class="page-link" href="/articles/198.html">X10 Distributed Raytracer</a>
+          
+        
+          
+          <a class="page-link" href="/articles/199.html">SC'11 Tutorial Materials Available</a>
+          
+        
+          
+          <a class="page-link" href="/articles/2.html">X10 Mailing Lists</a>
+          
+        
+          
+          <a class="page-link" href="/articles/20.html">MacOS X86 (Leopard &amp; Snow Leopard)</a>
+          
+        
+          
+          <a class="page-link" href="/articles/202.html">Tutorial updated for X10 2.2.1</a>
+          
+        
+          
+          <a class="page-link" href="/articles/203.html">New website</a>
+          
+        
+          
+          <a class="page-link" href="/articles/205.html">X10 Release 2.2.2</a>
+          
+        
+          
+          <a class="page-link" href="/articles/206.html">X10 2.2.2 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/207.html">SatX10</a>
+          
+        
+          
+          <a class="page-link" href="/articles/208.html">X10 Release 2.2.2.1</a>
+          
+        
+          
+          <a class="page-link" href="/articles/209.html">X10 2.2.2.1 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/21.html">Win32 with Cygwin</a>
+          
+        
+          
+          <a class="page-link" href="/articles/210.html">X10 Release 2.2.2.2</a>
+          
+        
+          
+          <a class="page-link" href="/articles/211.html">New release of X10 Debugger available</a>
+          
+        
+          
+          <a class="page-link" href="/articles/212.html">X10'12 Program</a>
+          
+        
+          
+          <a class="page-link" href="/articles/213.html">X10 Workshop - June 14th</a>
+          
+        
+          
+          <a class="page-link" href="/articles/214.html">Upcoming X10 Events (2)</a>
+          
+        
+          
+          <a class="page-link" href="/articles/215.html">X10 Future Plans - June 14, 2012</a>
+          
+        
+          
+          <a class="page-link" href="/articles/216.html">Papers and presentations from X10 2012 Workshop</a>
+          
+        
+          
+          <a class="page-link" href="/articles/217.html">X10 Workshop at PLDI'13</a>
+          
+        
+          
+          <a class="page-link" href="/articles/218.html">X10 Project Roadmap Updated</a>
+          
+        
+          
+          <a class="page-link" href="/articles/219.html">X10 Release 2.2.3</a>
+          
+        
+          
+          <a class="page-link" href="/articles/22.html">Libraries</a>
+          
+        
+          
+          <a class="page-link" href="/articles/220.html">X10 2.2.3 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/221.html">Tutorials and Overview Articles (2)</a>
+          
+        
+          
+          <a class="page-link" href="/articles/222.html">SC'12 X10 Tutorial</a>
+          
+        
+          
+          <a class="page-link" href="/articles/223.html">Open Source release of ScaleGraph 1.0 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/225.html">X10 2.3.0 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/226.html">X10 wins the HPC Challenge "Best Performance" Award in the Class II competition</a>
+          
+        
+          
+          <a class="page-link" href="/articles/227.html">Call for paper for The 2013 ACM SIGPLAN X10 Workshop (X10'13)</a>
+          
+        
+          
+          <a class="page-link" href="/articles/229.html">X10 2.3.1 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/23.html">Program Testing</a>
+          
+        
+          
+          <a class="page-link" href="/articles/230.html">X10 Workshop Submission Deadline Extended to March 18</a>
+          
+        
+          
+          <a class="page-link" href="/articles/231.html">Accepted papers for X10'13 workshop</a>
+          
+        
+          
+          <a class="page-link" href="/articles/232.html">X10'13 Program</a>
+          
+        
+          
+          <a class="page-link" href="/articles/233.html">X10'13 Program</a>
+          
+        
+          
+          <a class="page-link" href="/articles/234.html">APGAS Programming in X10</a>
+          
+        
+          
+          <a class="page-link" href="/articles/235.html">New tutorial available: APGAS Programming in X10 2.4</a>
+          
+        
+          
+          <a class="page-link" href="/articles/236.html">X10 Seminar at KEK</a>
+          
+        
+          
+          <a class="page-link" href="/articles/239.html">X10 2.4.0 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/24.html">X10 License</a>
+          
+        
+          
+          <a class="page-link" href="/articles/240.html">X10 at SC 2013</a>
+          
+        
+          
+          <a class="page-link" href="/articles/241.html">Release of IIT Madras Benchmark Suite</a>
+          
+        
+          
+          <a class="page-link" href="/articles/242.html">ScaleGraph 2.1 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/244.html">X10 2.4.1 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/245.html">X10 Innovation Grants</a>
+          
+        
+          
+          <a class="page-link" href="/articles/246.html">X10 Workshop at PLDI'14</a>
+          
+        
+          
+          <a class="page-link" href="/articles/247.html">Call for paper for The 2014 X10 Workshop (X10'14)</a>
+          
+        
+          
+          <a class="page-link" href="/articles/249.html">X10 2.4.2 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/25.html">Contributing to X10</a>
+          
+        
+          
+          <a class="page-link" href="/articles/250.html">ScaleGraph 2.2 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/251.html">Submissions to the 2014 X10 Workshop (X10'14)</a>
+          
+        
+          
+          <a class="page-link" href="/articles/252.html">Call for paper for The 2014 X10 Workshop (X10'14) (3)</a>
+          
+        
+          
+          <a class="page-link" href="/articles/253.html">X10'14 Program</a>
+          
+        
+          
+          <a class="page-link" href="/articles/254.html">X10 Workshop at PLDI'14</a>
+          
+        
+          
+          <a class="page-link" href="/articles/256.html">X10 2.4.3 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/257.html">Inside X10:  Implementing a High‐Level Language for Large‐Scale Distributed and Heterogeneous Platforms</a>
+          
+        
+          
+          <a class="page-link" href="/articles/259.html">X10 2.4.3.2 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/26.html">X10 Roadmap</a>
+          
+        
+          
+          <a class="page-link" href="/articles/261.html">X10 2.5.0 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/263.html">Performance</a>
+          
+        
+          
+          <a class="page-link" href="/articles/266.html">X10 2.5.1 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/267.html">X10 Day Tokyo 2015</a>
+          
+        
+          
+          <a class="page-link" href="/articles/268.html">X10 Workshop at PLDI'15</a>
+          
+        
+          
+          <a class="page-link" href="/articles/269.html">Call for papers for the 2015 X10 Workshop (X10'15)</a>
+          
+        
+          
+          <a class="page-link" href="/articles/27.html">X10 Mailing Lists</a>
+          
+        
+          
+          <a class="page-link" href="/articles/272.html">X10 2.5.2 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/273.html">Call for papers for the 2015 X10 Workshop (X10'15) (2)</a>
+          
+        
+          
+          <a class="page-link" href="/articles/274.html">Migration of X10 JIRA instance</a>
+          
+        
+          
+          <a class="page-link" href="/articles/275.html">X10'15 program posted</a>
+          
+        
+          
+          <a class="page-link" href="/articles/277.html">APGAS Release 1.0.0 (2)</a>
+          
+        
+          
+          <a class="page-link" href="/articles/278.html">APGAS Release 1.0.0 (3)</a>
+          
+        
+          
+          <a class="page-link" href="/articles/28.html">X10 Tracking</a>
+          
+        
+          
+          <a class="page-link" href="/articles/280.html">X10 2.5.3 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/282.html">APGAS 1.0.0 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/283.html">X10'15 program posted (2)</a>
+          
+        
+          
+          <a class="page-link" href="/articles/284.html">X10'15 Proceedings</a>
+          
+        
+          
+          <a class="page-link" href="/articles/285.html">X10 2.5.4 Released</a>
+          
+        
+          
+          <a class="page-link" href="/articles/29.html">What is X10?</a>
+          
+        
+          
+          <a class="page-link" href="/articles/3.html">X10 News</a>
+          
+        
+          
+          <a class="page-link" href="/articles/30.html">What is the purpose of X10?</a>
+          
+        
+          
+          <a class="page-link" href="/articles/31.html">What is X10 especially good for? </a>
+          
+        
+          
+          <a class="page-link" href="/articles/32.html">Visit us at Super Computing 2010</a>
+          
+        
+          
+          <a class="page-link" href="/articles/33.html">Anthony Hosking (Purdue University) on X10 at Splash 2010</a>
+          
+        
+          
+          <a class="page-link" href="/articles/34.html">Corky Cartwright (Rice University) on X10 at Splash 2010</a>
+          
+        
+          
+          <a class="page-link" href="/articles/35.html">X10: Programming for hierarchical parallelism and non-uniform data access.</a>
+          
+        
+          
+          <a class="page-link" href="/articles/36.html">X10: an Experimental Language for High Productivity Programming of Scalable Systems. </a>
+          
+        
+          
+          <a class="page-link" href="/articles/37.html">X10: An Object-oriented approach to non-uniform Clustered Computing</a>
+          
+        
+          
+          <a class="page-link" href="/articles/38.html">An Experiment in Measuring the Productivity of Three Parallel Programming Languages.</a>
+          
+        
+          
+          <a class="page-link" href="/articles/39.html">Experiences with an SMP Implementation for X10 based on the Java Concurrency Utilities. </a>
+          
+        
+          
+          <a class="page-link" href="/articles/40.html">May-Happen-in-Parallel Analysis of X10 programs</a>
+          
+        
+          
+          <a class="page-link" href="/articles/41.html">Deadlock-Free Scheduling of X10 Computations with Bounded Resources</a>
+          
+        
+          
+          <a class="page-link" href="/articles/42.html">Optimizing Array Accesses in High Productivity Languages.</a>
+          
+        
+          
+          <a class="page-link" href="/articles/43.html">Language Extensions in Support of Compiler Parallelization.</a>
+          
+        
+          
+          <a class="page-link" href="/articles/44.html">Type Inference for Locality Analysis of Distributed Data Structures</a>
+          
+        
+          
+          <a class="page-link" href="/articles/45.html">Array Optimizations for Parallel Implementations of High Productivity Languages.</a>
+          
+        
+          
+          <a class="page-link" href="/articles/46.html">Phasers: a Unified Deadlock-Free Construct for Collective and Point-to-point Synchronization</a>
+          
+        
+          
+          <a class="page-link" href="/articles/47.html">Array Optimizations for High Productivity Programming Languages</a>
+          
+        
+          
+          <a class="page-link" href="/articles/48.html">Static Detection of Place Locality and Elimination of Runtime Checks</a>
+          
+        
+          
+          <a class="page-link" href="/articles/49.html">Efficient, portable implementation of asynchronous multi-place programs</a>
+          
+        
+          
+          <a class="page-link" href="/articles/5.html">X10 Team</a>
+          
+        
+          
+          <a class="page-link" href="/articles/50.html">Compiler Support for Work-Stealing Parallel Runtime Systems.</a>
+          
+        
+          
+          <a class="page-link" href="/articles/51.html">Phaser Accumulators: a New Reduction Construct for Dynamic Parallelism</a>
+          
+        
+          
+          <a class="page-link" href="/articles/52.html">Work-First and Help-First Scheduling Policies for Terminally Strict Parallel Programs</a>
+          
+        
+          
+          <a class="page-link" href="/articles/53.html">Chunking Parallel Loops in the Presence of Synchronization</a>
+          
+        
+          
+          <a class="page-link" href="/articles/54.html">Interprocedural Load Elimination for Dynamic Optimization of Parallel Programs</a>
+          
+        
+          
+          <a class="page-link" href="/articles/55.html">Programming Language X10</a>
+          
+        
+          
+          <a class="page-link" href="/articles/56.html">﻿﻿﻿Constrained Types for Object-oriented Languages </a>
+          
+        
+          
+          <a class="page-link" href="/articles/57.html">﻿﻿﻿The X10 Project: Towards Productive Programming of Concurrent and Distributed Systems</a>
+          
+        
+          
+          <a class="page-link" href="/articles/58.html">A Comparative Study and Empirical Evaluation of Global View HPL Program in X10</a>
+          
+        
+          
+          <a class="page-link" href="/articles/59.html">Fast PGAS Connected Components Algorithms</a>
+          
+        
+          
+          <a class="page-link" href="/articles/6.html">X10 History</a>
+          
+        
+          
+          <a class="page-link" href="/articles/60.html">Hierarchical Place Trees: A Portable Abstraction for Task Parallelism and Data Movement</a>
+          
+        
+          
+          <a class="page-link" href="/articles/61.html">Efficient Optimization of Memory Accesses in Parallel Programs</a>
+          
+        
+          
+          <a class="page-link" href="/articles/62.html">Principles and Practices of Parallel Programming - Columbia Univ Fall09</a>
+          
+        
+          
+          <a class="page-link" href="/articles/63.html">Parallel Programming Languages - UCLA Winter09</a>
+          
+        
+          
+          <a class="page-link" href="/articles/64.html">Parallel Implementation for Financial Risk Computing Using X10</a>
+          
+        
+          
+          <a class="page-link" href="/articles/65.html">Stream Programming on X10</a>
+          
+        
+          
+          <a class="page-link" href="/articles/66.html">MapReduce Framework on Heterogeneous Cluster</a>
+          
+        
+          
+          <a class="page-link" href="/articles/67.html">Dynamic Programming Algorithms in X10</a>
+          
+        
+          
+          <a class="page-link" href="/articles/68.html">&bull;Exploiting concurrency in large-scale botnet detection</a>
+          
+        
+          
+          <a class="page-link" href="/articles/69.html">The Lightweight Deterministic Replay of X10 Programs</a>
+          
+        
+          
+          <a class="page-link" href="/articles/7.html">Tour of X10</a>
+          
+        
+          
+          <a class="page-link" href="/articles/70.html">Checking Serializability Consistency for Concurrent X10 Programs</a>
+          
+        
+          
+          <a class="page-link" href="/articles/71.html"> High Performance Clustering Algorithms Class Libraries in X10</a>
+          
+        
+          
+          <a class="page-link" href="/articles/72.html">Improving the Performance of X10 Runtime for Multi-core</a>
+          
+        
+          
+          <a class="page-link" href="/articles/73.html">Astronomical Research and Parallel Computing Course</a>
+          
+        
+          
+          <a class="page-link" href="/articles/74.html"> Parallel computing and programming in X10 (graduate)</a>
+          
+        
+          
+          <a class="page-link" href="/articles/75.html">Courseware for Advanced Undergraduate</a>
+          
+        
+          
+          <a class="page-link" href="/articles/76.html">Scripting on X10 - Ruby Script to X10 Program Translator</a>
+          
+        
+          
+          <a class="page-link" href="/articles/77.html">Exploiting concurrency in large-scale botnet detection</a>
+          
+        
+          
+          <a class="page-link" href="/articles/78.html">Call for Papers</a>
+          
+        
+          
+          <a class="page-link" href="/articles/79.html">Introducing X10</a>
+          
+        
+          
+          <a class="page-link" href="/articles/8.html">Language Specification</a>
+          
+        
+          
+          <a class="page-link" href="/articles/80.html">A Proof System for a PGAS Language</a>
+          
+        
+          
+          <a class="page-link" href="/articles/81.html">Inferring Arbitrary Distributions for Data and Computation</a>
+          
+        
+          
+          <a class="page-link" href="/articles/82.html">Reducing task creation and termination overhead in explicitly parallel programs</a>
+          
+        
+          
+          <a class="page-link" href="/articles/83.html">Featherweight X10: a core calculus for async-finish parallelism</a>
+          
+        
+          
+          <a class="page-link" href="/articles/84.html">PHP code</a>
+          
+        
+          
+          <a class="page-link" href="/articles/85.html">Leveraging X10 for Open-Source, Platform-Level, Cloud Computing</a>
+          
+        
+          
+          <a class="page-link" href="/articles/86.html">Dynamic Graph Data Structures in X10</a>
+          
+        
+          
+          <a class="page-link" href="/articles/87.html">X10 Media Composer (XMC)</a>
+          
+        
+          
+          <a class="page-link" href="/articles/88.html">Prototyping a Novel Performance Toolset for X10 Applications</a>
+          
+        
+          
+          <a class="page-link" href="/articles/89.html">Optimization and Verification of X10 Programs</a>
+          
+        
+          
+          <a class="page-link" href="/articles/9.html">Books</a>
+          
+        
+          
+          <a class="page-link" href="/articles/90.html">&bull;Transactions for Reliable Distributed X10 Execution</a>
+          
+        
+          
+          <a class="page-link" href="/articles/91.html">Automatic Adaptation of Java Frameworks for X10 to Improve Programmer Productivity</a>
+          
+        
+          
+          <a class="page-link" href="/articles/92.html">Embracing the Parallelism of Forward Linear Logic Programming</a>
+          
+        
+          
+          <a class="page-link" href="/articles/93.html">&bull;Concurrency Types for X10: Race-Freedom, Atomicity, and Determinism</a>
+          
+        
+          
+          <a class="page-link" href="/articles/94.html">A First Programming Course using X10</a>
+          
+        
+          
+          <a class="page-link" href="/articles/95.html">Teaching Real-World Parallel and Distributed Programming</a>
+          
+        
+          
+          <a class="page-link" href="/articles/96.html">Migrating Undergraduate Parallel Computing Courses to X10</a>
+          
+        
+          
+          <a class="page-link" href="/articles/97.html">X10 Tutorial and Workshop Development</a>
+          
+        
+          
+          <a class="page-link" href="/articles/98.html">Teaching Parallel Programming as a Pattern Language on the Example of X10</a>
+          
+        
+          
+          <a class="page-link" href="/articles/99.html">Test Integer Range</a>
+          
+        
+          
+          <a class="page-link" href="/releases/apgas-release-100.html">APGAS Release 1.0.0</a>
+          
+        
+          
+          <a class="page-link" href="/news/apgas-scala-release-100.html">APGAS for Scala Released</a>
+          
+        
+          
+          <a class="page-link" href="/x10-community/x10-in-use/applications.html">Applications</a>
+          
+        
+          
+          <a class="page-link" href="/x10-community/applications.html">Applications and Libraries Using X10</a>
+          
+        
+          
+          <a class="page-link" href="/feedback/bug-tracking.html">Bug Tracking / Feature Requests</a>
+          
+        
+          
+          <a class="page-link" href="/x10-development/building-x10-from-source.html">Building X10 From Source</a>
+          
+        
+          
+          <a class="page-link" href="/documentation/practical-x10-programming/coding-conventions.html">X10 Project Coding Conventions</a>
+          
+        
+          
+          <a class="page-link" href="/x10-community/courses-using-x10.html">Courses Using X10</a>
+          
+        
+          
+          <a class="page-link" href="/x10-community/x10-in-use/curriculum-development.html">Curriculum Development</a>
+          
+        
+          
+          <a class="page-link" href="/documentation/practical-x10-programming/elastic-x10.html">Elastic X10</a>
+          
+        
+          
+        
+          
+          <a class="page-link" href="/x10-community/x10-in-use/frameworks-a-libraries.html">Frameworks & Libraries</a>
+          
+        
+          
+          <a class="page-link" href="/documentation/getting-started.html">Getting Started with X10</a>
+          
+        
+          
+          <a class="page-link" href="/x10-community/applications/global-matrix-library.html">X10 Global Matrix Library</a>
+          
+        
+          
+          <a class="page-link" href="/">The X10 Programming Language</a>
+          
+        
+          
+        
+          
+          <a class="page-link" href="/x10-community/x10-in-use/mapping-high-level-languages.html">Mapping high level languages</a>
+          
+        
+          
+          <a class="page-link" href="/documentation/practical-x10-programming/native-code-integration.html">Native Code Integration</a>
+          
+        
+          
+          <a class="page-link" href="/home/news6.html">X10 News</a>
+          
+        
+          
+          <a class="page-link" href="/documentation/practical-x10-programming/performance-tuning.html">Performance Tuning</a>
+          
+        
+          
+          <a class="page-link" href="/documentation/practical-x10-programming/porting-to-x10-2-4.html">Porting code to X10 2.4</a>
+          
+        
+          
+          <a class="page-link" href="/x10-community/publications-using-x10.html">Publications</a>
+          
+        
+          
+          <a class="page-link" href="/x10-community/x10-in-use/research-using-x10.html">Performance & Concurrency</a>
+          
+        
+          
+          <a class="page-link" href="/x10-community/x10-in-use/tool-development.html">Tool Development</a>
+          
+        
+          
+          <a class="page-link" href="/documentation/tutorials.html">Tutorials and Overview Articles</a>
+          
+        
+          
+          <a class="page-link" href="/x10-community/universities-using-x10.html">Universities using X10</a>
+          
+        
+          
+          <a class="page-link" href="/workshop/workshop16.html">X10 Workshop at PLDI'16</a>
+          
+        
+          
+          <a class="page-link" href="/news/x10-2016-cfp.html">Call for papers for the 2016 ACM SIGPLAN X10 Workshop</a>
+          
+        
+          
+          <a class="page-link" href="/news/x10-2016-proceedings.html">X10'16 Proceedings Available</a>
+          
+        
+          
+          <a class="page-link" href="/news/x10-2016-program.html">X10'16 Program Posted</a>
+          
+        
+          
+          <a class="page-link" href="/news/x10-260-released.html">X10 2.6.0 Released</a>
+          
+        
+          
+          <a class="page-link" href="/news/x10-261-released.html">X10 2.6.1 Released</a>
+          
+        
+          
+          <a class="page-link" href="/news/x10-262-released.html">X10 2.6.2 Released</a>
+          
+        
+          
+          <a class="page-link" href="/documentation/practical-x10-programming/x10-on-gpus.html">X10 on GPUs</a>
+          
+        
+          
+          <a class="page-link" href="/releases/x10-release-230.html">X10 Release 2.3.0</a>
+          
+        
+          
+          <a class="page-link" href="/releases/x10-release-231.html">X10 Release 2.3.1</a>
+          
+        
+          
+          <a class="page-link" href="/releases/x10-release-240.html">X10 Release 2.4.0</a>
+          
+        
+          
+          <a class="page-link" href="/releases/x10-release-241.html">X10 Release 2.4.1</a>
+          
+        
+          
+          <a class="page-link" href="/releases/x10-release-242.html">X10 Release 2.4.2</a>
+          
+        
+          
+          <a class="page-link" href="/releases/x10-release-243.html">X10 Release 2.4.3</a>
+          
+        
+          
+          <a class="page-link" href="/releases/x10-release-2432.html">X10 Release 2.4.3.2</a>
+          
+        
+          
+          <a class="page-link" href="/releases/x10-release-250.html">X10 Release 2.5.0</a>
+          
+        
+          
+          <a class="page-link" href="/releases/x10-release-251.html">X10 Release 2.5.1</a>
+          
+        
+          
+          <a class="page-link" href="/releases/x10-release-252.html">X10 Release 2.5.2</a>
+          
+        
+          
+          <a class="page-link" href="/releases/x10-release-253.html">X10 Release 2.5.3</a>
+          
+        
+          
+          <a class="page-link" href="/releases/x10-release-254.html">X10 Release 2.5.4</a>
+          
+        
+          
+          <a class="page-link" href="/releases/x10-release-260.html">X10 Release 2.6.0</a>
+          
+        
+          
+          <a class="page-link" href="/releases/x10-release-261.html">X10 Release 2.6.1</a>
+          
+        
+          
+          <a class="page-link" href="/releases/x10-release-262.html">X10 Release 2.6.2</a>
+          
+        
+          
+          <a class="page-link" href="/releases/x10-release-list.html">X10 Release List</a>
+          
+        
+          
+          <a class="page-link" href="/documentation/x10-standard-library.html">X10 Standard Library</a>
+          
+        
+          
+          <a class="page-link" href="/documentation/x10dt-installation.html">X10DT Installation</a>
+          
+        
+          
+          <a class="page-link" href="/documentation/practical-x10-programming/x10lib.html">Building and Using X10 Libraries</a>
+          
+        
+          
+          <a class="page-link" href="/documentation/practical-x10-programming/x10rt-implementations.html">X10RT Implementations</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+ -->
+   <a name="pageTop" id="pageTop"></a>
+   <div id="page-wraper">
+     <div id="in-page-wraper">
+       <div id="in-page-wraper-2">
+	 <div id="rt-header">
+	   <div class="rt-container">
+	     <div class="rt-grid-7 rt-alpha">
+	     <div class="rt-block">
+		 <div class="custom">
+		   <h1 style="text-align: justify;"><a href="/"><strong>X10: Performance and Productivity at Scale</strong></a></h1>
+		 </div>
+</div>
+</div>
+	     <div class="rt-grid-5 rt-omega">
+	     <div class="rt-block">
+	       <div>
+<!-- search not currently implemented.  Use google. -->
+</div>
+	       </div></div>
+		 <div class="clear"></div>
+		 </div>
+		 </div>
+<div id="rt-menu"><div class="rt-container">
+   <div class="rt-fusionmenu">
+  <div class="nopill">
+    
+<div class="rt-menubar">
+  <ul class="menutop level1 " >
+
+
+
+
+ 
+ 
+<li class="parent root item"> 
+ 
+  <a class="daddy item bullet" href="/"  >
+    <span>
+      X10
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+ 
+
+    <div class="fusion-submenu-wrapper level2" style="width:180px;">
+      <ul class="level2" style="width:180px;">
+ 
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/home/introduction1.html"  >
+    <span>
+      Introduction
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/home/codebase-progress.html"  >
+    <span>
+      X10 Roadmap
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/home/news6.html"  >
+    <span>
+      X10 News
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/home/in-the-press.html"  >
+    <span>
+      X10 in the News
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/home/upcoming-x10-events.html"  >
+    <span>
+      Upcoming X10 Events
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/home/faq-list.html"  >
+    <span>
+      FAQ
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/home/x10-team.html"  >
+    <span>
+      X10 Team
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/home/x10-history.html"  >
+    <span>
+      X10 History
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/home/x10-license.html"  >
+    <span>
+      X10 License
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+ 
+</ul>
+
+<div class="drop-bot"></div>
+
+</div>
+
+
+</li>
+
+
+
+ 
+ 
+<li class="parent root item"> 
+  
+ <span class="daddy item bullet nolink">
+   <span>
+     Documentation
+     <span class="daddyicon"></span>
+   </span>
+</span>
+ 
+ 
+ 
+
+    <div class="fusion-submenu-wrapper level2" style="width:180px;">
+      <ul class="level2" style="width:180px;">
+ 
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/documentation/intro/latest/html/"  >
+    <span>
+      An Introduction to X10
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/documentation/getting-started.html"  >
+    <span>
+      Getting Started
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/documentation/x10dt-installation.html"  >
+    <span>
+      Installing X10DT
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="http://x10.sourceforge.net/documentation/languagespec/x10-latest.pdf"  >
+    <span>
+      Language Specification
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class="parent item"> 
+  
+ <span class="daddy item bullet nolink">
+   <span>
+     Practical X10 Programming
+     <span class="daddyicon"></span>
+   </span>
+</span>
+ 
+ 
+ 
+
+    <div class="fusion-submenu-wrapper level3" style="width:180px;">
+      <ul class="level3" style="width:180px;">
+ 
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/documentation/intro/latest/html/"  >
+    <span>
+      An Introduction to X10
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/documentation/practical-x10-programming/x10lib.html"  >
+    <span>
+      Using X10 Libraries
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/documentation/practical-x10-programming/elastic-x10.html"  >
+    <span>
+      Elastic X10
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/documentation/practical-x10-programming/porting-to-x10-2-4.html"  >
+    <span>
+      Porting to X10 2.4
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/documentation/practical-x10-programming/performance-tuning.html"  >
+    <span>
+      Performance Tuning
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/documentation/practical-x10-programming/x10-on-gpus.html"  >
+    <span>
+      X10 on GPUs
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/documentation/practical-x10-programming/native-code-integration.html"  >
+    <span>
+      Native Code Integration
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/documentation/practical-x10-programming/x10rt-implementations.html"  >
+    <span>
+      X10RT Implementations
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/documentation/practical-x10-programming/coding-conventions.html"  >
+    <span>
+      Coding Conventions
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+ 
+</ul>
+
+<div class="drop-bot"></div>
+
+</div>
+
+
+</li>
+
+
+
+ 
+ 
+<li class="parent item"> 
+ 
+  <a class="daddy item bullet" href="/documentation/tutorials.html"  >
+    <span>
+      Tutorials/Overview Articles
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+ 
+
+    <div class="fusion-submenu-wrapper level3" style="width:180px;">
+      <ul class="level3" style="width:180px;">
+ 
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="http://x10.sourceforge.net/documentation/intro/latest/html/"  >
+    <span>
+      An Introduction to X10
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/documentation/tutorials/apgas-programming-in-x10-24.html"  >
+    <span>
+      APGAS Programming in X10
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/documentation/tutorials/inside-x1024.html"  >
+    <span>
+      Inside X10 2.4
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/documentation/tutorials/sc2012-tutorial.html"  >
+    <span>
+      SC 2012 Tutorial
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+ 
+</ul>
+
+<div class="drop-bot"></div>
+
+</div>
+
+
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/documentation/x10-standard-library.html"  >
+    <span>
+      X10 Standard Library API
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class="parent item"> 
+ 
+  <a class="daddy item bullet" href="https://svn.code.sourceforge.net/p/x10/code/x10dt/trunk/x10dt.help/html/samples/"  >
+    <span>
+      Code Examples
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+ 
+
+    <div class="fusion-submenu-wrapper level3" style="width:180px;">
+      <ul class="level3" style="width:180px;">
+ 
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="https://svn.code.sourceforge.net/p/x10/code/x10dt/trunk/x10dt.help/html/samples/HelloWholeWorld.html"  >
+    <span>
+      HelloWholeWorld
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="https://svn.code.sourceforge.net/p/x10/code/x10dt/trunk/x10dt.help/html/samples/Fib.html"  >
+    <span>
+      Fibonacci
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="https://svn.code.sourceforge.net/p/x10/code/x10dt/trunk/x10dt.help/html/samples/QSort.html"  >
+    <span>
+      Quicksort
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="https://svn.code.sourceforge.net/p/x10/code/x10dt/trunk/x10dt.help/html/samples/KMeans.html"  >
+    <span>
+      KMeans
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="https://svn.code.sourceforge.net/p/x10/code/x10dt/trunk/x10dt.help/html/samples/KMeansDist.html"  >
+    <span>
+      KMeansDist
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="https://svn.code.sourceforge.net/p/x10/code/x10dt/trunk/x10dt.help/html/samples/HelloWorld.html"  >
+    <span>
+      HelloWorld
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+ 
+</ul>
+
+<div class="drop-bot"></div>
+
+</div>
+
+
+</li>
+ 
+</ul>
+
+<div class="drop-bot"></div>
+
+</div>
+
+
+</li>
+
+
+
+ 
+ 
+<li class="parent root item"> 
+  
+ <span class="daddy item bullet nolink">
+   <span>
+     Downloads
+     <span class="daddyicon"></span>
+   </span>
+</span>
+ 
+ 
+ 
+
+    <div class="fusion-submenu-wrapper level2" style="width:180px;">
+      <ul class="level2" style="width:180px;">
+ 
+
+
+
+ 
+ 
+<li class="parent item"> 
+  
+ <span class="daddy item bullet nolink">
+   <span>
+     X10 and X10DT Releases
+     <span class="daddyicon"></span>
+   </span>
+</span>
+ 
+ 
+ 
+
+    <div class="fusion-submenu-wrapper level3" style="width:180px;">
+      <ul class="level3" style="width:180px;">
+ 
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/software/download-x10/latest-release.html"  >
+    <span>
+      Latest Release
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/releases/x10-release-list.html"  >
+    <span>
+      All Releases
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+ 
+</ul>
+
+<div class="drop-bot"></div>
+
+</div>
+
+
+</li>
+
+
+
+ 
+ 
+<li class="parent item"> 
+  
+ <span class="daddy item bullet nolink">
+   <span>
+     APGAS Releases
+     <span class="daddyicon"></span>
+   </span>
+</span>
+ 
+ 
+ 
+
+    <div class="fusion-submenu-wrapper level3" style="width:180px;">
+      <ul class="level3" style="width:180px;">
+ 
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/software/download-apgas/latest-apgas-release.html"  >
+    <span>
+      Latest Release
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+ 
+</ul>
+
+<div class="drop-bot"></div>
+
+</div>
+
+
+</li>
+
+
+
+ 
+ 
+<li class="parent item"> 
+  
+ <span class="daddy item bullet nolink">
+   <span>
+     Building from Source
+     <span class="daddyicon"></span>
+   </span>
+</span>
+ 
+ 
+ 
+
+    <div class="fusion-submenu-wrapper level3" style="width:180px;">
+      <ul class="level3" style="width:180px;">
+ 
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/x10-development/building-x10-from-source.html"  >
+    <span>
+      Building X10 from Source
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/x10-development/building-x10dt-from-source.html"  >
+    <span>
+      Building X10DT From Source
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+ 
+</ul>
+
+<div class="drop-bot"></div>
+
+</div>
+
+
+</li>
+ 
+</ul>
+
+<div class="drop-bot"></div>
+
+</div>
+
+
+</li>
+
+
+
+ 
+ 
+<li class="parent root item"> 
+  
+ <span class="daddy item bullet nolink">
+   <span>
+     X10 Community
+     <span class="daddyicon"></span>
+   </span>
+</span>
+ 
+ 
+ 
+
+    <div class="fusion-submenu-wrapper level2" style="width:180px;">
+      <ul class="level2" style="width:180px;">
+ 
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/x10-community/applications.html"  >
+    <span>
+      Applications and Libraries
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class="parent item"> 
+ 
+  <a class="daddy item bullet" href="/x10-community/x10-in-use.html"  >
+    <span>
+      X10 Innovation Grants
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+ 
+
+    <div class="fusion-submenu-wrapper level3" style="width:180px;">
+      <ul class="level3" style="width:180px;">
+ 
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/x10-community/x10-in-use/applications.html"  >
+    <span>
+      Applications
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/x10-community/x10-in-use/tool-development.html"  >
+    <span>
+      Tool Development
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/x10-community/x10-in-use/frameworks-a-libraries.html"  >
+    <span>
+      Frameworks &amp; Libraries
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/x10-community/x10-in-use/mapping-high-level-languages.html"  >
+    <span>
+      Mapping high level language
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/x10-community/x10-in-use/curriculum-development.html"  >
+    <span>
+      Curriculum Development
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/x10-community/x10-in-use/research-using-x10.html"  >
+    <span>
+      Performance &amp; Concurrency
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+ 
+</ul>
+
+<div class="drop-bot"></div>
+
+</div>
+
+
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/x10-community/upcoming-x10-events10.html"  >
+    <span>
+      Upcoming X10 Events
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/x10-community/publications-using-x10.html"  >
+    <span>
+      Publications Using X10
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/x10-community/courses-using-x10.html"  >
+    <span>
+      Courses Using X10
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/x10-community/universities-using-x10.html"  >
+    <span>
+      Universities Using X10
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/x10-community/videos.html"  >
+    <span>
+      Videos
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/x10-community/mailing-lists.html"  >
+    <span>
+      Mailing Lists
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+ 
+</ul>
+
+<div class="drop-bot"></div>
+
+</div>
+
+
+</li>
+
+
+
+ 
+ 
+<li class="parent root item"> 
+  
+ <span class="daddy item bullet nolink">
+   <span>
+     X10 Development
+     <span class="daddyicon"></span>
+   </span>
+</span>
+ 
+ 
+ 
+
+    <div class="fusion-submenu-wrapper level2" style="width:180px;">
+      <ul class="level2" style="width:180px;">
+ 
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/home/codebase-progress.html"  >
+    <span>
+      Project Roadmap
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/x10-development/building-x10-from-source.html"  >
+    <span>
+      Building X10 from Source
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/x10-development/building-x10dt-from-source.html"  >
+    <span>
+      Building X10DT From Source
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/x10-development/x10-project-coding-conventions.html"  >
+    <span>
+      Project Coding Conventions
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/feedback/bug-tracking.html"  >
+    <span>
+      Issue Tracking
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="http://sourceforge.net/projects/x10/"  >
+    <span>
+      Sourceforge Project
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/x10-development/contributor-agreement.html"  >
+    <span>
+      Contributor Agreement
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+ 
+</ul>
+
+<div class="drop-bot"></div>
+
+</div>
+
+
+</li>
+
+
+
+ 
+ 
+<li class="parent root item"> 
+  
+ <span class="daddy item bullet nolink">
+   <span>
+     X10 Workshops
+     <span class="daddyicon"></span>
+   </span>
+</span>
+ 
+ 
+ 
+
+    <div class="fusion-submenu-wrapper level2" style="width:180px;">
+      <ul class="level2" style="width:180px;">
+ 
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/workshop/workshop16.html"  >
+    <span>
+      X10'16 Workshop (at PLDI'16)
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/workshop/workshop15.html"  >
+    <span>
+      X10'15 Workshop (at PLDI'15)
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class="parent item"> 
+ 
+  <a class="daddy item bullet" href="/workshop/workshop14.html"  >
+    <span>
+      X10'14 Workshop (at PLDI'14)
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+ 
+
+    <div class="fusion-submenu-wrapper level3" style="width:180px;">
+      <ul class="level3" style="width:180px;">
+ 
+
+
+
+ 
+ 
+<li class=" item"> 
+  
+ <span class="orphan item bullet nolink">
+   <span>
+     
+     <span class="daddyicon"></span>
+   </span>
+</span>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+  
+ <span class="orphan item bullet nolink">
+   <span>
+     
+     <span class="daddyicon"></span>
+   </span>
+</span>
+ 
+ 
+</li>
+ 
+</ul>
+
+<div class="drop-bot"></div>
+
+</div>
+
+
+</li>
+
+
+
+ 
+ 
+<li class="parent item"> 
+ 
+  <a class="daddy item bullet" href="/workshop/workshop13.html"  >
+    <span>
+      X10'13 Workshop (at PLDI'13)
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+ 
+
+    <div class="fusion-submenu-wrapper level3" style="width:180px;">
+      <ul class="level3" style="width:180px;">
+ 
+
+
+
+ 
+ 
+<li class=" item"> 
+  
+ <span class="orphan item bullet nolink">
+   <span>
+     
+     <span class="daddyicon"></span>
+   </span>
+</span>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+  
+ <span class="orphan item bullet nolink">
+   <span>
+     
+     <span class="daddyicon"></span>
+   </span>
+</span>
+ 
+ 
+</li>
+ 
+</ul>
+
+<div class="drop-bot"></div>
+
+</div>
+
+
+</li>
+
+
+
+ 
+ 
+<li class="parent item"> 
+ 
+  <a class="daddy item bullet" href="/workshop/workshop12.html"  >
+    <span>
+      X10'12 Workshop (at PLDI'12)
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+ 
+
+    <div class="fusion-submenu-wrapper level3" style="width:180px;">
+      <ul class="level3" style="width:180px;">
+ 
+
+
+
+ 
+ 
+<li class=" item"> 
+  
+ <span class="orphan item bullet nolink">
+   <span>
+     
+     <span class="daddyicon"></span>
+   </span>
+</span>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+  
+ <span class="orphan item bullet nolink">
+   <span>
+     
+     <span class="daddyicon"></span>
+   </span>
+</span>
+ 
+ 
+</li>
+ 
+</ul>
+
+<div class="drop-bot"></div>
+
+</div>
+
+
+</li>
+
+
+
+ 
+ 
+<li class="parent item"> 
+ 
+  <a class="daddy item bullet" href="/workshop/cfp.html"  >
+    <span>
+      X10'11 Workshop (at PLDI'11)
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+ 
+
+    <div class="fusion-submenu-wrapper level3" style="width:180px;">
+      <ul class="level3" style="width:180px;">
+ 
+
+
+
+ 
+ 
+<li class=" item"> 
+  
+ <span class="orphan item bullet nolink">
+   <span>
+     
+     <span class="daddyicon"></span>
+   </span>
+</span>
+ 
+ 
+</li>
+
+
+
+ 
+ 
+<li class=" item"> 
+  
+ <span class="orphan item bullet nolink">
+   <span>
+     
+     <span class="daddyicon"></span>
+   </span>
+</span>
+ 
+ 
+</li>
+ 
+</ul>
+
+<div class="drop-bot"></div>
+
+</div>
+
+
+</li>
+ 
+</ul>
+
+<div class="drop-bot"></div>
+
+</div>
+
+
+</li>
+
+
+
+ 
+ 
+<li class="parent root item"> 
+  
+ <span class="daddy item bullet nolink">
+   <span>
+     Feedback
+     <span class="daddyicon"></span>
+   </span>
+</span>
+ 
+ 
+ 
+
+    <div class="fusion-submenu-wrapper level2" style="width:180px;">
+      <ul class="level2" style="width:180px;">
+ 
+
+
+
+ 
+ 
+<li class=" item"> 
+ 
+  <a class="orphan item bullet" href="/feedback/bug-tracking.html"  >
+    <span>
+      Bug Reporting / Feature Request
+    <span class="daddyicon"></span>
+    </span>
+  </a>
+ 
+ 
+</li>
+ 
+</ul>
+
+<div class="drop-bot"></div>
+
+</div>
+
+
+</li>
+ 
+</ul>
+
+</div>
+
+</div>
+</div>
+<div class="clear"></div>
+
+
+</div></div>
+<div id="rt-main" class="mb9-sa3">
+  <div class="rt-container">
+  <div class="rt-grid-9 ">
+    <div id="rt-content-top">
+  
+  <div class="rt-grid-9 rt-alpha rt-omega">
+<div class="module-outline-1">
+        	<div class="module-outline-2">
+            	<div class="rt-block equalsContenttopContent">
+		<div class="module-content">
+		<div class="in-module-content">
+		  <h2>The X10 Parallel Programming Language</h2>
+<p>
+X10 is a statically-typed object-oriented language, extending a sequential core language with places, activities, clocks, (distributed, multi-dimensional) arrays and struct types.
+All these changes are motivated by the desire to use the new language for high-end, high-performance, high-productivity computing.
+</p>
+		</div>
+		</div>
+            	</div>
+            </div>
+        </div>
+        	
+</div>
+
+  
+</div>
+<div class="rt-block">
+  <div id="rt-mainbody">
+    <div class="component-content">
+      <div class="rt-blog">
+  
+
+  <article class="post-content">
+
+  The latest news about the X10 programming language.
+
+  
+  
+  
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+  
+  
+     <div class="rt-leading-articles">
+     <div class="leading-0">
+  
+     <div class="rt-article">
+     <div class="rt-article-bg">
+       <!-- Article Source <a href="/news/x10-262-released.html">X10 2.6.2 Released</a> -->
+       
+       
+       <div class="category-desc">
+     <h3>X10 2.6.2 Released</h3>
+<p>We are happy to announce the release of X10 2.6.2.  The
+  main feature of this release is Managed X10 support for Java 11
+  and Native X10 support for MacOS 10.12+. 
+ The release is available for download at <a href="/releases/x10-release-262">http://x10-lang.org/releases/x10-release-262</a>.</p>
+
+	 <div class="clr"></div>
+       </div>
+       
+     </div>
+     </div>
+       <div class="item-separator"></div>
+     </div>
+     
+</div>
+
+
+
+
+
+  
+
+
+  
+  
+  
+     <div class="items-row cols-1 row-0">
+     <div class="item column-1">
+  
+     <div class="rt-article">
+     <div class="rt-article-bg">
+       <!-- Article Source <a href="/news/x10-261-released.html">X10 2.6.1 Released</a> -->
+       
+       
+       <div class="category-desc">
+     <h3>X10 2.6.1 Released</h3>
+<p>We are happy to announce the release of X10 and X10DT 2.6.1.  The
+   focus of the X10 2.6.1 release is improvements to Resilient X10.
+   The release is available for download at <a href="/releases/x10-release-261">http://x10-lang.org/releases/x10-release-261</a>.</p>
+
+	 <div class="clr"></div>
+       </div>
+       
+     </div>
+     </div>
+       <div class="item-separator"></div>
+     </div>
+     
+            <span class="row-separator"></span>
+     
+</div>
+
+
+
+
+
+  
+
+
+  
+  
+  
+     <div class="items-row cols-1 row-1">
+     <div class="item column-1">
+  
+     <div class="rt-article">
+     <div class="rt-article-bg">
+       <!-- Article Source <a href="/news/x10-260-released.html">X10 2.6.0 Released</a> -->
+       
+       
+       <div class="category-desc">
+     <h3>X10 2.6.0 Released</h3>
+<p>We are happy to announce the release of X10 and X10DT 2.6.0.  The
+   main features of this release are language extensions to enhance
+   support for defining embedded DSLs in X10.  In particular, an
+   overloading mechanism for redefining or extending the behavior of
+   control structures was added to X10 and X10 now supports a
+  lightweight trailing closure syntax.
+  
+  The release is available for download at <a href="/releases/x10-release-260">http://x10-lang.org/releases/x10-release-260</a>.</p>
+
+	 <div class="clr"></div>
+       </div>
+       
+     </div>
+     </div>
+       <div class="item-separator"></div>
+     </div>
+     
+            <span class="row-separator"></span>
+     
+</div>
+
+
+
+
+
+  
+
+
+  
+  
+  
+     <div class="items-row cols-1 row-2">
+     <div class="item column-1">
+  
+     <div class="rt-article">
+     <div class="rt-article-bg">
+       <!-- Article Source <a href="/news/x10-2016-proceedings.html">X10'16 Proceedings Available</a> -->
+       
+       
+       <div class="category-desc">
+     <h3>X10'16 Proceedings Available</h3>
+<p>The <a href="http://dl.acm.org/citation.cfm?id=2931028">proceedings</a>&nbsp;for the <a href="http://x10-lang.org/workshop/workshop16.html">X10'16 workshop</a>&nbsp;are now available.</p>
+<p>The workshop will be held on&nbsp;<strong>Tuesday 14 June</strong>&nbsp;in&nbsp;<strong>Santa Barbara, CA, USA</strong>&nbsp;(co-located with&nbsp;<strong>PLDI'16</strong>).</p>
+<p>See you there!</p>
+
+
+	 <div class="clr"></div>
+       </div>
+       
+     </div>
+     </div>
+       <div class="item-separator"></div>
+     </div>
+     
+            <span class="row-separator"></span>
+     
+</div>
+
+
+
+
+
+  
+  
+  
+     <div class="items-row cols-1 row-3">
+     <div class="item column-1">
+  
+     <div class="rt-article">
+     <div class="rt-article-bg">
+       <!-- Article Source <a href="/news/x10-2016-program.html">X10'16 Program Posted</a> -->
+       
+       
+       <div class="category-desc">
+     <h3>X10'16 Workshop Program Posted</h3>
+<p>The <a href="http://conf.researchr.org/track/pldi-2016/X10-2016-papers#program">program</a>&nbsp;for the <a href="http://x10-lang.org/workshop/workshop16.html">X10'16 workshop</a>&nbsp;is now available.</p>
+<p>The workshop will be held on&nbsp;<strong>Tuesday 14 June</strong>&nbsp;in&nbsp;<strong>Santa Barbara, CA, USA</strong>&nbsp;(co-located with&nbsp;<strong>PLDI'16</strong>).</p>
+<p>You can now register for the workshop and associated events via the <a href="http://conf.researchr.org/attending/pldi-2016/Registration">PLDI registration site</a>. The early registration deadline (lower registration fees) is&nbsp;<strong>May 13</strong>.</p>
+
+
+	 <div class="clr"></div>
+       </div>
+       
+     </div>
+     </div>
+       <div class="item-separator"></div>
+     </div>
+     
+            <span class="row-separator"></span>
+     
+</div>
+
+
+
+
+
+  
+  
+  
+     <div class="items-row cols-1 row-4">
+     <div class="item column-1">
+  
+     <div class="rt-article">
+     <div class="rt-article-bg">
+       <!-- Article Source <a href="/news/apgas-scala-release-100.html">APGAS for Scala Released</a> -->
+       
+       
+       <div class="category-desc">
+     <h3>APGAS for Scala Released</h3>
+
+We are happy to announce the release of the <a href="https://github.com/x10-lang/apgas-scala">APGAS library for Scala</a>.
+
+This library provides an implementation of X10's Asynchronous Partitioned Global Address Space (APGAS) programming model for resilient, elastic, parallel, and distributed programming as an embedded domain-specific language for Scala.  It is based on the <a href="http://x10-lang.org/software/download-apgas/latest-apgas-release.html">APGAS library for Java</a>.
+
+	 <div class="clr"></div>
+       </div>
+       
+     </div>
+     </div>
+       <div class="item-separator"></div>
+     </div>
+     
+            <span class="row-separator"></span>
+     
+</div>
+
+
+
+
+
+  
+  
+  
+     <div class="items-row cols-1 row-5">
+     <div class="item column-1">
+  
+     <div class="rt-article">
+     <div class="rt-article-bg">
+       <!-- Article Source <a href="/news/x10-2016-cfp.html">Call for papers for the 2016 ACM SIGPLAN X10 Workshop</a> -->
+       
+       
+       <div class="category-desc">
+     <h3>Call for Papers for the 2016 ACM SIGPLAN X10 Workshop</h3>
+<p>The X10'16 workshop will be held on <strong>Tuesday, June 14,</strong> in <a href="http://conf.researchr.org/venue/pldi-2016/FPSB">Santa Barbara, California, United States</a> (co-located with <strong><a href="http://conf.researchr.org/home/pldi-2016">PLDI'16</a></strong>).
+We encourage submissions on all aspects of X10, including theory, design, implementation, practice, curriculum development and experience, applications and tools.
+The deadline for abstract submission is <strong>Friday, March 11</strong>.&nbsp; Please see the <a href="/workshop/workshop16.html">online call for papers</a> for detailed information.</p>
+
+	 <div class="clr"></div>
+       </div>
+       
+     </div>
+     </div>
+       <div class="item-separator"></div>
+     </div>
+     
+            <span class="row-separator"></span>
+     
+</div>
+
+
+
+
+
+  
+  
+  
+     <div class="items-row cols-1 row-6">
+     <div class="item column-1">
+  
+     <div class="rt-article">
+     <div class="rt-article-bg">
+       <!-- Article Source <a href="/articles/285.html">X10 2.5.4 Released</a> -->
+       
+       
+       <div class="category-desc">
+     <h3>X10 2.5.4 Released</h3>
+<p>We are happy to announce the release of X10 and X10DT 2.5.4.
+  The main features of this release are improvements to Resilient X10
+  including significant performance improvements to the
+  implementations of resilient finish, the addition of ULFM-MPI as a
+  network transport for Resilient X10 applications, and enhanced
+  standard library support for writing Resilient X10 applications and
+  frameworks.
+  The release is available for download at <a href="/releases/x10-release-254">http://x10-lang.org/releases/x10-release-254</a>.</p>
+
+	 <div class="clr"></div>
+       </div>
+       
+     </div>
+     </div>
+       <div class="item-separator"></div>
+     </div>
+     
+            <span class="row-separator"></span>
+     
+</div>
+
+
+
+
+
+  
+
+
+  
+
+
+  
+  
+  
+     <div class="items-row cols-1 row-7">
+     <div class="item column-1">
+  
+     <div class="rt-article">
+     <div class="rt-article-bg">
+       <!-- Article Source <a href="/articles/284.html">X10'15 Proceedings</a> -->
+       
+       
+       <div class="category-desc">
+     <h3>X10'15 Proceedings Available</h3>
+<p>The <a href="http://conf.researchr.org/track/pldi2015/X10-2015-papers#Proceedings">proceedings</a> of the&nbsp;<a href="/workshop/workshop15.html">X10'15 workshop</a>&nbsp;are now available from ACM.&nbsp;<span style="line-height: 1.3em;">The <a href="http://x10.sourceforge.net/documentation/papers/X10Workshop2015/slides/">slides</a> of the presentations are attached to the </span><a href="http://conf.researchr.org/track/pldi2015/X10-2015-papers#program" style="line-height: 1.3em;">program</a><span style="line-height: 1.3em;">.</span></p>
+
+	 <div class="clr"></div>
+       </div>
+       
+     </div>
+     </div>
+       <div class="item-separator"></div>
+     </div>
+     
+            <span class="row-separator"></span>
+     
+</div>
+
+
+
+
+
+  
+  
+  
+     <div class="items-row cols-1 row-8">
+     <div class="item column-1">
+  
+     <div class="rt-article">
+     <div class="rt-article-bg">
+       <!-- Article Source <a href="/articles/282.html">APGAS 1.0.0 Released</a> -->
+       
+       
+       <div class="category-desc">
+     <h3 id="apgas-released">APGAS Released</h3>
+
+<p>We are happy to announce the release of the APGAS library for Java 8. The APGAS library provides an implementation of the X10 programming model as a pure Java library. It will be discussed at the <a href="http://conf.researchr.org/track/pldi2015/X10-2015-papers">X10 Workshop</a> in Portland, OR on Sunday, June 14. The release is available for download at <a href="http://x10-lang.org/software/download-apgas/latest-apgas-release.html">http://x10-lang.org/software/download-apgas/latest-apgas-release.html</a>.</p>
+
+	 <div class="clr"></div>
+       </div>
+       
+     </div>
+     </div>
+       <div class="item-separator"></div>
+     </div>
+     
+            <span class="row-separator"></span>
+     
+</div>
+
+
+
+
+
+  
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+  
+  
+     <div class="items-row cols-1 row-9">
+     <div class="item column-1">
+  
+     <div class="rt-article">
+     <div class="rt-article-bg">
+       <!-- Article Source <a href="/articles/274.html">Migration of X10 JIRA instance</a> -->
+       
+       
+       <div class="category-desc">
+     <p>We have migrated the JIRA used for X10 project issue tracking to a new location: <a href="https://xtenlang.atlassian.net/projects/XTENLANG">https://xtenlang.atlassian.net/projects/XTENLANG</a>. &nbsp;</p>
+<p>Userids were migrated from the old JIRA at Codehaus to the new one, but for security reasons passwords were not migrated.&nbsp; If you had a userid in the old JIRA, please use the password reset mechanism to set a password in the new X10 JIRA instance.&nbsp; If that doesn't work, please contact David Grove (groved@us.ibm.com) to make sure your userid is associated with the correct email account to enable the password reset to work.</p>
+
+	 <div class="clr"></div>
+       </div>
+       
+     </div>
+     </div>
+       <div class="item-separator"></div>
+     </div>
+     
+            <span class="row-separator"></span>
+     
+</div>
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+  
+  
+     <div class="items-row cols-1 row-10">
+     <div class="item column-1">
+  
+     <div class="rt-article">
+     <div class="rt-article-bg">
+       <!-- Article Source <a href="/articles/250.html">ScaleGraph 2.2 Released</a> -->
+       
+       
+       <div class="category-desc">
+     <h3>ScaleGraph 2.2 Released</h3>
+<p>The ScaleGraph group has announced the release of ScaleGraph 2.2.&nbsp; ScaleGraph is a graph library for large-scale graph processing built using X10. Features at a glance:</p>
+<ul>
+<li>XPregel &shy;&ndash; a framework for Pregel computational model</li>
+<li>Betweenness Centrality</li>
+<li>Degree Distribution</li>
+<li>HyperANF (beta)</li>
+<li>Maximum Flow (beta)</li>
+<li>Minimum Spanning Tree (beta)</li>
+<li>PageRank</li>
+<li>Strongly Connected Component</li>
+<li>Explicitly Managed Memory</li>
+</ul>
+<p>For more information, please refer to <a href="http://scalegraph.org">scalegraph.org</a>.</p>
+
+	 <div class="clr"></div>
+       </div>
+       
+     </div>
+     </div>
+       <div class="item-separator"></div>
+     </div>
+     
+            <span class="row-separator"></span>
+     
+</div>
+
+
+
+
+
+  
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+  
+  
+     <div class="items-row cols-1 row-11">
+     <div class="item column-1">
+  
+     <div class="rt-article">
+     <div class="rt-article-bg">
+       <!-- Article Source <a href="/articles/241.html">Release of IIT Madras Benchmark Suite</a> -->
+       
+       
+       <div class="category-desc">
+     <h3>IIT Madras Benchmark Suite Released</h3>
+<p>A new kernel benchmark suite -- IMSuite: IIT Madras benchmark suite for simulating distributed algorithms has been released. IMSuite implements twelve classical distributed algorithms in two task parallel languages - X10 (x10-2.3.0) and HJ.&nbsp; IMSuite is an open source benchmark suite, which can be freely downloaded at: <a href="http://www.cse.iitm.ac.in/~krishna/imsuite/">http://www.cse.iitm.ac.in/~krishna/imsuite/</a></p>
+
+	 <div class="clr"></div>
+       </div>
+       
+     </div>
+     </div>
+       <div class="item-separator"></div>
+     </div>
+     
+            <span class="row-separator"></span>
+     
+</div>
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+  
+
+
+
+  
+  
+  
+     <div class="items-row cols-1 row-12">
+     <div class="item column-1">
+  
+     <div class="rt-article">
+     <div class="rt-article-bg">
+       <!-- Article Source <a href="/articles/235.html">New tutorial available: APGAS Programming in X10 2.4</a> -->
+       
+       
+       <div class="category-desc">
+     <p>The slides and sample programs from the first X10 2.4 tutorial <a href="http://x10-lang.org/documentation/tutorials/apgas-programming-in-x10-24.html">APGAS Programming in X10</a> given at the Hartree Centre Summer School are now available.&nbsp;</p>
+
+	 <div class="clr"></div>
+       </div>
+       
+     </div>
+     </div>
+       <div class="item-separator"></div>
+     </div>
+     
+            <span class="row-separator"></span>
+     
+</div>
+
+
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+  </article>
+</div>
+
+    </div>
+  </div>
+</div>
+
+  </div>
+  <div class="rt-grid-3 ">
+       <div id="rt-sidebar-a">
+   
+                                    <div class="module-outline-1">
+        	<div class="module-outline-2">
+            	<div class="rt-block">
+		<div class="module-title">
+           	    	<h2 class="title">
+			
+ 			X10 Resources
+			
+			</h2>
+					</div>
+            	                	    <div class="module-content">
+            	    	<div class="in-module-content">
+			  <ul class="menu">
+ 
+  <li>
+ 
+ <a href="/documentation/intro/latest/html/"><span>An Introduction to X10</span></a>
+ 
+  
+  <li>
+ 
+ <a href="/x10-publications.html"><span>X10 Publications</span></a>
+ 
+  
+  <li>
+ 
+ <a href="/applications-and-libraries-using-x10.html"><span>Applications and Libraries</span></a>
+ 
+  
+  <li>
+ 
+ <a href="http://stackoverflow.com/questions/tagged/x10-language"><span>Stack Overflow</span></a>
+ 
+  
+  <li>
+ 
+ <a href="/x10-events.html"><span>Upcoming X10 Events</span></a>
+ 
+  
+  <li>
+ 
+ <a href="/software/download-x10/latest-release.html"><span>Download X10</span></a>
+ 
+  
+  <li>
+ 
+ <a href="http://x10.sourceforge.net/documentation/languagespec/x10-latest.pdf"><span>Language Specification</span></a>
+ 
+  
+  <li>
+ 
+ <a href="/x10-mailing-lists.html"><span>Mailing Lists</span></a>
+ 
+  
+  <li>
+ 
+ <a href="https://github.com/x10-lang"><span>X10 on GitHub</span></a>
+ 
+  
+  </ul>            	    	</div>
+            	    </div>
+            	</div>
+            </div>
+        </div>
+        	
+                </div>
+
+  </div>
+  
+  <div class="clear"></div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+<footer class="site-footer">
+  <div class="wrapper">
+    <div id="rt-copyright">
+      <div class="rt-container">
+	<div class="rt-grid-12 rt-alpha rt-omega">
+    	  <div class="clear"></div>
+	  <div class="rt-block">
+	    A product of IBM		</div>
+	  
+	</div>
+	<div class="clear"></div>
+      </div>
+    </div>
+    <!--
+
+    <h2 class="footer-heading">X10: Performance and Productivity at Scale</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>X10: Performance and Productivity at Scale</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/x10-lang">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">x10-lang</span>
+            </a>
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">X10 programming language</p>
+      </div>
+    </div>
+-->
+
+  </div>
+
+</footer>
+
+
+</body>
+
+</html>

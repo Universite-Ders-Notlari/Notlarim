@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<head>
+<meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="/training/tutorials/slurm-and-moab-exercise" />
+<link rel="shortlink" href="/node/674" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="shortcut icon" href="https://hpc.llnl.gov/sites/all/themes/tid/favicon.ico" type="image/vnd.microsoft.icon" />
+<title>Slurm and Moab Exercise | High Performance Computing</title>
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_kShW4RPmRstZ3SpIC-ZvVGNFVAi0WEMuCnI0ZkYIaFw.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_bq48Es_JAifg3RQWKsTF9oq1S79uSN2WHxC3KV06fK0.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_vAm-LJc0tkC-w_c6v7Ekq0bW26Pzl31HvPM6kbvK-pc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_ca6tstDbY9-H23Ty8uKiDyFQLT1AZftZKldhbTPPnm8.css" media="all" />
+<!--[if lt IE 9]><script src="/sites/all/themes/tid/js/html5.js"></script><![endif]-->
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-674 node-type-user-portal-one-column-page">
+  <div aria="contentinfo"><noscript><img src="https://analytics.llnl.gov/piwik.php?idsite=149" class="no-border" alt="" /></noscript></div>
+    <div id="page">
+	<div class="unclassified"></div>
+	<div class="headertop">
+					<div id="skip-nav" role="navigation" aria-labelledby="skip-nav" class="reveal">
+  			<a href="#main-content">Skip to main content</a>
+			</div>
+					</div>
+        <div class="headerwrapbg">
+                        <div class="headerwrap-portal">
+                <div id="masthead" class="site-header container" role="banner">
+                    <div class="row">
+                        <div class="llnl-logo col-sm-3">
+                            <a href="https://www.llnl.gov" target="_blank" title="Lawrence Livermore National Laboratory">
+                                <img src="/sites/all/themes/tid/images/llnl-tab-portal.png" alt="LLNL Home" />
+                            </a>
+                        </div>
+                        <div id="logo" class="site-branding col-sm-4">
+                                                            <div id="site-logo">
+                                        <!--High Performance Computing<br />Livermore Computing Center-->
+                                        																					<a href="/user-portal" class="text-dark" title="Livermore Computing Center High Performance Computing">
+                                            <img src="/sites/all/themes/tid/images/hpc.png" alt="Portal Home" />
+																					</a>
+																				
+                                </div>
+                                                    </div>
+                        <div class="col-sm-5">
+                            <div id="top-search">
+															<div class="input-group">
+																	<form class="navbar-form navbar-search navbar-right" action="/training/tutorials/slurm-and-moab-exercise" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <div class="element-invisible">Search form</div>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-WMOBuCPO5031jq_y5HRvnnjd5L-jMS7N09ztgKFXRoA" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="mainnav">
+                    <div class="container">
+                        <div class="row">
+                            <nav id="Menu" aria-label="Mobile Menu" class="mobilenavi col-md-12"></nav>
+                            <nav id="navigation" aria-label="Main Menu">
+                                <div id="main-menu" class="main-menu-portal">
+                                    <ul class="menu"><li class="first collapsed"><a href="/user-portal">Portal</a></li>
+<li class="expanded"><a href="/accounts">Accounts</a><ul class="menu"><li class="first leaf"><a href="/accounts/new-account-setup">New Account Setup</a></li>
+<li class="leaf"><a href="/accounts/idm-account-management">IdM Account Management</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/manuals/access-lc-systems" title="">Access to LC Systems</a></li>
+<li class="leaf"><a href="/accounts/computer-coordinator-roles">Computer Coordinator Roles</a></li>
+<li class="collapsed"><a href="/accounts/forms">Forms</a></li>
+<li class="collapsed"><a href="/accounts/policies">Policies</a></li>
+<li class="last leaf"><a href="/accounts/mailing-lists">Mailing Lists</a></li>
+</ul></li>
+<li class="expanded"><a href="/banks-jobs">Banks &amp; Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/allocations">Allocations</a></li>
+<li class="expanded"><a href="/banks-jobs/running-jobs">Running Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/running-jobs/batch-system-primer">Batch System Primer</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-user-manual">LSF User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-quick-start-guide">LSF Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-commands">LSF Commands</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-user-manual" title="Guide to using the Slurm Workload/Resource Manager">Slurm User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-quick-start-guide">Slurm Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-commands">Slurm Commands</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/batch-system-commands">Batch System Cross-Reference</a></li>
+<li class="last leaf"><a href="/banks-jobs/running-jobs/slurm-srun-versus-ibm-csm-jsrun">Slurm srun versus IBM CSM jsrun</a></li>
+</ul></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/accounts/forms/asc-dat" title="">ASC DAT Request</a></li>
+<li class="last leaf"><a href="https://hpc.llnl.gov/accounts/forms/mic-dat" title="">M&amp;IC DAT Request</a></li>
+</ul></li>
+<li class="expanded"><a href="/hardware">Hardware</a><ul class="menu"><li class="first collapsed"><a href="/hardware/archival-storage-hardware">Archival Storage Hardware</a></li>
+<li class="collapsed"><a href="/hardware/platforms">Compute Platforms</a></li>
+<li class="leaf"><a href="/hardware/compute-platforms-gpus">Compute Platforms with GPUs</a></li>
+<li class="collapsed"><a href="/hardware/file-systems">File Systems</a></li>
+<li class="leaf"><a href="/hardware/testbeds">Testbeds</a></li>
+<li class="collapsed"><a href="/hardware/zones">Zones (aka &quot;The Enclave&quot;)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/cgi-bin/lccgi/customstatus.cgi?" title="">CZ Compute Platform Status</a></li>
+<li class="leaf"><a href="https://rzlc.llnl.gov/cgi-bin/lccgi/customstatus.cgi" title="">RZ Compute System Status</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/fsstatus/fsstatus.cgi" title="">CZ File System Status</a></li>
+<li class="last leaf"><a href="https://rzlc.llnl.gov/fsstatus/fsstatus.cgi" title="">RZ File System Status</a></li>
+</ul></li>
+<li class="expanded"><a href="/services">Services</a><ul class="menu"><li class="first collapsed"><a href="/services/green-data-oasis">Green Data Oasis (GDO)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="last leaf"><a href="/services/visualization-services">Visualization Services</a></li>
+</ul></li>
+<li class="expanded"><a href="/software">Software</a><ul class="menu"><li class="first leaf"><a href="/software/archival-storage-software">Archival Storage Software</a></li>
+<li class="collapsed"><a href="/software/data-management-tools-projects">Data Management Tools</a></li>
+<li class="collapsed"><a href="/software/development-environment-software">Development Environment Software</a></li>
+<li class="leaf"><a href="/software/mathematical-software">Mathematical Software</a></li>
+<li class="leaf"><a href="/software/modules-and-software-packaging">Modules and Software Packaging</a></li>
+<li class="collapsed"><a href="/software/visualization-software">Visualization Software</a></li>
+<li class="last leaf"><a href="https://computing.llnl.gov/projects/radiuss" title="">RADIUSS</a></li>
+</ul></li>
+<li class="last expanded active-trail"><a href="/training" class="active-trail">Training</a><ul class="menu"><li class="first expanded active-trail"><a href="/training/tutorials" class="active-trail">Tutorials</a><ul class="menu"><li class="first leaf"><a href="/training/tutorials/introduction-parallel-computing-tutorial">Introduction to Parallel Computing Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/llnl-covid-19-hpc-resource-guide">LLNL Covid-19 HPC Resource Guide for New Livermore Computing Users</a></li>
+<li class="leaf"><a href="/training/tutorials/using-lcs-sierra-system">Using LC&#039;s Sierra System</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-psaap3-quick-start-tutorial">Livermore Computing PSAAP3 Quick Start Tutorial</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/sites/default/files/PSAAP-alliance-quickguide.docx" title="">PSAAP Alliance Quick Guide</a></li>
+<li class="leaf"><a href="/training/tutorials/linux-tutorial-exercises">Linux Tutorial Exercise One</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-one">Livermore Computing Linux Clusters Overview Part One</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two">Livermore Computing Linux Clusters Overview Part Two</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-resources-and-environment">Livermore Computing Resources and Environment</a></li>
+<li class="leaf active-trail"><a href="/training/tutorials/slurm-and-moab-exercise" class="active-trail active">Slurm and Moab Exercise</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-part-2-common-functions">TotalView Part 2:  Common Functions</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-part-3-debugging-parallel-programs">TotalView Part 3: Debugging Parallel Programs</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-tutorial">TotalView Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/evaluation-form">Tutorial Evaluation Form</a></li>
+<li class="leaf"><a href="/training/tutorials/srun-auto-affinity">srun --auto-affinity</a></li>
+<li class="last leaf"><a href="/training/tutorials/srun-multi-prog">srun --multi-prog</a></li>
+</ul></li>
+<li class="collapsed"><a href="/training/documentation">Documentation &amp; User Manuals</a></li>
+<li class="leaf"><a href="/training/technical-bulletins-catalog">Technical Bulletins Catalog</a></li>
+<li class="collapsed"><a href="/training/workshop-schedule">Training Events</a></li>
+<li class="last leaf"><a href="/training/user-meeting-presentations-archive">User Meeting Presentation Archive</a></li>
+</ul></li>
+</ul>                                                                            <div id="pagetoggle" class="btn-group btn-toggle pull-right" style="margin-right: 15px;">
+                                            <a href="/" class="btn btn-default gs">General Site</a>
+                                            <a href="/user-portal" class="btn btn-primary up active">User Portal</a>
+                                        </div>
+                                                                    </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+		<div id="main-content" class="l2content">
+        <div class="container">
+    		<div class="row">
+        		                <div id="primary" class="content-area col-sm-12">
+					                                        <section id="content" role="nav" class="clearfix col-sm-12">
+
+                                                                                    <div id="breadcrumbs">
+                                    <h2 class="element-invisible">breadcrumb menu</h2><nav class="breadcrumb" aria-label="breadcrumb-navigation"><a href="/">Home</a> » <a href="/training">Training</a> » <a href="/training/tutorials">Tutorials</a> » Slurm and Moab Exercise</nav>                                </div>
+                                                    
+                                            </section>
+                  <main>
+
+                                              <div id="content_top">
+                                <div class="region region-content-top">
+  <div id="block-print-ui-print-links" class="block block-print-ui">
+
+    
+    
+  
+  <div class="content">
+    <span class="print_html"><a href="https://hpc.llnl.gov/print/674" title="Display a printer-friendly version of this page." class="print-page" onclick="window.open(this.href); return false" rel="nofollow">Printer-friendly</a></span>  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                            </div>
+                        
+                        <div id="content-wrap">
+                                                                                                                <div class="region region-content">
+  <div id="block-system-main" class="block block-system">
+
+    
+    
+  
+  <div class="content">
+    
+
+<div  about="/training/tutorials/slurm-and-moab-exercise" typeof="sioc:Item foaf:Document" class="node node-user-portal-one-column-page node-full view-mode-full">
+    <div class="row">
+    <div class="col-sm-12 ">
+      <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even" property="dc:title"><h1 class="title">Slurm and Moab Exercise</h1></div></div></div><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><h2><a name="Exercise1" id="Exercise1"></a>Exercise 1</h2>
+<h4>Preparation:</h4>
+<ul><li>Login to the workshop machine
+<ul><li>Workshops differ in how this is done. The instructor will go over this beforehand.</li>
+</ul></li>
+<li>Copy the exercise files into your home directory then <span class="fixed">cd</span> into it:
+<ul><li><span class="fixed">cp  -R /usr/global/docs/training/blaise/slurmmoab   ~ </span></li>
+<li><span class="fixed">cd  slurmmoab</span></li>
+</ul></li>
+<li>List the contents of your subdirectory. You should notice the following files:</li>
+</ul><table class="table table-bordered table-striped"><tr><th scope="col">Description</th>
+<th colspan="2" rowspan="1" scope="col">Files</th>
+</tr><tr><td>Simple shell script used for first exercise</td>
+<td colspan="2" rowspan="1"><div class="media media-element-container media-default"><div id="file-1791" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/exercise1-txt">exercise1</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/exercise1.txt" type="text/plain; length=426">exercise1</a></span>  </div>
+
+  
+</div>
+</div></td>
+</tr><tr><td>Parallel program source code - C version</td>
+<td colspan="2" rowspan="1"><div class="media media-element-container media-default"><div id="file-1792" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/mpi-array-txt-1">mpi_array.c</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/mpi_array_1.txt" type="text/plain; length=4259">mpi_array.c</a></span>  </div>
+
+  
+</div>
+</div></td>
+</tr><tr><td>Parallel program source code - Fortran version</td>
+<td colspan="2" rowspan="1"><div class="media media-element-container media-default"><div id="file-1793" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/mpi-array-txt-2">mpi_array.f</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/mpi_array_2.txt" type="text/plain; length=5768">mpi_array.f</a></span>  </div>
+
+  
+</div>
+</div></td>
+</tr><tr><td>Hybrid parallel (MPI + threads) program source code - C version</td>
+<td colspan="2" rowspan="1"><div class="media media-element-container media-default"><div id="file-1794" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/mpithreads-txt">mpithreads.c</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/mpithreads.txt" type="text/plain; length=4713">mpithreads.c</a></span>  </div>
+
+  
+</div>
+</div></td>
+</tr><tr><td>Multiple jobs from single batch script example - C version</td>
+<td colspan="2" rowspan="1"><div class="media media-element-container media-default"><div id="file-1795" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/multijob-txt">multijob.c</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/multijob.txt" type="text/plain; length=734">multijob.c</a></span>  </div>
+
+  
+</div>
+</div></td>
+</tr><tr><td>Solutions to exercises</td>
+<td><strong>Slurm</strong><br /><div class="media media-element-container media-default"><div id="file-1796" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/slurm1-txt">slurm1</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/slurm1.txt" type="text/plain; length=419">slurm1</a></span>  </div>
+
+  
+</div>
+</div><br /><div class="media media-element-container media-default"><div id="file-1797" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/slurm1-out-txt">slurm1.out</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/slurm1.out_.txt" type="text/plain; length=2643">slurm1.out</a></span>  </div>
+
+  
+</div>
+</div><br /><div class="media media-element-container media-default"><div id="file-1798" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/slurm2-txt">slurm2</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/slurm2.txt" type="text/plain; length=442">slurm2</a></span>  </div>
+
+  
+</div>
+</div><br /><div class="media media-element-container media-default"><div id="file-1799" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/slurm3-txt">slurm3</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/slurm3.txt" type="text/plain; length=663">slurm3</a></span>  </div>
+
+  
+</div>
+</div><br /><div class="media media-element-container media-default"><div id="file-1800" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/mpiarray-out-txt">mpiarray.out</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/mpiarray.out_.txt" type="text/plain; length=9199">mpiarray.out</a></span>  </div>
+
+  
+</div>
+</div><br /><div class="media media-element-container media-default"><div id="file-1801" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/slurm4-txt">slurm4</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/slurm4.txt" type="text/plain; length=678">slurm4</a></span>  </div>
+
+  
+</div>
+</div><br /><div class="media media-element-container media-default"><div id="file-1802" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/mpithreads-out-txt">mpithreads.out</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/mpithreads.out_.txt" type="text/plain; length=11911">mpithreads.out</a></span>  </div>
+
+  
+</div>
+</div><br /><div class="media media-element-container media-default"><div id="file-1803" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/slurm5-txt">slurm5</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/slurm5.txt" type="text/plain; length=757">slurm5</a></span>  </div>
+
+  
+</div>
+</div></td>
+<td><strong>Moab</strong><br /><div class="media media-element-container media-default"><div id="file-1804" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/moab1-txt">moab1</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/moab1.txt" type="text/plain; length=421">moab1</a></span>  </div>
+
+  
+</div>
+</div><br /><div class="media media-element-container media-default"><div id="file-1805" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/moab1-out-txt">moab1.out</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/moab1.out_.txt" type="text/plain; length=2641">moab1.out</a></span>  </div>
+
+  
+</div>
+</div><br /><div class="media media-element-container media-default"><div id="file-1806" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/moab2-txt">moab2</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/moab2.txt" type="text/plain; length=443">moab2</a></span>  </div>
+
+  
+</div>
+</div><br /><div class="media media-element-container media-default"><div id="file-1807" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/moab3-txt">moab3</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/moab3.txt" type="text/plain; length=669">moab3</a></span>  </div>
+
+  
+</div>
+</div><br /><div class="media media-element-container media-default"><div id="file-1808" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/mpiarray-out-txt-0">mpiarray.out</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/mpiarray.out__0.txt" type="text/plain; length=9199">mpiarray.out</a></span>  </div>
+
+  
+</div>
+</div><br /><div class="media media-element-container media-default"><div id="file-1809" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/moab4-txt">moab4</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/moab4.txt" type="text/plain; length=684">moab4</a></span>  </div>
+
+  
+</div>
+</div><br /><div class="media media-element-container media-default"><div id="file-1810" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/mpithreads-out-txt-0">mpithreads.out</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/mpithreads.out__0.txt" type="text/plain; length=11911">mpithreads.out</a></span>  </div>
+
+  
+</div>
+</div><br /><div class="media media-element-container media-default"><div id="file-1811" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/moab5-txt">moab5</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/moab5.txt" type="text/plain; length=760">moab5</a></span>  </div>
+
+  
+</div>
+</div></td>
+</tr></table><h4>Review your cluster's batch configuration</h4>
+<ul><li>Try the commands below:
+<ul><li><span class="fixed">news job.lim.machine - where machine is the name of the cluster</span></li>
+<li><span class="fixed">sinfo -s</span></li>
+<li><span class="fixed">mjstat | head</span></li>
+</ul></li>
+<li>Questions:
+<ul><li>Which queues are configured?</li>
+<li>How many nodes are there in each queue?</li>
+<li>What are the batch queue node and time limits?</li>
+<li>What states are the nodes in (alloc, idle, etc.)?</li>
+</ul></li>
+</ul><h4>Find out which banks are available</h4>
+<ul><li>To see which banks (accounts) are available to you on this cluster, simply issue the <span class="fixed">mshare</span> command. Note that it displays your bank allocation and usage information also.</li>
+<li>The <span class="fixed">mdiag -u classXX</span> command can be used to list your banks (accounts) and also show your valid QOS options.</li>
+<li>To view the entire bank hierarchy, use the <span class="fixed">mshare -t root</span> command.</li>
+</ul><h4>Create and run a job script</h4>
+<ul><li>Using your favorite text editor (vi/vim, emacs, nedit, gedit, nano...), create a job script that does the following:
+<ul><li>Runs under the classXX login shell (/bin/tcsh)</li>
+<li>Sets a time limit of 5 minutes</li>
+<li>Requests 1 node</li>
+<li>Runs in the pReserved queue</li>
+<li>Writes the batch output to a file name of your choosing</li>
+<li>Gives your job a unique name</li>
+<li>Changes to your slurmmoab subdirectory</li>
+<li>Issues the name of the host it is running on</li>
+<li>Issues the jobid for this job</li>
+<li>Shows your path</li>
+<li>Runs the <span class="fixed">exercise1</span> executable provided to you</li>
+<li>Sleeps for a few minutes (so you can have time to check on it)</li>
+<li>For reference, you can review the appropriate solution file: <div class="media media-element-container media-default"><div id="file-1796--2" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/slurm1-txt">slurm1</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/slurm1.txt" type="text/plain; length=419">slurm1</a></span>  </div>
+
+  
+</div>
+</div>  or <div class="media media-element-container media-default"><div id="file-1804--2" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/moab1-txt">moab1</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/moab1.txt" type="text/plain; length=421">moab1</a></span>  </div>
+
+  
+</div>
+</div></li>
+</ul></li>
+<li>Submit your job using either the <span class="fixed">sbatch</span> (Slurm) command or the <span class="fixed">msub</span> (Moab) command.
+<ul><li>Was your job script accepted?</li>
+<li>What was its jobid number?</li>
+<li>Problems? Check your script against the <div class="media media-element-container media-default"><div id="file-1796--3" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/slurm1-txt">slurm1 </a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/slurm1.txt" type="text/plain; length=419">slurm1 </a></span>  </div>
+
+  
+</div>
+</div> or <div class="media media-element-container media-default"><div id="file-1804--3" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/moab1-txt">moab1</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/moab1.txt" type="text/plain; length=421">moab1</a></span>  </div>
+
+  
+</div>
+</div> solution file for errors.</li>
+</ul></li>
+</ul><h4>Monitor your job</h4>
+<ul><li>The tutorial described several ways to monitor your job, including:
+<ul><li><span class="fixed">squeue</span></li>
+<li><span class="fixed">mjstat</span></li>
+<li><span class="fixed">showq</span></li>
+<li><span class="fixed">checkjob</span></li>
+<li><span class="fixed">mdiag -j</span></li>
+</ul></li>
+<li>Try any/all of these commands, noting their similarities and differences.</li>
+<li><strong>Hint:</strong> you may want to pipe the output of the more verbose commands into grep with the jobid or your workshop username. For example:
+<ul><li><span class="fixed">showq | grep class04</span></li>
+</ul></li>
+<li>If you run out of time, you can submit another job with a longer "sleep".</li>
+<li>If you have questions about the output of these commands, check the tutorial and/or man pages.</li>
+<li>After your job completes, examine its status using the <span class="fixed">checkjob</span> and <span class="fixed">showq -c | grep</span> <span class="fixed">jobid</span> commands.</li>
+</ul><h4>Check your job's output</h4>
+<ul><li>Review the output file from your job.
+<ul><li>Where did you find it?</li>
+<li>Is it named what you specified?</li>
+<li>Is the output what should be expected? Compare your output file to the <div class="media media-element-container media-default"><div id="file-1797--2" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/slurm1-out-txt">slurm1.out</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/slurm1.out_.txt" type="text/plain; length=2643">slurm1.out</a></span>  </div>
+
+  
+</div>
+</div> or <div class="media media-element-container media-default"><div id="file-1805--2" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/moab1-out-txt">moab1.out</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/moab1.out_.txt" type="text/plain; length=2641">moab1.out</a></span>  </div>
+
+  
+</div>
+</div> output file.</li>
+<li>You may also want to look at the <div class="media media-element-container media-default"><div id="file-1791--2" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/exercise1-txt">exercise1</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/exercise1.txt" type="text/plain; length=426">exercise1</a></span>  </div>
+
+  
+</div>
+</div>  executable.</li>
+</ul></li>
+</ul><p><strong>This completes Exercise 1</strong></p>
+<h2><a name="Exercise2" id="Exercise2"></a>Exercise 2</h2>
+<h3>Still logged into the workshop cluster?</h3>
+<ul><li>If so, then continue to the next step. If not, then login as you did previously for Exercise 1.</li>
+</ul><h4>Holding and releasing a job</h4>
+<ul><li>Using your same job script, submit the job so that it is held. This can be done on the <span class="fixed">msub</span> or <span class="fixed">sbatch</span> command line, or from within the script itself. Try both ways. If you have any questions see the <a href="/training/tutorials/slurm-and-moab#Hold/Release">tutorial</a>.</li>
+<li>Verify that your job is actually in a holding state</li>
+<li>Release your job(s) so that they run to completion.</li>
+<li>Verify that the job release actually took effect</li>
+</ul><h4>Canceling a job</h4>
+<ul><li>Once again, submit your job script.</li>
+<li>Try to cancel it before it completes. You can do this when its queued or when it's running. If you have any questions see the <a href="/tutorials/moab/#Cancel">tutorial</a>.</li>
+<li>Confirm that the job is actually cancelled. Also, check its post-execution status with the <span class="fixed">checkjob</span> command.</li>
+</ul><h4>Running in standby mode</h4>
+<ul><li>Modify your job script so that it will run in standby mode. The <div class="media media-element-container media-default"><div id="file-1798--2" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/slurm2-txt">slurm2</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/slurm2.txt" type="text/plain; length=442">slurm2</a></span>  </div>
+
+  
+</div>
+</div> and <div class="media media-element-container media-default"><div id="file-1806--2" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/moab2-txt">moab2</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/moab2.txt" type="text/plain; length=443">moab2</a></span>  </div>
+
+  
+</div>
+</div> files are provided for reference.</li>
+<li>Submit your job script.</li>
+<li>When your job starts to run, verify that it is running in standby mode. One way to do this is use the <span class="fixed">checkjob</span> command and look for <span class="fixed">qos:standby</span> near the top of the output.</li>
+<li>Submit your job script again but be sure to have the job HELD.</li>
+<li>Confirm that the job is held.</li>
+<li>Now change the qos from standby to normal for this job. If you have any questions see the <a href="/training/tutorials/slurm-and-moab#Standby">Standby section of the tutorial</a>.</li>
+<li>Confirm that the qos was changed.</li>
+<li>Cancel the job (or release it and let it run) when you're sure that it was changed.</li>
+</ul><h4>Run a parallel job</h4>
+<ul><li>Using the <strong>slurm1</strong> or <strong>moab1</strong> example file, copy it to a new file - call it whatever you'd like.</li>
+<li>Modify your new file so that:
+<ul><li>Four nodes are requested</li>
+<li>A new output file name is used</li>
+<li>It compiles either <span class="fixed">mpi_array.c</span> (use "mpicc") or <span class="fixed">mpi_array.f</span> (use "mpif77").</li>
+<li>Lists the names of the nodes used to run the job</li>
+<li>Runs a 48-task MPI job using the mpi_array executable you created in the previous step.</li>
+</ul></li>
+<li>The<div class="media media-element-container media-default"><div id="file-1799--2" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/slurm3-txt">slurm3</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/slurm3.txt" type="text/plain; length=663">slurm3</a></span>  </div>
+
+  
+</div>
+</div> and <div class="media media-element-container media-default"><div id="file-1807--2" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/moab3-txt">moab3</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/moab3.txt" type="text/plain; length=669">moab3</a></span>  </div>
+
+  
+</div>
+</div> example files are provided for reference.</li>
+<li>Submit your job and monitor it, making sure it is using the number of nodes/tasks specified.</li>
+<li>Check your output file to verify that things worked. See  <div class="media media-element-container media-default"><div id="file-1800--2" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/mpiarray-out-txt">mpiarray.out</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/mpiarray.out_.txt" type="text/plain; length=9199">mpiarray.out</a></span>  </div>
+
+  
+</div>
+</div> as a comparison.</li>
+</ul><h4>Run a hybrid (MPI + threads) parallel job</h4>
+<ul><li>The example file <span class="fixed">mpithreads.c</span> combines MPI with pthreads. The basic idea is to run one MPI task per node, and then spawn one thread for each core on that node. The threads do the actual work and MPI is used to collect the results across all nodes. Feel free to examine the source code if you'd like.</li>
+<li>Using the <strong>slurm3 </strong>or <strong>moab3</strong> example file, copy it to a new file - call it whatever you'd like.</li>
+<li>Modify your new file so that:
+<ul><li>A new output file name is used</li>
+<li>Compiles the <span class="fixed">mpithreads.c</span> file (use "mpicc -pthread")</li>
+<li>Runs a 4-task MPI job using the executable you created in the previous step. However, this time run with only one task per node. This will permit the threads spawned by each MPI task to use the available cores on a node without competition from the threads of other MPI tasks.</li>
+</ul></li>
+<li>The <div class="media media-element-container media-default"><div id="file-1801--2" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/slurm4-txt">slurm4</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/slurm4.txt" type="text/plain; length=678">slurm4</a></span>  </div>
+
+  
+</div>
+</div> and <div class="media media-element-container media-default"><div id="file-1809--2" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/moab4-txt">moab4</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/moab4.txt" type="text/plain; length=684">moab4</a></span>  </div>
+
+  
+</div>
+</div> example files are provided for reference.</li>
+<li>Submit your job and monitor it, making sure it is using the number of nodes/tasks specified.</li>
+<li>Check your output file to verify that things worked. See <div class="media media-element-container media-default"><div id="file-1810--2" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/mpithreads-out-txt-0">mpithreads.out</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/mpithreads.out__0.txt" type="text/plain; length=11911">mpithreads.out</a></span>  </div>
+
+  
+</div>
+</div>  as a comparison.</li>
+</ul><h4>Run multiple jobs from a single batch script</h4>
+<ul><li>The <div class="media media-element-container media-default"><div id="file-1803--2" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/slurm5-txt">slurm5</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/slurm5.txt" type="text/plain; length=757">slurm5</a></span>  </div>
+
+  
+</div>
+</div> and <div class="media media-element-container media-default"><div id="file-1811--2" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/moab5-txt">moab5</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/moab5.txt" type="text/plain; length=760">moab5</a></span>  </div>
+
+  
+</div>
+</div> example files demonstrate how to run multiple jobs from a single batch script.</li>
+<li>Review either example file and note what is being done:
+<ul><li>Four nodes are requested</li>
+<li>A simple executable is compiled</li>
+<li>Four 1-node jobs are launched to run simultaneously</li>
+</ul></li>
+<li>Submit either example file and then review its output when it completes.</li>
+</ul><h4>When will my job start?</h4>
+<ul><li>Some of the most frequently asked questions by users include;
+<ul><li>"When will my job start?"</li>
+<li>"Why won't my job start?"</li>
+<li>"Why are jobs sitting idle when there are ample unused nodes?"</li>
+</ul></li>
+<li>There are several common answers to these questions. Assuming that there are no system problems or errors in the user's job submission script, one of the most common reasons has to do with a job's <strong>calculated priority</strong> and the scheduler's fair-share algorithms.</li>
+<li>Use one of the commands below to generate a list of eligible jobs and their priorities:</li>
+</ul><pre>sprio -l  |  more
+mdiag -p -v  |  more</pre><ul><li>As you scroll through the list, note that it is sorted by jobid.</li>
+<li>To make the list more meaningful, sort it by priority (highest to lowest):</li>
+</ul><pre>sprio -l  |  sort -r -k 3,3
+mdiag -p -v  |  sort -r -k 3,3</pre><ul><li>You can now find where any job is relative to other jobs in the queue.</li>
+<li>Columns 4-9 show the factors used to compute priority values.</li>
+<li>You also use the <span class="fixed">checkjob jobid</span> command to view the scheduler's current estimate on when your job will start. Look for the line that shows "StartTime:" (if it exists). For example:</li>
+</ul><pre>% <span class="text-danger">checkjob 87889</span>
+...
+WallTime:  00:00:00 of 1-00:00:00
+SubmitTime: Wed Jun  7 10:40:27
+  (Time Queued Total: 00:01:48   Eligible: 00:01:48)
+
+<span class="text-danger">StartTime: Thu Jun  8 10:41:57</span>
+Total Requested Tasks:  1
+Total Requested Nodes:  1
+Partition: pbatch
+Dedicated Resources Per Task: lscratchf
+Node Access: SINGLEJOB
+...</pre><ul><li>Sometimes the <span class="fixed">squeue --start</span> command can be used to get an estimate for job start times. And sometimes it can't...</li>
+<li>Note that start times can change dynamically if new jobs with a higher priority are submitted.</li>
+</ul><h4>Try sview</h4>
+<ul><li>The <span class="fixed">sview</span> utility provides a graphical view of all user jobs running on a cluster. Give it a try if you haven't already.</li>
+</ul><h4>Documentation - if you still have time</h4>
+<ul><li>The best launching spot for LC Slurm / Moab documentation is: <a href="https://hpc.llnl.gov/banks-jobs/running-jobs">https://hpc.llnl.gov/banks-jobs/running-jobs</a></li>
+</ul><p><strong>This completes the exercise.</strong></p>
+<p>Please complete the <a href="/training/tutorials/evaluation-form">online evaluation form </a>if you have not already done so for this tutorial.</p>
+<h4>Where would you like to go now?</h4>
+<ul><li>Agenda</li>
+<li><a href="/training/tutorials/slurm-and-moab#Hold/Release">Back to the tutorial</a></li>
+</ul></div></div></div>    </div>
+  </div>
+</div>
+
+
+<!-- Needed to activate display suite support on forms -->
+  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                   		</div>
+                  </main>
+                </div>
+      		</div>
+    	</div>
+	</div>
+  	
+	
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 footer-top">
+
+                    <a class="llnl" href="https://www.llnl.gov/" target="_blank"><img src="/sites/all/themes/tid/images/llnl.png" alt="LLNL"></a>
+                    <p>
+                        Lawrence Livermore National Laboratory
+                        <br>7000 East Avenue • Livermore, CA 94550
+                    </p>
+                    <p>
+                        Operated by Lawrence Livermore National Security, LLC, for the
+                        <br>Department of Energy's National Nuclear Security Administration.
+                    </p>
+                    <div class="footer-top-logos">
+                        <a class="nnsa" href="https://www.energy.gov/nnsa/national-nuclear-security-administration" target="_blank"><img src="/sites/all/themes/tid/images/nnsa2.png" alt="NNSA"></a>
+                        <a class="doe" href="https://www.energy.gov/" target="_blank"><img src="/sites/all/themes/tid/images/doe_small.png" alt="U.S. DOE"></a>
+                        <a class="llns" href="https://www.llnsllc.com/" target="_blank"><img src="/sites/all/themes/tid/images/llns.png" alt="LLNS"></a>
+                	</div>
+
+
+
+                </div>
+                <div class="col-sm-12 footer-bottom">
+                	
+
+                    <span>UCRL-MI-131558  &nbsp;|&nbsp;&nbsp;</span><a href="https://www.llnl.gov/disclaimer" target="_blank">Privacy &amp; Legal Notice</a>	 &nbsp;|&nbsp;&nbsp; <a href="mailto:webmaster-comp@llnl.gov">Website Query</a> &nbsp;|&nbsp;&nbsp;<a href="/about-us/contact-us" >Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+  </body>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/jquery_update/replace/jquery/2.1/jquery.min.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-extend-3.4.0.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-html-prefilter-3.5.0-backport.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/drupal.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/extlink/extlink.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/jquery.flexslider.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/slide.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/lightbox2/js/lightbox.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/matomo/matomo.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _paq = _paq || [];(function(){var u=(("https:" == document.location.protocol) ? "https://analytics.llnl.gov/" : "http://analytics.llnl.gov/");_paq.push(["setSiteId", "149"]);_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setDoNotTrack", 1]);_paq.push(["trackPageView"]);_paq.push(["setIgnoreClasses", ["no-tracking","colorbox"]]);_paq.push(["enableLinkTracking"]);var d=document,g=d.createElement("script"),s=d.getElementsByTagName("script")[0];g.type="text/javascript";g.defer=true;g.async=true;g.src="https://hpc.llnl.gov/sites/default/files/matomo/piwik.js?qsohrw";s.parentNode.insertBefore(g,s);})();
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/bootstrap.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mobilemenu.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/custom.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mods.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"tid","theme_token":"AnscLQQhMCUldtb87J_j1hNtGjFeM4KRTwBobfDtdrY","js":{"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/2.1\/jquery.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/contrib\/extlink\/extlink.js":1,"sites\/all\/themes\/tid\/js\/jquery.flexslider.js":1,"sites\/all\/themes\/tid\/js\/slide.js":1,"sites\/all\/modules\/contrib\/lightbox2\/js\/lightbox.js":1,"sites\/all\/modules\/contrib\/matomo\/matomo.js":1,"0":1,"sites\/all\/themes\/tid\/js\/bootstrap.js":1,"sites\/all\/themes\/tid\/js\/mobilemenu.js":1,"sites\/all\/themes\/tid\/js\/custom.js":1,"sites\/all\/themes\/tid\/js\/mods.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/book\/book.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/extlink\/extlink.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/lightbox2\/css\/lightbox.css":1,"sites\/all\/modules\/contrib\/print\/print_ui\/css\/print_ui.theme.css":1,"sites\/all\/themes\/tid\/css\/bootstrap.css":1,"sites\/all\/themes\/tid\/css\/flexslider.css":1,"sites\/all\/themes\/tid\/css\/system.menus.css":1,"sites\/all\/themes\/tid\/css\/style.css":1,"sites\/all\/themes\/tid\/font-awesome\/css\/font-awesome.css":1,"sites\/all\/themes\/tid\/css\/treewalk.css":1,"sites\/all\/themes\/tid\/css\/popup.css":1,"sites\/all\/themes\/tid\/css\/mods.css":1}},"lightbox2":{"rtl":0,"file_path":"\/(\\w\\w\/)public:\/","default_image":"\/sites\/all\/modules\/contrib\/lightbox2\/images\/brokenimage.jpg","border_size":10,"font_color":"000","box_color":"fff","top_position":"","overlay_opacity":"0.8","overlay_color":"000","disable_close_click":true,"resize_sequence":0,"resize_speed":400,"fade_in_speed":400,"slide_down_speed":600,"use_alt_layout":false,"disable_resize":false,"disable_zoom":false,"force_show_nav":false,"show_caption":true,"loop_items":false,"node_link_text":"View Image Details","node_link_target":false,"image_count":"Image !current of !total","video_count":"Video !current of !total","page_count":"Page !current of !total","lite_press_x_close":"press \u003Ca href=\u0022#\u0022 onclick=\u0022hideLightbox(); return FALSE;\u0022\u003E\u003Ckbd\u003Ex\u003C\/kbd\u003E\u003C\/a\u003E to close","download_link_text":"","enable_login":false,"enable_contact":false,"keys_close":"c x 27","keys_previous":"p 37","keys_next":"n 39","keys_zoom":"z","keys_play_pause":"32","display_image_size":"original","image_node_sizes":"()","trigger_lightbox_classes":"","trigger_lightbox_group_classes":"","trigger_slideshow_classes":"","trigger_lightframe_classes":"","trigger_lightframe_group_classes":"","custom_class_handler":0,"custom_trigger_classes":"","disable_for_gallery_lists":true,"disable_for_acidfree_gallery_lists":true,"enable_acidfree_videos":true,"slideshow_interval":5000,"slideshow_automatic_start":true,"slideshow_automatic_exit":true,"show_play_pause":true,"pause_on_next_click":false,"pause_on_previous_click":true,"loop_slides":false,"iframe_width":600,"iframe_height":400,"iframe_border":1,"enable_video":false,"useragent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64; trendictionbot0.5.0; trendiction search; http:\/\/www.trendiction.de\/bot; please let us know of any problems; web at trendiction.com) Gecko\/20170101 Firefox\/67.0"},"extlink":{"extTarget":0,"extClass":"ext","extLabel":"(link is external)","extImgClass":0,"extIconPlacement":0,"extSubdomains":1,"extExclude":".gov|.com|.org|.io|.be|.us|.edu","extInclude":"-int.llnl.gov|lc.llnl.gov|caas.llnl.gov|exchangetools.llnl.gov","extCssExclude":"","extCssExplicit":"","extAlert":"_blank","extAlertText":"This page is routing you to a page which requires extra authentication. You must have on-site or VPN access.\r\n\r\nPress OK to continue or cancel to return.\r\n\r\nIf this fails or times-out, you are not allowed access to the internal page or the server may be temporarily unavailable.\r\n\r\nIf you have an on-site or VPN account and are still having trouble, please send e-mail to lc-hotline@llnl.gov or call 925-422-4531 for further assistance.","mailtoClass":"mailto","mailtoLabel":"(link sends e-mail)"},"matomo":{"trackMailto":1},"urlIsAjaxTrusted":{"\/training\/tutorials\/slurm-and-moab-exercise":true}});
+//--><!]]>
+</script>
+</html>

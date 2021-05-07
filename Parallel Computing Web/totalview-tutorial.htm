@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<head>
+<meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="/training/tutorials/totalview-tutorial" />
+<link rel="shortlink" href="/node/662" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="shortcut icon" href="https://hpc.llnl.gov/sites/all/themes/tid/favicon.ico" type="image/vnd.microsoft.icon" />
+<title>TotalView Tutorial | High Performance Computing</title>
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_kShW4RPmRstZ3SpIC-ZvVGNFVAi0WEMuCnI0ZkYIaFw.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_bq48Es_JAifg3RQWKsTF9oq1S79uSN2WHxC3KV06fK0.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_vAm-LJc0tkC-w_c6v7Ekq0bW26Pzl31HvPM6kbvK-pc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_ca6tstDbY9-H23Ty8uKiDyFQLT1AZftZKldhbTPPnm8.css" media="all" />
+<!--[if lt IE 9]><script src="/sites/all/themes/tid/js/html5.js"></script><![endif]-->
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-662 node-type-user-portal-one-column-page">
+  <div aria="contentinfo"><noscript><img src="https://analytics.llnl.gov/piwik.php?idsite=149" class="no-border" alt="" /></noscript></div>
+    <div id="page">
+	<div class="unclassified"></div>
+	<div class="headertop">
+					<div id="skip-nav" role="navigation" aria-labelledby="skip-nav" class="reveal">
+  			<a href="#main-content">Skip to main content</a>
+			</div>
+					</div>
+        <div class="headerwrapbg">
+                        <div class="headerwrap-portal">
+                <div id="masthead" class="site-header container" role="banner">
+                    <div class="row">
+                        <div class="llnl-logo col-sm-3">
+                            <a href="https://www.llnl.gov" target="_blank" title="Lawrence Livermore National Laboratory">
+                                <img src="/sites/all/themes/tid/images/llnl-tab-portal.png" alt="LLNL Home" />
+                            </a>
+                        </div>
+                        <div id="logo" class="site-branding col-sm-4">
+                                                            <div id="site-logo">
+                                        <!--High Performance Computing<br />Livermore Computing Center-->
+                                        																					<a href="/user-portal" class="text-dark" title="Livermore Computing Center High Performance Computing">
+                                            <img src="/sites/all/themes/tid/images/hpc.png" alt="Portal Home" />
+																					</a>
+																				
+                                </div>
+                                                    </div>
+                        <div class="col-sm-5">
+                            <div id="top-search">
+															<div class="input-group">
+																	<form class="navbar-form navbar-search navbar-right" action="/training/tutorials/totalview-tutorial" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <div class="element-invisible">Search form</div>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-omRpqkgzhhuX4fK7FKtJxrMM3BLKqQ8lb1DhylsXw_8" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="mainnav">
+                    <div class="container">
+                        <div class="row">
+                            <nav id="Menu" aria-label="Mobile Menu" class="mobilenavi col-md-12"></nav>
+                            <nav id="navigation" aria-label="Main Menu">
+                                <div id="main-menu" class="main-menu-portal">
+                                    <ul class="menu"><li class="first collapsed"><a href="/user-portal">Portal</a></li>
+<li class="expanded"><a href="/accounts">Accounts</a><ul class="menu"><li class="first leaf"><a href="/accounts/new-account-setup">New Account Setup</a></li>
+<li class="leaf"><a href="/accounts/idm-account-management">IdM Account Management</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/manuals/access-lc-systems" title="">Access to LC Systems</a></li>
+<li class="leaf"><a href="/accounts/computer-coordinator-roles">Computer Coordinator Roles</a></li>
+<li class="collapsed"><a href="/accounts/forms">Forms</a></li>
+<li class="collapsed"><a href="/accounts/policies">Policies</a></li>
+<li class="last leaf"><a href="/accounts/mailing-lists">Mailing Lists</a></li>
+</ul></li>
+<li class="expanded"><a href="/banks-jobs">Banks &amp; Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/allocations">Allocations</a></li>
+<li class="expanded"><a href="/banks-jobs/running-jobs">Running Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/running-jobs/batch-system-primer">Batch System Primer</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-user-manual">LSF User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-quick-start-guide">LSF Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-commands">LSF Commands</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-user-manual" title="Guide to using the Slurm Workload/Resource Manager">Slurm User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-quick-start-guide">Slurm Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-commands">Slurm Commands</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/batch-system-commands">Batch System Cross-Reference</a></li>
+<li class="last leaf"><a href="/banks-jobs/running-jobs/slurm-srun-versus-ibm-csm-jsrun">Slurm srun versus IBM CSM jsrun</a></li>
+</ul></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/accounts/forms/asc-dat" title="">ASC DAT Request</a></li>
+<li class="last leaf"><a href="https://hpc.llnl.gov/accounts/forms/mic-dat" title="">M&amp;IC DAT Request</a></li>
+</ul></li>
+<li class="expanded"><a href="/hardware">Hardware</a><ul class="menu"><li class="first collapsed"><a href="/hardware/archival-storage-hardware">Archival Storage Hardware</a></li>
+<li class="collapsed"><a href="/hardware/platforms">Compute Platforms</a></li>
+<li class="leaf"><a href="/hardware/compute-platforms-gpus">Compute Platforms with GPUs</a></li>
+<li class="collapsed"><a href="/hardware/file-systems">File Systems</a></li>
+<li class="leaf"><a href="/hardware/testbeds">Testbeds</a></li>
+<li class="collapsed"><a href="/hardware/zones">Zones (aka &quot;The Enclave&quot;)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/cgi-bin/lccgi/customstatus.cgi?" title="">CZ Compute Platform Status</a></li>
+<li class="leaf"><a href="https://rzlc.llnl.gov/cgi-bin/lccgi/customstatus.cgi" title="">RZ Compute System Status</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/fsstatus/fsstatus.cgi" title="">CZ File System Status</a></li>
+<li class="last leaf"><a href="https://rzlc.llnl.gov/fsstatus/fsstatus.cgi" title="">RZ File System Status</a></li>
+</ul></li>
+<li class="expanded"><a href="/services">Services</a><ul class="menu"><li class="first collapsed"><a href="/services/green-data-oasis">Green Data Oasis (GDO)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="last leaf"><a href="/services/visualization-services">Visualization Services</a></li>
+</ul></li>
+<li class="expanded"><a href="/software">Software</a><ul class="menu"><li class="first leaf"><a href="/software/archival-storage-software">Archival Storage Software</a></li>
+<li class="collapsed"><a href="/software/data-management-tools-projects">Data Management Tools</a></li>
+<li class="collapsed"><a href="/software/development-environment-software">Development Environment Software</a></li>
+<li class="leaf"><a href="/software/mathematical-software">Mathematical Software</a></li>
+<li class="leaf"><a href="/software/modules-and-software-packaging">Modules and Software Packaging</a></li>
+<li class="collapsed"><a href="/software/visualization-software">Visualization Software</a></li>
+<li class="last leaf"><a href="https://computing.llnl.gov/projects/radiuss" title="">RADIUSS</a></li>
+</ul></li>
+<li class="last expanded active-trail"><a href="/training" class="active-trail">Training</a><ul class="menu"><li class="first expanded active-trail"><a href="/training/tutorials" class="active-trail">Tutorials</a><ul class="menu"><li class="first leaf"><a href="/training/tutorials/introduction-parallel-computing-tutorial">Introduction to Parallel Computing Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/llnl-covid-19-hpc-resource-guide">LLNL Covid-19 HPC Resource Guide for New Livermore Computing Users</a></li>
+<li class="leaf"><a href="/training/tutorials/using-lcs-sierra-system">Using LC&#039;s Sierra System</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-psaap3-quick-start-tutorial">Livermore Computing PSAAP3 Quick Start Tutorial</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/sites/default/files/PSAAP-alliance-quickguide.docx" title="">PSAAP Alliance Quick Guide</a></li>
+<li class="leaf"><a href="/training/tutorials/linux-tutorial-exercises">Linux Tutorial Exercise One</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-one">Livermore Computing Linux Clusters Overview Part One</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two">Livermore Computing Linux Clusters Overview Part Two</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-resources-and-environment">Livermore Computing Resources and Environment</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab-exercise">Slurm and Moab Exercise</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-part-2-common-functions">TotalView Part 2:  Common Functions</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-part-3-debugging-parallel-programs">TotalView Part 3: Debugging Parallel Programs</a></li>
+<li class="leaf active-trail"><a href="/training/tutorials/totalview-tutorial" class="active-trail active">TotalView Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/evaluation-form">Tutorial Evaluation Form</a></li>
+<li class="leaf"><a href="/training/tutorials/srun-auto-affinity">srun --auto-affinity</a></li>
+<li class="last leaf"><a href="/training/tutorials/srun-multi-prog">srun --multi-prog</a></li>
+</ul></li>
+<li class="collapsed"><a href="/training/documentation">Documentation &amp; User Manuals</a></li>
+<li class="leaf"><a href="/training/technical-bulletins-catalog">Technical Bulletins Catalog</a></li>
+<li class="collapsed"><a href="/training/workshop-schedule">Training Events</a></li>
+<li class="last leaf"><a href="/training/user-meeting-presentations-archive">User Meeting Presentation Archive</a></li>
+</ul></li>
+</ul>                                                                            <div id="pagetoggle" class="btn-group btn-toggle pull-right" style="margin-right: 15px;">
+                                            <a href="/" class="btn btn-default gs">General Site</a>
+                                            <a href="/user-portal" class="btn btn-primary up active">User Portal</a>
+                                        </div>
+                                                                    </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+		<div id="main-content" class="l2content">
+        <div class="container">
+    		<div class="row">
+        		                <div id="primary" class="content-area col-sm-12">
+					                                        <section id="content" role="nav" class="clearfix col-sm-12">
+
+                                                                                    <div id="breadcrumbs">
+                                    <h2 class="element-invisible">breadcrumb menu</h2><nav class="breadcrumb" aria-label="breadcrumb-navigation"><a href="/">Home</a> » <a href="/training">Training</a> » <a href="/training/tutorials">Tutorials</a> » TotalView Tutorial</nav>                                </div>
+                                                    
+                                            </section>
+                  <main>
+
+                                              <div id="content_top">
+                                <div class="region region-content-top">
+  <div id="block-print-ui-print-links" class="block block-print-ui">
+
+    
+    
+  
+  <div class="content">
+    <span class="print_html"><a href="https://hpc.llnl.gov/print/662" title="Display a printer-friendly version of this page." class="print-page" onclick="window.open(this.href); return false" rel="nofollow">Printer-friendly</a></span>  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                            </div>
+                        
+                        <div id="content-wrap">
+                                                                                                                <div class="region region-content">
+  <div id="block-system-main" class="block block-system">
+
+    
+    
+  
+  <div class="content">
+    
+
+<div  about="/training/tutorials/totalview-tutorial" typeof="sioc:Item foaf:Document" class="node node-user-portal-one-column-page node-full view-mode-full">
+    <div class="row">
+    <div class="col-sm-12 ">
+      <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even" property="dc:title"><h1 class="title">TotalView Tutorial</h1></div></div></div><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><h2>Table of Contents</h2>
+<ol><li><a href="#Abstract">Abstract</a></li>
+<li><a href="#totalview_overview">Totalview Overview</a>
+<ol><li><a href="#What_Is_TotalView">What Is TotalView?</a></li>
+<li><a href="#Key_Features">Key Features</a></li>
+<li><a href="#Supported_Platforms">Supported Platforms and Languages</a></li>
+<li><a href="#TotalView_at_LLNL">TotalView at LLNL</a></li>
+</ol></li>
+<li><a href="#Starting_TotalView">Preparing to Start and Starting TotalView</a>
+<ol><li><a href="#Environment_Setup">Environment Setup</a></li>
+<li><a href="#Compiling_Your_Program">Compiling Your Program</a></li>
+<li><a href="#Starting_TotalView_1">Starting TotalView</a></li>
+</ol></li>
+<li><a href="#TotalView's_Basic_Look_and_Feel">TotalView's Basic Look and Feel</a>
+<ol><li><a href="#Primary_Windows">Primary Windows</a></li>
+<li><a href="#Dialog_Boxes">Dialog Boxes</a></li>
+<li><a href="#Mouse_Usage">Mouse Usage</a></li>
+<li><a href="#Menus">Menus</a></li>
+<li><a href="#Accelerator_Keys">Accelerator Keys</a></li>
+<li><a href="#Scrolling_Resizing_and_Memorizing">Scrolling, Resizing and Memorizing</a></li>
+<li><a href="#Process-and-Thread-state-codes">Process and Thread State Codes</a></li>
+<li><a href="#Session_Manager">Session Manager</a></li>
+</ol></li>
+<li><a href="#TotalView's_Basic_Functions">TotalView's Basic Functions</a>
+<ol><li><a href="#Viewing_Source_Code">Viewing Source Code</a></li>
+<li><a href="#Displaying_Function_FileSource_Code:">Displaying Function / File Source Code</a></li>
+<li><a href="#Setting_a_Breakpoint">Setting a Breakpoint</a></li>
+<li><a href="#Controlling_Execution">Controlling Execution</a></li>
+<li><a href="#Diving">Diving</a></li>
+<li><a href="#Viewing_and_Modifying_Data">Viewing and Modifying Data</a></li>
+<li><a href="#Text_Editing_and_Searching">Text Editing and Searching</a></li>
+<li><a href="#Saving_Window_Contents">Saving Window Contents</a></li>
+<li><a href="#Getting_Help">Getting Help</a></li>
+<li><a href="#Exiting_TotalView">Exiting TotalView</a></li>
+</ol></li>
+</ol><p>Or, go to:</p>
+<p><a href="/training/tutorials/totalview-part-2-common-functions">Part Two: Common Functions</a></p>
+<p><a href="/training/tutorials/totalview-part-3-debugging-parallel-programs">Part Three: Debugging</a></p>
+<h2><a id="totalview_overview" name="totalview_overview"></a>TotalView Overview</h2>
+<h2><a name="Abstract" id="Abstract"></a>Abstract</h2>
+<p>TotalView is a sophisticated and powerful tool used for debugging and analyzing both serial and parallel programs. TotalView provides source level debugging for serial, parallel, multi-process, multi-threaded, accelerator/GPU and hybrid applications written in C/C++ and Fortran. Most HPC platforms and systems are supported. Both a graphical user interface and command line interface are provided. Advanced, dynamic memory debugging tools and the ability to perform "replay" debugging are two additional features. TotalView has been selected as the DOE ASC Program's debugger of choice for its HPC platforms.</p>
+<p>This tutorial has three parts, each of which includes a lab exercise. Part 1 begins with an overview of TotalView and then provides detailed instructions on how to set up and use its basic functions. Part 2 continues by introducing a number of new functions and also providing a more in-depth look at some of the basic functions. Part 3 covers parallel debugging, including threads, MPI, OpenMP and hybrid programs. Part 3 concludes with a discussion on debugging in batch mode.</p>
+<p>Level/Prerequisites: This tutorial is intended for those who are new to TotalView. A basic understanding of parallel programming in C or Fortran is required. The material covered in the following tutorials would also be beneficial for those who are unfamiliar with parallel programming in MPI, OpenMP and/or POSIX threads:<br />EC3505: MPI<br />EC3506: POSIX Threads<br />EC3507: OpenMP</p>
+<h2>TotalView Part 1: The Very Basics: Overview</h2>
+<h3><a name="What_Is_TotalView" id="What_Is_TotalView"></a>What Is TotalView?</h3>
+<ul><li>TotalView is a sophisticated software debugger product from <a href="https://www.roguewave.com">Rogue Wave Software, Inc.</a></li>
+<li>...and before that, TotalView Technologies, LLC (2007-2009)</li>
+<li>...and before that, Etnus LLC. (1998-2007)</li>
+<li>...and before that, Dolphin Interconnect Solutions, Inc. (1996-1998)</li>
+<li>...and before that, BBN Systems and Technologies, a division of BBN Corporation (1993-1996)</li>
+</ul><table><tr><td><div class="media media-element-container media-default"><div id="file-1455" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/logoroguewave2-gif">logoRogueWave2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Rogue Wave Logo" title="Rogue Wave Logo" height="100" width="254" class="media-element file-default" data-delta="2" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/logoRogueWave2.gif" /></div>
+
+  
+</div>
+</div></td>
+<td><div class="media media-element-container media-default"><div id="file-1456" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/logototalviewtechnologies-gif">logoTotalViewTechnologies.gif</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/logoTotalViewTechnologies.gif" title="Total View Technologies Logo"><img alt="Total View Technologies Logo" title="Total View Technologies Logo" height="100" width="174" style="width: 174px; height: 100px;" class="media-element file-default" data-delta="3" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/logoTotalViewTechnologies-174x100.gif" /></a>  </div>
+
+  
+</div>
+</div></td>
+<td><div class="media media-element-container media-default"><div id="file-1457" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/logoetnus-gif">logoEtnus.gif</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/logoEtnus.gif" title="Etnus Logo"><img alt="Etnus Logo" title="Etnus Logo" height="100" width="140" style="width: 140px; height: 100px;" class="media-element file-default" data-delta="4" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/logoEtnus-140x100.gif" /></a>  </div>
+
+  
+</div>
+</div></td>
+<td><div class="media media-element-container media-default"><div id="file-1458" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/logodolphin-gif">logoDolphin.gif</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/logoDolphin.gif" title="Dolphin Logo"><img alt="Dolphin Logo" title="Dolphin Logo" height="100" width="198" style="width: 198px; height: 100px;" class="media-element file-default" data-delta="5" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/logoDolphin-198x100.gif" /></a>  </div>
+
+  
+</div>
+</div></td>
+<td><div class="media media-element-container media-default"><div id="file-1454" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/logobbn-gif">logoBBN.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="BBN Logo" title="BBN Logo" height="134" width="200" class="media-element file-default" data-delta="6" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/logoBBN.gif" /></div>
+
+  
+</div>
+</div></td>
+</tr></table><ul><li>Used for debugging and analyzing both serial and parallel programs.</li>
+<li>Especially designed for use with complex, multi-process and/or multi-threaded applications.</li>
+<li>Without question, the most popular HPC debugger to date.</li>
+<li>Has been selected as the Department of Energy's <a href="https://www.energy.gov/nnsa/missions/maintaining-stockpile" target="_blank">Advanced Simulation and Computing</a> (ASC) program's debugger.</li>
+</ul><h3><a name="Key_Features" id="Key_Features"></a>Key Features of TotalView</h3>
+<ul><li>Designed to handle most types of HPC parallel coding</li>
+<li>Supported on most HPC platforms (in the US)</li>
+<li>Both a GUI and command line interface</li>
+<li>Can be used to debug programs, running processes, and core files</li>
+<li>Memory debugging features</li>
+<li>Graphical visualization of array data</li>
+<li>Comprehensive built-in help system</li>
+<li>Recording and replaying running programs</li>
+<li>Sessions Manager for managing and loading debugging sessions</li>
+</ul><h3><a name="Supported_Platforms" id="Supported_Platforms"></a>Supported Platforms and Languages</h3>
+<ul><li>TotalView is supported on most major U.S. HPC platforms and Apple Mac OS X</li>
+<li>Ports of TotalView to other platforms (NEC, Hitachi, Fujitsu, etc.) are available from third-party sources.</li>
+<li>Supported languages/APIs include:
+<ul><li>C/C++</li>
+<li>Fortran77/90</li>
+<li>Assembler</li>
+<li>Multiprocess MPI</li>
+<li>Multithreaded OpenMP and Pthreads</li>
+<li>Intel Xeon Phi coprocessor</li>
+<li>NVIDIA GPU CUDA, OpenACC</li>
+</ul></li>
+<li>For the most up-to-date platform related information, see the TotalView Documentation on the Rogue Wave website: <a href="http://www.roguewave.com" target="_blank">www.roguewave.com</a>.</li>
+</ul><h3><a name="TotalView_at_LLNL" id="TotalView_at_LLNL"></a>TotalView at LLNL</h3>
+<ul><li>Livermore Computing (LC) provides TotalView on all of its production platforms. All LC users have access to TotalView as part of their default path.</li>
+<li>LLNL employees who do not have an LC account can still install and use TotalView software on their local LLNL computers as part of a site-wide license agreement between LLNL and Rogue Wave Software. Details and a request form are available at: <a href="/software/development-environment-software/totalview-debugger/totalview-site-license-request">hpc.llnl.gov/software/development-environment-software/totalview-debugger/totalview-site-license-request</a>.</li>
+</ul><h2><a name="Starting_TotalView" id="Starting_TotalView"></a>Preparing to Start and Starting TotalView</h2>
+<h3><a name="Environment_Setup" id="Environment_Setup"></a>Environment Setup</h3>
+<ul><li>Path Variable:
+<ul><li>Taken care of for LC users.</li>
+<li>TotalView should be in the default path of LC users.</li>
+<li>If you prefer a version different than the default, load the desired package:</li>
+</ul></li>
+</ul><pre>module avail totalview
+module load <em>package-name</em>
+</pre><ul><li>License Manager File: taken care of for LC users</li>
+<li>Authorization: taken care of for LC users</li>
+<li>X11: here's one you have to do for yourself
+<ul><li>Because the TotalView GUI is an X11 application, you will need to make sure that your X11 forwarding environment is setup correctly. This may differ from machine to machine, depending upon such factors as:
+<ul><li>Your machine platform - Linux, Mac, Microsoft...</li>
+<li>The type of X11 server software you have installed</li>
+<li>SSH software and X-tunneling</li>
+<li>Connectivity method between your local machine and the machine where TotalView is running</li>
+<li>Network and access security</li>
+</ul></li>
+</ul></li>
+</ul><h3><a name="Compiling_Your_Program" id="Compiling_Your_Program"></a>Compiling Your Program</h3>
+<ul><li><strong>-g:</strong>
+<ul><li>Like many UNIX debuggers, you will need to compile your program with the appropriate flag to enable generation of symbolic debug information. For most compilers, the <span class="fixed">-g</span> option is used for this.</li>
+<li>TotalView will allow you to debug executables which were not compiled with the <span class="fixed">-g</span> option. However, only the assembler code can be viewed.</li>
+</ul></li>
+<li><strong>Beyond -g:</strong>
+<ul><li>Don't compile your program with optimization flags while you are debugging it. Compiler optimizations can "rewrite" your program and produce machine code that doesn't necessarily match your source code.</li>
+<li>Parallel programs may require additional compiler flags</li>
+</ul></li>
+</ul><h3><a name="Starting_TotalView_1" id="Starting_TotalView_1"></a>Starting TotalView</h3>
+<ul><li>TotalView can be started in several different ways, depending upon whether you want to:
+<ul><li>debug an executable file</li>
+<li>attach to a running process</li>
+<li>debug a core file</li>
+<li>recall a past debugging session</li>
+</ul></li>
+</ul><h4>Some Examples</h4>
+<table class="table table-bordered table-striped"><tr><th scope="col">Command / Action</th>
+</tr><tr><td><span class="fixed">totalview</span><br />Starts the debugger with the <a href="#Session_Manager">Session Manager</a>. You can then load a program, corefile, or attach to a running process.</td>
+</tr><tr><td><span class="fixed">totalview <em>filename</em></span><br />Starts the debugger and loads the program specified by <em>filename</em>.</td>
+</tr><tr><td><span class="fixed">totalview <em>filename corefile</em></span><br />Starts the debugger and loads the program specified by <em>filename</em> and its core file specified by <em>corefile</em>.</td>
+</tr><tr><td><span class="fixed">totalview <em>filename </em>-a <em>args</em></span><br />Starts the debugger and passes all subsequent arguments (specified by args) to the program specified by <em>filename</em>. The <span class="fixed">-a</span> option must appear after all other TotalView options on the command line.</td>
+</tr><tr><td><span class="fixed">totalview srun -a -16 -ppdebug myprog</span><br />Starts the debugger on a parallel MPI job. See the <a href="https://computing.llnl.gov/tutorials/totalview/part3.html#MPIStarting">Starting an MPI Debug Session</a> section for details.</td>
+</tr></table><h2><a name="TotalView's_Basic_Look_and_Feel" id="TotalView's_Basic_Look_and_Feel"></a>TotalView's Basic Look and Feel</h2>
+<h3><a name="Primary_Windows" id="Primary_Windows"></a>Primary Windows</h3>
+<h4>Root Window</h4>
+<p></p><div class="media media-element-container media-default"><div id="file-2078" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/windowrootnew-gif">windowRootnew.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="screen shot of TotalView hostname menu" height="344" width="566" class="media-element file-default" data-delta="55" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/windowRoot_6.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>Will always appear when TotalView is started.</li>
+<li>Provides an overview of all processes and threads, showing the TotalView assigned ID, MPI rank, host, status and brief description/name for each.</li>
+<li>Allows sorting on each column of info that appears.</li>
+<li>Provides the ability to expand/collapse information under the Hostname column</li>
+<li>The "Configure" button allows selection of which information is displayed</li>
+<li>Pull-down menus - File, Edit, View, Tools, Help (menus are discussed later)</li>
+</ul><h4>Process Window</h4>
+<p></p><div class="media media-element-container media-default"><div id="file-2079" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/windowprocess-gif-4">windowProcess.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="screen shot of process window" height="764" width="682" class="media-element file-default" data-delta="56" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/windowProcess_4.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>Usually (but not always) appears with the Root Window after TotalView is started.</li>
+<li>By default, a single process window will display. For multi-process / multi-threaded programs however, every process and every thread may have its own Process Window if desired.</li>
+<li>Comprised of:
+<ul><li>Pull-down menus</li>
+<li>Execution control buttons</li>
+<li>Navigation control buttons</li>
+<li>Process and thread status bars</li>
+<li>4 "Panes"</li>
+</ul></li>
+<li><strong>Stack Trace Pane</strong>
+<ul><li>Shows the call stack of routines the current executable is running</li>
+<li>Selection of any routine shown in the call stack will automatically update the Process Window with its information.</li>
+</ul></li>
+<li><strong>Stack Frame Pane</strong>
+<ul><li>Displays the local variables, registers and function parameters for the selected executable.</li>
+<li>Register abbreviations and meanings are architecture specific. See the TotalView documentation for details.</li>
+</ul></li>
+<li><strong>Source Pane</strong>
+<ul><li>Displays source/assembler for the currently selected program or function.</li>
+<li>Shows program counter, line numbers and any associated action points.</li>
+<li>Only "boxed" line numbers are eligible for debugging.</li>
+</ul></li>
+<li><strong>Action Points, Threads Pane</strong>
+<ul><li>A multi-function pane. By default, it shows any action points (covered later) that have been set.</li>
+<li>May also select Threads to show associated threads.</li>
+</ul></li>
+</ul><h4>Variable Window</h4>
+<p></p><div class="media media-element-container media-default"><div id="file-1461" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/windowvariable-gif">windowVariable.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Variable Window" title="Variable Window" height="263" width="686" class="media-element file-default" data-delta="9" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/windowVariable.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>Probably the most common window after the Root and Process windows.</li>
+<li>Appears when you dive (covered later) on a variable or select a menu item to view variable information.</li>
+<li>Displays detailed information about selected program variables. Also permits editing, diving, filtering and sorting of variable data.</li>
+<li>Comprised of a single pane, pull-down menus, data field boxes and several action buttons.</li>
+</ul><h3><a name="Dialog_Boxes" id="Dialog_Boxes"></a>Dialog Boxes</h3>
+<ul><li>TotalView has numerous dialog boxes that are used for a variety of purposes:
+<ul><li>Solicit and confirm selections</li>
+<li>Display informational, warning and error messages</li>
+<li>Accept input</li>
+<li>Display and select options and preferences</li>
+<li>Display various types of information</li>
+</ul></li>
+<li>Dialog boxes vary in complexity. A few representative dialog boxes are shown below.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1462" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/dialogstopparalleljob-gif">dialogStopParallelJob.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Parallel job dialog box" title="Parallel Dialog box" height="214" width="318" class="media-element file-default" data-delta="10" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/dialogStopParallelJob.gif" /></div>
+
+  
+</div>
+</div><div class="media media-element-container media-default"><div id="file-1463" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/dialogexit-gif">dialogExit.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Exit Dialog Box" title="Exit Dialog Box" height="166" width="228" class="media-element file-default" data-delta="11" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/dialogExit.gif" /></div>
+
+  
+</div>
+</div><div class="media media-element-container media-default"><div id="file-1464" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/dialoglookup-gif">dialogLookup.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Lookup Dialog Box" title="Lookup Dialog Box" height="255" width="304" class="media-element file-default" data-delta="12" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/dialogLookup.gif" /></div>
+
+  
+</div>
+</div><div class="media media-element-container media-default"><div id="file-1465" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/dialogattachrunningprogram-gif">dialogAttachRunningProgram.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Attach to running Dialog Box" title="Attach to running Dialog Box" height="639" width="889" class="media-element file-default" data-delta="13" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/dialogAttachRunningProgram.gif" /></div>
+
+  
+</div>
+</div>
+<h3><a name="Mouse_Usage" id="Mouse_Usage"></a>Mouse Usage</h3>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-1466" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/mouse1-jpg">mouse1.jpg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/mouse1.jpg" title="Mouse"><img alt="Computer Mouse" title="Mouse" height="132" width="230" style="width: 230px; height: 132px;" class="media-element file-default" data-delta="14" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/mouse1-230x132.jpg" /></a>  </div>
+
+  
+</div>
+</div></div>
+<p>Much of your interaction with the TotalView debugger is through the use of a mouse. Each mouse button has a specific purpose, described below.</p>
+<table class="table table-bordered table-striped"><tr><th scope="col">Mouse Button</th>
+<th scope="col">Purpose</th>
+<th scope="col">Description</th>
+</tr><tr><td>LEFT</td>
+<td>Select / Dive</td>
+<td>Single clicking on an object causes it to be selected and/or to perform its action. Double-clicking allows you to dive into an object. For example, double-clicking on an array object in the source pane will cause a new window to pop open, showing the array's values.</td>
+</tr><tr><td colspan="1" rowspan="2">MIDDLE<br /><em>(if present)</em></td>
+<td>Paste</td>
+<td>Writes information previously copied or cut into the clipboard at the cursor's position.</td>
+</tr><tr><td>Dive</td>
+<td>Display more information about an object</td>
+</tr><tr><td>RIGHT</td>
+<td>Context menu</td>
+<td>Pops-up a context-sensitive menu of commands related to the object clicked on (if applicable).</td>
+</tr></table><h3><a name="Menus" id="Menus"></a>Menus</h3>
+<h4>Two Types of Menus</h4>
+<ul><li>Drop-down menus:
+<ul><li>Visible</li>
+<li>Appear along the top border of most windows</li>
+<li>Activated by clicking with the left mouse button</li>
+<li>Some menu selections may have submenus</li>
+</ul></li>
+<li>Pop-up menus:
+<ul><li>Hidden</li>
+<li>Activated by clicking on an object (such as a variable, line number, etc.) with the right mouse button</li>
+<li>Not all objects possess pop-up menus</li>
+</ul></li>
+<li>Menus are context sensitive - different windows will have different menus.</li>
+<li>Dimmed menu selections are either irrelevant or not available.</li>
+<li>TotalView has many menus - too many to show here. Only a few representative menus are shown below - two drop-down menus and two pop-up menus.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1467" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/menusexample-gif">menusExample.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Example Menus" title="Example Menus" height="654" width="717" class="media-element file-default" data-delta="15" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/menusExample.gif" /></div>
+
+  
+</div>
+</div>
+<h3><a name="Accelerator_Keys" id="Accelerator_Keys"></a>Accelerator Keys</h3>
+<h4>Short Cut</h4>
+<ul><li>In addition to selecting actions from menus, you can also use TotalView's predefined accelerator keys to initiate most of the debugger's common functions.</li>
+<li>Saves time by skipping menu navigation.</li>
+<li>You can always find out which accelerator key to use by viewing the menu for the action - accelerator keys are shown on the right side of the menu where applicable.</li>
+<li>Important: accelerator keys are CASE SENSITIVE</li>
+</ul><h4>Examples</h4>
+<p></p><div class="media media-element-container media-default"><div id="file-1468" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/acceleratorkeys-gif">acceleratorKeys.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Accelerator Keys " title="Accelerator Keys " height="377" width="759" class="media-element file-default" data-delta="16" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/acceleratorKeys.gif" /></div>
+
+  
+</div>
+</div>
+<h3><a name="Scrolling_Resizing_and_Memorizing" id="Scrolling_Resizing_and_Memorizing"></a>Scrolling, Resizing and Memorizing</h3>
+<h4>Conventional Scrolling Behavior</h4>
+<ul><li>Conventional scrollbars are used by most of TotalView's windows, pages and panes.</li>
+<li>Scrolling can be accomplished by clicking and/or dragging with with the left mouse button.</li>
+<li>The usual up-arrow, down-arrow, page up and page down keys can also be used for scrolling.</li>
+</ul><h4>Resizing Windows and Panes</h4>
+<ul><li>All windows can be resized in the usual fashion by dragging window borders with the mouse to a new size/position.</li>
+<li>The Process Window panes can be also be resized by clicking and dragging on any resize widget.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1469" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/scrollandresize-gif">scrollAndResize.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Scrolling and Resizing" title="Scroll and Resize" height="455" width="626" class="media-element file-default" data-delta="17" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/scrollAndResize.gif" /></div>
+
+  
+</div>
+</div>
+<h4>Memorizing Windows</h4>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-1470" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/memorize-gif">memorize.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Window-Memorize" title="Window-Memorize" height="124" width="177" class="media-element file-default" data-delta="19" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/memorize.gif" /></div>
+
+  
+</div>
+</div></div>
+<ul><li>The "Window" menu (if present) will allow you to save the position and size of that window, or all windows.</li>
+<li>A convenience feature for those who like to have their TotalView sessions customized.</li>
+<li>Resized panes inside a window are not memorized.</li>
+</ul><h4><a id="Process-and-Thread-state-codes" name="Process-and-Thread-state-codes"></a>Process and Thread State Codes</h4>
+<ul><li>TotalView uses colored single character State Codes to describe process and thread status information. These are also called State Codes.</li>
+<li>These codes appear in several places. One example is the Threads Pane of the Process Window, shown below.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1471" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/statecodes-gif">stateCodes.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="State Codes" title="State Codes" height="170" width="684" class="media-element file-default" data-delta="20" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/stateCodes.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>The table below lists TotalView's state codes.</li>
+</ul><table class="table table-bordered table-striped"><tr><th scope="col">State Code</th>
+<th scope="col">Description</th>
+</tr><tr><td>B</td>
+<td>Stopped at a breakpoint</td>
+</tr><tr><td>E</td>
+<td>Stopped because of an error</td>
+</tr><tr><td>H</td>
+<td>In a Hold state</td>
+</tr><tr><td>K</td>
+<td>Thread is executing within the kernel</td>
+</tr><tr><td>M</td>
+<td>Mixed - some threads in a process are running and some not</td>
+</tr><tr><td>R</td>
+<td>Running</td>
+</tr><tr><td>T</td>
+<td>Thread is stopped</td>
+</tr><tr><td>W</td>
+<td>At a watchpoint</td>
+</tr></table><h3><a name="Session_Manager" id="Session_Manager"></a>Session Manager</h3>
+<ul><li>Provides an easy way to:
+<ul><li>Launch a new program - serial or parallel</li>
+<li>Attach to a running program</li>
+<li>Load a core file</li>
+<li>Save a debug session for later</li>
+<li>Load a previously saved debug session</li>
+</ul></li>
+<li>The Session Manager window will appear automatically if you invoke the totalview command by itself without arguments. Shown below.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1472" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/sessionmanager01-gif">sessionManager01.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Session Manager Window" title="Session Manager" height="573" width="607" class="media-element file-default" data-delta="21" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/sessionManager01.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>Selecting "Manage Sessions" allows you to view and select from a list of current or previous debug sessions. Shown below:</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1473" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/sessionmanager02-gif">sessionManager02.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Session Manager Window 2" title="Session Manager 2" height="500" width="758" class="media-element file-default" data-delta="22" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/sessionManager02.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>You can also get to the Manage Sessions window through the Root and Process window menus:</li>
+</ul><p><span class="note-purple">PATH:</span><strong><a href="/sites/default/files/windowRoot_1.gif">Root Window</a>  &gt;  File Menu  &gt;  Manage Sessions</strong><br /><span class="note-purple">PATH:</span><strong><a href="/sites/default/files/windowProcess_0.gif">Process Window</a>  &gt;  File Menu  &gt;  Manage Sessions</strong></p>
+<p></p><div class="media media-element-container media-default"><div id="file-1475" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/menumanagesessions-gif">menuManageSessions.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Manage Sessions Menu" title="Manage Sessions Menu" height="250" width="353" class="media-element file-default" data-delta="24" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/menuManageSessions.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>The Session Manager is discussed further in other sections of this tutorial.</li>
+</ul><h2><a name="TotalView's_Basic_Functions" id="TotalView's_Basic_Functions"></a>TotalView's Basic Functions</h2>
+<h3><a name="Viewing_Source_Code" id="Viewing_Source_Code"></a>Viewing Source Code</h3>
+<ul><li>Source, Assembler or Both:</li>
+<li>The Process Window's Source Pane is used to display source code, assembler code or both.</li>
+<li>TotalView will attempt to display the source code by default. If it cannot find the source, then it will display assembler.</li>
+<li>Assembler can also be displayed with symbolic addresses rather than absolute addresses (default).</li>
+<li>To toggle between the different display modes:</li>
+</ul><p><strong><span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_0.gif">Process Window</a>  &gt;  View Menu  &gt;  Source As</strong></p>
+<ul><li>An example of both source and assembler is shown below.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1476" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/sourceview-gif">sourceView.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Example of source and assembler" title="Source View" height="764" width="682" class="media-element file-default" data-delta="25" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/sourceView.gif" /></div>
+
+  
+</div>
+</div>
+<h3><a name="" id=""></a>Displaying Function / File Source Code</h3>
+<ul><li>Complex applications can include many different source files and many different functions. TotalView makes finding and displaying the source code for any of these easy:</li>
+</ul><p><strong><span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_0.gif">Process Window</a>  &gt;  <a href="/sites/default/files/menuProcessView.gif">View Menu </a> &gt;  Lookup Function</strong></p>
+<ul><li>A Function/File dialog box will then appear (below). Enter the name of the function or file desired. If found, TotalView will display its source in the Source Code Pane of the Process Window.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1477" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/dialoglookup-gif-0">dialogLookup.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Lookup Dialog Box" title="Lookup Dialog Box" height="255" width="304" style="width: 304px; height: 255px;" class="media-element file-default" data-delta="26" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/dialogLookup_0.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>Diving on a function will also cause TotalView to update the Source Pane with that function's source.</li>
+<li>If the function name is ambiguous (there are multiple occurrences), TotalView will open an Ambiguous Function Dialog Box and ask you to select from a list of possible functions.</li>
+</ul><h3><a id="Setting_a_Breakpoint" name="Setting_a_Breakpoint"></a>Setting a Breakpoint</h3>
+<h4>What Is a Breakpoint?</h4>
+<ul><li>A breakpoint is the most basic of TotalView's action points used to control a program's execution. It causes a process/thread to halt execution at the line number - prior to executing that line number.</li>
+<li>TotalView has three other types of action points (discussed later):
+<ul><li>Process barrier point</li>
+<li>Evaluation point</li>
+<li>Data watchpoint</li>
+</ul></li>
+<li>Breakpoints can be set in source code and assembler code.</li>
+<li>For regular source, only "boxed" line numbers are eligible for breakpoints. For assembler, instructions that display a box or a "gridget" are eligible.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1479" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/breakpointeligiblelines-gif">breakpointEligibleLines.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Breakpoint eligible lines" height="232" width="842" class="media-element file-default" data-delta="27" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/breakpointEligibleLines.gif" /></div>
+
+  
+</div>
+</div>
+<h4>Several Ways to Set / Unset a Breakpoint</h4>
+<ul><li><strong>Method 1: </strong>The easiest way to set a breakpoint is to simply click on a source code line number with the left mouse button. A red STOP icon will then appear on the source line number, as shown below.</li>
+</ul><div class="float-left"><div class="media media-element-container media-default"><div id="file-1480" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/breakpointstopicon-gif">breakpointStopIcon.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Stop breakpoint icon" height="121" width="299" class="media-element file-default" data-delta="30" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/breakpointStopIcon.gif" /></div>
+
+  
+</div>
+</div></div>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-1481" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/menupopup6-gif">menuPopUp6.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Menu Popup icon" height="276" width="176" class="media-element file-default" data-delta="31" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/menuPopUp6.gif" /></div>
+
+  
+</div>
+</div></div>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<ul><li><strong>Method 2:</strong> Right-click anywhere on the desired source line until the pop-up menu appears (right). Then select Set Breakpoint.</li>
+<li><strong>Method 3:</strong> First, click on a source line to select it (make sure it's highlighted). Then use:</li>
+</ul><p><span class="note-purple">PATH:</span><strong><a href="/sites/default/files/windowProcess_0.gif">Process Window</a>  &gt; <a href="/sites/default/files/menuProcessAction.gif"> Action Point Menu</a>  &gt;  Set Breakpoint</strong></p>
+<ul><li>Method 4: For any arbitrary line number, use the path below. A dialog box will then open to prompt you for the line number.</li>
+</ul><p><span class="note-purple">PATH:</span><strong><a href="/sites/default/files/windowProcess_0.gif">Process Window</a>  &gt;  <a href="/sites/default/files/menuProcessAction.gif">Action Point Menu</a>  &gt;  At Location</strong></p>
+<ul><li>To unset the breakpoint, simply click on the red STOP icon or select "delete" from the pop-up menu or Action Point menu.</li>
+</ul><h4>Viewing Breakpoints</h4>
+<ul><li>TotalView displays breakpoint information in several locations, as shown below:
+<ul><li>As a "STOP" icon on the selected source line number</li>
+<li>Within the Action Points Pane</li>
+<li>Within the Action Point Properties Dialog Box</li>
+<li>In the Process Window's status bars</li>
+<li>In the Root Window state code column</li>
+<li>Within the Threads Pane (not shown)</li>
+</ul></li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1482" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/breakpointdisplays-gif">breakpointDisplays.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Breakpoint displays" height="792" width="871" class="media-element file-default" data-delta="32" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/breakpointDisplays.gif" /></div>
+
+  
+</div>
+</div>
+<h4>Breakpoint Options</h4>
+<ul><li>TotalView provides a means for selecting how breakpoints behave across multi-process / multi-threaded programs. This topic is further discussed in <a href="/totalview-part-3-debugging-parallel-programs">Part 3: Debugging Parallel Codes</a>.</li>
+</ul><h3><a name="Controlling_Execution" id="Controlling_Execution"></a>Controlling Execution</h3>
+<ul><li>Controlling the execution of a program within TotalView involves two decisions:
+<ul><li>Selecting the appropriate command</li>
+<li>Deciding upon the scope of the chosen command</li>
+</ul></li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1483" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/executioncontrol-gif">executionControl.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Execution control" height="406" width="872" class="media-element file-default" data-delta="33" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/executionControl.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>Both of these are performed via the <a href="/sites/default/files/windowProcess_0.gif">Process Window</a>, and are discussed below.</li>
+</ul><h4>Execution Control Commands</h4>
+<ul><li>TotalView enables you to control program execution three different ways:</li>
+<li>
+<ul><li><a href="/sites/default/files/menuProcessGroup_0.gif">Group</a>, <a href="/sites/default/files/menuProcessProcess_0.gif">Process</a>, and <a href="/sites/default/files/menuProcessThread.gif">Thread</a> Drop-down menus</li>
+<li>Accelerator keys</li>
+<li>Execution control buttons</li>
+</ul></li>
+<li>Whichever of the three methods you choose, the same basic commands apply. The table below describes the basic execution control commands.</li>
+</ul><table class="table table-bordered table-striped"><tr><th scope="row">Command</th>
+<th scope="col">Description</th>
+</tr><tr><th scope="row">Go</th>
+<td>Start/resume execution</td>
+</tr><tr><th scope="row">Halt</th>
+<td>Stop execution</td>
+</tr><tr><th scope="row">Kill</th>
+<td>Terminate the job</td>
+</tr><tr><th scope="row">Next</th>
+<td>Run the next source line or instruction. If the next line/instruction calls a function, the entire function will be executed and control will return to the next source line or instruction (the function is "stepped over").</td>
+</tr><tr><th scope="row">Step</th>
+<td>Run the next source line or instruction. If the next line/instruction calls a function, the function will be "stepped into". Execution will stop within the function.</td>
+</tr><tr><th scope="row">Out</th>
+<td>Execute to the completion of a function. Returns to the instruction after the one which called the function.</td>
+</tr><tr><th scope="row">Run To</th>
+<td>Allows you to arbitrarily click on any source line and then run to that point (must click on a source line first)</td>
+</tr><tr><th scope="row">Next Instruction</th>
+<td>Similar to Next, but applies only to machine instructions</td>
+</tr><tr><th scope="row">Step Instruction</th>
+<td>Similar to Step, but applies only to machine instructions</td>
+</tr><tr><th scope="row">Hold/Release</th>
+<td>Hold ignores other commands to resume execution<br />Release allows other run commands to have effect</td>
+</tr><tr><th scope="row">Restart</th>
+<td>Restarts a running program, or one that has stopped without exiting</td>
+</tr><tr><th scope="row">Set PC</th>
+<td>Sets the Program Counter to a desired source line, machine instruction, or absolute address</td>
+</tr></table><h4>Group, Process, Thread Command Scopes</h4>
+<ul><li>For serial programs, execution scope is not an issue because there is only one execution stream. For parallel programs, execution scope is critical - you need to know which processes and/or threads your execution command will effect.</li>
+<li>Most of TotalView's execution control commands can be applied at the Group, Process or Thread scoping level. The right scope depends upon what you want to effect.</li>
+<li>Command scope can be selected from the execution scope drop-down menu located next to the execution control keys (shown above) or for the appropriate command on the Group, Process and Thread drop-down menus.</li>
+<li><strong>Group</strong> scope:
+<ul><li><strong><span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_0.gif">Process Window</a>  &gt;  Group Menu</strong></li>
+<li>Executes the command on all processes within a specified group.</li>
+<li>Usually used for a multi-process parallel program.</li>
+<li>Can be used for a single process serial program (number of group members = one).</li>
+</ul></li>
+<li><strong>Process </strong>scope:
+<ul><li><span class="note-purple">PATH:</span><strong><a href="/sites/default/files/windowProcess_0.gif">Process Window</a>  &gt;  Process Menu</strong></li>
+<li>For a multi-process program, executes the command on a single selected process.</li>
+<li>Some subtleties in behavior exist if the process is multi-threaded, but generally the command influences all threads owned by the process.</li>
+<li>Can be used for a single process serial program.</li>
+</ul></li>
+<li><strong>Thread</strong> scope:
+<ul><li><span class="note-purple">PATH:</span><strong><a href="/sites/default/files/windowProcess_0.gif">Process Window</a>  &gt;  Thread Menu</strong></li>
+<li>Usually used to execute the command on a single thread of a multi-threaded process.</li>
+<li>Behavior can differ between machine architectures.</li>
+</ul></li>
+<li>Can be used for single process, single threaded serial program also.</li>
+<li>Additional details about Group, Process and Thread commands usage are discussed later in <a href="/totalview-part-3-debugging-parallel-programs">Part 3: Debugging Parallel Codes</a>.</li>
+</ul><h3><a name="Diving" id="Diving"></a>Diving</h3>
+<ul><li>TotalView enables you to view more detail about a data containing object (such as an array variable) by "diving" into it.</li>
+<li>Diving can be accomplished by several different methods:
+<ul><li>Double left-clicking on an object</li>
+<li>Right-clicking on an object and then selecting <strong>Dive</strong> from the resulting pop-up menu (if applicable)</li>
+<li>Selecting <strong>Dive</strong> from any window's<strong> View</strong> menu (if applicable)</li>
+<li>Clicking on an object with the middle mouse button</li>
+</ul></li>
+<li>What happens when you dive on an object depends upon the object. The table below describes most cases.</li>
+</ul><table class="table table-bordered table-striped"><tr><th scope="row">Object</th>
+<th scope="col">Where Object is Located</th>
+<th scope="col">What Happens</th>
+</tr><tr><th scope="row">Process or thread</th>
+<td>Root Window</td>
+<td>Process/thread is displayed in an existing Process Window. If none exists, then a new Process Window appears for the selected process/thread.</td>
+</tr><tr><th scope="row">Routine</th>
+<td>Process Window Stack Trace Pane</td>
+<td>Stack Frame and Source Code panes in the Process Window are updated with information for the selected routine.</td>
+</tr><tr><th scope="row">Subroutine</th>
+<td>Process Window (in Source Code Pane)</td>
+<td>Source code appears in the Process Window.</td>
+</tr><tr><th scope="row">Pointer</th>
+<td>Process Window</td>
+<td>Referenced memory area appears in a new Variable Window.</td>
+</tr><tr><th scope="row">Variable, array, address</th>
+<td>Process Window</td>
+<td>Variable contents appear in a new a Variable Window.</td>
+</tr><tr><th scope="row">Element of an array or structure</th>
+<td>Variable Window</td>
+<td>Contents of element appear in the Variable Window. Example of a "nested" dive.</td>
+</tr></table><h4>Example</h4>
+<p></p><div class="media media-element-container media-default"><div id="file-1484" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/divingexample-gif">divingExample.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Diving Example" height="716" width="704" class="media-element file-default" data-delta="34" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/divingExample.gif" /></div>
+
+  
+</div>
+</div>
+<h4>Nested Dives and Undiving</h4>
+<ul><li>Some dives create new windows and some use existing windows to display their data. Dives that use existing windows are called nested dives because the new information replaces the previous information.</li>
+<li>Examples of nested dives:
+<ul><li>Diving on a subroutine in the Process Window's Source Pane. The source for the subroutine replaces whatever was already in the Source Pane.</li>
+<li>Diving on an array element in a Variable Window. The single element's data replaces the entire array in the Variable Window (example below).</li>
+</ul></li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1485" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/nesteddivelevel-gif">nestedDiveLevel.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Nested Diving " height="659" width="507" class="media-element file-default" data-delta="35" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/nestedDiveLevel.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>Nested dives do not actually destroy the previously displayed information. Instead they push it on a stack so that it can be returned to later if desired.</li>
+<li>"Going back" in window history is called "undiving" and can be accomplished in two ways:</li>
+<li><strong>Method 1</strong>: Click on the "undive" button that appears in the upper right quadrant of a window (shown above).</li>
+<li><strong>Method 2</strong>: Select <strong>Undive</strong> from a window's <a href="/sites/default/files/menuProcessView_0.gif">View</a> menu (if applicable).</li>
+</ul><h3><a name="Viewing_and_Modifying_Data" id="Viewing_and_Modifying_Data"></a>Viewing and Modifying Data</h3>
+<h4>Viewing Data</h4>
+<ul><li>TotalView allows you to view variables, registers, areas of memory and machine instructions, as discussed below.</li>
+<li><strong>Variables</strong>
+<ul><li>Method 1: Dive on any variable that appears in the Source Pane or Stack Frame Pane of the Process Window.</li>
+<li>Method 2: Use the variable lookup command: <span class="note-purple">PATH:</span><strong><a href="/sites/default/files/windowProcess_0.gif">Process Window</a>  &gt; <a href="/sites/default/files/menuProcessView_0.gif"> View Menu</a>  &gt;  Lookup Variable</strong></li>
+</ul></li>
+<li><strong>Registers</strong>
+<ul><li>Dive on any register that appears in the Stack Frame Pane of the <a href="/sites/default/files/windowProcess_0.gif">Process Window</a>.</li>
+</ul></li>
+<li><strong>Memory Areas</strong>
+<ul><li>Use the variable lookup command: <span class="note-purple">PATH:</span><strong><a href="/sites/default/files/windowProcess_0.gif">Process Window</a>  &gt; <a href="/sites/default/files/menuProcessView_0.gif"> View Menu </a> &gt;  Lookup Variable</strong></li>
+<li>Then enter either a hexadecimal address (must start with 0x) for a single location. Enter two hexadecimal addresses for a range.</li>
+</ul></li>
+<li><strong>Machine Instructions</strong>
+<ul><li>Dive into the address of an assembler instruction in the <a href="/sites/default/files/windowProcess_0.gif">Process Window</a> Source Pane. The instructions for the entire function will display in a Variable Window.</li>
+</ul></li>
+<li>Leaving a Variable Window open allows you to perform runtime monitoring of variables. TotalView will update its contents each time the program is stopped.</li>
+</ul><h4>Examples</h4>
+<p></p><div class="media media-element-container media-default"><div id="file-1488" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/windowvariable1-gif">windowVariable1.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Window Variable" height="261" width="669" class="media-element file-default" data-delta="36" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/windowVariable1.gif" /></div>
+
+  
+</div>
+</div>
+<p></p><div class="media media-element-container media-default"><div id="file-1489" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/windowvariable2-gif">windowVariable2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Window Variable" height="285" width="667" class="media-element file-default" data-delta="37" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/windowVariable2.gif" /></div>
+
+  
+</div>
+</div>
+<h4>Modifying Variable Data</h4>
+<ul><li>You can edit variables from within the Variable Window. Simply click on the variable with the Select (left) mouse button. This will select the variable for field editing.</li>
+<li>The Variable Window below demonstrates editing an array element. Notice that the array element being edited is highlighted and shows a field editor cursor.</li>
+<li>The modified variable has effect when the program resumes execution.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1490" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/editvariabledata-gif">editVariableData.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Edit Variable data" height="283" width="652" class="media-element file-default" data-delta="38" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/editVariableData.gif" /></div>
+
+  
+</div>
+</div>
+<h4>Arrays</h4>
+<ul><li>For array data, TotalView provides several additional features:
+<ul><li>Displaying array slices</li>
+<li>Data filtering</li>
+<li>Data Sorting</li>
+<li>Array statistics</li>
+</ul></li>
+</ul><h5>Displaying Array Slices</h5>
+<ul><li>Used to display subsections of an array. Particularly useful if only a small section of a large array is of interest.</li>
+<li>Can be entered in the <strong>Slice:</strong> field in the Variable Window.</li>
+<li>Syntax is <span class="fixed">lower_bound:upper_bound:stride</span> and may be specified for each dimension.</li>
+<li>Examples:</li>
+</ul><table class="table table-bordered table-striped"><tr><th scope="row">Fortran</th>
+<td><span class="fixed">Slice: (1:5, 3:8)</span></td>
+</tr><tr><th scope="row">C/C++</th>
+<td><span class="fixed">Slice: [::2][1:20]</span></td>
+</tr></table><p></p><div class="media media-element-container media-default"><div id="file-1492" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/arrayslice-gif">arraySlice.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Array Slice" height="869" width="658" class="media-element file-default" data-delta="39" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/arraySlice.gif" /></div>
+
+  
+</div>
+</div>
+<h5>Array Data Filtering</h5>
+<ul><li>Arrays containing data types of character, integer or floating point can be filtered to display only desired data.</li>
+<li>Can be entered in the <strong>Filter</strong>: field in the Variable Window.</li>
+<li>By arithmetic comparison
+<ul><li>C/C++: <span class="fixed">==   !=   &lt;   &lt;=   &gt;   &gt;=</span></li>
+<li>Fortran: <span class="fixed">.eq.   .ne.   .lt.   .le.   .gt.   .ge.</span></li>
+</ul></li>
+<li>Equal/not equal to IEEE values: $nan   $nanq   $nans   $inf   $pinf   $ninf   $denorm   $pdenorm   $ndenorm</li>
+<li>By a range of values</li>
+<li>Within an expression</li>
+<li>See the TotalView documentation for additional examples, syntax options and other important information.</li>
+<li>Examples:</li>
+</ul><table class="table table-bordered table-striped"><tr><th scope="row">Fortran</th>
+<td><span class="fixed">.gt. 250<br />.eq. $nan<br />7:512<br />(.gt. 0 &amp;&amp; .lt. 50) .or. (.gt. 100 .and. .lt. 150)</span></td>
+</tr><tr><th scope="row">C/C++</th>
+<td><span class="fixed">&gt;= 100<br />!= $inf<br />128:&lt;1024<br />(&gt; 0 &amp;&amp; &lt; 50) || (&gt; 100 &amp;&amp; &lt; 150)</span></td>
+</tr></table><p></p><div class="media media-element-container media-default"><div id="file-1493" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/arrayfilter-gif">arrayFilter.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Array Filter" height="877" width="660" class="media-element file-default" data-delta="40" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/arrayFilter.gif" /></div>
+
+  
+</div>
+</div>
+<h5>Sorting Array Data</h5>
+<ul><li>Simply click on the Value bar in a Variable Window. The array will sort in ascending order. Clicking again will cause it to sort in descending order. Clicking a third time will return the array to its original order.</li>
+<li>Note: Sorting takes place internal to TotalView and not actually within your data.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1494" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/arraysort-gif">arraySort.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Array sort" height="286" width="654" class="media-element file-default" data-delta="41" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/arraySort.gif" /></div>
+
+  
+</div>
+</div>
+<h5>Array Viewer</h5>
+<ul><li>To view a multi-dimensional array in "spreadsheet" format: <span class="note-purple">PATH:</span><strong><a href="/sites/default/files/windowVariable_0.gif">Variable Window</a>  &gt;  <a href="/sites/default/files/menuVariableTools.gif">Tools Menu</a>  &gt;  Array Viewer</strong></li>
+<li>For arrays with more than 2 dimensions, a "slice" of the array will be presented. You can then specify different slices.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1495" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/arrayviewer-gif">arrayViewer.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Array Viewer " height="536" width="652" class="media-element file-default" data-delta="42" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/arrayViewer.gif" /></div>
+
+  
+</div>
+</div>
+<h5>Array Statistics</h5>
+<ul><li>TotalView is able to display some basic statistics about an array: <span class="note-purple">PATH:</span><strong><a href="/sites/default/files/windowVariable_0.gif">Variable Window</a>  &gt;  <a href="/sites/default/files/menuVariableTools.gif">Tools Menu</a>  &gt;  Statistics</strong></li>
+<li>A window containing statistical information about your array will appear - example below.</li>
+<li>See the TotalView documentation for an explanation of the statistics fields.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1496" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/arraystatistics-gif">arrayStatistics.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Array Statistics" height="478" width="416" class="media-element file-default" data-delta="43" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/arrayStatistics.gif" /></div>
+
+  
+</div>
+</div>
+<h4>Changing Variable Display Format</h4>
+<ul><li>You can specify how your variable data should be displayed. This is done through TotalViews Preferences dialog box.</li>
+<li>Select any one:
+<ul><li><span class="note-purple">PATH:</span><strong><a href="/sites/default/files/windowProcess_0.gif">Process Window</a>  &gt;  <a href="/sites/default/files/menuProcessFile.gif">File Menu</a>  &gt;  Preferences</strong></li>
+<li><span class="note-purple">PATH:</span><strong><a href="/sites/default/files/windowRoot_1.gif">Root Window</a>  &gt;  <a href="/sites/default/files/menuProcessFile.gif">File Menu</a>  &gt;  Preferences</strong></li>
+<li><span class="note-purple">PATH:</span><strong><a href="/sites/default/files/windowVariable_0.gif">Variable Window</a>  &gt;  <a href="/sites/default/files/menuProcessFile.gif">File Menu</a>  &gt;  Preferences</strong></li>
+</ul></li>
+<li>The Preferences dialog box will appear. Select the Formatting tab to change the way TotalView displays variables.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1497" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/variableformatting-gif">variableFormatting.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="variable formatting" height="519" width="588" class="media-element file-default" data-delta="44" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/variableFormatting.gif" /></div>
+
+  
+</div>
+</div>
+<h4>Changing Variable Data Types</h4>
+<ul><li>TotalView will display variables according to their declaration type in your program. In most cases, the TotalView types are identical to their programming language counterparts (C language pointers to arrays are an exception). See the TotalView documentation for details.</li>
+<li>You can change the way variables are displayed by editing the data type shown for them in the Variable Window. Simply left mouse click on the data type field and then edit as desired.</li>
+<li>An example of how this might be useful would be for displaying the contents of a dynamically allocated array using a C pointer. For example:</li>
+</ul><pre>double *p;
+...
+p = (double *)malloc(sizeof(double) * 20);</pre><ul><li>TotalView does not know that <span class="fixed">p</span> actually points to an array of doubles. By changing the data type to <span class="fixed">double[20]*</span> and then diving on the pointer, you can view the array. The example below demonstrate this.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1499" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/datatypeedit-gif">dataTypeEdit.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="changing variable data types" height="1066" width="507" class="media-element file-default" data-delta="45" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/dataTypeEdit.gif" /></div>
+
+  
+</div>
+</div>
+<h3><a name="Text_Editing_and_Searching" id="Text_Editing_and_Searching"></a>Text Editing and Searching</h3>
+<h4>Text Editing</h4>
+<ul><li>TotalView provides a basic field editor for use within certain debugger fields and windows. Text which can be edited will be highlighted and display a field editor cursor.</li>
+<li>Cutting and pasting can be accomplished by using the middle mouse button or by selecting <strong>Cut</strong>, <strong>Copy</strong>, or <strong>Paste </strong>from any window's <a href="/sites/default/files/menuProcessEdit.gif">Edit</a> pull-down menu.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1500" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/editexample-gif">editExample.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="edit example" height="157" width="336" class="media-element file-default" data-delta="46" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/editExample.gif" /></div>
+
+  
+</div>
+</div>
+<h4>Text Searching</h4>
+<ul><li>Most TotalView windows will permit you to search for text strings. Simply select <strong>Find</strong> from any window's <a href="/sites/default/files/menuProcessEdit.gif">Edit</a> pull-down menu.</li>
+<li>A dialog box will appear for you to enter the string to search for, plus any search options, as shown below.</li>
+<li>Select <strong>Find Again</strong> from the same <a href="/sites/default/files/menuProcessEdit.gif">Edit</a> menu to repeat a search.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1501" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/dialogfindstring-gif">dialogFindString.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="find string dialog box" height="256" width="326" class="media-element file-default" data-delta="47" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/dialogFindString.gif" /></div>
+
+  
+</div>
+</div>
+<h3><a name="Saving_Window_Contents" id="Saving_Window_Contents"></a>Saving Window Contents</h3>
+<p>Most TotalView windows enable you to save their contents as ASCII text. You can also pipe the contents to UNIX shell commands.<br />For windows with multiple panes, you have to save each pane individually.<br />Make sure your mouse pointer is in the window or pane of interest. Then select <strong>Save Pane</strong> from any window's <a href="/sites/default/files/menuProcessFile_0.gif">File</a> pull-down menu. A dialog box will then appear for your input, as shown below:</p>
+<p></p><div class="media media-element-container media-default"><div id="file-1502" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/dialogsavepane-gif">dialogSavePane.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="save pane dialog" height="235" width="446" class="media-element file-default" data-delta="48" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/dialogSavePane.gif" /></div>
+
+  
+</div>
+</div>
+<p><span class="note-purple">Example:</span><a href="/sites/default/files/savePaneOriginal.gif">Original Stack Frame pane</a>   </p><div class="media media-element-container media-default"><div id="file-1504" class="file file-document file-text-plain">
+
+        <h2 class="element-invisible"><a href="/files/savedpanecontents-txt">Saved contents of pane</a></h2>
+    
+  
+  <div class="content">
+    <span class="file"><img class="file-icon" alt="Plain text icon" title="text/plain" src="/modules/file/icons/text-plain.png" width="16" height="16" /><a href="https://hpc.llnl.gov/sites/default/files/savedPaneContents.txt" type="text/plain; length=2958">Saved contents of pane</a></span>  </div>
+
+  
+</div>
+</div>
+<ul><li>Using the "Send To Pipe" option allows you to direct the pane/window contents to a UNIX shell command. The command is entered in the File Name box. For example:</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1505" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/pipecommand-gif">pipeCommand.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Send to pipe" height="235" width="471" class="media-element file-default" data-delta="51" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/pipeCommand.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>Unless specified otherwise, output from the command appears as stdout in the window where you started TotalView.</li>
+</ul><h3><a name="Getting_Help" id="Getting_Help"></a>Getting Help</h3>
+<ul><li>TotalView provides an extensive, web browser based online Help system.</li>
+<li>All primary TotalView windows have a <strong>Help</strong> pull-down menu that includes access to the vendor's complete set of product documentation.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1506" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/menuhelp-gif">menuHelp.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Help Menu" height="78" width="184" class="media-element file-default" data-delta="52" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/menuHelp.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>Context-sensitive help is available by left-clicking on an object and then selecting "Help" from the Help pull-down menu, or hitting the <strong>F1</strong> key.</li>
+<li>Additionally, many dialog boxes have a context-sensitive <strong>Help</strong> button.</li>
+<li>The <strong>Help</strong> pull-down menu and Help Documentation are shown below.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1507" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/helponline-jpg">helpOnline.jpg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/helpOnline.jpg"><img alt="Online Help" height="499" width="600" style="width: 600px; height: 499px;" class="media-element file-default" data-delta="53" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/helpOnline-600x499.jpg" /></a>  </div>
+
+  
+</div>
+</div>
+<h3><a name="Exiting_TotalView" id="Exiting_TotalView"></a>Exiting TotalView</h3>
+<ul><li>You can exit the debugger in several ways:
+<ul><li>From any window select <strong>File Menu  &gt;  Exit</strong></li>
+<li>Typing <span class="fixed">CTRL-q</span> or <span class="fixed">CTRL-Q</span> in any window</li>
+<li>Closing the Root Window via your window manager</li>
+</ul></li>
+<li>After selecting any of these ways to exit TotalView, you will be prompted to confirm your choice to exit:</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1508" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/dialogexit-gif-0">dialogExit.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Exit dialog Box" height="166" width="228" style="width: 228px; height: 166px;" class="media-element file-default" data-delta="54" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/dialogExit_0.gif" /></div>
+
+  
+</div>
+</div>
+<p><strong>This concludes TotalView Part 1.</strong> Where would you like to go now?</p>
+<ul><li><a href="#Abstract">Back to the top of Part 1</a></li>
+<li>Continue to<a href="/totalview-part-2-common-functions"> Part 2: Common Functions</a></li>
+<li>Jump to <a href="/totalview-part-3-debugging-parallel-programs">Part 3: Debugging Parallel Programs</a></li>
+<li><a href="/training/tutorials">Tutorials</a></li>
+</ul></div></div></div>    </div>
+  </div>
+</div>
+
+
+<!-- Needed to activate display suite support on forms -->
+  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                   		</div>
+                  </main>
+                </div>
+      		</div>
+    	</div>
+	</div>
+  	
+	
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 footer-top">
+
+                    <a class="llnl" href="https://www.llnl.gov/" target="_blank"><img src="/sites/all/themes/tid/images/llnl.png" alt="LLNL"></a>
+                    <p>
+                        Lawrence Livermore National Laboratory
+                        <br>7000 East Avenue • Livermore, CA 94550
+                    </p>
+                    <p>
+                        Operated by Lawrence Livermore National Security, LLC, for the
+                        <br>Department of Energy's National Nuclear Security Administration.
+                    </p>
+                    <div class="footer-top-logos">
+                        <a class="nnsa" href="https://www.energy.gov/nnsa/national-nuclear-security-administration" target="_blank"><img src="/sites/all/themes/tid/images/nnsa2.png" alt="NNSA"></a>
+                        <a class="doe" href="https://www.energy.gov/" target="_blank"><img src="/sites/all/themes/tid/images/doe_small.png" alt="U.S. DOE"></a>
+                        <a class="llns" href="https://www.llnsllc.com/" target="_blank"><img src="/sites/all/themes/tid/images/llns.png" alt="LLNS"></a>
+                	</div>
+
+
+
+                </div>
+                <div class="col-sm-12 footer-bottom">
+                	
+
+                    <span>UCRL-MI-131558  &nbsp;|&nbsp;&nbsp;</span><a href="https://www.llnl.gov/disclaimer" target="_blank">Privacy &amp; Legal Notice</a>	 &nbsp;|&nbsp;&nbsp; <a href="mailto:webmaster-comp@llnl.gov">Website Query</a> &nbsp;|&nbsp;&nbsp;<a href="/about-us/contact-us" >Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+  </body>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/jquery_update/replace/jquery/2.1/jquery.min.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-extend-3.4.0.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-html-prefilter-3.5.0-backport.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/drupal.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/extlink/extlink.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/jquery.flexslider.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/slide.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/lightbox2/js/lightbox.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/matomo/matomo.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _paq = _paq || [];(function(){var u=(("https:" == document.location.protocol) ? "https://analytics.llnl.gov/" : "http://analytics.llnl.gov/");_paq.push(["setSiteId", "149"]);_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setDoNotTrack", 1]);_paq.push(["trackPageView"]);_paq.push(["setIgnoreClasses", ["no-tracking","colorbox"]]);_paq.push(["enableLinkTracking"]);var d=document,g=d.createElement("script"),s=d.getElementsByTagName("script")[0];g.type="text/javascript";g.defer=true;g.async=true;g.src="https://hpc.llnl.gov/sites/default/files/matomo/piwik.js?qsohrw";s.parentNode.insertBefore(g,s);})();
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/bootstrap.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mobilemenu.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/custom.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mods.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"tid","theme_token":"8u_QrMSRgsBxEz9iGR81NlI4Upzb52yfk5S8Tz7JEP4","js":{"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/2.1\/jquery.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/contrib\/extlink\/extlink.js":1,"sites\/all\/themes\/tid\/js\/jquery.flexslider.js":1,"sites\/all\/themes\/tid\/js\/slide.js":1,"sites\/all\/modules\/contrib\/lightbox2\/js\/lightbox.js":1,"sites\/all\/modules\/contrib\/matomo\/matomo.js":1,"0":1,"sites\/all\/themes\/tid\/js\/bootstrap.js":1,"sites\/all\/themes\/tid\/js\/mobilemenu.js":1,"sites\/all\/themes\/tid\/js\/custom.js":1,"sites\/all\/themes\/tid\/js\/mods.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/book\/book.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/extlink\/extlink.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/lightbox2\/css\/lightbox.css":1,"sites\/all\/modules\/contrib\/print\/print_ui\/css\/print_ui.theme.css":1,"sites\/all\/themes\/tid\/css\/bootstrap.css":1,"sites\/all\/themes\/tid\/css\/flexslider.css":1,"sites\/all\/themes\/tid\/css\/system.menus.css":1,"sites\/all\/themes\/tid\/css\/style.css":1,"sites\/all\/themes\/tid\/font-awesome\/css\/font-awesome.css":1,"sites\/all\/themes\/tid\/css\/treewalk.css":1,"sites\/all\/themes\/tid\/css\/popup.css":1,"sites\/all\/themes\/tid\/css\/mods.css":1}},"lightbox2":{"rtl":0,"file_path":"\/(\\w\\w\/)public:\/","default_image":"\/sites\/all\/modules\/contrib\/lightbox2\/images\/brokenimage.jpg","border_size":10,"font_color":"000","box_color":"fff","top_position":"","overlay_opacity":"0.8","overlay_color":"000","disable_close_click":true,"resize_sequence":0,"resize_speed":400,"fade_in_speed":400,"slide_down_speed":600,"use_alt_layout":false,"disable_resize":false,"disable_zoom":false,"force_show_nav":false,"show_caption":true,"loop_items":false,"node_link_text":"View Image Details","node_link_target":false,"image_count":"Image !current of !total","video_count":"Video !current of !total","page_count":"Page !current of !total","lite_press_x_close":"press \u003Ca href=\u0022#\u0022 onclick=\u0022hideLightbox(); return FALSE;\u0022\u003E\u003Ckbd\u003Ex\u003C\/kbd\u003E\u003C\/a\u003E to close","download_link_text":"","enable_login":false,"enable_contact":false,"keys_close":"c x 27","keys_previous":"p 37","keys_next":"n 39","keys_zoom":"z","keys_play_pause":"32","display_image_size":"original","image_node_sizes":"()","trigger_lightbox_classes":"","trigger_lightbox_group_classes":"","trigger_slideshow_classes":"","trigger_lightframe_classes":"","trigger_lightframe_group_classes":"","custom_class_handler":0,"custom_trigger_classes":"","disable_for_gallery_lists":true,"disable_for_acidfree_gallery_lists":true,"enable_acidfree_videos":true,"slideshow_interval":5000,"slideshow_automatic_start":true,"slideshow_automatic_exit":true,"show_play_pause":true,"pause_on_next_click":false,"pause_on_previous_click":true,"loop_slides":false,"iframe_width":600,"iframe_height":400,"iframe_border":1,"enable_video":false,"useragent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/90.0.4430.93 Safari\/537.36"},"extlink":{"extTarget":0,"extClass":"ext","extLabel":"(link is external)","extImgClass":0,"extIconPlacement":0,"extSubdomains":1,"extExclude":".gov|.com|.org|.io|.be|.us|.edu","extInclude":"-int.llnl.gov|lc.llnl.gov|caas.llnl.gov|exchangetools.llnl.gov","extCssExclude":"","extCssExplicit":"","extAlert":"_blank","extAlertText":"This page is routing you to a page which requires extra authentication. You must have on-site or VPN access.\r\n\r\nPress OK to continue or cancel to return.\r\n\r\nIf this fails or times-out, you are not allowed access to the internal page or the server may be temporarily unavailable.\r\n\r\nIf you have an on-site or VPN account and are still having trouble, please send e-mail to lc-hotline@llnl.gov or call 925-422-4531 for further assistance.","mailtoClass":"mailto","mailtoLabel":"(link sends e-mail)"},"matomo":{"trackMailto":1},"urlIsAjaxTrusted":{"\/training\/tutorials\/totalview-tutorial":true}});
+//--><!]]>
+</script>
+</html>

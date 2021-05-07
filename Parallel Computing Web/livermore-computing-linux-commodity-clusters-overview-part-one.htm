@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<head>
+<meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-one" />
+<link rel="shortlink" href="/node/830" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="shortcut icon" href="https://hpc.llnl.gov/sites/all/themes/tid/favicon.ico" type="image/vnd.microsoft.icon" />
+<title>Livermore Computing Linux Commodity Clusters Overview Part One | High Performance Computing</title>
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_kShW4RPmRstZ3SpIC-ZvVGNFVAi0WEMuCnI0ZkYIaFw.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_bq48Es_JAifg3RQWKsTF9oq1S79uSN2WHxC3KV06fK0.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_vAm-LJc0tkC-w_c6v7Ekq0bW26Pzl31HvPM6kbvK-pc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_ca6tstDbY9-H23Ty8uKiDyFQLT1AZftZKldhbTPPnm8.css" media="all" />
+<!--[if lt IE 9]><script src="/sites/all/themes/tid/js/html5.js"></script><![endif]-->
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-830 node-type-user-portal-one-column-page">
+  <div aria="contentinfo"><noscript><img src="https://analytics.llnl.gov/piwik.php?idsite=149" class="no-border" alt="" /></noscript></div>
+    <div id="page">
+	<div class="unclassified"></div>
+	<div class="headertop">
+					<div id="skip-nav" role="navigation" aria-labelledby="skip-nav" class="reveal">
+  			<a href="#main-content">Skip to main content</a>
+			</div>
+					</div>
+        <div class="headerwrapbg">
+                        <div class="headerwrap-portal">
+                <div id="masthead" class="site-header container" role="banner">
+                    <div class="row">
+                        <div class="llnl-logo col-sm-3">
+                            <a href="https://www.llnl.gov" target="_blank" title="Lawrence Livermore National Laboratory">
+                                <img src="/sites/all/themes/tid/images/llnl-tab-portal.png" alt="LLNL Home" />
+                            </a>
+                        </div>
+                        <div id="logo" class="site-branding col-sm-4">
+                                                            <div id="site-logo">
+                                        <!--High Performance Computing<br />Livermore Computing Center-->
+                                        																					<a href="/user-portal" class="text-dark" title="Livermore Computing Center High Performance Computing">
+                                            <img src="/sites/all/themes/tid/images/hpc.png" alt="Portal Home" />
+																					</a>
+																				
+                                </div>
+                                                    </div>
+                        <div class="col-sm-5">
+                            <div id="top-search">
+															<div class="input-group">
+																	<form class="navbar-form navbar-search navbar-right" action="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-one" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <div class="element-invisible">Search form</div>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-nO19VtbnOxfvZ2A_eRWyQMhJQalHbWKclC8Y-wKxWVA" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="mainnav">
+                    <div class="container">
+                        <div class="row">
+                            <nav id="Menu" aria-label="Mobile Menu" class="mobilenavi col-md-12"></nav>
+                            <nav id="navigation" aria-label="Main Menu">
+                                <div id="main-menu" class="main-menu-portal">
+                                    <ul class="menu"><li class="first collapsed"><a href="/user-portal">Portal</a></li>
+<li class="expanded"><a href="/accounts">Accounts</a><ul class="menu"><li class="first leaf"><a href="/accounts/new-account-setup">New Account Setup</a></li>
+<li class="leaf"><a href="/accounts/idm-account-management">IdM Account Management</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/manuals/access-lc-systems" title="">Access to LC Systems</a></li>
+<li class="leaf"><a href="/accounts/computer-coordinator-roles">Computer Coordinator Roles</a></li>
+<li class="collapsed"><a href="/accounts/forms">Forms</a></li>
+<li class="collapsed"><a href="/accounts/policies">Policies</a></li>
+<li class="last leaf"><a href="/accounts/mailing-lists">Mailing Lists</a></li>
+</ul></li>
+<li class="expanded"><a href="/banks-jobs">Banks &amp; Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/allocations">Allocations</a></li>
+<li class="expanded"><a href="/banks-jobs/running-jobs">Running Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/running-jobs/batch-system-primer">Batch System Primer</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-user-manual">LSF User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-quick-start-guide">LSF Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-commands">LSF Commands</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-user-manual" title="Guide to using the Slurm Workload/Resource Manager">Slurm User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-quick-start-guide">Slurm Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-commands">Slurm Commands</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/batch-system-commands">Batch System Cross-Reference</a></li>
+<li class="last leaf"><a href="/banks-jobs/running-jobs/slurm-srun-versus-ibm-csm-jsrun">Slurm srun versus IBM CSM jsrun</a></li>
+</ul></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/accounts/forms/asc-dat" title="">ASC DAT Request</a></li>
+<li class="last leaf"><a href="https://hpc.llnl.gov/accounts/forms/mic-dat" title="">M&amp;IC DAT Request</a></li>
+</ul></li>
+<li class="expanded"><a href="/hardware">Hardware</a><ul class="menu"><li class="first collapsed"><a href="/hardware/archival-storage-hardware">Archival Storage Hardware</a></li>
+<li class="collapsed"><a href="/hardware/platforms">Compute Platforms</a></li>
+<li class="leaf"><a href="/hardware/compute-platforms-gpus">Compute Platforms with GPUs</a></li>
+<li class="collapsed"><a href="/hardware/file-systems">File Systems</a></li>
+<li class="leaf"><a href="/hardware/testbeds">Testbeds</a></li>
+<li class="collapsed"><a href="/hardware/zones">Zones (aka &quot;The Enclave&quot;)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/cgi-bin/lccgi/customstatus.cgi?" title="">CZ Compute Platform Status</a></li>
+<li class="leaf"><a href="https://rzlc.llnl.gov/cgi-bin/lccgi/customstatus.cgi" title="">RZ Compute System Status</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/fsstatus/fsstatus.cgi" title="">CZ File System Status</a></li>
+<li class="last leaf"><a href="https://rzlc.llnl.gov/fsstatus/fsstatus.cgi" title="">RZ File System Status</a></li>
+</ul></li>
+<li class="expanded"><a href="/services">Services</a><ul class="menu"><li class="first collapsed"><a href="/services/green-data-oasis">Green Data Oasis (GDO)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="last leaf"><a href="/services/visualization-services">Visualization Services</a></li>
+</ul></li>
+<li class="expanded"><a href="/software">Software</a><ul class="menu"><li class="first leaf"><a href="/software/archival-storage-software">Archival Storage Software</a></li>
+<li class="collapsed"><a href="/software/data-management-tools-projects">Data Management Tools</a></li>
+<li class="collapsed"><a href="/software/development-environment-software">Development Environment Software</a></li>
+<li class="leaf"><a href="/software/mathematical-software">Mathematical Software</a></li>
+<li class="leaf"><a href="/software/modules-and-software-packaging">Modules and Software Packaging</a></li>
+<li class="collapsed"><a href="/software/visualization-software">Visualization Software</a></li>
+<li class="last leaf"><a href="https://computing.llnl.gov/projects/radiuss" title="">RADIUSS</a></li>
+</ul></li>
+<li class="last expanded active-trail"><a href="/training" class="active-trail">Training</a><ul class="menu"><li class="first expanded active-trail"><a href="/training/tutorials" class="active-trail">Tutorials</a><ul class="menu"><li class="first leaf"><a href="/training/tutorials/introduction-parallel-computing-tutorial">Introduction to Parallel Computing Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/llnl-covid-19-hpc-resource-guide">LLNL Covid-19 HPC Resource Guide for New Livermore Computing Users</a></li>
+<li class="leaf"><a href="/training/tutorials/using-lcs-sierra-system">Using LC&#039;s Sierra System</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-psaap3-quick-start-tutorial">Livermore Computing PSAAP3 Quick Start Tutorial</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/sites/default/files/PSAAP-alliance-quickguide.docx" title="">PSAAP Alliance Quick Guide</a></li>
+<li class="leaf"><a href="/training/tutorials/linux-tutorial-exercises">Linux Tutorial Exercise One</a></li>
+<li class="leaf active-trail"><a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-one" class="active-trail active">Livermore Computing Linux Clusters Overview Part One</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two">Livermore Computing Linux Clusters Overview Part Two</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-resources-and-environment">Livermore Computing Resources and Environment</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab-exercise">Slurm and Moab Exercise</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-part-2-common-functions">TotalView Part 2:  Common Functions</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-part-3-debugging-parallel-programs">TotalView Part 3: Debugging Parallel Programs</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-tutorial">TotalView Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/evaluation-form">Tutorial Evaluation Form</a></li>
+<li class="leaf"><a href="/training/tutorials/srun-auto-affinity">srun --auto-affinity</a></li>
+<li class="last leaf"><a href="/training/tutorials/srun-multi-prog">srun --multi-prog</a></li>
+</ul></li>
+<li class="collapsed"><a href="/training/documentation">Documentation &amp; User Manuals</a></li>
+<li class="leaf"><a href="/training/technical-bulletins-catalog">Technical Bulletins Catalog</a></li>
+<li class="collapsed"><a href="/training/workshop-schedule">Training Events</a></li>
+<li class="last leaf"><a href="/training/user-meeting-presentations-archive">User Meeting Presentation Archive</a></li>
+</ul></li>
+</ul>                                                                            <div id="pagetoggle" class="btn-group btn-toggle pull-right" style="margin-right: 15px;">
+                                            <a href="/" class="btn btn-default gs">General Site</a>
+                                            <a href="/user-portal" class="btn btn-primary up active">User Portal</a>
+                                        </div>
+                                                                    </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+		<div id="main-content" class="l2content">
+        <div class="container">
+    		<div class="row">
+        		                <div id="primary" class="content-area col-sm-12">
+					                                        <section id="content" role="nav" class="clearfix col-sm-12">
+
+                                                                                    <div id="breadcrumbs">
+                                    <h2 class="element-invisible">breadcrumb menu</h2><nav class="breadcrumb" aria-label="breadcrumb-navigation"><a href="/">Home</a> » <a href="/training">Training</a> » <a href="/training/tutorials">Tutorials</a> » Livermore Computing Linux Commodity Clusters Overview Part One</nav>                                </div>
+                                                    
+                                            </section>
+                  <main>
+
+                                              <div id="content_top">
+                                <div class="region region-content-top">
+  <div id="block-print-ui-print-links" class="block block-print-ui">
+
+    
+    
+  
+  <div class="content">
+    <span class="print_html"><a href="https://hpc.llnl.gov/print/830" title="Display a printer-friendly version of this page." class="print-page" onclick="window.open(this.href); return false" rel="nofollow">Printer-friendly</a></span>  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                            </div>
+                        
+                        <div id="content-wrap">
+                                                                                                                <div class="region region-content">
+  <div id="block-system-main" class="block block-system">
+
+    
+    
+  
+  <div class="content">
+    
+
+<div  about="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-one" typeof="sioc:Item foaf:Document" class="node node-user-portal-one-column-page node-full view-mode-full">
+    <div class="row">
+    <div class="col-sm-12 ">
+      <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even" property="dc:title"><h1 class="title">Livermore Computing Linux Commodity Clusters Overview Part One</h1></div></div></div><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><h2><a id="TOC" name="TOC"></a>Table of Contents</h2>
+<p><strong>Part One</strong></p>
+<ol><li><a href="#Abstract">Abstract</a></li>
+<li><a href="#Background">Background of Linux Commodity Clusters at LLNL</a></li>
+<li><a href="#Configurations">Commodity Cluster Configurations and Scalable Units</a></li>
+<li><a href="#Systems">LC Linux Commodity Cluster Systems</a></li>
+<li><a href="#Hardware">Intel Xeon Hardware Overview</a></li>
+<li><a href="#Infiniband">Infiniband Interconnect Overview</a></li>
+<li><a href="#Software">Software and Development Environment</a></li>
+<li><a href="#Compilers">Compilers</a></li>
+<li><a href="/training/tutorials/linux-tutorial-exercises">Exercise 1</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#MPI">MPI</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#Running">Running Jobs</a>
+<ol><li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#Overview">Overview</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#BatchVsInteractive">Batch Versus Interactive</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#Starting">Starting Jobs - srun</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#Interacting">Interacting With Jobs</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#Optimizing">Optimizing CPU Usage</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#MemoryConsiderations">Memory Considerations</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#VectorHyper">Vectorization and Hyper-threading</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#Binding">Process and Thread Binding</a></li>
+</ol></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#Debugging">Debugging</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#Tools">Tools</a></li>
+<li><a href="/training/tutorials/linux-tutorial-exercises#Exercise2" target="_blank">Exercise 2</a></li>
+</ol><p>Or go to <strong>Part Two</strong></p>
+<ol><li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#GPU">GPU Clusters</a>
+<ol><li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#GPUAvailable">Available GPU Clusters</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#GPUHardware">Hardware Overview</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#GPUModels">GPU Programming APIs</a>
+<ol><li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#CUDA">CUDA (APIs)</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#OpenMP">OpenMP (APIs)</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#OpenACC">OpenACC (APIs)</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#OpenCL">OpenCL (APIs)</a></li>
+</ol></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#GPUCompiling">Compiling</a>
+<ol><li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#CompileCUDA">CUDA</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#CompileOpenMP">OpenMP</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#CompileOpenACC">OpenACC</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#GPUMisc">Misc. Tips &amp; Tools</a></li>
+</ol></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#References">References and More Information</a></li>
+</ol></li>
+</ol><h2><a name="Abstract" id="Abstract"> </a> Abstract</h2>
+<p><br />This tutorial is intended to be an introduction to using LC's "Commodity" Linux clusters. It begins by providing a brief historical background of Linux clusters at LC, noting their success and adoption as a production, high performance computing platform. The primary hardware components of LC's Linux clusters are then presented, including the various types of nodes, processors and switch interconnects. The detailed hardware configuration for each of LC's production Linux clusters completes the hardware related information.</p>
+<p>After covering the hardware related topics, software topics are discussed, including the LC development environment, compilers, and how to run both batch and interactive parallel jobs. Important issues in each of these areas are noted. Available debuggers and performance related tools/topics are briefly discussed, however detailed usage is beyond the scope of this tutorial. A lab exercise using one of LC's Linux clusters follows the presentation.</p>
+<p>Level/Prerequisites: This tutorial is intended for those who are new to developing parallel programs in LC's Linux cluster environment. A basic understanding of parallel programming in C or Fortran is required. The material covered by the following tutorials would also be helpful:<br />EC3501: <a href="https://hpc.llnl.gov/training/tutorials/livermore-computing-resources-and-environment">Livermore Computing Resources and Environment</a><br />EC4045: <a href="https://computing.llnl.gov/tutorials/moab/">Slurm and Moab</a></p>
+<h2><a name="Background" id="Background"> </a> Background of Linux Commodity Clusters at LLNL</h2>
+<h3>The Linux Project</h3>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-2203" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/liv-model2-gif-0">liv_model2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img height="250" width="425" class="media-element file-default" data-delta="1" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/liv_model2_0.gif" alt="" /></div>
+
+  
+</div>
+</div></div>
+<ul><li>LLNL first began experimenting with Linux clusters in 1999-2000 in a partnership with Compaq and Quadrics to port Quadrics software to Alpha Linux.</li>
+<li>The Linux Project was started for several reasons:
+<ul><li><strong>Cost:</strong> price-performance analysis demonstrated that near-commodity hardware in clusters running Linux could be more cost-effective than proprietary solutions;</li>
+<li><strong>Focus:</strong> the decreasing importance of high-performance computing (HPC) relative to commodity purchases was making it more difficult to convince proprietary systems vendors to implement HPC specific solutions;</li>
+<li><strong>Control: </strong>it was believed that by controlling the OS in-house, Livermore Computing could better support its customers;</li>
+<li><strong>Community:</strong> the platform created could be leveraged by the general HPC community.</li>
+</ul></li>
+<li>The objective of this effort was to apply LC's scalable systems strategy (the "Livermore Model") to commodity hardware running the open source Linux OS:
+<ul><li>Based on SMP compute nodes attached to a high-speed, low-latency interconnect.</li>
+<li>Uses OpenMP to exploit SMP parallelism within a node and MPI to exploit parallelism between nodes.</li>
+<li>Provides a POSIX interface parallel filesystem.</li>
+<li>Application toolset: C, C++ and Fortran compilers, scalable MPI/OpenMP GUI debugger, performance analysis tools.</li>
+<li>System management toolset: parallel cluster management tools, resource management, job scheduling, near-real-time accounting.</li>
+</ul></li>
+</ul><h3>Alpha Linux Clusters</h3>
+<ul><li>The first Linux cluster implemented by LC was LX, a Compaq Alpha Linux system with no high-speed interconnect.</li>
+<li>The first production Alpha cluster targeted to implement the full Livermore Model was Furnace, a 64-node system comprised of dual-CPU EV68 processors with a QSnet interconnect. However...
+<ul><li>Compaq announced the eventual discontinuation of the Alpha server line</li>
+<li>Intel Pentium 4 with favorable SPECfp performance was released just as Furnace was delivered.</li>
+</ul></li>
+<li>This prompted Livermore to shift to an Intel IA32-based model for its Linux systems in July 2001.</li>
+<li>Furnace's interconnect was allocated to the IA32-based PCR clusters (below) instead. It then operated as a loosely coupled cluster until it was decommissioned in 10/03.</li>
+</ul><h3>PCR Clusters</h3>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-2204" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/pcr-config-400pix-gif">pcr_config.400pix.gif</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/pcr_config.400pix.gif"><img alt="PCR configuration graphic" height="297" width="360" style="height: 297px; width: 360px;" class="media-element file-default" data-delta="2" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/pcr_config.400pix-360x297.gif" /></a>  </div>
+
+  
+</div>
+</div></div>
+<ul><li>August 2001: The Parallel Capacity Resource (PCR) clusters were purchased from Silicon Graphics and Linux NetworX. Consisted of:
+<ul><li>Adelie: 128-node production cluster</li>
+<li>Emperor: 88-node production cluster</li>
+<li>Dev: 26-node development cluster</li>
+</ul></li>
+<li>Each PCR compute node had two 1.7-GHz Intel Pentium 4 CPUs and a QsNet Elan3 interconnect.</li>
+<li>Parallel file system was not implemented at that time - instead dedicated BlueArc NFS servers were used.</li>
+<li>SCF resource only</li>
+<li>The 16-node Pengra cluster was procured for the OCF to provide a less restrictive development environment for PCR related work in July, 2002.</li>
+<li>For more information see the: <a href="/sites/default/files/LinuxProjectReport.2002.08.18.pdf" target="_blank">2002 Linux Project Report</a>.</li>
+</ul><h3>MCR Cluster...and More</h3>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-2208" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/mcr-440pix-jpg-0">MCR.440pix.jpg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="MCR Cluster 2002" height="131" width="440" class="media-element file-default" data-delta="3" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/MCR.440pix_0.jpg" /></div>
+
+  
+</div>
+</div></div>
+<ul><li>The success of the PCR clusters was followed by the purchase of the Multiprogrammatic Capability Resource (MCR) cluster in July, 2002 from Linux NetworX.</li>
+<li>1152 node cluster comprised of dual-processor, 2.4 GHz Intel Xeons</li>
+<li>MCR's procurement was intended to significantly increase the resources available to Multiprogrammatic and Institutional Computing (M&amp;IC) users.</li>
+<li>MCR's configuration included the first production implementation of the Lustre parallel file system, an integral part of the "Livermore Model".</li>
+<li>Debuted as #5 on the Top500 Supercomputers list in November, 2002, and then peaked at #3 in June, 2003.</li>
+<li>For more information see: <a href="/sites/default/files/mcr_background.pdf">MCR Background</a></li>
+<li>Convinced of the success of this path, LC implemented several other IA-32 Linux clusters simultaneously with, or after, the MCR Linux cluster:<br /><table class="table table-striped table-narrow table-bordered"><tr><th scope="col">System</th>
+<th scope="col">Network</th>
+<th scope="col">Nodes</th>
+<th scope="col">CPUs/Cores</th>
+<th scope="col">Gflops</th>
+</tr><tr><td>ALC</td>
+<td>OCF</td>
+<td>960</td>
+<td>1,920</td>
+<td>9,216</td>
+</tr><tr><td>LILAC</td>
+<td>SCF</td>
+<td>768</td>
+<td>1,536</td>
+<td>9,186</td>
+</tr><tr><td>ACE</td>
+<td>SCF</td>
+<td>160</td>
+<td>320</td>
+<td>1,792</td>
+</tr><tr><td>SPHERE</td>
+<td>OCF</td>
+<td>96</td>
+<td>192</td>
+<td>1,075</td>
+</tr><tr><td>GVIZ</td>
+<td>SCF</td>
+<td>64</td>
+<td>128</td>
+<td>717</td>
+</tr><tr><td>ILX</td>
+<td>OCF</td>
+<td>67</td>
+<td>134</td>
+<td>678</td>
+</tr><tr><td>PVC</td>
+<td>OCF</td>
+<td>64</td>
+<td>128</td>
+<td>614</td>
+</tr></table></li>
+</ul><h3>Which Led To Thunder...</h3>
+<p>In September, 2003 the RFP for LC's first IA-64 cluster was released. Proposal from California Digital Corporation, a small local company, was accepted.</p>
+<div class="make-center"><div class="media media-element-container media-default"><div id="file-2209" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/thunder-gif">thunder.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Thunder" height="301" width="629" class="media-element file-default" data-delta="4" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/thunder.gif" /></div>
+
+  
+</div>
+</div><br />Thunder</div>
+<h2>The Peloton Systems</h2>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-2210" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/atlas-440pix-jpg">atlas-440pix.jpg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Atlas" height="293" width="440" class="media-element file-default" data-delta="5" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/atlas-440pix.jpg" /></div>
+
+  
+</div>
+</div><br /><span class="caption">Atlas Peloton Cluster</span></div>
+<ul><li>In early 2006, LC launched its Opteron/Infiniband Linux cluster procurement with the release of the Peloton RFP.</li>
+<li>Appro was awarded the contract in June, 2006.</li>
+<li>Peloton clusters were built in 5.5 Tflop "scalable units" (SU) of ~144 nodes</li>
+<li>All Peloton clusters used AMD dual-core Socket F Opterons:
+<ul><li>8 cpus per node</li>
+<li>2.4 GHz clock</li>
+<li>Option to upgrade to 4-core Opteron "Deerhound" later (not taken)</li>
+</ul></li>
+<li>The six Peloton systems represented a mix of resources: OCF, SCF, ASC, M&amp;IC, Capability and Capacity:<br /><table class="table table-striped table-bordered"><tr><th scope="col">System</th>
+<th scope="col">Network</th>
+<th scope="col">Nodes</th>
+<th scope="col">Cores</th>
+<th scope="col">Tflops</th>
+</tr><tr><td>Atlas</td>
+<td>OCF</td>
+<td>1,152</td>
+<td>9,216</td>
+<td>44.2</td>
+</tr><tr><td>Minos</td>
+<td>SCF</td>
+<td>864</td>
+<td>6,912</td>
+<td>33.2</td>
+</tr><tr><td>Rhea</td>
+<td>SCF</td>
+<td>576</td>
+<td>4,608</td>
+<td>22.1</td>
+</tr><tr><td>Zeus</td>
+<td>OCF</td>
+<td>288</td>
+<td>2,304</td>
+<td>11.1</td>
+</tr><tr><td>Yana</td>
+<td>OCF</td>
+<td>83</td>
+<td>640</td>
+<td>3.1</td>
+</tr><tr><td>Hopi</td>
+<td>SCF</td>
+<td>76</td>
+<td>608</td>
+<td>2.9</td>
+</tr></table></li>
+<li>The last Peloton clusters were retired in June 2012.</li>
+</ul><p> </p>
+<h3>And Then, TLCC and TLCC2</h3>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-2211" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/tlcc-440pix-jpg">tlcc.440pix.jpg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Juno, a TLCC system" height="293" width="440" class="media-element file-default" data-delta="6" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/tlcc.440pix.jpg" /></div>
+
+  
+</div>
+</div><br /><span class="caption">Juno, Eos TLCC Clusters</span></div>
+<ul><li>In July, 2007 the Tri-laboratory Linux Capacity Cluster (TLCC) RFP was released.</li>
+<li>The TLCC procurement represents the first time that the Department of Energy/National Nuclear Security Administration (DOE/NNSA) has awarded a single purchase contract that covers all three national defense laboratories: Los Alamos, Sandia, and Livermore. <a href="/sites/default/files/TLCCannouncement.pdf">Read the announcement HERE</a>.</li>
+<li>The TLCC architecture is very similar to the Peloton architecture: Opteron multi-core processors with an Infiniband interconnect. The primary difference is that TLCC clusters are quad-core instead of dual-core.</li>
+<li>TLCC clusters were/are:<br /><table class="table table-striped table-bordered table-narrow"><tr><th>System</th>
+<th>Network</th>
+<th>Nodes</th>
+<th>Cores</th>
+<th>Tflops</th>
+</tr><tr><td>Juno</td>
+<td>SCF</td>
+<td>1,152</td>
+<td>18,432</td>
+<td>162.2</td>
+</tr><tr><td>Hera</td>
+<td>OCF</td>
+<td>864</td>
+<td>13,824</td>
+<td>127.2</td>
+</tr><tr><td>Eos</td>
+<td>SCF</td>
+<td>288</td>
+<td>4,608</td>
+<td>40.6</td>
+</tr></table></li>
+<li>In June, 2011 the TLCC2 procurement was announced, as a follow-on to the successful TLCC systems. Press releases:
+<ul><li><a href="/sites/default/files/PressRelease.Appro.2011.06.08.pdf" target="_blank">Appro</a></li>
+<li><a href="/sites/default/files/PressRelease.NNSA.2011.06.08.pdf" target="_blank">NNSA</a></li>
+</ul></li>
+<li>The TLCC2 systems consist of multiple Intel Xeon E5-2670 (Sandy Bridge EP), QDR Infiniband based clusters:<br /><table class="table table-striped table-bordered table-narrow"><tr><td>System</td>
+<td>Network</td>
+<td>Nodes</td>
+<td>Cores</td>
+<td>Tflops</td>
+</tr><tr><td>Zin</td>
+<td>SCF</td>
+<td>2,916</td>
+<td>46,656</td>
+<td>961.1</td>
+</tr><tr><td>Cab</td>
+<td>OCF-CZ</td>
+<td>1,296</td>
+<td>20,736</td>
+<td>426.0</td>
+</tr><tr><td>Rzmerl</td>
+<td>OCF-RZ</td>
+<td>162</td>
+<td>2,592</td>
+<td>53.9</td>
+</tr><tr><td>Pinot</td>
+<td>SNSI</td>
+<td>162</td>
+<td>2,592</td>
+<td>53.9</td>
+</tr></table></li>
+<li>Additionally, LC procured other Linux clusters similar to TLCC2 systems for various purposes.</li>
+</ul><h3>Commodity Technology Systems (CTS)</h3>
+<ul><li>CTS systems are the follow-on to TLCC2 systems.</li>
+<li>CTS-1 systems become available in late 2016 - early 2017. These systems are based on Intel Broadwell E5-2695 v4 processors, 36 cores per node, 128 GB node memory, with Intel Omni-Path 100 Gb/s interconnect. They include:<br /><table class="table table-striped table-bordered table-narrow"><tr><td>System</td>
+<td>Network</td>
+<td>Nodes</td>
+<td>Cores</td>
+<td>Tflops</td>
+</tr><tr><td>Agate</td>
+<td>SCF</td>
+<td>48</td>
+<td>1,728</td>
+<td>58.1</td>
+</tr><tr><td>Borax</td>
+<td>OCF-CZ</td>
+<td>48</td>
+<td>1,728</td>
+<td>58.1</td>
+</tr><tr><td>Jade</td>
+<td>SCF</td>
+<td>2,688</td>
+<td>96,768</td>
+<td>3,251.4</td>
+</tr><tr><td>Mica</td>
+<td>SCF</td>
+<td>384</td>
+<td>13,824</td>
+<td>530.8</td>
+</tr><tr><td>Quartz</td>
+<td>OCF-CZ</td>
+<td>3,072</td>
+<td>110,592</td>
+<td>3,715.9</td>
+</tr><tr><td>RZGenie</td>
+<td>OCF-RZ</td>
+<td>48</td>
+<td>1,728</td>
+<td>58.1</td>
+</tr><tr><td>RZTopaz</td>
+<td>OCF-RZ</td>
+<td>768</td>
+<td>27,648</td>
+<td>464.5</td>
+</tr><tr><td>RZTrona</td>
+<td>OCF-RZ</td>
+<td>20</td>
+<td>720</td>
+<td>24.2</td>
+</tr></table></li>
+<li>CTS-2 systems are expected to start becoming available in the 2020-2021 time frame.</li>
+</ul><div class="float-left"><div class="media media-element-container media-default"><div id="file-2213" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/zin-440pix-jpg">zin.440pix.jpg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Zin" height="293" width="440" class="media-element file-default" data-delta="7" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/zin.440pix.jpg" /></div>
+
+  
+</div>
+</div><br /><span class="caption">Zin TLCC2 Cluster</span></div>
+<div class="float-left"><div class="media media-element-container media-default"><div id="file-2147" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/quartz01-1000pix-jpg">quartz01.1000pix.jpg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/quartz01.1000pix.jpg"><img alt="Quartz" height="293" width="440" style="height: 293px; width: 440px;" class="media-element file-default" data-delta="8" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/quartz01.1000pix-440x293.jpg" /></a>  </div>
+
+  
+</div>
+</div><br /><span class="caption">Quartz CTS-1 Cluster</span></div>
+<h3><a name="Configurations" id="Configurations"> </a>Cluster Configurations and Scalable Units</h3>
+<h4>Basic Components</h4>
+<ul><li>Currently, LC has several types of production Linux clusters based on the following processor architectures:
+<ul><li>Intel Xeon 18-core E5-2695 v4 (Broadwell)</li>
+<li>Intel Xeon 8-core E5-2670 (Sandy Bridge - TLCC2) w/without NVIDIA GPUs</li>
+<li>Intel Xeon 12-core E5-2695 v2 (Ivy Bridge)</li>
+</ul></li>
+<li>All of LC's Linux clusters differ in their configuration details, however they do share the same basic hardware building blocks:
+<ul><li>Nodes</li>
+<li>Frames / racks</li>
+<li>High speed interconnect (most clusters)</li>
+<li>Other hardware (file systems, management hardware, etc.)</li>
+</ul></li>
+</ul><h4>Nodes</h4>
+<ul><li>The basic building block of a Linux cluster is the node. A node is essentially an independent computer. Key features:
+<ul><li>Self-contained, diskless, multi-core computer.</li>
+<li>Low form-factor - Clusters nodes are very thin in order to save space.</li>
+<li>Rack Mounted - Nodes are mounted compactly in a drawer fashion to facilitate maintenance, reduced footprint, etc.</li>
+<li>Remote Management - There is no keyboard, mouse, monitor or other device typically used to interact with a computer. All node management occurs over the network from a "management" node.</li>
+</ul></li>
+<li>Examples (click for larger image):</li>
+</ul><div class="float-left"><div class="media media-element-container media-default"><div id="file-821" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/tlcc2motherboard1000pixjpeg">tlcc2Motherboard.1000pix.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/tlcc2Motherboard.1000pix.jpeg" title="Single compute node - TLCC2"><img alt="Single compute node - TLCC2" title="Single compute node - TLCC2" height="160" width="440" style="height: 160px; width: 440px;" class="media-element file-default" data-delta="9" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/tlcc2Motherboard.1000pix-440x160.jpeg" /></a>  </div>
+
+  
+</div>
+</div><br />Single compute node - TLCC2</div>
+<div class="float-left">
+<p></p><div class="media media-element-container media-default"><div id="file-2143" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/cts-1node-jpg">CTS-1node.jpg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/CTS-1node.jpg"><img alt="CTS-1 Node" height="117" width="440" style="height: 117px; width: 440px;" class="media-element file-default" data-delta="10" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/CTS-1node-440x117.jpg" /></a>  </div>
+
+  
+</div>
+</div><br /><span class="caption">Single compute node - CTS-1</span>
+</div>
+<div class="clear-float"> </div>
+<ul><li class="clear-float">In general, an LC production cluster has four types of nodes, based upon function, which can differ in configuration details:</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-2144" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/nodetypes-gif">nodeTypes.gif</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/nodeTypes_0.gif"><img alt="Typical LC System node types" height="202" width="400" style="height: 202px; width: 400px;" class="media-element file-default" data-delta="12" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/nodeTypes_0-400x202.gif" /></a>  </div>
+
+  
+</div>
+</div>
+<ul><li>Login</li>
+<li>Interactive/debug</li>
+<li>Batch</li>
+<li>I/O and service nodes (unavailable to users)</li>
+<li>Login nodes:
+<ul><li>Every system has a designated number of login nodes - depends upon the size of the system. Some examples:
+<ul><li>agate = 2</li>
+<li>sierra = 5</li>
+<li>quartz = 14</li>
+<li>zin = 20</li>
+</ul></li>
+<li>Login nodes are shared by multiple users</li>
+<li>Primarily used for interactive work such as editing files, submitting batch jobs, compiling, running GUIs, etc.</li>
+<li>Interactive use exclusively - login only nodes do not permit any batch jobs.</li>
+<li>DO NOT run production jobs on login nodes! Remember, you are sharing login nodes with other users.</li>
+</ul></li>
+<li>Interactive/debug (pdebug) nodes:
+<ul><li>Most LC systems have nodes that are designated for interactive work.</li>
+<li>Meant for testing, prototyping, debugging, and small, short jobs</li>
+<li>Cannot be logged into unless you already have a job running on them</li>
+<li>Nodes run one job at a time - not shared like login nodes</li>
+<li>Can also be used through the batch system</li>
+</ul></li>
+<li>Batch (pbatch) nodes:
+<ul><li>Comprise the majority of nodes on each system</li>
+<li>Meant for production work</li>
+<li>Work is submitted via a batch scheduler (Slurm, Moab)</li>
+<li>Cannot be logged into unless you already have a job running on them</li>
+<li>Nodes run one job at a time - not shared like login nodes</li>
+</ul></li>
+</ul><h4>Frames / Racks</h4>
+<ul><li>Frames are the physical cabinets that hold most of a cluster's components:
+<ul><li>Nodes of various types</li>
+<li>Switch components</li>
+<li>Other network components</li>
+<li>Parallel file system disk resources (usually in separate racks)</li>
+</ul></li>
+<li>Vary in size/appearance between the different Linux clusters at LC.</li>
+<li>Power and console management - frames include hardware and software that allow system administrators to perform most tasks remotely.</li>
+<li>Example images below (click for larger image):<br /><table><tr><td><div class="media media-element-container media-default"><div id="file-824" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/frames4jpeg">frames4.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/frames4.jpeg" title="Frames - TLCC2"><img alt="Frames - TLCC2" title="Frames - TLCC2" height="295" width="440" style="height: 295px; width: 440px;" class="media-element file-default" data-delta="13" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/frames4-440x295.jpeg" /></a>  </div>
+
+  
+</div>
+</div><br /><span class="caption">Frames—TLCC2</span></td>
+<td><div class="media media-element-container media-default"><div id="file-2147--2" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/quartz01-1000pix-jpg">quartz01.1000pix.jpg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/quartz01.1000pix.jpg"><img alt="Quartz" height="293" width="440" style="height: 293px; width: 440px;" class="media-element file-default" data-delta="14" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/quartz01.1000pix-440x293.jpg" /></a>  </div>
+
+  
+</div>
+</div><br /><span class="caption">Frames—CTS-1</span></td>
+</tr></table></li>
+</ul><h4>Scalable Unit</h4>
+<ul><li>The basic building block of LC's production Linux clusters is called a "Scalable Unit" (SU). An SU consists of:
+<ul><li>Nodes (compute, login, management, gateway)</li>
+<li>First stage switches that connect to each node directly</li>
+<li>Miscellaneous management hardware</li>
+<li>Frames sufficient to house all of the hardware</li>
+<li>Additionally, second stage switch hardware is needed to connect multi-SU clusters (not shown).</li>
+</ul></li>
+<li>The number of nodes in an SU depends upon the type of switch hardware being used. For example:
+<ul><li>QLogic = 162 nodes</li>
+<li>Intel Omni-Path = 192 nodes</li>
+</ul></li>
+<li>Multiple SUs are combined to create a cluster. For example:
+<ul><li>2 SU = 324 / 384 nodes</li>
+<li>4 SU = 648 / 768 nodes</li>
+<li>8 SU = 1296 / 1536 nodes</li>
+</ul></li>
+<li>The SU design is meant to:
+<ul><li>Standardize configuration details across the enterprise</li>
+<li>Easily "grow" clusters in incremental units</li>
+<li>Leverage procurements and reduce costs across the Tri-labs</li>
+</ul></li>
+<li>An example of a 2 SU cluster is shown below for illustrative purposes. Note that a frame holding the second level switch hardware is not shown.<br /><br /><div class="media media-element-container media-default"><div id="file-2216" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/rackconfigs-gif-0">rackConfigs.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Rack Configurations" height="402" width="781" class="media-element file-default" data-delta="15" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/rackConfigs_1.gif" /></div>
+
+  
+</div>
+</div>
+<p> </p>
+</li>
+</ul><p><a name="Systems" id="Systems"> </a> <a name="SystemsSummary" id="SystemsSummary"> </a></p>
+<h2>LC Linux Commodity Cluster Systems</h2>
+<h3>LC Linux Clusters Summary</h3>
+<ul><li>The table below summarizes the key characteristics of LC's Linux commodity clusters.</li>
+<li>Note that some systems are limited access and not Generally Available (GA)
+<p> </p>
+</li>
+</ul><h2><a name="Hardware" id="Hardware"> </a>Intel Xeon Hardware Overview</h2>
+<h3>Intel Xeon Processor</h3>
+<ul><li>LC has a long <a href="#Background">history of Linux clusters</a> using Intel processors.</li>
+<li>Currently, several different types of Xeons are used in LC clusters. Some representative Xeons are discussed below.</li>
+</ul><h4>Xeon E5-2670 Processor</h4>
+<ul><li>This is the Intel "Sandy Bridge EP" product.</li>
+<li>Used in the Tri-lab TLCC2 clusters</li>
+<li>64-bit, x86 architecture</li>
+<li>Clockspeed: 2.6 GHz (at LC)</li>
+<li>8-core (at LC)</li>
+<li>Two threads per core (hyper-threading)</li>
+<li>Cache:
+<ul><li>L1 Data: 32 KB, private</li>
+<li>L1 Instruction: 32 KB, private</li>
+<li>L2: 256 KB, private</li>
+<li>L3: 20 MB, shared</li>
+</ul></li>
+<li>Memory bandwidth: 51.2 GB/sec</li>
+<li>"Turbo Boost" Technology: automatically allows processor cores to run faster than the base operating frequency if they're operating below power, current, and temperature specification limits. For additional information see: <a href="http://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html" target="_blank">http://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html</a>.</li>
+<li>Intel AVX (Advanced Vector eXtensions) Instructions:
+<ul><li>New and enhanced instruction set for 256-bit wide vector SIMD operations</li>
+<li>Designed for floating point intensive applications</li>
+<li>Operate on 4 double precision or 8 single precision operands.</li>
+<li>Details: <a href="/sites/default/files/intelAVXintro.pdf" target="_blank">Introduction to Intel Advanced Vector Extensions</a></li>
+</ul></li>
+<li><a href="/sites/default/files/E5-2670specsheet.pdf">Xeon E5-2670 Spec Sheet</a></li>
+</ul><div class="float-left"><div class="media media-element-container media-default"><div id="file-2217" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/sandybridgeep-400pix-jpg">sandyBridgeEP.400pix.jpg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="SandyBridge EP" height="400" width="400" class="media-element file-default" data-delta="16" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/sandyBridgeEP.400pix.jpg" /></div>
+
+  
+</div>
+</div><br />Intel Sandy Bridge EP(Image source: David Kanter)</div>
+<div class="float-left"><div class="media media-element-container media-default"><div id="file-2218" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/sandybridgeepdye-400pix-jpg">sandyBridgeEPdye.400pix.jpg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="SandyBridge EP Dye" height="400" width="400" class="media-element file-default" data-delta="17" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/sandyBridgeEPdye.400pix.jpg" /></div>
+
+  
+</div>
+</div><br />Intel Sandy Bridge EP(Image source: Intel)</div>
+<ul></ul><h4>Xeon E5-2695 v4 Processor</h4>
+<ul><li>This is the Intel "Broadwell" product.</li>
+<li>Used in the Tri-lab CTS-1 clusters</li>
+<li>64-bit, x86 architecture</li>
+<li>Clockspeed: 2.1 GHz (at LC)</li>
+<li>18-core (at LC)</li>
+<li>Two threads per core (hyper-threading)</li>
+<li>Cache:
+<ul><li>L1 Data: 32 KB, private</li>
+<li>L1 Instruction: 32 KB, private</li>
+<li>L2: 256 KB, private</li>
+<li>L3: 45 MB, shared</li>
+</ul></li>
+<li>Memory bandwidth: 76.8 GB/s</li>
+<li>Turbo Boost Technology</li>
+<li>Intel AVX (Advanced Vector eXtensions) instruction</li>
+<li><a href="/sites/default/files/E5-2695v4specsheet.pdf" target="_blank">Xeon E5-2695 v4 Spec Sheet</a><br /><div class="media media-element-container media-default"><div id="file-2219" class="file file-image file-image-png">
+
+        <h2 class="element-invisible"><a href="/files/e5v4blockdiagram-png">E5v4blockdiagram.png</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/E5v4blockdiagram.png"><img alt="Xeon E5-2695" height="256" width="440" style="height: 256px; width: 440px;" class="media-element file-default" data-delta="18" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/E5v4blockdiagram-440x256.png" /></a>  </div>
+
+  
+</div>
+</div></li>
+</ul><h4>Additional Information</h4>
+<ul><li>List / history of Intel processors: <a href="http://en.wikipedia.org/wiki/List_of_Intel_microprocessors" target="_blank">en.wikipedia.org/wiki/List_of_Intel_microprocessors</a></li>
+<li>List / history of Intel Xeon processors: <a href="http://en.wikipedia.org/wiki/List_of_Intel_Xeon_microprocessors" target="_blank"> http://en.wikipedia.org/wiki/List_of_Intel_Xeon_microprocessors</a></li>
+<li>"Sandy Bridge for Servers" by David Kanter: <a href="http://realworldtech.com/page.cfm?ArticleID=RWT072811020122" target="_blank"> http://realworldtech.com/page.cfm?ArticleID=RWT072811020122</a></li>
+</ul><h2><a name="Infiniband" id="Infiniband"> </a>Infiniband Interconnect Overview</h2>
+<h3>Interconnects</h3>
+<ul><li>Types of interconnects:
+<ul><li>Varies by cluster; a few clusters do not have interconnects.</li>
+<li>CTS-1 clusters use Intel Omni-Path switches and adapters.</li>
+<li>Most other Intel Xeon clusters use 4x QDR QLogic InfiniBand switches and adapters.</li>
+</ul></li>
+<li>Bandwidths:
+<ul><li>4x = 4 times the base InfiniBand link rate of 2.5 Gbits/sec, which equals 10 Gbits/sec, full duplex.</li>
+<li>SDR (Single Data Rate) = 10 Gbits/sec</li>
+<li>DDR (Double Data Rate) = 20 Gbits/sec</li>
+<li>QDR (Quad Data Rate) = 40 Gbits/sec</li>
+<li>Intel Omni-Path = 100 Gbits/sec</li>
+</ul></li>
+</ul><h3>Primary components</h3>
+<ul><li>Adapter Card:
+<ul><li>Communications processor packaged on network PCI Express adapter card.</li>
+<li>Remote Direct Memory Access (RDMA) improves communication bandwidth by off-loading communications from the CPU.</li>
+<li>Provides the interface between a node and a two-stage network.</li>
+<li>Connected to a first stage switch by copper cable (most cases) or optic fiber.</li>
+<li>Types: Intel Omni-Path, QLogic 4x QDR IB</li>
+</ul></li>
+</ul><div class="float-left"><div class="media media-element-container media-default"><div id="file-2150" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/omnipathadapter-jpg">omnipathAdapter.jpg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/omnipathAdapter_1.jpg"><img alt="OmniPath Adapter" height="273" width="280" style="height: 273px; width: 280px;" class="media-element file-default" data-delta="19" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/omnipathAdapter_1-280x273.jpg" /></a>  </div>
+
+  
+</div>
+</div><br />Omni-Path Fabric Adapter<br />(Image source: Intel)<br /> </div>
+<div class="float-left"><div class="media media-element-container media-default"><div id="file-2151" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/qlogicadapter-gif">qlogicAdapter.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="QLogic Adapter" height="277" width="246" class="media-element file-default" data-delta="20" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/qlogicAdapter_1.gif" /></div>
+
+  
+</div>
+</div><br />QLogic IB Adapter<br />(Image source: QLogic)</div>
+<div class="clear-float"> </div>
+<ul><li>1st Stage Switch:
+<ul><li>Intel Omni-Path 48-port: 32 ports connect to adapters in nodes and 16 ports connect to second stage switches.</li>
+<li>QLogic QDR 36-port: 18 ports connect to adapters in nodes and 18 ports connect to second stage switches.</li>
+</ul></li>
+<li>2nd Stage Switch:
+<ul><li>Intel Omni-Path 768-port: all used ports connect to a first stage switches via optic fiber cabling.</li>
+<li>QLogic QDR 18-864 port: all used ports connect to a first stage switches via optic fiber cabling.</li>
+</ul></li>
+<li>Example image below (click for a larger image):<br /><div class="media media-element-container media-default"><div id="file-2149" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/ibswitchesqlogic-jpg">IBswitchesQLogic.jpg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/IBswitchesQLogic_1.jpg"><img alt="IB Switches" height="293" width="440" style="height: 293px; width: 440px;" class="media-element file-default" data-delta="21" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/IBswitchesQLogic_1-440x293.jpg" /></a>  </div>
+
+  
+</div>
+</div></li>
+</ul><h3>Topology</h3>
+<ul><li>Two-stage, federated, bidirectional, fat-tree.</li>
+<li>The number of second stage switches depends upon the number of scalable units (SUs) that comprise the cluster and the type of switch hardware used.</li>
+<li>Example:<br /><div class="media media-element-container media-default"><div id="file-2152" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/2688wayomnipath-gif">2688wayOmniPath.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="OmniPath two-stage bidirectional fat-tree" height="248" width="434" class="media-element file-default" data-delta="22" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/2688wayOmniPath_0.gif" /></div>
+
+  
+</div>
+</div><br /><span class="caption">2688-way Interconnect | Quartz/Jade - 14 SU</span></li>
+</ul><h3>Performance:</h3>
+<ul><li>The inter-node bandwidth measurements below were taken on live, heavily loaded, LC machines using a simple MPI non-blocking test code. One task on each of two nodes. Not all systems are represented. Your mileage may vary.<br /><table class="table table-striped table-bordered table-narrow"><tr><th>System Type</th>
+<th>Latency</th>
+<th>Bandwidth</th>
+</tr><tr><td>Intel Xeon Clusters with QDR QLogic</td>
+<td>~1-2 us</td>
+<td>~4.1 GB/sec</td>
+</tr><tr><td>Intel Xeon Clusters with QDR QLogic (TLCC2)</td>
+<td>~1 us</td>
+<td>~5.0 GB/sec</td>
+</tr><tr><td>Intel Xeon Clusters with Intel Omni-Path (CTS-1)</td>
+<td>~1 us</td>
+<td>~21 GB/sec</td>
+</tr></table></li>
+</ul><h2><a name="Software" id="Software"> </a>Software and Development Environment</h2>
+<p>This section only provides a summary of the software and development environment for LC's Linux commodity clusters. Please see the <a href="https://hpc.llnl.gov/training/tutorials/livermore-computing-resources-and-environment">Livermore Computing Resources and Environment</a> tutorial for details.</p>
+<h3>TOSS Operating System</h3>
+<ul><li>All LC Linux clusters use TOSS (Tri-Laboratory Operating System Stack).</li>
+<li>The primary components of TOSS include:
+<ul><li>Red Hat Enterprise Linux (RHEL) distribution with modifications to support targeted HPC hardware and cluster computing</li>
+<li>RHEL kernel optimized for large scale cluster computing</li>
+<li>OpenFabrics Enterprise Distribution InfiniBand software stack including MVAPICH and OpenMPI libraries</li>
+<li>Slurm Workload Manager</li>
+<li>Integrated Lustre and Panasas parallel file system software</li>
+<li>Scalable cluster administration tools</li>
+<li>Cluster monitoring tools</li>
+<li>GNU, C, C++ and Fortran90 compilers (GNU, Intel, PGI)</li>
+<li>Testing software framework for hardware and operating system validation</li>
+</ul></li>
+</ul><h3>Batch Systems</h3>
+<ul><li>Slurm
+<ul><li>Slurm is the native job scheduling system on each cluster</li>
+<li>SLURM documentation can be found at: <a href="http://slurm.schedmd.com/documentation.html" target="_blank">http://slurm.schedmd.com/documentation.html</a></li>
+</ul></li>
+<li>Moab
+<ul><li>Former workload scheduler for Tri-lab clusters. Now decommissioned.</li>
+<li>Wrapper scripts are available for Moab commands as a convenience.</li>
+</ul></li>
+<li>Covered in depth in the <a href="https://computing.llnl.gov/tutorials/moab/" target="_blank">Slurm and Moab tutorial</a>.</li>
+</ul><h3>File Systems</h3>
+<ul><li>Home directories:
+<ul><li>Globally mounted under <span class="file">/g/g#</span></li>
+<li>Backed up</li>
+<li>Not purged</li>
+<li>16 GB quota in effect</li>
+<li>Convenient <span class="file">.snapshot</span> directory for recent backups</li>
+</ul></li>
+<li>Lustre parallel file systems:
+<ul><li>Mounted under <span class="file">/p/lustre#</span></li>
+<li>Very large</li>
+<li>Not backed up</li>
+<li>Quota in effect</li>
+<li>Shared by all users on a cluster or multiple clusters</li>
+<li>Lustre is discussed in the <a href="/training/tutorials/livermore-computing-resources-and-environment#file-systems" target="_blank">Parallel File Systems</a> section of the Introduction to Livermore Computing Resources tutorial.</li>
+<li>Are usually mounted by multiple clusters.</li>
+</ul></li>
+<li><span class="file">/usr/workspace</span> - 1 TB NFS file system available for each user and each group. Similar to home directories, but not backed up to tape.</li>
+<li><span class="file">/var/tmp, /usr/tmp, /tmp</span> - different names for the same file system, local (non-NFS) mounted, moderate size, not backed up, purged, shared by all users on a given node.</li>
+<li>Archival HPSS storage - accessed by <span class="cmd">ftp storage</span>. Virtually unlimited file space, not backed up or purged. More info: <a href="https://hpc.llnl.gov/software/archival-storage-software" target="_blank">https://hpc.llnl.gov/software/archival-storage-software</a>.</li>
+<li><span class="file">/usr/gapps</span> - globally mounted project workspace that may be group and/or world readable. More info: <a href="https://hpc.llnl.gov/hardware/file-systems/usr-gapps-file-system" target="_blank">hpc.llnl.gov/hardware/file-systems/usr-gapps-file-system</a>.</li>
+</ul><h3><a name="Modules" id="Modules"> </a> Modules</h3>
+<ul><li>LC's Linux commodity clusters support the Lmod Modules package.
+<ul><li>Provide a convenient, uniform way to select among multiple versions of software installed on LC systems.</li>
+<li>Many LC software applications require that you load a particular "package" in order to use the software.</li>
+</ul></li>
+<li>Using Modules:<br /><pre>List available modules:     module avail
+Load a module:              module add|load modulefile
+Unload a module:            module rm|unload modulefile
+List loaded modules:        module list
+Read module help info:      module
+Display module contents:    module display|show modulefile
+</pre></li>
+<li>For more information see:
+<ul><li><a href="https://hpc.llnl.gov/software/modules-and-software-packaging" target="_blank">LC Modules documentation</a></li>
+<li><a href="https://www.tacc.utexas.edu/research-development/tacc-projects/lmod" target="_blank">TACC documentation: LMOD: ENVIRONMENTAL MODULES SYSTEM</a></li>
+<li>The module man page</li>
+</ul></li>
+</ul><h3><a name="Dotkit" id="Dotkit"> </a> Dotkit</h3>
+<ul><li>Dotkit is no longer used on LC production Linux clusters. It has been replaced by Lmod Modules (see above).</li>
+</ul><p>Compilers, Tools, Graphics and Other Software</p>
+<p>The table below lists and provides links to the majority of software available through LC or related organizations.</p>
+<table class="table table-bordered table-striped"><tr><th>Software Category</th>
+<th>Description and More Information</th>
+</tr><tr><td>Compilers</td>
+<td>Lists which compilers are available for each LC system:<br /><a href="https://hpc.llnl.gov/software/development-environment-software/compilers" target="_blank">https://hpc.llnl.gov/software/development-environment-software/compilers</a></td>
+</tr><tr><td>Supported Software and Computing Tools</td>
+<td>Development Environment Group supported software includes compilers, libraries, debugging, profiling, trace generation/visualization, performance analysis tools, correctness tools, and several utilities:<br /><a href="https://hpc.llnl.gov/software/development-environment-software" target="_blank">https://hpc.llnl.gov/software/development-environment-software</a>.</td>
+</tr><tr><td>Graphics Software</td>
+<td>Graphics Group supported software includes visualization tools, graphics libraries, and utilities for the plotting and conversion of data:<br /><a href="https://hpc.llnl.gov/data-vis/vis-software" target="_blank">https://hpc.llnl.gov/data-vis/vis-software</a></td>
+</tr><tr><td>Mathematical Software Overview</td>
+<td>Lists and describes the primary mathematical libraries and interactive mathematical tools available on LC machines:<br /><a href="https://hpc.llnl.gov/software/mathematical-software" target="_blank">https://hpc.llnl.gov/software/mathematical-software</a></td>
+</tr><tr><td>LINMath</td>
+<td>The Livermore Interactive Numerical Mathematical Software Access Utility, is a Web-based access utility for math library software. The LINMath Web site also has pointers to packages available from external sources:<br /><a href="https://www-lc.llnl.gov/linmath/" target="_blank">https://www-lc.llnl.gov/linmath/</a></td>
+</tr><tr><td>Center for Applied Scientific Computing (CASC) Software</td>
+<td>A wide range of software available for download from LLNL's CASC. Includes mathematical software, language tools, PDE software frameworks, visualization, data analysis, program analysis, debugging, and benchmarks:<br /><a href="https://computing.llnl.gov/hpc/software" target="_blank">https://computing.llnl.gov/hpc/software</a><br /><a href="https://software.llnl.gov" target="_blank">https://software.llnl.gov</a></td>
+</tr><tr><td>LLNL Software Portal</td>
+<td>Lab-wide portal of software repositories:<br /><a href="https://software.llnl.gov/" target="_blank">https://software.llnl.gov/</a></td>
+</tr></table><ul></ul><h3><a name="Confluence" id="Confluence"> </a> Atlassian Tools</h3>
+<ul><li>LC supports a suite of web-based collaboration tools from Atlassian:
+<ul><li>Confluence Wiki: used for documentation, collaboration, knowledge sharing, file sharing, mockups, diagrams... anything you can put on a webpage.</li>
+<li>JIRA: issue tracking and project management system</li>
+<li>Bitbucket: for git repository hosting. Similar to popular sites like GitHub and Bitbucket, but it is intended for internal use on intranets.</li>
+<li>Bamboo: a continuous integration and delivery tool that combines automated builds, tests, and releases in a single workflow.</li>
+</ul></li>
+<li>All three collaboration tools:
+<ul><li>Are based on LC usernames / groups and are intended to foster collaboration between LC users working on HPC projects.</li>
+<li>Are installed on the CZ, RZ and SCF networks</li>
+<li>Require authentication with your LC username and RSA PIN + token</li>
+<li>Have a User Guide for usage information</li>
+</ul></li>
+<li>Locations:<br /><table class="table table-striped table-bordered table-narrow"><tr><th>Network</th>
+<th>Confluence Wiki</th>
+<th>JIRA</th>
+<th>STASH</th>
+</tr><tr><td>CZ</td>
+<td><a href="https://lc.llnl.gov/confluence/" target="_blank">https://lc.llnl.gov/confluence/</a></td>
+<td><a href="https://lc.llnl.gov/jira/" target="_blank">https://lc.llnl.gov/jira/</a></td>
+<td><a href="https://lc.llnl.gov/stash/" target="_blank">https://lc.llnl.gov/stash/</a></td>
+</tr><tr><td>RZ</td>
+<td><a href="https://rzlc.llnl.gov/confluence/" target="_blank">https://rzlc.llnl.gov/confluence/</a></td>
+<td><a href="https://rzlc.llnl.gov/jira/" target="_blank">https://rzlc.llnl.gov/jira/</a></td>
+<td><a href="https://rzlc.llnl.gov/stash/" target="_blank">https://rzlc.llnl.gov/stash/</a></td>
+</tr><tr><td>SCF</td>
+<td><a href="https://lc.llnl.gov/confluence/">https://lc.llnl.gov/confluence/</a></td>
+<td><a href="https://lc.llnl.gov/jira/">https://lc.llnl.gov/jira/</a></td>
+<td><a href="https://lc.llnl.gov/stash/">https://lc.llnl.gov/stash/</a></td>
+</tr></table></li>
+</ul><h3><a name="Spack" id="Spack"> </a> Spack</h3>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-2189" class="file file-image file-image-png">
+
+        <h2 class="element-invisible"><a href="/files/spack-logo-png">spack-logo.png</a></h2>
+    
+  
+  <div class="content">
+    <img height="170" width="280" class="media-element file-default" data-delta="11" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/spack-logo.png" alt="" /></div>
+
+  
+</div>
+</div></div>
+<ul><li>Spack is a flexible package manager for HPC</li>
+<li>Easy to download and install. For example:<br /><pre>% . spack/share/spack/setup-env.csh  (or setup-env.sh)
+</pre></li>
+<li>There is an increasing number of software packages (over 3,000 currently) available for installation with Spack. Many open source contributions from the international community.</li>
+<li>To view available packages: <span class="cmd">spack list</span></li>
+<li>Then, to install a desired package: <span class="cmd">spack install packagename</span></li>
+<li>Additional Spack features:
+<ul><li>Allows installations to be customized. Users can specify the version, build compiler, compile-time options, and cross-compile platform, all on the command line.</li>
+<li>Allows dependencies of a particular installation to be customized extensively.</li>
+<li>Non-destructive installs - Spack installs every unique package/dependency configuration into its own prefix, so new installs will not break existing ones.</li>
+<li>Creation of packages is made easy.</li>
+</ul></li>
+<li>Extensive documentation is available at: <a href="https://spack.readthedocs.io" target="_blank">https://spack.readthedocs.io</a></li>
+</ul><h2><a name="Compilers" id="Compilers"> </a> <a name="CompilerGeneralInfo" id="CompilerGeneralInfo"></a> Compilers</h2>
+<h3>General Information</h3>
+<p>Available Compilers and Invocation Commands</p>
+<ul><li>The table below summarizes compiler availability and invocation commands on LC Linux clusters.</li>
+<li>Note that parallel compiler commands are actually LC scripts that ultimately invoke the corresponding serial compiler.</li>
+<li>For details on the MPI parallel compiler commands, see <a href="https://computing.llnl.gov/tutorials/mpi/#LLNL" target="_blank"> https://computing.llnl.gov/tutorials/mpi/#LLNL</a>.<br /><table><tr><th colspan="4">Linux Cluster Compilers</th>
+</tr><tr><th colspan="2">Compiler</th>
+<th>Serial Command</th>
+<th>Parallel Commands</th>
+</tr><tr><td rowspan="3">Intel</td>
+<td>C</td>
+<td>icc</td>
+<td>mpicc</td>
+</tr><tr><td>C++</td>
+<td>icpc</td>
+<td>mpicxx, mpic++</td>
+</tr><tr><td>Fortran</td>
+<td>ifort</td>
+<td>mpif77, mpif90, mpifort</td>
+</tr><tr><td rowspan="3">GNU</td>
+<td>C</td>
+<td>gcc</td>
+<td>mpicc</td>
+</tr><tr><td>C++</td>
+<td>g++</td>
+<td>mpicxx, mpic++</td>
+</tr><tr><td>Fortran</td>
+<td>gfortran</td>
+<td>mpif77, mpif90, mpifort</td>
+</tr><tr><td rowspan="3">PGI</td>
+<td>C</td>
+<td>pgcc</td>
+<td>mpicc</td>
+</tr><tr><td>C++</td>
+<td>pgc++</td>
+<td>mpicxx, mpic++</td>
+</tr><tr><td>Fortran</td>
+<td>pgf77, pgf90, pgfortran</td>
+<td>mpif77, mpif90, mpifort</td>
+</tr><tr><td rowspan="2">LLVM/Clang</td>
+<td>C</td>
+<td>clang</td>
+<td>mpicc</td>
+</tr><tr><td>C++</td>
+<td>clang++</td>
+<td>mpicxx, mpic++</td>
+</tr></table></li>
+</ul><h3>Compiler Versions and Defaults</h3>
+<ul><li>LC maintains multiple versions of each compiler.</li>
+<li>The <a href="#Modules">Modules</a> <span class="cmd">module avail</span> command is used to list available compilers and versions:<br /><pre><span class="cmd">module avail intel
+module avail gcc
+module avail pgi
+module avail clang</span></pre></li>
+<li>Versions: to determine the actual version you are using, issue the compiler invocation command with its "version" option. For example:<br /><table class="table table-striped table-bordered table-narrow"><tr><th>Compiler</th>
+<th>Option</th>
+<th>Example</th>
+</tr><tr><td>Intel</td>
+<td>--version</td>
+<td>ifort --version</td>
+</tr><tr><td>GNU</td>
+<td>--version</td>
+<td>g++ --version</td>
+</tr><tr><td>PGI</td>
+<td>-V</td>
+<td>pgf90 -V</td>
+</tr><tr><td>Clang</td>
+<td>--version</td>
+<td>clang --version</td>
+</tr></table></li>
+<li>Using an alternate version: issue the Modules command:<br /><pre><span class="cmd">module load module-name</span></pre></li>
+</ul><h3>Compiler Options</h3>
+<ul><li>Each compiler has hundreds of options that determine what the compiler does and how it behaves.</li>
+<li>The options used by one compiler mostly differ from other compilers.</li>
+<li>Additionally, compilers have different default options.</li>
+<li>An in-depth discussion of compiler options is beyond the scope of this tutorial.</li>
+<li>See the compiler's documentation, man pages, and/or -help or --help option for details.</li>
+</ul><h3>Compiler Documentation</h3>
+<ul><li>Intel and PGI: compiler docs are included in the <span class="file">/opt/compilername</span> directory. Otherwise, see Intel or PGI web pages.</li>
+<li>GNU: see the web pages at <a href="https://gcc.gnu.org/" target="_blank"> https://gcc.gnu.org/</a></li>
+<li>LLVM/Clang: see the web pages at <a href="http://clang.llvm.org/docs/" target="_blank">http://clang.llvm.org/docs/</a></li>
+<li>Man pages may/may not be available</li>
+</ul><h3>Optimizations</h3>
+<ul><li>All compilers are able to perform optimizations, though they will differ between compilers even though the compiler flags appear to be the same.</li>
+<li>Optimizations are intended to make codes run faster, though this isn't guaranteed.</li>
+<li>Some optimizations "rewrite" your code, and can make debugging difficult, since the source may not match the executable.</li>
+<li>Optimizations can also produce wrong results, reduced precision, increased compile times and increased executable size.</li>
+<li>The table below summarizes common compiler optimization options. See the compiler documentation for details and other optimization options.<br /><table><tr><th>Optimization</th>
+<th>Intel</th>
+<th>GNU</th>
+<th>PGI</th>
+</tr><tr><td>-O</td>
+<td>Same as O2</td>
+<td>Same as O1</td>
+<td>O1 + global optimizations. No SIMD.</td>
+</tr><tr><td>-O0</td>
+<td>No optimization</td>
+<td>DEFAULT. No optimization. Same as omitting any -O flag.</td>
+<td>No optimization</td>
+</tr><tr><td>-O1</td>
+<td>Optimize for size: basic optimizations to create smallest code</td>
+<td>Reduce code size and execution time, without performing any optimizations that take a great deal of compilation time.</td>
+<td>Local optimizations, block scheduling and register allocation.</td>
+</tr><tr><td>-O2</td>
+<td>DEFAULT. Optimize for speed: O1 + additional optimizations such as basic loop and vectorization</td>
+<td>Optimize even more. O1 + nearly all supported optimizations that do not involve a space-speed tradeoff.</td>
+<td></td>
+</tr><tr><td>-O3</td>
+<td>O2 + aggressive loop optimizations. Recommended for loop dominated codes.</td>
+<td>O2 + further optimizations</td>
+<td>O2 + aggressive global optimizations</td>
+</tr><tr><td>-O4</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>O3 + hoisting of guarded invariant floating point expressions</td>
+</tr><tr><td>-Ofast</td>
+<td>Same as O3 (mostly)</td>
+<td>Same as O3 + optimizations that disregard strict standards compliance.</td>
+<td>n/a</td>
+</tr><tr><td>-fast</td>
+<td>O3 + several additional optimizations</td>
+<td>n/a</td>
+<td>Generally specifies global optimization. Actual optimizations vary from release to release.</td>
+</tr><tr><td>-Og</td>
+<td>n/a</td>
+<td>Enables optimizations that do not interfere with debugging.</td>
+<td>n/a</td>
+</tr><tr><td>Optimization / Vectorization report</td>
+<td>-opt-report<br />-vec-report</td>
+<td>-ftree-vectorizer-verbose=[1-7]<br />-ftree-vectorizer-verbose=7</td>
+<td>-Minfo=[option]<br />-Minfo=all</td>
+</tr></table></li>
+</ul><h3>Floating-point Exceptions</h3>
+<ul><li>The IEEE floating point standard defines several exceptions (FPEs) that occur when the result of a floating point operation is unclear or undesirable:
+<ul><li>overflow: an operation's result is too large to be represented as a float. Can be trapped, or else returned as a +/- infinity.</li>
+<li>underflow: an operation's result is too small to be represented as a normalized float. Can be trapped, or else represented as as a denormalized float (zero exponent w/ non-zero fraction) or zero.</li>
+<li>divide-by-zero: attempting to divide a float by zero. Can be trapped, or else returned as a +/- infinity.</li>
+<li>inexact: result was rounded off. Can be trapped or returned as rounded result.</li>
+<li>invalid: an operation's result is ill-defined, such as 0/0 or the sqrt of a negative number. Can be trapped or returned as NaN (not a number).</li>
+</ul></li>
+<li>By default, the Xeon processors used at LC mask/ignore FPEs. Programs that encounter FPEs will not terminate abnormally, but instead, will continue execution with the potential of producing wrong results.</li>
+<li>Compilers differ in their ability to handle FPEs. See the relevant compiler documentation for details.</li>
+</ul><h3>Precision, Performance and IEEE 754 Compliance</h3>
+<ul><li>Typically, most compilers do not guarantee IEEE 754 compliance for floating-point arithmetic unless it is explicitly specified by a compiler flag. This is because compiler optimizations are performed at the possible expense of precision.</li>
+<li>Unfortunately for most programs, adhering to IEEE floating-point arithmetic adversely affects performance.</li>
+<li>If you are not sure whether your application needs this, try compiling and running your program both with and without it to evaluate the effects on both performance and precision.</li>
+<li>See the relevant compiler documentation for details.</li>
+</ul><h3>Mixing C and Fortran</h3>
+<ul><li>Modern FORTRAN - FORTRAN 20XX provides much support for  interoperability with C/C++  - see the rsepective compiler documentation.</li>
+<li>If you are linking C/C++ and FORTRAN90/77 code together, and need to explicitly specify the FORTRAN or C/C++ libraries on the link line, LC provides a general recommendation and example in the <span class="file">/usr/local/docs/linux.basics</span> file. See the "MIXING C AND FORTRAN" section.</li>
+<li>All of the other issues involved with mixed language programming apply, such as:
+<ul><li>Column-major vs. row-major array ordering</li>
+<li>Routine name differences - appended underscores</li>
+<li>Arguments passed by reference versus by value</li>
+<li>Common blocks vs. extern structs</li>
+<li>Memory alignment differences</li>
+<li>File I/O - Fortran unit numbers vs. C/C++ file pointers</li>
+<li>C++ name mangling</li>
+<li>Data type differences</li>
+</ul></li>
+<li>Some useful references:
+<ul><li>Mixed language programming using C++ and FORTRAN 77 from <a href="http://arnholm.org/software/cppf77/cppf77.htm" target="_blank"> http://arnholm.org/software/cppf77/cppf77.htm</a></li>
+<li>Using C/C++ and Fortran Together from <a href="http://www.yolinux.com/TUTORIALS/LinuxTutorialMixingFortranAndC.html" target="_blank"> http://www.yolinux.com/TUTORIALS/LinuxTutorialMixingFortranAndC.html</a></li>
+</ul></li>
+</ul><h2><a name="Exercise1" id="Exercise1"> </a> Linux Clusters Overview Exercise 1</h2>
+<h3>Getting Started</h3>
+<p>Overview: </p>
+<ul><li>Login to an LC cluster using your workshop username and OTP token </li>
+<li>Copy the exercise files to your home directory </li>
+<li>Familiarize yourself with the cluster's configuration </li>
+<li>Familiarize yourself with available compilers </li>
+<li>Build and run serial applications </li>
+<li>Compare compiler optimizations </li>
+</ul><p><a href="/training/tutorials/linux-tutorial-exercises" target="_blank">GO TO THE EXERCISE HERE</a></p>
+<dl></dl></div></div></div>    </div>
+  </div>
+</div>
+
+
+<!-- Needed to activate display suite support on forms -->
+  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                   		</div>
+                  </main>
+                </div>
+      		</div>
+    	</div>
+	</div>
+  	
+	
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 footer-top">
+
+                    <a class="llnl" href="https://www.llnl.gov/" target="_blank"><img src="/sites/all/themes/tid/images/llnl.png" alt="LLNL"></a>
+                    <p>
+                        Lawrence Livermore National Laboratory
+                        <br>7000 East Avenue • Livermore, CA 94550
+                    </p>
+                    <p>
+                        Operated by Lawrence Livermore National Security, LLC, for the
+                        <br>Department of Energy's National Nuclear Security Administration.
+                    </p>
+                    <div class="footer-top-logos">
+                        <a class="nnsa" href="https://www.energy.gov/nnsa/national-nuclear-security-administration" target="_blank"><img src="/sites/all/themes/tid/images/nnsa2.png" alt="NNSA"></a>
+                        <a class="doe" href="https://www.energy.gov/" target="_blank"><img src="/sites/all/themes/tid/images/doe_small.png" alt="U.S. DOE"></a>
+                        <a class="llns" href="https://www.llnsllc.com/" target="_blank"><img src="/sites/all/themes/tid/images/llns.png" alt="LLNS"></a>
+                	</div>
+
+
+
+                </div>
+                <div class="col-sm-12 footer-bottom">
+                	
+
+                    <span>UCRL-MI-131558  &nbsp;|&nbsp;&nbsp;</span><a href="https://www.llnl.gov/disclaimer" target="_blank">Privacy &amp; Legal Notice</a>	 &nbsp;|&nbsp;&nbsp; <a href="mailto:webmaster-comp@llnl.gov">Website Query</a> &nbsp;|&nbsp;&nbsp;<a href="/about-us/contact-us" >Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+  </body>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/jquery_update/replace/jquery/2.1/jquery.min.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-extend-3.4.0.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-html-prefilter-3.5.0-backport.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/drupal.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/extlink/extlink.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/jquery.flexslider.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/slide.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/lightbox2/js/lightbox.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/matomo/matomo.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _paq = _paq || [];(function(){var u=(("https:" == document.location.protocol) ? "https://analytics.llnl.gov/" : "http://analytics.llnl.gov/");_paq.push(["setSiteId", "149"]);_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setDoNotTrack", 1]);_paq.push(["trackPageView"]);_paq.push(["setIgnoreClasses", ["no-tracking","colorbox"]]);_paq.push(["enableLinkTracking"]);var d=document,g=d.createElement("script"),s=d.getElementsByTagName("script")[0];g.type="text/javascript";g.defer=true;g.async=true;g.src="https://hpc.llnl.gov/sites/default/files/matomo/piwik.js?qsohrw";s.parentNode.insertBefore(g,s);})();
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/bootstrap.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mobilemenu.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/custom.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mods.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"tid","theme_token":"pIQilSoT5Qj5fzbvZG_N90dvkONHDAVXwsqaUG0WMFg","js":{"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/2.1\/jquery.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/contrib\/extlink\/extlink.js":1,"sites\/all\/themes\/tid\/js\/jquery.flexslider.js":1,"sites\/all\/themes\/tid\/js\/slide.js":1,"sites\/all\/modules\/contrib\/lightbox2\/js\/lightbox.js":1,"sites\/all\/modules\/contrib\/matomo\/matomo.js":1,"0":1,"sites\/all\/themes\/tid\/js\/bootstrap.js":1,"sites\/all\/themes\/tid\/js\/mobilemenu.js":1,"sites\/all\/themes\/tid\/js\/custom.js":1,"sites\/all\/themes\/tid\/js\/mods.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/book\/book.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/extlink\/extlink.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/lightbox2\/css\/lightbox.css":1,"sites\/all\/modules\/contrib\/print\/print_ui\/css\/print_ui.theme.css":1,"sites\/all\/themes\/tid\/css\/bootstrap.css":1,"sites\/all\/themes\/tid\/css\/flexslider.css":1,"sites\/all\/themes\/tid\/css\/system.menus.css":1,"sites\/all\/themes\/tid\/css\/style.css":1,"sites\/all\/themes\/tid\/font-awesome\/css\/font-awesome.css":1,"sites\/all\/themes\/tid\/css\/treewalk.css":1,"sites\/all\/themes\/tid\/css\/popup.css":1,"sites\/all\/themes\/tid\/css\/mods.css":1}},"lightbox2":{"rtl":0,"file_path":"\/(\\w\\w\/)public:\/","default_image":"\/sites\/all\/modules\/contrib\/lightbox2\/images\/brokenimage.jpg","border_size":10,"font_color":"000","box_color":"fff","top_position":"","overlay_opacity":"0.8","overlay_color":"000","disable_close_click":true,"resize_sequence":0,"resize_speed":400,"fade_in_speed":400,"slide_down_speed":600,"use_alt_layout":false,"disable_resize":false,"disable_zoom":false,"force_show_nav":false,"show_caption":true,"loop_items":false,"node_link_text":"View Image Details","node_link_target":false,"image_count":"Image !current of !total","video_count":"Video !current of !total","page_count":"Page !current of !total","lite_press_x_close":"press \u003Ca href=\u0022#\u0022 onclick=\u0022hideLightbox(); return FALSE;\u0022\u003E\u003Ckbd\u003Ex\u003C\/kbd\u003E\u003C\/a\u003E to close","download_link_text":"","enable_login":false,"enable_contact":false,"keys_close":"c x 27","keys_previous":"p 37","keys_next":"n 39","keys_zoom":"z","keys_play_pause":"32","display_image_size":"original","image_node_sizes":"()","trigger_lightbox_classes":"","trigger_lightbox_group_classes":"","trigger_slideshow_classes":"","trigger_lightframe_classes":"","trigger_lightframe_group_classes":"","custom_class_handler":0,"custom_trigger_classes":"","disable_for_gallery_lists":true,"disable_for_acidfree_gallery_lists":true,"enable_acidfree_videos":true,"slideshow_interval":5000,"slideshow_automatic_start":true,"slideshow_automatic_exit":true,"show_play_pause":true,"pause_on_next_click":false,"pause_on_previous_click":true,"loop_slides":false,"iframe_width":600,"iframe_height":400,"iframe_border":1,"enable_video":false,"useragent":"Photon\/1.0"},"extlink":{"extTarget":0,"extClass":"ext","extLabel":"(link is external)","extImgClass":0,"extIconPlacement":0,"extSubdomains":1,"extExclude":".gov|.com|.org|.io|.be|.us|.edu","extInclude":"-int.llnl.gov|lc.llnl.gov|caas.llnl.gov|exchangetools.llnl.gov","extCssExclude":"","extCssExplicit":"","extAlert":"_blank","extAlertText":"This page is routing you to a page which requires extra authentication. You must have on-site or VPN access.\r\n\r\nPress OK to continue or cancel to return.\r\n\r\nIf this fails or times-out, you are not allowed access to the internal page or the server may be temporarily unavailable.\r\n\r\nIf you have an on-site or VPN account and are still having trouble, please send e-mail to lc-hotline@llnl.gov or call 925-422-4531 for further assistance.","mailtoClass":"mailto","mailtoLabel":"(link sends e-mail)"},"matomo":{"trackMailto":1},"urlIsAjaxTrusted":{"\/training\/tutorials\/livermore-computing-linux-commodity-clusters-overview-part-one":true}});
+//--><!]]>
+</script>
+</html>

@@ -1,0 +1,2332 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<head>
+<meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="/training/tutorials/slurm-and-moab" />
+<link rel="shortlink" href="/node/847" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="shortcut icon" href="https://hpc.llnl.gov/sites/all/themes/tid/favicon.ico" type="image/vnd.microsoft.icon" />
+<title>Slurm and Moab | High Performance Computing</title>
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_kShW4RPmRstZ3SpIC-ZvVGNFVAi0WEMuCnI0ZkYIaFw.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_bq48Es_JAifg3RQWKsTF9oq1S79uSN2WHxC3KV06fK0.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_A3_1ilGqWwfClFN2aInPZ0ZnvSQghsr6xUsR0q-YRz8.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_ca6tstDbY9-H23Ty8uKiDyFQLT1AZftZKldhbTPPnm8.css" media="all" />
+<!--[if lt IE 9]><script src="/sites/all/themes/tid/js/html5.js"></script><![endif]-->
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-847 node-type-user-portal-one-column-page">
+  <div aria="contentinfo"><noscript><img src="https://analytics.llnl.gov/piwik.php?idsite=149" class="no-border" alt="" /></noscript></div>
+    <div id="page">
+	<div class="unclassified"></div>
+	<div class="headertop">
+					<div id="skip-nav" role="navigation" aria-labelledby="skip-nav" class="reveal">
+  			<a href="#main-content">Skip to main content</a>
+			</div>
+					</div>
+        <div class="headerwrapbg">
+                        <div class="headerwrap-portal">
+                <div id="masthead" class="site-header container" role="banner">
+                    <div class="row">
+                        <div class="llnl-logo col-sm-3">
+                            <a href="https://www.llnl.gov" target="_blank" title="Lawrence Livermore National Laboratory">
+                                <img src="/sites/all/themes/tid/images/llnl-tab-portal.png" alt="LLNL Home" />
+                            </a>
+                        </div>
+                        <div id="logo" class="site-branding col-sm-4">
+                                                            <div id="site-logo">
+                                        <!--High Performance Computing<br />Livermore Computing Center-->
+                                        																					<a href="/user-portal" class="text-dark" title="Livermore Computing Center High Performance Computing">
+                                            <img src="/sites/all/themes/tid/images/hpc.png" alt="Portal Home" />
+																					</a>
+																				
+                                </div>
+                                                    </div>
+                        <div class="col-sm-5">
+                            <div id="top-search">
+															<div class="input-group">
+																	<form class="navbar-form navbar-search navbar-right" action="/training/tutorials/slurm-and-moab" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <div class="element-invisible">Search form</div>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-zeHOfXd_3sW-xeFPnZccCmg_s3ietvUjMG7qnaUAxCo" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="mainnav">
+                    <div class="container">
+                        <div class="row">
+                            <nav id="Menu" aria-label="Mobile Menu" class="mobilenavi col-md-12"></nav>
+                            <nav id="navigation" aria-label="Main Menu">
+                                <div id="main-menu" class="main-menu-portal">
+                                    <ul class="menu"><li class="first collapsed"><a href="/user-portal">Portal</a></li>
+<li class="expanded"><a href="/accounts">Accounts</a><ul class="menu"><li class="first leaf"><a href="/accounts/new-account-setup">New Account Setup</a></li>
+<li class="leaf"><a href="/accounts/idm-account-management">IdM Account Management</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/manuals/access-lc-systems" title="">Access to LC Systems</a></li>
+<li class="leaf"><a href="/accounts/computer-coordinator-roles">Computer Coordinator Roles</a></li>
+<li class="collapsed"><a href="/accounts/forms">Forms</a></li>
+<li class="collapsed"><a href="/accounts/policies">Policies</a></li>
+<li class="last leaf"><a href="/accounts/mailing-lists">Mailing Lists</a></li>
+</ul></li>
+<li class="expanded"><a href="/banks-jobs">Banks &amp; Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/allocations">Allocations</a></li>
+<li class="expanded"><a href="/banks-jobs/running-jobs">Running Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/running-jobs/batch-system-primer">Batch System Primer</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-user-manual">LSF User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-quick-start-guide">LSF Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-commands">LSF Commands</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-user-manual" title="Guide to using the Slurm Workload/Resource Manager">Slurm User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-quick-start-guide">Slurm Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-commands">Slurm Commands</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab" class="active">Slurm and Moab</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/batch-system-commands">Batch System Cross-Reference</a></li>
+<li class="last leaf"><a href="/banks-jobs/running-jobs/slurm-srun-versus-ibm-csm-jsrun">Slurm srun versus IBM CSM jsrun</a></li>
+</ul></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/accounts/forms/asc-dat" title="">ASC DAT Request</a></li>
+<li class="last leaf"><a href="https://hpc.llnl.gov/accounts/forms/mic-dat" title="">M&amp;IC DAT Request</a></li>
+</ul></li>
+<li class="expanded"><a href="/hardware">Hardware</a><ul class="menu"><li class="first collapsed"><a href="/hardware/archival-storage-hardware">Archival Storage Hardware</a></li>
+<li class="collapsed"><a href="/hardware/platforms">Compute Platforms</a></li>
+<li class="leaf"><a href="/hardware/compute-platforms-gpus">Compute Platforms with GPUs</a></li>
+<li class="collapsed"><a href="/hardware/file-systems">File Systems</a></li>
+<li class="leaf"><a href="/hardware/testbeds">Testbeds</a></li>
+<li class="collapsed"><a href="/hardware/zones">Zones (aka &quot;The Enclave&quot;)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/cgi-bin/lccgi/customstatus.cgi?" title="">CZ Compute Platform Status</a></li>
+<li class="leaf"><a href="https://rzlc.llnl.gov/cgi-bin/lccgi/customstatus.cgi" title="">RZ Compute System Status</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/fsstatus/fsstatus.cgi" title="">CZ File System Status</a></li>
+<li class="last leaf"><a href="https://rzlc.llnl.gov/fsstatus/fsstatus.cgi" title="">RZ File System Status</a></li>
+</ul></li>
+<li class="expanded"><a href="/services">Services</a><ul class="menu"><li class="first collapsed"><a href="/services/green-data-oasis">Green Data Oasis (GDO)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="last leaf"><a href="/services/visualization-services">Visualization Services</a></li>
+</ul></li>
+<li class="expanded"><a href="/software">Software</a><ul class="menu"><li class="first leaf"><a href="/software/archival-storage-software">Archival Storage Software</a></li>
+<li class="collapsed"><a href="/software/data-management-tools-projects">Data Management Tools</a></li>
+<li class="collapsed"><a href="/software/development-environment-software">Development Environment Software</a></li>
+<li class="leaf"><a href="/software/mathematical-software">Mathematical Software</a></li>
+<li class="leaf"><a href="/software/modules-and-software-packaging">Modules and Software Packaging</a></li>
+<li class="collapsed"><a href="/software/visualization-software">Visualization Software</a></li>
+<li class="last leaf"><a href="https://computing.llnl.gov/projects/radiuss" title="">RADIUSS</a></li>
+</ul></li>
+<li class="last expanded active-trail"><a href="/training" class="active-trail">Training</a><ul class="menu"><li class="first expanded active-trail"><a href="/training/tutorials" class="active-trail">Tutorials</a><ul class="menu"><li class="first leaf"><a href="/training/tutorials/introduction-parallel-computing-tutorial">Introduction to Parallel Computing Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/llnl-covid-19-hpc-resource-guide">LLNL Covid-19 HPC Resource Guide for New Livermore Computing Users</a></li>
+<li class="leaf"><a href="/training/tutorials/using-lcs-sierra-system">Using LC&#039;s Sierra System</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-psaap3-quick-start-tutorial">Livermore Computing PSAAP3 Quick Start Tutorial</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/sites/default/files/PSAAP-alliance-quickguide.docx" title="">PSAAP Alliance Quick Guide</a></li>
+<li class="leaf"><a href="/training/tutorials/linux-tutorial-exercises">Linux Tutorial Exercise One</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-one">Livermore Computing Linux Clusters Overview Part One</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two">Livermore Computing Linux Clusters Overview Part Two</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-resources-and-environment">Livermore Computing Resources and Environment</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab-exercise">Slurm and Moab Exercise</a></li>
+<li class="leaf active-trail"><a href="/training/tutorials/slurm-and-moab" class="active-trail active">Slurm and Moab Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-part-2-common-functions">TotalView Part 2:  Common Functions</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-part-3-debugging-parallel-programs">TotalView Part 3: Debugging Parallel Programs</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-tutorial">TotalView Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/evaluation-form">Tutorial Evaluation Form</a></li>
+<li class="leaf"><a href="/training/tutorials/srun-auto-affinity">srun --auto-affinity</a></li>
+<li class="last leaf"><a href="/training/tutorials/srun-multi-prog">srun --multi-prog</a></li>
+</ul></li>
+<li class="collapsed"><a href="/training/documentation">Documentation &amp; User Manuals</a></li>
+<li class="leaf"><a href="/training/technical-bulletins-catalog">Technical Bulletins Catalog</a></li>
+<li class="collapsed"><a href="/training/workshop-schedule">Training Events</a></li>
+<li class="last leaf"><a href="/training/user-meeting-presentations-archive">User Meeting Presentation Archive</a></li>
+</ul></li>
+</ul>                                                                            <div id="pagetoggle" class="btn-group btn-toggle pull-right" style="margin-right: 15px;">
+                                            <a href="/" class="btn btn-default gs">General Site</a>
+                                            <a href="/user-portal" class="btn btn-primary up active">User Portal</a>
+                                        </div>
+                                                                    </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+		<div id="main-content" class="l2content">
+        <div class="container">
+    		<div class="row">
+        		                <div id="primary" class="content-area col-sm-12">
+					                                        <section id="content" role="nav" class="clearfix col-sm-12">
+
+                                                                                    <div id="breadcrumbs">
+                                    <h2 class="element-invisible">breadcrumb menu</h2><nav class="breadcrumb" aria-label="breadcrumb-navigation"><a href="/">Home</a> » <a href="/training">Training</a> » <a href="/training/tutorials">Tutorials</a> » Slurm and Moab</nav>                                </div>
+                                                    
+                                            </section>
+                  <main>
+
+                  
+                        <div id="content-wrap">
+                                                                                                                <div class="region region-content">
+  <div id="block-system-main" class="block block-system">
+
+    
+    
+  
+  <div class="content">
+    
+
+<div  about="/training/tutorials/slurm-and-moab" typeof="sioc:Item foaf:Document" class="node node-user-portal-one-column-page node-full view-mode-full">
+    <div class="row">
+    <div class="col-sm-12 ">
+      <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even" property="dc:title"><h1 class="title">Slurm and Moab</h1></div></div></div><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p><a name="TOC" id="TOC"> </a></p>
+<h2>Table of Contents</h2>
+<ol><li><a href="#Abstract">Abstract</a></li>
+<li><a href="#WhatIs">What is a Workload Manager?</a></li>
+<li><a href="#LC">Workload Managers at LC</a></li>
+<li><a href="#BasicConcepts">Basic Concepts</a>
+<ol><li><a href="#Jobs">Jobs</a></li>
+<li><a href="#QueueLimits">Queues and Queue Limits</a></li>
+<li><a href="#Banks">Banks</a></li>
+<li><a href="#FairShare">Fair Share Job Scheduling</a></li>
+</ol></li>
+<li><a href="#BasicFunctions">Basic Functions</a>
+<ol><li><a href="#JobScript">Building a Job Script</a></li>
+<li><a href="#Submit">Submitting Jobs</a></li>
+<li><a href="#Monitoring">Monitoring Jobs</a></li>
+<li><a href="#JobStates">Job States and Status Codes</a></li>
+<li><a href="#Exercise1">Exercise 1</a></li>
+<li><a href="#Hold/Release">Holding/Releasing Jobs</a></li>
+<li><a href="#Cancel">Canceling Jobs</a></li>
+<li><a href="#ChangingParameters">Changing Job Parameters</a></li>
+<li><a href="#Dependent">Setting Up Dependent Jobs</a></li>
+<li><a href="#BanksUsage">Banks and Usage Information</a></li>
+<li><a href="#OutputFiles">Output Files</a></li>
+<li><a href="#Guesstimate">Guesstimating When Your Job Will Start</a></li>
+<li><a href="#TimeExpired">Determining When Your Job's Time is About to Expire</a></li>
+<li><a href="#Standby">Running in Standby Mode</a></li>
+</ol></li>
+<li><a href="#ConfigurationAccounting">Displaying Configuration and Accounting Information</a></li>
+<li><a href="#ParallelJobs">Parallel Jobs and the srun Command</a></li>
+<li><a href="#MultipleJobs">Running Multiple Jobs From a Single Job Script</a></li>
+<li><a href="#Serial">Running on Serial Clusters</a></li>
+<li><a href="#CommandSummary">Batch Commands Summary</a></li>
+<li><a href="#Exercise2">Exercise 2</a></li>
+<li><a href="#References">References and More Information</a></li>
+</ol><p><a name="Abstract" id="Abstract"> </a></p>
+<h2>Abstract</h2>
+<p>Slurm and Moab are two workload manager systems that have been used to schedule and manage user jobs run on Livermore Computing (LC) clusters. Currently, LC runs Slurm natively on most clusters, and provides Moab "wrappers" now that Moab has been decommissioned. This tutorial presents the essentials for using Slurm and Moab wrappers on LC platforms. It begins with an overview of workload managers, followed by a discussion on some basic concepts for workload managers, such as the definition of a job, queues and queue limits, banks and fair-share job scheduling. Basic workload manager functions are covered next, including how to build batch scripts, submit, monitor, change, hold/release, and cancel jobs. Dependent jobs, bank usage information, output files, determining when a job will expire, and running in standby round out the basic workload manager functions. Other topics covered include displaying configuration and accounting information, a discussion on parallel jobs and the srun command, and running on serial clusters. This tutorial includes both C and Fortran example codes and lab exercises.</p>
+<p><em>Level/Prerequisites:</em> The material covered in <a href="/training/tutorials/livermore-computing-resources-and-environment">EC3501: Livermore Computing Resources and Environment</a> would be helpful.<br /><a name="WhatIs" id="WhatIs"> </a></p>
+<h2>What is a Workload Manager?</h2>
+<p> </p>
+<ul><li>The typical LC cluster is a finite resource that is shared by many users.</li>
+<li>In the process of getting work done, users compete for a cluster's nodes, cores, memory, network, etc.</li>
+<li>In order to fairly and efficiently utilize a cluster, a special software system is employed to manage how work is accomplished.</li>
+<li>Commonly called a Workload Manager. May also be referred to (sometimes loosely) as:
+<ul><li>Batch system</li>
+<li>Batch scheduler</li>
+<li>Workload scheduler</li>
+<li>Job scheduler</li>
+<li>Resource manager (usually considered a component of a Workload Manager)</li>
+</ul></li>
+<li>Tasks commonly performed by a Workload Manager:
+<ul><li>Provide a means for users to specify and submit work as "jobs"</li>
+<li>Evaluate, prioritize, schedule and run jobs</li>
+<li>Provide a means for users to monitor, modify and interact with jobs</li>
+<li>Manage, allocate and provide access to available machine resources</li>
+<li>Manage pending work in job queues</li>
+<li>Monitor and troubleshoot jobs and machine resources</li>
+<li>Provide accounting and reporting facilities for jobs and machine resources</li>
+<li>Efficiently balance work over machine resources; minimize wasted resources</li>
+</ul></li>
+<li>Generalized architecture and workflow of a Workload Manager:<br /><div class="media media-element-container media-default"><div id="file-1409" class="file file-image file-image-png">
+
+        <h2 class="element-invisible"><a href="/files/workloadmgrworkflow-png">workloadMgrWorkflow.png</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Flow Chart workflow of a workload manager" title="Workflow Flow Chart" height="366" width="878" class="media-element file-default" data-delta="1" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/workloadMgrWorkflow.png" /></div>
+
+  
+</div>
+</div><br /> <br /><table class="table table-bordered table-striped"><tr><th>User</th>
+<th>Workload Manager</th>
+<th>Cluster</th>
+</tr><tr><td>
+<ul><li>Logs into cluster</li>
+<li>Creates job script and submits it to workload manager</li>
+<li>Monitors and interacts with job via workload manager</li>
+<li>Queries workload manager for job and cluster information</li>
+</ul></td>
+<td>
+<ul><li>Typically runs on a separate server as multiple processes</li>
+<li>Receives job submissions, commands, queries from user</li>
+<li>Matches job requirements to available machine resources</li>
+<li>Evaluates, prioritizes and queues jobs</li>
+<li>Schedules jobs for execution on cluster</li>
+<li>Tracks job and cluster information</li>
+<li>Sends jobs to compute node daemons for actual execution</li>
+</ul></td>
+<td>
+<ul><li>Workload Manager daemons run on compute nodes</li>
+<li>Daemons manage compute resources and job execution</li>
+<li>Daemons communicate with Workload Manager server processes</li>
+</ul></td>
+</tr></table></li>
+<li>Some popular Workload Managers include:
+<ul><li>Slurm from SchedMD</li>
+<li>Spectrum LSF from IBM</li>
+<li>Tivoli Workload Scheduler (LoadLeveler) from IBM</li>
+<li>PBS from Altair Engineering</li>
+<li>TORQUE, Maui, Moab from Adaptive Computing</li>
+<li>Univa Grid Engine</li>
+<li>OpenLava</li>
+</ul><p> </p>
+</li>
+<li>For a brief overview on batch system concepts, see LC's "Batch System Primer" located at: <a href="https://hpc.llnl.gov/banks-jobs/running-jobs/batch-system-primer" target="_blank">https://hpc.llnl.gov/banks-jobs/running-jobs/batch-system-primer</a>.</li>
+</ul><p><a name="LC" id="LC"> </a></p>
+<h2>Workload Managers at LC</h2>
+<h3>Slurm</h3>
+<ul><li>Slurm is an open-source cluster management and job scheduling system for Linux clusters.</li>
+<li>Slurm is LC's primary Workload Manager. It runs on all of LC's clusters except for the CORAL Early Access (EA) and Sierra systems.</li>
+<li>Used on many of the world's TOP500 supercomputers.</li>
+<li><a href="https://schedmd.com" target="_blank">SchedMD</a> is the primary source for Slurm downloads and documentation. SchedMD also offers development and support services for Slurm.</li>
+<li>Some history:
+<ul><li>Slurm began development as a collaborative effort primarily by Lawrence Livermore National Laboratory (LLNL), Linux NetworX, Hewlett-Packard and Groupe Bull as a free software resource manager in 2001.</li>
+<li>In 2010 LLNL employees Morris (Moe) Jette and Danny Auble incorporated <a href="https://schedmd.com" target="_blank">SchedMD LLC</a>, to develop and market Slurm.</li>
+<li>Acronym originally stood for Simple Linux Utility for Resource Management. Not used any longer.</li>
+<li>The Slurm acronym also alludes to the drink Slurm featured in "Fry and the Slurm Factory" from the Futurama TV series: <a href="http://en.wikipedia.org/wiki/Fry_and_the_Slurm_Factory" target="_blank">http://en.wikipedia.org/wiki/Fry_and_the_Slurm_Factory</a></li>
+</ul></li>
+<li>Documentation:
+<ul><li>SchedMD website: <a href="https://schedmd.com" target="_blank">schedmd.com</a> - see the Documentation section.</li>
+<li>LC Running Jobs webpages: <a href="/banks-jobs/running-jobs" target="_blank">hpc.llnl.gov/banks-jobs/running-jobs</a> - see the links for Slurm related docs.</li>
+</ul></li>
+</ul><h3>Spectrum LSF</h3>
+<ul><li>Spectrum LSF is an HPC Workload Manager product from IBM.</li>
+<li>Spectrum LSF is used only on LC's CORAL EA and Sierra clusters.</li>
+<li>IBM's Spectrum LSF was formerly known as Platform Load Sharing Facility (LSF) from Platform Computing, which was acquired by IBM in 2012.</li>
+<li>Documentation:
+<ul><li>IBM LSF website: <a href="https://www.ibm.com/docs/en/spectrum-lsf/10.1.0" target="_blank">https://www.ibm.com/docs/en/spectrum-lsf/10.1.0</a></li>
+<li>LC Running Jobs webpages: <a href="/banks-jobs/running-jobs" target="_blank">hpc.llnl.gov/banks-jobs/running-jobs</a> - see the links for LSF related docs.</li>
+</ul></li>
+</ul><h3>Moab</h3>
+<ul><li>Moab is a Workload Manager product from Adaptive Computing, Inc. <a href="http://www.adaptivecomputing.com" target="_blank"> (www.adaptivecomputing.com)</a>.</li>
+<li>Moab was selected via a Tri-lab committee to be the common workload manager for LANL, LLNL and Sandia in August, 2006.</li>
+<li>Moab was decommissioned at all three labs in 2017.</li>
+<li>LC will continue to make most Moab commands available on clusters that run Slurm, via wrapper scripts.</li>
+<li>Documentation:
+<ul><li>LC Running Jobs webpages: <a href="https://hpc.llnl.gov/banks-jobs/running-jobs" target="_blank">hpc.llnl.gov/banks-jobs/running-jobs</a> - see the links for Moab related docs.</li>
+</ul></li>
+</ul><h2><a id="BasicConcepts" name="BasicConcepts"></a>Basic Concepts</h2>
+<h3><a id="Jobs" name="Jobs"></a>Jobs</h3>
+<p><strong>Simple Definition</strong></p>
+<ul><li>To a user, a job can be simply described as a request for compute resources needed to perform computational work.</li>
+<li>Jobs typically specify what resources are needed, such as type of machine, number of machines, job duration, amount of memory required, account to charge, etc.</li>
+<li>Jobs are submitted to the Workload Manager by means of a job script. Job scripts are discussed in the <a href="#JobScript">Building a Job Script</a> section of this tutorial.</li>
+</ul><p><strong>Slightly More Complex Definition</strong></p>
+<ul><li>A job contains the following components:
+<ul><li><strong>Consumable resources</strong></li>
+<li><strong>Resource and job constraints</strong></li>
+<li><strong>Execution environment</strong></li>
+<li><strong>Credentials</strong></li>
+</ul></li>
+<li><strong>Consumable resources</strong>: Any object which can be utilized ( i.e., consumed and thus made unavailable to another job) by, or dedicated to a job is considered to be a resource. Common examples of resources are a node's physical memory, cpus or local disk. Network adapters, if dedicated, may also be considered a consumable resource.</li>
+<li><strong>Resource and job constraints</strong>: A set of conditions which must be fulfilled in order for the job to start. For example:
+<ul><li>Type of node/machine</li>
+<li>Number of processors</li>
+<li>Speed of processor</li>
+<li>Partition</li>
+<li>Features, such as disk, memory, adapter, etc.</li>
+<li>When the job may run</li>
+<li>Starting job relative to a particular event (i.e., start after job X successfully completes)</li>
+</ul></li>
+<li><strong>Execution environment</strong>: A description of the environment in which the executable is launched. This environment may include attributes such as the following:
+<ul><li>An executable</li>
+<li>Command line args</li>
+<li>Input file</li>
+<li>Output file</li>
+<li>Local user id</li>
+<li>Local group id</li>
+<li>Process resource limits</li>
+</ul></li>
+<li><strong>Credentials</strong>: With workload managers, credential based policies and limits are often established. At submit time, jobs are associated with a number of credentials which subject the job to various polices and grant it various types of access. For example, querying a job shows that it possesses the following credentials:<br /><pre>Creds: user:jsmith  group:jsmith  account:cs  class:pdebug  qos:normal</pre><ul><li>user: automatically assigned as your login userid.</li>
+<li>group: automatically assigned as your login group.</li>
+<li>account: automatically assigned as your default bank.</li>
+<li>class (queue): such as "pdebug" or "pbatch"</li>
+<li>qos: "Quality of Service". Provides for assigning special services. The default QoS of "normal" is assigned. Other options include "expedite" and "standby".</li>
+</ul></li>
+</ul><h3><a name="QueueLimits" id="QueueLimits"> </a>Queues and Queue Limits</h3>
+<h4>Queues (also called Pools and/or Partitions):</h4>
+<ul><li>The majority of nodes on LC's production systems are designated as compute nodes.</li>
+<li>Compute nodes are typically divided into <em>queues / pools / partitions</em> based upon how they should be used.</li>
+<li>Batch queue:
+<ul><li>Typically comprises most of the compute nodes on a system</li>
+<li>Named pbatch</li>
+<li>Intended for production work</li>
+<li>Configured on all but a few LC systems</li>
+</ul></li>
+<li>Interactive/debug queue:
+<ul><li>Typically comprises a small number of the compute nodes on a system</li>
+<li>Named pdebug</li>
+<li>Intended for small, short-running interactive and debugging work (not production)</li>
+<li>Configured on most LC systems</li>
+</ul></li>
+<li>There may be other queues on some machines, such as the viz, pviz, pgpu, etc.</li>
+<li>There are defined limits for each queue, the most important being:
+<ul><li>Max/min number of nodes permitted for a job</li>
+<li>Max wall-clock time - how long a job is permitted to run</li>
+<li>Max number of simultaneous running jobs or max number of nodes permitted across all running jobs.</li>
+</ul></li>
+<li>No two LC systems have the same queue limits.</li>
+<li>Queue limits can and <em>do</em> change!</li>
+<li><span class="note-red">Note</span>
+<ul><li>To run jobs that exceed queue limits, users can request Dedicated Application Time (DAT).</li>
+<li>Login nodes are a shared, limited resource not intended for production work. They are not associated with any queue.</li>
+</ul></li>
+</ul><h4>How Do I Find Out What the Queue Limits Are?</h4>
+<ul><li>The easiest way to determine the queue configuration and limits for a particular machine is to login to that machine and use the command:
+<pre>news job.lim.<em>machinename</em></pre></li>
+<li>This command is actually just an LC text file displayed with the news utility.</li>
+<li>Example:<br /><table><tr><td>
+<pre>% news job.lim.quartz
+
+================================ job.lim.quartz ================================
+
+   SUMMARY OF INTERACTIVE AND BATCH JOB LIMITS ON QUARTZ
+   ------------------------------------------------------------------------
+
+   There are 2604 compute nodes, with 36 cores and 128 GiB of memory on
+   each node.
+
+   Jobs are scheduled per node. Quartz has 2 scheduling pools (or partitions) :
+    pdebug      16
+    pbatch -  2588 nodes (46872 cores), batch use only.
+
+   Pools               Max nodes/job       Max runtime
+   ---------------------------------------------------
+   pdebug                    8(*)           30 minutes
+   pbatch                 1200              24 hours
+   ---------------------------------------------------
+
+   (*) Please limit the use of pdebug to 8 nodes on a PER USER basis,
+   not a PER JOB basis, to allow other users access.  Using more than the
+   posted limit PER USER can result in job removal without notice. Please
+   be a good neighbor, and be considerate of others utilizing the pdebug
+   partition. Pdebug is scheduled using FIFO (first in, first out).
+
+   Pdebug is intended for debugging, visualization, and other inherently
+   interactive work.  It is NOT intended for production work. Do not use
+   pdebug to run batch jobs.  Do not chain jobs to run one after the other.
+   Individuals who misuse the pdebug queue in this or any similar manner
+   will be denied access to running jobs in the pdebug queue.
+
+   HARDWARE:
+   Each node has 2 18-core Intel Xeon E5-2695 processors (2.1 GHz)
+   and 128 GiB of memory.
+     login:  quartz[188,380,386,764,770,962]
+     pbatch: quartz[1-186,193-378,391-762,775-960,967-1338]
+
+   Quartz uses an Intel Omni-Path Interconnect.
+
+   Key Documentation in Confluence (on the unclassified side)
+     Using TOSS 3   https://lc.llnl.gov/confluence/display/TCE/Using+TOSS+3
+     TCE Home       https://lc.llnl.gov/confluence/display/TCE/TCE+Home
+
+   Please call or send email to the LC Hotline if you have questions.
+   LC Hotline   phone: 925-422-4531   email: lc-hotline@llnl.gov
+================================ job.lim.quartz ================================
+
+</pre></td>
+</tr></table></li>
+<li>This is the same information available in the LC "Machine Status" web pages: (LC internal). Click on the machine name of interest &gt;</li>
+<li>OCF-CZ: <a href="https://lc.llnl.gov/cgi-bin/lccgi/customstatus.cgi" target="blank">https://lc.llnl.gov/cgi-bin/lccgi/customstatus.cgi</a></li>
+<li>OCF-RZ: <a href="https://rzlc.llnl.gov/cgi-bin/lccgi/customstatus.cgi" target="blank">https://rzlc.llnl.gov/cgi-bin/lccgi/customstatus.cgi</a></li>
+<li>SCF: <a href="https://lc.llnl.gov/cgi-bin/lccgi/customstatus.cgi">https://lc.llnl.gov/cgi-bin/lccgi/customstatus.cgi</a></li>
+</ul><ul><li>It is also available on the "MyLC" web pages. Just click on any machine name in the "machine status" or "my accounts" portlets. Then select the "job limits" tab.
+<ul><li>OCF-CZ: <a href="https://mylc.llnl.gov" target="_blank">mylc.llnl.gov</a></li>
+<li>OCF-RZ: <a href="https://rzmylc.llnl.gov" target="_blank">rzmylc.llnl.gov</a></li>
+<li>SCF: <a href="https://lc.llnl.gov/lorenz">https://lc.llnl.gov/lorenz</a></li>
+</ul></li>
+</ul><p><a name="Banks" id="Banks"> </a></p>
+<h3>Banks</h3>
+<h4>Bank Hierarchy</h4>
+<ul><li>In order to run on a cluster, you need to have two things:
+<ul><li>Login account: your username appears in /etc/passwd</li>
+<li>LC bank: your username is associated with a valid LC bank</li>
+</ul></li>
+<li>A bank is part of a hierarchical tree that allocates "shares" of a machine across all users in the cluster.</li>
+<li>Banks in the hierarchy have parent/child relationships with other banks. For example:
+<p></p><div class="media media-element-container media-default"><div id="file-2134" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/bankhierarchy-gif-0">bankHierarchy.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Bank Hierarchy diagram" height="455" width="552" class="media-element file-default" data-delta="2" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/bankHierarchy_0.gif" /></div>
+
+  
+</div>
+</div>
+</li>
+<li>You may have access to more than one bank.</li>
+<li>The bank hierarchy can differ across clusters, and is also subject to change.</li>
+</ul><h4>Bank Shares</h4>
+<ul><li>Every bank has a specified number of "shares" allocated to it.</li>
+<li>Every user has a share in at least one bank.</li>
+<li>Your normalized shares represent your percentage of the entire partition.
+<p></p><div class="media media-element-container media-default"><div id="file-2135" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/bankshares-gif-0">bankShares.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="bank Shares diagram" height="428" width="703" class="media-element file-default" data-delta="3" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/bankShares_0.gif" /></div>
+
+  
+</div>
+</div>
+</li>
+<li>The bank hierarchy strongly influences batch job scheduling because shares are assigned and their effects enforced in layers.
+<ul><li>Banks with large allocations can use more cluster resources than banks with smaller allocations</li>
+<li>Banks that use more resources than they are allocated will receive less service.</li>
+<li>Whatever applies to the banks above your bank affects you</li>
+</ul></li>
+<li>If you have access to multiple banks, you may find one bank gives better service due to the hierarchy and share assignments.</li>
+</ul><p><a name="FairShare" id="FairShare"> </a></p>
+<h3>Fair Share Job Scheduling</h3>
+<h4>Why in the World Won't My Job Run?</h4>
+<ul><li>Undoubtedly, this is the most commonly asked batch system question.</li>
+<li>Classic scenario: a user submits a job requesting 16 nodes when 50 nodes are shown as available/idle. However, the job sits in the queue and doesn't run. Why?</li>
+<li>Aside from any "user error" related reasons, there are several other, sometimes complicated, reasons.</li>
+<li>Probably the most important reason is the underlying mechanism used by the batch system to determine when/if a job should run.</li>
+<li>At LC, the Workload Manager has been programmed to use a "Fair Share with Half-Life Decay of Usage" algorithm for determining a job's eligibility to run.</li>
+</ul><h4>Fair Share with Half-Life Decay of Usage:</h4>
+<ul><li>This is the primary mechanism used to determine job scheduling. It is based upon a dynamically calculated <em>priority</em> for your job that reflects your share <em>allocation</em> within a bank versus your actual <em>usage</em>.
+<ul><li>Use more than your share, your priority/service degrades</li>
+<li>Use less than your share, your priority/service improves</li>
+<li>Your priority can become very low, but you never "run out of time" at LC.</li>
+</ul></li>
+<li>Jobs with higher priorities often need to acquire their full set of nodes over time. While their nodes are being reserved, the nodes will appear to be idle.</li>
+<li>Half-Life Decay: Without new usage, your current usage value decays to half its value in two weeks.</li>
+<li>Resources are not wasted:
+<ul><li>Even though your allocation and/or job priority may be small your job will run if machine resources are sitting idle.</li>
+<li>Backfill scheduling - allows waiting jobs to use the reserved job slots of higher priority jobs, as long as they do not delay the start of the higher priority job.</li>
+</ul></li>
+<li>Scheduling is dynamic with job priorities and usage information being recalculated frequently.</li>
+<li>The details of the Fair Share with Half-Life Decay algorithm are more complex than presented here. See the following document for detailed information: <a href="https://slurm.schedmd.com/priority_multifactor.html" target="_blank"> https://slurm.schedmd.com/priority_multifactor.html</a>.</li>
+</ul><h4>Other Considerations</h4>
+<ul><li>Jobs may not start if they request node and/or and time resources which exceed queue limits:
+<ul><li>How long a job may run</li>
+<li>How many nodes a job may use</li>
+<li>Number of jobs that may run simultaneously per user</li>
+<li>Weekday? Weekend? Prime time? Non-prime time?</li>
+</ul></li>
+<li>Competition with other users: If another user submits a job which calculates to a high priority, your job's position in the waiting (idle) queue can decrease instantly.</li>
+<li>Expedited jobs: System managers (and rarely, privileged users) can make specified jobs "top priority". In effect, the job jumps to the head of the scheduling queue.</li>
+<li>Dedicated Application Time (DAT):
+<ul><li>It is very common for "important" jobs to be scheduled to run in dedicated mode on several LC clusters.</li>
+<li>Other running jobs may be killed, queued jobs put on hold, and new submissions disallowed until the scheduled job completes.</li>
+<li>DAT runs are scheduled in advance and users are notified via the machine-status email lists.</li>
+<li>DATs usually occur on weekends and holidays.</li>
+</ul></li>
+</ul><p><a name="JobScript" id="JobScript"> </a></p>
+<h3>Building a Job Script</h3>
+<h4>The Basics</h4>
+<ul><li>Users submit jobs to the Workload Manager for scheduling by means of a job script.</li>
+<li>A job script is a plain text file that you create with your favorite editor.</li>
+<li>Job scripts can include any/all of the following:
+<ul><li>Commands, directives and syntax specific to a given batch system</li>
+<li>Shell scripting</li>
+<li>References to environment variables</li>
+<li>Names of executable(s) to run</li>
+<li>Comment lines and white space</li>
+</ul></li>
+<li>Simple Slurm and Moab job control scripts appear below:<br /><table><tr><th>Slurm</th>
+<th>Moab</th>
+</tr><tr><td>
+<pre>#!/bin/tcsh
+##### These lines are for Slurm
+#SBATCH -N 16
+#SBATCH -J parSolve34
+#SBATCH -t 2:00:00
+#SBATCH -p pbatch
+#SBATCH --mail-type=ALL
+#SBATCH -A myAccount
+#SBATCH -o /p/luster1/joeuser/par_solve/myjob.out
+
+##### These are shell commands
+date
+cd /p/luster1/joeuser/par_solve
+##### Launch parallel job using srun
+srun -n128 a.out
+echo 'Done'
+</pre></td>
+<td>
+<pre>#!/bin/tcsh
+##### These lines are for Moab
+#MSUB -l nodes=16
+#MSUB -N parSolve34
+#MSUB -l walltime=2:00:00
+#MSUB -q pbatch
+#MSUB -m be
+#MSUB -A myAccount
+#MSUB -o /p/luster1/joeuser/par_solve/myjob.out
+
+##### These are shell commands
+date
+cd /p/luster1/joeuser/par_solve
+##### Launch parallel job using srun
+srun -n128 a.out
+echo 'Done'
+</pre></td>
+</tr></table></li>
+</ul><h4>Options:</h4>
+<ul><li>There are a wide variety of options that can be used in your job script. Some of the more common/useful options are shown below.</li>
+<li>See the Workload Manager documentation listed in the <a href="#References">References</a> section or man pages for details.
+<ul><li><a href="/sites/default/files/sbatch_0.txt" target="_blank">Slurm man page</a></li>
+<li><a href="/sites/default/files/msub.txt" target="_blank">Moab man page</a></li>
+</ul><table class="table table-bordered"><tr><th>Slurm</th>
+<th>Moab</th>
+<th>Description/Notes</th>
+</tr><tr><td>
+<pre>#SBATCH -A <em>account</em></pre></td>
+<td>
+<pre>#MSUB -A <em>account</em></pre></td>
+<td>Defines the account (bank) associated with the job.</td>
+</tr><tr><td>
+<pre>#SBATCH --begin=<em>time</em></pre></td>
+<td>
+<pre>#MSUB -a <em>time</em></pre></td>
+<td>Declares the time after which the job is eligible for execution. See man page for syntax.</td>
+</tr><tr><td>
+<pre>#SBATCH -c <em>#</em></pre></td>
+<td>
+<pre>
+ </pre></td>
+<td>cpus/cores per task</td>
+</tr><tr><td>
+<pre>#SBATCH -d <em>list</em></pre></td>
+<td>
+<pre>#MSUB -l depend=<em>list</em></pre></td>
+<td>Specify job dependencies. See <a href="#Dependent">"Setting Up Dependent Jobs"</a> for details.</td>
+</tr><tr><td>
+<pre>#SBATCH -D <em>path</em></pre></td>
+<td>
+<pre>#MSUB -d <em>path</em></pre></td>
+<td>Specifies the directory in which the job should begin executing.</td>
+</tr><tr><td>
+<pre>#SBATCH -e <em>filename</em></pre></td>
+<td>
+<pre>#MSUB -e <em>filename</em></pre></td>
+<td>Specifies the file name to be used for stderr.</td>
+</tr><tr><td>
+<pre>#SBATCH --export=<em>list</em></pre></td>
+<td>
+<pre>#MSUB -v <em>list</em></pre></td>
+<td>Specifically adds a list (comma separated) of environment variables that are exported to the job.</td>
+</tr><tr><td>
+<pre>#SBATCH --license=<em>filesystem</em></pre><p><br />The default is to require no Lustre file systems</p></td>
+<td>
+<pre>#MSUB -l gres=<em>filesystem</em>
+#MSUB -l gres=ignore</pre><p>The default is to require all mounted Lustre file systems. Use "ignore" to require no file systems (job can run even if file systems are down).</p></td>
+<td>Job requires the specified parallel Lustre file system(s). Valid labels are the names of mounted Lustre parallel file systems, such as lustre1, lustre2. The purpose of this option is to prevent jobs from being scheduled if the specified file systems are unavailable.</td>
+</tr><tr><td>
+<pre>#SBATCH -H</pre></td>
+<td>
+<pre>#MSUB -h</pre></td>
+<td>Put a user hold on the job at submission time.</td>
+</tr><tr><td>
+<pre>#SBATCH -i <em>filename</em></pre></td>
+<td>
+<pre>
+ </pre></td>
+<td>Specifies the file name to be used for stdin.</td>
+</tr><tr><td>
+<pre>#SBATCH -J <em>name</em></pre></td>
+<td>
+<pre>#MSUB -N <em>name</em></pre></td>
+<td>Gives a user specified name to the job.</td>
+</tr><tr><td>
+<pre>default</pre></td>
+<td>
+<pre>#MSUB -j oe</pre></td>
+<td>Combine stdout and stderr into the same output file. This is the default. If you want to give the combined stdout/stderr file a specific name, include the -o flag also.</td>
+</tr><tr><td>
+<pre>#SBATCH --mail-type=<em>type</em>
+(begin, end, fail, requeue, all)</pre></td>
+<td>
+<pre>#MSUB -m <em>option(s)</em>
+(a=abort, b=begin, e=end)</pre></td>
+<td>Defines when a mail message about the job will be sent to the user. See the man page for details.</td>
+</tr><tr><td>
+<pre>#SBATCH -N <em>#</em></pre></td>
+<td>
+<pre>#MSUB -l nodes=<em>#</em></pre></td>
+<td>Node count</td>
+</tr><tr><td>
+<pre>#SBATCH -n <em>#</em>
+#SBATCH --ntasks-per-node=<em>#</em>
+#SBATCH --tasks-per-node=<em>#</em></pre></td>
+<td>
+<pre>#MSUB -l procs=<em>#</em>
+#MSUB -l ttc=<em>#</em></pre></td>
+<td>Task count</td>
+</tr><tr><td>
+<pre>#SBATCH --nice=<em>value</em></pre></td>
+<td>
+<pre>#MSUB -p <em>value</em></pre></td>
+<td>Assigns a user priority value to a job.</td>
+</tr><tr><td>
+<pre>#SBATCH -o <em>filename</em></pre></td>
+<td>
+<pre>#MSUB -o <em>filename</em></pre></td>
+<td>Defines the file name to be used for stdout.</td>
+</tr><tr><td>
+<pre>#SBATCH -p <em>partition</em></pre></td>
+<td>
+<pre>#MSUB -q <em>queue</em></pre></td>
+<td>Run the job in the specified partition/queue (pdebug, pbatch, etc.).</td>
+</tr><tr><td>
+<pre>#SBATCH --qos=exempt
+#SBATCH --qos=expedite
+#SBATCH --qos=standby</pre></td>
+<td>
+<pre>#MSUB -l qos=exempt
+#MSUB -l qos=expedite
+#MSUB -l qos=standby</pre></td>
+<td>Defines the quality-of-service to be used for the job.</td>
+</tr><tr><td>
+<pre>#SBATCH --requeue
+#SBATCH --no-requeue</pre></td>
+<td>
+<pre>#MSUB -r y
+#MSUB -l resfailpolicy=requeue
+#MSUB -r n
+#MSUB -l resfailpolicy=cancel</pre></td>
+<td>Specifies whether or not to rerun the job is there is a system failure. The default behavior at LC is to NOT automatically rerun a job in such cases.</td>
+</tr><tr><td>
+<pre>
+ </pre></td>
+<td>
+<pre>#MSUB -S <em>path</em></pre></td>
+<td>Specifies the shell which interprets the job script. The default is your login shell.</td>
+</tr><tr><td>
+<pre>#SBATCH --signal=14@120
+#SBATCH --signal=SIGHUP@2:00</pre></td>
+<td>
+<pre>#MSUB -l signal=14@120
+#MSUB -l signal=SIGHUP@2:00</pre></td>
+<td>Signaling - specifies the pre-termination signal to be sent to a job at the desired time before expiration of the job's wall clock limit. Default time is 60 seconds.</td>
+</tr><tr><td>
+<pre>#SBATCH -t <em>time</em></pre></td>
+<td>
+<pre>#MSUB -l walltime= <em>time</em></pre></td>
+<td>Specifies the wall clock time limit for the job. See the man page for syntax.</td>
+</tr><tr><td>
+<pre>#SBATCH --export=ALL</pre></td>
+<td>
+<pre>#MSUB -V</pre></td>
+<td>Declares that all environment variables in the job submission environment are exported to the batch job.</td>
+</tr></table></li>
+</ul><h4>Usage Notes</h4>
+<ul><li>All #SBATCH / #MSUB lines must come before shell script commands.</li>
+<li>Uppercase vs. lowercase:
+<ul><li>Always use uppercase for the #SBATCH and #MSUB tokens. Otherwise, the token will (usually) be ignored with no error message resulting in the default setting.</li>
+<li>The parameters specified by both tokens are case sensitive</li>
+</ul></li>
+<li>Batch scheduler syntax is parsed upon job submission. Shell scripting is parsed at runtime. Therefore, it is entirely possible to successfully submit a job that has shell script errors that won't fail until the job actually runs.</li>
+<li>Do not submit binary executables directly (without a script) as they will fail.</li>
+<li>The srun command is required to launch parallel jobs. Discussed later in the <a href="#ParallelJobs"> Parallel Jobs</a> section.</li>
+<li>Include your preferred shell as the first in your batch script. Otherwise, your job will be rejected. For example:</li>
+</ul><pre>#!/bin/csh
+#!/bin/tcsh
+#!/bin/bash
+</pre><ul><li>dos2unix: This handy utility can be used to "fix" broken batch scripts containing invisible characters that cause the scripts to fail for no apparent reason. See the man page for details.</li>
+</ul><p><a name="Submit" id="Submit"> </a></p>
+<h3>Submitting Jobs</h3>
+<h4>Job Submission Commands</h4>
+<ul><li>The sbatch and msub commands are used to submit your job script to the Workload Manager. Upon successful submission, the job's ID is returned and it is spooled for execution.</li>
+<li>These commands accept the same options as the #SBATCH / #MSUB tokens in a batch script.
+<p> </p>
+</li>
+<li>Examples:<br /><table><tr><th>Slurm</th>
+<th>Moab</th>
+</tr><tr><td>
+<pre>% sbatch myjobscript
+
+Submitted batch job 645133
+
+% sbatch -p pdebug -A physics myjobscript
+
+Submitted batch job 645134
+</pre></td>
+<td>
+<pre>% msub myjobscript
+
+226783
+
+% msub -q pdebug -A physics myjobscript
+
+227243
+</pre></td>
+</tr></table></li>
+</ul><h4>Usage Notes</h4>
+<ul><li>Both sbatch and msub are available on LC clusters:
+<ul><li>Use sbatch to submit job scripts with #SBATCH syntax</li>
+<li>Use msub to submit job scripts with #MSUB syntax</li>
+</ul></li>
+<li>After you submit your job script, changes to the contents of the script file will have no effect on your job because it has already been spooled to system file space.</li>
+<li>Users may submit and queue as many jobs as they like, up to a reasonable configuration defined limit. The actual number of running jobs per user is usually a lower limit, however. These limits can vary between machines.</li>
+<li>The default directory is where you submit your job from. If you need to be in another directory, then you will need to explicitly cd to, or set the working directory with an #SBATCH / #MSUB option.</li>
+</ul><h4>Environment Variables</h4>
+<ul><li>Most of your usual login environment variables are exported to your job's runtime environment.</li>
+<li>There are #SBATCH / #MSUB options that allow you to explicitly specify environment variables to export, in case they are not exported by default.</li>
+<li>Slurm provides a number of environment variables that allow you to specify/query #SBATCH options and other job behavior. See the <a href="/sites/default/files/sbatch_0.txt" target="_blank">sbatch man page</a> for details.</li>
+</ul><h4>Passing Arguments to Your Job</h4>
+<ul><li>Workload Managers do not provide a convenient way to pass arguments to your job.</li>
+<li>However....sometimes there are "tricks" you can use to accomplish something similar. For example:<br /><table><tr><td>
+<table><tr><td>This works
+<pre>% setenv NODES 4
+% sbatch -N $NODES myscript
+
+% cat myscript
+
+#!/bin/tcsh
+srun -N $NODES hostname</pre><p><br /><br />Sample output:</p>
+<pre>quartz244
+quartz246
+quartz247
+quartz245
+</pre></td>
+</tr></table></td>
+<td>
+<table><tr><td>This doesn't
+<pre>% setenv NODES 4
+% sbatch myscript
+
+% cat myscript
+
+#!/bin/tcsh
+#SBATCH -N $NODES
+srun -N $NODES hostname</pre><p><br />Sample output:</p>
+<pre>sbatch: error: "$NODES" is not a valid node count
+sbatch: error: invalid node count `$NODES'
+
+
+</pre></td>
+</tr></table></td>
+</tr></table></li>
+<li>Note: Your mileage may vary, depending upon your shell and whether you are using sbatch or msub.</li>
+</ul><p><a name="Monitoring" id="Monitoring"> </a></p>
+<h3>Monitoring Jobs</h3>
+<h4>Multiple Choices</h4>
+<ul><li>There are several different job monitoring commands. Some are based on Moab, some on Slurm, and some on other sources.</li>
+<li>The more commonly used job monitoring commands are summarized in the table below, with example output following.<br /><table><tr><th>Command</th>
+<th>Description</th>
+</tr><tr><td><a href="#squeue">squeue</a></td>
+<td>Displays one line of information per job by default. Numerous options.</td>
+</tr><tr><td><a href="#showq">showq</a></td>
+<td>Displays one line of information per job. Similar to squeue. Several options.</td>
+</tr><tr><td><a href="#mdiag-j">mdiag -j</a></td>
+<td>Displays one line of information per job. Similar to squeue.</td>
+</tr><tr><td><a href="#mjstat">mjstat</a></td>
+<td>Summarizes queue usage and displays one line of information for active jobs.</td>
+</tr><tr><td><a href="#checkjob">checkjob <em>jobid</em></a></td>
+<td>Provides detailed information about a specific job.</td>
+</tr><tr><td><a href="#scontrolshowjob">scontrol show job <em>jobid</em></a></td>
+<td>Provides detailed information about a specific job.</td>
+</tr><tr><td><a href="#sprio">sprio -l<br />mdiag -p -v</a></td>
+<td>Displays a list of queued jobs, their priority, and the primary factors used to calculate job priority.</td>
+</tr><tr><td><a href="#sview">sview</a></td>
+<td>Provides a graphical view of a cluster and all job information.</td>
+</tr><tr><td><a href="#sinfo">sinfo</a></td>
+<td>Displays state information about a cluster's queues and nodes</td>
+</tr></table></li>
+</ul><p><a name="squeue" id="squeue"> </a></p>
+<h4>squeue</h4>
+<ul><li>Shows one line of information per job, both running and queued.</li>
+<li>Numerous options for additional/customized output
+<p> </p>
+</li>
+<li>Common/useful options:
+<p> </p>
+</li>
+<li>
+<ul><li>-j shows information for a specified job only</li>
+<li>-l shows additional job information</li>
+<li>-o provides customized output - see man page</li>
+<li>-u shows jobs for a specified user only</li>
+</ul></li>
+<li><a href="/sites/default/files/squeue.txt">squeue man page here</a></li>
+<li>Examples below (some output omitted to fit screen):<br /><table><tr><td>
+<pre>% squeue
+  JOBID PARTITION     NAME     USER  ST       TIME  NODES NODELIST(REASON)
+ 641412    pbatch job.msub  ko33ru2  PD       0:00    160 (Priority)
+ 621487    pbatch psub_34.  va556ey2 PD       0:00     12 (Priority)
+ 648530    pbatch psub_26.  var556y2 PD       0:00      3 (Dependency)
+ 648627    pbatch  restart   tiwwar  PD       0:00      2 (Dependency)
+ ...
+ 648483    pbatch   GEOS.x   rryhao   R    1:18:04     38 quartz[306-320,1562-1569,2388-2402]
+ 648215    pbatch run_half eerrkawa   R    4:28:20     16 quartz[434-437,719,753,778,787,789,834,840...
+ 645278    pbatch    DPFMJ    link6   R   23:28:01     64 quartz[1088-1107,1976-2001,2127-2144]
+ 648324    pbatch run_half eerrkawa   R    2:22:12     32 quartz[516-524,2038-2060]
+ 648636    pbatch     rev2   hoewd1   R       9:12     20 quartz[118-130,194-200]
+ 648103    pbatch   mxterm thu4r5r3   R    6:32:15      4 quartz[357,881,2061,2089]
+ 648617    pdebug       sh labayyn1   R      19:21      2 quartz[14-15]
+</pre><hr />% squeue -j 683525 JOBID PARTITION NAME USER ST TIME NODES NODELIST(REASON) 648634 pbatch ntmp1 tr2erg2 R 8:31 6 quartz[28-33]<br /><hr /> % squeue -u eerrkawa JOBID PARTITION NAME USER ST TIME NODES NODELIST(REASON) 648215 pbatch run_half eerrkawa R 4:28:20 16 quartz[434-437,719,753,778,787,789,834,840... 648324 pbatch run_half eerrkawa R 2:22:12 32 quartz[516-524,2038-2060]<br /><hr /> % squeue -o "%8i %8u %4t %10P %6D %10l %10M %N" JOBID USER ST PARTITION NODES TIMELIMIT TIME NODELIST 647971 pitrrka1 PD pbatch 1000 16:00:00 0:00 647795 ben88on1 PD pbatch 1 1-00:00:00 0:00 624062 dphhhgin R pbatch 48 1-00:00:00 15:33:05 quartz[875-878,1254-1257,1279-1282,1631... 621517 varmmy2 R pbatch 12 14:00:00 13:27:02 quartz[424,488,602,838,1017,1025... ... 621558 varmmy2 R pbatch 3 20:00:00 12:43:08 quartz[2226,2374,2553] 638751 varmmy2 R pbatch 3 12:00:00 50:48 quartz[1846,2264,2435] 648201 dpt6tgin R pbatch 1 4:00:00 50:48 quartz1267 648126 osbiin9 R pbatch 64 3:00:00 40:04 quartz[242,261-262,332,344,354,399,404,408... 648617 labtyan1 R pdebug 2 30:00 23:41 quartz[14-15] 648640 bbergpp2 R pdebug 6 30:00 4:04 quartz[1-6]</td>
+</tr></table></li>
+</ul><p><a name="showq" id="showq"> </a></p>
+<h4>showq</h4>
+<ul><li>Shows one line of information per job, both running and queued by default.</li>
+<li>Common/useful options:
+<ul><li>-r shows only running jobs</li>
+<li>-i shows only idle jobs</li>
+<li>-b shows only blocked jobs</li>
+<li>-c shows recently completed jobs</li>
+<li>-u shows jobs for a specified user only</li>
+</ul></li>
+<li><a href="/sites/default/files/showq.txt">show q man page</a></li>
+<li>Examples below (some output omitted to fit screen):<br /><table><tr><td>
+<pre>% showq
+active jobs------------------------
+JOBID    USERNAME   STATE        NODES    REMAINING            STARTTIME
+
+621638   lap345te   Running          4     00:11:08  Wed May 10 00:05:57
+621640   lap345te   Running          4     00:12:25  Wed May 10 00:07:14
+648527   ji33a1     Running          6     00:15:11  Wed May 10 15:39:00
+...
+648587   abe662     Running          6     00:24:55  Wed May 10 15:48:44
+647757   beyyyon1   Running          1     23:58:33  Wed May 10 15:52:22
+647758   beyyyon1   Running          1     23:59:51  Wed May 10 15:53:40
+
+113 active jobs         83844 of 93744 processors in use by local jobs (89.44%)
+
+
+eligible jobs------------------------
+JOBID    USERNAME   STATE        NODES      WCLIMIT            QUEUETIME
+
+647971   piuyuka1   Idle          1000     16:00:00  Wed May 10 07:11:53
+647770   beuuuon1   Idle             1   1:00:00:00  Wed May 10 05:33:25
+648135   bo3pion1   Idle             1   1:00:00:00  Wed May 10 10:12:14
+...
+625439   dphi54in   Idle           576   1:00:00:00  Fri May  5 11:26:49
+622091   kha99r1    Idle           400   1:00:00:00  Thu May  4 16:05:50
+648314   trenion1   Idle             1   1:00:00:00  Wed May 10 13:10:31
+
+618 eligible jobs
+
+
+blocked jobs------------------------
+JOBID    USERNAME   STATE        NODES      WCLIMIT            QUEUETIME
+
+359561   pha5516    Idle            12     14:00:00  Fri Mar 31 09:36:08
+607661   artqww5    Idle            24   1:00:00:00  Mon May  1 07:29:56
+626621   z33g30     Idle           320   1:00:00:00  Fri May  5 21:22:34
+...
+641361   to77lusr   Idle            16     16:00:00  Mon May  8 16:01:09
+648339   quabbie1   Idle           300     16:00:00  Wed May 10 13:39:09
+648530   vwerey2    Idle             3     12:00:00  Wed May 10 15:27:56
+
+54 blocked jobs
+
+Total jobs:   785
+</pre></td>
+</tr></table></li>
+</ul><p><a name="mdiag-j" id="mdiag-j"> </a></p>
+<h4>mdiag -j</h4>
+<ul><li>Shows one line of information per job, both running and queued.</li>
+<li>Common/useful options:
+<ul><li>-v shows additional job information</li>
+</ul></li>
+<li><a href="/sites/default/files/mdiag.txt">mdiag -j man page here</a></li>
+<li>Examples below (some output omitted to fit screen):<br /><table><tr><td>
+<pre>% mdiag -j 75025
+  JOBID PARTITION     NAME     USER  ST       TIME  NODES NODELIST(REASON)
+ 648336    pbatch Ni-0.01- quwwwie1  PD       0:00    300 (Dependency)
+</pre><hr />% mdiag -j JOBID PARTITION NAME USER ST TIME NODES NODELIST(REASON) 641412 pbatch job.msub ko33ru2 PD 0:00 160 (Priority) 621487 pbatch psub_34. va556ey2 PD 0:00 12 (Priority) 648530 pbatch psub_26. var556y2 PD 0:00 3 (Dependency) 648627 pbatch restart tiwwar PD 0:00 2 (Dependency) ... 648483 pbatch GEOS.x rryhao R 1:18:04 38 quartz[306-320,1562-1569,2388-2402] 648215 pbatch run_half eerrkawa R 4:28:20 16 quartz[434-437,719,753,778,787,789,834,840... 645278 pbatch DPFMJ link6 R 23:28:01 64 quartz[1088-1107,1976-2001,2127-2144] 648324 pbatch run_half eerrkawa R 2:22:12 32 quartz[516-524,2038-2060] 648636 pbatch rev2 hoewd1 R 9:12 20 quartz[118-130,194-200] 648103 pbatch mxterm thu4r5r3 R 6:32:15 4 quartz[357,881,2061,2089] 648617 pdebug sh labayyn1 R 19:21 2 quartz[14-15]</td>
+</tr></table></li>
+</ul><p><a name="mjstat" id="mjstat"> </a></p>
+<h4>mjstat</h4>
+<ul><li>Summarizes queue usage and displays one line of information for active jobs.</li>
+<li>Common/useful options:</li>
+<li>
+<ul><li>-r shows only running jobs</li>
+<li>-v shows additional job information</li>
+</ul></li>
+<li><a href="/sites/default/files/mjstat.txt">mjstat man page here</a></li>
+<li>Example below (some output omitted to fit screen):<br /><table><tr><td>
+<pre>% mjstat
+-------------------------------------------------------------
+Pool        Memory  CPUs  Total Usable   Free  Other Traits
+-------------------------------------------------------------
+pdebug         1Mb    36     16     16      5
+pbatch*        1Mb    36   2588   2584      3
+
+Running job data:
+---------------------------------------------------------------------------
+JobID    User      Nodes Pool      Status        Used  Master/Other
+---------------------------------------------------------------------------
+650644   gghod1       30 pbatch    PD            0:00  (Resources)
+641412   k454ru2     160 pbatch    PD            0:00  (Priority)
+626626   yggg30      200 pbatch    PD            0:00  (Dependency)
+650178   biiuion1      1 pbatch    PD            0:00  (Priority)
+649155   d98uggin      4 pbatch    R         12:00:25  quartz111
+650459   trerar        2 pbatch    R          1:12:38  quartz100
+...
+650458   co44rer5      9 pbatch    R          1:15:16  quartz1992
+650494   c44rier5      9 pbatch    R            41:10  quartz714
+644450   frjjhel5     25 pbatch    R         23:21:25  quartz43
+647971   p88urka1   1000 pbatch    R          4:21:39  quartz21
+625439   yytrggin    576 pbatch    R          1:25:47  quartz18
+650159   bpeaion9      1 pbatch    R            36:14  quartz2312
+</pre></td>
+</tr></table></li>
+</ul><p><a name="checkjob" id="checkjob"> </a></p>
+<h4>checkjob</h4>
+<ul><li>Displays detailed job state information and diagnostic output for a selected job.</li>
+<li>Detailed information is available for queued, blocked, active, and recently completed jobs.</li>
+<li>The checkjob command is probably the most useful user command for troubleshooting your job, especially if used with the -v and -v -v flags.</li>
+<li>Common/useful options:
+<ul><li>-v shows additional information</li>
+<li>-v -v shows additional information plus job script (if available)</li>
+</ul></li>
+<li><a href="/sites/default/files/checkjob.txt">checkjob man page here</a></li>
+<li>Examples below:<br /><table><tr><td>
+<pre>% checkjob 650263
+job 650263
+
+AName: vasp_NEB_inter_midbot_t2
+State: Running
+Creds:  user:vuiuey2  group:vuiuey2  account:ioncond  class:pbatch  qos:normal
+WallTime:  01:53:43 of 06:00:00
+SubmitTime: Thu May 11 06:50:30
+  (Time Queued Total:  1:49:46   Eligible:  1:49:46)
+
+StartTime: Thu May 11 08:40:16
+Total Requested Tasks:  1
+Total Requested Nodes:  10
+Partition: pbatch
+Dedicated Resources Per Task: luster1
+Node Access: SINGLEJOB
+NodeCount: 10
+
+Allocated Nodes:
+quartz[52,362-363,398-399,444-445,2648-2650]
+
+SystemID:  quartz
+SystemJID: 650263
+IWD:        /p/luster1/vuiuey2/calculations/radiation/V_Br/NEB_inter_midbot_t2
+Executable: /p/luster1/vuiuey2/calculations/radiation/V_Br/NEB_inter_midbot_t2/psub.vasp
+
+User Specified Partition List:    quartz
+System Available Partition List:  quartz
+Partition List: quartz
+StartPriority: 1000031
+
+</pre><hr />% checkjob 648336 <em>(shows a job with diagnostic information)</em> job 648336 AName: Ni-0.01-0.04.f_0.04_res2 State: Idle Creds: user:uuushie1 group:uuushie1 account:nonadiab class:pbatch qos:normal WallTime: 00:00:00 of 16:00:00 SubmitTime: Wed May 10 13:38:30 (Time Queued Total: 21:04:25 Eligible: 00:00:00) StartTime: 0 Total Requested Tasks: 1 Total Requested Nodes: 300 Depend: afterany:648335 Partition: pbatch Dedicated Resources Per Task: luster1 Node Access: SINGLEJOB NodeCount: 300 SystemID: quartz SystemJID: 648336 IWD: /p/luster1/uuushie1/bigfiles/alpha_in_nickel/velocities/0.04.ff-redo Executable: /p/luster1/uuushie1/bigfiles/alpha_in_nickel/velocities/0.04.ff-redo/s_restart2.sh User Specified Partition List: quartz System Available Partition List: quartz Partition List: quartz StartPriority: 1 NOTE: job can not run because it's dependency has not been met. (afterany:648335)</td>
+</tr></table></li>
+</ul><p><a name="scontrolshowjob" id="scontrolshowjob"> </a></p>
+<h4>scontrol show job</h4>
+<ul><li>Similar to checkjob</li>
+<li>Can not be used with completed jobs</li>
+<li><a href="/sites/default/files/scontrol.txt">scontrol man page here</a></li>
+<li>Example below:<br /><table><tr><td>
+<pre>% scontrol show job 2835312
+JobId=2835312 JobName=zGaAs_phonon_final_pressures_1200K_It2
+   UserId=janedoe(58806) GroupId=janedoe(58806) MCS_label=N/A
+   Priority=1342000 Nice=0 Account=qtc QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:28:37 TimeLimit=01:02:00 TimeMin=N/A
+   SubmitTime=2019-05-22T15:40:56 EligibleTime=2019-05-22T15:40:56
+   StartTime=2019-05-24T09:30:59 EndTime=2019-05-24T10:32:59 Deadline=N/A
+   PreemptTime=None SuspendTime=None SecsPreSuspend=0
+   LastSchedEval=2019-05-24T09:30:59
+   Partition=pbatch AllocNode:Sid=quartz380:1253
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=quartz[819,909,966,1001,1064,1066]
+   BatchHost=quartz819
+   NumNodes=6 NumCPUs=216 NumTasks=6 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   TRES=cpu=216,node=6,billing=216
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=1 MinMemoryNode=0 MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   Gres=(null) Reservation=(null)
+   OverSubscribe=NO Contiguous=0 Licenses=(null) Network=(null)
+   Command=/usr/WS1/janedoe/GaAs/phonons/final-pressures/zGaAs/1200K/Iteration2/10.0GPa/13/Submit.SLURM
+   WorkDir=/usr/WS1/janedoe/GaAs/phonons/final-pressures/zGaAs/1200K/Iteration2/10.0GPa/13
+   StdErr=/usr/WS1/janedoe/GaAs/phonons/final-pressures/zGaAs/1200K/Iteration2/10.0GPa/13/slurm-2835312.out
+   StdIn=/dev/null
+   StdOut=/usr/WS1/janedoe/GaAs/phonons/final-pressures/zGaAs/1200K/Iteration2/10.0GPa/13/slurm-2835312.out
+   Power=</pre></td>
+</tr></table></li>
+</ul><p><a name="sprio" id="sprio"> </a></p>
+<h4>sprio -l &amp; mdiag -p -v</h4>
+<ul><li>Displays a list of queued jobs, their priority, and the primary factors used to calculate job priority.</li>
+<li>These commands show identical output.</li>
+<li>To sort the job list by priority use the command:<br /><pre>sprio -l | sort -r -k 4,4
+mdiag -p -v | sort -r -k 4,4</pre></li>
+<li> Useful for determining where your jobs are queued relative to other jobs. Highest priority jobs are at the top of the list.</li>
+<li>Man pages:
+<ul><li><a href="/sites/default/files/sprio.txt" target="_blank">sprio.txt</a></li>
+<li><a href="/sites/default/files/mdiag.txt" target="_blank">mdiag</a></li>
+</ul></li>
+<li>Example below (some output omitted to fit screen):<br /><table><tr><td>
+<pre>% sprio -l
+  JOBID  PARTITION  USER   PRIORITY        AGE  FAIRSHARE    JOBSIZE  PARTITION        QOS   NICE
+ 626621  pbatch   yyyg30    1001015        324        692          0          0    1000000      0
+ 669823  pbatch  vuuuey2    1000526        524          2          0          0    1000000      0
+ 669836  pbatch  vuuuey2    1000496        494          2          0          0    1000000      0
+ 670732  pbatch m998eson    1000903        870         34          0          0    1000000      0
+ 671723  pbatch   couoni    1000824        278        547          0          0    1000000      0
+ 671842  pbatch   p66716    1000703        703          1          0          0    1000000      0
+ 674730  pbatch   p667a1    1002698        201       2497          0          0    1000000      0
+ ...
+ 675982  pbatch   p998v2    1043716         15      43701          0          0    1000000      0
+ 675984  pbatch rl233sey    1145228         14     145214          0          0    1000000      0
+ 675985  pbatch ed444ton    1019905         14      19892          0          0    1000000      0
+ 675988  pbatch rl233sey    1145225         12     145214          0          0    1000000      0
+ 675993  pbatch   a000hn    1064602          9      64593          0          0    1000000      0
+
+</pre></td>
+</tr></table></li>
+</ul><p><a name="sview" id="sview"> </a></p>
+<h4>sview</h4>
+<ul><li>Graphically displays all user jobs on a cluster, nodes used, and detailed job information for each job.</li>
+<li><a href="/sites/default/files/sview.txt">sview man page here</a></li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-2137" class="file file-image file-image-png">
+
+        <h2 class="element-invisible"><a href="/files/sview-png-0">sview.png</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Full System Example of Sview" height="1027" width="1473" class="media-element file-default" data-delta="4" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/sview_0.png" /></div>
+
+  
+</div>
+</div>
+<h4><div class="media media-element-container media-default"><div id="file-2138" class="file file-image file-image-png">
+
+        <h2 class="element-invisible"><a href="/files/sview2-png">sview2.png</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Screenshot of Sview " height="886" width="960" style="width: 960px; height: 886px;" class="media-element file-default" data-delta="5" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/sview2.png" /></div>
+
+  
+</div>
+</div></h4>
+<h4>sinfo</h4>
+<ul><li>Displays state information about a cluster's queues and nodes</li>
+<li>Numerous options for additional/customized output</li>
+</ul><p> </p>
+<ul><li>Common/useful options:
+<ul><li>-s summarizes queue information</li>
+</ul></li>
+<li><a href="/sites/default/files/sinfo.txt">sinfo man page here</a> </li>
+<li>Examples below:</li>
+</ul><table><tr><td>
+<pre>% sinfo
+PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
+pdebug       up      30:00      3  alloc quartz[1-3]
+pdebug       up      30:00     13   idle quartz[4-16]
+pbatch*      up 1-00:00:00      3 drain* quartz[1321,2037,2593]
+pbatch*      up 1-00:00:00      1  drain quartz2183
+pbatch*      up 1-00:00:00   2584  alloc quartz[17-186,193-378,391-762,775-
+1146,1159-1320,1322-1530,1543-1914,1927-2036,2038-2182,2184-2298,2311-2496,
+2503-2592,2594-2688]
+
+</pre><hr />% sinfo -s PARTITION AVAIL TIMELIMIT NODES(A/I/O/T) NODELIST pdebug up 30:00 11/5/0/16 quartz[1-16] pbatch* up 1-00:00:00 2584/0/4/2588 quartz[17-186,193-378,391-762, 775-1146,1159-1530,1543-1914,1927-2298,2311-2496,2503-2688]</td>
+</tr></table><ul></ul><p><a name="JobStates" id="JobStates"> </a></p>
+<h3>Job States and Status Codes</h3>
+<ul><li>Job state and status codes usually appear in the output of job monitoring commands. Most are self-explanatory.</li>
+<li>For details, consult the man page for the relevant command.</li>
+<li>The table below describes commonly observed job state and status codes.<br /><table class="table table-bordered table-striped"><tr><th>Job State/Status</th>
+<th>Description</th>
+</tr><tr><td>BatchHold<br />SystemHold<br />UserHold<br />JobHeldUser</td>
+<td>Job is idle and is not eligible to run due to a user, admin, or batch system hold.</td>
+</tr><tr><td>Canceling<br />CA  CANCELLED</td>
+<td>Job is cancelled or in the process of being cancelled.</td>
+</tr><tr><td>Completed<br />CD  COMPLETED<br />CG  COMPLETING</td>
+<td>Job is in the process of, or has completed running.</td>
+</tr><tr><td>Deferred</td>
+<td>Job can not be run for one reason or another, however it will continue to evaluate the job periodically for run eligibility.</td>
+</tr><tr><td>Depend<br />Dependency</td>
+<td>Job can not run because it has a dependency.</td>
+</tr><tr><td>F  FAILED</td>
+<td>Job terminated with non-zero exit code or other failure condition.</td>
+</tr><tr><td>NF  NODE_FAIL</td>
+<td>Job terminated due to failure of one or more allocated nodes.</td>
+</tr><tr><td>Idle</td>
+<td>Job is queued and eligible to run but is not yet executing.</td>
+</tr><tr><td>Migrated</td>
+<td>This is a transitional state that indicates that the job is in being handed off to the native Slurm resource manager on a specific machine in preparation for running.</td>
+</tr><tr><td>NotQueued</td>
+<td>Indicates a system problem in most cases.</td>
+</tr><tr><td>PD  PENDING</td>
+<td>Job is awaiting resource allocation.</td>
+</tr><tr><td>Priority</td>
+<td>One or more higher priority jobs exist for this partition.</td>
+</tr><tr><td>Removed</td>
+<td>Job has run to its requested walltime successfully but has been canceled by the scheduler or resource manager due to exceeding its walltime or violating another policy; includes jobs canceled by users or administrators either before or after a job has started.</td>
+</tr><tr><td>Resources</td>
+<td>The job is waiting for resources to become available.</td>
+</tr><tr><td>Running<br />R  RUNNING</td>
+<td>Job is currently executing the user application.</td>
+</tr><tr><td>Staging</td>
+<td>The job has been submitted to the batch system for it to run but the batch system has not confirmed yet that the job is actually running.</td>
+</tr><tr><td>Starting</td>
+<td>The batch system has attempted to start the job and the job is currently performing pre-start tasks which may including provisioning resources, staging data,executing system pre-launch scripts, etc.</td>
+</tr><tr><td>Suspended<br />S  SUSPENDED</td>
+<td>Job was running but has been suspended by the scheduler or an admin. The user application is still in place on the allocated compute resources but it is not executing.</td>
+</tr><tr><td>TimeLimit<br />TO  TIMEOUT</td>
+<td>Job terminated upon reaching its time limit.</td>
+</tr><tr><td>Vacated</td>
+<td>Job canceled after partial execution due to a system failure.</td>
+</tr></table></li>
+</ul><p><a name="Exercise1" id="Exercise1"> </a></p>
+<h2><span class="heading1">Exercise 1</span></h2>
+<h3>Getting Started</h3>
+<h4>Overview</h4>
+<ul><li>Login to an LC cluster using your workshop username and OTP token</li>
+<li>Copy the exercise files to your home directory</li>
+<li>Familiarize yourself with the cluster's batch configuration</li>
+<li>Familiarize yourself with the cluster's bank allocations</li>
+<li>Create a job batch script</li>
+<li>Submit and monitor your batch job</li>
+<li>Check your job's output</li>
+</ul><p><a href="/training/tutorials/slurm-and-moab-exercise" target="_blank">GO TO THE EXERCISE HERE</a></p>
+<p>Approx. 20 minutes</p>
+<ul></ul><p><a name="Hold/Release" id="Hold/Release"> </a></p>
+<h2><a id="BasicFunctions" name="BasicFunctions"></a>Basic Functions</h2>
+<h3>Holding and Releasing Jobs</h3>
+<p>Holding Jobs:</p>
+<ul><li>Users can place their jobs in a "user hold" state several ways:<br /><table><tr><th>Where/When</th>
+<th>Slurm</th>
+<th>Moab</th>
+</tr><tr><td>Job script</td>
+<td>
+<pre>#SBATCH -H</pre></td>
+<td>
+<pre>#MSUB -h</pre></td>
+</tr><tr><td>Command line<br />(when submitted)</td>
+<td>
+<pre>sbatch -H <em>jobscript</em></pre></td>
+<td>
+<pre>msub -h <em>jobscript</em></pre></td>
+</tr><tr><td>Command line<br />(queued job)</td>
+<td>
+<pre>scontrol hold <em>jobid</em></pre></td>
+<td>
+<pre>mjobctl -h <em>jobid</em></pre></td>
+</tr></table><p> </p>
+</li>
+<li>Jobs placed in a user hold state will be shown as such in the output of the various job monitoring commands.
+<p> </p>
+</li>
+<li>Running jobs cannot be placed on hold.
+<p> </p>
+</li>
+<li>Note that jobs can be placed on system hold status by the workload manager or by system administrators. Not covered here.
+<p> </p>
+</li>
+<li>Examples (Slurm):<br /><table><tr><td>Placing a job on hold at submission time:
+<pre>% sbatch -H myjob
+Submitted batch job 650974
+
+% squeue -j 650974
+   JOBID PARTITION     NAME     USER  ST       TIME  NODES NODELIST(REASON)
+ 650974    pbatch   T4.CMD   joeuser  PD       0:00      2 (JobHeldUser)
+</pre><hr /> Placing a job on hold after it was submitted:
+<pre>% sbatch myjob
+Submitted batch job 651001
+
+% squeue -j 651001
+  JOBID PARTITION     NAME     USER  ST       TIME  NODES NODELIST(REASON)
+ 651001    pbatch   T3.CMD  joeuser  PD       0:00    128 (Priority)
+
+% scontrol hold 651001
+
+% squeue -j 651001
+  JOBID PARTITION     NAME     USER  ST       TIME  NODES NODELIST(REASON)
+ 651001    pbatch   T3.CMD  joeuser  PD       0:00    128 (JobHeldUser)
+</pre></td>
+</tr></table></li>
+</ul><p>Releasing Jobs:</p>
+<ul><li>To release a queued job from a user hold state:<br /><table><tr><th>Slurm</th>
+<th>Moab</th>
+</tr><tr><td>
+<pre>scontrol release <em>jobid</em></pre></td>
+<td>
+<pre>mjobctl -u <em>jobid</em></pre></td>
+</tr></table><p> </p>
+</li>
+<li>Example (Slurm):<br /><table><tr><td>
+<pre>% squeue -j 651001
+  JOBID PARTITION     NAME     USER  ST       TIME  NODES NODELIST(REASON)
+ 651001    pbatch   T3.CMD  joeuser  PD       0:00    128 (JobHeldUser)
+
+% scontrol release 651001
+
+% squeue -j 651001
+  JOBID PARTITION     NAME     USER  ST       TIME  NODES NODELIST(REASON)
+ 651001    pbatch   T3.CMD  joeuser  PD       0:00    128 (Priority)
+</pre></td>
+</tr></table></li>
+</ul><p><a name="Cancel" id="Cancel"> </a></p>
+<h3>Canceling Jobs</h3>
+<ul><li>To cancel either running or queued jobs:<br /><table><tr><th>Slurm</th>
+<th>Moab</th>
+</tr><tr><td>
+<pre>scancel <em>jobid</em>
+canceljob <em>jobid</em></pre></td>
+<td>
+<pre>mjobctl -c <em>jobid</em></pre></td>
+</tr></table></li>
+<li>Both scancel and canceljob can be used to cancel multiple jobs at the same time.</li>
+<li>The scancel command has a number of options to specify criteria for job cancellation. See the <a href="/sites/default/files/scancel.txt" target="_blank">scancel man page</a> for details.</li>
+<li>Examples (Slurm):<br /><table><tr><td>
+<pre>% scancel 23692
+
+</pre><hr />% scancel -i 651040 Cancel job_id=651040 name=T2.CMD partition=pbatch [y/n]? y<br /><hr /> % canceljob 23458 23459 23460 job '23458' cancelled job '23459' cancelled job '23460' cancelled</td>
+</tr></table></li>
+</ul><p><a name="ChangingParameters" id="ChangingParameters"> </a></p>
+<h3>Changing Job Parameters</h3>
+<ul><li>Only a few job parameters can be changed after after a job is submitted. These parameters include:
+<ul><li>job dependency (change to "none")</li>
+<li>queue</li>
+<li>job name</li>
+<li>number of nodes (decrease only)</li>
+<li>user priority</li>
+<li>wall clock limit</li>
+<li>parallel file system dependency</li>
+<li>account</li>
+<li>qos</li>
+</ul></li>
+<li>For the most part, these parameters can only be changed for queued (non-running) jobs.</li>
+<li><span class="note-red">Note </span>there is virtually no documentation for this feature.</li>
+<li>Examples:<br /><table><tr><th>Parameter</th>
+<th>Slurm</th>
+<th>Moab</th>
+</tr><tr><td>syntax</td>
+<td>
+<pre>scontrol update job=<em>jobid</em> <em>parameter</em>=<em>value</em></pre></td>
+<td>
+<pre>mjobctl -m <em>parameter</em>=<em>value</em> <em>jobid</em></pre></td>
+</tr><tr><td>dependency (set to "none")</td>
+<td>
+<pre>scontrol update job=651070 depend=none</pre></td>
+<td>
+<pre>mjobctl -m depend=none 651070</pre></td>
+</tr><tr><td>queue</td>
+<td>
+<pre>scontrol update job=651070 partition=pdebug</pre></td>
+<td>
+<pre>mjobctl -m queue=pdebug 651070</pre></td>
+</tr><tr><td>job name</td>
+<td>
+<pre>scontrol update job=651070 name=alphaScan</pre></td>
+<td>
+<pre>mjobctl -m jobname=alphaScan 651070</pre></td>
+</tr><tr><td>nodes (decrease)</td>
+<td>
+<pre>scontrol update job=651070 numnodes=4</pre></td>
+<td>
+<pre>mjobctl -m nodes=4 651070</pre></td>
+</tr><tr><td>user priority</td>
+<td>
+<pre>scontrol update job=651070 prio=100</pre></td>
+<td>
+<pre>mjobctl -m userprio=100 651070</pre></td>
+</tr><tr><td>wall clock limit</td>
+<td>
+<pre>scontrol update job=651070 timelimit=2:00:00</pre></td>
+<td>
+<pre>mjobctl -m wclimit=2:00:00 651070</pre></td>
+</tr><tr><td>parallel file system</td>
+<td>
+<pre>scontrol update job=651070 gres=ignore</pre></td>
+<td>
+<pre>mjobctl -m gres=ignore 651070</pre></td>
+</tr><tr><td>account</td>
+<td>
+<pre>scontrol update job=651070 account=physics</pre></td>
+<td>
+<pre>mjobctl -m account=physics 651070</pre></td>
+</tr><tr><td>qos</td>
+<td>
+<pre>scontrol update job=651070 qos=standby</pre></td>
+<td>
+<pre>mjobctl -m qos=standby 651070</pre></td>
+</tr></table></li>
+</ul><p><a name="Dependent" id="Dependent"> </a></p>
+<h3>Setting Up Dependent Jobs</h3>
+<ul><li>If a job depends upon the completion of one or more other jobs, you can specify this several ways:<br /><table><tr><th>Where</th>
+<th>Slurm</th>
+<th>Moab</th>
+</tr><tr><td>Command line</td>
+<td>
+<pre>sbatch -d 52628 jobscript
+sbatch -d after:52628:52629:52630 jobscript
+sbatch -d afterany:52628:52629:52630 jobscript</pre></td>
+<td>
+<pre>msub -l depend=33523 jobscript
+msub -l depend="33523 33524 33525" jobscript</pre></td>
+</tr><tr><td>Job script<br />(for this job)</td>
+<td>
+<pre>#SBATCH -d 52628
+#SBATCH -d after:52628:52629:52630
+#SBATCH -d afterany:52628:52629:52630</pre></td>
+<td>
+<pre>#MSUB -l depend=33523
+#MSUB -l depend="33523 33524 33525"</pre></td>
+</tr><tr><td>Job script<br />(for next job)</td>
+<td>
+<pre># $SLURM_JOBID is current job's id
+# Submit next job dependent on this job
+sbatch jobscript -d $SLURM_JOBID
+</pre></td>
+<td>
+<pre># $SLURM_JOBID is current job's id
+# Submit next job dependent on this job
+msub jobscript -l depend=$SLURM_JOBID
+</pre></td>
+</tr></table><p> </p>
+</li>
+<li>See the <a href="/sites/default/files/sbatch_0.txt" target="_blank">sbatch man page</a> for additional Slurm dependency options.</li>
+<li>Checking/verifying job dependency - use the checkjob <em>jobid</em> command.<br /><table><tr><td>
+<pre>% checkjob 652974
+job 652974
+
+AName: T3.CMD
+State: Idle
+Creds:  user:joeuser  group:joeuser  account:lc  class:pbatch  qos:normal
+WallTime:  00:00:00 of 01:40:00
+SubmitTime: Fri May 12 10:03:57
+  (Time Queued Total: 00:00:10   Eligible: 00:00:00)
+
+StartTime: 0
+Total Requested Tasks:  1
+Total Requested Nodes:  2
+Depend:    afterjob:652628:652973:652971
+
+Partition: pbatch
+Dedicated Resources Per Task: ignore
+Node Access: SINGLEJOB
+NodeCount: 2
+
+SystemID:  quartz
+SystemJID: 652974
+IWD:        /g/g0/joeuser/moab
+Executable: /g/g0/joeuser/moab/t3.cmd
+
+User Specified Partition List:    quartz
+System Available Partition List:  quartz
+Partition List: quartz
+StartPriority: 1
+
+ NOTE: job can not run because it's dependency has not been met. (after:652628:652973:652971)
+
+</pre></td>
+</tr></table></li>
+</ul><p><a name="BanksUsage" id="BanksUsage"> </a></p>
+<h3>Banks and Usage Information</h3>
+<h4>Overview</h4>
+<ul><li>As <a href="#Banks">discussed previously</a>, in order to run on a cluster, you need to have two things:
+<ul><li>Login account: your username appears in /etc/passwd</li>
+<li>Bank: your username is associated with a valid bank</li>
+</ul></li>
+<li>Banks are hierarchical and determine the percentage of machine resources (cycles) you are entitled to receive, as discussed in the <a href="#Banks">Banks</a> section of this tutorial.</li>
+<li>Every cluster has its own unique bank structure. To view the entire bank hierarchy, use the command:<br /><pre>mshare -t root</pre></li>
+<li>You may have an allocation in more than one bank.</li>
+<li>If you belong to more than one bank, your banks are not necessarily shared across all of the clusters where you have a login account.</li>
+<li>You have a default bank on each cluster, which may/may not be the same on other clusters.</li>
+</ul><h4>mshare</h4>
+<ul><li>Displays bank structure, allocations and usage information</li>
+<li>If you want to see your available banks and usage stats for a cluster, this is the best command to use.</li>
+<li>This is also the best command for viewing your place within the entire bank hierarchy.</li>
+<li><a href="/sites/default/files/mshare.txt">mshare man page here</a></li>
+<li>Examples below:<br /><table><tr><td>
+<pre>% mshare
+Partition cab
+
+USERNAME       ACCOUNT             --------SHARES--------  ---USAGE---
+                                   ALLOCATED   NORMALIZED   NORMALIZED
+joeuser        bdivp                     1.0     0.03318%     0.00000%
+joeuser        ices                      1.0     0.56895%     1.39241%
+joeuser        tmi                       1.0     0.26551%     0.00000%
+joeuser        cms                       1.0     0.32245%     1.03216%
+
+</pre><hr />% mshare -t root <em>(lots of output deleted)</em> Partition cab U/A NAME A/P NAME --------SHARES-------- ---USAGE--- ALLOCATED NORMALIZED NORMALIZED root root 1.0 100.00000% 100.00000% root root 1.0 0.98039% 0.00000% ds root 60.0 58.82353% 61.09482% uqpline ds 17.0 10.00000% 0.00000% alliance ds 30.0 17.64706% 17.90455% caltech alliance 14.0 2.47059% 0.00000% user1 caltech 1.0 0.30882% 0.00000% user2 caltech 1.0 0.30882% 0.00000% user3 utah 1.0 0.08824% 0.00000% dnt ds 47.0 27.64706% 42.28668% a dnt 30.0 8.29412% 0.56933% adev a 5.0 4.14706% 0.31294% user1 adev 1.0 0.17279% 0.00000% axcode adivp 75.0 1.23180% 0.06002% user1 aprod 1.0 0.35546% 0.00000% user2 aprod 1.0 0.35546% 0.00000% b dnt 30.0 8.29412% 21.11694% bdev b 5.0 4.14706% 0.00000% user1 bdev 1.0 0.29622% 0.00000% lc overhead user1 lc 1.0 0.00302% 0.00000% user2 lc 1.0 0.00302% 0.00000% user3 lc 1.0 0.00302% 0.00000% none overhead 1.0 0.00980% 0.00000% sa overhead 74.0 0.72549% 0.00000% da sa 1.0 0.14510% 0.00000% user1 sa 1.0 0.14510% 0.00000% user2 sa 1.0 0.14510% 0.00000%</td>
+</tr></table></li>
+</ul><h4>mdiag -u</h4>
+<ul><li>Shows which banks and qos are available.</li>
+<li>If you do not specify a username, it will display all users.</li>
+<li>Example below (some output deleted to fit screen):<br /><table><tr><td>
+<pre>% mdiag -u joeuser
+
+      User   Def Acct    Cluster    Account     Share   ...               QOS
+---------- ---------- ---------- ---------- ---------       ------------------
+   joeuser                quartz      peml2         1           normal,standby
+   joeuser                quartz    cbronze         1           normal,standby
+   joeuser                quartz    pemwork         1           normal,standby
+   joeuser                quartz     libqmd         1           normal,standby
+   joeuser                quartz   dbllayer         1           normal,standby </pre></td>
+</tr></table></li>
+</ul><h4>sreport</h4>
+<ul><li>Reports usage information for a cluster, bank, individual, date range, and more.</li>
+<li><a href="/sites/default/files/sreport.txt">sreport man page here</a></li>
+<li>Example: show usage by user (in hours) for the alliance bank on the cluster cab between the dates shown.<br /><table><tr><td>
+<pre>% sreport -t hours cluster AccountUtilizationByUser accounts=alliance cluster=cab  start=2/1/12 end=3/1/12
+
+--------------------------------------------------------------------------------
+Cluster/Account/User Utilization 2012-02-01T00:00:00 - 2012-02-29T23:59:59 (2505600 secs)
+Time reported in CPU Hours
+--------------------------------------------------------------------------------
+  Cluster         Account     Login     Proper Name       Used
+--------- --------------- --------- --------------- ----------
+     cab         alliance                              2739237
+     cab          caltech                               500080
+     cab          caltech   br4e33t        Joe User     500076
+     cab          caltech   sthhhd6       Bill User          4
+     cab         michigan                               844339
+     cab         michigan  dhat67s        Mary User       261
+     cab         michigan  hetyyr2         Sam User     38552
+...
+...
+</pre></td>
+</tr></table></li>
+</ul><p><a name="OutputFiles" id="OutputFiles"> </a></p>
+<h3>Output Files</h3>
+<h4>Defaults</h4>
+<ul><li>The batch output file is named slurm-<em>jobid</em>.out</li>
+<li>stdout and stderr are combined into the same batch output file.</li>
+<li>Will be written to the directory where you issued the sbatch or msub command.</li>
+<li>The name of a job has no effect on the name of the output file.</li>
+<li>If an output file with the same name already exists, new output will append to it.</li>
+</ul><h4>Assigning Unique Output File Names</h4>
+<ul><li>Use the -o and -e options to uniquely name your output files - either on the command line or within your job script.</li>
+<li>Use %j to include the jobid, and %N to include the node name in the output file.</li>
+<li>Examples:<br /><table><tr><th>Slurm</th>
+<th>Moab</th>
+</tr><tr><td>
+<pre>#SBATCH -o /g/g11/joeuser/myjob.out
+#SBATCH -o myjob.out.%j
+#SBATCH -o myjob.out.%N
+#SBATCH -o myjob.out.%j.%N</pre></td>
+<td>
+<pre>#MSUB -o /g/g11/joeuser/myjob.out
+#MSUB -o myjob.out.%j
+#MSUB -o myjob.out.%N
+#MSUB -o myjob.out.%j.%N</pre></td>
+</tr><tr><td>
+<pre>sbatch -e /g/g11/joeuser/myjob.err jobscript
+sbatch -o $HOME/proj12/myjob.out jobscript
+sbatch -o myjob.out.%j jobscript</pre></td>
+<td>
+<pre>msub -e /g/g11/joeuser/myjob.err jobscript
+msub -o $HOME/proj12/myjob.out jobscript
+msub -o myjob.out.%j jobscript</pre></td>
+</tr></table></li>
+</ul><p>Caveats:</p>
+<ul><li>#SBATCH / #MSUB tokens in a job script do not interpret the ~ (tilde) character or $VARIABLE in file names. These will be interpreted however, by the command line sbatch and msub commands.
+<p> </p>
+</li>
+<li>Erroneous file paths are not checked or reported upon.</li>
+</ul><p><a name="Guesstimate" id="Guesstimate"> </a></p>
+<h3>Guesstimating When Your Job Will Start</h3>
+<ul><li>One of the most frequently asked questions is "When will my job start?".</li>
+<li>Because job scheduling is dynamic, and can change at any moment, picking an exact time is often impossible.</li>
+<li>There are a couple ways that you can get an estimate on when your job will start, based on the current situation.</li>
+<li>The easiest way is to use the checkjob command. Look for the StartTime line - if it exists. Note that not all jobs will show a start time.</li>
+<li>For example:<br /><table><tr><td>
+<pre>% checkjob 830063
+job 830063
+
+AName: OSU_IMPI51_ICC_64_run_2
+State: Idle
+Creds:  user:e889till  group:e889till  account:asccasc  class:pbatch  qos:normal
+WallTime:  00:00:00 of 01:00:00
+SubmitTime: Wed Jun 14 09:12:48
+  (Time Queued Total:  5:06:19   Eligible:  5:06:19)
+
+StartTime: Thu Jun 15 00:02:00
+Total Requested Tasks:  1
+Total Requested Nodes:  64
+Partition: pbatch
+Dedicated Resources Per Task: ignore
+Node Access: SINGLEJOB
+NodeCount: 64
+
+SystemID:  quartz
+SystemJID: 830063
+IWD:        /g/g91/e889till/batcher
+Executable: /g/g91/e889till/batcher/quartz.job
+
+User Specified Partition List:    quartz
+System Available Partition List:  quartz
+Partition List: quartz
+StartPriority: 1000147
+
+NOTE: job can not run because there are higher priority jobs.
+</pre></td>
+</tr></table></li>
+<li>Sometimes the squeue --start command can be used to get an estimate for job start times (and sometimes it can't). For example:<br /><table><tr><td>
+<pre>% squeue --start
+  JOBID PARTITION     NAME     USER  ST           START_TIME  NODES NODELIST(REASON)
+2173337    pbatch  job.txt  is456i1  PD  2017-06-28T15:31:58      1 (Priority)
+2173338    pbatch  job.txt  is456i1  PD  2017-06-28T15:36:02      1 (Priority)
+2173339    pbatch  job.txt  is456i1  PD  2017-06-28T16:25:37      1 (Priority)
+2173340    pbatch  job.txt  is456i1  PD  2017-06-28T16:26:37      1 (Priority)
+2173341    pbatch  job.txt  is456i1  PD  2017-06-28T16:35:37      1 (Priority)
+...
+2174947    pbatch S180_10p bbbmons3  PD  2017-07-03T19:28:33      1 (Priority)
+1247698    pdebug ppmd_IA6   vvvang  PD                  N/A      2 (PartitionNodeLimit)
+1863133    pbatch    runme   tttite  PD                  N/A      4 (PartitionNodeLimit)
+2156487    pbatch surge110 mrtrang1  PD                  N/A      1 (Dependency)
+2163499    pbatch      voh mrtrang1  PD                  N/A      1 (Dependency)
+</pre></td>
+</tr></table></li>
+<li>You can also view the position of your job in the queue relative to other jobs. Either of the commands below will give you a list of idle jobs sorted by priority - highest priority is at the top of the list.<br /><pre>sprio -l | sort -r -k 4,4
+mdiag -p -v | sort -r -k 4,4
+</pre></li>
+<li>For example (some output deleted to fit screen):<br /><table><tr><td>
+<pre>% sprio -l  |  sort -r -k 4,4
+  JOBID  PARTITION  USER   PRIORITY        AGE  FAIRSHARE    JOBSIZE  PARTITION        QOS   NICE
+ 830811  pbatch   aaarg2    1321517          0     321517          0          0    1000000      0
+ 830760  pbatch    saaa4    1189400          6     189394          0          0    1000000      0
+ 830759  pbatch    saaa4    1189400          6     189394          0          0    1000000      0
+ 830776  pbatch    saaa4    1189397          3     189394          0          0    1000000      0
+ 830775  pbatch    ddwa9    1189397          3     189394          0          0    1000000      0
+ 830774  pbatch    rrra8    1189397          3     189394          0          0    1000000      0
+...
+
+ 830366  pbatch  zhhhh49    1000127        127          0          0          0    1000000      0
+ 830365  pbatch  taffhh2    1000127        128          0          0          0    1000000      0
+ 830369  pbatch  zhhhh49    1000125        125          0          0          0    1000000      0
+ 830493  pbatch  wwwg102    1000102         86         16          0          0    1000000      0
+ 830576  pbatch  jjjtega    1000090         31         60          0          0    1000000      0
+ 830810  pbatch e988till    1000000          0          0          0          0    1000000      0
+ 829743  pbatch  yyymel2    1000000          0          0          0          0    1000000      0
+</pre></td>
+</tr></table></li>
+</ul><p><a name="TimeExpired" id="TimeExpired"> </a></p>
+<h3>Determining When Your Job's Time is About to Expire</h3>
+<ul><li>Determining when your job's time is about to expire is useful for cleaning up, writing checkpoint files or other data, and exiting gracefully.</li>
+<li>One common way to accomplish this is to request the batch system to send your job a signal shortly before its time expires.</li>
+<li>Another common way is to query/poll the batch system to determine how much time remains.</li>
+</ul><h4>Signaling Method</h4>
+<ul><li>You can send a specific signal your job at a designated time before the job is scheduled to terminate.</li>
+<li>Syntax:<br /><pre>signal=<em>signal</em>@<em>seconds_remaining</em>
+</pre></li>
+<li>Examples:<br /><table><tr><th>Where/When</th>
+<th>Slurm</th>
+<th>Moab</th>
+</tr><tr><td>Job script</td>
+<td>
+<pre>#SBATCH --signal=1@120
+#SBATCH --signal=SIGHUP@120</pre></td>
+<td>
+<pre>#MSUB -l signal=1@120
+#MSUB -l signal=SIGHUP@120</pre></td>
+</tr><tr><td>Command line<br />(when submitted)</td>
+<td>
+<pre>sbatch --signal=1@120 jobscript
+sbatch --signal=SIGHUP@120 jobscript</pre></td>
+<td>
+<pre>msub -l signal=1@120 jobscript
+msub -l signal=SIGHUP@120 jobscript</pre></td>
+</tr><tr><td>Command line<br />(queued job)</td>
+<td>
+<pre>scancel --signal=1 24897
+scancel --signal=SIGHUP  24897</pre></td>
+<td>
+<pre>mjobctl -N signal=1 24897
+mjobctl -N signal=SIGHUP  24897</pre></td>
+</tr></table></li>
+<li>In order to use this method, you will need to write a signal handler as part of your code.</li>
+<li>You'll also need to know the valid signal numbers/names on the system you're using. These are usually included in a system header file, such as <a href="/sites/default/files/signum.txt" target="_blank"> <span class="file">/usr/include/bits/signum.h</span></a> on LC Linux systems.</li>
+<li>Simple example:<br /><table><tr><td>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;signal.h&gt;
+
+void do_cleanup(){
+   printf("doing cleanup activities...\n");
+}
+
+void user_handler(int sig){
+   do_cleanup();
+   printf("in user_handler, got signal=%d\n",sig);
+   exit(1);
+}
+
+int main (int argc, char *argv[]) {
+   signal(SIGHUP, user_handler);
+   sleep(12000);
+}
+</pre></td>
+</tr></table></li>
+</ul><h4>Polling Method</h4>
+<ul><li>From within a running job, you can determine when its time will expire. This is accomplished by calling a routine from within your source code.</li>
+<li>yogrt_remaining()
+<ul><li>A locally developed library. Stands for "Your Only Get Remaining Time" routine. <a href="/sites/default/files/yogrt_remaining.txt">yogrt_remaining man page available</a></li>
+</ul></li>
+<li>slurm_get_rem_time()
+<ul><li>Returns the number of seconds remaining before the expected termination time of a specified Slurm job id. <a href="/sites/default/files/slurm_get_rem_time.txt">slurm_get_rem_time man page available</a></li>
+</ul></li>
+</ul><h4>More on yogrt_remaining</h4>
+<ul><li>Need to include <span class="file">yogrt.h</span></li>
+<li>Need to link with <span class="file">-lyogrt</span>. This may/may not be in your default LIBPATH. Currently, libyogrt is located in <span class="file">/usr/lib64</span> on LC machines. If you can't find it, try using the command: findentry yogrt_remaining.</li>
+<li>Simple example:<br /><table><tr><td>
+<pre>#include &lt;yogrt.h&gt;
+
+main (int argc, char **argv) {
+
+long t;
+int i;
+
+for (i=0; i&lt;10; i++) {
+   t = yogrt_remaining();
+   printf("Remaining time= %li\n",t);
+   sleep(5);
+   }
+}</pre></td>
+</tr></table></li>
+</ul><p><a name="Standby" id="Standby"> </a></p>
+<h3>Running in Standby Mode</h3>
+<ul><li>Jobs can have a Quality of Service (QOS) of:
+<ul><li>normal - usual case; default</li>
+<li>exempt - overrides normal policies, limits; requires LC authorization</li>
+<li>expedite - highest priority; requires LC authorization</li>
+<li>standby - lowest priority</li>
+</ul></li>
+<li>At LC, "standby" designates a quality of service (QOS) credential that permits jobs to be preempted/terminated if their resources are needed by non-standby jobs.</li>
+<li>Typically employed by users who wish to take advantage of available cycles on a machine, but need to yield to other users with higher priority work. For example:
+<ul><li>User A has low (or no) priority on a cluster, but wishes to take advantage of free cycles.</li>
+<li>User B has higher priority for work on the cluster</li>
+<li>User A submits jobs to the cluster with a QOS of standby</li>
+<li>User A jobs will run to completion if User B doesn't submit jobs with a non-standby (normal) QOS</li>
+<li>If User B submits jobs that need the nodes being used by User A jobs, then User A jobs will be automatically terminated, and User B jobs will acquire the needed nodes.</li>
+</ul></li>
+<li>Job terminations are immediate and without a warning/signal being sent.</li>
+<li>Running in standby QOS can be set upon job submission or after the job is queued, but before it actually begins to run:<br /><table><tr><th>Where/When</th>
+<th>Slurm</th>
+<th>Moab</th>
+</tr><tr><td>Job script</td>
+<td>
+<pre>#SBATCH --qos=standby</pre></td>
+<td>
+<pre>#MSUB -l qos=standby</pre></td>
+</tr><tr><td>Command line<br />(when submitted)</td>
+<td>
+<pre>sbatch --qos=standby</pre></td>
+<td>
+<pre>msub -l qos=standby</pre></td>
+</tr><tr><td>Command line<br />(queued job)</td>
+<td>
+<pre>scontrol update job=<em>jobid</em> qos=standby</pre></td>
+<td>
+<pre>mjobctl -m qos=standby <em>jobid</em></pre></td>
+</tr></table></li>
+</ul><p><a name="ConfigurationAccounting" id="ConfigurationAccounting"> </a></p>
+<h2>Displaying Configuration and Accounting Information</h2>
+<h3>What's Available?</h3>
+<ul><li>Several commands can be used to display system configuration and user accounting information.</li>
+<li>Most of this information is for system managers, though it can prove useful to users as well.</li>
+<li>Note that some commands may not be available for all users and/or may be reserved for system managers.</li>
+<li>The table below summarizes some of the more common/useful commands.</li>
+<li>See the relevant man pages for details:
+<ul><li><a href="/sites/default/files/mdiag.txt" target="_blank">mdiag</a></li>
+<li><a href="/sites/default/files/scontrol.txt" target="_blank">scontrol</a></li>
+<li><a href="/sites/default/files/sacct.txt" target="_blank">sacct</a></li>
+<li><a href="/sites/default/files/sprio.txt" target="_blank">sprio.txt</a></li>
+<li><a href="/sites/default/files/sshare.txt" target="_blank">sshare</a></li>
+</ul><table><tr><th>Command</th>
+<th>Description</th>
+</tr><tr><td>
+<pre>mdiag -a</pre></td>
+<td>Lists accounts</td>
+</tr><tr><td>
+<pre>mdiag -c</pre></td>
+<td>Queue information</td>
+</tr><tr><td>
+<pre>mdiag -f</pre></td>
+<td>Fair-share scheduler information</td>
+</tr><tr><td>
+<pre>mdiag -j
+mdiag -j -v</pre></td>
+<td>Job information</td>
+</tr><tr><td>
+<pre>mdiag -n</pre></td>
+<td>Node information</td>
+</tr><tr><td>
+<pre>mdiag -q</pre></td>
+<td>Quality of service information</td>
+</tr><tr><td>
+<pre>mdiag -p
+mdiag -p -v
+sprio</pre></td>
+<td>Priority information</td>
+</tr><tr><td>
+<pre>mdiag -r</pre></td>
+<td>Reservation information</td>
+</tr><tr><td>
+<pre>mdiag -u</pre></td>
+<td>User information</td>
+</tr><tr><td>
+<pre>sacct
+sacct -a</pre></td>
+<td>Lists current jobs and their associated accounts</td>
+</tr><tr><td>
+<pre>scontrol show job
+scontrol show job <em>jobid</em></pre></td>
+<td>Detailed job information</td>
+</tr><tr><td>
+<pre>scontrol show node
+scontrol show node <em>nodename</em></pre></td>
+<td>Detailed node configuration information</td>
+</tr><tr><td>
+<pre>scontrol show partition
+scontrol show partition <em>partitionname</em></pre></td>
+<td>Detailed queue configuration information</td>
+</tr><tr><td>
+<pre>scontrol show config</pre></td>
+<td>Detailed Slurm configuration information</td>
+</tr><tr><td>
+<pre>scontrol show version</pre></td>
+<td>Display Slurm version</td>
+</tr><tr><td>
+<pre>sshare -l</pre></td>
+<td>Displays shares, usage and fairshare information</td>
+</tr></table></li>
+</ul><p><a name="ParallelJobs" id="ParallelJobs"> </a></p>
+<h2>Parallel Jobs and the srun Command</h2>
+<h3>srun Command</h3>
+<ul><li>The Slurm srun command is required to launch <em>parallel</em> jobs - both batch and interactive.</li>
+<li>It should also be used to launch <em>serial</em> jobs in the pdebug and other interactive queues.</li>
+<li>Syntax:
+<p><a href="/sites/default/files/srun.txt" target="_blank">srun</a>   [option list]   [executable]   [args]</p>
+<p>Note that srun options must precede your executable.</p>
+</li>
+<li>Interactive use example, from the login node command line. Specifies 2 nodes (-N), 72 tasks (-n) and the interactive pdebug partition (-p):<br /><table><tr><td>
+<pre>% srun -N2 -n72 -ppdebug myexe
+</pre></td>
+</tr></table></li>
+<li>Batch use example requesting 16 nodes and 576 tasks (assumes nodes have 36 cores):<br /><table><tr><th>Slurm</th>
+<th>Moab</th>
+</tr><tr><td colspan="2">First create a job script that requests nodes and uses srun to specify the number of tasks and launch the job:</td>
+</tr><tr><td>
+<pre>#!/bin/tcsh
+#SBATCH -N 16
+#SBATCH -t 2:00:00
+#SBATCH -p pbatch
+
+# Run info and srun job launch
+cd /p/luster1/joeuser/par_solve
+srun -n576 a.out
+echo 'Done'
+</pre></td>
+<td>
+<pre>#!/bin/tcsh
+#MSUB -l nodes=16
+#MSUB -l walltime=2:00:00
+#MSUB -q pbatch
+
+# Run info and srun job launch
+cd /p/luster1/joeuser/par_solve
+srun -n576 a.out
+echo 'Done'
+</pre></td>
+</tr><tr><td colspan="2">Then submit the job script from the login node command line:</td>
+</tr><tr><td>
+<pre>% sbatch myjobscript</pre></td>
+<td>
+<pre>% msub myjobscript</pre></td>
+</tr></table></li>
+<li>Primary differences between batch and interactive usage:<br /><table><tr><th>Difference</th>
+<th>Interactive</th>
+<th>Batch</th>
+</tr><tr><td>Where used:</td>
+<td>From login node command line</td>
+<td>In batch script</td>
+</tr><tr><td>Partition:</td>
+<td>Requires specification of an interactive partition, such as pdebug with the -p flag</td>
+<td>pbatch is default</td>
+</tr><tr><td>Scheduling:</td>
+<td>If there are available interactive nodes, job will run immediately. Otherwise, it will queue up (fifo) and wait until there are enough free nodes to run it.</td>
+<td>The batch scheduler handles when to run your job regardless of the number of nodes available.</td>
+</tr></table></li>
+<li>More Examples:<br /><table><tr><td>
+<pre>srun -n64 -ppdebug my_app</pre></td>
+<td>64 process job run interactively in pdebug partition</td>
+</tr><tr><td>
+<pre>srun -N64 -n512 my_threaded_app</pre></td>
+<td>512 process job using 64 nodes. Assumes pbatch partition.</td>
+</tr><tr><td>
+<pre>srun -N4 -n16 -c4 my_threaded_app</pre></td>
+<td>4 node, 16 process job with 4 cores (threads) per process. Assumes pbatch partition.</td>
+</tr><tr><td>
+<pre>srun -N8 my_app</pre></td>
+<td>8 node job with a default value of one task per node (8 tasks). Assumes pbatch partition.</td>
+</tr><tr><td>
+<pre>srun -n128 -o my_app.out my_app</pre></td>
+<td>128 process job that redirects stdout to file my_app.out. Assumes pbatch partition.</td>
+</tr><tr><td>
+<pre>srun -n32 -ppdebug -i my.inp my_app</pre></td>
+<td>32 process interactive job; each process accepts input from a file called my.inp instead of stdin</td>
+</tr></table></li>
+</ul><h4>Task Distribution and Binding for Batch Jobs:</h4>
+<ul><li>The LC default is for the scheduler to distribute tasks as evenly as possible across the allocated nodes.</li>
+<li>Examples: if 4 nodes (with 16 cores each) are requested by a batch job using:<br /><pre>#SBATCH -N 4
+#MSUB -l nodes=4</pre><p>then the behavior of srun -N and -n flags will be as follows:</p>
+<p></p><div class="media media-element-container media-default"><div id="file-2139" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/srunnn-gif-1">srunNn.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="diagram of the behavior of srun -N and -n flags" height="288" width="810" class="media-element file-default" data-delta="6" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/srunNn_1.gif" /></div>
+
+  
+</div>
+</div>
+</li>
+<li>Additionally, tasks are bound to specific cores to promote better cache utilization.</li>
+<li>Threads associated with a task are likewise bound to the same cores.</li>
+</ul><h4>srun Options</h4>
+<ul><li>srun is a powerful command with @100 options affecting a wide range of job parameters.</li>
+<li>For example:
+<ul><li>Accounting</li>
+<li>Number and placement of processes/threads</li>
+<li>Process/thread binding</li>
+<li>Job resource requirements; dependencies</li>
+<li>Mail notification options</li>
+<li>Input, output options</li>
+<li>Time limits</li>
+<li>Checkpoint, restart options</li>
+<li>and much more....</li>
+</ul></li>
+<li>Some srun options may be set via @60 Slurm environment variables. For example, SLURM_NNODES behaves like the -N option.</li>
+<li>See the <a href="/sites/default/files/srun.txt" target="_blank">srun man page</a> for details.</li>
+</ul><h4>Parallel Output</h4>
+<ul><li>Please use a parallel file system for parallel I/O. Lustre parallel file systems are mounted under <span class="file">/p/lustre<em>#</em></span>.</li>
+<li>It's a good idea to launch parallel jobs from a parallel file system even if they aren't doing much I/O. A core dump on a parallel job can hang a non-parallel file system easily. Core dumps are written to the directory where you launched your job.</li>
+<li>It is not uncommon for an entire file system to "hang" because a user inadvertently directs output from a large parallel job to an NFS mounted file system.</li>
+<li>NFS file systems include your home directory and /usr/workspace directories.</li>
+</ul><h2><a name="MultipleJobs" id="MultipleJobs"> </a>Running Multiple Jobs From a Single Job Script</h2>
+<h3><br />Motivation:</h3>
+<ul><li>It is certainly possible to run more than one job from a single job script. In fact it is common.</li>
+<li>The primary motivation is avoid having each individual job sit in the wait queue.</li>
+<li>Combining multiple jobs into a single job script means there is only one wait in the queue for the entire job group.</li>
+</ul><h3>Sequential:</h3>
+<ul><li>If one job is dependent upon the completion of a previous job, then this method can be used.</li>
+<li>When you submit your job script, be sure to specify enough wall clock time to cover all of the included jobs.</li>
+<li>Individual jobs can vary in the number of nodes used, provided none of them exceed the number of nodes allocated to your encompassing job script.</li>
+<li>Example below. Assumes 36 cores per node: 16 nodes * 36 cores = 576 tasks max.<br /><table><tr><th>Slurm</th>
+<th>Moab</th>
+</tr><tr><td>
+<pre>#!/bin/tcsh
+#SBATCH -N 16
+#SBATCH -t 12:00:00
+
+srun -n576 myjob1
+srun -n576 myjob2
+srun -N16 -n288 myjob3
+srun -N12 -n432 myjob4
+</pre></td>
+<td>
+<pre>#!/bin/tcsh
+#MSUB -l nodes=16
+#MSUB -l walltime=12:00:00
+
+srun -n576 myjob1
+srun -n576 myjob2
+srun -N16 -n288 myjob3
+srun -N12 -n432 myjob4
+</pre></td>
+</tr></table></li>
+</ul><h3>Simultaneous</h3>
+<ul><li>This method can be used if there are no dependencies between jobs.</li>
+<li>When you submit your job script, be sure to specify enough nodes to cover all of the included jobs.</li>
+<li>You can vary the number of nodes used by individual jobs as long as the aggregate number of nodes doesn't exceed the number of nodes allocated to your encompassing job script.</li>
+<li>Important to remember:
+<ul><li>Put each individual job "in the background" using an ampersand - otherwise they will run sequentially.</li>
+<li>Include a wait statement to ensure the job script doesn't terminate prematurely.</li>
+<li>With your srun commands, be sure to explicitly specify how many nodes each job requires - or else the scheduler will think each job has access to all nodes, with possible complications.</li>
+</ul></li>
+<li>Example 1: every job uses the same number of nodes/tasks.<br />Assumes 36 cores per node: 16 nodes * 36 cores = 576 tasks max.<br /><table><tr><th>Slurm</th>
+<th>Moab</th>
+</tr><tr><td>
+<pre>#!/bin/tcsh
+#SBATCH -N 16
+#SBATCH -t 12:00:00
+
+srun -N4 -n144 myjob1 &amp;
+srun -N4 -n144 myjob2 &amp;
+srun -N4 -n144 myjob3 &amp;
+srun -N4 -n144 myjob4 &amp;
+
+wait
+</pre></td>
+<td>
+<pre>#!/bin/tcsh
+#MSUB -l nodes=16
+#MSUB -l walltime=12:00:00
+
+srun -N4 -n144 myjob1 &amp;
+srun -N4 -n144 myjob2 &amp;
+srun -N4 -n144 myjob3 &amp;
+srun -N4 -n144 myjob4 &amp;
+
+wait
+</pre></td>
+</tr></table></li>
+<li>Example 2: jobs differ in the number of nodes/tasks used.<br />Assumes 36 cores per node: 16 nodes * 36 cores = 576 tasks max.<br /><table><tr><th>Slurm</th>
+<th>Moab</th>
+</tr><tr><td>
+<pre>#!/bin/tcsh
+#SBATCH -N 16
+#SBATCH -t 12:00:00
+
+srun -N4 -n144 myjob1 &amp;
+srun -N2 -n72 myjob2 &amp;
+srun -N8 -n8 myjob3 &amp;
+srun -N2 -n16 myjob4 &amp;
+
+wait
+</pre></td>
+<td>
+<pre>#!/bin/tcsh
+#MSUB -l nodes=16
+#MSUB -l walltime=12:00:00
+
+srun -N4 -n144 myjob1 &amp;
+srun -N2 -n72 myjob2 &amp;
+srun -N8 -n8 myjob3 &amp;
+srun -N2 -n16 myjob4 &amp;
+
+wait
+</pre></td>
+</tr></table></li>
+</ul><p><a name="Serial" id="Serial"> </a> <a name="AztecInca" id="AztecInca"> </a> <a name="ttc" id="ttc"> </a></p>
+<h2>Running on Serial Clusters</h2>
+<p></p><div class="media media-element-container media-default"><div id="file-1446" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/multi-vs-single-node-gif">multi-vs-single-node.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Multi Node and single Node diagrams" title="Multi Node vs Single Node" height="535" width="396" class="media-element file-default" data-delta="7" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/multi-vs-single-node.gif" /></div>
+
+  
+</div>
+</div>
+<h3>Different than Other Clusters</h3>
+<ul><li>Some of LC's clusters do not have an interconnect; they are designated as serial/single-node parallelism resources:
+<ul><li>borax: OCF-CZ, 36 cores/node</li>
+<li>rztrona - OCF-RZ, 36 cores/node</li>
+<li>agate - SCF, 36 cores/node</li>
+</ul></li>
+<li>Because of this, LC schedules jobs on these nodes very differently than the parallel clusters with interconnects:
+<ul><li>Jobs are scheduled according to the number of processes/cores required - NOT the number of nodes.</li>
+<li>All jobs, including parallel jobs are limited to one node - there is no internode communication.</li>
+<li>If your job doesn't use all of the cores on a node, other jobs may be scheduled to run on the same node.</li>
+</ul></li>
+<li>The default allocation for job scheduling is <em>one core per job</em>.</li>
+<li>Since multiple user jobs can be scheduled on the same node, it is <em>critical</em> that users tell the scheduler how many cores their job actually requires.
+<p>Example of 8 different jobs by 4 different users running on a single 8-core node. Notice that these jobs are each using 100% CPU:</p>
+</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-2246" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/multipleuserson1node-gif">multipleUsersOn1Node.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Examples of Multiple users on a node" height="600" width="968" class="media-element file-default" data-delta="8" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/multipleUsersOn1Node.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>Bad things can happen if you (or someone else) uses more than this without telling the scheduler:
+<ul><li>More tasks than cores means jobs run longer than expected and can run out of time and be terminated prematurely</li>
+<li>Memory can be exhausted and jobs die and/or the node crashes</li>
+</ul></li>
+<li>Some examples of how this can happen:
+<ul><li>A job that creates threads, either through OpenMP or Pthreads. Each thread uses a core. The default of 1 core will be inadequate.</li>
+<li>A job that calls an application (that it doesn't own) that creates new MPI processes. Each process uses a core. The default of 1 core will be inadequate.</li>
+</ul></li>
+</ul><h3>How to Specify the Right Number of Cores:</h3>
+<ul><li>Simply include the appropriate Slurm / Moab option:<br /><table><tr><th>Slurm</th>
+<th>Moab</th>
+<th>Notes</th>
+</tr><tr><td>
+<pre>-n <em>#cores</em></pre></td>
+<td>
+<pre>-l ttc=<em>#cores</em></pre></td>
+<td>Syntax: where <em>#cores</em> specifies the total number of cores for your job, including all spawned threads and MPI processes.</td>
+</tr><tr><td>
+<pre>#SBATCH -n 4</pre></td>
+<td>
+<pre>#MSUB -l ttc=4</pre></td>
+<td>In job script</td>
+</tr><tr><td>
+<pre>sbatch -n 4 jobscript</pre></td>
+<td>
+<pre>msub -l ttc=4 jobscript</pre></td>
+<td>From command line</td>
+</tr></table><p> </p>
+</li>
+<li>Matching srun with your Slurm / Moab option - see the table below for examples of correct and incorrect settings. Note that the #SBATCH / #MSUB jobscript syntax is shown, but the same would also apply to the command line.</li>
+<li>Note: Hyperthreading is turned on and will actually allow you to run 2X processes for the number of cores requested.<br /><table><tr><th>Slurm</th>
+<th>Moab</th>
+<th>Comments</th>
+</tr><tr><td>
+<pre>#SBATCH -n 8
+srun -n8 a.out</pre></td>
+<td>
+<pre>#MSUB -l ttc=8
+srun -n8 a.out</pre></td>
+<td>Correct. Uses 8 processes on 8 cores.</td>
+</tr><tr><td>
+<pre>#SBATCH -n 4
+srun -n16 a.out</pre></td>
+<td>
+<pre>#MSUB -l ttc=4
+srun -n16 a.out</pre></td>
+<td>Incorrect. Uses more processes than 2X the requested cores.</td>
+</tr><tr><td>
+<pre>#SBATCH -n 4
+srun -n16 -O a.out</pre></td>
+<td>
+<pre>#MSUB -l ttc=4
+srun -n16 -O a.out</pre></td>
+<td>This will work because the -O option permits Slurm to oversubscribe (more than 2X) the requested number of cores. However, using more tasks than cores is not recommended and can degrade performance.</td>
+</tr><tr><td>
+<pre>srun -n4 a.out</pre></td>
+<td>
+<pre>srun -n4 a.out</pre></td>
+<td>Incorrect. The #SBATCH / #MSUB option isn't specified so the default of 1 core is less than required by the -n4 tasks specified with srun.</td>
+</tr><tr><td>
+<pre>#SBATCH -n 8
+srun -n2 a.out</pre></td>
+<td>
+<pre>#MSUB -l ttc=8
+srun -n2 a.out</pre></td>
+<td>This will work and might be used if each of 2 tasks spawns 4 threads. However, if the 2 tasks don't actually use all 8 cores, this would be wasteful.</td>
+</tr><tr><td>
+<pre>#SBATCH -n 48
+srun -n48 a.out</pre></td>
+<td>
+<pre>#MSUB -l ttc=48
+srun -n48 a.out</pre></td>
+<td>Incorrect. The #SBATCH / #MSUB option specifies more cores than are physically available (36) on agate, borax and rztrona nodes.</td>
+</tr></table><p> </p>
+</li>
+<li>You can use the mjstat command to verify the number of cores being used for a job. Example below (some output deleted to fit screen):<br /><table><tr><td>
+<pre>% % mjstat
+
+Scheduling pool data:
+-------------------------------------------------------------
+Pool        Memory  Cpus  Total Usable   Free  Other Traits
+-------------------------------------------------------------
+pdebug         1Mb    36      3      3      3
+pbatch*        1Mb    36     40     39      0
+
+Running job data:
+---------------------------------------------------------------------------
+JobID    User      Procs Pool      Status        Used  Master/Other
+---------------------------------------------------------------------------
+1886921  aaanion1     36 pbatch    PD            0:00  (Resources)
+1886966  aaanion1     36 pbatch    PD            0:00  (Priority)
+1887122  aaanion1     36 pbatch    PD            0:00  (Priority)
+...
+1886841  aaanion1     36 pbatch    R            36:24  borax12
+1887113  cahhhh        2 pbatch    R          1:03:36  borax27
+1887114  cahhhh        2 pbatch    R          1:03:36  borax27
+1887115  cahhhh        2 pbatch    R          1:03:36  borax27
+1887738  ooodsky3      2 pbatch    R          1:00:36  borax28
+1887739  ooodsky3      2 pbatch    R          1:00:36  borax28
+1247698  lyaeee       64 pdebug    PD            0:00  (PartitionNodeLimit)
+1880597  lyaeee       32 pdebug    PD            0:00  (PartitionTimeLimit)
+</pre></td>
+</tr></table></li>
+</ul><p><a name="CommandSummary" id="CommandSummary"> </a></p>
+<h2>Batch Commands Summary</h2>
+<ul><li>For convenience, the table below summarizes a number of useful batch system commands discussed in this tutorial.</li>
+<li>Most commands have multiple options (not shown here).</li>
+<li>Hyperlinked commands will take you to additional information. Most commands have man pages.<br /><table><tr><th>Command</th>
+<th>Description</th>
+</tr><tr><td><a href="#Cancel">canceljob</a></td>
+<td>Cancel a running or queued job</td>
+</tr><tr><td><a href="#checkjob">checkjob</a></td>
+<td>Display detailed information about a single job</td>
+</tr><tr><td><a href="/sites/default/files/mdiag.txt">mdiag -f</a></td>
+<td>Display usage and fair-share scheduler statistics</td>
+</tr><tr><td><a href="#mdiag-j">mdiag -j</a></td>
+<td>Display running, idle and blocked jobs</td>
+</tr><tr><td><a href="#sprio">mdiag -p</a></td>
+<td>Display a list of queued jobs, their priority, and the primary factors used to calculate job priority</td>
+</tr><tr><td><a href="#BanksUsage">mdiag -u</a></td>
+<td>Display a user's bank/account information</td>
+</tr><tr><td><a href="#Cancel">mjobctl -c</a></td>
+<td>Cancel a running or queued job</td>
+</tr><tr><td><a href="#Hold/Release">mjobctl -h</a></td>
+<td>Place a queued job on user hold</td>
+</tr><tr><td><a href="#ChangingParameters">mjobctl -m</a></td>
+<td>Change a job's parameters</td>
+</tr><tr><td><a href="#TimeExpired">mjobctl -N -signal</a></td>
+<td>Signal a running job</td>
+</tr><tr><td><a href="#Hold/Release">mjobctl -u</a></td>
+<td>Release a user held job</td>
+</tr><tr><td><a href="#mjstat">mjstat</a></td>
+<td>Display queue summary and running jobs</td>
+</tr><tr><td><a href="#BanksUsage">mshare</a></td>
+<td>Display bank/account allocations, usage statistics, and priorities</td>
+</tr><tr><td><a href="#Submit">msub</a></td>
+<td>Submit a job script to the batch system. Many options.</td>
+</tr><tr><td>news job.lim.<em>machinename</em></td>
+<td>Display job limits and machine information</td>
+</tr><tr><td><a href="/sites/default/files/sacct.txt">sacct -j</a></td>
+<td>Display information about a running job, including multiple job steps</td>
+</tr><tr><td><a href="#Submit">sbatch</a></td>
+<td>Submit a job script to the batch system. Many options.</td>
+</tr><tr><td><a href="#Cancel">scancel</a></td>
+<td>Cancel a running or queued job</td>
+</tr><tr><td><a href="#TimeExpired">scancel --signal</a></td>
+<td>Signal a running job</td>
+</tr><tr><td><a href="#Hold/Release">scontrol hold</a></td>
+<td>Place a queued job on user hold</td>
+</tr><tr><td><a href="#Hold/Release">scontrol release</a></td>
+<td>Release a user held job</td>
+</tr><tr><td><a href="/sites/default/files/scontrol.txt">scontrol show job</a></td>
+<td>Display detailed job information</td>
+</tr><tr><td><a href="/sites/default/files/scontrol.txt">scontrol show partition</a></td>
+<td>Display detailed queue information</td>
+</tr><tr><td><a href="#ChangingParameters">scontrol update</a></td>
+<td>Change a job's parameters</td>
+</tr><tr><td><a href="#showq">showq</a></td>
+<td>Display running, idle and blocked jobs</td>
+</tr><tr><td><a href="#sinfo">sinfo</a></td>
+<td>Display a concise summary of queues and running jobs</td>
+</tr><tr><td><a href="#sprio">sprio</a></td>
+<td>Display a list of queued jobs, their priority, and the primary factors used to calculate job priority</td>
+</tr><tr><td><a href="#squeue">squeue</a></td>
+<td>Display running jobs</td>
+</tr><tr><td><a href="#BanksUsage">sreport</a></td>
+<td>Report usage information for a cluster, bank, individual, date range, and more</td>
+</tr><tr><td><a href="#ParallelJobs">srun</a></td>
+<td>Launch a parallel job from within a job script or interactively</td>
+</tr><tr><td><a href="/sites/default/files/sshare.txt">sshare</a></td>
+<td>Display bank/account allocations, usage statistics, and fair-share information</td>
+</tr><tr><td><a href="#sview">sview</a></td>
+<td>Graphically display a map of jobs, nodes they are running on, and additional detailed job information</td>
+</tr></table></li>
+</ul><p><a name="Exercise2" id="Exercise2"> </a></p>
+<h2>Exercise 2</h2>
+<h3>More Basic Functions</h3>
+<table><tr><td>Overview:
+<ul><li>Login to an LC workshop cluster, if you are not already logged in</li>
+<li>Holding and releasing jobs</li>
+<li>Canceling jobs</li>
+<li>Running in standby mode</li>
+<li>Running parallel and hybrid parallel jobs</li>
+<li>Running multiple jobs from a single batch script</li>
+<li>When will a job start?</li>
+<li>Try sview</li>
+</ul><p><a href="/training/tutorials/slurm-and-moab-exercise">GO TO THE EXERCISE HERE</a></p>
+</td>
+</tr></table><h2><a id="References" name="References"></a>References and More Information</h2>
+<ul><li>Original Author: Blaise Barney; Contact: <a href="mailto:hpc-tutorials@llnl.gov">hpc-tutorials@llnl.gov</a>, Livermore Computing.</li>
+<li>LC's Slurm, Moab and LSF web pages: <a href="https://hpc.llnl.gov/banks-jobs/running-jobs" target="_blank"> https://hpc.llnl.gov/banks-jobs/running-jobs</a><br />Links currently include:
+<ul><li>Batch System Primer</li>
+<li>LSF User Manual</li>
+<li>LSF Quick Start Guide</li>
+<li>LSF Commands</li>
+<li>Slurm User Manual</li>
+<li>Slurm Quick Start Guide</li>
+<li>Slurm Commands</li>
+<li>Moab User Manual</li>
+<li>Batch System Cross-Reference</li>
+</ul></li>
+<li>Slurm information from SchedMD:<br /><a href="http://www.schedmd.com/" target="_blank">http://www.schedmd.com/</a></li>
+<li>Moab information from Adaptive Computing<br /><a href="http://www.adaptivecomputing.com/" target="_blank">http://www.adaptivecomputing.com/</a><br />Note: No longer relevant at LC because all Moab commands are wrapper scripts and Moab was decommissioned in 2017.</li>
+</ul></div></div></div>    </div>
+  </div>
+</div>
+
+
+<!-- Needed to activate display suite support on forms -->
+  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                   		</div>
+                  </main>
+                </div>
+      		</div>
+    	</div>
+	</div>
+  	
+	
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 footer-top">
+
+                    <a class="llnl" href="https://www.llnl.gov/" target="_blank"><img src="/sites/all/themes/tid/images/llnl.png" alt="LLNL"></a>
+                    <p>
+                        Lawrence Livermore National Laboratory
+                        <br>7000 East Avenue • Livermore, CA 94550
+                    </p>
+                    <p>
+                        Operated by Lawrence Livermore National Security, LLC, for the
+                        <br>Department of Energy's National Nuclear Security Administration.
+                    </p>
+                    <div class="footer-top-logos">
+                        <a class="nnsa" href="https://www.energy.gov/nnsa/national-nuclear-security-administration" target="_blank"><img src="/sites/all/themes/tid/images/nnsa2.png" alt="NNSA"></a>
+                        <a class="doe" href="https://www.energy.gov/" target="_blank"><img src="/sites/all/themes/tid/images/doe_small.png" alt="U.S. DOE"></a>
+                        <a class="llns" href="https://www.llnsllc.com/" target="_blank"><img src="/sites/all/themes/tid/images/llns.png" alt="LLNS"></a>
+                	</div>
+
+
+
+                </div>
+                <div class="col-sm-12 footer-bottom">
+                	
+
+                    <span>UCRL-MI-131558  &nbsp;|&nbsp;&nbsp;</span><a href="https://www.llnl.gov/disclaimer" target="_blank">Privacy &amp; Legal Notice</a>	 &nbsp;|&nbsp;&nbsp; <a href="mailto:webmaster-comp@llnl.gov">Website Query</a> &nbsp;|&nbsp;&nbsp;<a href="/about-us/contact-us" >Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+  </body>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/jquery_update/replace/jquery/2.1/jquery.min.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-extend-3.4.0.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-html-prefilter-3.5.0-backport.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/drupal.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/extlink/extlink.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/jquery.flexslider.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/slide.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/lightbox2/js/lightbox.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/matomo/matomo.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _paq = _paq || [];(function(){var u=(("https:" == document.location.protocol) ? "https://analytics.llnl.gov/" : "http://analytics.llnl.gov/");_paq.push(["setSiteId", "149"]);_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setDoNotTrack", 1]);_paq.push(["trackPageView"]);_paq.push(["setIgnoreClasses", ["no-tracking","colorbox"]]);_paq.push(["enableLinkTracking"]);var d=document,g=d.createElement("script"),s=d.getElementsByTagName("script")[0];g.type="text/javascript";g.defer=true;g.async=true;g.src="https://hpc.llnl.gov/sites/default/files/matomo/piwik.js?qsohrw";s.parentNode.insertBefore(g,s);})();
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/bootstrap.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mobilemenu.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/custom.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mods.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"tid","theme_token":"cMeNOFGo7MUS66nmYDUM4mg0BrDUgr9tnkA2WuNxuOU","js":{"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/2.1\/jquery.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/contrib\/extlink\/extlink.js":1,"sites\/all\/themes\/tid\/js\/jquery.flexslider.js":1,"sites\/all\/themes\/tid\/js\/slide.js":1,"sites\/all\/modules\/contrib\/lightbox2\/js\/lightbox.js":1,"sites\/all\/modules\/contrib\/matomo\/matomo.js":1,"0":1,"sites\/all\/themes\/tid\/js\/bootstrap.js":1,"sites\/all\/themes\/tid\/js\/mobilemenu.js":1,"sites\/all\/themes\/tid\/js\/custom.js":1,"sites\/all\/themes\/tid\/js\/mods.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/book\/book.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/extlink\/extlink.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/lightbox2\/css\/lightbox.css":1,"sites\/all\/themes\/tid\/css\/bootstrap.css":1,"sites\/all\/themes\/tid\/css\/flexslider.css":1,"sites\/all\/themes\/tid\/css\/system.menus.css":1,"sites\/all\/themes\/tid\/css\/style.css":1,"sites\/all\/themes\/tid\/font-awesome\/css\/font-awesome.css":1,"sites\/all\/themes\/tid\/css\/treewalk.css":1,"sites\/all\/themes\/tid\/css\/popup.css":1,"sites\/all\/themes\/tid\/css\/mods.css":1}},"lightbox2":{"rtl":0,"file_path":"\/(\\w\\w\/)public:\/","default_image":"\/sites\/all\/modules\/contrib\/lightbox2\/images\/brokenimage.jpg","border_size":10,"font_color":"000","box_color":"fff","top_position":"","overlay_opacity":"0.8","overlay_color":"000","disable_close_click":true,"resize_sequence":0,"resize_speed":400,"fade_in_speed":400,"slide_down_speed":600,"use_alt_layout":false,"disable_resize":false,"disable_zoom":false,"force_show_nav":false,"show_caption":true,"loop_items":false,"node_link_text":"View Image Details","node_link_target":false,"image_count":"Image !current of !total","video_count":"Video !current of !total","page_count":"Page !current of !total","lite_press_x_close":"press \u003Ca href=\u0022#\u0022 onclick=\u0022hideLightbox(); return FALSE;\u0022\u003E\u003Ckbd\u003Ex\u003C\/kbd\u003E\u003C\/a\u003E to close","download_link_text":"","enable_login":false,"enable_contact":false,"keys_close":"c x 27","keys_previous":"p 37","keys_next":"n 39","keys_zoom":"z","keys_play_pause":"32","display_image_size":"original","image_node_sizes":"()","trigger_lightbox_classes":"","trigger_lightbox_group_classes":"","trigger_slideshow_classes":"","trigger_lightframe_classes":"","trigger_lightframe_group_classes":"","custom_class_handler":0,"custom_trigger_classes":"","disable_for_gallery_lists":true,"disable_for_acidfree_gallery_lists":true,"enable_acidfree_videos":true,"slideshow_interval":5000,"slideshow_automatic_start":true,"slideshow_automatic_exit":true,"show_play_pause":true,"pause_on_next_click":false,"pause_on_previous_click":true,"loop_slides":false,"iframe_width":600,"iframe_height":400,"iframe_border":1,"enable_video":false,"useragent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/90.0.4430.72 Safari\/537.36"},"extlink":{"extTarget":0,"extClass":"ext","extLabel":"(link is external)","extImgClass":0,"extIconPlacement":0,"extSubdomains":1,"extExclude":".gov|.com|.org|.io|.be|.us|.edu","extInclude":"-int.llnl.gov|lc.llnl.gov|caas.llnl.gov|exchangetools.llnl.gov","extCssExclude":"","extCssExplicit":"","extAlert":"_blank","extAlertText":"This page is routing you to a page which requires extra authentication. You must have on-site or VPN access.\r\n\r\nPress OK to continue or cancel to return.\r\n\r\nIf this fails or times-out, you are not allowed access to the internal page or the server may be temporarily unavailable.\r\n\r\nIf you have an on-site or VPN account and are still having trouble, please send e-mail to lc-hotline@llnl.gov or call 925-422-4531 for further assistance.","mailtoClass":"mailto","mailtoLabel":"(link sends e-mail)"},"matomo":{"trackMailto":1},"urlIsAjaxTrusted":{"\/training\/tutorials\/slurm-and-moab":true}});
+//--><!]]>
+</script>
+</html>

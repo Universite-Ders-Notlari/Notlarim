@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2016 -->
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>MPI Documents</title>
+
+  <meta name="author" content="" />
+  
+  
+
+  <link rel="alternate" type="application/rss+xml" title="MPI Forum - This website contains information about the activities of the MPI Forum, which is the standardization forum for the Message Passing Interface (MPI)." href="/feed.xml" />
+
+  
+    
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    
+      
+  
+  
+    
+      <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    
+      <link rel="stylesheet" href="/css/bootstrap-social.css" />
+    
+      <link rel="stylesheet" href="/css/main.css" />
+    
+    
+  
+  
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  
+
+    
+  
+  
+
+  
+
+  <!-- Facebook OpenGraph tags -->
+  <meta property="og:title" content="MPI Documents" />
+  <meta property="og:type" content="website" />
+  
+  <meta property="og:url" content="https://www.mpi-forum.org/docs/" />
+  
+  
+  <meta property="og:image" content="" />
+  
+  
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+  <meta name="twitter:title" content="MPI Documents" />
+  <meta name="twitter:description" content="The official version of the MPI documents are the English Postscript versions (for MPI 1.0 and 1.1) and PDF (for the other versions). In several cases, a translation or HTML version is also available for convenience. The HTML version was made with automated tools. In case of a difference between..." />
+  
+
+  <script type="text/javascript">
+if (typeof jQuery != 'undefined') {
+    jQuery(document).ready(function($) {
+        var filetypes = /\.(zip|exe|dmg|pdf|doc.*|xls.*|ppt.*|mp3|txt|rar|wma|mov|avi|wmv|flv|wav)$/i;
+        var baseHref = '';
+        if (jQuery('base').attr('href') != undefined) baseHref = jQuery('base').attr('href');
+
+        jQuery('a').on('click', function(event) {
+            var el = jQuery(this);
+            var track = true;
+            var href = (typeof(el.attr('href')) != 'undefined' ) ? el.attr('href') :"";
+            var isThisDomain = href.match(document.domain.split('.').reverse()[1] + '.' + document.domain.split('.').reverse()[0]);
+            if (!href.match(/^javascript:/i)) {
+                var elEv = []; elEv.value=0, elEv.non_i=false;
+                if (href.match(/^mailto\:/i)) {
+                    elEv.category = "email";
+                    elEv.action = "click";
+                    elEv.label = href.replace(/^mailto\:/i, '');
+                    elEv.loc = href;
+                }
+                else if (href.match(filetypes)) {
+                    var extension = (/[.]/.exec(href)) ? /[^.]+$/.exec(href) : undefined;
+                    elEv.category = "download";
+                    elEv.action = "click-" + extension[0];
+                    elEv.label = href.replace(/ /g,"-");
+                    elEv.loc = baseHref + href;
+                }
+                else if (href.match(/^https?\:/i) && !isThisDomain) {
+                    elEv.category = "external";
+                    elEv.action = "click";
+                    elEv.label = href.replace(/^https?\:\/\//i, '');
+                    elEv.non_i = true;
+                    elEv.loc = href;
+                }
+                else if (href.match(/^tel\:/i)) {
+                    elEv.category = "telephone";
+                    elEv.action = "click";
+                    elEv.label = href.replace(/^tel\:/i, '');
+                    elEv.loc = href;
+                }
+                else track = false;
+
+                if (track) {
+                    _gaq.push(['_trackEvent', elEv.category.toLowerCase(), elEv.action.toLowerCase(), elEv.label.toLowerCase(), elEv.value, elEv.non_i]);
+                    if ( el.attr('target') == undefined || el.attr('target').toLowerCase() != '_blank') {
+                        setTimeout(function() { location.href = elEv.loc; }, 400);
+                        return false;
+                    }
+                }
+            }
+        });
+    });
+}
+  </script>
+
+</head>
+
+
+  <body>
+  
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://www.mpi-forum.org">MPI Forum</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+            
+            
+
+
+
+
+
+<a href="/docs/">Docs</a>
+
+          </li>
+        
+        
+        
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">MPI Standard Efforts</a>
+            <div class="navlinks-children">
+              
+                
+                  
+            
+
+
+
+
+
+<a href="/mpi-40/">MPI 4.0</a>
+
+                
+              
+                
+                  
+            
+
+
+
+
+
+<a href="/mpi-31/">MPI 3.1</a>
+
+                
+              
+                
+                  
+            
+
+
+
+
+
+<a href="/mpi-30/">MPI 3.0</a>
+
+                
+              
+                
+                  
+            
+
+
+
+
+
+<a href="/mpi-22/">MPI 2.2</a>
+
+                
+              
+                
+                  
+            
+
+
+
+
+
+<a href="/mpi-21/">MPI 2.1</a>
+
+                
+              
+                
+                  
+            
+
+
+
+
+
+<a href="/mpi-20/">MPI 2.0</a>
+
+                
+              
+            </div>
+          </li>
+        
+        
+        
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Meetings</a>
+            <div class="navlinks-children">
+              
+                
+                  
+            
+
+
+
+
+
+<a href="/meetings">Voting Meetings</a>
+
+                
+              
+                
+                  
+            
+
+
+
+
+
+<a href="/virtual_meetings">Virtual Meetings</a>
+
+                
+              
+            </div>
+          </li>
+        
+        
+        
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Resources</a>
+            <div class="navlinks-children">
+              
+                
+                  
+            
+
+
+
+
+
+<a href="https://www.github.com/mpi-forum/">GitHub</a>
+
+                
+              
+                
+                  
+            
+
+
+
+
+
+<a href="http://lists.mpi-forum.org">Mailing Lists</a>
+
+                
+              
+                
+                  
+            
+
+
+
+
+
+<a href="/comments/">Make Comments</a>
+
+                
+              
+            </div>
+          </li>
+        
+        
+      </ul>
+    </div>
+
+	
+
+  </div>
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-heading">
+          <h1>MPI Documents</h1>
+		  
+		  
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <p>The official version of the MPI documents are the English Postscript versions (for MPI 1.0 and 1.1) and PDF (for the other versions). In several cases, a translation or HTML version is also available for convenience. The HTML version was made with automated tools. In case of a difference between these two sources, the Postscript or PDF version of MPI standard documents are always considered the official version. In the case of multiple PDF versions, only the one described as the “MPI x.y document as PDF” is the official version; the versions provided with alternate formatting are provided as a convenience and are not official (every effort has been taken to make them “the same”, but no guarantee is made).</p>
+
+<p>Those who prefer to get the documents via anonymous ftp may do so at ftp.mpi-forum.org in pub/docs/.</p>
+
+<p>Some <a href="translations.html">translations of MPI documents</a> are available.</p>
+
+<h2 id="draft-specification">Draft Specification</h2>
+
+<p>Starting in 2018, the MPI Forum has decided to release draft specifications to allow users and
+implementors an early opportunity to see changes in upcoming versions of the MPI Standard. These
+draft specifications are not versions and are subject to change before published as an official
+version of the MPI Standard.</p>
+
+<ul>
+  <li><a href="/docs/drafts/mpi-2020-draft-report.pdf">2020 Draft Specification / MPI 4.0 RC</a></li>
+  <li><a href="/docs/drafts/mpi-2019-draft-report.pdf">2019 Draft Specification</a></li>
+  <li><a href="/docs/drafts/mpi-2018-draft-report.pdf">2018 Draft Specification</a></li>
+</ul>
+
+<h2 id="mpi-31">MPI-3.1</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td><a href="images/mpi-report-3.1-2015-06-04-as-1book.jpg"><img alt="MPI-3.0 - Click to enlarge" src="images/mpi-report-3.1-2015-06-04-as-1book-thumb.jpg" width="90" /></a></td>
+      <td>MPI-3.1 was approved by the MPI Forum on June 4, 2015.</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li><a href="mpi-3.1/mpi31-report.pdf">MPI 3.1 document as PDF</a></li>
+  <li><a href="mpi3.1index.htm">Index into MPI 3.1 document</a>; this page is experimental</li>
+  <li><a href="mpi-3.1/index.htm">Versions of MPI 3.1 with alternate formatting</a></li>
+  <li><a href="mpi-3.1/errata-31.pdf">Errata for MPI 3.1</a></li>
+  <li><a href="mpi-3.1/mpi31-report/mpi31-report.htm">Unofficial HTML version of MPI 3.1</a>. This version was produced with tohtml.</li>
+</ul>
+
+<p>The complete, official MPI-3.1 Standard (June 2015) is available in <strong>one book</strong> (hardcover, 868 pages, sewn binding). For all MPI programmers, the standard can be used as a complete MPI <strong>reference manual</strong> with many <strong>examples</strong> and <strong>advices to users</strong>. With MPI-3.1, a <strong>general index was added</strong> that supplements the other indices. It was printed and is <strong>sold at cost by HLRS</strong>; see <a href="http://www.hlrs.de/mpi/mpi31/">http://www.hlrs.de/mpi/mpi31/</a>.</p>
+
+<h2 id="previous-versions-of-the-mpi-standard">Previous Versions of the MPI Standard</h2>
+
+<h3 id="mpi-30">MPI-3.0</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td><a href="images/mpi-report-3.0-2012-09-21-as-1book.jpg"><img alt="MPI-3.0 - Click to enlarge" src="images/mpi-report-3.0-2012-09-21-as-1book-thumb.jpg" width="90" /></a></td>
+      <td>MPI-3.0 was approved by the MPI Forum on September 21, 2012.</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li><a href="mpi-3.0/mpi30-report.pdf">MPI 3.0 document as PDF</a></li>
+  <li><a href="mpi-3.0/index.htm">Versions of MPI 3.0 with alternate formatting</a></li>
+  <li><a href="mpi-3.0/errata-30.pdf">Errata for MPI 3.0</a></li>
+</ul>
+
+<p>The complete, official MPI-3.0 Standard (September 2012) will be available <strong>in one book</strong> (hardcover, 852 pages, sewn binding). For all MPI programmers, the standard can be used as a complete MPI <strong>reference manual</strong> with many <strong>examples</strong> and <strong>advices to users</strong>. The last 17 pages contain several <strong>indices</strong> to allow quick location of all relevant information. It was printed and is <strong>sold at cost by HLRS</strong>, see <a href="http://www.hlrs.de/mpi/mpi30/"><strong>http://www.hlrs.de/mpi/mpi30/</strong></a></p>
+
+<h3 id="mpi-22">MPI-2.2</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td><a href="images/mpi-report-2.2-2009-09-04-as-1book.jpg"><img alt="MPI-2.1 - Klick to enlarge" height="142" src="images/mpi-report-2.2-2009-09-04-as-1book-thumb.jpg" width="90" /></a></td>
+      <td>MPI-2.2 was approved by the MPI Forum on September 4, 2009.</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li><a href="mpi-2.2/mpi22-report.pdf">MPI 2.2 document as PDF</a></li>
+  <li><a href="mpi-2.2/index.htm">Versions of MPI 2.2 with alternate formatting</a></li>
+  <li><a href="mpi-2.2/mpi22-report/mpi22-report.htm">Unofficial HTML version of MPI 2.2</a>. This version was produced with tohtml; Latex2html was unable to handle the document.</li>
+  <li><a href="mpi-2.2/errata-22.pdf">Errata for MPI 2.2</a></li>
+</ul>
+
+<p>The complete, official MPI-2.2 Standard (September 2009) is now available <strong>in one book</strong> (hardcover, 647 pages, sewn binding). For all MPI programmers, the standard can be used as a complete MPI <strong>reference manual</strong> with many <strong>examples</strong> and <strong>advices to users</strong>. The last 19 pages contain several <strong>indices</strong> to allow quick location of all relevant information. It was printed and is <strong>sold at cost by HLRS</strong>, see <a href="http://www.hlrs.de/mpi/mpi22/"><strong>http://www.hlrs.de/mpi/mpi22/</strong></a></p>
+
+<h2 id="mpi-21">MPI-2.1</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td><a href="images/mpi-report-2.1-2008-06-23-as-1book.jpg"><img alt="MPI-2.1 - Klick to enlarge" src="images/mpi-report-2.1-2008-06-23-as-1book-thumb.jpg" height="120" width="90" /></a></td>
+      <td>MPI-2.1 was approved by the MPI Forum on September 4, 2008 with the second and final official vote.</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li><a href="mpi-2.1/mpi21-report.pdf">MPI 2.1 document as PDF</a></li>
+  <li><a href="mpi-2.1/mpi-2-1-doc.htm">Versions of MPI 2.1 with alternate formatting</a></li>
+  <li><a href="mpi-2.1/mpi21-report-bw/mpi21-report-bw.htm">Unofficial HTML version of MPI 2.1</a>. This version was produced with tohtml; Latex2html was unable to handle the document.</li>
+  <li><a href="mpi-2.1/mpi-2.1-merge-errata-v2.pdf">Partial list of MPI-2.1 errata (items introduced by merging MPI 1.2 and MPI 2.0)</a></li>
+</ul>
+
+<p>The complete, official MPI-2.1 Standard (June 2008) is now available <strong>in one book</strong> (hardcover, 608 pages, sewn binding). For all MPI programmer, the standard can be used as a complete MPI <strong>reference manual</strong> with many <strong>examples</strong> and <strong>advices to users</strong>. The last 16 pages contain several <strong>indexes</strong> to allow quick finding of all relevant information. It was printed and is <strong>sold at cost by HLRS</strong>, see <a href="http://www.hlrs.de/mpi/mpi21/"><strong>http://www.hlrs.de/mpi/mpi21/</strong></a></p>
+
+<h3 id="mpi-20">MPI-2.0</h3>
+
+<ul>
+  <li>MPI-2.0 document in <a href="mpi-2.0/mpi-20.ps.Z">compressed postscript</a>, <a href="mpi-2.0/mpi-20.ps">postscript</a>, or <a href="mpi-2.0/mpi2-report.pdf">PDF (unofficial version)</a>. Note that the PDF version has the wrong date on the cover - it should say July 18, 1997.</li>
+  <li>Original MPI-2.0 errata in <a href="mpi-2.0/errata-20.ps.Z">compressed postscript</a> or <a href="mpi-2.0/errata-20.ps">postscript</a> (last modified 20 May 1998)</li>
+  <li>Updated MPI-2.0 errata as voted on by the MPI Forum. Available in <a href="mpi-2.0/errata-20-2.ps">Postscript</a>, <a href="mpi-2.0/errata-20-2.pdf">PDF</a>, and (unofficially) <a href="mpi-2.0/errata-20-2.html">HTML</a>.</li>
+  <li><a href="mpi-2.0/mpi-20-html/mpi2-report.html">MPI-2.0 document</a> in HTML</li>
+  <li><a href="mpi-2.0/mpi-20-dvi.tar.Z">compressed tar file</a> or <a href="mpi-2.0/mpi-20-dvi.tar">tar file</a> of the dvi files and figures needed to create the MPI-2.0 document. Intended for those who need to create special output for their printing device.</li>
+</ul>
+
+<h3 id="mpi-13">MPI-1.3</h3>
+
+<p>MPI-1.3 was approved by the MPI Forum on July 1, 2008 with the first official vote. The second official (and final) vote is expected on September 4, 2008.</p>
+
+<ul>
+  <li><a href="mpi-1.3/mpi-report-1.3-2008-05-30.pdf">MPI 1.3 as PDF</a></li>
+  <li><a href="mpi-1.3/mpi-report-1.3-2008-05-30.ps">MPI 1.3 as Postscript</a></li>
+</ul>
+
+<p>The document MPI-1.3 was released as final end of the MPI-1 series. It was developed for technical and historical reasons in the framework of the development of MPI-2.1. It does not introduce a new (version, subversion) number.</p>
+
+<h3 id="mpi-12">MPI-1.2</h3>
+
+<p>The MPI-1.2 document is contained in the the MPI-2 document.</p>
+
+<h3 id="mpi-11">MPI-1.1</h3>
+
+<ul>
+  <li>MPI-1.1 document in <a href="mpi-1.1/mpi-11.ps.Z">compressed postscript</a>, <a href="mpi-1.1/mpi-11.ps">postscript</a>, or <a href="mpi-1.1/mpi1-report.pdf">PDF (unofficial version)</a>.</li>
+  <li>MPI-1.1 errata in <a href="mpi-1.1/errata-11.ps.Z">compressed postscript</a> or <a href="mpi-1.1/errata-11.ps">postscript</a> (last modified 12 October 1998)</li>
+  <li><a href="mpi-1.1/mpi-11-html/mpi-report.html">MPI-1.1 document</a> in HTML</li>
+</ul>
+
+<h3 id="mpi-10">MPI-1.0</h3>
+
+<p>The MPI-1.0 document is made available for archival purposes. It has been superseded by MPI-1.1 (and later versions).</p>
+
+<ul>
+  <li>MPI-1.0 document in <a href="mpi-1.0/mpi-10.ps.Z">compressed postscript</a> or <a href="mpi-1.0/mpi-10.ps">postscript</a></li>
+  <li>MPI-1.0 errata in <a href="mpi-1.0/errata-10.ps.Z">compressed postscript</a> or <a href="mpi-1.0/errata-10.ps">postscript</a></li>
+</ul>
+
+<h2 id="mpir-process-acquisition-interface">MPIR Process Acquisition Interface</h2>
+
+<p>Though not part of the MPI standard, the MPIR Process Acquisition Interface details a commonly implemented interface primarily used by debuggers to interface to MPI parallel programs.</p>
+
+<ul>
+  <li><a href="mpir-specification-03-01-2018.pdf">MPIR Process Acquisition Interface, Version 1.1</a></li>
+  <li><a href="mpir-specification-10-11-2010.pdf">MPIR Process Acquisition Interface, Version 1.0</a></li>
+</ul>
+
+<h2 id="mpi-message-queue-interface">MPI Message Queue Interface</h2>
+
+<p>Though not a part of the MPI standard, the MPI Message Queue Dumping Interface details a commonly implemented interface primarily used by debuggers to inspect the message queues within an MPI program.</p>
+
+<ul>
+  <li><a href="msgq.5.pdf">MPI Message Queue Dumping Interface, Version 1.0</a></li>
+</ul>
+
+<h2 id="mpi-journal-of-development">MPI Journal of Development</h2>
+
+<ul>
+  <li>MPI-2.0 Journal of Development in <a href="mpi-jd/mpi-20-jod.ps.Z">compressed postscript</a> or <a href="mpi-jd/mpi-20-jod.ps">postscript</a></li>
+  <li><a href="mpi-jd/mpi-20-jod-dvi.tar.Z">compressed tar file</a> or <a href="mpi-jd/mpi-20-jod-dvi.tar">tar file</a> of the dvi files and figures needed to create the MPI-2.0 Journal of Development document. Intended for those who need to create special output for their printing device.</li>
+</ul>
+
+<h2 id="instructions-for-preparing-the-mpi-standard-document">Instructions for Preparing the MPI Standard Document</h2>
+
+<p>A document to help editors of the MPI Standard is kept in the same repository as the MPI Standard itself, but we also publish a copy here to be easy to access.</p>
+
+<ul>
+  <li><a href="other/instr-2020-12-09.pdf">Instructions, December 9, 2020</a></li>
+</ul>
+
+<h2 id="mpi-forum-procedures">MPI Forum Procedures</h2>
+
+<p>The MPI Forum uses these procedures as the way the MPI Forum operates.</p>
+
+<ul>
+  <li><a href="other/procedures-33.pdf">MPI Forum Procedures, Version 3.3</a></li>
+  <li><a href="other/procedures-32.pdf">MPI Forum Procedures, Version 3.2</a></li>
+  <li><a href="other/procedures-31.pdf">MPI Forum Procedures, Version 3.1</a></li>
+  <li><a href="other/procedures-30.pdf">MPI Forum Procedures, Version 3.0</a></li>
+  <li><a href="other/procedures-22.pdf">MPI Forum Procedures, Version 2.2</a></li>
+</ul>
+
+	    
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+    <p class="theme-by text-muted">
+      Theme by
+      <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    </p>
+</footer>
+
+  
+    
+
+
+
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script>
+      	if (typeof jQuery == 'undefined') {
+      	  document.write('<script src="/js/jquery-1.11.2.min.js"></scr' + 'ipt>');
+      	}
+      </script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+	<script src="/js/bootstrap.min.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+	<script src="/js/main.js"></script>
+    
+  
+
+
+
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-110855000-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  
+  </body>
+</html>

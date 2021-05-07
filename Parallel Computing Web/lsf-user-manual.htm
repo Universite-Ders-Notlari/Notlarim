@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<head>
+<meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="/banks-jobs/running-jobs/lsf-user-manual" />
+<link rel="shortlink" href="/node/405" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="shortcut icon" href="https://hpc.llnl.gov/sites/all/themes/tid/favicon.ico" type="image/vnd.microsoft.icon" />
+<title>LSF User Manual | High Performance Computing</title>
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_kShW4RPmRstZ3SpIC-ZvVGNFVAi0WEMuCnI0ZkYIaFw.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_bq48Es_JAifg3RQWKsTF9oq1S79uSN2WHxC3KV06fK0.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_vAm-LJc0tkC-w_c6v7Ekq0bW26Pzl31HvPM6kbvK-pc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_ca6tstDbY9-H23Ty8uKiDyFQLT1AZftZKldhbTPPnm8.css" media="all" />
+<!--[if lt IE 9]><script src="/sites/all/themes/tid/js/html5.js"></script><![endif]-->
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-405 node-type-user-portal-training-page">
+  <div aria="contentinfo"><noscript><img src="https://analytics.llnl.gov/piwik.php?idsite=149" class="no-border" alt="" /></noscript></div>
+    <div id="page">
+	<div class="unclassified"></div>
+	<div class="headertop">
+					<div id="skip-nav" role="navigation" aria-labelledby="skip-nav" class="reveal">
+  			<a href="#main-content">Skip to main content</a>
+			</div>
+					</div>
+        <div class="headerwrapbg">
+                        <div class="headerwrap-portal">
+                <div id="masthead" class="site-header container" role="banner">
+                    <div class="row">
+                        <div class="llnl-logo col-sm-3">
+                            <a href="https://www.llnl.gov" target="_blank" title="Lawrence Livermore National Laboratory">
+                                <img src="/sites/all/themes/tid/images/llnl-tab-portal.png" alt="LLNL Home" />
+                            </a>
+                        </div>
+                        <div id="logo" class="site-branding col-sm-4">
+                                                            <div id="site-logo">
+                                        <!--High Performance Computing<br />Livermore Computing Center-->
+                                        																					<a href="/user-portal" class="text-dark" title="Livermore Computing Center High Performance Computing">
+                                            <img src="/sites/all/themes/tid/images/hpc.png" alt="Portal Home" />
+																					</a>
+																				
+                                </div>
+                                                    </div>
+                        <div class="col-sm-5">
+                            <div id="top-search">
+															<div class="input-group">
+																	<form class="navbar-form navbar-search navbar-right" action="/banks-jobs/running-jobs/lsf-user-manual" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <div class="element-invisible">Search form</div>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-NcHMbrSB8NGeMjPLr9A52x1OuE8mU4DlckbFviIpyos" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="mainnav">
+                    <div class="container">
+                        <div class="row">
+                            <nav id="Menu" aria-label="Mobile Menu" class="mobilenavi col-md-12"></nav>
+                            <nav id="navigation" aria-label="Main Menu">
+                                <div id="main-menu" class="main-menu-portal">
+                                    <ul class="menu"><li class="first collapsed"><a href="/user-portal">Portal</a></li>
+<li class="expanded"><a href="/accounts">Accounts</a><ul class="menu"><li class="first leaf"><a href="/accounts/new-account-setup">New Account Setup</a></li>
+<li class="leaf"><a href="/accounts/idm-account-management">IdM Account Management</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/manuals/access-lc-systems" title="">Access to LC Systems</a></li>
+<li class="leaf"><a href="/accounts/computer-coordinator-roles">Computer Coordinator Roles</a></li>
+<li class="collapsed"><a href="/accounts/forms">Forms</a></li>
+<li class="collapsed"><a href="/accounts/policies">Policies</a></li>
+<li class="last leaf"><a href="/accounts/mailing-lists">Mailing Lists</a></li>
+</ul></li>
+<li class="expanded active-trail"><a href="/banks-jobs" class="active-trail">Banks &amp; Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/allocations">Allocations</a></li>
+<li class="expanded active-trail"><a href="/banks-jobs/running-jobs" class="active-trail">Running Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/running-jobs/batch-system-primer">Batch System Primer</a></li>
+<li class="leaf active-trail"><a href="/banks-jobs/running-jobs/lsf-user-manual" class="active-trail active">LSF User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-quick-start-guide">LSF Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-commands">LSF Commands</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-user-manual" title="Guide to using the Slurm Workload/Resource Manager">Slurm User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-quick-start-guide">Slurm Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-commands">Slurm Commands</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/batch-system-commands">Batch System Cross-Reference</a></li>
+<li class="last leaf"><a href="/banks-jobs/running-jobs/slurm-srun-versus-ibm-csm-jsrun">Slurm srun versus IBM CSM jsrun</a></li>
+</ul></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/accounts/forms/asc-dat" title="">ASC DAT Request</a></li>
+<li class="last leaf"><a href="https://hpc.llnl.gov/accounts/forms/mic-dat" title="">M&amp;IC DAT Request</a></li>
+</ul></li>
+<li class="expanded"><a href="/hardware">Hardware</a><ul class="menu"><li class="first collapsed"><a href="/hardware/archival-storage-hardware">Archival Storage Hardware</a></li>
+<li class="collapsed"><a href="/hardware/platforms">Compute Platforms</a></li>
+<li class="leaf"><a href="/hardware/compute-platforms-gpus">Compute Platforms with GPUs</a></li>
+<li class="collapsed"><a href="/hardware/file-systems">File Systems</a></li>
+<li class="leaf"><a href="/hardware/testbeds">Testbeds</a></li>
+<li class="collapsed"><a href="/hardware/zones">Zones (aka &quot;The Enclave&quot;)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/cgi-bin/lccgi/customstatus.cgi?" title="">CZ Compute Platform Status</a></li>
+<li class="leaf"><a href="https://rzlc.llnl.gov/cgi-bin/lccgi/customstatus.cgi" title="">RZ Compute System Status</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/fsstatus/fsstatus.cgi" title="">CZ File System Status</a></li>
+<li class="last leaf"><a href="https://rzlc.llnl.gov/fsstatus/fsstatus.cgi" title="">RZ File System Status</a></li>
+</ul></li>
+<li class="expanded"><a href="/services">Services</a><ul class="menu"><li class="first collapsed"><a href="/services/green-data-oasis">Green Data Oasis (GDO)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="last leaf"><a href="/services/visualization-services">Visualization Services</a></li>
+</ul></li>
+<li class="expanded"><a href="/software">Software</a><ul class="menu"><li class="first leaf"><a href="/software/archival-storage-software">Archival Storage Software</a></li>
+<li class="collapsed"><a href="/software/data-management-tools-projects">Data Management Tools</a></li>
+<li class="collapsed"><a href="/software/development-environment-software">Development Environment Software</a></li>
+<li class="leaf"><a href="/software/mathematical-software">Mathematical Software</a></li>
+<li class="leaf"><a href="/software/modules-and-software-packaging">Modules and Software Packaging</a></li>
+<li class="collapsed"><a href="/software/visualization-software">Visualization Software</a></li>
+<li class="last leaf"><a href="https://computing.llnl.gov/projects/radiuss" title="">RADIUSS</a></li>
+</ul></li>
+<li class="last expanded"><a href="/training">Training</a><ul class="menu"><li class="first collapsed"><a href="/training/tutorials">Tutorials</a></li>
+<li class="collapsed"><a href="/training/documentation">Documentation &amp; User Manuals</a></li>
+<li class="leaf"><a href="/training/technical-bulletins-catalog">Technical Bulletins Catalog</a></li>
+<li class="collapsed"><a href="/training/workshop-schedule">Training Events</a></li>
+<li class="last leaf"><a href="/training/user-meeting-presentations-archive">User Meeting Presentation Archive</a></li>
+</ul></li>
+</ul>                                                                            <div id="pagetoggle" class="btn-group btn-toggle pull-right" style="margin-right: 15px;">
+                                            <a href="/" class="btn btn-default gs">General Site</a>
+                                            <a href="/user-portal" class="btn btn-primary up active">User Portal</a>
+                                        </div>
+                                                                    </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+		<div id="main-content" class="l2content">
+        <div class="container">
+    		<div class="row">
+        		                <div id="primary" class="content-area col-sm-12">
+					                                        <section id="content" role="nav" class="clearfix col-sm-12">
+
+                                                                                    <div id="breadcrumbs">
+                                    <h2 class="element-invisible">breadcrumb menu</h2><nav class="breadcrumb" aria-label="breadcrumb-navigation"><a href="/">Home</a> » <a href="/banks-jobs">Banks &amp; Jobs</a> » <a href="/banks-jobs/running-jobs">Running Jobs</a> » LSF User Manual</nav>                                </div>
+                                                    
+                                            </section>
+                  <main>
+
+                                              <div id="content_top">
+                                <div class="region region-content-top">
+  <div id="block-print-ui-print-links" class="block block-print-ui">
+
+    
+    
+  
+  <div class="content">
+    <span class="print_html"><a href="https://hpc.llnl.gov/print/405" title="Display a printer-friendly version of this page." class="print-page" onclick="window.open(this.href); return false" rel="nofollow">Printer-friendly</a></span>  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                            </div>
+                        
+                        <div id="content-wrap">
+                                                                                                                <div class="region region-content">
+  <div id="block-system-main" class="block block-system">
+
+    
+    
+  
+  <div class="content">
+    
+
+<div  about="/banks-jobs/running-jobs/lsf-user-manual" typeof="sioc:Item foaf:Document" class="node node-user-portal-training-page node-full view-mode-full">
+
+
+<div class="row">
+<div class="col-sm-4 ">
+<div class="field field-name-ds-portal-left-nav field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><div id="block-menu-block-2" class="block block-menu-block">
+
+    
+    
+  
+  <div class="content">
+    <!--<div class=" well" style="padding: 8px 0;">
+  </div>
+
+
+-->
+<div class="menu-block-wrapper menu-block-2 menu-name-menu-user-portal-menu parent-mlid-0 menu-level-2 panel panel-primary">
+<div class="panel-heading">
+<a href='/banks-jobs/running-jobs' style='color: white'>Running Jobs</a> </div>
+
+
+  <div class="content panel-body" style="padding: 8px 0;">
+     <ul class="menu"><li class="first leaf menu-mlid-435"><a href="/banks-jobs/allocations">Allocations</a></li>
+<li class="expanded active-trail menu-mlid-1703"><a href="/banks-jobs/running-jobs" class="active-trail">Running Jobs</a><ul class="menu"><li class="first leaf menu-mlid-1720"><a href="/banks-jobs/running-jobs/batch-system-primer">Batch System Primer</a></li>
+<li class="leaf active-trail active menu-mlid-1718"><a href="/banks-jobs/running-jobs/lsf-user-manual" class="active-trail active">LSF User Manual</a></li>
+<li class="leaf menu-mlid-1730"><a href="/banks-jobs/running-jobs/lsf-quick-start-guide">LSF Quick Start Guide</a></li>
+<li class="leaf menu-mlid-2000"><a href="/banks-jobs/running-jobs/lsf-commands">LSF Commands</a></li>
+<li class="leaf menu-mlid-1719"><a href="/banks-jobs/running-jobs/slurm-user-manual" title="Guide to using the Slurm Workload/Resource Manager">Slurm User Manual</a></li>
+<li class="leaf menu-mlid-1731"><a href="/banks-jobs/running-jobs/slurm-quick-start-guide">Slurm Quick Start Guide</a></li>
+<li class="leaf menu-mlid-1762"><a href="/banks-jobs/running-jobs/slurm-commands">Slurm Commands</a></li>
+<li class="leaf menu-mlid-2019"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab</a></li>
+<li class="leaf menu-mlid-1999"><a href="/banks-jobs/running-jobs/batch-system-commands">Batch System Cross-Reference</a></li>
+<li class="last leaf menu-mlid-2084"><a href="/banks-jobs/running-jobs/slurm-srun-versus-ibm-csm-jsrun">Slurm srun versus IBM CSM jsrun</a></li>
+</ul></li>
+<li class="leaf menu-mlid-1690"><a href="https://hpc.llnl.gov/accounts/forms/asc-dat" title="">ASC DAT Request</a></li>
+<li class="last leaf menu-mlid-1691"><a href="https://hpc.llnl.gov/accounts/forms/mic-dat" title="">M&amp;IC DAT Request</a></li>
+</ul>  </div>
+  
+</div> <!-- /.block -->  </div>
+  
+</div> <!-- /.block --></div></div></div><div class="field field-name-ds-lc-hotline-block field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><div class="hotline-block-with-icons">
+<div class="pull-left"><span class="h3 fa fa-phone circle-icon-red sidebar-icon"> </span></div><div class="pull-left"><h3 class="shrink-for-tablet padding-vcenter">LC Hotline: <span><a href="tel:24531">2-4531</a></span></h3><p class="h3-caption shrink-for-tablet">From offsite: <a href="tel:19254224531">(925) 422-4531</a></p>
+</div>
+
+<div class="clear clear-float"></div>
+<div>
+<div class="pull-left"><span class="h3 fa fa-clock-o circle-icon-blue padding-for-v-centering"> </span></div><div class="pull-left"><h3 class="shrink-for-tablet">Hours</h3><p class="less-line-height shrink-for-tablet h3-caption small smaller-bottom-margin">Monday–Friday<br />8am–12pm, 1–4:45pm<br />B453 R1103 | Q-clearance area</p></div>
+
+<div class="clear clear-float"></div>
+
+<div>
+<div class="pull-left"><span class="h3 fa fa-question circle-icon"> </span></div><div class="pull-left"><h3 class="shrink-for-tablet reduced-line-height padding-vcenter pull-right"><a href="/where_to_get_help">Should I Call LC Hotline<br />or LivIT?</a></h3></div><div class="clear clear-float"></div>
+<hr /></div></div></div></div></div></div></div>
+
+<div class="col-sm-8 ">
+<div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even" property="dc:title"><h1 class="title">LSF User Manual</h1></div></div></div><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p><a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_welcome/lsf_welcome.html">IBM Spectrum LSF</a> is a batch scheduler that allows users to run their jobs on Livermore Computing’s (LC) <a href="https://lc.llnl.gov/confluence/pages/viewpage.action?spaceKey=SCOE&amp;title=Sierra+Center+of+Excellence+Home">Sierra</a> (<a href="https://asc.llnl.gov/coral-info">CORAL</a>) high performance computing (HPC) clusters.  IBM Cluster System Management (CSM) is the resource manager for the Sierra systems.</p>
+<p>This document is intended to present the basics of Spectrum LSF.  For the complete guide to using LSF, see the <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_welcome/lsf_welcome.html">on-line user manual</a>.</p>
+<h2>Computing Resources</h2>
+<p>An HPC cluster is made up of a number of compute hosts, each with a complement of processors, memory, GPUs and burst buffers (burst buffer technology.)  Spectrum LSF refers to compute nodes as <em>hosts</em>.  The user submits jobs that specify the application(s) they want to run along with a description of the computing resources needed to run the application(s).</p>
+<p>With the advent of Simultaneous Multithreading (SMT) architectures, single cores can have multiple hardware threads (sometimes known as hyper-threads).  The processing elements are generically called a <em>core</em>.</p>
+<h2>The Batch Scheduler and Resource Manager</h2>
+<p>The batch scheduler and resource manager work together to run jobs on an HPC cluster.  The batch scheduler, sometimes called a workload manager, is responsible for finding and allocating the resources that fulfill the job’s request at the soonest available time.  When a job is scheduled to run, the scheduler instructs the resource manager to launch the application(s) across the job's allocated resources. This is also known as “running the job”.</p>
+<p>The user can specify conditions for scheduling the job.  One condition is the completion (successful or unsuccessful) of an earlier submitted job.  Other conditions include the availability of a specific license or access to a specific file system.</p>
+<h2>Anatomy of a Batch Job</h2>
+<p>A batch job requests computing resources and specifies the application(s) to launch on those resources along with any input data/options and output directives.  The user submits the job, usually in the form of a batch job script, to the batch scheduler.</p>
+<p>LSF provides the <span class="fixed">#BSUB</span> directives which, when placed at the top of a job script, will convey any of the bsub command line options.  When the same option is specified on the command line and as a <span class="fixed">#BSUB</span> directive in the job script, the bsub command line option will take precedence.</p>
+<p>The batch job script is composed of four main components:</p>
+<ul><li>The interpreter used to execute the script</li>
+<li><span class="fixed">#BSUB</span> directives that convey default submission options.</li>
+<li>The setting of environment and/or script variables (if necessary)</li>
+<li>The application(s) to execute along with its input arguments and options.</li>
+</ul><p>Here is an example of a batch script that requests 8 hosts under the “science” charge account and launches 32 tasks of myApp across the 8 allocated hosts:</p>
+<pre>#!/bin/bash
+#BSUB -nnodes 8
+#BSUB -G science
+jsrun --nrs 32 --rs_per_host 4 --np 32 myApp</pre><p>When the job is scheduled to run, the resource manager will execute the batch job script on a shared launch node. Please make sure all computationally demanding commands are run under <span class="fixed">jsrun</span> or <span class="fixed">lrun</span>. For details on how to write job scripts, see <a class="external-link" href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_admin/job_scripts_writing.html" rel="nofollow">this page</a>.</p>
+<h2>Batch Jobs</h2>
+<p>The <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bsub.heading_options.1.html"><span class="fixed">bsub</span></a> command is used to submit a batch script to LSF.  It is designed to reject the job at submission time if there are requests or constraints that LSF cannot fulfill as specified.  This gives the user the opportunity to examine the job request and resubmit it with the necessary corrections.</p>
+<p>You can invoke LSF's <span class="fixed">bsub</span> submission utility by just giving it a command as an argument, i.e.:</p>
+<p><span class="fixed">bsub <em>bsub_flags</em> <em>command</em></span></p>
+<p>It is much more common to collect your bsub flags as lines starting with <span class="fixed-light"><span class="fixed">#BSUB</span> </span>and commands into a job script that bsub can parse. The job script can be read from the standard input as:</p>
+<p><span class="fixed">bsub &lt; job.script</span></p>
+<p>or given as an argument to the <span class="fixed">bsub</span> command:</p>
+<p><span class="fixed">bsub job.script</span></p>
+<h2>Interactive Jobs</h2>
+<p>An interactive job is a job that returns a command line prompt (instead of running a script) when the job runs.  The <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bsub.__ip.1.html"><span class="fixed">bsub -Is [bash|csh]</span></a> command is used to submit an interactive job to LSF.  When the job runs, a command line prompt will appear and the user can launch their application(s) across the computing resources which have been allocated to the job. The current LLNL default will put your shell on the first compute node in your allocation. You can then launch parallel job steps with <span class="fixed">jsrun</span> or <span class="fixed">lrun</span>. See the Jobs and Job Steps section for more information on <span class="fixed">jsrun</span> and <span class="fixed">lrun</span>.</p>
+<p>You may also use the <span class="fixed">lalloc</span> wrapper script to quickly get an interactive session on a compute node. This is especially useful for getting a dedicated node for parallel compiles or debugging. The basic syntax is<span class="fixed"> lalloc &lt;#_of_nodes&gt;</span>. <span class="fixed">lalloc -h</span> will give you more detailed options.</p>
+<h2>Xterm Jobs</h2>
+<p>An <span class="fixed">xterm</span> job is a job that launches an <span class="fixed">xterm</span> window when the job runs.  The <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bsub.__x__f.1.html"><span class="fixed">bsub -XF xterm</span></a> command is used to submit an <span class="fixed">xterm</span> job to LSF.  When the job is runs, an <span class="fixed">xterm</span> window appears on the desktop of the user who invoked <span class="fixed">bsub -XF xterm</span>.  At that point, the user can launch their application(s) from the <span class="fixed">xterm</span> window across the computing resources which have been allocated to the job. As with the interactive jobs described above, the LLNL default will start your xterm on the first compute node of your allocation.</p>
+<h2>Execution Environment</h2>
+<p>For each job type above, the user has the ability to define the execution environment.  This includes environment variable definitions as well as shell limits (bash <span class="fixed">ulimit</span> or csh <span class="fixed">limit</span>).</p>
+<p>Use the <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bsub.env.1.html"><span class="fixed">bsub -env</span></a> option to convey specific environment variables to the execution environment.</p>
+<p>LSF by default imposes a default set of user shell soft limits in the job's execution environment.  The <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bsub.ul.1.html"><span class="fixed">bsub -ul</span></a> option will override this default behavior and pass the limits in effect in the shell where <span class="fixed">bsub</span> is invoked.  Users also have a number of <span class="fixed">bsub</span> options that individually insert soft limits into the execution environment.  There is a configuration variable in effect that makes MB the default unit when specifying such limits.  For example <span class="fixed">bsub -M 1</span> will yield a ulimit of "max memory size (kbytes, -m) 1024" in the execution environment.<br /><br />Here is the list of <span class="fixed">bsub</span> options that can insert individual process limits into the execution environment.  Bear in mind, that any limit conveyed must be less than or equal to the system's hard limits.</p>
+<ul><li>Core file size: <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bsub.__c.1.html"><span class="fixed">bsub -C</span></a></li>
+<li>CPU time in milliseconds:  <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bsub.c.1.html"><span class="fixed">bsub -c</span></a></li>
+<li>Data size:  <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bsub.__d.1.html"><span class="fixed">bsub -D</span></a></li>
+<li>Maximum file size:  <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bsub.__f.1.html"><span class="fixed">bsub -F</span></a></li>
+<li>Resident set size:  <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bsub.__m.1.html"><span class="fixed">bsub -M</span></a></li>
+<li>Stack size:  <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bsub.__s.1.html"><span class="fixed">bsub -S</span></a></li>
+<li>Virtual (swap) memory:  <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bsub.v.1.html"><span class="fixed">bsub -v</span></a></li>
+</ul><h2>Environment Variables</h2>
+<p>LSF recognizes and provides a number of environment variables.</p>
+<p>The first category of environment variables are those that LSF inserts into the job's execution environment.  These convey to the job script and application information such as job ID (LSB_JOBID) and task ID (LS_JOBPID).  For the complete list, see <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_config_ref/lsf_envars_job_exec.html">Environment variables set for job execution</a>.</p>
+<p>The next category of environment variables are those use user can set in their environment to convey default options for every job they submit.  These include options such as the wall clock limit.  For the complete list, see <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_config_ref/lsf_envars_ref.html">Environment variable reference</a>.</p>
+<p>Finally, LSF allows the user to customize the output of the <span class="fixed">bjobs</span> command by setting the LSB_BJOBS_FORMAT variable in the environment from which you invoke <span class="fixed">bjobs</span>.  For more info on customizing the output of bjobs, see the <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bjobs.o.1.html"><span class="fixed">bjobs -o</span> info page</a>.</p>
+<h2>Job Output</h2>
+<p>LSF merges the job's error and output by default and inserts job report information into the job's output. This information includes the submitting user and host, the execution host, the CPU time (user plus system time) used by the job, and the exit status.  When the job completes, the standard LSF behavior is to email the job's output to the user.</p>
+<p>LC installs a job submit filter to automatically generate an output file by default instead of sending email.  You can always specify an output and error file to the <span class="fixed">bsub</span> command using the <span class="fixed">-o</span> and <span class="fixed">-e</span> options respectively.  LSF will append the job's output to the specified file(s).  If you want the output to overwrite any existing files, use the <span class="fixed">-oo</span> and <span class="fixed">-ee</span> options instead.<br /><br />If the final character of the <span class="fixed">-o</span> and <span class="fixed">-e</span> options is a slash (<span class="fixed">/</span>), LSF will create a directory with that name and write the job's output and error files to that directory using the <span class="fixed"><em>jobid</em>.out</span> and <span class="fixed"><em>jobid</em>.err</span> naming formats.</p>
+<h2>Serial vs. Parallel jobs</h2>
+<p>Parallel jobs launch applications that are comprised of many processes (aka <em>tasks</em>) that communicate with each other, typically over a high speed switch.  Serial jobs launch one or more tasks that work independently on separate problems.</p>
+<p>Parallel and serial applications must be launched by the <span class="fixed">jsrun</span> or <span class="fixed">lrun</span> command. LLNL wrapper scripts cause commands that are not run under <span class="fixed">jsrun</span> or <span class="fixed">lrun</span> to run on the first compute node of the allocation.</p>
+<p>As an <a href="http://computation.llnl.gov/computers/sierra-advanced-technology-system">ATS</a> cluster, the Sierra clusters are ideal for running parallel jobs.</p>
+<h2>Jobs and Job Steps</h2>
+<p>The job requests computing resources and when it runs, the scheduler selects and allocates those resources to the job.  The invocation of the application happens within the batch script, or at the command line for interactive and <span class="fixed">xterm</span> jobs.</p>
+<p>When an application is launched using <span class="fixed">jsrun</span>, it is called a “job step”.  The <span class="fixed">jsrun</span> command causes the simultaneous launching of multiple tasks of a single application.  Arguments to <span class="fixed">jsrun</span> specify the number of tasks to launch as well as the number of resource sets (cores,  memory and GPUs) on which to launch the tasks.</p>
+<p><span class="fixed">jsrun</span> can be invoked sequentially or in parallel (by backgrounding them).  Furthermore, the number of resource sets specified by <span class="fixed">jsrun</span> (the <span class="fixed">--nrs</span> option) can total less than, but no more than the number of resource sets (cores, memory and GPUs) available in the job allocation.</p>
+<p>You may also use the <span class="fixed">lrun</span> wrapper script to launch job steps. <span class="fixed">lrun</span> allows you to use a more familiar, <span class="fixed">srun</span> like syntax to specify tasks, task-per-node, etc.</p>
+<h2>Job Queues</h2>
+<p>A typical cluster is typically busy running jobs and will probably not be able to run a job when it is submitted.  So typically, the job is placed in a queue.  Specific compute host resources are defined for every job queue.</p>
+<p>Each queue can be configured with a set of limits which specify the requirements for every job that can run in that queue.  These limits include job size, wall clock limits, and the users who are allowed to run in that queue.</p>
+<p>An LC convention is to have the following two queues on every cluster:</p>
+<ul><li><span class="fixed">pbatch</span> - the production queue for running production jobs.</li>
+<li><span class="fixed">pdebug</span> - the debug queue providing quick turnaround for shorter and smaller jobs.</li>
+</ul><p>The <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bqueues.1.html"><span class="fixed">bqueues</span></a> command lists all the queues currently configured.  <span class="fixed">bqueues -l</span> provides details about each queue.</p>
+<p>The <span class="fixed">bjobs -u all</span> command lists all the jobs currently in the system, one line per job.</p>
+<h2>Quality of Service (QoS)</h2>
+<p>LSF does not support the QoS model used by Slurm.  Instead, additional queues have been added to deliver QoS:</p>
+<ul><li><strong>pbatch </strong>(nominal priority and standard job size and wall clock time limits)</li>
+<li><strong>expedite</strong> (higher job priority and an exemption from job size and wall clock time limits)</li>
+<li><strong>exempt</strong> (normal job priority and an exemption from job size and wall clock time limits)</li>
+<li><strong>standby</strong> (below normal job priority and an exemption from job size and wall clock time limits)</li>
+</ul><p>Only certain users are granted the permission to submit jobs to the exempt and expedite queues.  Users are typically granted access to the pbatch and standby queues.</p>
+<h2>Charge Accounts (Banks)</h2>
+<p>Users must request a charge (aka <em>bank</em>) account for each job they submit or have a valid charge account assigned by default.  If the user is not assigned to any charge accounts, they cannot submit a job to the batch system.  Computing resources allocated to a job are tracked and charged to the job’s specified charge account.</p>
+<p>The <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_users_guide/bsub_usergroup.html">user group</a> serves as the charge account in LSF.  One specifies a user group using the <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bsub.__g.1.html"><span class="fixed">bsub -G</span></a> option.  LSF provides the LSB_DEFAULT_USERGROUP environment variable to convey a user group by default at bsub submission time.  If LSB_DEFAULT_USERGROUP is not set in the shell where bsub is invoked, users must specify a user group either using the <span class="fixed">bsub -G</span>  <em><span class="fixed">user_group </span></em>option or adding a <span class="fixed">#BSUB -G <em>user_group</em></span> directive to the start of their job script.<br /><br />As with other LC systems, shares are assigned to each user group (bank account) and each user.  Users are nominally assigned one share of each user group they have membership in.  The  <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bugroup.1.html"><span class="fixed">bugroup -l</span></a> command provides a listing of all the defined user groups, their assigned shares and the users who belong to each user group.</p>
+<h2>Job Priority</h2>
+<p>Jobs will be ordered in the queue of pending jobs based on a number of factors.  The scheduler will always be looking to schedule the job that is at the top of the queue.  The scheduler is also configured to scheduler jobs lower in the queue if doing so does not delay the start of any higher priority queue.  This is known as conservative backfill.</p>
+<p>The active factors that contribute to a job’s priority can be seen by invoking the <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bjobs.aps.1.html"><span class="fixed">bjobs -aps</span></a> command.  These factors include:</p>
+<ul><li>FS (fairshare):  a number derived from the difference between the shares of the cluster that have been allotted to a user for a specific charge account and the usage accrued to the user and charge account, as well as any parent charge accounts.</li>
+<li>JPRIORITY:  job specific factors. This is dominated by the jobs age, a number proportional to the period of time that has elapsed since the job was submitted to the queue.  Note:  time during which queued jobs in a held state does not contribute to the age factor.</li>
+<li>QPRIORITY: a baseline priority for the queue that the job was submitted to. The expedite queue has much higher QPriority than the normal pbatch queue, which has higher priority than the standby queue.</li>
+</ul><p>For a more detailed description of the algorithms for calculating job priority, see <a href="https://lc.llnl.gov/confluence/display/SCOE/LSF+Job+Priority">LSF Job Priority</a>.</p>
+<h2>Job Status</h2>
+<p>Most of a job’s characteristics can be seen by invoking <span class="fixed">bjobs -l <em>jobid</em></span>.  LSF captures and reports the exit code of the job script (<span class="fixed">bsub</span> jobs) as well as the signal that caused the job’s termination when a signal caused a job’s termination.</p>
+<p>A job’s record remains in LSF’s memory for 5 minutes after it completes.  <span class="fixed">bjobs -l <em>jobid</em></span> will return “<span class="fixed">Job <em>jobid</em> is not found</span>” for a job that completed more than 5 minutes ago.  At that point, one must invoke the <span class="fixed">bhist</span> command to retrieve the job’s record from the LSF database. Normal users can only see detail information and history for their own jobs.</p>
+<h2>Modifying a Batch Job</h2>
+<p>Many of the batch job specifications can be modified after a batch job is submitted and before it runs.  Typical fields that can be modified include the job size (number of nodes), queue, and wall clock limit.  Job specifications cannot be modified by the user once the job enters the <span class="fixed">RUN</span> state.</p>
+<p>The <span class="fixed">bmod</span> command is used to modify a job's specifications.  For example:</p>
+<ul><li><span class="fixed">bjobs -l <em>jobid</em></span> displays all of a job's characteristics</li>
+<li><span class="fixed">bmod -G <span class="fixed">science </span><em>jobid</em></span> changes the job's account to the science account</li>
+<li><span class="fixed">bmod -q pbatch <em>jobid</em></span> changes the job's queue to the pbatch queue</li>
+</ul><h2>Holding and Releasing a Batch Job</h2>
+<p>If a user's job is in the pending state waiting to be scheduled, the user can prevent the job from being scheduled by invoking the <span class="fixed">bstop <em>jobid</em></span> command to place the job into a <strong>PSUSP</strong> state.  Jobs in the held state do not accrue any job priority based on queue wait time.  Once the user is ready for the job to become a candidate for scheduling once again, they can release the job using the <span class="fixed">bresume <em>jobid</em></span> command.</p>
+<h2>Signaling and Cancelling a Batch Job</h2>
+<p>Pending jobs can be cancelled (withdrawn from the queue) using the <span class="fixed">bkill</span> command (<span class="fixed">bkill <em>jobid</em></span>).  The <span class="fixed">bkill</span> command can also be used to terminate a running job.  The default behavior is to issue the job a SIGTERM, wait 30 seconds, and if processes from the job continue to run, issue a SIGKILL command.</p>
+<p>The <span class="fixed">-s</span> option of the <span class="fixed">bkill</span> command (<span class="fixed">bkill -s <em>signal</em> <em>jobid</em></span>) allows the user to issue any signal to a running job.</p>
+<h2>Job States</h2>
+<p>The basic job states are these:</p>
+<ul><li><strong>PEND </strong>- the job is in the queue, waiting to be scheduled</li>
+<li><strong>PSUSP</strong> <strong>/ HELD</strong> - the job was submitted, but was put in the suspended state (ineligible to run)</li>
+<li><strong>DEPEND</strong> - the job is waiting for a dependency condition to be met (generally for a job to complete)</li>
+<li><strong>DEPENDF</strong> - the job's dependency condition cannot be met due to the exit state of the job it depends on</li>
+<li><strong>RUN</strong> - the job has been granted an allocation.  If it’s a batch job, the batch script has been run</li>
+<li><strong>DONE</strong> - the job has completed successfully</li>
+</ul><p>For the complete list, see <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_admin/job_state_lsf.html">About job states</a>.</p>
+<h2>Pending Reasons</h2>
+<p>LSF attempts to explain why a job will not start by listing the reasons that it cannot start on different sets of compute nodes. You can get a complete view of why a job is not starting on all compute hosts with <span class="fixed">bjobs -p3 <em>jobid</em></span>.</p>
+<h2>Displaying Computing Resources</h2>
+<p>As stated above, computing resources are hosts, cores, memory, and GPUs.  The resources of each compute host can be seen by running the <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bhosts.1.html"><span class="fixed">bhosts</span></a> and <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/lshosts.1.html"><span class="fixed">lshosts</span></a> commands.<br />The characteristics of each queue can be seen by running the <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bqueues.1.html"><span class="fixed">bqueues</span></a> command.  Finally, a load summary report for each host can be seen by running <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/lsload.1.html"><span class="fixed">lsload</span></a>.</p>
+<h2>User Permissions and Limits</h2>
+<p>The charge accounts each user is permitted to use can be seen by running the <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bugroup.1.html"><span class="fixed">bugroup</span></a> command.  In addition, the limits associated with the use each queue can be seen by running <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bqueues.1.html"><span class="fixed">bqueues -l</span></a>.</p>
+<h2>Job Statistics and Accounting</h2>
+<p>The <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bhist.1.html"><span class="fixed">bhist</span></a> command displays historical information about jobs.</p>
+<h2>Time Remaining in an Allocation</h2>
+<p>If a running application overruns its wall clock limit, all its work could be lost.  To prevent such an outcome, LSF will send a signal to the job when the remaining time of allocation is due to expire.</p>
+<p>Use the <span class="fixed"><a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bsub.wa.1.html">bsub -wa <em>signal</em></a> <a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_command_ref/bsub.wt.1.html">-wt <em>rem_time</em></a></span> option to request a signal (like <span class="fixed">USR1</span> or <span class="fixed">USR2</span>) at <span class="fixed">rem_time</span> number of seconds before the allocation expires.  The application must register a signal handler for the requested signal in order to to receive it.  The handler takes the necessary steps to write a checkpoint file and terminate gracefully.</p>
+</div></div></div></div>
+
+</div>
+</div>
+
+
+  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                   		</div>
+                  </main>
+                </div>
+      		</div>
+    	</div>
+	</div>
+  	
+	
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 footer-top">
+
+                    <a class="llnl" href="https://www.llnl.gov/" target="_blank"><img src="/sites/all/themes/tid/images/llnl.png" alt="LLNL"></a>
+                    <p>
+                        Lawrence Livermore National Laboratory
+                        <br>7000 East Avenue • Livermore, CA 94550
+                    </p>
+                    <p>
+                        Operated by Lawrence Livermore National Security, LLC, for the
+                        <br>Department of Energy's National Nuclear Security Administration.
+                    </p>
+                    <div class="footer-top-logos">
+                        <a class="nnsa" href="https://www.energy.gov/nnsa/national-nuclear-security-administration" target="_blank"><img src="/sites/all/themes/tid/images/nnsa2.png" alt="NNSA"></a>
+                        <a class="doe" href="https://www.energy.gov/" target="_blank"><img src="/sites/all/themes/tid/images/doe_small.png" alt="U.S. DOE"></a>
+                        <a class="llns" href="https://www.llnsllc.com/" target="_blank"><img src="/sites/all/themes/tid/images/llns.png" alt="LLNS"></a>
+                	</div>
+
+
+
+                </div>
+                <div class="col-sm-12 footer-bottom">
+                	
+
+                    <span>UCRL-MI-131558  &nbsp;|&nbsp;&nbsp;</span><a href="https://www.llnl.gov/disclaimer" target="_blank">Privacy &amp; Legal Notice</a>	 &nbsp;|&nbsp;&nbsp; <a href="mailto:webmaster-comp@llnl.gov">Website Query</a> &nbsp;|&nbsp;&nbsp;<a href="/about-us/contact-us" >Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+  </body>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/jquery_update/replace/jquery/2.1/jquery.min.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-extend-3.4.0.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-html-prefilter-3.5.0-backport.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/drupal.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/extlink/extlink.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/jquery.flexslider.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/slide.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/lightbox2/js/lightbox.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/matomo/matomo.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _paq = _paq || [];(function(){var u=(("https:" == document.location.protocol) ? "https://analytics.llnl.gov/" : "http://analytics.llnl.gov/");_paq.push(["setSiteId", "149"]);_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setDoNotTrack", 1]);_paq.push(["trackPageView"]);_paq.push(["setIgnoreClasses", ["no-tracking","colorbox"]]);_paq.push(["enableLinkTracking"]);var d=document,g=d.createElement("script"),s=d.getElementsByTagName("script")[0];g.type="text/javascript";g.defer=true;g.async=true;g.src="https://hpc.llnl.gov/sites/default/files/matomo/piwik.js?qsohrw";s.parentNode.insertBefore(g,s);})();
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/bootstrap.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mobilemenu.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/custom.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mods.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"tid","theme_token":"8cQr3OqLtr8y9EArIbmr0EpBGUpn67vnqVedaugKxCg","js":{"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/2.1\/jquery.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/contrib\/extlink\/extlink.js":1,"sites\/all\/themes\/tid\/js\/jquery.flexslider.js":1,"sites\/all\/themes\/tid\/js\/slide.js":1,"sites\/all\/modules\/contrib\/lightbox2\/js\/lightbox.js":1,"sites\/all\/modules\/contrib\/matomo\/matomo.js":1,"0":1,"sites\/all\/themes\/tid\/js\/bootstrap.js":1,"sites\/all\/themes\/tid\/js\/mobilemenu.js":1,"sites\/all\/themes\/tid\/js\/custom.js":1,"sites\/all\/themes\/tid\/js\/mods.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/book\/book.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/extlink\/extlink.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/lightbox2\/css\/lightbox.css":1,"sites\/all\/modules\/contrib\/print\/print_ui\/css\/print_ui.theme.css":1,"sites\/all\/themes\/tid\/css\/bootstrap.css":1,"sites\/all\/themes\/tid\/css\/flexslider.css":1,"sites\/all\/themes\/tid\/css\/system.menus.css":1,"sites\/all\/themes\/tid\/css\/style.css":1,"sites\/all\/themes\/tid\/font-awesome\/css\/font-awesome.css":1,"sites\/all\/themes\/tid\/css\/treewalk.css":1,"sites\/all\/themes\/tid\/css\/popup.css":1,"sites\/all\/themes\/tid\/css\/mods.css":1}},"lightbox2":{"rtl":0,"file_path":"\/(\\w\\w\/)public:\/","default_image":"\/sites\/all\/modules\/contrib\/lightbox2\/images\/brokenimage.jpg","border_size":10,"font_color":"000","box_color":"fff","top_position":"","overlay_opacity":"0.8","overlay_color":"000","disable_close_click":true,"resize_sequence":0,"resize_speed":400,"fade_in_speed":400,"slide_down_speed":600,"use_alt_layout":false,"disable_resize":false,"disable_zoom":false,"force_show_nav":false,"show_caption":true,"loop_items":false,"node_link_text":"View Image Details","node_link_target":false,"image_count":"Image !current of !total","video_count":"Video !current of !total","page_count":"Page !current of !total","lite_press_x_close":"press \u003Ca href=\u0022#\u0022 onclick=\u0022hideLightbox(); return FALSE;\u0022\u003E\u003Ckbd\u003Ex\u003C\/kbd\u003E\u003C\/a\u003E to close","download_link_text":"","enable_login":false,"enable_contact":false,"keys_close":"c x 27","keys_previous":"p 37","keys_next":"n 39","keys_zoom":"z","keys_play_pause":"32","display_image_size":"original","image_node_sizes":"()","trigger_lightbox_classes":"","trigger_lightbox_group_classes":"","trigger_slideshow_classes":"","trigger_lightframe_classes":"","trigger_lightframe_group_classes":"","custom_class_handler":0,"custom_trigger_classes":"","disable_for_gallery_lists":true,"disable_for_acidfree_gallery_lists":true,"enable_acidfree_videos":true,"slideshow_interval":5000,"slideshow_automatic_start":true,"slideshow_automatic_exit":true,"show_play_pause":true,"pause_on_next_click":false,"pause_on_previous_click":true,"loop_slides":false,"iframe_width":600,"iframe_height":400,"iframe_border":1,"enable_video":false,"useragent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/86.0.4240.75 Safari\/537.36"},"extlink":{"extTarget":0,"extClass":"ext","extLabel":"(link is external)","extImgClass":0,"extIconPlacement":0,"extSubdomains":1,"extExclude":".gov|.com|.org|.io|.be|.us|.edu","extInclude":"-int.llnl.gov|lc.llnl.gov|caas.llnl.gov|exchangetools.llnl.gov","extCssExclude":"","extCssExplicit":"","extAlert":"_blank","extAlertText":"This page is routing you to a page which requires extra authentication. You must have on-site or VPN access.\r\n\r\nPress OK to continue or cancel to return.\r\n\r\nIf this fails or times-out, you are not allowed access to the internal page or the server may be temporarily unavailable.\r\n\r\nIf you have an on-site or VPN account and are still having trouble, please send e-mail to lc-hotline@llnl.gov or call 925-422-4531 for further assistance.","mailtoClass":"mailto","mailtoLabel":"(link sends e-mail)"},"matomo":{"trackMailto":1},"urlIsAjaxTrusted":{"\/banks-jobs\/running-jobs\/lsf-user-manual":true}});
+//--><!]]>
+</script>
+</html>

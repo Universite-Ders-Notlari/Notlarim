@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<head>
+<meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="/banks-jobs/running-jobs/slurm-srun-versus-ibm-csm-jsrun" />
+<link rel="shortlink" href="/node/595" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="shortcut icon" href="https://hpc.llnl.gov/sites/all/themes/tid/favicon.ico" type="image/vnd.microsoft.icon" />
+<title>Slurm srun Versus IBM CSM jsrun | High Performance Computing</title>
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_kShW4RPmRstZ3SpIC-ZvVGNFVAi0WEMuCnI0ZkYIaFw.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_bq48Es_JAifg3RQWKsTF9oq1S79uSN2WHxC3KV06fK0.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_vAm-LJc0tkC-w_c6v7Ekq0bW26Pzl31HvPM6kbvK-pc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_ca6tstDbY9-H23Ty8uKiDyFQLT1AZftZKldhbTPPnm8.css" media="all" />
+<!--[if lt IE 9]><script src="/sites/all/themes/tid/js/html5.js"></script><![endif]-->
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-595 node-type-user-portal-training-page">
+  <div aria="contentinfo"><noscript><img src="https://analytics.llnl.gov/piwik.php?idsite=149" class="no-border" alt="" /></noscript></div>
+    <div id="page">
+	<div class="unclassified"></div>
+	<div class="headertop">
+					<div id="skip-nav" role="navigation" aria-labelledby="skip-nav" class="reveal">
+  			<a href="#main-content">Skip to main content</a>
+			</div>
+					</div>
+        <div class="headerwrapbg">
+                        <div class="headerwrap-portal">
+                <div id="masthead" class="site-header container" role="banner">
+                    <div class="row">
+                        <div class="llnl-logo col-sm-3">
+                            <a href="https://www.llnl.gov" target="_blank" title="Lawrence Livermore National Laboratory">
+                                <img src="/sites/all/themes/tid/images/llnl-tab-portal.png" alt="LLNL Home" />
+                            </a>
+                        </div>
+                        <div id="logo" class="site-branding col-sm-4">
+                                                            <div id="site-logo">
+                                        <!--High Performance Computing<br />Livermore Computing Center-->
+                                        																					<a href="/user-portal" class="text-dark" title="Livermore Computing Center High Performance Computing">
+                                            <img src="/sites/all/themes/tid/images/hpc.png" alt="Portal Home" />
+																					</a>
+																				
+                                </div>
+                                                    </div>
+                        <div class="col-sm-5">
+                            <div id="top-search">
+															<div class="input-group">
+																	<form class="navbar-form navbar-search navbar-right" action="/banks-jobs/running-jobs/slurm-srun-versus-ibm-csm-jsrun" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <div class="element-invisible">Search form</div>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-Bi0p1jy9hy4FzhqG_XvzjmX-OJoUyzAZkrDQjfzkfiM" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="mainnav">
+                    <div class="container">
+                        <div class="row">
+                            <nav id="Menu" aria-label="Mobile Menu" class="mobilenavi col-md-12"></nav>
+                            <nav id="navigation" aria-label="Main Menu">
+                                <div id="main-menu" class="main-menu-portal">
+                                    <ul class="menu"><li class="first collapsed"><a href="/user-portal">Portal</a></li>
+<li class="expanded"><a href="/accounts">Accounts</a><ul class="menu"><li class="first leaf"><a href="/accounts/new-account-setup">New Account Setup</a></li>
+<li class="leaf"><a href="/accounts/idm-account-management">IdM Account Management</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/manuals/access-lc-systems" title="">Access to LC Systems</a></li>
+<li class="leaf"><a href="/accounts/computer-coordinator-roles">Computer Coordinator Roles</a></li>
+<li class="collapsed"><a href="/accounts/forms">Forms</a></li>
+<li class="collapsed"><a href="/accounts/policies">Policies</a></li>
+<li class="last leaf"><a href="/accounts/mailing-lists">Mailing Lists</a></li>
+</ul></li>
+<li class="expanded active-trail"><a href="/banks-jobs" class="active-trail">Banks &amp; Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/allocations">Allocations</a></li>
+<li class="expanded active-trail"><a href="/banks-jobs/running-jobs" class="active-trail">Running Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/running-jobs/batch-system-primer">Batch System Primer</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-user-manual">LSF User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-quick-start-guide">LSF Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-commands">LSF Commands</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-user-manual" title="Guide to using the Slurm Workload/Resource Manager">Slurm User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-quick-start-guide">Slurm Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-commands">Slurm Commands</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/batch-system-commands">Batch System Cross-Reference</a></li>
+<li class="last leaf active-trail"><a href="/banks-jobs/running-jobs/slurm-srun-versus-ibm-csm-jsrun" class="active-trail active">Slurm srun versus IBM CSM jsrun</a></li>
+</ul></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/accounts/forms/asc-dat" title="">ASC DAT Request</a></li>
+<li class="last leaf"><a href="https://hpc.llnl.gov/accounts/forms/mic-dat" title="">M&amp;IC DAT Request</a></li>
+</ul></li>
+<li class="expanded"><a href="/hardware">Hardware</a><ul class="menu"><li class="first collapsed"><a href="/hardware/archival-storage-hardware">Archival Storage Hardware</a></li>
+<li class="collapsed"><a href="/hardware/platforms">Compute Platforms</a></li>
+<li class="leaf"><a href="/hardware/compute-platforms-gpus">Compute Platforms with GPUs</a></li>
+<li class="collapsed"><a href="/hardware/file-systems">File Systems</a></li>
+<li class="leaf"><a href="/hardware/testbeds">Testbeds</a></li>
+<li class="collapsed"><a href="/hardware/zones">Zones (aka &quot;The Enclave&quot;)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/cgi-bin/lccgi/customstatus.cgi?" title="">CZ Compute Platform Status</a></li>
+<li class="leaf"><a href="https://rzlc.llnl.gov/cgi-bin/lccgi/customstatus.cgi" title="">RZ Compute System Status</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/fsstatus/fsstatus.cgi" title="">CZ File System Status</a></li>
+<li class="last leaf"><a href="https://rzlc.llnl.gov/fsstatus/fsstatus.cgi" title="">RZ File System Status</a></li>
+</ul></li>
+<li class="expanded"><a href="/services">Services</a><ul class="menu"><li class="first collapsed"><a href="/services/green-data-oasis">Green Data Oasis (GDO)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="last leaf"><a href="/services/visualization-services">Visualization Services</a></li>
+</ul></li>
+<li class="expanded"><a href="/software">Software</a><ul class="menu"><li class="first leaf"><a href="/software/archival-storage-software">Archival Storage Software</a></li>
+<li class="collapsed"><a href="/software/data-management-tools-projects">Data Management Tools</a></li>
+<li class="collapsed"><a href="/software/development-environment-software">Development Environment Software</a></li>
+<li class="leaf"><a href="/software/mathematical-software">Mathematical Software</a></li>
+<li class="leaf"><a href="/software/modules-and-software-packaging">Modules and Software Packaging</a></li>
+<li class="collapsed"><a href="/software/visualization-software">Visualization Software</a></li>
+<li class="last leaf"><a href="https://computing.llnl.gov/projects/radiuss" title="">RADIUSS</a></li>
+</ul></li>
+<li class="last expanded"><a href="/training">Training</a><ul class="menu"><li class="first collapsed"><a href="/training/tutorials">Tutorials</a></li>
+<li class="collapsed"><a href="/training/documentation">Documentation &amp; User Manuals</a></li>
+<li class="leaf"><a href="/training/technical-bulletins-catalog">Technical Bulletins Catalog</a></li>
+<li class="collapsed"><a href="/training/workshop-schedule">Training Events</a></li>
+<li class="last leaf"><a href="/training/user-meeting-presentations-archive">User Meeting Presentation Archive</a></li>
+</ul></li>
+</ul>                                                                            <div id="pagetoggle" class="btn-group btn-toggle pull-right" style="margin-right: 15px;">
+                                            <a href="/" class="btn btn-default gs">General Site</a>
+                                            <a href="/user-portal" class="btn btn-primary up active">User Portal</a>
+                                        </div>
+                                                                    </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+		<div id="main-content" class="l2content">
+        <div class="container">
+    		<div class="row">
+        		                <div id="primary" class="content-area col-sm-12">
+					                                        <section id="content" role="nav" class="clearfix col-sm-12">
+
+                                                                                    <div id="breadcrumbs">
+                                    <h2 class="element-invisible">breadcrumb menu</h2><nav class="breadcrumb" aria-label="breadcrumb-navigation"><a href="/">Home</a> » <a href="/banks-jobs">Banks &amp; Jobs</a> » <a href="/banks-jobs/running-jobs">Running Jobs</a> » Slurm srun Versus IBM CSM jsrun</nav>                                </div>
+                                                    
+                                            </section>
+                  <main>
+
+                                              <div id="content_top">
+                                <div class="region region-content-top">
+  <div id="block-print-ui-print-links" class="block block-print-ui">
+
+    
+    
+  
+  <div class="content">
+    <span class="print_html"><a href="https://hpc.llnl.gov/print/595" title="Display a printer-friendly version of this page." class="print-page" onclick="window.open(this.href); return false" rel="nofollow">Printer-friendly</a></span>  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                            </div>
+                        
+                        <div id="content-wrap">
+                                                                                                                <div class="region region-content">
+  <div id="block-system-main" class="block block-system">
+
+    
+    
+  
+  <div class="content">
+    
+
+<div  about="/banks-jobs/running-jobs/slurm-srun-versus-ibm-csm-jsrun" typeof="sioc:Item foaf:Document" class="node node-user-portal-training-page node-full view-mode-full">
+
+
+<div class="row">
+<div class="col-sm-4 ">
+<div class="field field-name-ds-portal-left-nav field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><div id="block-menu-block-2" class="block block-menu-block">
+
+    
+    
+  
+  <div class="content">
+    <!--<div class=" well" style="padding: 8px 0;">
+  </div>
+
+
+-->
+<div class="menu-block-wrapper menu-block-2 menu-name-menu-user-portal-menu parent-mlid-0 menu-level-2 panel panel-primary">
+<div class="panel-heading">
+<a href='/banks-jobs/running-jobs' style='color: white'>Running Jobs</a> </div>
+
+
+  <div class="content panel-body" style="padding: 8px 0;">
+     <ul class="menu"><li class="first leaf menu-mlid-435"><a href="/banks-jobs/allocations">Allocations</a></li>
+<li class="expanded active-trail menu-mlid-1703"><a href="/banks-jobs/running-jobs" class="active-trail">Running Jobs</a><ul class="menu"><li class="first leaf menu-mlid-1720"><a href="/banks-jobs/running-jobs/batch-system-primer">Batch System Primer</a></li>
+<li class="leaf menu-mlid-1718"><a href="/banks-jobs/running-jobs/lsf-user-manual">LSF User Manual</a></li>
+<li class="leaf menu-mlid-1730"><a href="/banks-jobs/running-jobs/lsf-quick-start-guide">LSF Quick Start Guide</a></li>
+<li class="leaf menu-mlid-2000"><a href="/banks-jobs/running-jobs/lsf-commands">LSF Commands</a></li>
+<li class="leaf menu-mlid-1719"><a href="/banks-jobs/running-jobs/slurm-user-manual" title="Guide to using the Slurm Workload/Resource Manager">Slurm User Manual</a></li>
+<li class="leaf menu-mlid-1731"><a href="/banks-jobs/running-jobs/slurm-quick-start-guide">Slurm Quick Start Guide</a></li>
+<li class="leaf menu-mlid-1762"><a href="/banks-jobs/running-jobs/slurm-commands">Slurm Commands</a></li>
+<li class="leaf menu-mlid-2019"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab</a></li>
+<li class="leaf menu-mlid-1999"><a href="/banks-jobs/running-jobs/batch-system-commands">Batch System Cross-Reference</a></li>
+<li class="last leaf active-trail active menu-mlid-2084"><a href="/banks-jobs/running-jobs/slurm-srun-versus-ibm-csm-jsrun" class="active-trail active">Slurm srun versus IBM CSM jsrun</a></li>
+</ul></li>
+<li class="leaf menu-mlid-1690"><a href="https://hpc.llnl.gov/accounts/forms/asc-dat" title="">ASC DAT Request</a></li>
+<li class="last leaf menu-mlid-1691"><a href="https://hpc.llnl.gov/accounts/forms/mic-dat" title="">M&amp;IC DAT Request</a></li>
+</ul>  </div>
+  
+</div> <!-- /.block -->  </div>
+  
+</div> <!-- /.block --></div></div></div><div class="field field-name-ds-related-tags-view-with-node field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><div id="block-views-related-tags-block" class="block block-views panel panel-default">
+<div class="panel-heading">  
+      Related Content     </div>
+
+
+  <div class="content panel-body">
+    <div class="view view-related-tags view-id-related_tags view-display-id-block view-dom-id-f4dd5a63029b32589e3a22894c5606fe">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last tag-view">
+      
+  <div class="views-field views-field-field-software-tags">    <span class="views-label views-label-field-software-tags">Software Tags: </span>    <div class="field-content"><a href="/tag/software/lsf">#LSF</a>, <a href="/software/banks-running-jobs">#Running-Jobs</a>, <a href="/tag/software/slurm">#Slurm</a></div>  </div>  
+  <div class="views-field views-field-field-training-tutorial-tags">    <span class="views-label views-label-field-training-tutorial-tags">Training/Tutorial Tags: </span>    <div class="field-content"><a href="/tag/training-tutorial/computing-resources">#Computing-Resources</a>, <a href="/tag/training-tutorial/parallel-computing">#Parallel-Computing</a></div>  </div>  
+  <div class="views-field views-field-field-user-support-tags">    <span class="views-label views-label-field-user-support-tags">User Support Tags: </span>    <div class="field-content"><a href="/tag/user-support/training">#Training</a></div>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+  
+</div> <!-- /.block --></div></div></div><div class="field field-name-ds-lc-hotline-block field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><div class="hotline-block-with-icons">
+<div class="pull-left"><span class="h3 fa fa-phone circle-icon-red sidebar-icon"> </span></div><div class="pull-left"><h3 class="shrink-for-tablet padding-vcenter">LC Hotline: <span><a href="tel:24531">2-4531</a></span></h3><p class="h3-caption shrink-for-tablet">From offsite: <a href="tel:19254224531">(925) 422-4531</a></p>
+</div>
+
+<div class="clear clear-float"></div>
+<div>
+<div class="pull-left"><span class="h3 fa fa-clock-o circle-icon-blue padding-for-v-centering"> </span></div><div class="pull-left"><h3 class="shrink-for-tablet">Hours</h3><p class="less-line-height shrink-for-tablet h3-caption small smaller-bottom-margin">Monday–Friday<br />8am–12pm, 1–4:45pm<br />B453 R1103 | Q-clearance area</p></div>
+
+<div class="clear clear-float"></div>
+
+<div>
+<div class="pull-left"><span class="h3 fa fa-question circle-icon"> </span></div><div class="pull-left"><h3 class="shrink-for-tablet reduced-line-height padding-vcenter pull-right"><a href="/where_to_get_help">Should I Call LC Hotline<br />or LivIT?</a></h3></div><div class="clear clear-float"></div>
+<hr /></div></div></div></div></div></div></div>
+
+<div class="col-sm-8 ">
+<div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even" property="dc:title"><h1 class="title">Slurm srun Versus IBM CSM jsrun</h1></div></div></div><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><h2>Simple Job Step Launch on CORAL systems</h2>
+<p>Not all users will need the detailed job step / task management options provided by CSM's <span class="fixed">jsrun</span>. LLNL has developed a <span class="fixed">jsrun</span> wrapper, <span class="fixed">lrun</span>, that simplifies job step launch and provides a good task / thread placement and binding for most cases. <span class="fixed">lrun</span> can also take <span class="fixed">jsrun</span> options if more detailed controls or options are needed. Use <span class="fixed">lrun</span> with:</p>
+<pre>% lrun -T<em>ntasks_per_node</em> | -p<em>ntasks</em> [-N<em>nnodes</em>] [--nolbind] [<em>jsrun_options</em>] <em>app</em> [<em>app_args</em>]</pre><p>Note that no spaces are allowed within options for <span class="fixed">lrun</span>. i.e. use '-p4' not '-p 4'. If -N is not given, all nodes in the allocation (from <span class="fixed">bsub</span>) will be used. The --nolbind option will disable the built-in <span class="fixed">lrun</span> mpibind task / thread affinity.</p>
+<h2>Job Step Launch under Slurm and Cluster System Management (CSM)</h2>
+<p>Both Slurm and IBM's CSM provide a way to launch tasks (aka, Linux processes) of a user's application in parallel across resources allocated to the job.  For Slurm, the command is <a href="https://slurm.schedmd.com/srun.html"><span class="fixed">srun</span></a>; for CSM, the command is <span class="fixed">jsrun</span>.  This page presents their similarities and their differences.</p>
+<h3>Similarities</h3>
+<p>A job submission to the batch system (Slurm's <span class="fixed">sbatch</span> or LSF's <span class="fixed">bsub</span>) results in a resource allocation when the job runs.  Both <span class="fixed">srun</span> and <span class="fixed">jsrun</span> rely on the batch system to allocate the computing resources for the job.  (<span class="fixed">srun</span> can do both resource allocation and job launch, but that is a difference discussed below).  Both commands accept the file name of the user's application to launch as well as the number of tasks to launch.  In response to an <span class="fixed">srun</span> or <span class="fixed">jsrun</span> invocation, both systems will select the resources (nodes, cores, memory, GPU's) on which to launch the tasks based on the arguments to the respective commands, and then spawn the requested number of tasks.  A successful launch by either command is known as a job step.</p>
+<h3>Differences</h3>
+<p>The first difference is in terms.  What Slurm refers to as "nodes", LSF refers to as "hosts".  The discussion below will reflect that:  <span class="fixed">srun</span> launches tasks across <em>nodes</em>, <span class="fixed">jsrun</span> launches tasks across <em>hosts</em>.  In addition, Slurm defines the term CPU to generically refer to cores or hardware threads, depending on the node's configuration.  Where Simultaneous Multithreading (SMT) is not available or disabled, "CPU" refers to a core.  Where SMT is available and enabled, "CPU" refers to a hardware thread.  There is no such distinction with <span class="fixed">jsrun</span>; the processing element is the CPU.</p>
+<p>The next difference is how the resources are selected.  <span class="fixed">srun</span> provides the (-N, --nodes) option to specify a number of nodes.  The number of CPUs <span class="fixed">srun</span> selects will by default be equal to the number of requested tasks.  With those two essential specifications, <span class="fixed">srun</span> will find the CPUs and nodes on which to launch the tasks.  Other options to <span class="fixed">srun</span> allow memory and GPUs to be independently specified.</p>
+<p><span class="fixed">jsrun</span>'s fundamental computing resource unit is known as the resource set.  <span class="fixed">jsrun</span> options allow the user to define the contents of a resource set (CPUs, memory and GPUs) and the system will find and select the requested number of resource sets from the hosts allocated to the job.  The default mapping is one task per resource set.</p>
+<p>Both commands provide a means to bind a task (process) to the CPU(s), memory, and GPU(s) selected for it.  <span class="fixed">srun</span> offers the <span class="fixed">--cpu_bind</span>, <span class="fixed">--mem_bind</span>, and <span class="fixed">--acel-bind</span> options to do this, using a number of optional patterns.  <span class="fixed">jsrun</span> always confines tasks to their selected resource sets and offers the <span class="fixed">--bind</span> option to bind tasks to CPUs.</p>
+<p>Similarly, both commands provide the ability to specify the task to resource mapping pattern:  block, cyclic or plane.</p>
+<p>As an aside, Livermore Computing offers the <span class="fixed">mpibind</span> SPANK plugin on their Linux clusters in place of <span class="fixed">srun</span>'s native <span class="fixed">--cpu_bind</span> option.  This offers a default mapping and binding selection that considers the OpenMP thread count and makes optimal mapping/binding decisions by default for most cases.  The <span class="fixed">lrun</span> command provides <span class="fixed">mpibind</span> bindings on the IBM CORAL systems.</p>
+<p>Typically, <span class="fixed">srun</span> is invoked from within a batch script.  The script is submitted to the Slurm scheduler using the <span class="fixed">sbatch</span> command.  Alternatively, users can invoke <span class="fixed">salloc</span>.  The <span class="fixed">salloc</span> command will block until the job runs, and then return a prompt.  From that prompt, users can invoke <span class="fixed">srun</span> one or multiple times within the same resource allocation.  This form of job submission is known as an interactive job.</p>
+<p>Slurm allows the <span class="fixed">srun</span> command to be invoked directly from the command line, i.e., outside of an <span class="fixed">sbatch</span> or <span class="fixed">salloc</span> job allocation.  When that happens, <span class="fixed">srun</span> will both request and receive a resource allocation and subsequently launch one job step on the allocated resources and return.  The <span class="fixed">jsrun</span> command does not offer this ability.</p>
+<p>The following table presents the equivalent options for <span class="fixed">srun</span>, <span class="fixed">jsrun</span>, and <span class="fixed">lrun</span>.  This is a curated list for comparison purposes.  For the complete list see the <a href="https://slurm.schedmd.com/srun.html"><span class="fixed">srun</span></a> and <span class="fixed">jsrun</span> man pages.</p>
+<table class="table table-striped table-bordered" summary="Equivalent options for srun, jsrun, and lrun"><tr><th scope="col">
+<h3>Option</h3>
+</th>
+<th scope="col">
+<h3><span class="fixed">srun</span></h3>
+</th>
+<th scope="col">
+<h3><span class="fixed">jsrun</span></h3>
+</th>
+<th scope="col">
+<h3><span class="fixed">lrun</span></h3>
+</th>
+</tr><tr><td>Number of tasks</td>
+<td><span class="fixed">-n, --ntasks</span></td>
+<td><span class="fixed">-p, --np</span></td>
+<td><span class="fixed">-n</span></td>
+</tr><tr><td>Number of tasks per node</td>
+<td><span class="fixed">--ntasks-per-node</span></td>
+<td> </td>
+<td><span class="fixed">-T</span></td>
+</tr><tr><td>Allow more than one task per core</td>
+<td><span class="fixed">-O, --overcommit</span></td>
+<td> </td>
+<td> </td>
+</tr><tr><td>Number of CPUs per task (default is 1)</td>
+<td><span class="fixed">-c, --cpus-per-task</span></td>
+<td>(defined with resource set)</td>
+<td> </td>
+</tr><tr><td>Number of nodes</td>
+<td><span class="fixed">-N, --nnodes</span></td>
+<td><span class="fixed">--rs_per_host 1 --nrs &lt;x&gt;</span></td>
+<td><span class="fixed">-N</span></td>
+</tr><tr><td>Required memory per job step</td>
+<td><span class="fixed">--mem</span></td>
+<td>(defined with resource set)</td>
+<td> </td>
+</tr><tr><td>Required memory per CPU</td>
+<td><span class="fixed">--mem-per-cpu</span></td>
+<td>(defined with resource set.  see <span class="fixed">--memory_per_rs</span>)</td>
+<td> </td>
+</tr><tr><td>Number of generic resources (e.g. GPUs)</td>
+<td><span class="fixed">--gres</span></td>
+<td> </td>
+<td> </td>
+</tr><tr><td>Number of CPUs per resource set</td>
+<td>N/A</td>
+<td><span class="fixed">-c, --cpus_per_rs</span></td>
+<td> </td>
+</tr><tr><td>Amount of memory per resource set</td>
+<td>N/A</td>
+<td><span class="fixed">-m, --memory_per_rs</span></td>
+<td> </td>
+</tr><tr><td>Number of GPUs per resource set</td>
+<td>N/A</td>
+<td><span class="fixed">-g, --gpus_per_rs</span></td>
+<td> </td>
+</tr><tr><td>Number of resource sets</td>
+<td>N/A</td>
+<td><span class="fixed">-n, --nrs</span></td>
+<td> </td>
+</tr><tr><td>Number of resource sets per host</td>
+<td>N/A</td>
+<td><span class="fixed">-r, --rs_per_host</span></td>
+<td> </td>
+</tr><tr><td>Number of tasks per resource set</td>
+<td> </td>
+<td><span class="fixed"><span class="text-warning">-a, --tasks_per_rs</span></span></td>
+<td> </td>
+</tr><tr><td>Specify the task to resource mapping pattern (block, cyclic, plane or file-defined)</td>
+<td><span class="fixed">-m, --distribution</span></td>
+<td><span class="fixed">--launch_distribution</span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Bind tasks to allocated CPUs</td>
+<td><span class="fixed">--cpu_bind</span></td>
+<td><span class="fixed"><span>-b, --bind</span></span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Bind tasks to allocated memory</td>
+<td><span class="fixed">--mem_bind</span></td>
+<td>(confined to resource set)</td>
+<td> </td>
+</tr><tr><td>GPU/MIC/NIC binding preference</td>
+<td><span class="fixed">--accel-bind</span></td>
+<td>(confined to resource set)</td>
+<td> </td>
+</tr><tr><td>Performance binding preference</td>
+<td><span class="fixed">--hint</span></td>
+<td><span class="fixed">-l, --latency_priority</span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Only select nodes with the specified features</td>
+<td><span class="fixed">-C, --constraint</span></td>
+<td>N/A</td>
+<td> </td>
+</tr><tr><td>Standard input redirection</td>
+<td><span class="fixed">-i, --input</span></td>
+<td><span class="fixed">-t, --stdio-input</span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Standard output redirection</td>
+<td><span class="fixed">-o, --output</span></td>
+<td><span class="fixed">-o, --stdio-stdout</span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Output distribution (one file per task or one file per job step)</td>
+<td>filename format specifiers</td>
+<td><span class="fixed">-e, --stdio-mode</span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Standard error redirection</td>
+<td><span class="fixed">-e, --error</span></td>
+<td><span class="fixed">-k, --stdio-stderr</span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Kill entire job step if any task has non-zero exit</td>
+<td><span class="fixed">-K, --kill-on-bad-exit</span></td>
+<td><span class="fixed"><span>-X, --exit_on_error</span></span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Wait specified time after first task exits before killing entire job step</td>
+<td><span class="fixed">-W, --wait</span></td>
+<td> </td>
+<td> </td>
+</tr><tr><td>Do not kill job step when a node fails</td>
+<td><span class="fixed">-k, --no-kill</span></td>
+<td>TBD</td>
+<td> </td>
+</tr><tr><td>Run a prolog and/or epilog before/after every job step</td>
+<td><span class="fixed">--prolog, --epilog</span></td>
+<td><span class="fixed"><span>-P, --pre_post_exec=<em>script</em>_<em>info</em></span></span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Do not run more than one task on its resources</td>
+<td><span class="fixed">--exclusive</span></td>
+<td><span class="fixed"><span><span>--tasks_per_rs 1</span></span></span></td>
+<td> </td>
+</tr><tr><td>Allow up to specified number of job steps to share resources</td>
+<td><span class="fixed">-s, --oversubscribe</span></td>
+<td><span class="fixed">-s, --shared</span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Do not launch job step if resources are unavailable within specified time limit</td>
+<td><span class="fixed">-I, --immediate</span></td>
+<td><span class="fixed">-i, --immediate</span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Associate a job name with this job step</td>
+<td><span class="fixed">-J, --job-name</span></td>
+<td> </td>
+<td> </td>
+</tr><tr><td>Prepend a task ID to every line of output</td>
+<td><span class="fixed">-l, --label</span></td>
+<td><span class="fixed">--stdio-mode prepend</span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Run different applications under one job step</td>
+<td><span class="fixed">--multi-prog</span></td>
+<td><span class="fixed"><span>-f, --appfile=<em>file</em></span></span></td>
+<td> </td>
+</tr><tr><td>Attach a pseudo terminal to task 0</td>
+<td><span class="fixed">--pty</span></td>
+<td> </td>
+<td> </td>
+</tr><tr><td>Terminate job step with a single ^C (instead of two in succession)</td>
+<td><span class="fixed">-q, --quit-on-interrupt</span></td>
+<td> </td>
+<td> </td>
+</tr><tr><td>Run job step on specific nodes within allocation</td>
+<td><span class="fixed">-w, --nodelist</span></td>
+<td><span class="fixed"><span>-U, --use_resources=<em>filename</em></span></span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Save specific resources of last job step to a file</td>
+<td> </td>
+<td><span class="fixed"><span>-S, --save_resources=<em><span class="fixed"><span>filename</span></span></em></span></span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Do not run job step on specific nodes</td>
+<td><span class="fixed">-x, --exclude</span></td>
+<td><span class="fixed"><span>-U, --use_resources=</span></span><span class="fixed"><span><em><span class="fixed"><span>filename</span></span></em></span></span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Start job step at a specific node offset within allocation</td>
+<td><span class="fixed">-r, --relative</span></td>
+<td><span class="fixed"><span>-U, --use_resources=</span></span><span class="fixed"><span><em><span class="fixed"><span>filename</span></span></em></span></span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Impose a time limit on the job step's run time</td>
+<td><span class="fixed">-t, --time</span></td>
+<td> </td>
+<td> </td>
+</tr><tr><td>Turn off libc's buffering to standard out</td>
+<td><span class="fixed">-u, --unbuffered</span></td>
+<td> </td>
+<td> </td>
+</tr><tr><td>Launch step in a different directory from where invoked</td>
+<td><span class="fixed">-D, --chdir</span></td>
+<td><span class="fixed">-h, --chdir</span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Pass environment variables to the execution environment</td>
+<td><span class="fixed">--export</span></td>
+<td><span class="fixed">-E, --env</span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Environment will evaluating and setting to occur just before exec</td>
+<td> </td>
+<td><span class="fixed"><span><span>-F, --env_eval=<em>var=val</em></span></span></span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Enable debug info to TotalView</td>
+<td> </td>
+<td><span class="fixed">-u, --debug</span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Use <a href="https://computation.llnl.gov/projects/spindle">Spindle</a></td>
+<td> </td>
+<td><span class="fixed"><span>-L, --use_spindle</span></span></td>
+<td>(use jsrun option)</td>
+</tr><tr><td>Display version information and exit</td>
+<td><span class="fixed">-V, --version</span></td>
+<td><span class="fixed"><span>-V, --version</span></span></td>
+<td> </td>
+</tr><tr><td>Display help info</td>
+<td><span class="fixed">-h, --help</span></td>
+<td><span class="fixed"><span>-?, --help</span></span></td>
+<td><span class="fixed">-h, --help</span></td>
+</tr><tr><td>Display usage summary</td>
+<td><span class="fixed">--usage</span></td>
+<td><span class="fixed">--usage</span></td>
+<td><span class="fixed">--usage</span></td>
+</tr></table><p>Environment variables are only propagated if they begin with JSM_, OMPI_, or OPAL_.</p>
+<p> </p>
+</div></div></div></div>
+
+</div>
+</div>
+
+
+  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                   		</div>
+                  </main>
+                </div>
+      		</div>
+    	</div>
+	</div>
+  	
+	
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 footer-top">
+
+                    <a class="llnl" href="https://www.llnl.gov/" target="_blank"><img src="/sites/all/themes/tid/images/llnl.png" alt="LLNL"></a>
+                    <p>
+                        Lawrence Livermore National Laboratory
+                        <br>7000 East Avenue • Livermore, CA 94550
+                    </p>
+                    <p>
+                        Operated by Lawrence Livermore National Security, LLC, for the
+                        <br>Department of Energy's National Nuclear Security Administration.
+                    </p>
+                    <div class="footer-top-logos">
+                        <a class="nnsa" href="https://www.energy.gov/nnsa/national-nuclear-security-administration" target="_blank"><img src="/sites/all/themes/tid/images/nnsa2.png" alt="NNSA"></a>
+                        <a class="doe" href="https://www.energy.gov/" target="_blank"><img src="/sites/all/themes/tid/images/doe_small.png" alt="U.S. DOE"></a>
+                        <a class="llns" href="https://www.llnsllc.com/" target="_blank"><img src="/sites/all/themes/tid/images/llns.png" alt="LLNS"></a>
+                	</div>
+
+
+
+                </div>
+                <div class="col-sm-12 footer-bottom">
+                	
+
+                    <span>UCRL-MI-131558  &nbsp;|&nbsp;&nbsp;</span><a href="https://www.llnl.gov/disclaimer" target="_blank">Privacy &amp; Legal Notice</a>	 &nbsp;|&nbsp;&nbsp; <a href="mailto:webmaster-comp@llnl.gov">Website Query</a> &nbsp;|&nbsp;&nbsp;<a href="/about-us/contact-us" >Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+  </body>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/jquery_update/replace/jquery/2.1/jquery.min.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-extend-3.4.0.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-html-prefilter-3.5.0-backport.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/drupal.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/extlink/extlink.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/jquery.flexslider.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/slide.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/lightbox2/js/lightbox.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/matomo/matomo.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _paq = _paq || [];(function(){var u=(("https:" == document.location.protocol) ? "https://analytics.llnl.gov/" : "http://analytics.llnl.gov/");_paq.push(["setSiteId", "149"]);_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setDoNotTrack", 1]);_paq.push(["trackPageView"]);_paq.push(["setIgnoreClasses", ["no-tracking","colorbox"]]);_paq.push(["enableLinkTracking"]);var d=document,g=d.createElement("script"),s=d.getElementsByTagName("script")[0];g.type="text/javascript";g.defer=true;g.async=true;g.src="https://hpc.llnl.gov/sites/default/files/matomo/piwik.js?qsohrw";s.parentNode.insertBefore(g,s);})();
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/bootstrap.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mobilemenu.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/custom.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mods.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"tid","theme_token":"72jkwMy79OJW--a2SsCR6vfTsmWNlAJsDyY3s65dMU4","js":{"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/2.1\/jquery.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/contrib\/extlink\/extlink.js":1,"sites\/all\/themes\/tid\/js\/jquery.flexslider.js":1,"sites\/all\/themes\/tid\/js\/slide.js":1,"sites\/all\/modules\/contrib\/lightbox2\/js\/lightbox.js":1,"sites\/all\/modules\/contrib\/matomo\/matomo.js":1,"0":1,"sites\/all\/themes\/tid\/js\/bootstrap.js":1,"sites\/all\/themes\/tid\/js\/mobilemenu.js":1,"sites\/all\/themes\/tid\/js\/custom.js":1,"sites\/all\/themes\/tid\/js\/mods.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/book\/book.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/extlink\/extlink.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/lightbox2\/css\/lightbox.css":1,"sites\/all\/modules\/contrib\/print\/print_ui\/css\/print_ui.theme.css":1,"sites\/all\/themes\/tid\/css\/bootstrap.css":1,"sites\/all\/themes\/tid\/css\/flexslider.css":1,"sites\/all\/themes\/tid\/css\/system.menus.css":1,"sites\/all\/themes\/tid\/css\/style.css":1,"sites\/all\/themes\/tid\/font-awesome\/css\/font-awesome.css":1,"sites\/all\/themes\/tid\/css\/treewalk.css":1,"sites\/all\/themes\/tid\/css\/popup.css":1,"sites\/all\/themes\/tid\/css\/mods.css":1}},"lightbox2":{"rtl":0,"file_path":"\/(\\w\\w\/)public:\/","default_image":"\/sites\/all\/modules\/contrib\/lightbox2\/images\/brokenimage.jpg","border_size":10,"font_color":"000","box_color":"fff","top_position":"","overlay_opacity":"0.8","overlay_color":"000","disable_close_click":true,"resize_sequence":0,"resize_speed":400,"fade_in_speed":400,"slide_down_speed":600,"use_alt_layout":false,"disable_resize":false,"disable_zoom":false,"force_show_nav":false,"show_caption":true,"loop_items":false,"node_link_text":"View Image Details","node_link_target":false,"image_count":"Image !current of !total","video_count":"Video !current of !total","page_count":"Page !current of !total","lite_press_x_close":"press \u003Ca href=\u0022#\u0022 onclick=\u0022hideLightbox(); return FALSE;\u0022\u003E\u003Ckbd\u003Ex\u003C\/kbd\u003E\u003C\/a\u003E to close","download_link_text":"","enable_login":false,"enable_contact":false,"keys_close":"c x 27","keys_previous":"p 37","keys_next":"n 39","keys_zoom":"z","keys_play_pause":"32","display_image_size":"original","image_node_sizes":"()","trigger_lightbox_classes":"","trigger_lightbox_group_classes":"","trigger_slideshow_classes":"","trigger_lightframe_classes":"","trigger_lightframe_group_classes":"","custom_class_handler":0,"custom_trigger_classes":"","disable_for_gallery_lists":true,"disable_for_acidfree_gallery_lists":true,"enable_acidfree_videos":true,"slideshow_interval":5000,"slideshow_automatic_start":true,"slideshow_automatic_exit":true,"show_play_pause":true,"pause_on_next_click":false,"pause_on_previous_click":true,"loop_slides":false,"iframe_width":600,"iframe_height":400,"iframe_border":1,"enable_video":false,"useragent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/90.0.4430.93 Safari\/537.36"},"extlink":{"extTarget":0,"extClass":"ext","extLabel":"(link is external)","extImgClass":0,"extIconPlacement":0,"extSubdomains":1,"extExclude":".gov|.com|.org|.io|.be|.us|.edu","extInclude":"-int.llnl.gov|lc.llnl.gov|caas.llnl.gov|exchangetools.llnl.gov","extCssExclude":"","extCssExplicit":"","extAlert":"_blank","extAlertText":"This page is routing you to a page which requires extra authentication. You must have on-site or VPN access.\r\n\r\nPress OK to continue or cancel to return.\r\n\r\nIf this fails or times-out, you are not allowed access to the internal page or the server may be temporarily unavailable.\r\n\r\nIf you have an on-site or VPN account and are still having trouble, please send e-mail to lc-hotline@llnl.gov or call 925-422-4531 for further assistance.","mailtoClass":"mailto","mailtoLabel":"(link sends e-mail)"},"matomo":{"trackMailto":1},"urlIsAjaxTrusted":{"\/banks-jobs\/running-jobs\/slurm-srun-versus-ibm-csm-jsrun":true}});
+//--><!]]>
+</script>
+</html>

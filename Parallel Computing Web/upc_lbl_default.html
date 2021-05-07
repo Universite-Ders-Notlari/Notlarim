@@ -1,0 +1,456 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <meta name="keywords" content="UPC, Unified Parallel C, Parallel, high-performance, SPMD, communication, scientific computing, MPI, GASNet, PAMI, MXM, IBV, OpenIB, OpenFabrics, Gemini, Aries, Portals4, OFI">
+   <meta name="description" content="The Berkeley Unified Parallel C (UPC) Project is working to develop a high-performance, portable implementation of the UPC language. In addition to compiler development, we are also actively researching high-performance communication and parallel compiler optimizations, in addition to developing new UPC application benchmarks.">
+   <LINK REL="SHORTCUT ICON" HREF="/favicon.ico">
+   <title>Berkeley Unified Parallel C (UPC) Project </title>
+</head>
+
+
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#0000EE">
+<!--
+bgproperties=fixed
+-->
+
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-57278963-5', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<table width="100%" border=0>
+<tr>
+    <td valign="middle" align="left">
+        <a href="https://www.lbl.gov"><img border=0 src="/images/lbnl_new.jpeg" alt="[LBNL]"></a>
+    </td>
+    <td valign="middle">
+<center>
+        <h1>Berkeley UPC - Unified Parallel C</h1>
+</center>
+    </td>
+    <td valign="middle" align="right">
+        <!-- <a href="https://cs.berkeley.edu"><img border=0 src="/images/ucblogo.gif" alt="[UCB]"></a> -->
+	<img src="/images/BUPC-logo-tiny.gif" alt="BUPC">
+    </td>
+</tr>
+</table>
+
+<hr>
+
+<center><table BORDER=0 WIDTH="100%" >
+<tr>
+<td ALIGN="center" VALIGN=TOP WIDTH="8%"><center><a href="/"><b>Home</b></a></center></td>
+
+<td ALIGN="center" VALIGN=TOP WIDTH="12%"><center><a href="/download/"><b>Downloads</b></a></center></td>
+
+<td ALIGN="center" VALIGN=TOP WIDTH="12%"><center><a href="/docs/"><b>Documentation</b></a></center></td>
+
+<td ALIGN="center" VALIGN=TOP WIDTH="8%"><center><a class='ref' href="https://upc-bugs.lbl.gov/bugzilla/"><b>Bugs</b></a></center></td>
+
+<td ALIGN="center" VALIGN=TOP WIDTH="12%"><center><a href="/publications/"><b>Publications</b></a></center></td>
+
+<td ALIGN="center" VALIGN=TOP WIDTH="8%"><center><a href="/demos/"><b>Demos</b></a></center></td>
+
+<td ALIGN="center" VALIGN=TOP WIDTH="12%"><center><a href="/docs/user/contact.shtml"><b>Contact</b></a></center></td>
+
+<td ALIGN="center" VALIGN=TOP WIDTH="12%"><center><a href="/internal/"><b>Internal</b></a></center></td>
+</tr>
+</table></center>
+<hr>
+
+<b>Lawrence Berkeley National Laboratory is hiring!</b><br>
+The Pagoda project and Computer Languages and System Software Group (CLaSS) 
+at LBNL are recruiting for the following positions:
+<ul>
+<!-- <li><a href="https://upcxx.lbl.gov/class-lead">CLaSS Group Lead</a> -->
+<li><a href="https://upcxx.lbl.gov/2020-cxx-dev">C++ Programmer/Software Engineer</a>
+<li><a href="https://upcxx.lbl.gov/2020-hpc-dev">HPC Application Developer</a>
+</ul>
+
+<hr>
+<!--
+<h2><font color="red">Outages of upc-bugs.lbl.gov and primary translator:</font>  
+ December 26, 2014</h2>
+<b>Notice to all Berkeley UPC users:</b>
+<br>
+Maintenance on the <tt>lbl.gov</tt> network is planned for 8:00am to 3:30pm
+(Pacific Standard Time = UTC-0800) on December 26, and will impact the Bugzilla
+server at <tt>upc-bugs.lbl.gov</tt> (aka <tt>mantis.lbl.gov</tt>).  The primary
+BUPC internet translator will also be impacted, but the
+<tt>upc-translator.lbl.gov</tt> alias will be directed to the secondary server
+for the duration of the maintenance.  Therefore, Berkeley UPC compilations
+using the default translator URL should be unaffected, and only builds
+explicitly using <tt>aphid.lbl.gov</tt> will be impacted.
+<p><hr>
+-->
+
+<!--
+<h2><font color="red">Planned downtime for upc.lbl.gov:</font> Friday, Apr 23 - Mon Apr 26</h2>
+<b>Notice to all Berkeley UPC users:</b><br>
+The Berkeley UPC web site at upc.lbl.gov (downloads, documentation,
+publications, etc) and upc-lang.org will be unavailable during the period indicated above due
+site-wide power system maintenance.
+The outage will also affect the primary BUPC internet translator
+(upc-translator.lbl.gov) so Berkeley UPC compilations using the internet
+translator may experience higher latency as it fails-over to the secondary translator.
+<p><hr>
+-->
+
+
+<center><b><font size="+2" color="#d01010">
+<i>NEW</i> Apr 16, 2021 -- <a href="download/">Berkeley UPC version 2021.4.0</a> released!
+</font></b></center>
+
+
+<table width="100%" border=0><tr>
+<td><img src="images/upc-logo-tiny.gif" alt="UPC"></td>
+<td>
+<h1>The UPC Language</h1>
+</td>
+<td align=right>
+<div class="dynamic-content"> <!--  for visualping change tracking -->
+<table border=0><tr><td valign=middle>
+<center>
+<a href="demos/delaunay.shtml"><img src="demos/delaunay-small.gif" alt="Delaunay triangulation"><br>
+<font size=-1>About this UPC program</font></a>
+</center>
+</td><td valign=middle>
+<center>
+<a href="demos/UPC-CFD.shtml"><img src="demos/UPC-CFD-small.gif" alt="UPC CFD"><br>
+<font size=-1>About this UPC program</font></a>
+</center>
+</td></tr>
+</table>
+</div>
+</td>
+</tr></table>
+<p>&nbsp;Unified Parallel C (<b>UPC</b>) is an 
+extension of
+the C programming language designed for high performance computing on large-scale
+parallel machines.<span style="mso-spacerun: yes"></span>The language provides
+a uniform programming model for both shared and distributed memory hardware.&nbsp;<span style="mso-spacerun: yes"></span>The
+programmer is presented with a single shared, partitioned address
+space, where variables may be directly read and written by any processor,
+but each variable is physically associated with a single processor.&nbsp;<span style="mso-spacerun: yes"></span><span style="mso-spacerun: yes"></span>UPC
+uses a Single Program Multiple Data (SPMD) model of computation in which
+the amount of parallelism is fixed at program startup time, typically with
+a single thread of execution per processor.<span style="mso-spacerun: yes"></span>
+<p>In order to express parallelism, UPC extends ISO C 99 with the following
+constructs:
+<ul>
+<li>
+<a href="lang-overview.shtml">An explicitly parallel execution model</a></li>
+
+<li>
+<a href="lang-overview.shtml">A shared address space</a></li>
+
+<li>
+<a href="lang-overview.shtml">Synchronization primitives and a memory consistency
+model</a></li>
+
+<li>
+<a href="lang-overview.shtml">Parallel utility libraries</a></li>
+</ul>
+
+<p><br>The <a href="https://upc-lang.org">UPC language</a> evolved from experiences with three other earlier
+languages that proposed parallel extensions to ISO C 99: <a href="lang-overview.shtml">AC</a>
+, <a href="lang-overview.shtml">Split-C</a>, and <a href="lang-overview.shtml">Parallel
+C Preprocessor</a> (PCP). UPC is not a superset of these three languages,
+but rather an attempt to distill the best characteristics of each. UPC combines
+the programmability advantages of the shared memory programming paradigm
+and the control over data layout and performance of the message passing
+programming paradigm.<span style="mso-spacerun: yes"></span><span style="mso-spacerun: yes"></span>
+
+<hr>
+<table border=0 width="100%"><tr><td><img src="images/BUPC-logo-tiny.gif" alt="BUPC"></td><td>
+<h1>Our work in the LBNL Pagoda Group</h1>
+</td>
+<td align=right>
+<div class="dynamic-content"> <!--  for visualping change tracking -->
+<!-- BEGIN DLSTATS -->
+  <table border=1><tr>
+<td colspan=2 bgcolor=yellow><b><font size=-1>Berkeley UPC downloads since 01/May/2005</font></b></td>
+</tr><tr>
+<td><font size=-1>Berkeley UPC Runtime Source</font></td>
+<td align=right><font size=-1>159211</font></td>
+</tr><tr>
+<td><font size=-1>Berkeley UPC Translator Source</font></td>
+<td align=right><font size=-1>36109</font></td>
+</tr><tr>
+<td><font size=-1>Berkeley UPC Cygwin Binary</font></td>
+<td align=right><font size=-1>3381</font></td>
+</tr><tr>
+<td><font size=-1>Berkeley UPC MacOS Binary</font></td>
+<td align=right><font size=-1>10090</font></td>
+</tr><tr>
+<td><font size=-1>Combined Total</font></td>
+<td align=right><font size=-1>208791</font></td>
+</tr></table>
+
+<!-- END DLSTATS -->
+</div>
+</td>
+</tr></table>
+
+<p>
+The Berkeley UPC compiler suite is currently maintained primarily by the 
+<a href="https://crd.lbl.gov/pagoda">Pagoda Project</a> at Lawrence Berkeley National Laboratory.
+The goal of the Berkeley UPC team is to develop a portable, high performance
+implementation of UPC for large-scale multiprocessors, PC clusters, and
+clusters of shared memory multiprocessors.&nbsp; We are developing
+an open-source <a href="download/">UPC compiler suite</a> whose 
+goals are portability and high-performance.
+<p>
+The major components of our project are:
+<ul>
+<li>
+<b>Lightweight Runtime and Networking Layers</b>: On distributed memory hardware,
+references to remote shared variables usually translate into calls to a
+communication library. Because of the shared
+memory abstraction that it offers, UPC encourages a programming style where
+remote data is accessed with a low granularity (i.e. the granularity of
+an access is often the size of the primitive C types - int, float, double).&nbsp;
+In order to be able to obtain good performance from an implementation,
+it is therefore important that the overhead of accessing the underlying
+communication hardware is minimized and the implementation exploits the
+most efficient hardware mechanisms available.&nbsp;
+Our group has thus developed a lightweight communication
+and run-time layer for global address space programming languages.  
+
+<p>In an effort to make our code useful to other projects, we have separated the
+UPC-specific parts our runtime layer from the networking logic.  If you are
+implementing your own global address space language (or otherwise need a
+low-level, portable networking library), you should look at our <a
+    href="https://gasnet.lbl.gov/">GASNet library</a>,
+which currently runs over a wide variety of high-performance networks (as well
+as over any MPI 1.1 implementation).
+Additionally, several <a
+   href="https://gasnet.lbl.gov/#links">external projects</a>
+have adopted GASNet for their PGAS networking requirements.
+</li>
+
+<li>
+<b>Compilation techniques for explicitly parallel languages</b>: The group
+is working on developing communication optimizations to mask the latency of
+network communication, aggregate communication into more efficient bulk
+operations, and cache data locally.
+UPC allows programmers to specify memory accesses with
+"relaxed " consistency semantics, which can be exploited by the compiler to hide
+communication latency by overlapping communications with computation and/or
+other communication. 
+<p>
+We are implementing optimizations for the common special cases in UPC where a
+programmer uses either the default, cyclic block layout for distributed arrays,
+or a shared array with 'indefinite' blocksize (i.e., existing entirely on one
+processor).  We are also examining optimizations based on avoiding the overhead
+of shared pointer manipulation when accesses are known to be local.
+</li>
+
+<li>
+<b>Application benchmarks</b>: The group is working on benchmarks and applications
+to demonstrate the features of the UPC language and compilers, especially
+targeting problems with irregular computation and communication patterns.
+This effort will also allow us to determine the potential for optimizations
+in UPC programs.  In general,
+applications with fine-grained data sharing benefit from the lightweight
+communication that underlies UPC implementations, and the shared address
+space model is especially appropriate when the communication is asynchronous.
+<p>
+</li>
+
+<li>
+<b>Active Testing</b>: UPC programs can have classes of bugs not possible in
+a programming model such as MPI.  In order to help find and correct data races,
+deadlocks and other programming errors, we are working on
+<a href="thrille.shtml">UPC Thrille</a>.
+<p>
+</li>
+
+<li>
+<b>Dynamic Tasking:</b> <a href="task.shtml">UPC Task Library</a>
+is a simple and effective way of adding task parallelism to SPMD programs.
+It provides a high-level API that abstracts concurrent task management details
+and a dynamic load balancing mechanism.
+<p>
+</li>
+
+</ul>
+
+<p>Some of the research findings from these areas of work can be found on our <a
+    href="publications/">publications</a> page. 
+
+<hr width="100%" size="2">
+<h2>UPC Compiler Infrastructure</h2>
+
+<p>There are multiple compiler infrastructures available for use with the
+Berkeley UPC runtime and compiler driver.  The LLVM-based (<b>Clang-UPC</b>) and
+GCC-based (<b>GUPC</b>) compilers are developed by <a
+href="http://www.intrepid.com/">INTREPID Technology Inc.</a>. An Open64-based
+(<b>BUPC</b>) translator is developed at LBNL.  Currently multiple options
+encompassing these technologies are supported, for details please see the <a
+href="download/">download page</a>.</p>
+
+<p>All compilers have been tested using the same procedure and our
+recommendations in terms of robustness and performance are below.</p>
+
+<ol type="I">
+<li><b>Clang-UPC source-to-source UPC-to-C (<a href="https://clangupc.github.io/download">CUPC2C</a>) translator</b>
+<br>We consider this to be the most robust option.
+<br>Though results will vary with your choice of a backend C compiler,
+this option is likely to result in best performance.
+</li>
+<li><b>Clang-UPC source-to-binary (<a href="https://clangupc.github.io/download">CUPC</a>) compiler</b>
+<br>We believe this to be as robust as CUPC2C.
+<br>The performance is determined by LLVM (no option to use other backend compilers).
+</li>
+<li><b>Open64-based source-to-source UPC-to-C (<a href="download/">BUPC</a>) translator</b>
+<br>This is the default compiler, hosted as a netcompile service by LBNL.
+<br>Performance is determined by the backend C compiler.
+</li>
+<li><b>GNU UPC source-to-binary (<a href="https://github.com/Intrepid/GUPC">GUPC</a>) compiler</b>
+<br>We consider this option to be generally robust.
+<br>The performance is determined by GCC (no option to use other backend compilers)
+</li>
+</ol>
+
+<p>All of the compiler options above use the Berkeley UPC runtime and compiler
+driver, which is available on the
+<a href="download/">download page</a>.</p>
+
+
+<!-- "No news is good news": at least right now...
+<hr width="100%" size="2">
+<a NAME="news"></a>
+<h2>News</h2>
+-->
+
+<hr width="100%" size="2">
+
+<h2>Related Links</h2>
+
+<ul>
+<li>Language Resources:
+<ul>
+<li><a href="https://web.archive.org/web/20190919070744/http://upc.gwu.edu/">UPC Community Site</a> - documentation and collaboration website for UPC (archived)
+<li><a href="https://bitbucket.org/berkeleylab/upc-specification">UPC Language Specification Working Group</a>
+- UPC specification development
+<li><a href="http://titanium.cs.berkeley.edu">Titanium Language</a> - Java-based language with similar properties to UPC
+<li><a href="https://upcxx.lbl.gov">UPC++ Library</a> - C++11 communication library with similar properties to UPC
+<li><a href="https://en.wikipedia.org/wiki/Coarray_Fortran">Co-Array Fortran Language</a>, 
+<a href="http://caf.rice.edu/">Rice CAF 2.0</a> - Fortran-based language with similar properties to UPC
+</ul>
+<li>UPC-related mailing list archives:
+<ul><li>Announcements:
+<a href="https://hermes.gwu.edu/archives/upc.html">
+UPC Community Announcements</a>&nbsp; &nbsp; &nbsp; 
+<li>Berkeley UPC user help list:
+<a href="https://groups.google.com/a/lbl.gov/d/forum/upc-users"> Berkeley UPC Users [current]</a>&nbsp; &nbsp; &nbsp; 
+<a href="https://upc.lbl.gov/hypermail/upc-users/summary.html"> Berkeley UPC Users [before May 2010]</a>&nbsp; &nbsp; &nbsp; 
+</ul>
+<li>Other UPC implementations: (incomplete list)<br>
+<ul>
+<li><a href="https://www.hpe.com">HP UPC</a> - for all HP-branded platforms, including Tru64, HPUX and Linux systems
+<li><a href="https://www.cray.com">Cray UPC</a> - for Cray X1, XT, XE, XK, XC and future Cray platforms
+<li><a href="http://www.sgi.com">SGI UPC</a> - for Altix UV systems
+<li><a href="https://github.com/Intrepid/GUPC">GNU UPC</a> - for Linux, MacOSX, SGI IRIX, Cray T3E
+<li><a href="https://www.ibm.com">IBM UPC</a> - for IBM Blue Gene and AIX SMP's
+<li><a href="https://clangupc.github.io">Clang UPC</a> - for Linux, MacOSX and others
+<li><a href="https://doi.org/10.1109/PDP.2006.16">Michigan Tech MuPC</a> - MPI-based reference implementation for Linux and Tru64
+</ul>
+<li>Other past and present collaborations: (incomplete list)<br>
+<ul>
+<li><a href="https://sourceforge.net/projects/hipmer/">HipMer</a> - A High performance distributed memory assembler for big genomic data, using UPC and <a href="https://upcxx.lbl.gov">UPC++</a>
+<li><a href="https://ftg.lbl.gov/checkpoint">Berkeley Lab Checkpoint/Restart (BLCR)</a> - transparent checkpoint/restart of Berkeley UPC applications
+<li><a href="https://www.roguewave.com/products-services/totalview">Rogue Wave Software</a> - TotalView debugger, supports Berkeley UPC
+<li><a href="http://www.allinea.com/products/ddt/">Allinea Software</a> - Allinea DDT debugger, supports Berkeley UPC
+<li><a href="https://www.ece.ufl.edu">University of Florida</a> -
+<a href="https://upc.lbl.gov/ppw">Parallel Performance Wizard</a>
+performance analysis tool that uses the Berkeley UPC <a href="https://upc.lbl.gov/gasp">GASP profiling interface</a>
+<li><a href="https://web.archive.org/web/20190919070744/http://upc.gwu.edu/">George Washington University</a> - UPC-IO, UPC testing and benchmarking suites
+</ul>
+<li>HPC Network hardware supported by Berkeley UPC, via the 
+<a href="https://gasnet.lbl.gov/">GASNet communication system</a>: (incomplete list)<br>
+<ul>
+ <li><a href="https://www.hpe.com/us/en/what-is/cray-xc-series.html">Cray XC Series (aries)</a>
+ <li><a href="https://code.google.com/p/pami-examples/">IBM Parallel Active Message Interface (pami) - deprecated</a>
+ <li><a href="https://www.openfabrics.org">InfiniBand: OpenFabrics/OpenIB Verbs (ibv)</a>
+ <li><a href="https://www.mpi-forum.org">Any MPI-1.1 compliant system (mpi)</a> - portable support
+ <li><a href="https://ethernetalliance.org">Any TCP/IP Ethernet (udp)</a> - portable support
+</ul>
+</ul>
+
+<hr width="100%" size="2">
+<p>
+<a NAME="people"></a>
+
+<center><b>Principal Investigator:</b><br>
+Katherine Yelick<br>
+<br>
+
+<b><a href="docs/user/contact.shtml">General contact info</a></b>
+</center>
+
+<p>
+<center>
+<i>Berkeley UPC is developed and maintained by the
+<a href="https://crd.lbl.gov/pagoda">Pagoda Project</a> at Lawrence Berkeley National Laboratory,<br>
+and is funded by the DOE Office of Science
+and the Department of Defense.<br>
+Prior work has included contributions from UC Berkeley students and faculty,
+under various funding agencies.
+</i></center>
+
+<!-- don't touch stuff below this line -->
+<hr>
+<center><table BORDER=0 WIDTH="100%" >
+<tr>
+<td ALIGN="center" VALIGN=TOP WIDTH="8%"><center><a href="/"><b>Home</b></a></center></td>
+
+<td ALIGN="center" VALIGN=TOP WIDTH="12%"><center><a href="/download/"><b>Downloads</b></a></center></td>
+
+<td ALIGN="center" VALIGN=TOP WIDTH="12%"><center><a href="/docs/"><b>Documentation</b></a></center></td>
+
+<td ALIGN="center" VALIGN=TOP WIDTH="8%"><center><a class='ref' href="https://upc-bugs.lbl.gov/bugzilla/"><b>Bugs</b></a></center></td>
+
+<td ALIGN="center" VALIGN=TOP WIDTH="12%"><center><a href="/publications/"><b>Publications</b></a></center></td>
+
+<td ALIGN="center" VALIGN=TOP WIDTH="8%"><center><a href="/demos/"><b>Demos</b></a></center></td>
+
+<td ALIGN="center" VALIGN=TOP WIDTH="12%"><center><a href="/docs/user/contact.shtml"><b>Contact</b></a></center></td>
+
+<td ALIGN="center" VALIGN=TOP WIDTH="12%"><center><a href="/internal/"><b>Internal</b></a></center></td>
+
+</tr>                                                                                 
+</table></center>                                                                     
+
+<hr>
+
+<!-- Generate Analytics events -->
+<script type="text/javascript">(function(){
+function oc(e,f){if(e)
+if(e.addEventListener)e.addEventListener('click',f);
+else if(e.attachEvent)e.attachEvent('onclick',f);}
+<!-- links with class='download', 'man' or 'ref' -->
+var l=document.getElementsByTagName('a');
+for(var i=0;i<l.length;i++){var e=l[i];switch(e.getAttribute('class')){
+case 'download':oc(e,function(){ga('send','event','File','Download',this.getAttribute('href'))});break;
+case 'man':oc(e,function(){ga('send','event','File','Manpage',this.getAttribute('href'))});break;
+case 'ref':oc(e,function(){ga('send','event','Site','Referral',this.getAttribute('href'))});break;}}
+<!-- sitesearch button -->
+function ss(){var s='';var l=document.getElementsByName('sitesearch');
+for(var i=0;i<l.length;i++)if(l[i].checked)s=l[i].value;
+if(s)ga('send','event','Site','Search '+s,document.getElementsByName('q')[0].value);}
+oc(document.getElementsByName('btnG')[0],ss);
+})();</script>
+
+<div class="dynamic-content"> <!--  for visualping change tracking -->
+This page last modified on Friday, 16-Apr-2021 15:46:19 PDT
+</div>
+
+</body>
+</html>

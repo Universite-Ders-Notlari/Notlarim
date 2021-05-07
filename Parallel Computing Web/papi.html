@@ -1,0 +1,361 @@
+
+<html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<head>
+<title>Performance Application Programming Interface</title>
+
+<link rel="stylesheet" href="/projectsdev/universal/stylesheet.css" type="text/css">
+
+<script language="javascript" src="/projectsdev/universal/scripts/browserdetect_png.js" type="text/javascript"></script>
+
+<style type="text/css">
+<!--
+
+	BODY {
+		font-family: Helvetica, Arial,"Lucida Grande", Verdana, Geneva, Lucida, sans-serif;
+ 		font-size:11px;
+		line-height:21px; 
+		background-color:#FFFFFF;
+		}
+		
+	a:link {
+		color: #4E1118;
+		}
+	
+	a:visited {
+		color: #4E1118;
+		}
+	
+	a:active {
+		color: #4E1118;
+		}
+
+	a:hover {
+		color: #644242;
+		}
+	
+	ul li {
+		display: list-item;
+		font-family: Helvetica, Arial,"Lucida Grande", Verdana, Geneva, Lucida, sans-serif;
+		font-size:11px;
+		line-height:21px; 	 
+		list-style-position: outside; 
+		list-style-type: square; 
+		list-style-image: url(/projectsdev/universal/images/bullet.gif);
+		}
+	
+	.Logo	{
+		background-color:#777777;
+		}	
+
+	.HeaderTitle {
+		padding:0px;
+		margin:0px;
+		background-color:#557799;
+		}	
+
+	.HeaderTitleStripe {
+		background-color:#557799;
+		border-bottom:4px double #333;
+		}	
+					
+	.SectionTitle {
+		padding:5px 5px 5px 0px;
+		border-bottom:1px solid #CCC;
+		color: #002C54;
+		font-family: Helvetica, Arial,"Lucida Grande", Verdana, Geneva, Lucida, sans-serif;
+		font-size:18px;
+		}
+-->
+</style> 
+
+<!-- script for collapsable navigation menu -->
+
+<SCRIPT language="JavaScript"> 
+<!--
+function showMore(varA1, varB1) { 
+	var123 = ('varXYZ' + (varA1)); 
+	varABC = ('varP' + (varA1)); 
+	if( document.getElementById ) { 
+	if( document.getElementById(var123).style.display ) { 
+	if( varB1 != 0 ) { 
+	document.getElementById(var123).style.display = "block"; 
+	document.getElementById(varABC).style.display = "none"; 
+	} else { document.getElementById(var123).style.display = "none"; 
+	document.getElementById(varABC).style.display = "block"; } 
+	} else { location.href = varB1; 
+	return true; } 
+	} else { location.href = varB1; 
+	return true; } 
+	}
+//-->	
+</SCRIPT>
+
+<!-- script to display banner - requires browserdetect_png.js -->
+<SCRIPT language="JavaScript"> 
+<!--
+function od_displayImage (strId, strPath, intWidth, intHeight, strClass, strAlt) {       
+        if (pngAlpha) {
+          document.write ('<div style="height:'+intHeight+'px;width:'+intWidth+'px; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader (src=\''+strPath+'.png\', sizingMethod=\'scale\')" ÈÈ id="'+strId+'" class="'+strClass+'"></div>');
+        } else if (pngNormal) {
+          document.write('<img src="'+strPath+'.png" width="'+intWidth+'" height="'+intHeight+'" name="'+strId+'" border="0" class="'+strClass+'" alt="'+strAlt+'" />');
+        } else {
+          document.write('<img src="'+strPath+'.gif" width="'+intWidth+'" height="'+intHeight+'" name="'+strId+'" border="0" class="'+strClass+'" alt="'+strAlt+'" />');
+        }
+} 
+//-->
+</SCRIPT>
+<!-- script to popup windows -->
+<SCRIPT TYPE="text/javascript "> 
+<!--
+function popup(mylink, windowname) {
+	if (! window.focus)return true;
+		var href;
+	if (typeof(mylink) == 'string')
+		href=mylink;
+	else
+		href=mylink.href;
+		window.open(href, windowname, 'width=450,height=450,scrollbars=auto');
+		return false;
+}
+//-->
+</SCRIPT> 
+
+<script language="javascript" type="text/javascript" src="/js/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
+<script language="javascript" type="text/javascript">
+tinyMCE.init({
+	mode : "specific_textareas",
+	editor_selector : "mceSimple",
+	theme : "advanced",
+    theme_advanced_buttons1 : "bold,italic,underline,|,link,unlink,|,bullist,numlist,|,charmap,code",
+    theme_advanced_buttons2 : "",
+    theme_advanced_buttons3 : "",	
+    plugins : "autoresize"	
+});
+</script>
+
+</head>
+<body marginwidth="0" marginheight="0" topmargin="0" bgcolor="#FFFFFF">
+
+<a name="top"></a>
+
+<br />
+
+<center>
+<div class="Frame">
+<table border="0" width="755" class="Style" cellpadding="0" cellspacing="0">
+
+<tr>
+<td width="155" valign="top" colspan="2" rowspan="1">
+<div class="HeaderTitle">
+<SCRIPT language="javascript" type="text/javascript">
+	od_displayImage('header', 'https://icl.utk.edu/papi/images/header', 755, 75, '', 'Performance Application Programming Interface');
+</SCRIPT>
+<NOSCRIPT>
+	<img src="https://icl.utk.edu/papi/images/header.gif" width="755" alt="Performance Application Programming Interface" border="0">
+</NOSCRIPT>
+</div>
+</td>
+</tr>
+
+<tr>
+<td valign="bottom" width="155" class="PageTitleCell">
+</td>
+<td valign="top" width="600" class="PageTitleCell">
+<div class="PageTitle_Index"> &nbsp; </div>
+</td>
+</tr>
+
+<tr><td colspan="2" class="HeaderTitleStripe"></td></tr>
+
+
+<tr>
+<td width="155" valign="top" colspan="1" rowspan="1" class="LeftColumn">
+
+<div class="NavSection">
+<div class="NavButton">
+<a href="https://icl.utk.edu/papi/index.html">Home</a>
+</div>
+<div class="NavButton">
+<a href="https://icl.utk.edu/papi/news/index.html">News</a>
+</div>
+<div class="NavButton">
+<a href="https://icl.utk.edu/papi/software/index.html">Software</a>
+</div>
+<div class="NavButton">
+<a href="https://icl.utk.edu/papi/pubs/index.html">Publications</a>
+</div>
+<div class="NavButton">
+<a href="https://icl.utk.edu/papi/faq/index.html">FAQ</a>
+</div>
+<div class="NavButton">
+<a href="https://icl.utk.edu/papi/people/index.html">People</a>
+</div>
+
+<NOSCRIPT> 
+<div class="NavButton">
+<a href="https://bitbucket.org/icl/papi/wiki/Home">Documentation</a>
+</div>
+<div class="NavButton">
+<a href="https://icl.utk.edu/papi/custom/index.html?lid=50&slid=67">Mailing Lists and Contact</a>
+</div>
+<div class="NavButton">
+Software Archive
+</div>
+<div class="SubNavButton">
+<a href="https://icl.utk.edu/papi/custom/index.html?lid=51&slid=69">Old PAPI versions</a>
+</div>
+<div class="SubNavButton">
+<a href="https://icl.utk.edu/papi/custom/index.html?lid=51&slid=70">Perfometer</a>
+</div>
+<div class="SubNavButton">
+<a href="https://icl.utk.edu/papi/custom/index.html?lid=51&slid=71">Other</a>
+</div>
+</NOSCRIPT>
+
+<div class="NavButton">
+<a href="https://icl.utk.edu/papi/custom/index.html?lid=50&slid=67">Mailing Lists and Contact</a>
+</div>
+<div class="NavButton">
+<a href="https://bitbucket.org/icl/papi/wiki/Home">Documentation</a>
+</div>
+<span id="varP51" style="display: block"><div class="NavButtonPlus"><a href="#51" onclick="showMore(51,'#51');return false;">Software Archive</a></div>
+</span>
+<span id="varXYZ51" style="display: none"><div class="NavButtonPlus"><a href="#51" onclick="showMore(51,0);return false;">Software Archive</a>
+<div class="SubNavButton">
+<a href="https://icl.utk.edu/papi/custom/index.html?lid=51&slid=69">Old PAPI versions</a>
+</div>
+<div class="SubNavButton">
+<a href="https://icl.utk.edu/papi/custom/index.html?lid=51&slid=70">Perfometer</a>
+</div>
+<div class="SubNavButton">
+<a href="https://icl.utk.edu/papi/custom/index.html?lid=51&slid=71">Other</a>
+</div>
+</div>
+</span>
+
+
+</div>
+</div> <!-- End NavSection --><div class="EndNav"> </div>
+</td>
+
+<td valign="top" class="PageContentCell">
+<div class="PageContent">
+
+<table border="0" cellspacing="0" cellpadding="10" width="100%" class="style"><tr><td valign="top" width="60%" class="Intro">
+<div class="SectionTitle">Performance Application Programming Interface</div>
+<div class="IntroText"><p>PAPI provides the tool designer and application engineer with a consistent interface and methodology for use of the performance counter hardware found in most major microprocessors. PAPI enables software engineers to see, in near real time, the relation between software performance and processor events.</p>
+<p>In addition, PAPI provides access to a collection of components that expose performance measurement opportunites across the hardware and software stack.</p>
+<p>&nbsp;</p>
+<h2><strong><span style="font-family: 'Times New Roman'; mso-fareast-font-family: 'Times New Roman';">PAPI Resources</span></strong></h2>
+<ul>
+<li>Visit the <a title="Exa-PAPI website" href="../../exa-papi/" target="_blank">Exa-PAPI website</a> to find out more about ongoing PAPI and <a title="PAPI++" href="https://www.exascaleproject.org/papi-as-de-facto-standard-interface-for-performance-event-monitoring-at-the-exascale/" rel="nofollow" target="_blank">PAPI++</a> developments and research.</li>
+<li><a title="PAPI Bitbucket" href="https://bitbucket.org/icl/papi" target="_blank">PAPI Bitbucket</a></li>
+<li><a title="PAPI Wiki" href="https://bitbucket.org/icl/papi/wiki/" target="_blank">PAPI Wiki</a></li>
+<li><a title="PAPI User Google Group" href="https://groups.google.com/a/icl.utk.edu/forum/#!forum/ptools-perfapi" target="_blank">PAPI User Google Group</a></li>
+</ul>
+<p>&nbsp;</p>
+<h2><strong><span style="font-family: 'Times New Roman'; mso-fareast-font-family: 'Times New Roman';">PAPI Citation </span></strong></h2>
+<p>Please cite the following reference when publishing results obtained with PAPI Component:</p>
+<p><span class="publication"><span class="publication"><span class="publication"><span class="publication"><span class="publication"><span class="publication">Terpstra, D., Jagode, H., You, H., Dongarra, J. <a href="https://link.springer.com/chapter/10.1007%2F978-3-642-11261-4_11"><strong>"Collecting Performance Data with PAPI-C"</strong></a><em>, Tools for High Performance Computing 2009</em>, Springer Berlin / Heidelberg, 3rd Parallel Tools Workshop, Dresden, Germany, pp. 157-173, 2010.</span></span></span></span></span></span></p></div>
+<br /></td><td width="40%" valign="top">
+<div class="SectionTitle">Latest Performance Application Programming Interface News</div>
+<span class="NewsDate-Alt">2020-03-04</span>
+<div class="NewsHeadline-sm"><a href="news/news.html?id=382">Announcing PAPI 6.0.0</a></div>
+<br />
+<span class="NewsDate-Alt">2019-03-04</span>
+<div class="NewsHeadline-sm"><a href="news/news.html?id=381">Announcing PAPI 5.7.0</a></div>
+<br />
+<span class="NewsDate-Alt">2017-12-20</span>
+<div class="NewsHeadline-sm"><a href="news/news.html?id=380">Announcing PAPI 5.6.0</a></div>
+<br />
+<span class="NewsDate-Alt">2016-11-18</span>
+<div class="NewsHeadline-sm"><a href="news/news.html?id=377">Announcing PAPI 5.5.1</a></div>
+<br />
+<span class="NewsDate-Alt">2016-09-14</span>
+<div class="NewsHeadline-sm"><a href="news/news.html?id=376">Announcing PAPI 5.5.0</a></div>
+<br />
+</td>
+</tr>
+</table>
+</div> <!-- End Page Content -->
+</td>
+</tr>
+</table>
+
+<!-- Footer -->
+<center>
+<div class="Footer">
+<table border="0" cellspacing="0" cellpadding="5">
+<tr>
+<td align="center" valign="top" colspan="2">
+
+<a href="http://icl.cs.utk.edu/"><img src="/projectsdev/universal/images/icl_footer.gif" width="100" height="50" alt="ICL" border="0"></a>
+</td>
+</tr>
+<tr>
+<td class="funding" align="center" valign="middle">
+
+	Sponsored By: <a href="http://www.dod.mil/"><img src="/projectsdev/universal/images/footer/DoD-25.gif" alt="DoD" border="0" vspace="5" hspace="5" align="absmiddle"></a>&nbsp
+<a href="http://www.doe.gov/"><img src="/projectsdev/universal/images/footer/DOE-25.gif" alt="DOE" border="0" vspace="5" hspace="5" align="absmiddle"></a>&nbsp
+<a href="http://www.nsf.gov/"><img src="/projectsdev/universal/images/footer/NSF-25.gif" alt="NSF" border="0" vspace="5" hspace="5" align="absmiddle"></a>&nbsp
+
+
+</td>
+<td align="center" class="funding" valign="middle">
+	
+	Industry Support From: <a href="http://www.amd.com/"><img src="/projectsdev/universal/images/footer/AMD-25.gif" alt="AMD" border="0" vspace="5" hspace="5" align="absmiddle"></a>&nbsp
+<a href="http://www.ibm.com/"><img src="/projectsdev/universal/images/footer/IBM-25.gif" alt="IBM" border="0" vspace="5" hspace="5" align="absmiddle"></a>&nbsp
+<a href="http://www.intel.com/"><img src="/projectsdev/universal/images/footer/Intel-25.gif" alt="Intel" border="0" vspace="5" hspace="5" align="absmiddle"></a>&nbsp
+<a href="http://www.nvidia.com/"><img src="/projectsdev/universal/images/footer/NVIDIA-25.gif" alt="NVIDIA" border="0" vspace="5" hspace="5" align="absmiddle"></a>&nbsp
+	
+</td>
+</tr>
+</table>
+
+</div> <!-- End Footer -->
+
+</center>
+
+</div> <!-- End Frame -->
+
+</center>
+
+
+<!-- Start of Admin Footer -->
+
+<center>
+
+<table width="758" border="0">
+<tr>
+<td align="left" class="fine">
+May 07 2021 </td>
+<td align="center" class="fine">
+</td>
+<td align="right" class="fine">
+<!-- Admin Login/Logout -->
+ <a href="https://icl.utk.edu/papi/auth/index.html">Admin Login</a>
+<!-- End of Admin Login/Logout -->
+</td>
+</tr>
+</table>
+
+
+<!-- Stats-->
+
+	
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  _uacct = "UA-749260-1";
+  urchinTracker();
+</script>
+	
+
+
+</center> 
+
+<!-- End of Admin Footer -->
+
+</body>
+</html>

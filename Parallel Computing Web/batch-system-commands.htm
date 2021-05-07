@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<head>
+<meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="/banks-jobs/running-jobs/batch-system-commands" />
+<link rel="shortlink" href="/node/450" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="shortcut icon" href="https://hpc.llnl.gov/sites/all/themes/tid/favicon.ico" type="image/vnd.microsoft.icon" />
+<title>Batch System Cross-Reference Guides | High Performance Computing</title>
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_kShW4RPmRstZ3SpIC-ZvVGNFVAi0WEMuCnI0ZkYIaFw.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_bq48Es_JAifg3RQWKsTF9oq1S79uSN2WHxC3KV06fK0.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_vAm-LJc0tkC-w_c6v7Ekq0bW26Pzl31HvPM6kbvK-pc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_ca6tstDbY9-H23Ty8uKiDyFQLT1AZftZKldhbTPPnm8.css" media="all" />
+<!--[if lt IE 9]><script src="/sites/all/themes/tid/js/html5.js"></script><![endif]-->
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-450 node-type-user-portal-training-page">
+  <div aria="contentinfo"><noscript><img src="https://analytics.llnl.gov/piwik.php?idsite=149" class="no-border" alt="" /></noscript></div>
+    <div id="page">
+	<div class="unclassified"></div>
+	<div class="headertop">
+					<div id="skip-nav" role="navigation" aria-labelledby="skip-nav" class="reveal">
+  			<a href="#main-content">Skip to main content</a>
+			</div>
+					</div>
+        <div class="headerwrapbg">
+                        <div class="headerwrap-portal">
+                <div id="masthead" class="site-header container" role="banner">
+                    <div class="row">
+                        <div class="llnl-logo col-sm-3">
+                            <a href="https://www.llnl.gov" target="_blank" title="Lawrence Livermore National Laboratory">
+                                <img src="/sites/all/themes/tid/images/llnl-tab-portal.png" alt="LLNL Home" />
+                            </a>
+                        </div>
+                        <div id="logo" class="site-branding col-sm-4">
+                                                            <div id="site-logo">
+                                        <!--High Performance Computing<br />Livermore Computing Center-->
+                                        																					<a href="/user-portal" class="text-dark" title="Livermore Computing Center High Performance Computing">
+                                            <img src="/sites/all/themes/tid/images/hpc.png" alt="Portal Home" />
+																					</a>
+																				
+                                </div>
+                                                    </div>
+                        <div class="col-sm-5">
+                            <div id="top-search">
+															<div class="input-group">
+																	<form class="navbar-form navbar-search navbar-right" action="/banks-jobs/running-jobs/batch-system-commands" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <div class="element-invisible">Search form</div>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-HJ-6DblLfLA9FD6qSGKTLpySJelE8I0cLOCv02Mb48c" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="mainnav">
+                    <div class="container">
+                        <div class="row">
+                            <nav id="Menu" aria-label="Mobile Menu" class="mobilenavi col-md-12"></nav>
+                            <nav id="navigation" aria-label="Main Menu">
+                                <div id="main-menu" class="main-menu-portal">
+                                    <ul class="menu"><li class="first collapsed"><a href="/user-portal">Portal</a></li>
+<li class="expanded"><a href="/accounts">Accounts</a><ul class="menu"><li class="first leaf"><a href="/accounts/new-account-setup">New Account Setup</a></li>
+<li class="leaf"><a href="/accounts/idm-account-management">IdM Account Management</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/manuals/access-lc-systems" title="">Access to LC Systems</a></li>
+<li class="leaf"><a href="/accounts/computer-coordinator-roles">Computer Coordinator Roles</a></li>
+<li class="collapsed"><a href="/accounts/forms">Forms</a></li>
+<li class="collapsed"><a href="/accounts/policies">Policies</a></li>
+<li class="last leaf"><a href="/accounts/mailing-lists">Mailing Lists</a></li>
+</ul></li>
+<li class="expanded active-trail"><a href="/banks-jobs" class="active-trail">Banks &amp; Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/allocations">Allocations</a></li>
+<li class="expanded active-trail"><a href="/banks-jobs/running-jobs" class="active-trail">Running Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/running-jobs/batch-system-primer">Batch System Primer</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-user-manual">LSF User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-quick-start-guide">LSF Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-commands">LSF Commands</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-user-manual" title="Guide to using the Slurm Workload/Resource Manager">Slurm User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-quick-start-guide">Slurm Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-commands">Slurm Commands</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab</a></li>
+<li class="leaf active-trail"><a href="/banks-jobs/running-jobs/batch-system-commands" class="active-trail active">Batch System Cross-Reference</a></li>
+<li class="last leaf"><a href="/banks-jobs/running-jobs/slurm-srun-versus-ibm-csm-jsrun">Slurm srun versus IBM CSM jsrun</a></li>
+</ul></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/accounts/forms/asc-dat" title="">ASC DAT Request</a></li>
+<li class="last leaf"><a href="https://hpc.llnl.gov/accounts/forms/mic-dat" title="">M&amp;IC DAT Request</a></li>
+</ul></li>
+<li class="expanded"><a href="/hardware">Hardware</a><ul class="menu"><li class="first collapsed"><a href="/hardware/archival-storage-hardware">Archival Storage Hardware</a></li>
+<li class="collapsed"><a href="/hardware/platforms">Compute Platforms</a></li>
+<li class="leaf"><a href="/hardware/compute-platforms-gpus">Compute Platforms with GPUs</a></li>
+<li class="collapsed"><a href="/hardware/file-systems">File Systems</a></li>
+<li class="leaf"><a href="/hardware/testbeds">Testbeds</a></li>
+<li class="collapsed"><a href="/hardware/zones">Zones (aka &quot;The Enclave&quot;)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/cgi-bin/lccgi/customstatus.cgi?" title="">CZ Compute Platform Status</a></li>
+<li class="leaf"><a href="https://rzlc.llnl.gov/cgi-bin/lccgi/customstatus.cgi" title="">RZ Compute System Status</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/fsstatus/fsstatus.cgi" title="">CZ File System Status</a></li>
+<li class="last leaf"><a href="https://rzlc.llnl.gov/fsstatus/fsstatus.cgi" title="">RZ File System Status</a></li>
+</ul></li>
+<li class="expanded"><a href="/services">Services</a><ul class="menu"><li class="first collapsed"><a href="/services/green-data-oasis">Green Data Oasis (GDO)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="last leaf"><a href="/services/visualization-services">Visualization Services</a></li>
+</ul></li>
+<li class="expanded"><a href="/software">Software</a><ul class="menu"><li class="first leaf"><a href="/software/archival-storage-software">Archival Storage Software</a></li>
+<li class="collapsed"><a href="/software/data-management-tools-projects">Data Management Tools</a></li>
+<li class="collapsed"><a href="/software/development-environment-software">Development Environment Software</a></li>
+<li class="leaf"><a href="/software/mathematical-software">Mathematical Software</a></li>
+<li class="leaf"><a href="/software/modules-and-software-packaging">Modules and Software Packaging</a></li>
+<li class="collapsed"><a href="/software/visualization-software">Visualization Software</a></li>
+<li class="last leaf"><a href="https://computing.llnl.gov/projects/radiuss" title="">RADIUSS</a></li>
+</ul></li>
+<li class="last expanded"><a href="/training">Training</a><ul class="menu"><li class="first collapsed"><a href="/training/tutorials">Tutorials</a></li>
+<li class="collapsed"><a href="/training/documentation">Documentation &amp; User Manuals</a></li>
+<li class="leaf"><a href="/training/technical-bulletins-catalog">Technical Bulletins Catalog</a></li>
+<li class="collapsed"><a href="/training/workshop-schedule">Training Events</a></li>
+<li class="last leaf"><a href="/training/user-meeting-presentations-archive">User Meeting Presentation Archive</a></li>
+</ul></li>
+</ul>                                                                            <div id="pagetoggle" class="btn-group btn-toggle pull-right" style="margin-right: 15px;">
+                                            <a href="/" class="btn btn-default gs">General Site</a>
+                                            <a href="/user-portal" class="btn btn-primary up active">User Portal</a>
+                                        </div>
+                                                                    </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+		<div id="main-content" class="l2content">
+        <div class="container">
+    		<div class="row">
+        		                <div id="primary" class="content-area col-sm-12">
+					                                        <section id="content" role="nav" class="clearfix col-sm-12">
+
+                                                                                    <div id="breadcrumbs">
+                                    <h2 class="element-invisible">breadcrumb menu</h2><nav class="breadcrumb" aria-label="breadcrumb-navigation"><a href="/">Home</a> » <a href="/banks-jobs">Banks &amp; Jobs</a> » <a href="/banks-jobs/running-jobs">Running Jobs</a> » Batch System Cross-Reference Guides</nav>                                </div>
+                                                    
+                                            </section>
+                  <main>
+
+                                              <div id="content_top">
+                                <div class="region region-content-top">
+  <div id="block-print-ui-print-links" class="block block-print-ui">
+
+    
+    
+  
+  <div class="content">
+    <span class="print_html"><a href="https://hpc.llnl.gov/print/450" title="Display a printer-friendly version of this page." class="print-page" onclick="window.open(this.href); return false" rel="nofollow">Printer-friendly</a></span>  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                            </div>
+                        
+                        <div id="content-wrap">
+                                                                                                                <div class="region region-content">
+  <div id="block-system-main" class="block block-system">
+
+    
+    
+  
+  <div class="content">
+    
+
+<div  about="/banks-jobs/running-jobs/batch-system-commands" typeof="sioc:Item foaf:Document" class="node node-user-portal-training-page node-full view-mode-full">
+
+
+<div class="row">
+<div class="col-sm-4 ">
+<div class="field field-name-ds-portal-left-nav field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><div id="block-menu-block-2" class="block block-menu-block">
+
+    
+    
+  
+  <div class="content">
+    <!--<div class=" well" style="padding: 8px 0;">
+  </div>
+
+
+-->
+<div class="menu-block-wrapper menu-block-2 menu-name-menu-user-portal-menu parent-mlid-0 menu-level-2 panel panel-primary">
+<div class="panel-heading">
+<a href='/banks-jobs/running-jobs' style='color: white'>Running Jobs</a> </div>
+
+
+  <div class="content panel-body" style="padding: 8px 0;">
+     <ul class="menu"><li class="first leaf menu-mlid-435"><a href="/banks-jobs/allocations">Allocations</a></li>
+<li class="expanded active-trail menu-mlid-1703"><a href="/banks-jobs/running-jobs" class="active-trail">Running Jobs</a><ul class="menu"><li class="first leaf menu-mlid-1720"><a href="/banks-jobs/running-jobs/batch-system-primer">Batch System Primer</a></li>
+<li class="leaf menu-mlid-1718"><a href="/banks-jobs/running-jobs/lsf-user-manual">LSF User Manual</a></li>
+<li class="leaf menu-mlid-1730"><a href="/banks-jobs/running-jobs/lsf-quick-start-guide">LSF Quick Start Guide</a></li>
+<li class="leaf menu-mlid-2000"><a href="/banks-jobs/running-jobs/lsf-commands">LSF Commands</a></li>
+<li class="leaf menu-mlid-1719"><a href="/banks-jobs/running-jobs/slurm-user-manual" title="Guide to using the Slurm Workload/Resource Manager">Slurm User Manual</a></li>
+<li class="leaf menu-mlid-1731"><a href="/banks-jobs/running-jobs/slurm-quick-start-guide">Slurm Quick Start Guide</a></li>
+<li class="leaf menu-mlid-1762"><a href="/banks-jobs/running-jobs/slurm-commands">Slurm Commands</a></li>
+<li class="leaf menu-mlid-2019"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab</a></li>
+<li class="leaf active-trail active menu-mlid-1999"><a href="/banks-jobs/running-jobs/batch-system-commands" class="active-trail active">Batch System Cross-Reference</a></li>
+<li class="last leaf menu-mlid-2084"><a href="/banks-jobs/running-jobs/slurm-srun-versus-ibm-csm-jsrun">Slurm srun versus IBM CSM jsrun</a></li>
+</ul></li>
+<li class="leaf menu-mlid-1690"><a href="https://hpc.llnl.gov/accounts/forms/asc-dat" title="">ASC DAT Request</a></li>
+<li class="last leaf menu-mlid-1691"><a href="https://hpc.llnl.gov/accounts/forms/mic-dat" title="">M&amp;IC DAT Request</a></li>
+</ul>  </div>
+  
+</div> <!-- /.block -->  </div>
+  
+</div> <!-- /.block --></div></div></div><div class="field field-name-ds-lc-hotline-block field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><div class="hotline-block-with-icons">
+<div class="pull-left"><span class="h3 fa fa-phone circle-icon-red sidebar-icon"> </span></div><div class="pull-left"><h3 class="shrink-for-tablet padding-vcenter">LC Hotline: <span><a href="tel:24531">2-4531</a></span></h3><p class="h3-caption shrink-for-tablet">From offsite: <a href="tel:19254224531">(925) 422-4531</a></p>
+</div>
+
+<div class="clear clear-float"></div>
+<div>
+<div class="pull-left"><span class="h3 fa fa-clock-o circle-icon-blue padding-for-v-centering"> </span></div><div class="pull-left"><h3 class="shrink-for-tablet">Hours</h3><p class="less-line-height shrink-for-tablet h3-caption small smaller-bottom-margin">Monday–Friday<br />8am–12pm, 1–4:45pm<br />B453 R1103 | Q-clearance area</p></div>
+
+<div class="clear clear-float"></div>
+
+<div>
+<div class="pull-left"><span class="h3 fa fa-question circle-icon"> </span></div><div class="pull-left"><h3 class="shrink-for-tablet reduced-line-height padding-vcenter pull-right"><a href="/where_to_get_help">Should I Call LC Hotline<br />or LivIT?</a></h3></div><div class="clear clear-float"></div>
+<hr /></div></div></div></div></div></div></div>
+
+<div class="col-sm-8 ">
+<div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even" property="dc:title"><h1 class="title">Batch System Cross-Reference Guides</h1></div></div></div><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p>On this page: <a href="#commands">Commands cross-reference</a> | <a href="#submission">Submission cross-reference</a> | <a href="#lsf">LSF only</a> | <a href="#environment">Environment Variables</a></p>
+<h2><a name="commands" id="commands"></a>Batch System Commands Cross-Reference</h2>
+<table class="table table-striped table-bordered" summary="Batch System Commands Cross-Reference"> <br /><tr><th scope="col">
+<h3>Command</h3>
+</th>
+<th scope="col">
+<h3>LSF</h3>
+</th>
+<th scope="col">
+<h3>Moab</h3>
+</th>
+<th scope="col">
+<h3>Slurm</h3>
+</th>
+</tr><tr><td>submit a job</td>
+<td><span class="fixed">bsub</span></td>
+<td><span class="fixed">msub</span></td>
+<td><span class="fixed">sbatch</span></td>
+</tr><tr><td>submit an interactive job</td>
+<td><span class="fixed">bsub -Is [bash|csh]</span></td>
+<td> </td>
+<td><span class="fixed">salloc</span></td>
+</tr><tr><td>submit an xterm job</td>
+<td><span class="fixed">bsub -XF xterm</span></td>
+<td><span class="fixed">mxterm</span></td>
+<td><span class="fixed">sxterm</span></td>
+</tr><tr><td>launch parallel tasks</td>
+<td><span class="fixed">mpirun/jsrun/lrun</span></td>
+<td> </td>
+<td><span class="fixed">srun</span></td>
+</tr><tr><td>modify a pending job</td>
+<td><span class="fixed">bmod <em>jobid</em></span></td>
+<td><span class="fixed">mjobctl -m <em>jobid</em></span></td>
+<td><span class="fixed">scontrol update job </span><span class="fixed"><em><span class="fixed">jobid</span></em></span></td>
+</tr><tr><td>hold a pending job</td>
+<td><span class="fixed">bstop </span><span class="fixed"><em>jobid</em></span></td>
+<td><span class="fixed">mjobctl -h <em><span class="fixed"><span class="fixed">jobid</span></span></em></span></td>
+<td><span class="fixed">scontrol hold </span><span class="fixed"><em><span class="fixed"><span class="fixed">jobid</span></span></em></span></td>
+</tr><tr><td>release a held job</td>
+<td><span class="fixed">bresume </span><span class="fixed"><em><span class="fixed"><span class="fixed">jobid</span></span></em></span></td>
+<td><span class="fixed">mobctl -r </span><span class="fixed"><em><span class="fixed"><span class="fixed">jobid</span></span></em></span></td>
+<td><span class="fixed">scontrol release <em><span class="fixed">jobid</span></em></span></td>
+</tr><tr><td>cancel a job</td>
+<td><span class="fixed">bkill </span><span class="fixed"><em><span class="fixed">jobid</span></em></span></td>
+<td><span class="fixed">canceljob </span><span class="fixed"><em><span class="fixed">jobid</span></em></span></td>
+<td><span class="fixed">scancel <em><span class="fixed">jobid</span></em></span></td>
+</tr><tr><td>signal a job</td>
+<td><span class="fixed">bkill -s <em>signal</em> </span><span class="fixed"><em><span class="fixed">jobid</span></em></span></td>
+<td><span class="fixed">mobctl -N signal=</span><span class="fixed"><span class="fixed"><em>signal</em></span> </span><span class="fixed"><em><span class="fixed">jobid</span></em></span></td>
+<td><span class="fixed">scancel -s <em><span class="fixed">signal</span></em> </span><span class="fixed"><em><span class="fixed">jobid</span></em></span></td>
+</tr><tr><td>show detailed job information</td>
+<td><span class="fixed">bjobs -l <em><span class="fixed">jobid</span></em></span></td>
+<td><span class="fixed">checkjob </span><span class="fixed"><em><span class="fixed">jobid</span></em></span></td>
+<td><span class="fixed">scontrol show job </span><span class="fixed"><em><span class="fixed">jobid</span></em></span></td>
+</tr><tr><td>show job queue</td>
+<td><span class="fixed">bjobs -u all</span></td>
+<td><span class="fixed">showq</span></td>
+<td><span class="fixed">squeue</span></td>
+</tr><tr><td>show historical jobs</td>
+<td><span class="fixed">bhist</span></td>
+<td> </td>
+<td><span class="fixed">sacct</span></td>
+</tr><tr><td>show detailed historical job info</td>
+<td><span class="fixed">bhist -l </span><span class="fixed"><em><span class="fixed">jobid</span></em></span></td>
+<td> </td>
+<td><span class="fixed">sacct -l -j </span><span class="fixed"><em><span class="fixed">jobid</span></em></span></td>
+</tr><tr><td>show job priorities</td>
+<td><span class="fixed">bjobs -aps</span></td>
+<td><span class="fixed">mdiag -p</span></td>
+<td><span class="fixed">sprio</span></td>
+</tr><tr><td>show node resources</td>
+<td><span class="fixed">bhosts</span></td>
+<td><span class="fixed">mdiag -n</span></td>
+<td><span class="fixed">scontrol show node</span></td>
+</tr><tr><td>show available queues</td>
+<td><span class="fixed">bqueues</span></td>
+<td><span class="fixed">mdiag -c</span></td>
+<td><span class="fixed">sinfo</span></td>
+</tr><tr><td>show queue details</td>
+<td><span class="fixed">bqueues -l</span></td>
+<td><span class="fixed">mdiag -c -v</span></td>
+<td><span class="fixed">scontrol show partition</span></td>
+</tr><tr><td>show charge accounts</td>
+<td><span class="fixed">bugroup</span></td>
+<td><span class="fixed">mshare</span></td>
+<td><span class="fixed">sshare</span></td>
+</tr><tr><td>show configuration settings</td>
+<td><span class="fixed">bparams -a</span></td>
+<td><span class="fixed">mschedctl -l</span></td>
+<td><span class="fixed">scontrol show conf</span></td>
+</tr></table><h2><a name="submission" id="submission"></a>Batch System Submission Cross-Reference</h2>
+<table class="table table-striped table-bordered" summary="Batch System Submission Cross-Reference"> <br /><tr><th>
+<h3>Description</h3>
+</th>
+<th>
+<h3>LSF bsub Option</h3>
+</th>
+<th>
+<h3>Moab msub Option*</h3>
+</th>
+<th>
+<h3>Slurm sbatch Option</h3>
+</th>
+</tr><tr><td><strong>Resource Specs</strong></td>
+</tr><tr><td>node count (range)</td>
+<td><span class="fixed">-nnodes <em>count</em></span></td>
+<td><span class="fixed">-l nodes=</span><span class="fixed"><em>count</em></span></td>
+<td><span class="fixed">-N, --nodes=</span><span class="fixed"><em>count[-<span class="fixed"><em>count]</em></span></em></span></td>
+</tr><tr><td>task count (processors on serial clusters)</td>
+<td><span class="fixed">-n <em>number</em></span></td>
+<td><span class="fixed">-l ttc=<em><span class="fixed">number</span></em></span></td>
+<td><span class="fixed">-n, --ntasks=<em><span class="fixed">number</span></em></span></td>
+</tr><tr><td>queue</td>
+<td><span class="fixed">-q <em>queue</em></span></td>
+<td><span class="fixed">-q </span><span class="fixed"><em>queue</em></span></td>
+<td><span class="fixed">-p, --partition=</span><span class="fixed"><em>queue</em></span></td>
+</tr><tr><td>specific feature(s)</td>
+<td><span class="fixed">-R <em>res_req</em></span></td>
+<td><span class="fixed">-l feature=<em>val</em></span></td>
+<td><span class="fixed">-C, --constraint=<em>list</em></span></td>
+</tr><tr><td>memory required per node</td>
+<td> </td>
+<td><span class="fixed">-l mem=</span><span class="fixed"><em>val</em></span></td>
+<td><span class="fixed">--mem=<em>MB</em></span></td>
+</tr><tr><td>memory required per CPU</td>
+<td> </td>
+<td><span class="fixed">-l dmem=</span><span class="fixed"><em>val</em></span></td>
+<td><span class="fixed">--mem-per-cpu=<em>MB</em></span></td>
+</tr><tr><td>max memory per process</td>
+<td><span class="fixed">-M <em>mem_limit</em></span></td>
+<td> </td>
+<td>shell limits automatically propagated</td>
+</tr><tr><td>max virtual memory per process</td>
+<td><span class="fixed">-v <em>swap_limit</em></span></td>
+<td> </td>
+<td>shell limits automatically propagated</td>
+</tr><tr><td>generic resource(s)</td>
+<td> </td>
+<td><span class="fixed">-l gres=<em>list</em></span></td>
+<td><span class="fixed">--gres=<em><span class="fixed">list</span></em></span></td>
+</tr><tr><td>license(s)</td>
+<td><span class="fixed">-Lp <em>ls_project_name</em></span></td>
+<td> </td>
+<td><span class="fixed">-L, --licenses=<em>license</em></span></td>
+</tr><tr><td>utilize reservation</td>
+<td><span class="fixed">-U <em>res_name</em></span></td>
+<td><span class="fixed">-l advres=<em><span class="fixed">res_name</span></em></span></td>
+<td><span class="fixed">--reservation=</span><span class="fixed"><em>res_name</em></span></td>
+</tr><tr><td>request specific compute hosts</td>
+<td><span class="fixed">-m <em>host_list</em></span></td>
+<td><span class="fixed">-l hostlist=</span><span class="fixed"><em>host_list</em></span></td>
+<td><span class="fixed">-w, --nodelist=</span><span class="fixed"><em>host_list</em></span></td>
+</tr><tr><td>exclude specific compute hosts</td>
+<td><span class="fixed">-R 'select[hname!=<em>host_name</em>]'</span></td>
+<td> </td>
+<td><span class="fixed">-x, --exclude=</span><span class="fixed"><em>host_list</em></span></td>
+</tr><tr><td>utilize hostfile for task distribution</td>
+<td><span class="fixed">-hostfile <em>file_name</em></span></td>
+<td> </td>
+<td><span class="fixed">-m, --distribution=arbitrary + SLURM_HOSTFILE env variable</span></td>
+</tr><tr><td>request exclusive node allocation</td>
+<td><span class="fixed">-x</span></td>
+<td> </td>
+<td><span class="fixed">--exclusive</span></td>
+</tr><tr><td><strong>Time Specs</strong></td>
+</tr><tr><td>wall-clock time limit</td>
+<td><span class="fixed">-W <em>[hh:]mm</em></span></td>
+<td><span class="fixed">-l walltime=<em>[[DD:]hh:]mm[:ss]</em></span></td>
+<td><span class="fixed">-t, --time=</span><span class="fixed"><span class="fixed"><em>[[DD-]hh:]mm[:ss]</em></span> / --time-min=</span><span class="fixed"><span class="fixed"><em>[[DD-]hh:]mm[:ss]</em></span></span></td>
+</tr><tr><td>run no sooner than specified time</td>
+<td><span class="fixed">-b <em>[[[YY:]MM:]DD:]hh:mm</em></span></td>
+<td><span class="fixed">-a <em>[[[YY]MM]DD]hhmm</em></span></td>
+<td><span class="fixed">–-begin=<em>[YYYY-MM-DDT]hh:mm</em></span></td>
+</tr><tr><td><strong>Associated Fields</strong></td>
+</tr><tr><td>bank account</td>
+<td><span class="fixed">-G <em>user_group</em></span></td>
+<td><span class="fixed">-A <em>account</em></span></td>
+<td><span class="fixed">-A <em><span class="fixed">account</span></em>, --account=</span><span class="fixed"><em><span class="fixed">account</span></em></span></td>
+</tr><tr><td>user specified name for their job</td>
+<td><span class="fixed">-J <em>job_name</em></span></td>
+<td><span class="fixed">-N </span><span class="fixed"><em>job_name</em></span></td>
+<td><span class="fixed">-J</span><span class="fixed"><span class="fixed"><em>job_name</em></span>, --job-name=<em><span class="fixed">job_name</span></em></span></td>
+</tr><tr><td>user specified project name / comment field</td>
+<td><span class="fixed">-Jd <em>project_name</em> </span><span class="fixed">(i.e., job description)</span></td>
+<td><span class="fixed">-l var:Project=<em><span class="fixed">project_name</span></em></span></td>
+<td><span class="fixed">--comment=<em>string</em></span></td>
+</tr><tr><td>workload characterization key</td>
+<td><span class="fixed">-P <em>wckey</em></span></td>
+<td><span class="fixed">-l wckey=<em><span class="fixed">wckey</span></em></span></td>
+<td><span class="fixed">--wckey=</span><span class="fixed"><em><span class="fixed">wckey</span></em></span></td>
+</tr><tr><td><strong>Quality of Service</strong></td>
+</tr><tr><td>exempt qos</td>
+<td><span class="fixed">-q exempt</span></td>
+<td><span class="fixed">-l qos=exempt</span></td>
+<td><span class="fixed">--qos=exempt</span></td>
+</tr><tr><td>expedite qos</td>
+<td><span class="fixed">-q expedite</span></td>
+<td><span class="fixed">-l qos=expedite</span></td>
+<td><span class="fixed">--qos=expedite</span></td>
+</tr><tr><td>standby qos</td>
+<td><span class="fixed">-q standby</span></td>
+<td><span class="fixed">-l qos=standby</span></td>
+<td><span class="fixed">--qos=standby</span></td>
+</tr><tr><td>gives user the power to lower their job’s priority</td>
+<td> </td>
+<td><span class="fixed">-p</span></td>
+<td><span class="fixed">--nice<em>[=value]</em></span></td>
+</tr><tr><td><strong>I/O</strong></td>
+</tr><tr><td>input file</td>
+<td>
+<p><span class="fixed">-i <em>file_name</em></span></p>
+<p><span class="fixed">-is <em><span class="fixed">file_name</span></em></span></p>
+</td>
+<td> </td>
+<td><span class="fixed">-i, --input=</span><span class="fixed"><em><span class="fixed">file_name</span></em></span></td>
+</tr><tr><td>output file</td>
+<td><span class="fixed">-o </span><span class="fixed"><em><span class="fixed">file_name, </span></em><span class="fixed">-oo</span><em><span class="fixed"> <span class="fixed"><em><span class="fixed">file_name</span></em></span></span></em></span></td>
+<td><span class="fixed">-o </span><span class="fixed"><em><span class="fixed">file_name</span></em></span></td>
+<td><span class="fixed">-o </span><span class="fixed"><span class="fixed"><em><span class="fixed">file_name</span></em></span>, --output=</span><span class="fixed"><em><span class="fixed">file_name</span></em></span></td>
+</tr><tr><td>error output file</td>
+<td><span class="fixed">-e </span><span class="fixed"><em><span class="fixed">file_name, </span></em><span class="fixed">-e<em>o</em></span><em><span class="fixed"> </span></em></span><span class="fixed"><em><span class="fixed">file_name</span></em></span></td>
+<td><span class="fixed">-e </span><span class="fixed"><em><span class="fixed">file_name</span></em></span></td>
+<td><span class="fixed">-e </span><span class="fixed"><span class="fixed"><em><span class="fixed">file_name</span></em></span>, --error=</span><span class="fixed"><em><span class="fixed">file_name</span></em></span></td>
+</tr><tr><td>merge error output into file output</td>
+<td><span class="fixed">(default)</span></td>
+<td><span class="fixed">-j oe</span></td>
+<td><span class="fixed">(default)</span></td>
+</tr><tr><td>append or overwrite error/output files</td>
+<td colspan="2"><span class="fixed">default append,<br />-oo/-eo overwrites</span></td>
+<td><span class="fixed">--open-mode=append|truncate</span></td>
+</tr><tr><td>copy files from submission to execution hosts</td>
+<td><span class="fixed">-f <em>local_file</em> <em>remote_file</em></span></td>
+<td> </td>
+<td><span class="fixed">sbcast <em>command</em></span></td>
+</tr><tr><td><strong>Mail</strong></td>
+</tr><tr><td>send mail at job start</td>
+<td><span class="fixed">-B</span></td>
+<td><span class="fixed">-m b</span></td>
+<td><span class="fixed">--mail-type=BEGIN</span></td>
+</tr><tr><td>send mail at job completion</td>
+<td><span class="fixed">-N</span></td>
+<td><span class="fixed">-m e</span></td>
+<td><span class="fixed">--mail-type=END</span></td>
+</tr><tr><td>specify user who receives mail</td>
+<td><span class="fixed">-u <em>user_name</em></span></td>
+<td> </td>
+<td><span class="fixed">--mail-user=</span><span class="fixed"><em>user_name</em></span></td>
+</tr><tr><td>suppress mail when default is to send</td>
+<td> </td>
+<td><span class="fixed">-m n</span></td>
+<td> </td>
+</tr><tr><td><strong>Submit Behavior</strong></td>
+</tr><tr><td>submit an interactive job</td>
+<td><span class="fixed">-Is [bash|csh]</span></td>
+<td> </td>
+<td><span class="fixed">salloc <em>[slurm arguments]</em></span></td>
+</tr><tr><td>submit job in held state</td>
+<td><span class="fixed">-H</span></td>
+<td><span class="fixed">-H</span></td>
+<td><span class="fixed">-H, --hold</span></td>
+</tr><tr><td>submit job and wait for completion</td>
+<td><span class="fixed">-K</span></td>
+<td> </td>
+<td><span class="fixed">salloc <em>command</em></span></td>
+</tr><tr><td>submit a job array</td>
+<td><span class="fixed">-J <em>job_name[index_list]</em></span></td>
+<td> </td>
+<td><span class="fixed">-a, --array=<em>indexes</em></span></td>
+</tr><tr><td>invoke “command” instead of submitting batch script</td>
+<td><span class="fixed">bsub <em>command</em></span></td>
+<td><span class="fixed">echo <em>“command"</em> | msub</span></td>
+<td><span class="fixed">--wrap=<em>command</em></span></td>
+</tr><tr><td>dependent job</td>
+<td><span class="fixed">-w "ended(<em>jobid)</em>"</span></td>
+<td><span class="fixed">-l depend=<em>jobid</em> or -l depend=afterok:<em>jobid</em></span></td>
+<td><span class="fixed">-d, --dependency=<em>jobid</em></span></td>
+</tr><tr><td><strong>Runtime Behavior</strong></td>
+</tr><tr><td>keep job running if a node fails</td>
+<td><span class="fixed">(default)</span></td>
+<td><span class="fixed">-l resfailpolicy=ignore</span></td>
+<td><span class="fixed">-k, --no-kill</span></td>
+</tr><tr><td>do not re-queue job after node failure</td>
+<td><span class="fixed">-rn (default)</span></td>
+<td><span class="fixed">-l resfailpolicy=cancel</span></td>
+<td><span class="fixed">--no-requeue</span></td>
+</tr><tr><td>re-queue job after node failure</td>
+<td><span class="fixed">-r</span></td>
+<td><span class="fixed">-l resfailpolicy=requeue</span></td>
+<td><span class="fixed">--requeue</span></td>
+</tr><tr><td>specify  the working directory</td>
+<td><span class="fixed">-cwd <em>directory</em></span></td>
+<td> </td>
+<td><span class="fixed">-D, --workdir=</span><span class="fixed"><em>directory</em></span></td>
+</tr><tr><td>export env variables to execution environment</td>
+<td><span class="fixed">-env <em>"none" | "all, [var_name[, var_name] ...]</em></span></td>
+<td><span class="fixed">-V</span></td>
+<td><span class="fixed">--export=<em>environment_variables | ALL | NONE</em></span></td>
+</tr><tr><td>propagate limits to execution environment</td>
+<td><span class="fixed">-ul (default)</span></td>
+<td> </td>
+<td><span class="fixed">--propagate[=rlimits]</span></td>
+</tr><tr><td>signal at remaining time</td>
+<td><span class="fixed">-wa <em>signal</em> -wt <em>rem_time</em></span></td>
+<td><span class="fixed">-l signal=</span><span class="fixed"><span class="fixed"><em>signal</em></span><em>[@rem_time]</em></span></td>
+<td><span class="fixed">--signal=</span><span class="fixed"><span class="fixed"><em>signal</em></span><em>[@rem_time]</em></span></td>
+</tr><tr><td><strong>Extra Info</strong></td>
+</tr><tr><td>help</td>
+<td><span class="fixed">-h</span></td>
+<td><span class="fixed">--help</span></td>
+<td><span class="fixed">-h, --help / --usage</span></td>
+</tr><tr><td>enable verbose output</td>
+<td> </td>
+<td> </td>
+<td><span class="fixed">-v, --verbose</span></td>
+</tr><tr><td>display batch system version</td>
+<td><span class="fixed">-V</span></td>
+<td> </td>
+<td><span class="fixed">scontrol show version</span></td>
+</tr></table><p>* To expedite the transition to Slurm, use the moab2slurm utility to convert Moab msub jobs scripts to the Slurm sbatch equivalents. See the moab2slurm man page on any TOSS 3 machine for details.</p>
+<h2><a name="lsf" id="lsf"></a>LSF Only</h2>
+<table class="table table-striped table-bordered"> <br /><tr><td>invoke application-specific file</td>
+<td><span class="fixed">-a <em>esub|epsub</em></span></td>
+</tr><tr><td>invoke application profile</td>
+<td><span class="fixed">-app <em>profile</em></span></td>
+</tr><tr><td>specify data requirements</td>
+<td><span class="fixed">-data <em>reqs</em></span></td>
+</tr><tr><td>specify user group for data access</td>
+<td colspan="1"><span class="fixed">-datagrp <em>user_group_name</em></span></td>
+</tr><tr><td>per-process (soft) core file size limit</td>
+<td><span class="fixed">-C <em>core_limit</em></span></td>
+</tr><tr><td>Limit the total CPU time the job can use</td>
+<td colspan="1"><span class="fixed">-c <em>[hour:]minute[/host_name]</em></span></td>
+</tr><tr><td>specify a per-process (soft) data segment size limit</td>
+<td><span class="fixed">-D <em>data_limit</em></span></td>
+</tr><tr><td>specify job pre-execution command</td>
+<td><span class="fixed">-E <em>command</em></span></td>
+</tr><tr><td>specify job post-execution command</td>
+<td><span class="fixed">-Ep <em>command</em></span></td>
+</tr><tr><td>specify a per-process (soft) file size limit</td>
+<td><span class="fixed">-F <em>file_limit</em></span></td>
+</tr><tr></tr><tr><td>submit to job group</td>
+<td><span class="fixed">-g <em>job_group</em></span></td>
+</tr><tr><td>impose cgroups memory and swap containment</td>
+<td><span class="fixed">-hl</span></td>
+</tr><tr><td>specify a JSDL file</td>
+<td colspan="1"><span class="fixed">-jsdl or -jsdl_strict <em>file_name</em></span></td>
+</tr><tr><td>specify a login shell</td>
+<td><span class="fixed">-L <em>shell</em></span></td>
+</tr><tr><td>create job output directory</td>
+<td><span class="fixed">-outdir <em>directory_name</em></span></td>
+</tr><tr><td>specify a limit to the number of processes</td>
+<td><span class="fixed">-p <em>process_limit</em></span></td>
+</tr><tr><td>submit a job pack</td>
+<td><span class="fixed">-pack <em>job_submission_file</em></span></td>
+</tr><tr><td>specify automatic job requeue exit values</td>
+<td><span class="fixed">-Q <em>exit_code(s)</em></span></td>
+</tr><tr><td>specify a per-process (soft) stack segment size limit</td>
+<td><span class="fixed">-S <em>stack_limit</em></span></td>
+</tr><tr><td>specify a signal when a queue-level run window closes</td>
+<td><span class="fixed">-s <em>signal</em></span></td>
+</tr><tr><td>specify a service class (not quite the same as QoS)</td>
+<td><span class="fixed">-sla <em>class_name</em></span></td>
+</tr><tr><td>specify a thread limit</td>
+<td><span class="fixed">-T <em>thread_limit</em></span></td>
+</tr><tr><td>specify a termination deadline</td>
+<td><span class="fixed">-t <em>time_limit</em></span></td>
+</tr><tr><td>enable orphan job termination</td>
+<td><span class="fixed">-ti</span></td>
+</tr><tr><td>enable output/error messages for interactive jobs</td>
+<td><span class="fixed">-tty</span></td>
+</tr><tr><td>provide a runtime estimate to the scheduler</td>
+<td><span class="fixed">-We</span></td>
+</tr><tr><td>submit using SSH X11 forwarding</td>
+<td><span class="fixed">-XF</span></td>
+</tr><tr><td>use spooled file as the command file for the job</td>
+<td><span class="fixed">-Zs</span></td>
+</tr></table><h2><a name="environment" id="environment"></a>Environment Variables</h2>
+<table class="table table-striped table-bordered" summary="Environment Variables"> <br /><tr><th scope="col">
+<h3>Description</h3>
+</th>
+<th scope="col">
+<h3>LSF</h3>
+</th>
+<th scope="col">
+<h3>Slurm</h3>
+</th>
+</tr><tr><td><strong>Input Variables</strong></td>
+</tr><tr><td>default project name</td>
+<td>LSB_DEFAULTPROJECT</td>
+<td> </td>
+</tr><tr><td>default queue</td>
+<td>LSB_DEFAULTQUEUE</td>
+<td>SBATCH_PARTITION</td>
+</tr><tr><td>default user group (charge account)</td>
+<td>LSB_DEFAULT_USERGROUP</td>
+<td> </td>
+</tr><tr><td>custom fields for job display command</td>
+<td><span class="keyword parmname parmname">LSB_BJOBS_FORMAT</span></td>
+<td>SQUEUE_FORMAT</td>
+</tr><tr><td>reference link to more info</td>
+<td><span class="fixed"><a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_config_ref/lsf_envars_ref.html">bsub</a></span></td>
+<td><span class="fixed"><a href="https://slurm.schedmd.com/sbatch.html">sbatch</a> <a href="https://slurm.schedmd.com/salloc.html">salloc</a> <a href="https://slurm.schedmd.com/srun.html">srun</a></span></td>
+</tr><tr><td><strong>Output Variables</strong></td>
+</tr><tr><td>job ID</td>
+<td>LSB_JOBID</td>
+<td>SLURM_JOB_ID</td>
+</tr><tr><td>job name</td>
+<td>LSB_JOBNAME</td>
+<td>SLURM_JOB_NAME</td>
+</tr><tr><td>job array index</td>
+<td>LSB_JOBINDEX</td>
+<td>SLURM_ARRAY_TASK_ID</td>
+</tr><tr><td>list of hosts allocated to the job</td>
+<td>LSB_HOSTS</td>
+<td>SLURM_JOB_NODELIST</td>
+</tr><tr><td>directory from which job was submitted</td>
+<td>LS_SUBCWD</td>
+<td>SLURM_SUBMIT_DIR</td>
+</tr><tr><td>host from which job was submitted</td>
+<td>LSB_SUB_HOST</td>
+<td>SLURM_SUBMIT_HOST</td>
+</tr><tr><td>reference link to more info</td>
+<td><span class="fixed"><a href="http://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_config_ref/lsf_envars_ref.html">bsub</a></span></td>
+<td><span class="fixed"><a href="https://slurm.schedmd.com/sbatch.html">sbatch</a> <a href="https://slurm.schedmd.com/salloc.html">salloc</a> <a href="https://slurm.schedmd.com/srun.html">srun</a></span></td>
+</tr></table><p> </p>
+</div></div></div></div>
+
+</div>
+</div>
+
+
+  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                   		</div>
+                  </main>
+                </div>
+      		</div>
+    	</div>
+	</div>
+  	
+	
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 footer-top">
+
+                    <a class="llnl" href="https://www.llnl.gov/" target="_blank"><img src="/sites/all/themes/tid/images/llnl.png" alt="LLNL"></a>
+                    <p>
+                        Lawrence Livermore National Laboratory
+                        <br>7000 East Avenue • Livermore, CA 94550
+                    </p>
+                    <p>
+                        Operated by Lawrence Livermore National Security, LLC, for the
+                        <br>Department of Energy's National Nuclear Security Administration.
+                    </p>
+                    <div class="footer-top-logos">
+                        <a class="nnsa" href="https://www.energy.gov/nnsa/national-nuclear-security-administration" target="_blank"><img src="/sites/all/themes/tid/images/nnsa2.png" alt="NNSA"></a>
+                        <a class="doe" href="https://www.energy.gov/" target="_blank"><img src="/sites/all/themes/tid/images/doe_small.png" alt="U.S. DOE"></a>
+                        <a class="llns" href="https://www.llnsllc.com/" target="_blank"><img src="/sites/all/themes/tid/images/llns.png" alt="LLNS"></a>
+                	</div>
+
+
+
+                </div>
+                <div class="col-sm-12 footer-bottom">
+                	
+
+                    <span>UCRL-MI-131558  &nbsp;|&nbsp;&nbsp;</span><a href="https://www.llnl.gov/disclaimer" target="_blank">Privacy &amp; Legal Notice</a>	 &nbsp;|&nbsp;&nbsp; <a href="mailto:webmaster-comp@llnl.gov">Website Query</a> &nbsp;|&nbsp;&nbsp;<a href="/about-us/contact-us" >Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+  </body>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/jquery_update/replace/jquery/2.1/jquery.min.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-extend-3.4.0.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-html-prefilter-3.5.0-backport.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/drupal.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/extlink/extlink.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/jquery.flexslider.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/slide.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/lightbox2/js/lightbox.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/matomo/matomo.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _paq = _paq || [];(function(){var u=(("https:" == document.location.protocol) ? "https://analytics.llnl.gov/" : "http://analytics.llnl.gov/");_paq.push(["setSiteId", "149"]);_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setDoNotTrack", 1]);_paq.push(["trackPageView"]);_paq.push(["setIgnoreClasses", ["no-tracking","colorbox"]]);_paq.push(["enableLinkTracking"]);var d=document,g=d.createElement("script"),s=d.getElementsByTagName("script")[0];g.type="text/javascript";g.defer=true;g.async=true;g.src="https://hpc.llnl.gov/sites/default/files/matomo/piwik.js?qsohrw";s.parentNode.insertBefore(g,s);})();
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/bootstrap.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mobilemenu.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/custom.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mods.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"tid","theme_token":"k5HUs44oCdmFVAniLJi22cuVPzjLpfsAyMFhbFv_Lxw","js":{"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/2.1\/jquery.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/contrib\/extlink\/extlink.js":1,"sites\/all\/themes\/tid\/js\/jquery.flexslider.js":1,"sites\/all\/themes\/tid\/js\/slide.js":1,"sites\/all\/modules\/contrib\/lightbox2\/js\/lightbox.js":1,"sites\/all\/modules\/contrib\/matomo\/matomo.js":1,"0":1,"sites\/all\/themes\/tid\/js\/bootstrap.js":1,"sites\/all\/themes\/tid\/js\/mobilemenu.js":1,"sites\/all\/themes\/tid\/js\/custom.js":1,"sites\/all\/themes\/tid\/js\/mods.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/book\/book.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/extlink\/extlink.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/lightbox2\/css\/lightbox.css":1,"sites\/all\/modules\/contrib\/print\/print_ui\/css\/print_ui.theme.css":1,"sites\/all\/themes\/tid\/css\/bootstrap.css":1,"sites\/all\/themes\/tid\/css\/flexslider.css":1,"sites\/all\/themes\/tid\/css\/system.menus.css":1,"sites\/all\/themes\/tid\/css\/style.css":1,"sites\/all\/themes\/tid\/font-awesome\/css\/font-awesome.css":1,"sites\/all\/themes\/tid\/css\/treewalk.css":1,"sites\/all\/themes\/tid\/css\/popup.css":1,"sites\/all\/themes\/tid\/css\/mods.css":1}},"lightbox2":{"rtl":0,"file_path":"\/(\\w\\w\/)public:\/","default_image":"\/sites\/all\/modules\/contrib\/lightbox2\/images\/brokenimage.jpg","border_size":10,"font_color":"000","box_color":"fff","top_position":"","overlay_opacity":"0.8","overlay_color":"000","disable_close_click":true,"resize_sequence":0,"resize_speed":400,"fade_in_speed":400,"slide_down_speed":600,"use_alt_layout":false,"disable_resize":false,"disable_zoom":false,"force_show_nav":false,"show_caption":true,"loop_items":false,"node_link_text":"View Image Details","node_link_target":false,"image_count":"Image !current of !total","video_count":"Video !current of !total","page_count":"Page !current of !total","lite_press_x_close":"press \u003Ca href=\u0022#\u0022 onclick=\u0022hideLightbox(); return FALSE;\u0022\u003E\u003Ckbd\u003Ex\u003C\/kbd\u003E\u003C\/a\u003E to close","download_link_text":"","enable_login":false,"enable_contact":false,"keys_close":"c x 27","keys_previous":"p 37","keys_next":"n 39","keys_zoom":"z","keys_play_pause":"32","display_image_size":"original","image_node_sizes":"()","trigger_lightbox_classes":"","trigger_lightbox_group_classes":"","trigger_slideshow_classes":"","trigger_lightframe_classes":"","trigger_lightframe_group_classes":"","custom_class_handler":0,"custom_trigger_classes":"","disable_for_gallery_lists":true,"disable_for_acidfree_gallery_lists":true,"enable_acidfree_videos":true,"slideshow_interval":5000,"slideshow_automatic_start":true,"slideshow_automatic_exit":true,"show_play_pause":true,"pause_on_next_click":false,"pause_on_previous_click":true,"loop_slides":false,"iframe_width":600,"iframe_height":400,"iframe_border":1,"enable_video":false,"useragent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/90.0.4430.93 Safari\/537.36"},"extlink":{"extTarget":0,"extClass":"ext","extLabel":"(link is external)","extImgClass":0,"extIconPlacement":0,"extSubdomains":1,"extExclude":".gov|.com|.org|.io|.be|.us|.edu","extInclude":"-int.llnl.gov|lc.llnl.gov|caas.llnl.gov|exchangetools.llnl.gov","extCssExclude":"","extCssExplicit":"","extAlert":"_blank","extAlertText":"This page is routing you to a page which requires extra authentication. You must have on-site or VPN access.\r\n\r\nPress OK to continue or cancel to return.\r\n\r\nIf this fails or times-out, you are not allowed access to the internal page or the server may be temporarily unavailable.\r\n\r\nIf you have an on-site or VPN account and are still having trouble, please send e-mail to lc-hotline@llnl.gov or call 925-422-4531 for further assistance.","mailtoClass":"mailto","mailtoLabel":"(link sends e-mail)"},"matomo":{"trackMailto":1},"urlIsAjaxTrusted":{"\/banks-jobs\/running-jobs\/batch-system-commands":true}});
+//--><!]]>
+</script>
+</html>

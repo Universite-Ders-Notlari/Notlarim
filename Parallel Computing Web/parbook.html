@@ -1,0 +1,355 @@
+<html>
+<title>
+Introduction to Parallel Computing
+</title>
+<body>
+<h1>
+Introduction to Parallel Computing.
+</h1>
+<table border="0" style="border-collapse: collapse" bordercolor="#111111" width="95%" id="AutoNumber1">
+  <tr>
+    <td width="33%">
+    <p align="center"><a href="Images/bcover.jpg">
+<img src="Images/bcover2.jpg" border=0 alt="Intro to Parallel" width="230" height="304"></a></td>
+    <td width="67%" valign="top">
+<strong>
+Ananth Grama, Purdue University, W. Lafayette, IN 47906
+    <a href="mailto:(ayg@cs.purdue.edu">(ayg@cs.purdue.edu</a>)
+</strong>
+
+    <p>
+<strong>
+Anshul Gupta, IBM T.J. Watson Research Center, Yorktown Heights, NY 10598
+    <a href="mailto:(anshul@watson.ibm.com">(anshul@watson.ibm.com</a>)
+</strong>
+
+    </p>
+    <p>
+<strong>
+George Karypis, University of Minnesota, Minneapolis, MN 55455
+    <a href="mailto:(karypis@cs.umn.edu">(karypis@cs.umn.edu</a>)
+</strong>
+
+    </p>
+    <p>
+<strong>
+Vipin Kumar, University of Minnesota, Minneapolis, MN 55455
+    <a href="mailto:(kumar@cs.umn.edu">(kumar@cs.umn.edu</a>)
+</strong>
+
+    </p>
+    <p><font color="#FF0000">Follow this </font>
+	<a href="http://csdl2.computer.org/comp/mags/ds/2004/07/o7005.pdf">
+	<font color="#FF0000">link</font></a><font color="#FF0000"> for a recent 
+	review of the book published at IEEE Distributed Systems Online. </font></td>
+  </tr>
+</table>
+<strong>
+<br>
+</strong>
+
+<hr>
+<h2>Solutions to Selected Problems</h2>
+<p>The solutions are password protected and are only available to lecturers at 
+academic institutions. </p>
+<p><a href="http://www.booksites.net/register">Click here</a> to apply for a 
+password.</p>
+<p><a href="Solution/solution.pdf">Click here</a> to download the solutions (PDF 
+File).</p>
+
+<hr>
+<h1>Table of Contents (<a href="Misc/toc.pdf">PDF file</a>)</h1>
+
+<FONT FACE="Arial,Helvetica">
+
+
+
+<h3>
+PART I: BASIC CONCEPTS
+</h3>
+<p>1. Introduction (figures: [<a href="Figures/chap1.pdf">PDF</a>] [<a href="Figures/chap1.ps">PS</a>])</p>
+<ul>
+<li>
+        Motivating Parallelism
+<li>
+        Scope of Parallel Computing
+<li>
+        Organization and Contents of the Text
+</ul>
+<p>2. Parallel Programming Platforms (figures: [<a href="Figures/chap2.ppt">PPT</a>] 
+[<a href="Figures/chap2.pdf">PDF</a>] [<a href="Figures/chap2.ps">PS</a>])
+<br>&nbsp&nbsp&nbsp
+(GK lecture slides [<a href="Lectures/GK-CS5451/Chapter%202%20-%20Parallel%20Programming%20Platforms.pdf">PDF</a>])
+(AG lecture slides [<a href="Lectures/AG/chap2_slides.ppt">PPT</a>][<a href="Lectures/AG/chap2_slides.pdf">PDF</a>][<a href="Lectures/AG/chap2_slides.ps">PS</a>])
+</p>
+<ul>
+<li>
+        Implicit Parallelism: Trends in Microprocessor Architectures
+<li>
+        Limitations of Memory System Performance
+<li>
+        Dichotomy of Parallel Computing Platforms
+<li>
+        Physical Organization of Parallel Platforms
+<li>
+        Communication Costs in Parallel Machines
+<li>
+        Routing Mechanisms for Interconnection Networks<li>
+        Impact of Process-Processor Mapping and Mapping Techniques<li>
+        Bibliographic Remarks
+</ul>
+
+<p>3. Principles of Parallel Algorithm Design (figures: [<a href="Figures/chap3.ppt">PPT</a>] 
+[<a href="Figures/chap3.pdf">PDF</a>] [<a href="Figures/chap3.ps">PS</a>], algorithms: [<a href="Algorithms/pchap3.pdf">PDF</a>] [<a href="Algorithms/pchap3.ps">PS</a>])
+<br>&nbsp&nbsp&nbsp
+(GK lecture slides [<a href="Lectures/GK-CS5451/Chapter%203%20-%20Principles%20of%20Parallel%20Algorithm%20Design.pdf">PDF</a>]) 
+(AG lecture slides [<a href="Lectures/AG/chap3_slides.ppt">PPT</a>][<a href="Lectures/AG/chap3_slides.pdf">PDF</a>][<a href="Lectures/AG/chap3_slides.ps">PS</a>])
+</p>
+<ul>
+<li>
+        Preliminaries<li>
+        Decomposition Techniques
+<li>
+        Characteristics of Tasks and Interactions
+<li>
+        Mapping Techniques for Load Balancing
+<li>
+        Methods for Containing Interaction Overheads
+<li>
+        Parallel Algorithm Models
+<li>
+        Bibliographic Remarks
+</ul>
+<p>4. Basic Communication Operations (figures: [<a href="Figures/chap4.ppt">PPT</a>] 
+[<a href="Figures/chap4.pdf">PDF</a>] [<a href="Figures/chap4.ps">PS</a>], algorithms: [<a href="Algorithms/pchap4.pdf">PDF</a>] [<a href="Algorithms/pchap4.ps">PS</a>])
+<br>&nbsp&nbsp&nbsp
+(GK lecture slides [<a href="Lectures/GK-CS5451/Chapter%204%20-%20Basic%20Communication%20Operations.pdf">PDF</a>]) 
+(AG lecture slides [<a href="Lectures/AG/chap4_slides.ppt">PPT</a>][<a href="Lectures/AG/chap4_slides.pdf">PDF</a>][<a href="Lectures/AG/chap4_slides.ps">PS</a>])
+</p>
+<ul>
+<li>
+        One-to-All Broadcast and All-to-One Reduction<li>
+        All-to-All
+        Broadcast and Reduction<li>
+        All-Reduce and Prefix-Sum Operations<li>
+        Scatter and Gather<li>
+        All-to-All Personalized Communication<li>
+        Circular Shift<li>
+        Improving the Speed of Some Communication Operations<li>
+        Summary<li>
+        Bibliographic Remarks
+</ul>
+<p>5. Analytical Modeling of Parallel Programs (figures: [<a href="Figures/chap5.ppt">PPT</a>] 
+[<a href="Figures/chap5.pdf">PDF</a>] [<a href="Figures/chap5.ps">PS</a>])
+<br>&nbsp&nbsp&nbsp
+(GK lecture slides [<a href="Lectures/GK-CS5451/Chapter%205%20-%20Analytical%20Modeling%20of%20Parallel%20Algorithms.pdf">PDF</a>]) 
+(AG lecture slides [<a href="Lectures/AG/chap5_slides.ppt">PPT</a>][<a href="Lectures/AG/chap5_slides.pdf">PDF</a>][<a href="Lectures/AG/chap5_slides.ps">PS</a>])
+</p>
+<ul>
+<li>
+        Sources of Overhead in Parallel Programs<li>
+        Performance Metrics for Parallel Systems
+<li>
+        Effect of Granularity and Data Mapping on Performance
+<li>
+        Scalability of Parallel Systems
+<li>
+        Minimum Execution Time and Minimum Cost-Optimal Execution Time
+<li>
+        Asymptotic Analysis of Parallel Programs<li>
+        Other Scalability Metrics<li>
+        Bibliographic Remarks
+</ul>
+
+
+<h3>
+PART II: PARALLEL PROGRAMMING
+</h3>
+
+<p>6. Programming Using the Message Passing Paradigm (figures: [<a href="Figures/chap6.ppt">PPT</a>] 
+[<a href="Figures/chap6.pdf">PDF</a>] [<a href="Figures/chap6.ps">PS</a>])
+<br>&nbsp&nbsp&nbsp
+(GK lecture slides [<a href="Lectures/GK-CS5451/Chapter%206%20-%20Programming%20Using%20the%20Message%20Passing%20Interface.pdf">PDF</a>]) 
+(AG lecture slides [<a href="Lectures/AG/chap6_slides.ppt">PPT</a>][<a href="Lectures/AG/chap6_slides.pdf">PDF</a>][<a href="Lectures/AG/chap6_slides.ps">PS</a>])
+</p>
+<ul>
+<li>
+        Principles of Message-Passing Programming<li>
+        The Building Blocks: Send and Receive Operations<li>
+        MPI: The Message Passing Interface<li>
+        Topologies and Embedding
+<li>
+        Overlapping Communication with Computation
+<li>
+        Collective Communication and Computation Operations
+<li>
+        Groups and Communicators
+<li>
+        Bibliographic Remarks
+</ul>
+
+<p>7. Programming Shared Address Space Platforms (figures: [<a href="Figures/chap7.ppt">PPT</a>] 
+[<a href="Figures/chap7.pdf">PDF</a>] [<a href="Figures/chap7.ps">PS</a>])
+<br>&nbsp&nbsp&nbsp
+(GK lecture slides [<a href="Lectures/GK-CS5451/Chapter%207%20-%20Programming%20Shared%20Address%20Space%20Platforms.pdf">PDF</a>]) 
+(AG lecture slides [<a href="Lectures/AG/chap7_slides.ppt">PPT</a>][<a href="Lectures/AG/chap7_slides.pdf">PDF</a>][<a href="Lectures/AG/chap7_slides.ps">PS</a>])
+<br>
+&nbsp;&nbsp;&nbsp; (<a href="Programs/Pthreads">A complete set of Pthread 
+programs</a>)</p>
+<ul>
+<li>
+        Thread Basics
+<li>
+        Why Threads?
+<li>
+        The POSIX Thread Application Programmer Interface
+<li>
+        Synchronization Primitives in POSIX
+<li>
+        Controlling Thread and Synchronization Attributes
+<li>
+        Thread Cancellation<li>
+        Composite Synchronization Constructs
+<li>
+        Tips for Designing Asynchronous Programs
+<li>
+        OpenMP: A Standard for Directive Based Parallel Programming
+<li>
+        Bibliographic Remarks
+</ul>
+
+<h3>
+PART III: PARALLEL ALGORITHMS AND APPLICATIONS
+</h3>
+
+<p>8. Dense Matrix Algorithms (figures: [<a href="Figures/chap8.ppt">PPT</a>] 
+[<a href="Figures/chap8.pdf">PDF</a>] [<a href="Figures/chap8.ps">PS</a>], algorithms: [<a href="Algorithms/pchap8.pdf">PDF</a>] [<a href="Algorithms/pchap8.ps">PS</a>]) 
+<br>&nbsp&nbsp&nbsp
+(GK lecture slides [<a href="Lectures/GK-CS5451/Chapter%208%20-%20Dense%20Matrix%20Algorithms.pdf">PDF</a>]) 
+(AG lecture slides [<a href="Lectures/AG/chap8_slides.ppt">PPT</a>][<a href="Lectures/AG/chap8_slides.pdf">PDF</a>][<a href="Lectures/AG/chap8_slides.ps">PS</a>])
+</p>
+<ul>
+<li>
+        Matrix-Vector Multiplication<li>
+        Matrix-Matrix Multiplication
+<li>
+        Solving a System of Linear Equations
+<li>
+        Bibliographic Remarks
+</ul>
+
+<p>9. Sorting (figures: [<a href="Figures/chap9.ppt">PPT</a>] 
+[<a href="Figures/chap9.pdf">PDF</a>] [<a href="Figures/chap9.ps">PS</a>], algorithms: [<a href="Algorithms/pchap9.pdf">PDF</a>] [<a href="Algorithms/pchap9.ps">PS</a>]) 
+<br>&nbsp&nbsp&nbsp
+(GK lecture slides [<a href="Lectures/GK-CS5451/Chapter%209%20-%20Sorting.pdf">PDF</a>]) 
+(AG lecture slides [<a href="Lectures/AG/chap9_slides.ppt">PPT</a>][<a href="Lectures/AG/chap9_slides.pdf">PDF</a>][<a href="Lectures/AG/chap9_slides.ps">PS</a>])
+</p>
+<ul>
+<li>
+        Issues in Sorting on Parallel Computers
+<li>
+        Sorting Networks
+<li>
+        Bubble Sort and its Variants
+<li>
+        Quicksort
+<li>
+        Bucket and Sample Sort<li>
+        Other Sorting Algorithms
+<li>
+        Bibliographic Remarks
+</ul>
+
+<p>10. Graph Algorithms (figures: [<a href="Figures/chap10.ppt">PPT</a>] 
+[<a href="Figures/chap10.pdf">PDF</a>] [<a href="Figures/chap10.ps">PS</a>], algorithms: [<a href="Algorithms/pchap10.pdf">PDF</a>] [<a href="Algorithms/pchap10.ps">PS</a>]) 
+<br>&nbsp&nbsp&nbsp
+(GK lecture slides [<a href="Lectures/GK-CS5451/Chapter%2010%20-%20Graph%20Algorithms.pdf">PDF</a>]) 
+(AG lecture slides [<a href="Lectures/AG/chap10_slides.ppt">PPT</a>][<a href="Lectures/AG/chap10_slides.pdf">PDF</a>][<a href="Lectures/AG/chap10_slides.ps">PS</a>])
+</p>
+<ul>
+<li>
+        Definitions and Representation
+<li>
+        Minimum Spanning Tree: Prim's Algorithm
+<li>
+        Single-Source Shortest Paths: Dijkstra's Algorithm
+<li>
+        All-Pairs Shortest Paths
+<li>
+        Transitive Closure
+<li>
+        Connected Components
+<li>
+        Algorithms for Sparse Graphs
+<li>
+        Bibliographic Remarks
+</ul>
+
+<p>11. Search Algorithms for Discrete Optimization Problems (figures: [<a href="Figures/chap11.ppt">PPT</a>] 
+[<a href="Figures/chap11.pdf">PDF</a>] [<a href="Figures/chap11.ps">PS</a>]) 
+<br>&nbsp&nbsp&nbsp
+(GK lecture slides [<a href="Lectures/GK-CS5451/Chapter%2011%20-%20Search%20Algorithms%20for%20Discrete%20Optimization%20Problems.pdf">PDF</a>]) 
+(AG lecture slides [<a href="Lectures/AG/chap11_slides.ppt">PPT</a>][<a href="Lectures/AG/chap11_slides.pdf">PDF</a>][<a href="Lectures/AG/chap11_slides.ps">PS</a>])
+</p>
+<ul>
+<li>
+        Definitions and Examples
+<li>
+        Sequential Search Algorithms
+<li>
+        Search Overhead Factor
+<li>
+        Parallel Depth-First Search
+<li>
+        Parallel Best-First Search
+<li>
+        Speedup Anomalies in Parallel Search Algorithms
+<li>
+        Bibliographic Remarks
+</ul>
+
+<p>12. Dynamic Programming (figures: [<a href="Figures/chap12.ppt">PPT</a>] 
+[<a href="Figures/chap12.pdf">PDF</a>] [<a href="Figures/chap12.ps">PS</a>]) 
+<br>&nbsp&nbsp&nbsp
+(AG lecture slides [<a href="Lectures/AG/chap12_slides.ppt">PPT</a>][<a href="Lectures/AG/chap12_slides.pdf">PDF</a>][<a href="Lectures/AG/chap12_slides.ps">PS</a>])
+</p>
+<ul>
+<li>
+Overview of Dynamic Programming<li>
+Serial Monadic DP Formulations
+<li>
+Nonserial Monadic DP Formulations
+<li>
+Serial Polyadic DP Formulations
+<li>
+Nonserial Polyadic DP Formulations
+<li>
+Summary and Discussion
+<li>
+Bibliographic Remarks
+</ul>
+
+
+<p>13. Fast Fourier Transform&nbsp; (figures: [<a href="Figures/chap13.pdf">PDF</a>] [<a href="Figures/chap13.ps">PS</a>], 
+algorithms: [<a href="Algorithms/pchap13.pdf">PDF</a>] [<a href="Algorithms/pchap13.ps">PS</a>]) 
+<br>&nbsp&nbsp&nbsp
+</p>
+<ul>
+<li>
+        The Serial Algorithm
+<li>
+        The Binary-Exchange Algorithm
+<li>
+        The Transpose Algorithm
+<li>
+        Cost-Effectiveness of Parallel FFT Algorithms
+<li>
+        Bibliographic Remarks
+</ul>
+
+
+
+<p>&nbsp;</p>
+
+</body>
+</html>

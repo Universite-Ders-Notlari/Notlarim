@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<head>
+<meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="/training/tutorials/totalview-part-2-common-functions" />
+<link rel="shortlink" href="/node/663" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="shortcut icon" href="https://hpc.llnl.gov/sites/all/themes/tid/favicon.ico" type="image/vnd.microsoft.icon" />
+<title>TotalView Part 2:  Common Functions | High Performance Computing</title>
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_kShW4RPmRstZ3SpIC-ZvVGNFVAi0WEMuCnI0ZkYIaFw.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_bq48Es_JAifg3RQWKsTF9oq1S79uSN2WHxC3KV06fK0.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_vAm-LJc0tkC-w_c6v7Ekq0bW26Pzl31HvPM6kbvK-pc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_ca6tstDbY9-H23Ty8uKiDyFQLT1AZftZKldhbTPPnm8.css" media="all" />
+<!--[if lt IE 9]><script src="/sites/all/themes/tid/js/html5.js"></script><![endif]-->
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-663 node-type-user-portal-one-column-page">
+  <div aria="contentinfo"><noscript><img src="https://analytics.llnl.gov/piwik.php?idsite=149" class="no-border" alt="" /></noscript></div>
+    <div id="page">
+	<div class="unclassified"></div>
+	<div class="headertop">
+					<div id="skip-nav" role="navigation" aria-labelledby="skip-nav" class="reveal">
+  			<a href="#main-content">Skip to main content</a>
+			</div>
+					</div>
+        <div class="headerwrapbg">
+                        <div class="headerwrap-portal">
+                <div id="masthead" class="site-header container" role="banner">
+                    <div class="row">
+                        <div class="llnl-logo col-sm-3">
+                            <a href="https://www.llnl.gov" target="_blank" title="Lawrence Livermore National Laboratory">
+                                <img src="/sites/all/themes/tid/images/llnl-tab-portal.png" alt="LLNL Home" />
+                            </a>
+                        </div>
+                        <div id="logo" class="site-branding col-sm-4">
+                                                            <div id="site-logo">
+                                        <!--High Performance Computing<br />Livermore Computing Center-->
+                                        																					<a href="/user-portal" class="text-dark" title="Livermore Computing Center High Performance Computing">
+                                            <img src="/sites/all/themes/tid/images/hpc.png" alt="Portal Home" />
+																					</a>
+																				
+                                </div>
+                                                    </div>
+                        <div class="col-sm-5">
+                            <div id="top-search">
+															<div class="input-group">
+																	<form class="navbar-form navbar-search navbar-right" action="/training/tutorials/totalview-part-2-common-functions" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <div class="element-invisible">Search form</div>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-1DdwUIKD0P8_HDxCY3JBfe_jfQVsw7BBvwb0HKD0V0o" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="mainnav">
+                    <div class="container">
+                        <div class="row">
+                            <nav id="Menu" aria-label="Mobile Menu" class="mobilenavi col-md-12"></nav>
+                            <nav id="navigation" aria-label="Main Menu">
+                                <div id="main-menu" class="main-menu-portal">
+                                    <ul class="menu"><li class="first collapsed"><a href="/user-portal">Portal</a></li>
+<li class="expanded"><a href="/accounts">Accounts</a><ul class="menu"><li class="first leaf"><a href="/accounts/new-account-setup">New Account Setup</a></li>
+<li class="leaf"><a href="/accounts/idm-account-management">IdM Account Management</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/manuals/access-lc-systems" title="">Access to LC Systems</a></li>
+<li class="leaf"><a href="/accounts/computer-coordinator-roles">Computer Coordinator Roles</a></li>
+<li class="collapsed"><a href="/accounts/forms">Forms</a></li>
+<li class="collapsed"><a href="/accounts/policies">Policies</a></li>
+<li class="last leaf"><a href="/accounts/mailing-lists">Mailing Lists</a></li>
+</ul></li>
+<li class="expanded"><a href="/banks-jobs">Banks &amp; Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/allocations">Allocations</a></li>
+<li class="expanded"><a href="/banks-jobs/running-jobs">Running Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/running-jobs/batch-system-primer">Batch System Primer</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-user-manual">LSF User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-quick-start-guide">LSF Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-commands">LSF Commands</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-user-manual" title="Guide to using the Slurm Workload/Resource Manager">Slurm User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-quick-start-guide">Slurm Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-commands">Slurm Commands</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/batch-system-commands">Batch System Cross-Reference</a></li>
+<li class="last leaf"><a href="/banks-jobs/running-jobs/slurm-srun-versus-ibm-csm-jsrun">Slurm srun versus IBM CSM jsrun</a></li>
+</ul></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/accounts/forms/asc-dat" title="">ASC DAT Request</a></li>
+<li class="last leaf"><a href="https://hpc.llnl.gov/accounts/forms/mic-dat" title="">M&amp;IC DAT Request</a></li>
+</ul></li>
+<li class="expanded"><a href="/hardware">Hardware</a><ul class="menu"><li class="first collapsed"><a href="/hardware/archival-storage-hardware">Archival Storage Hardware</a></li>
+<li class="collapsed"><a href="/hardware/platforms">Compute Platforms</a></li>
+<li class="leaf"><a href="/hardware/compute-platforms-gpus">Compute Platforms with GPUs</a></li>
+<li class="collapsed"><a href="/hardware/file-systems">File Systems</a></li>
+<li class="leaf"><a href="/hardware/testbeds">Testbeds</a></li>
+<li class="collapsed"><a href="/hardware/zones">Zones (aka &quot;The Enclave&quot;)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/cgi-bin/lccgi/customstatus.cgi?" title="">CZ Compute Platform Status</a></li>
+<li class="leaf"><a href="https://rzlc.llnl.gov/cgi-bin/lccgi/customstatus.cgi" title="">RZ Compute System Status</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/fsstatus/fsstatus.cgi" title="">CZ File System Status</a></li>
+<li class="last leaf"><a href="https://rzlc.llnl.gov/fsstatus/fsstatus.cgi" title="">RZ File System Status</a></li>
+</ul></li>
+<li class="expanded"><a href="/services">Services</a><ul class="menu"><li class="first collapsed"><a href="/services/green-data-oasis">Green Data Oasis (GDO)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="last leaf"><a href="/services/visualization-services">Visualization Services</a></li>
+</ul></li>
+<li class="expanded"><a href="/software">Software</a><ul class="menu"><li class="first leaf"><a href="/software/archival-storage-software">Archival Storage Software</a></li>
+<li class="collapsed"><a href="/software/data-management-tools-projects">Data Management Tools</a></li>
+<li class="collapsed"><a href="/software/development-environment-software">Development Environment Software</a></li>
+<li class="leaf"><a href="/software/mathematical-software">Mathematical Software</a></li>
+<li class="leaf"><a href="/software/modules-and-software-packaging">Modules and Software Packaging</a></li>
+<li class="collapsed"><a href="/software/visualization-software">Visualization Software</a></li>
+<li class="last leaf"><a href="https://computing.llnl.gov/projects/radiuss" title="">RADIUSS</a></li>
+</ul></li>
+<li class="last expanded active-trail"><a href="/training" class="active-trail">Training</a><ul class="menu"><li class="first expanded active-trail"><a href="/training/tutorials" class="active-trail">Tutorials</a><ul class="menu"><li class="first leaf"><a href="/training/tutorials/introduction-parallel-computing-tutorial">Introduction to Parallel Computing Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/llnl-covid-19-hpc-resource-guide">LLNL Covid-19 HPC Resource Guide for New Livermore Computing Users</a></li>
+<li class="leaf"><a href="/training/tutorials/using-lcs-sierra-system">Using LC&#039;s Sierra System</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-psaap3-quick-start-tutorial">Livermore Computing PSAAP3 Quick Start Tutorial</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/sites/default/files/PSAAP-alliance-quickguide.docx" title="">PSAAP Alliance Quick Guide</a></li>
+<li class="leaf"><a href="/training/tutorials/linux-tutorial-exercises">Linux Tutorial Exercise One</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-one">Livermore Computing Linux Clusters Overview Part One</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two">Livermore Computing Linux Clusters Overview Part Two</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-resources-and-environment">Livermore Computing Resources and Environment</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab-exercise">Slurm and Moab Exercise</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab Tutorial</a></li>
+<li class="leaf active-trail"><a href="/training/tutorials/totalview-part-2-common-functions" class="active-trail active">TotalView Part 2:  Common Functions</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-part-3-debugging-parallel-programs">TotalView Part 3: Debugging Parallel Programs</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-tutorial">TotalView Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/evaluation-form">Tutorial Evaluation Form</a></li>
+<li class="leaf"><a href="/training/tutorials/srun-auto-affinity">srun --auto-affinity</a></li>
+<li class="last leaf"><a href="/training/tutorials/srun-multi-prog">srun --multi-prog</a></li>
+</ul></li>
+<li class="collapsed"><a href="/training/documentation">Documentation &amp; User Manuals</a></li>
+<li class="leaf"><a href="/training/technical-bulletins-catalog">Technical Bulletins Catalog</a></li>
+<li class="collapsed"><a href="/training/workshop-schedule">Training Events</a></li>
+<li class="last leaf"><a href="/training/user-meeting-presentations-archive">User Meeting Presentation Archive</a></li>
+</ul></li>
+</ul>                                                                            <div id="pagetoggle" class="btn-group btn-toggle pull-right" style="margin-right: 15px;">
+                                            <a href="/" class="btn btn-default gs">General Site</a>
+                                            <a href="/user-portal" class="btn btn-primary up active">User Portal</a>
+                                        </div>
+                                                                    </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+		<div id="main-content" class="l2content">
+        <div class="container">
+    		<div class="row">
+        		                <div id="primary" class="content-area col-sm-12">
+					                                        <section id="content" role="nav" class="clearfix col-sm-12">
+
+                                                                                    <div id="breadcrumbs">
+                                    <h2 class="element-invisible">breadcrumb menu</h2><nav class="breadcrumb" aria-label="breadcrumb-navigation"><a href="/">Home</a> » <a href="/training">Training</a> » <a href="/training/tutorials">Tutorials</a> » TotalView Part 2:  Common Functions</nav>                                </div>
+                                                    
+                                            </section>
+                  <main>
+
+                                              <div id="content_top">
+                                <div class="region region-content-top">
+  <div id="block-print-ui-print-links" class="block block-print-ui">
+
+    
+    
+  
+  <div class="content">
+    <span class="print_html"><a href="https://hpc.llnl.gov/print/663" title="Display a printer-friendly version of this page." class="print-page" onclick="window.open(this.href); return false" rel="nofollow">Printer-friendly</a></span>  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                            </div>
+                        
+                        <div id="content-wrap">
+                                                                                                                <div class="region region-content">
+  <div id="block-system-main" class="block block-system">
+
+    
+    
+  
+  <div class="content">
+    
+
+<div  about="/training/tutorials/totalview-part-2-common-functions" typeof="sioc:Item foaf:Document" class="node node-user-portal-one-column-page node-full view-mode-full">
+    <div class="row">
+    <div class="col-sm-12 ">
+      <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even" property="dc:title"><h1 class="title">TotalView Part 2:  Common Functions</h1></div></div></div><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><h2>Table of Contents</h2>
+<ol><li><a href="#Viewing_a_Core_File">Viewing a Core File</a>
+<ol><li><a href="#Word_Core_Files">A Word about Core Files at LC</a></li>
+<li><a href="#View_Core_Files">How to View a Core File</a></li>
+<li><a href="#Examine_State">Examine State</a></li>
+<li><a href="#Core_File_Size">Core File Size</a></li>
+</ol></li>
+<li><a href="#Loading_Executables">Loading Executables</a>
+<ol><li><a href="#When_to_Use">When to Use</a></li>
+<li><a href="#Load_New_Executable">How to Load a New Executable</a></li>
+<li><a href="#Reload_Recompile">Reloading a Recompiled Executable</a></li>
+</ol></li>
+<li><a href="#Expression_Evaluation_and_Code_Fragments">Expression Evaluation and Code Fragments</a>
+<ol><li><a href="#Code_Fragments">Code Fragments</a></li>
+<li><a href="#Using_Evaluate">Using the Evaluate Window</a></li>
+</ol></li>
+<li><a href="#More_on_Action_Points">More on Action Points</a>
+<ol><li><a href="#Types_Action_Points">Types of Action Points</a></li>
+<li><a href="#Process_Barrier_Point">Setting a Process Barrier Point</a></li>
+<li><a href="#Evaluation_Point">Setting an Evaluation Point</a></li>
+<li><a href="#Watchpoint">Setting a Watchpoint</a></li>
+<li><a href="#Deleting_Action_Points">Deleting Action Points</a></li>
+<li><a href="#Disable_Enable">Disabling / Enabling Action Points</a></li>
+<li><a href="#Save_Load">Saving / Loading Action Points</a></li>
+</ol></li>
+<li><a href="#Attaching_Detaching_Processes">Attaching / Detaching Processes</a>
+<ol><li><a href="#Attach_Process">How to Attach to a Process</a></li>
+<li><a href="#Detach_Process">Detaching from a Process</a></li>
+</ol></li>
+<li><a href="#Setting_Executable_Command_Arguments">Setting Executable Command Arguments</a>
+<ol><li><a href="#Pass_Arguments">How to Pass Arguments to Your Program</a></li>
+</ol></li>
+<li><a href="#Setting_Source_Code_Search_Paths">Setting Source Code Search Paths</a>
+<ol><li><a href="#Purpose1">Purpose</a></li>
+<li><a href="#Default_Behavior1">Default Behavior</a></li>
+<li><a href="#Add_Search">How to Add Additional Search Paths</a></li>
+</ol></li>
+<li><a href="#Setting_stdin_stdout_and_stderr">Setting stdin, stdout, and stderr</a>
+<ol><li><a href="#Default_Behavior2">Default Behavior of Setting stdin, stdout, stderr</a></li>
+<li><a href="#Change_Default">To Change the Defaults</a></li>
+</ol></li>
+<li><a href="#Signal_Handling">Signal Handling</a>
+<ol><li><a href="#Purpose2">Purpose of Signal Handling</a></li>
+<li><a href="#Modify_Signal_Handling">How to Modify TotalView's Signal Handling</a></li>
+</ol></li>
+<li><a href="#Displaying_Your_Program's_Call_Graph">Displaying Your Program's Call Graph</a></li>
+<li><a href="#Debugging_Memory_Problems">Debugging Memory Problems</a>
+<ol><li><a href="#Overview">Overview</a></li>
+<li><a href="#Starting_MemoryScape">Starting MemoryScape</a></li>
+<li><a href="#Example_MemoryScape">Some Example MemoryScape Displays</a></li>
+</ol></li>
+<li><a href="#Setting_Preferences">Setting Preferences</a>
+<ol><li><a href="#About_Preferences">About Preferences</a></li>
+<li><a href="#Preferences_Dialog">Preferences Dialog Box</a></li>
+</ol></li>
+<li><a href="#Visualizing_Array_Data">Visualizing Array Data</a>
+<ol><li><a href="#Visualizer">The TotalView Visualizer</a></li>
+<li><a href="#Getting_Started">Getting Started</a></li>
+<li><a href="#Primary_Visualizer">Primary Visualizer Windows</a></li>
+</ol></li>
+<li><a href="#Command_Line_Interpreter_(CLI)">Command Line Interpreter (CLI)</a>
+<ol><li><a href="#What_Is_CLI">What is the CLI?</a></li>
+<li><a href="#Interactive_CLI">Starting an Interactive CLI Debug Session</a></li>
+<li><a href="#CI_Commands">CLI Commands</a></li>
+<li><a href="#Example_Debug_Session">Example Interactive TotalView CLI Debug Session</a></li>
+</ol></li>
+</ol><p>Go back to <a href="/training/tutorials/totalview">Part 1: The Very Basics</a></p>
+<p>Go on to <a href="/training/tutorials/totalview-part-3-debugging-parallel-programs">Part 3: Debugging</a></p>
+<h2><a name="Viewing_a_Core_File" id="Viewing_a_Core_File"></a>Viewing a Core File</h2>
+<h3><a name="Word_Core_Files" id="Word_Core_Files"></a>A Word about Core Files at LC</h3>
+<ul><li>It is quite likely that your shell's core file size setting may limit the size of a core file so that it is inadequate for debugging, especially with TotalView.</li>
+<li>To check your shell's limit settings, use either the <span class="fixed">limit</span> (csh/tcsh) or<span class="fixed">ulimit -a</span> (sh/ksh/bash) command. For example:</li>
+</ul><pre>% <span class="text-danger">limit</span>
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    unlimited
+coredumpsize 16 kbytes
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  1024 
+memorylocked 7168 kbytes
+maxproc      1024
+
+$ <span class="text-danger">ulimit -a</span>
+address space limit (kbytes)   (-M)  unlimited
+core file size (blocks)        (-c)  32
+cpu time (seconds)             (-t)  unlimited
+data size (kbytes)             (-d)  unlimited
+file size (blocks)             (-f)  unlimited
+locks                          (-L)  unlimited
+locked address space (kbytes)  (-l)  7168
+nofile                         (-n)  1024
+nproc                          (-u)  1024
+pipe buffer size (bytes)       (-p)  4096
+resident set size (kbytes)     (-m)  unlimited
+socket buffer size (bytes)     (-b)  4096
+stack size (kbytes)            (-s)  unlimited
+threads                        (-T)  not supported
+process size (kbytes)          (-v)  unlimited</pre><ul><li>To override your default core file size setting, use one of the following commands:</li>
+</ul><table><tr><th scope="row">csh/tcsh</th>
+<td><span class="fixed">unlimit</span> -or- <span class="fixed">limit coredumpsize 64</span></td>
+</tr><tr><th scope="row">sh/ksh/bash</th>
+<td><span class="fixed">ulimit -c 64</span></td>
+</tr></table><ul><li>Some users have complained that for many-process jobs, they actually don't want core files or only want small core files because normal core files can fill up their disk space. The <span class="fixed">limit</span> (csh/tcsh) or <span class="fixed">ulimit -c</span> (sh/ksh/bash) commands can be used as shown above to set smaller / zero sizes.</li>
+<li>Keep in mind that smaller core files may not be effectively used with TotalView.</li>
+</ul><h3><a name="View_Core_Files" id="View_Core_Files"></a>How to View a Core File</h3>
+<ul><li>TotalView can be used to examine the core file from a crashed job. Use any of the following methods to accomplish this.</li>
+<li><strong>Method 1</strong>:
+<ul><li>Start totalview from the command line, supplying the executable name <strong>and</strong> the core file name:</li>
+<li><span class="fixed">totalview <em>executable corefile</em></span></li>
+<li>A new <a href="/sites/default/files/windowProcess_2.gif">Process Window</a> will appear, showing the state of the process when it crashed. You can then examine all program variables and the stack contents.</li>
+</ul></li>
+<li><strong>Method 2</strong>:
+<ul><li>Use either:
+<ul><li><span class="note-purple">PATH:</span><a href="/sites/default/files/windowRoot_3.gif">Root Window</a> &gt; <a href="/sites/default/files/menuRootFile_0.gif">Core File Menu</a> &gt; Debug Core File</li>
+<li><span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuRootFile_0.gif">Core File Menu</a> &gt; Debug Core File</li>
+</ul></li>
+<li>The <strong>Core File Session Dialog Box</strong> (shown below) will appear.</li>
+<li>Enter the executable name and the core file name in the boxes provided and click Start Session. A new <a href="/sites/default/files/windowProcess_2.gif">Process Window</a> will appear, showing the state of the process when it crashed. You can then examine all program variables and the stack contents.</li>
+</ul></li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1509" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/dialogcorefile-gif">dialogCoreFile.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="core file dialog " height="600" width="722" class="media-element file-default" data-delta="1" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/dialogCoreFile.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li><strong>Method 3:</strong>
+<ul><li>Start totalview from the command line without any arguments:</li>
+</ul></li>
+</ul><pre>totalview</pre><ul><li>The <a href="/sites/default/files/sessionManager01_0.gif">Session Manager</a> window will appear. Select to debug <strong>A core file</strong></li>
+<li>The <a href="/sites/default/files/dialogCoreFile_1.gif">Core File Session Dialog Box</a> will appear as shown in Method 2 above.</li>
+<li>Continue as shown in Method 2 above.</li>
+</ul><h3><a name="Examine_State" id="Examine_State"></a>Examine State</h3>
+<ul><li>After the core file has been loaded into the Process Window, you can examine the state (variables, stack, etc.) of the program when it crashed. You cannot run the program, per se, just examine the post-mortem dump.</li>
+<li>The program counter will usually point to the statement where the program crashed.</li>
+<li>An example of viewing a crashed program is provided below.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-2080" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/corefileexample-gif">corefileExample.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="screen shot of core file example" height="819" width="804" class="media-element file-default" data-delta="29" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/corefileExample.gif" /></div>
+
+  
+</div>
+</div>
+<h3><a name="Core_File_Size" id="Core_File_Size"></a>Core File Size</h3>
+<ul><li>It is quite likely that your shell's core file size setting may limit the size of a core file so that it is inadequate for debugging, especially with TotalView.</li>
+<li>To check your shell's limit settings, use either the<span class="fixed"> limit </span>(csh/tcsh) or <span class="fixed">ulimit -a </span>(sh/ksh/bash) command. For example:</li>
+</ul><pre><span class="text-danger">limit</span><strong>
+</strong>cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    unlimited
+coredumpsize 16 kbytes
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  1024
+memorylocked 7168 kbytes
+maxproc      1024<strong>
+
+</strong><span class="text-danger">ulimit -a</span>
+address space limit (kbytes)   (-M)  unlimited
+core file size (blocks)        (-c)  32
+cpu time (seconds)             (-t)  unlimited
+data size (kbytes)             (-d)  unlimited
+file size (blocks)             (-f)  unlimited
+locks                          (-L)  unlimited
+locked address space (kbytes)  (-l)  7168
+nofile                         (-n)  1024
+nproc                          (-u)  1024
+pipe buffer size (bytes)       (-p)  4096
+resident set size (kbytes)     (-m)  unlimited
+socket buffer size (bytes)     (-b)  4096
+stack size (kbytes)            (-s)  unlimited
+threads                        (-T)  not supported
+process size (kbytes)          (-v)  unlimited</pre><ul><li>To override your default core file size setting, use one of the following commands:</li>
+</ul><table class="table table-bordered table-striped"><tr><th scope="row"><strong>csh/tcsh</strong></th>
+<td><span class="fixed">unlimit</span><br />-or-<br /><span class="fixed">limit coredumpsize 64</span></td>
+</tr><tr><th scope="row"><strong>sh/ksh/bash</strong></th>
+<td><span class="fixed">ulimit -c 64</span></td>
+</tr></table><h2><a name="Loading_Executables" id="Loading_Executables"></a>Loading Executables</h2>
+<h3><a name="When_to_Use" id="When_to_Use"></a>When to Use</h3>
+<ul><li>If you did not specify an executable when you started TotalView</li>
+<li>To load a new executable at any time during your debugging session</li>
+<li>To reload the same executable after recompiling</li>
+</ul><h3><a name="Load_New_Executable" id="Load_New_Executable"></a>How to Load a New Executable</h3>
+<ol><li>Use either:
+<ul><li><span class="note-purple">PATH:</span><a href="/sites/default/files/windowRoot_3.gif">Root Window</a> &gt; <a href="/sites/default/files/menuRootFile_1.gif">File Menu</a> &gt; Debug New Program</li>
+<li><span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuRootFile_1.gif">File Menu</a> &gt; Debug New Program</li>
+</ul></li>
+<li>The Program Session Dialog Box will appear (below). Enter the name of the executable in the box provided, and click OK. A <a href="/sites/default/files/windowProcess_2.gif">Process Window</a> containing the newly loaded process will then appear allowing you to debug as usual.</li>
+</ol><p><strong><div class="media media-element-container media-default"><div id="file-1511" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/dialognewprogram-gif">dialogNewProgram.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="New program" height="600" width="722" class="media-element file-default" data-delta="3" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/dialogNewProgram.gif" /></div>
+
+  
+</div>
+</div></strong></p>
+<h3><a name="Reload_Recompile" id="Reload_Recompile"></a>Reloading a Recompiled Executable</h3>
+<ul><li>If you make modifications to your source code and recompile it, TotalView will attempt to load the new source automatically the next time you load/run your program. If TotalView cannot find your modified source, you will have to load it yourself.</li>
+</ul><h2><a name="Expression_Evaluation_and_Code_Fragments" id="Expression_Evaluation_and_Code_Fragments"></a>Expression Evaluation and Code Fragments</h2>
+<h3><a name="Code_Fragments" id="Code_Fragments"></a>Code Fragments</h3>
+<ul><li>TotalView enables you to enter "code fragments" during a debugging session. Code fragments can include a mixture of:
+<ul><li>C, Fortran or Assembler language code (Note: assembler support is architecture dependent).</li>
+<li>TotalView built-in variables ($tid, $pid, $systid ... )</li>
+<li>TotalView built-in statements ($stop, $hold, $stopall ...)</li>
+<li><a href="/Totalview-built-variables-and-statements">TotalView Built-in Variables and Statements</a> are listed here.</li>
+</ul></li>
+<li>Code fragments interact with your program, and are evaluated within its <em><strong>runtime context</strong></em>. They can therefore be used for a variety of purposes, such as:
+<ul><li>Setting conditional breakpoints</li>
+<li>Program patching - branching around code and/or adding new code</li>
+<li>Effecting conditional execution</li>
+<li>Displaying program data</li>
+<li>Modifying program data</li>
+</ul></li>
+<li>Code fragments can be entered by two methods, each serving a different purpose:
+<ul><li>Evaluate Window</li>
+<li>Evaluation Point (<a href="#More_on_Action_Points">covered later</a>)</li>
+</ul></li>
+<li>There are restrictions and limitations for code fragments. See the TotalView documentation for details.</li>
+</ul><h3><a name="Using_Evaluate" id="Using_Evaluate"></a>Using the Evaluate Window</h3>
+<ol><li>Make sure that a process has run to a meaningful point, particularly if you intend to use variables that are part of your program.</li>
+<li>Open an <strong>Evaluate Window</strong> (shown below) as follows:
+<ol><li><span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessTools.gif">Tools Menu</a> &gt; <strong>Evaluate</strong></li>
+</ol></li>
+<li>In the <strong>Evaluate Window</strong>, select the language of choice (C, Fortran, Assembler) if needed.</li>
+<li>Enter your code fragment in the Expression box.</li>
+<li>Click on the <strong>Evaluate </strong>button. The expression will be evaluated, and its value will appear in the Result box. Note that the value that appears relates to the last expression in the code fragment, in this case "sum".</li>
+</ol><p><strong><div class="media media-element-container media-default"><div id="file-1512" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/windowevaluate-gif">windowEvaluate.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Evaluate window" height="433" width="440" class="media-element file-default" data-delta="4" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/windowEvaluate.gif" /></div>
+
+  
+</div>
+</div></strong></p>
+<h2><a name="More_on_Action_Points" id="More_on_Action_Points"></a>More on Action Points</h2>
+<h3><a name="Types_Action_Points" id="Types_Action_Points"></a>Types of Action Points</h3>
+<ul><li>TotalView supports four different types of action points:
+<ul><li><strong>Breakpoint:</strong> stops execution of the processes or threads that reach it.</li>
+<li><strong>Barrier Point:</strong> holds each process when it reaches the barrier point until all processes in the group have reached the barrier point. Primarily for MPI programs.</li>
+<li><strong>Evaluation Point:</strong> causes a code fragment to execute when it is reached. Enables you to set "conditional breakpoints" and perform conditional execution.</li>
+<li><strong>Watchpoint:</strong> enables you to monitor a location in memory and either stop execution or evaluate an expression when the value stored in memory is modified.</li>
+</ul></li>
+</ul><h3><a name="Process_Barrier_Point" id="Process_Barrier_Point"></a>Setting a Process Barrier Point</h3>
+<ul><li>After selecting a source line, there are three ways to set a barrier point:</li>
+<li><strong>Method 1:</strong> (easiest) Right click on the source line and select <strong>Set Barrier</strong> from the resulting pop-up menu.</li>
+<li><strong>Method 2:</strong>
+<ul><li><span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessAction_0.gif">Action Point Menu</a> &gt; Set Barrier</li>
+</ul></li>
+<li><strong>Method 3:</strong>
+<ul><li><span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessAction_0.gif">Action Point Menu</a> &gt; Properties</li>
+</ul></li>
+<li>Then select the <strong>Barrier </strong>button in the resulting <a href="/sites/default/files/dialogActionPointProperties3.gif">Action Point Properties Dialog Box (Barrier)</a>.</li>
+<li>The source line will then display a blue BARR icon as shown below.</li>
+</ul><p><strong><div class="media media-element-container media-default"><div id="file-1513" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/barrierbarricon-gif">barrierBARRIcon.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="BARR Icon" height="49" width="719" class="media-element file-default" data-delta="5" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/barrierBARRIcon.gif" /></div>
+
+  
+</div>
+</div></strong></p>
+<ul><li>As each process reaches the barrier point, TotalView will place that process in a "held" state.</li>
+<li>After all processes have reached the barrier point, TotalView will automatically "release" them, however they remain stopped until you take further action.</li>
+<li>Note: As long a process is in a "held" state, it will ignore action commands as go, step, next, etc. You must first manually "release" it before attempting to resume execution. This can be done by selecting the Release command found in the Group, Process and Thread menus:</li>
+</ul><div class="float-left">Group:<br /><div class="media media-element-container media-default"><div id="file-1682" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/menuprocessgroup-gif-1">menuProcessGroup.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="menu Process Group" height="399" width="221" class="media-element file-default" data-delta="32" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/menuProcessGroup_1.gif" /></div>
+
+  
+</div>
+</div></div>
+<div class="float-left">Process:<br /><div class="media media-element-container media-default"><div id="file-1657" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/menuprocessprocess-gif-1">menuProcessProcess.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Proces menu menu" height="375" width="234" class="media-element file-default" data-delta="33" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/menuProcessProcess_1.gif" /></div>
+
+  
+</div>
+</div></div>
+<div class="float-left">Thread:<br /><div class="media media-element-container media-default"><div id="file-1684" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/menuprocessthread-gif-1">menuProcessThread.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="menu Process Thread" height="304" width="204" class="media-element file-default" data-delta="34" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/menuProcessThread_1.gif" /></div>
+
+  
+</div>
+</div></div>
+<h3><a name="Evaluation_Point" id="Evaluation_Point"></a>Setting an Evaluation Point</h3>
+<ol><li>First, make sure that the program is stopped.</li>
+<li>Open an Action Point Properties Dialog Box by either of these methods:
+<ol><li><strong>Method 1:</strong> <span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessAction_0.gif">Action Point Menu</a> &gt; Properties</li>
+<li><strong>Method 2:</strong> Right click on the source line and select <strong>Properties </strong>from the resulting pop-up menu.</li>
+</ol></li>
+<li>In the <strong>Action Point Properties Dialog Box</strong>, do the following:
+<ol><li>Click on the <strong>Evaluate</strong> button</li>
+<li>Select the button for the correct language if needed</li>
+<li>Enter your code fragment in the expression box - an example is shown below. (Expressions were covered previously under <a href="#Expression_Evaluation_and_Code_Fragments">Expression Evaluation</a>).</li>
+<li>Click on the OK button when finished.</li>
+<li><div class="media media-element-container media-default"><div id="file-1514" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/evaluationpointentry-gif">evaluationPointEntry.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Point entry" height="457" width="543" class="media-element file-default" data-delta="6" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/evaluationPointEntry.gif" /></div>
+
+  
+</div>
+</div></li>
+</ol></li>
+<li>The source line should now display an EVAL icon:<br /><div class="media media-element-container media-default"><div id="file-1515" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/evaluationpointicon-gif">evaluationPointIcon.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Point icon " height="48" width="719" class="media-element file-default" data-delta="7" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/evaluationPointIcon.gif" /></div>
+
+  
+</div>
+</div></li>
+<li>At runtime, the entered expression will be evaluated when it is encountered by a process or thread. Evaluation Point expressions are evaluated before the source code line.</li>
+</ol><p><span class="note-red">Note:</span>Depending upon your platform, TotalView can either compile or interpret expressions, with the expected implications to performance. See the TotalView documentation for details.</p>
+<h3><a name="Watchpoint" id="Watchpoint"></a>Setting a Watchpoint</h3>
+<ul><li>You can monitor changes to specific memory locations by using a special kind of action point called a <strong>Data Watchpoint</strong> (or just Watchpoint for short).</li>
+<li>Watchpoints are most often used to find a statement in your program that is writing to a "stray" or unintended memory location.</li>
+<li>Watchpoints are triggered only when data in memory is modified. If a write occurs to a memory location but the value of the data is the same, the Watchpoint is not triggered.</li>
+<li>There are two types of watchpoints:
+<ul><li><strong>Unconditional Watchpoint </strong>- program is automatically stopped by TotalView when the watchpoint is triggered.</li>
+<li><strong>Conditional Watchpoint</strong> - allows you to specify an expression that is evaluated when the watchpoint is triggered.</li>
+</ul></li>
+<li><span class="note-red">Note:</span>It is essential to consult the TotalView documentation before attempting to use watchpoints. There are numerous platform issues, restrictions and important details not mentioned here. For example, under Linux a watchpoint can't be larger than 4 bytes!</li>
+<li>To set either type of watchpoint:</li>
+</ul><ol><li>Dive on a variable to open a new <a href="/sites/default/files/windowVariable_1.gif">Variable Window</a>.</li>
+<li>Open a Watchpoint Properties Dialog Box: <span class="note-purple">PATH:</span><a href="/sites/default/files/windowVariable_1.gif">Variable Window</a> &gt; <a href="/sites/default/files/menuProcessTools.gif">Tools Menu</a> &gt; <strong>Create Watchpoint</strong>
+<ul><li><span class="note-red">Note:</span>If watchpoints are not supported on your platform, this item will be "grayed out" and unable to be selected.</li>
+</ul></li>
+<li>A <strong>Watchpoint Properties Dialog Box</strong> will appear. <strong>Unconditional </strong>will be selected by default. For <strong>Conditional </strong>watchpoints you will need to enter a valid expression. Click the OK button when finished. An example of both types of watchpoint dialog boxes appears below.</li>
+</ol><p></p><div class="media media-element-container media-default"><div id="file-1516" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/watchpointentry-gif">watchpointEntry.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="watchpoint entry" height="482" width="909" class="media-element file-default" data-delta="8" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/watchpointEntry.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>Conditional watchpoint expressions are identical to those used for Evaluation Points with some restrictions.</li>
+<li>Unlike other action points, watchpoints do not display an icon on a source line, because they are associated with an address location, not a source line number. Their presence is shown in the Action Points Pane however:</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1517" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/watchpointicons-gif">watchpointIcons.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="watchpoint icon" height="147" width="656" class="media-element file-default" data-delta="9" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/watchpointIcons.gif" /></div>
+
+  
+</div>
+</div>
+<h3><a name="Deleting_Action_Points" id="Deleting_Action_Points"></a>Deleting Action Points</h3>
+<ul><li>There are several ways to delete action points. Assuming that you have already selected a source line with an action point set:</li>
+<li><strong>Method 1:</strong> Right click on the source code line and then select <strong>Delete </strong>from the resulting pop-up menu.</li>
+<li><strong>Method 2:</strong> <span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessAction_0.gif">Action Point Menu</a> &gt; <strong>Delete</strong></li>
+<li><strong>Method 3: </strong>Open an <a href="/sites/default/files/dialogActionPointProperties_0.gif">Action Point Properties Dialog Box (Delete)</a> (discussed earlier). Then select the <strong>Delete </strong>button.</li>
+<li>To clear all action points at once: <span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessAction_0.gif">Action Point Menu</a> &gt; <strong>Delete All</strong></li>
+</ul><h3><a name="Disable_Enable" id="Disable_Enable"></a>Disabling / Enabling Action Points</h3>
+<ul><li>Disabling an action point means that it is made "inactive" without deleting it. Enabling a previously disabled action point means that it is made active again.</li>
+<li>There are several ways to disable / enable an individual action point. Assuming that you have already selected source line with an action point set:
+<ul><li><strong>Method 1: </strong>Right click on the source code line and then select <strong>Disable </strong>or <strong>Enable </strong>from the resulting pop-up menu.</li>
+<li><strong>Method 2: </strong><span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessAction_0.gif">Action Point Menu</a> &gt; <strong>Disable </strong>or <strong>Enable</strong></li>
+<li><strong>Method 3:</strong> Open an <a href="/sites/default/files/dialogActionPointProperties_0.gif">Action Point Properties Dialog Box (Enable)</a> (discussed earlier). Then toggle the Enable action point button as desired.</li>
+<li><strong>Method 4:</strong> Left click on the desired action point icon in the Process Window's Action Points Pane.</li>
+</ul></li>
+<li>To disable / enable all action points at once: <span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window </a> &gt;  <a href="/sites/default/files/menuProcessAction_0.gif">Action Point Menu</a> &gt; <strong>Suppress All</strong>
+<ul><li>The <strong>Suppress All </strong>menu item will toggle between disabling (suppress) and enabling all action points.</li>
+</ul></li>
+<li>When an action point is disabled, it will appear as a dimmed icon in both the Action Points Pane and in the source code line, as shown below.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1518" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/actionpointdisabled1-gif">actionPointDisabled1.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Action point disabled" height="143" width="631" class="media-element file-default" data-delta="10" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/actionPointDisabled1.gif" /></div>
+
+  
+</div>
+</div>
+<p></p><div class="media media-element-container media-default"><div id="file-2081" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/actionpointdisabled2-gif">actionPointDisabled2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="screen shot of disabled icon" height="124" width="622" class="media-element file-default" data-delta="30" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/actionPointDisabled2.gif" /></div>
+
+  
+</div>
+</div>
+<h3><a name="Save_Load" id="Save_Load"></a>Saving / Loading Action Points</h3>
+<ul><li>You can have TotalView save all of your action points (except watchpoints) to a plain text file:
+<ul><li><span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessAction_0.gif">Action Point Menu</a> &gt; <strong>Save All</strong></li>
+<li>The filename for the action points file will be something similar to what's shown below (there is some variation in the actual naming format between different versions).</li>
+<li><span class="fixed"><em>executable_name</em>.TVD.v3breakpoints</span></li>
+</ul></li>
+<li>You can also load previously saved action points into your current debugger session:
+<ul><li><span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessAction_0.gif">Action Point Menu</a> &gt; <strong>Load All</strong></li>
+</ul></li>
+</ul><h2><a name="Attaching_Detaching_Processes" id="Attaching_Detaching_Processes"></a>Attaching / Detaching Processes</h2>
+<ul><li>TotalView can be used to debug programs or processes that are already running. This can be particularly useful for diagnosing "hung" programs.</li>
+<li>Typical scenario:</li>
+</ul><ol><li>Start a program</li>
+<li>Notice that the program is having problems</li>
+<li>Start TotalView</li>
+<li>Attach to the running process</li>
+<li>Fix or diagnose the problem</li>
+<li>Detach from process to resume execution - or else allow process to run to completion within TotalView</li>
+<li>Exit TotalView</li>
+</ol><h3><a name="Attach_Process" id="Attach_Process"></a>How to Attach to a Process</h3>
+<ul><li>If possible, start <span class="fixed">totalview</span> (no arguments) on the machine where your program is running. A <a href="/sites/default/files/sessionManager01_0.gif">Session Manager</a> window should automatically appear with the usual Root Window.</li>
+<li>In the <a href="/sites/default/files/sessionManager01_0.gif">Session Manager</a> window, select the <strong>A running program (attach)</strong>. An <strong>Attach to running program(s)</strong> dialog box will appear as shown below.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1519" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/dialognewprogramattach-gif">dialogNewProgramAttach.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="New Program attach" height="639" width="889" class="media-element file-default" data-delta="11" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/dialogNewProgramAttach.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>Select the process of interest (such as your hung program) from the process list, then click the Start Session button.</li>
+<li>A new <a href="/sites/default/files/windowProcess_2.gif">Process Window</a> will appear, showing the state of the attached process and allowing you to debug it. In most cases, you will need to Halt the process before you can begin to debug it.</li>
+<li>Note that you are also able to attach to processes on other machines through the <strong>Host: H+</strong> button.</li>
+</ul><h3><a name="Detach_Process" id="Detach_Process"></a>Detaching From a Process</h3>
+<ul><li>When you are finished debugging an attached process, you can detach from it: <span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessProcess_1.gif">Process Menu</a> &gt; <strong>Detach</strong></li>
+<li>If you detach from a process that was not started by TotalView, it will remain in whatever state (i.e. running) it is in. TotalView will not automatically kill it.</li>
+<li>If your program has a signal handler, you can also have TotalView send a signal to the process when it detaches: <span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessThread_0.gif">Thread Menu</a> &gt; <strong>Continuation Signal</strong></li>
+<li>A Continuation Signal Dialog Box will appear. Select the signal TotalView should send to the process when it detaches, such as SIGSTOP</li>
+</ul><h2><a name="Setting_Executable_Command_Arguments" id="Setting_Executable_Command_Arguments"></a>Setting Executable Command Arguments</h2>
+<h3><a name="Pass_Arguments" id="Pass_Arguments"></a>How to Pass Arguments to Your Program</h3>
+<ul><li>By default, TotalView does not pass arguments to a program being debugged.</li>
+<li>If your program requires command line arguments, they must be passed to the program through TotalView before your program starts.</li>
+<li><strong>Method 1:</strong>
+<ul><li>Use the <span class="fixed">-a</span> flag on the UNIX shell command line when you start the debugger with the <span class="fixed">totalview</span> command. This must be the last argument in the command string. For example:</li>
+</ul></li>
+</ul><pre>totalview a.out -a <em>arg1 arg2 arg3</em></pre><ul><li><strong>Method 2:</strong> <span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window </a>&gt; <a href="/sites/default/files/menuProcessProcess_1.gif">Process Menu</a> &gt; <strong>Startup Parameters</strong>
+<ol><li>When the <strong>Startup Parameters Dialog Box</strong> appears (below), make sure that the <strong>Arguments</strong> page is selected.</li>
+<li>Enter the arguments to be passed to your program when it starts. Separate arguments with spaces or put each on a new line. For single arguments with embedded spaces, enclose the entire argument with double quotes.</li>
+<li>Enter any environment variables if needed.</li>
+<li>Select OK when finished.</li>
+</ol></li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1520" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/dialogstartuparguments-gif">dialogStartupArguments.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Start up Arguments" height="485" width="704" class="media-element file-default" data-delta="12" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/dialogStartupArguments.gif" /></div>
+
+  
+</div>
+</div>
+<h2><a name="Setting_Source_Code_Search_Paths" id="Setting_Source_Code_Search_Paths"></a>Setting Source Code Search Paths</h2>
+<h3><a name="Purpose1" id="Purpose1"></a>Purpose</h3>
+<ul><li>In cases where your source code and executables are not co-located, you may need to tell TotalView where to search for the various components.</li>
+</ul><h3><a name="Default_Behavior1" id="Default_Behavior1"></a>Default Behavior</h3>
+<ul><li>By default, the debugger will search the following directories (in order):
+<ol><li>Current working directory</li>
+<li>Path of an executable started with a full path name</li>
+<li>Directories specified in your <span class="fixed">PATH</span> environment variable.</li>
+</ol></li>
+</ul><h3><a name="Add_Search" id="Add_Search"></a>How to Add Additional Search Paths</h3>
+<ol><li>Select either:
+<ul><li><span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessFile_1.gif">Process File Menu </a>&gt; <strong>Search Path</strong></li>
+<li><span class="note-purple">PATH:</span><a href="/sites/default/files/windowRoot_3.gif">Root Window</a> &gt; <a href="/sites/default/files/menuRootFile_2.gif">Process File Menu </a>&gt; <strong>Search Path</strong></li>
+</ul></li>
+<li>In the <strong>Search Path Dialog Box</strong> (shown below), click on the <strong>Sources</strong> tab and then enter the directories that should be searched, in order. They can be separated with a space or a new line. Relative path names are permitted (relative to the current working directory).</li>
+<li>To browse for directories to add, click on the <strong>Insert </strong>button to open a <a href="/sites/default/files/dialogSelectDirectoryToAdd.gif">Select Directory Dialog Box</a>.</li>
+<li>Note that these paths will be persistent from session to session.</li>
+</ol><p></p><div class="media media-element-container media-default"><div id="file-2082" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/dialogsearchpath-gif-0">dialogSearchPath.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="screen shot of Sources dialog box" height="646" width="484" class="media-element file-default" data-delta="31" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/dialogSearchPath_0.gif" /></div>
+
+  
+</div>
+</div>
+<h2><a name="Setting_stdin_stdout_and_stderr" id="Setting_stdin_stdout_and_stderr"></a>Setting stdin, stdout, and stderr</h2>
+<h3><a name="Default_Behavior2" id="Default_Behavior2"></a>Default Behavior</h3>
+<ul><li>By default, TotalView reads stdin from, and writes stdout/stderr to the shell window where you started the debugger.</li>
+<li>TotalView allows you to change the default behavior for each of stdin, stdout, and stderr.</li>
+</ul><h3><a name="Change_Default" id="Change_Default"></a>To Change the Defaults</h3>
+<ul><li><span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessProcess_1.gif">Process Menu</a> &gt; <strong>Startup Parameters</strong></li>
+<li>After the <strong>Startup Parameters Dialog Box</strong> appears be sure to select the <strong>Standard I/O Tab</strong> (below). Then enter file names and select from the available options as desired. Click OK when finished.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1522" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/dialogstartupstandardio-gif">dialogStartupStandardIO.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Start up standard IO" height="485" width="704" class="media-element file-default" data-delta="14" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/dialogStartupStandardIO.gif" /></div>
+
+  
+</div>
+</div>
+<h2><a name="Signal_Handling" id="Signal_Handling"></a>Signal Handling</h2>
+<h3><a name="Purpose2" id="Purpose2"></a>Purpose</h3>
+<ul><li>If your program includes its own signal handler routine, you may need to modify TotalView's defaults.</li>
+</ul><h3><a name="Modify_Signal_Handling" id="Modify_Signal_Handling"></a>How to Modify TotalView's Signal Handling</h3>
+<ul><li>To view or set the debugger's signal handling behavior: <span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessFile_1.gif">Process File Menu</a> &gt; <strong>Signals</strong></li>
+<li>The <strong>Signal Handling Dialog Box</strong> will appear (below). Note that signal names, behaviors and numbers are platform specific.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1523" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/dialogsignalhandling-gif">dialogSignalHandling.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Signal Handling" height="476" width="628" class="media-element file-default" data-delta="15" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/dialogSignalHandling.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>Select the desired mode (behavior) for any given signal. Signal handling modes choices are:
+<ul><li><strong>Error </strong>- stops process, places it in an error state, and displays an error in the title bar of the process window.</li>
+<li><strong>Stop </strong>- stops process and places it in the stopped state. Equivalent to SIGSTOP.</li>
+<li><strong>Resend </strong>- debugger will send signal to the process. This mode should be used for all signals handled by your own signal handler routine.</li>
+<li><strong>Ignore </strong>- discards the signal and restarts the process without a signal. Should not be used for fatal signals, as it may cause the debugger to get caught in a signal/resignal loop.</li>
+</ul></li>
+<li><span class="note-red">Note:</span>TotalView uses the SIGTRAP and SIGSTOP signals internally. If either occurs, TotalView neither stops the process with an error or has the signal sent back to the program. This behavior cannot be changed.</li>
+<li>See the TotalView documentation for details.</li>
+</ul><h2><a name="Displaying_Your_Program's_Call_Graph" id="Displaying_Your_Program's_Call_Graph"></a>Displaying Your Program's Call Graph</h2>
+<ul><li>TotalView's Call Graph Diagram can be used to show all of your program's active routines. These routines are linked by arrows indicating that one routine is called by another.</li>
+<li>The Call Graph Diagram is dynamic - the display reflects the current program state.</li>
+<li>To view the Call Graph Diagram: <span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessTools_0.gif">Tools Menu</a> &gt; <strong>Call Graph</strong></li>
+<li>The ability to selectively display the call tree by process/thread group is provided by the drop-down menu at the top of the graph.</li>
+<li>The <strong>Update</strong> button tells TotalView to recreate this display for a new process/thread group, or to see how the call tree has changed as a result of running the program to another point.</li>
+<li>The <strong>Save As</strong> button allows you to save your graph in <a href="http://www.graphviz.org" target="_blank">Graphiz</a> <strong>.dot</strong> format.</li>
+<li>An example Call Graph Diagram is shown below.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1524" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/callgraph-gif">callGraph.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="call Graph" height="555" width="525" class="media-element file-default" data-delta="16" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/callGraph.gif" /></div>
+
+  
+</div>
+</div>
+<h2><a name="Debugging_Memory_Problems" id="Debugging_Memory_Problems"></a>Debugging Memory Problems</h2>
+<h3><a name="Overview" id="Overview"></a>Overview</h3>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-1525" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/memoryscape-jpg">memoryScape.jpg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/memoryScape.jpg"><img alt="memory scape" height="465" width="600" style="height: 465px; width: 600px;" class="media-element file-default" data-delta="17" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/memoryScape-600x465.jpg" /></a>  </div>
+
+  
+</div>
+</div></div>
+<ul><li>TotalView includes full featured memory debugging functionality. This is packaged as a separate, but integrated, client called <strong>MemoryScape</strong>.</li>
+<li>Key features include:
+<ul><li>Memory usage reports</li>
+<li>Leak detection</li>
+<li>Heap status</li>
+<li>Corrupted memory detection</li>
+<li>Dangling pointer detection and pointer status</li>
+<li>Event and error notification</li>
+<li>Setting guard blocks</li>
+<li>Block painting</li>
+</ul></li>
+<li>Covering the many features included in MemoryScape would require a separate tutorial. Only a few very basics are covered here.</li>
+<li>For complete information, consult the MemoryScape documentation located at: <a href="http://www.roguewave.com/support/product-documentation/totalview.aspx" target="_blank">www.roguewave.com/support/product-documentation/totalview.aspx</a>.</li>
+</ul><h3><a name="Starting_MemoryScape" id="Starting_MemoryScape"></a>Starting MemoryScape</h3>
+<ul><li>The MemoryScape executable, called <span class="fixed">memscape</span> is located in the same directory as the <span class="fixed">totalview</span> executable.</li>
+<li>Invoking MemoryScape directly - examples:</li>
+</ul><table class="table table-bordered table-striped"><tr><th scope="col"><strong>Command</strong></th>
+<th scope="col"><strong>Description</strong></th>
+</tr><tr><td><span class="fixed">memscape</span></td>
+<td>Brings up the main MemoryScape window</td>
+</tr><tr><td><span class="fixed">memscape <em>myprog</em></span></td>
+<td>Opens MemoryScape with your program</td>
+</tr><tr><td><span class="fixed">memscape <em>myprog </em>-a <em>arguments</em></span></td>
+<td>Opens MemoryScape with your program and your program's arguments</td>
+</tr><tr><td>
+<p><span class="fixed">memscape <em>myprog</em><br /><em>memscape_options</em></span></p>
+</td>
+<td>Opens MemoryScape with your program under the specified MemoryScape options</td>
+</tr><tr><td><span class="fixed">memscape srun -a -n8<br />-ppdebug <em>myprog</em></span></td>
+<td>LC parallel job on a linux cluster: opens MemoryScape with srun, used to launch your parallel MPI program; uses 8 tasks in the pdebug pool.</td>
+</tr></table><ul><li>Once MemoryScape starts up, you will be presented with the main opening window, which allows you to set options, execution, memory debugging, generation of memory reports and more. Click on the small image below for a larger image.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1526" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/memscape01-gif">memscape01.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="memscape" height="819" width="1056" class="media-element file-default" data-delta="18" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/memscape01.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li>Starting MemoryScape from within a TotalView session:
+<ul><li>Before your program starts to run, turn on memory debugging (it's usually set to off by default): <span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessDebug.gif">Debug Menu</a> &gt; <strong>Enable Memory Debugging</strong></li>
+<li>Run your program under TotalView as usual, to a stopping point. Then launch MemoryScape: <span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessDebug.gif">Debug Menu</a> &gt; <strong>Open MemoryScape</strong></li>
+<li>The MemoryScape main window should then appear as shown above.</li>
+</ul></li>
+</ul><h3><a name="Example_MemoryScape" id="Example_MemoryScape"></a>Some Example MemoryScape Displays</h3>
+<p>Click on the small images for a larger image.</p>
+<div class="float-left"><div class="media media-element-container media-default"><div id="file-1527" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/memscape02-gif">memscape02.gif</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/memscape02.gif"><img alt="memscape usage chart" height="233" width="300" style="height: 233px; width: 300px;" class="media-element file-default" data-delta="19" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/memscape02-300x233.gif" /></a>  </div>
+
+  
+</div>
+</div></div>
+<div class="float-left"><div class="media media-element-container media-default"><div id="file-1528" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/memscape03-gif">memscape03.gif</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/memscape03.gif"><img alt="memscape usage process report" height="233" width="300" style="height: 233px; width: 300px;" class="media-element file-default" data-delta="20" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/memscape03-300x233.gif" /></a>  </div>
+
+  
+</div>
+</div></div>
+<div class="float-left"><div class="media media-element-container media-default"><div id="file-1529" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/memscape04-gif">memscape04.gif</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/memscape04.gif"><img alt="memscape usage library report" height="233" width="300" style="height: 233px; width: 300px;" class="media-element file-default" data-delta="21" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/memscape04-300x233.gif" /></a>  </div>
+
+  
+</div>
+</div></div>
+<div class="float-left"><div class="media media-element-container media-default"><div id="file-1530" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/memscape05-gif">memscape05.gif</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/memscape05.gif"><img alt="memscape haap status graphical report" height="233" width="300" style="height: 233px; width: 300px;" class="media-element file-default" data-delta="22" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/memscape05-300x233.gif" /></a>  </div>
+
+  
+</div>
+</div></div>
+<h2><a name="Setting_Preferences" id="Setting_Preferences"></a>Setting Preferences</h2>
+<h3><a name="About_Preferences" id="About_Preferences"></a>About Preferences</h3>
+<ul><li>Users can control many aspects of TotalView's appearance and behavior through setting Preferences.</li>
+<li>The <strong>Preferences Dialog Box</strong> is used to view and set preferences. It can be opened by using either of the paths below:
+<ul><li><span class="note-purple">PATH:</span><a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessFile_1.gif">Process File Menu</a> &gt; <strong>Preferences</strong></li>
+<li><span class="note-purple">PATH:</span><a href="/sites/default/files/windowRoot_3.gif">Root Window</a> &gt; <a href="/sites/default/files/menuRootFile_2.gif">Process File Menu</a> &gt; <strong>Preferences</strong></li>
+</ul></li>
+</ul><h3><a name="Preferences_Dialog" id="Preferences_Dialog"></a>Preferences Dialog Box</h3>
+<ul><li>The Preferences Dialog Box (below) is comprised of multiple pages that serve to group preferences into general categories.</li>
+</ul><div class="clear-floats"><strong><div class="media media-element-container media-default"><div id="file-1531" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/preferencesoptions-gif">preferencesOptions.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Preference Options" height="548" width="588" class="media-element file-default" data-delta="23" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/preferencesOptions.gif" /></div>
+
+  
+</div>
+</div></strong></div>
+<ul><li><a href="/sites/default/files/preferencesOptions_0.gif">Options:</a> This page contains several options that are general or miscellaneous in nature (shown above).</li>
+<li><a href="/sites/default/files/preferencesActionPoints.gif">Action Points</a>: The commands on this page indicate what else is stopped, if anything, when TotalView encounters an action point, the scope of the action point, automatic saving and loading, and if TotalView should open a Process Window for the process encountering a breakpoint.</li>
+<li><a href="/sites/default/files/preferencesLaunchStrings.gif">Launch Strings:</a> The three areas of this page let you set the launch string when TotalView launches its remote debugging server, the Visualizer, and a source code editor. Notice that there are default values for these that are platform specific.</li>
+<li><a href="/sites/default/files/preferencesBulkLaunch.gif">Bulk Launch:</a> This page allows you to change the bulk launch command, disable bulk launch, and alter connection timeouts used by TotalView when it launches the tvdsvr programs.</li>
+<li><a href="/sites/default/files/preferencesDynamicLibraries.gif">Dynamic Libraries:</a> This page lets you control which symbols are added to TotalView when it loads a dynamic library.</li>
+<li><a href="/sites/default/files/preferencesParallel.gif">Parallel:</a> This page lets you define what will occur when your program goes parallel.</li>
+<li><a href="/sites/default/files/preferencesFonts.gif">Fonts:</a> Use this page to specify the fonts used in the user interface and when TotalView displays your code and program data.</li>
+<li><a href="/sites/default/files/preferencesFormatting.gif">Formatting:</a> Allows you to specify how variables of different data types are displayed.</li>
+<li><a href="/sites/default/files/preferencesPointerDive.gif">Pointer Dive:</a> Specifies when pointers are dereferenced in TotalView displays.</li>
+<li><a href="/sites/default/files/preferencesReplayEngine.gif">Replay Engine:</a> Specifies a couple options for TotalView's Replay Engine feature.</li>
+</ul><h2><a id="Visualizing_Array_Data" name="Visualizing_Array_Data"></a>Visualizing Array Data</h2>
+<h3><a name="Visualizer" id="Visualizer"></a>The TotalView Visualizer</h3>
+<ul><li>The TotalView Visualizer works with the debugger software to create graphical displays of your program's data. It is a self-contained process that can be launched from the debugger, or alone on the command line.</li>
+<li>The debugger is used to capture the data you select. The Visualizer is used to view the captured data.</li>
+<li>Data can be visualized while the debugger is running, or separately by reading the captured data from a file without the debugger.</li>
+<li>Types of data that can be visualized:
+<ul><li>One and two-dimensional arrays of integer or floating-point data.</li>
+<li>Arrays with greater than two dimensions can be visualized by using TotalView's array "slicing" feature to create arrays with one or two dimensions.</li>
+</ul></li>
+<li>Using the TotalView intrinsic <span class="fixed">$visualize</span>, you can also visualize array variables from within an Evaluate Window or Evaluation Point. Some examples are shown below.</li>
+</ul><table class="table table-bordered table-striped"><tr><th scope="col"><strong>C</strong></th>
+<th scope="col"><strong>Fortran</strong></th>
+</tr><tr><td><span class="fixed">$visualize(matrixa)<br />$visualize(matrixa,"[::2][10:15]")<br />$visualize(matrixa,"[12][:]")</span></td>
+<td><span class="fixed">$visualize(matrixb)<br />$visualize(matrixb,'(11:16,::2)')<br />$visualize(matrixb,'(:,12)')</span></td>
+</tr></table><ul><li>Visualizer Animation: using <span class="fixed">$visualize</span> within an evaluation point causes TotalView to update the array display every time TotalView reaches the evaluation point. This technique has the effect of producing an animation of the changing array data.</li>
+<li>For other Visualizer options and information, consult the TotalView documentation.</li>
+</ul><h3><a name="Getting_Started" id="Getting_Started"></a>Getting Started</h3>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-1532" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/visualizermenuselection-gif">visualizerMenuSelection.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Visualizer menu selection" height="293" width="616" class="media-element file-default" data-delta="24" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/visualizerMenuSelection.gif" /></div>
+
+  
+</div>
+</div></div>
+<ol><li>Run your program in TotalView to a breakpoint where you know the array of interest will have relevant data.</li>
+<li>Dive on the array variable. A <a href="/sites/default/files/windowVariable_1.gif">Variable Window</a> will then open, showing the contents of the array.</li>
+<li>Select <strong>Visualize </strong>from the Variable Window's <a href="/sites/default/files/menuVariableTools_0.gif">Tools Menu</a>. Shown at right.</li>
+<li>The <strong>Dataset Window</strong> will then appear, as will a <strong>Graph View Window</strong> or <strong>Surface View Window</strong> of your array data (depending upon which view the visualizer thinks is best). Examples of all three windows are shown below.</li>
+</ol><h3><a name="Primary_Visualizer" id="Primary_Visualizer"></a>Primary Visualizer Windows</h3>
+<ul><li><strong>Dataset Window</strong>
+<ul><li>Shows the data sets that are available for visualization.</li>
+<li>View menu selects between graph and surface views.</li>
+</ul></li>
+</ul><div class="clear-floats"><div class="media media-element-container media-default"><div id="file-1533" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/visualizerdatasetwindow-gif">visualizerDatasetWindow.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="visualizerDatasetWindow" height="138" width="316" class="media-element file-default" data-delta="25" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/visualizerDatasetWindow.gif" /></div>
+
+  
+</div>
+</div></div>
+<div class="clear-floats"><strong> </strong>
+<ul><li><strong>Surface View Window</strong>
+<ul><li>Left mouse click and then typing "p" or "P" on a plot area will display data value at that point.</li>
+<li>Dragging with left mouse button controls rotation of display.</li>
+</ul></li>
+</ul></div>
+<p></p><div class="media media-element-container media-default"><div id="file-1534" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/visualizersurfaceview-gif">visualizerSurfaceView.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="visualizer Surface View" height="438" width="416" class="media-element file-default" data-delta="26" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/visualizerSurfaceView.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li><strong>Graph View Window</strong>
+<ul><li>Same data set as in the above surface view.</li>
+<li>Left mouse click and then typing "p" or "P" on a plot area will display data value at that point.</li>
+<li>File menu Options selection allows plotting as lines, points or both.</li>
+</ul></li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1535" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/visualizergraphview-gif">visualizerGraphView.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="visualizer Graph View" height="438" width="416" class="media-element file-default" data-delta="27" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/visualizerGraphView.gif" /></div>
+
+  
+</div>
+</div><strong> </strong>
+<h2><a name="Command_Line_Interpreter_(CLI)" id="Command_Line_Interpreter_(CLI)"></a>Command Line Interpreter (CLI)</h2>
+<h3><a name="What_Is_CLI" id="What_Is_CLI"></a>What is the CLI?</h3>
+<ul><li>The TotalView Command Line Interpreter (CLI) provides a command line debugger interface. It can be launched either stand-alone or via the TotalView GUI debugger.</li>
+<li>The CLI consists of two primary components:
+<ul><li>The CLI commands</li>
+<li>A Tcl interpreter</li>
+</ul></li>
+<li>Because the CLI includes a Tcl interpreter, CLI commands can be integrated into user-written Tcl programs/scripts for "automated" debugging. Of course, putting the CLI to real use in this manner will require some expertise in Tcl.</li>
+<li>Most often, the TotalView GUI is the method of choice for debugging. However, the CLI may be the method of choice in those circumstances where using the GUI is impractical:
+<ul><li>When a program takes several days to execute.</li>
+<li>When the program must be run under a batch scheduling system or network conditions that inhibit GUI interaction.</li>
+<li>When network traffic between the executing program and the person debugging is not permitted or limits the use of the GUI.</li>
+</ul></li>
+<li>See the TotalView documentation for details:</li>
+</ul><h3><a name="Interactive_CLI" id="Interactive_CLI"></a>Starting an Interactive CLI Debug Session</h3>
+<ul><li><strong>Method 1:</strong> From within the TotalView GUI:
+<ol><li>Use either path:
+<ol><li><span class="note-purple">PATH:</span> <a href="/sites/default/files/windowProcess_2.gif">Process Window</a> &gt; <a href="/sites/default/files/menuProcessTools_0.gif">Tools Menu </a> &gt; <strong>Command Line</strong></li>
+<li><span class="note-purple">PATH:</span> <a href="/sites/default/files/windowRoot_3.gif">Root Window</a> &gt; <a href="/sites/default/files/menuVariableTools_1.gif">Tools Menu</a>  &gt; <strong>Command Line</strong></li>
+</ol></li>
+<li>A TotalView CLI xterm window (below) will then open for you to enter CLI commands.</li>
+<li>Load/Start your executable or attach to a running process</li>
+<li>Issue CLI commands</li>
+</ol></li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-1536" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/clixtermwindow-gif">cliXtermWindow.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="CLI xterm" height="263" width="515" class="media-element file-default" data-delta="28" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/cliXtermWindow.gif" /></div>
+
+  
+</div>
+</div>
+<ul><li><strong>Method 2:</strong> From a shell prompt window:
+<ol><li>Invoke the totalviewcli command (provided that it is in your path).</li>
+<li>Load/Start your executable or attach to a running process</li>
+<li>Issue CLI commands</li>
+</ol></li>
+</ul><h3><a name="CI_Commands" id="CI_Commands"></a>CLI Commands</h3>
+<ul><li>As of TotalView version 8, there are approximately 60 CLI commands. These are covered completely in the TotalView Reference Guide.</li>
+<li>Some representative CLI commands are shown in the table below.</li>
+</ul><table class="table table-bordered table-striped"><tr><th colspan="2" scope="col"><strong>Environment Commands</strong></th>
+</tr><tr><td><strong>alias</strong></td>
+<td>Creates or views user-defined commands.</td>
+</tr><tr><td><strong>capture</strong></td>
+<td>Allows commands that print information to instead send their output to a string variable</td>
+</tr><tr><td><strong>dgroups</strong></td>
+<td>Manipulates and manages groups</td>
+</tr><tr><td><strong>dset</strong></td>
+<td>Changes or views values of CLI state variables</td>
+</tr><tr><td><strong>dunset</strong></td>
+<td>Restores default settings of CLI state variables</td>
+</tr><tr><td><strong>help</strong></td>
+<td>Displays help information</td>
+</tr><tr><td><strong>stty</strong></td>
+<td>Sets terminal properties</td>
+</tr><tr><td><strong>unalias</strong></td>
+<td>Removes a previously defined command</td>
+</tr><tr><td><strong>dworker</strong></td>
+<td>Adds or removes a thread from a workers group</td>
+</tr></table><table class="table table-bordered table-striped"><tr><th colspan="2" scope="col"><strong>CLI Initialization and Termination</strong></th>
+</tr><tr><td><strong>dattach</strong></td>
+<td>Attaches to one or more processes currently executing in the normal run-time environment</td>
+</tr><tr><td><strong>ddetach</strong></td>
+<td>Detaches from processes</td>
+</tr><tr><td><strong>dkill</strong></td>
+<td>Kills existing user process, leaving debugging information in place</td>
+</tr><tr><td><strong>dload</strong></td>
+<td>Loads debugging information about the target program into TotalView and prepares it for execution</td>
+</tr><tr><td><strong>dreload</strong></td>
+<td>Reloads the current executable</td>
+</tr><tr><td><strong>drerun</strong></td>
+<td>Restarts a process</td>
+</tr><tr><td><strong>drun</strong></td>
+<td>Starts or restarts the execution of users processes under control of the CLI</td>
+</tr><tr><td><strong>dstatus</strong></td>
+<td>Shows current status of processes and threads</td>
+</tr><tr><td><strong>quit</strong></td>
+<td>Exits from the CLI, ending the debugging session</td>
+</tr></table><table class="table table-bordered table-striped"><tr><th colspan="2" scope="col"><strong>Program Information</strong></th>
+</tr><tr><td><strong>dassign</strong></td>
+<td>Changes the value of a scalar variable</td>
+</tr><tr><td><strong>dlist</strong></td>
+<td>Browses source code relative to a particular file, procedure or line</td>
+</tr><tr><td><strong>dmstat</strong></td>
+<td>Displays memory use information</td>
+</tr><tr><td><strong>dprint</strong></td>
+<td>Evaluates an expression or program variable and displays the resulting value</td>
+</tr><tr><td><strong>dptsets</strong></td>
+<td>Shows status of processes and threads</td>
+</tr><tr><td><strong>dwhat</strong></td>
+<td>Determines what a name refers to</td>
+</tr><tr><td><strong>dwhere</strong></td>
+<td>Prints information about the target thread's stack</td>
+</tr></table><table class="table table-bordered table-striped"><tr><th colspan="2" scope="col"><strong>Execution Control</strong></th>
+</tr><tr><td><strong>dcont</strong></td>
+<td>Continues execution of processes and waits for them</td>
+</tr><tr><td><strong>dfocus</strong></td>
+<td>Changes the set of process, threads, or groups upon which a CLI command acts</td>
+</tr><tr><td><strong>dgo</strong></td>
+<td>Resumes execution of processes (without blocking)</td>
+</tr><tr><td><strong>dhalt</strong></td>
+<td>Suspends execution of processes</td>
+</tr><tr><td><strong>dhold</strong></td>
+<td>Holds threads or processes</td>
+</tr><tr><td><strong>dnext</strong></td>
+<td>Executes statements, moving into subfunctions if required</td>
+</tr><tr><td><strong>dnexti</strong></td>
+<td>Executes machine instructions, stebbing over subfunctions</td>
+</tr><tr><td><strong>dout</strong></td>
+<td>Runs out from the current subroutine</td>
+</tr><tr><td><strong>dstep</strong></td>
+<td>Executes statements, moving into subfunctions if required</td>
+</tr><tr><td><strong>dstepi</strong></td>
+<td>Executes machine instructions, moving into subfunctions if required</td>
+</tr><tr><td><strong>dunhold</strong></td>
+<td>Releases a held process or thread</td>
+</tr><tr><td><strong>duntil</strong></td>
+<td>Runs the process until a target place is reached</td>
+</tr><tr><td><strong>dwait</strong></td>
+<td>Blocks command input until processes stop</td>
+</tr></table><table class="table table-bordered table-striped"><tr><th colspan="2" scope="col"><strong>Action Points</strong></th>
+</tr><tr><td><strong>dactions</strong></td>
+<td>Views information on action point definitions and their current status</td>
+</tr><tr><td><strong>dbarrier</strong></td>
+<td>Defines a process or thread barrier breakpoint</td>
+</tr><tr><td><strong>dbreak</strong></td>
+<td>Defines a breakpoint</td>
+</tr><tr><td><strong>ddelete</strong></td>
+<td>Deletes an action point</td>
+</tr><tr><td><strong>ddisable</strong></td>
+<td>Temporarily disables an action point</td>
+</tr><tr><td><strong>denable</strong></td>
+<td>Reenables an action point that has been disabled</td>
+</tr><tr><td><strong>dwatch</strong></td>
+<td>Defines a watchpoint</td>
+</tr></table><table class="table table-bordered table-striped"><tr><th colspan="2" scope="col"><strong>Miscellaneous</strong></th>
+</tr><tr><td><strong>dcache</strong></td>
+<td>Clears the remote library cache</td>
+</tr><tr><td><strong>ddown</strong></td>
+<td>Moves down the call stack</td>
+</tr><tr><td><strong>dflush</strong></td>
+<td>Unwinds stack from suspended computations</td>
+</tr><tr><td><strong>dlappend</strong></td>
+<td>Appends list elements to a TotalView variable</td>
+</tr><tr><td><strong>dup</strong></td>
+<td>Moves up the call stack</td>
+</tr></table><h3><a id="Example_Debug_Session" name="Example_Debug_Session"></a>Example Interactive TotalView CLI Debug Session</h3>
+<ul><li>This simple example demonstrates the interactive use of the TotalView CLI. The example program does nothing more than go into an infinite loop. The CLI commands are then used to "debug" it.</li>
+<li>CLI commands are in <span class="text-success">green</span> text. Annotations/comments are in <span class="text-danger">red</span> text.</li>
+</ul><pre><span class="text-danger">First, make sure the CLI is in our path</span>
+% which totalviewcli
+/usr/local/bin/totalviewcli
+
+<span class="text-danger">List the program.  Note the bug.</span>
+% cat spinhung.c
+/******************************************************************************
+* FILE: spinhung.c
+* DESCRIPTION:
+*   Simple example file
+*   Compile:  gcc -g spinhung.c -o spinhung
+*
+****************************************************************************/
+
+main() {
+
+int i, j, x;
+
+i=99;
+while (i &lt; 100) {
+x = 2*i;
+j = i;
+}
+
+}
+
+<span class="text-danger">Start the CLI</span>
+% <span class="text-success">totalviewcli</span>
+d1.&lt;&gt;
+
+<span class="text-danger">Load the program</span>
+d1.&lt;&gt; <span class="text-success">dload spinhung</span>
+1
+d1.&lt;&gt;
+
+<span class="text-danger">List the program</span>
+d1.&lt;&gt; <span class="text-success">dlist 1 -n 20</span>
+   1   /******************************************************************************
+   2   * FILE: spinhung.c
+   3   * DESCRIPTION:
+   4   *   Simple example file
+   5   *   Compile:  gcc -g spinhung.c -o spinhung
+   6   *
+   7   ****************************************************************************/
+   8
+   9   main() {
+  10  
+  11   int i, j, x;
+  12  
+  13   i=99;
+  14   while (i &lt; 100) {
+  15    x = 2*i;
+  16    j = i;
+  17    }
+  18  
+  19   }
+
+<span class="text-danger">Display CLI settings</span>
+d1.&lt;&gt; <span class="text-success">dset</span>
+BARRIER_STOP_ALL process
+BARRIER_STOP_WHEN_DONE group
+CGROUP(1) 1
+COMMAND_EDITING false
+EXECUTABLE_PATH {}
+EXECUTABLE_SEARCH_MAPPINGS {}
+EXECUTABLE_SEARCH_PATH {${EXECUTABLE_PATH}:${PATH}:.}
+GROUP(1) {control 1}
+GROUP(2) workers
+GROUP(3) {share 1}
+GROUPS {1 2 3}
+LINES_PER_SCREEN AUTO
+MAX_LEVELS 512
+MAX_LIST 20
+OBJECT_SEARCH_MAPPINGS {}
+OBJECT_SEARCH_PATH {${COMPILATION_DIRECTORY}:${EXECUTABLE_PATH}:${EXECUTABLE_DIRECTORY}:$links(${EXECUTABLE_DIRECTORY}):.:${TOTALVIEW_SRC}}
+PROMPT {[dfocus]&gt; }
+PTSET d1.&lt;
+SGROUP(1) 3
+SHARED_LIBRARY_SEARCH_MAPPINGS {}
+SHARED_LIBRARY_SEARCH_PATH {${EXECUTABLE_DIRECTORY}}
+SHARE_ACTION_POINT true
+SOURCE_SEARCH_MAPPINGS {}
+SOURCE_SEARCH_PATH {${COMPILATION_DIRECTORY}:${EXECUTABLE_PATH}:${EXECUTABLE_DIRECTORY}:$links(${EXECUTABLE_DIRECTORY}):.:${TOTALVIEW_SRC}}
+STOP_ALL process
+TAB_WIDTH 8
+TOTALVIEW_ROOT_PATH /collab/usr/global/tools/totalview/r/toolworks/totalview.8.12.0-1/linux-x86-64
+TOTALVIEW_TCLLIB_PATH /collab/usr/global/tools/totalview/r/toolworks/totalview.8.12.0-1/lib
+TOTALVIEW_VERSION {Linux x86_64 TotalView 8.12.0-1}
+VERBOSE error
+WGROUP(1) 2
+
+<span class="text-danger">Set a breakpoint at line 15</span>
+d1.&lt;&gt; <span class="text-success">dbreak 15</span>
+1
+
+<span class="text-danger">Start the program</span>
+d1.&lt;&gt; <span class="text-success">drun</span>
+
+<span class="text-danger">Display process status</span>
+d1.&lt;&gt;<span class="text-success">dstatus</span>
+1        (18902)      Breakpoint  [spinhung]
+  1.1    (18902/18902)   Breakpoint  PC=0x0040052b, [/g/g0/blaise/totalview/spinhung.c#15]
+
+<span class="text-danger">List the program again - note the breakpoint on line 15</span>
+d1.&lt;&gt; <span class="text-success">dlist 1 -n 20</span>
+   1   /******************************************************************************
+   2   * FILE: spinhung.c
+   3   * DESCRIPTION:
+   4   *   Simple example file
+   5   *   Compile:  cc -g spinhung.c -o spinhung
+   6   *
+   7   ****************************************************************************/
+   8  
+   9   main() {
+  10  
+  11   int i, j, x;
+  12  
+  13   i=99;
+  14   while (i &lt; 100) {
+  15@&gt;  x = 2*i;
+  16    j = i;
+  17    }
+  18  
+  19   }
+
+<span class="text-danger">Display a variable value</span>
+d1.&lt;&gt; <span class="text-success">dprint i</span>
+i = 0x00000063 (99)
+
+<span class="text-danger">Query about action points</span>
+d1.&lt;&gt; <span class="text-success">dactions</span>
+1 shared action point for group 3:
+   1 [spinhung.c#15] Enabled
+
+<span class="text-danger">Step through program</span>
+d1.&lt;&gt; <span class="text-success">dstep</span>
+  16 &gt;  j = i;
+d1.&lt;&gt; <span class="text-success">dstep</span>
+  14 &gt; while (i &lt; 100) {
+
+<span class="text-danger">Delete the breakpoint and then relist the program - note that
+breakpoint is gone.</span>
+d1.&lt;&gt; <span class="text-success">ddelete 1</span>
+d1.&lt;&gt; <span class="text-success">dlist 1 -n 20</span>
+   1   /******************************************************************************
+   2   * FILE: spinhung.c
+   3   * DESCRIPTION:
+   4   *   Simple example file
+   5   *   Compile:  cc -g spinhung.c -o spinhung
+   6   *
+   7   ****************************************************************************/
+   8  
+   9   main() {
+  10  
+  11   int i, j, x;
+  12  
+  13   i=99;
+  14 &gt; while (i &lt; 100) {
+  15    x = 2*i;
+  16    j = i;
+  17    }
+  18  
+  19   }
+
+<span class="text-danger">Resume execution and note where program is hung</span>
+d1.&lt;&gt; <span class="text-success">dgo</span>
+d1.&lt;&gt; <span class="text-success">dwhere</span>
+&gt;  0 main             PC=0x00400523, FP=0x7fffffffdf20 [/g/g0/blaise/totalview/spinhung.c#14]
+   1 __libc_start_main PC=0x2aaaab186cd9, FP=0x7fffffffdfe0 [/lib64/libc.so.6]
+   2 _start           PC=0x00400454, FP=0x7fffffffdff0 [/g/g0/blaise/totalview/spinhung]
+
+<span class="text-danger">Halt the program and "fix" the bug</span>
+d1.&lt;&gt; <span class="text-success">dhalt</span>
+d1.&lt;&gt; <span class="text-success">dassign i 101</span>
+
+<span class="text-danger">Resume execution and prove that the program exits to completion</span>
+d1.&lt;&gt; <span class="text-success">dgo</span>
+d1.&lt;&gt; <span class="text-success">dwhere</span>
+dwhere: Focus thread was not found in process 1
+
+<span class="text-danger">Quit the CLI and return to the shell</span>
+d1.&lt;&gt; <span class="text-success">quit</span>
+Do you really wish to exit TotalView?  <span class="text-success">y</span></pre><p><strong>This concludes TotalView Part 2.</strong> Where would you like to go now?</p>
+<ul><li><a href="#Viewing_a_Core_File">Back to the top of Part 2</a></li>
+<li>Return to<a href="/training/tutorials/totalview"> Part 1: The Very Basics</a></li>
+<li>Jump to <a href="/training/tutorials/totalview-part-3-debugging-parallel-programs">Part 3: Debugging Parallel Programs</a></li>
+<li><a href="/training/tutorials">Tutorials</a></li>
+</ul></div></div></div>    </div>
+  </div>
+</div>
+
+
+<!-- Needed to activate display suite support on forms -->
+  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                   		</div>
+                  </main>
+                </div>
+      		</div>
+    	</div>
+	</div>
+  	
+	
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 footer-top">
+
+                    <a class="llnl" href="https://www.llnl.gov/" target="_blank"><img src="/sites/all/themes/tid/images/llnl.png" alt="LLNL"></a>
+                    <p>
+                        Lawrence Livermore National Laboratory
+                        <br>7000 East Avenue • Livermore, CA 94550
+                    </p>
+                    <p>
+                        Operated by Lawrence Livermore National Security, LLC, for the
+                        <br>Department of Energy's National Nuclear Security Administration.
+                    </p>
+                    <div class="footer-top-logos">
+                        <a class="nnsa" href="https://www.energy.gov/nnsa/national-nuclear-security-administration" target="_blank"><img src="/sites/all/themes/tid/images/nnsa2.png" alt="NNSA"></a>
+                        <a class="doe" href="https://www.energy.gov/" target="_blank"><img src="/sites/all/themes/tid/images/doe_small.png" alt="U.S. DOE"></a>
+                        <a class="llns" href="https://www.llnsllc.com/" target="_blank"><img src="/sites/all/themes/tid/images/llns.png" alt="LLNS"></a>
+                	</div>
+
+
+
+                </div>
+                <div class="col-sm-12 footer-bottom">
+                	
+
+                    <span>UCRL-MI-131558  &nbsp;|&nbsp;&nbsp;</span><a href="https://www.llnl.gov/disclaimer" target="_blank">Privacy &amp; Legal Notice</a>	 &nbsp;|&nbsp;&nbsp; <a href="mailto:webmaster-comp@llnl.gov">Website Query</a> &nbsp;|&nbsp;&nbsp;<a href="/about-us/contact-us" >Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+  </body>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/jquery_update/replace/jquery/2.1/jquery.min.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-extend-3.4.0.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-html-prefilter-3.5.0-backport.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/drupal.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/extlink/extlink.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/jquery.flexslider.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/slide.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/lightbox2/js/lightbox.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/matomo/matomo.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _paq = _paq || [];(function(){var u=(("https:" == document.location.protocol) ? "https://analytics.llnl.gov/" : "http://analytics.llnl.gov/");_paq.push(["setSiteId", "149"]);_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setDoNotTrack", 1]);_paq.push(["trackPageView"]);_paq.push(["setIgnoreClasses", ["no-tracking","colorbox"]]);_paq.push(["enableLinkTracking"]);var d=document,g=d.createElement("script"),s=d.getElementsByTagName("script")[0];g.type="text/javascript";g.defer=true;g.async=true;g.src="https://hpc.llnl.gov/sites/default/files/matomo/piwik.js?qsohrw";s.parentNode.insertBefore(g,s);})();
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/bootstrap.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mobilemenu.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/custom.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mods.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"tid","theme_token":"W7TYAAGF5rJxki_BEUhTt2fgSbaG8f4M7WbrljGl1ho","js":{"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/2.1\/jquery.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/contrib\/extlink\/extlink.js":1,"sites\/all\/themes\/tid\/js\/jquery.flexslider.js":1,"sites\/all\/themes\/tid\/js\/slide.js":1,"sites\/all\/modules\/contrib\/lightbox2\/js\/lightbox.js":1,"sites\/all\/modules\/contrib\/matomo\/matomo.js":1,"0":1,"sites\/all\/themes\/tid\/js\/bootstrap.js":1,"sites\/all\/themes\/tid\/js\/mobilemenu.js":1,"sites\/all\/themes\/tid\/js\/custom.js":1,"sites\/all\/themes\/tid\/js\/mods.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/book\/book.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/extlink\/extlink.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/lightbox2\/css\/lightbox.css":1,"sites\/all\/modules\/contrib\/print\/print_ui\/css\/print_ui.theme.css":1,"sites\/all\/themes\/tid\/css\/bootstrap.css":1,"sites\/all\/themes\/tid\/css\/flexslider.css":1,"sites\/all\/themes\/tid\/css\/system.menus.css":1,"sites\/all\/themes\/tid\/css\/style.css":1,"sites\/all\/themes\/tid\/font-awesome\/css\/font-awesome.css":1,"sites\/all\/themes\/tid\/css\/treewalk.css":1,"sites\/all\/themes\/tid\/css\/popup.css":1,"sites\/all\/themes\/tid\/css\/mods.css":1}},"lightbox2":{"rtl":0,"file_path":"\/(\\w\\w\/)public:\/","default_image":"\/sites\/all\/modules\/contrib\/lightbox2\/images\/brokenimage.jpg","border_size":10,"font_color":"000","box_color":"fff","top_position":"","overlay_opacity":"0.8","overlay_color":"000","disable_close_click":true,"resize_sequence":0,"resize_speed":400,"fade_in_speed":400,"slide_down_speed":600,"use_alt_layout":false,"disable_resize":false,"disable_zoom":false,"force_show_nav":false,"show_caption":true,"loop_items":false,"node_link_text":"View Image Details","node_link_target":false,"image_count":"Image !current of !total","video_count":"Video !current of !total","page_count":"Page !current of !total","lite_press_x_close":"press \u003Ca href=\u0022#\u0022 onclick=\u0022hideLightbox(); return FALSE;\u0022\u003E\u003Ckbd\u003Ex\u003C\/kbd\u003E\u003C\/a\u003E to close","download_link_text":"","enable_login":false,"enable_contact":false,"keys_close":"c x 27","keys_previous":"p 37","keys_next":"n 39","keys_zoom":"z","keys_play_pause":"32","display_image_size":"original","image_node_sizes":"()","trigger_lightbox_classes":"","trigger_lightbox_group_classes":"","trigger_slideshow_classes":"","trigger_lightframe_classes":"","trigger_lightframe_group_classes":"","custom_class_handler":0,"custom_trigger_classes":"","disable_for_gallery_lists":true,"disable_for_acidfree_gallery_lists":true,"enable_acidfree_videos":true,"slideshow_interval":5000,"slideshow_automatic_start":true,"slideshow_automatic_exit":true,"show_play_pause":true,"pause_on_next_click":false,"pause_on_previous_click":true,"loop_slides":false,"iframe_width":600,"iframe_height":400,"iframe_border":1,"enable_video":false,"useragent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/90.0.4430.93 Safari\/537.36"},"extlink":{"extTarget":0,"extClass":"ext","extLabel":"(link is external)","extImgClass":0,"extIconPlacement":0,"extSubdomains":1,"extExclude":".gov|.com|.org|.io|.be|.us|.edu","extInclude":"-int.llnl.gov|lc.llnl.gov|caas.llnl.gov|exchangetools.llnl.gov","extCssExclude":"","extCssExplicit":"","extAlert":"_blank","extAlertText":"This page is routing you to a page which requires extra authentication. You must have on-site or VPN access.\r\n\r\nPress OK to continue or cancel to return.\r\n\r\nIf this fails or times-out, you are not allowed access to the internal page or the server may be temporarily unavailable.\r\n\r\nIf you have an on-site or VPN account and are still having trouble, please send e-mail to lc-hotline@llnl.gov or call 925-422-4531 for further assistance.","mailtoClass":"mailto","mailtoLabel":"(link sends e-mail)"},"matomo":{"trackMailto":1},"urlIsAjaxTrusted":{"\/training\/tutorials\/totalview-part-2-common-functions":true}});
+//--><!]]>
+</script>
+</html>

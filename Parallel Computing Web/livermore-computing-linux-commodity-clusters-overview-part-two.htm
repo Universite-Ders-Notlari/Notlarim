@@ -1,0 +1,2218 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<head>
+<meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two" />
+<link rel="shortlink" href="/node/833" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="shortcut icon" href="https://hpc.llnl.gov/sites/all/themes/tid/favicon.ico" type="image/vnd.microsoft.icon" />
+<title>Livermore Computing Linux Commodity Clusters Overview Part Two | High Performance Computing</title>
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_kShW4RPmRstZ3SpIC-ZvVGNFVAi0WEMuCnI0ZkYIaFw.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_bq48Es_JAifg3RQWKsTF9oq1S79uSN2WHxC3KV06fK0.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_x7u2-RvmcM_rC912_9sr33JizoLwS1D9DdbkP3rVhFY.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_ca6tstDbY9-H23Ty8uKiDyFQLT1AZftZKldhbTPPnm8.css" media="all" />
+<!--[if lt IE 9]><script src="/sites/all/themes/tid/js/html5.js"></script><![endif]-->
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-833 node-type-user-portal-one-column-page">
+  <div aria="contentinfo"><noscript><img src="https://analytics.llnl.gov/piwik.php?idsite=149" class="no-border" alt="" /></noscript></div>
+    <div id="page">
+	<div class="unclassified"></div>
+	<div class="headertop">
+					<div id="skip-nav" role="navigation" aria-labelledby="skip-nav" class="reveal">
+  			<a href="#main-content">Skip to main content</a>
+			</div>
+					</div>
+        <div class="headerwrapbg">
+                        <div class="headerwrap-portal">
+                <div id="masthead" class="site-header container" role="banner">
+                    <div class="row">
+                        <div class="llnl-logo col-sm-3">
+                            <a href="https://www.llnl.gov" target="_blank" title="Lawrence Livermore National Laboratory">
+                                <img src="/sites/all/themes/tid/images/llnl-tab-portal.png" alt="LLNL Home" />
+                            </a>
+                        </div>
+                        <div id="logo" class="site-branding col-sm-4">
+                                                            <div id="site-logo">
+                                        <!--High Performance Computing<br />Livermore Computing Center-->
+                                        																					<a href="/user-portal" class="text-dark" title="Livermore Computing Center High Performance Computing">
+                                            <img src="/sites/all/themes/tid/images/hpc.png" alt="Portal Home" />
+																					</a>
+																				
+                                </div>
+                                                    </div>
+                        <div class="col-sm-5">
+                            <div id="top-search">
+															<div class="input-group">
+																	<form class="navbar-form navbar-search navbar-right" action="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <div class="element-invisible">Search form</div>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-1XtdbbbJAO_8o4Vtc8WpaZnnQPHd3LxGHhLQGYUBZi4" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="mainnav">
+                    <div class="container">
+                        <div class="row">
+                            <nav id="Menu" aria-label="Mobile Menu" class="mobilenavi col-md-12"></nav>
+                            <nav id="navigation" aria-label="Main Menu">
+                                <div id="main-menu" class="main-menu-portal">
+                                    <ul class="menu"><li class="first collapsed"><a href="/user-portal">Portal</a></li>
+<li class="expanded"><a href="/accounts">Accounts</a><ul class="menu"><li class="first leaf"><a href="/accounts/new-account-setup">New Account Setup</a></li>
+<li class="leaf"><a href="/accounts/idm-account-management">IdM Account Management</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/manuals/access-lc-systems" title="">Access to LC Systems</a></li>
+<li class="leaf"><a href="/accounts/computer-coordinator-roles">Computer Coordinator Roles</a></li>
+<li class="collapsed"><a href="/accounts/forms">Forms</a></li>
+<li class="collapsed"><a href="/accounts/policies">Policies</a></li>
+<li class="last leaf"><a href="/accounts/mailing-lists">Mailing Lists</a></li>
+</ul></li>
+<li class="expanded"><a href="/banks-jobs">Banks &amp; Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/allocations">Allocations</a></li>
+<li class="expanded"><a href="/banks-jobs/running-jobs">Running Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/running-jobs/batch-system-primer">Batch System Primer</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-user-manual">LSF User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-quick-start-guide">LSF Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-commands">LSF Commands</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-user-manual" title="Guide to using the Slurm Workload/Resource Manager">Slurm User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-quick-start-guide">Slurm Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-commands">Slurm Commands</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/batch-system-commands">Batch System Cross-Reference</a></li>
+<li class="last leaf"><a href="/banks-jobs/running-jobs/slurm-srun-versus-ibm-csm-jsrun">Slurm srun versus IBM CSM jsrun</a></li>
+</ul></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/accounts/forms/asc-dat" title="">ASC DAT Request</a></li>
+<li class="last leaf"><a href="https://hpc.llnl.gov/accounts/forms/mic-dat" title="">M&amp;IC DAT Request</a></li>
+</ul></li>
+<li class="expanded"><a href="/hardware">Hardware</a><ul class="menu"><li class="first collapsed"><a href="/hardware/archival-storage-hardware">Archival Storage Hardware</a></li>
+<li class="collapsed"><a href="/hardware/platforms">Compute Platforms</a></li>
+<li class="leaf"><a href="/hardware/compute-platforms-gpus">Compute Platforms with GPUs</a></li>
+<li class="collapsed"><a href="/hardware/file-systems">File Systems</a></li>
+<li class="leaf"><a href="/hardware/testbeds">Testbeds</a></li>
+<li class="collapsed"><a href="/hardware/zones">Zones (aka &quot;The Enclave&quot;)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/cgi-bin/lccgi/customstatus.cgi?" title="">CZ Compute Platform Status</a></li>
+<li class="leaf"><a href="https://rzlc.llnl.gov/cgi-bin/lccgi/customstatus.cgi" title="">RZ Compute System Status</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/fsstatus/fsstatus.cgi" title="">CZ File System Status</a></li>
+<li class="last leaf"><a href="https://rzlc.llnl.gov/fsstatus/fsstatus.cgi" title="">RZ File System Status</a></li>
+</ul></li>
+<li class="expanded"><a href="/services">Services</a><ul class="menu"><li class="first collapsed"><a href="/services/green-data-oasis">Green Data Oasis (GDO)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="last leaf"><a href="/services/visualization-services">Visualization Services</a></li>
+</ul></li>
+<li class="expanded"><a href="/software">Software</a><ul class="menu"><li class="first leaf"><a href="/software/archival-storage-software">Archival Storage Software</a></li>
+<li class="collapsed"><a href="/software/data-management-tools-projects">Data Management Tools</a></li>
+<li class="collapsed"><a href="/software/development-environment-software">Development Environment Software</a></li>
+<li class="leaf"><a href="/software/mathematical-software">Mathematical Software</a></li>
+<li class="leaf"><a href="/software/modules-and-software-packaging">Modules and Software Packaging</a></li>
+<li class="collapsed"><a href="/software/visualization-software">Visualization Software</a></li>
+<li class="last leaf"><a href="https://computing.llnl.gov/projects/radiuss" title="">RADIUSS</a></li>
+</ul></li>
+<li class="last expanded active-trail"><a href="/training" class="active-trail">Training</a><ul class="menu"><li class="first expanded active-trail"><a href="/training/tutorials" class="active-trail">Tutorials</a><ul class="menu"><li class="first leaf"><a href="/training/tutorials/introduction-parallel-computing-tutorial">Introduction to Parallel Computing Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/llnl-covid-19-hpc-resource-guide">LLNL Covid-19 HPC Resource Guide for New Livermore Computing Users</a></li>
+<li class="leaf"><a href="/training/tutorials/using-lcs-sierra-system">Using LC&#039;s Sierra System</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-psaap3-quick-start-tutorial">Livermore Computing PSAAP3 Quick Start Tutorial</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/sites/default/files/PSAAP-alliance-quickguide.docx" title="">PSAAP Alliance Quick Guide</a></li>
+<li class="leaf"><a href="/training/tutorials/linux-tutorial-exercises">Linux Tutorial Exercise One</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-one">Livermore Computing Linux Clusters Overview Part One</a></li>
+<li class="leaf active-trail"><a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two" class="active-trail active">Livermore Computing Linux Clusters Overview Part Two</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-resources-and-environment">Livermore Computing Resources and Environment</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab-exercise">Slurm and Moab Exercise</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-part-2-common-functions">TotalView Part 2:  Common Functions</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-part-3-debugging-parallel-programs">TotalView Part 3: Debugging Parallel Programs</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-tutorial">TotalView Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/evaluation-form">Tutorial Evaluation Form</a></li>
+<li class="leaf"><a href="/training/tutorials/srun-auto-affinity">srun --auto-affinity</a></li>
+<li class="last leaf"><a href="/training/tutorials/srun-multi-prog">srun --multi-prog</a></li>
+</ul></li>
+<li class="collapsed"><a href="/training/documentation">Documentation &amp; User Manuals</a></li>
+<li class="leaf"><a href="/training/technical-bulletins-catalog">Technical Bulletins Catalog</a></li>
+<li class="collapsed"><a href="/training/workshop-schedule">Training Events</a></li>
+<li class="last leaf"><a href="/training/user-meeting-presentations-archive">User Meeting Presentation Archive</a></li>
+</ul></li>
+</ul>                                                                            <div id="pagetoggle" class="btn-group btn-toggle pull-right" style="margin-right: 15px;">
+                                            <a href="/" class="btn btn-default gs">General Site</a>
+                                            <a href="/user-portal" class="btn btn-primary up active">User Portal</a>
+                                        </div>
+                                                                    </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+		<div id="main-content" class="l2content">
+        <div class="container">
+    		<div class="row">
+        		                <div id="primary" class="content-area col-sm-12">
+					                                        <section id="content" role="nav" class="clearfix col-sm-12">
+
+                                                                                    <div id="breadcrumbs">
+                                    <h2 class="element-invisible">breadcrumb menu</h2><nav class="breadcrumb" aria-label="breadcrumb-navigation"><a href="/">Home</a> » <a href="/training">Training</a> » <a href="/training/tutorials">Tutorials</a> » Livermore Computing Linux Commodity Clusters Overview Part Two</nav>                                </div>
+                                                    
+                                            </section>
+                  <main>
+
+                                              <div id="content_top">
+                                <div class="region region-content-top">
+  <div id="block-print-ui-print-links" class="block block-print-ui">
+
+    
+    
+  
+  <div class="content">
+    <span class="print_html"><a href="https://hpc.llnl.gov/print/833" title="Display a printer-friendly version of this page." class="print-page" onclick="window.open(this.href); return false" rel="nofollow">Printer-friendly</a></span>  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                            </div>
+                        
+                        <div id="content-wrap">
+                                                                                                                <div class="region region-content">
+  <div id="block-system-main" class="block block-system">
+
+    
+    
+  
+  <div class="content">
+    
+
+<div  about="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two" typeof="sioc:Item foaf:Document" class="node node-user-portal-one-column-page node-full view-mode-full">
+    <div class="row">
+    <div class="col-sm-12 ">
+      <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even" property="dc:title"><h1 class="title">Livermore Computing Linux Commodity Clusters Overview Part Two</h1></div></div></div><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><h2><a id="TOC" name="TOC"></a>Table of Contents</h2>
+<p>Go back to <strong>Part One</strong></p>
+<ol><li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-one#Abstract">Abstract</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-one#Background">Background of Linux Commidty Clusters at LLNL</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-one#Configurations">Commodity Cluster Configurations and Scalable Units</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-one#Systems">LC Linux Commodity Cluster Systems</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-one#IntelXeon">Intel Xeon Hardware Overview</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-one#Infiniband">Infiniband Interconnect Overview</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-one#Software">Software and Development Environment</a></li>
+<li><a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-one#Compilers">Compilers</a></li>
+<li><a href="#Exercise1">Exercise 1</a></li>
+</ol><p>On this page, see<strong> Part Two</strong></p>
+<ol><li><a href="#MPI">MPI</a></li>
+<li><a href="#Running">Running Jobs on Linux Clusters</a> 
+<ol><li><a href="#Overview">Overview of Running Jobs</a></li>
+<li><a href="#BatchVsInteractive">Batch Versus Interactive</a></li>
+<li><a href="#Starting">Starting Jobs - srun</a></li>
+<li><a href="#Interacting">Interacting With Jobs</a></li>
+<li><a href="#Optimizing">Optimizing CPU Usage</a></li>
+<li><a href="#MemoryConsiderations">Memory Considerations</a></li>
+<li><a href="#VectorHyper">Vectorization and Hyper-threading</a></li>
+<li><a href="#Binding">Process and Thread Binding</a></li>
+</ol></li>
+<li><a href="#Debug">Debugging</a></li>
+<li><a href="#Tools">Tools</a></li>
+<li><a href="#Exercise2">Exercise 2 Explanation</a></li>
+<li><a href="#GPU">GPU Clusters</a>
+<ol><li><a href="#GPUAvailable">Available GPU Clusters</a></li>
+<li><a href="#GPUHardware">Hardware Overview</a></li>
+<li><a href="#GPUModels">GPU Programming APIs</a>
+<ol><li><a href="#CUDA">GPU Programming APIs—CUDA</a></li>
+<li><a href="#OpenMP">GPU Programming APIs—OpenMP</a></li>
+<li><a href="#OpenACC">GPU Programming APIs—OpenACC</a></li>
+<li><a href="#OpenCL">GPU Programming APIs—OpenCL</a></li>
+</ol></li>
+<li><a href="#GPUCompiling">Compiling</a>
+<ol><li><a href="#CompileCUDA">Compiling—CUDA</a></li>
+<li><a href="#CompileOpenMP">Compiling—OpenMP</a></li>
+<li><a href="#CompileOpenACC">OCompiling—OpenACC</a></li>
+<li><a href="#GPUMisc">Misc. Tips &amp; Tools</a></li>
+</ol></li>
+<li><a href="#References">References and More Information</a></li>
+</ol></li>
+</ol><h2><a id="Note" name="Note"> </a></h2>
+<h2><a name="MPI" id="MPI"> </a>MPI</h2>
+<p>This section discusses general MPI usage information for LC's Linux commodity clusters. For information on MPI programming, please consult the LC <a href="https://computing.llnl.gov/tutorials/mpi/" target="_blank">MPI tutorial</a>.</p>
+<h3><a name="MVAPICH" id="MVAPICH"> </a>MVAPICH</h3>
+<h4>General Info</h4>
+<ul><li>MVAPICH MPI is developed and supported by the <a href="http://nowlab.cse.ohio-state.edu/" target="_blank">Network-Based Computing Lab</a> at Ohio State University.</li>
+<li>Available on all of LC's Linux commodity clusters.</li>
+<li>MVAPICH2
+<ul><li>Default MPI implementation</li>
+<li>Multiple versions available</li>
+<li>MPI-2 and MPI-3 implementations based on MPICH MPI library from Argonne National Laboratory. Versions 1.9 and later implement MPI-3 according to the developer's documentation.</li>
+<li>Thread-safe</li>
+</ul></li>
+<li>To see what versions are available, and/or to select an alternate version, use <a href="#Modules">Modules</a> commands. For example:<br /><pre><span class="cmd">module avail mvapich</span>         (list available modules)
+<span class="cmd">module load mvapich2/2.3</span>     (use the module of interest)</pre></li>
+</ul><h4>Compiling</h4>
+<ul><li>See the <a href="#BuildScripts">MPI Build Scripts</a> table below.</li>
+</ul><h4>Running</h4>
+<ul><li>MPI executables are launched using the SLURM <span class="cmd">srun</span> command with the appropriate options. For example, to launch an 8-process MPI job split across two different nodes in the pdebug pool:
+<pre><span class="cmd">srun -N2 -n8 -ppdebug a.out</span></pre></li>
+<li>The <span class="cmd">srun</span> command is discussed in detail in the <a href="/training/tutorials/livermore-computing-linux-clusters-overview-part-two#Running" target="_blank">Running Jobs on Linux Clusters</a> section of the Linux Clusters Overview tutorial.</li>
+</ul><h4>Documentation</h4>
+<ul><li>MVAPICH home page: <a href="http://mvapich.cse.ohio-state.edu/" target="_blank"> mvapich.cse.ohio-state.edu/</a></li>
+<li>MVAPICH2 User Guides: <a href="http://mvapich.cse.ohio-state.edu/userguide/" target="_blank"> http://mvapich.cse.ohio-state.edu/userguide/</a></li>
+</ul><hr /><h3>Open MPI</h3>
+<h4>General Information</h4>
+<ul><li>Open MPI is a thread-safe, open source MPI implementation developed and supported by a consortium of academic, research, and industry partners.</li>
+<li>Available on all LC Linux commodity clusters. However, you'll need to load the desired <a href="#Modules">Open MPI module</a> first.<br /><pre><span class="cmd">module avail openmpi</span>         (list available modules)
+<span class="cmd">module load openmpi/3.0.1</span>    (use the module of interest)</pre><p>This ensures that LC's MPI wrapper scripts point to the desired version of Open MPI.</p>
+</li>
+</ul><h4>Compiling</h4>
+<ul><li>See the <a href="#BuildScripts">MPI Build Scripts</a> table below.</li>
+</ul><h4>Running</h4>
+<ul><li>Be sure to load the same Open MPI module that you used to build your executable. If you are running a batch job, you will need to load the module in your batch script.</li>
+<li>Launching an Open MPI job can be done using the following commands. For example, to run a 48 process MPI job:<br /><pre><span class="cmd">mpirun -np 48 a.out
+mpiexec -np 48 a.out
+srun -n 48 a.out</span></pre></li>
+</ul><h4>Documentation</h4>
+<ul><li>Open MPI home page: <a href="http://www.open-mpi.org/" target="_blank">http://www.open-mpi.org/</a></li>
+</ul><hr /><h3>Intel MPI</h3>
+<ul><li>Available on LC's Linux commodity clusters.</li>
+<li>Based on MPICH3. Supports MPI-3 functionality.</li>
+<li>Thread-safe</li>
+<li>Compiling and running Intel MPI programs: see the LC documentation at: <a href="https://lc.llnl.gov/confluence/pages/viewpage.action?pageId=137725526" target="_blank">https://lc.llnl.gov/confluence/pages/viewpage.action?pageId=137725526</a></li>
+</ul><hr /><p><a name="BuildScripts" id="BuildScripts"> </a></p>
+<h3>MPI Build Scripts</h3>
+<ul><li>LC developed MPI compiler wrapper scripts are used to compile MPI programs</li>
+<li>Automatically perform some error checks, include the appropriate MPI #include files, link to the necessary MPI libraries, and pass options to the underlying compiler.</li>
+</ul><p><span class="note-red">Note </span>you may need to load a <a href="https://computing.llnl.gov/tutorials/lc_resources/#Modules" target="_blank">module</a> for the desired MPI implementation, as discussed previously. Failing to do this will result in getting the default implementation.</p>
+<ul><li>For additional information:
+<ul><li>See the man page (if it exists)</li>
+<li>Issue the script name with the -help option</li>
+<li>View the script yourself directly</li>
+</ul><p>  </p>
+<table class="table table-striped table-bordered"><tr><th colspan="4">MPI Build Scripts</th>
+</tr><tr><th>Implementation</th>
+<th>Language</th>
+<th>Script Name</th>
+<th>Underlying Compiler</th>
+</tr><tr><td rowspan="5">MVAPCH2</td>
+<td>C</td>
+<td>mpicc</td>
+<td>C compiler for loaded compiler package</td>
+</tr><tr><td>C++</td>
+<td>mpicxx<br />mpic++</td>
+<td>C++ compiler for loaded compiler package</td>
+</tr><tr><td rowspan="3">Fortran</td>
+<td>mpif77</td>
+<td>Fortran77 compiler for loaded compiler package. Points to mpifort.</td>
+</tr><tr><td>mpif90</td>
+<td>Fortran90 compiler for loaded compiler package. Points to mpifort.</td>
+</tr><tr><td>mpifort</td>
+<td>Fortran 77/90 compiler for loaded compiler package.</td>
+</tr><tr><td rowspan="5">Open MPI</td>
+<td>C</td>
+<td>mpicc</td>
+<td>C compiler for loaded compiler package</td>
+</tr><tr><td>C++</td>
+<td>mpiCC<br />mpic++<br />mpicxx</td>
+<td>C++ compiler for loaded compiler package</td>
+</tr><tr><td rowspan="3">Fortran</td>
+<td>mpif77</td>
+<td>Fortran77 compiler for loaded compiler package. Points to mpifort.</td>
+</tr><tr><td>mpif90</td>
+<td>Fortran90 compiler for loaded compiler package. Points to mpifort.</td>
+</tr><tr><td>mpifort</td>
+<td>Fortran 77/90 compiler for loaded compiler package.</td>
+</tr></table></li>
+</ul><hr /><h3>Level of Thread Support</h3>
+<ul><li>MPI libraries vary in their level of thread support:
+<ul><li>MPI_THREAD_SINGLE - Level 0: Only one thread will execute.</li>
+<li>MPI_THREAD_FUNNELED - Level 1: The process may be multi-threaded, but only the main thread will make MPI calls - all MPI calls are funneled to the main thread.</li>
+<li>MPI_THREAD_SERIALIZED - Level 2: The process may be multi-threaded, and multiple threads may make MPI calls, but only one at a time. That is, calls are not made concurrently from two distinct threads as all MPI calls are serialized.</li>
+<li>MPI_THREAD_MULTIPLE - Level 3: Multiple threads may call MPI with no restrictions.</li>
+</ul></li>
+<li>Consult the <a href="https://computing.llnl.gov/tutorials/mpi/man/MPI_Init_thread.txt" target="_blank"> MPI_Init_thread() man page</a> for details.</li>
+<li>A simple C language example for determining thread level support is shown below.<br /><pre>#include "mpi.h"
+#include &lt;stdio.h&gt;
+
+int main( int argc, char *argv[] )
+{
+    int provided, claimed;
+
+/*** Select one of the following
+    MPI_Init_thread( 0, 0, MPI_THREAD_SINGLE, &amp;provided );
+    MPI_Init_thread( 0, 0, MPI_THREAD_FUNNELED, &amp;provided );
+    MPI_Init_thread( 0, 0, MPI_THREAD_SERIALIZED, &amp;provided );
+    MPI_Init_thread( 0, 0, MPI_THREAD_MULTIPLE, &amp;provided );
+***/
+
+    MPI_Init_thread(0, 0, MPI_THREAD_MULTIPLE, &amp;provided );
+    MPI_Query_thread( &amp;claimed );
+        printf( "Query thread level= %d  Init_thread level= %d\n", claimed, provided );
+
+    MPI_Finalize();
+}
+
+</pre><p>Sample output:</p>
+<pre>Query thread level= 3  Init_thread level= 3
+
+</pre></li>
+</ul><h2><a name="Running" id="Running"> </a> <a name="Overview" id="Overview"> </a>Running Jobs</h2>
+<h3>Overview</h3>
+<h4>Big Differences</h4>
+<ul><li>LC's Linux commodity clusters can be divided into two types: those having a high speed intra-node interconnect and those that don't. Those systems without such an interconnect are intended for either serial or parallel applications that can run within one node using either shared-memory, or MPI within that node.<br /><table class="table table-striped table-bordered"><tr><th> </th>
+<th>Interconnect</th>
+<th>No Interconnect</th>
+</tr><tr><th>Clusters</th>
+<td>Most linux clusters</td>
+<td>agate, borax, rztrona</td>
+</tr><tr><th>Parallelism</th>
+<td>Designated as a parallel resource.<br />A single job can span many nodes.</td>
+<td>Designated for serial and single node parallel jobs only.<br />A job cannot span more than one node.</td>
+</tr><tr><th>Node Sharing</th>
+<td>Compute nodes are NOT shared with other users or jobs.<br />When your job runs, the allocated nodes are dedicated to your job alone.</td>
+<td>Multiple users and their jobs can run on the same node simultaneously.<br />Can result in competition for resources such as CPU and memory.</td>
+</tr></table></li>
+<li>Usage differences between these two different types of clusters will be noted as relevant in the remainder of this tutorial.</li>
+</ul><h4>Job Limits</h4>
+<ul><li>For all production clusters, there are defined job limits which vary from cluster to cluster. The primary job limits apply to:
+<ul><li>How many nodes/cores a job may use</li>
+<li>How long a job may run</li>
+<li>How many simultaneous jobs can a user run?</li>
+<li>What time of the day/week can jobs run?</li>
+</ul></li>
+<li>Most job limits are enforced by the batch system.</li>
+<li>Some job limits are enforced by a "good neighbor" policy</li>
+<li>An easy way to determine the job limits for a machine where you are logged in is to use the command:<br /><pre><span class="cmd">news job.lim.machinename</span></pre><p>where machinename is the name of the machine you are logged into </p>
+</li>
+<li>Job limits are also documented on the "MyLC" web pages:
+<ul><li>OCF-CZ: <a href="https://mylc.llnl.gov" target="_blank">mylc.llnl.gov</a></li>
+<li>OCF-RZ: <a href="https://rzmylc.llnl.gov" target="_blank">rzmylc.llnl.gov</a></li>
+<li>SCF: <a href="https://lc.llnl.gov/lorenz">https://lc.llnl.gov/lorenz</a></li>
+</ul></li>
+<li>Further discussion, and a summary table of job limits for all production machines are available in the <a href="https://computing.llnl.gov/tutorials/moab/#QueueLimits" target="_blank">Queue Limits</a> section of the Slurm and Moab tutorial.</li>
+</ul><h3><a name="BatchVsInteractive" id="BatchVsInteractive"> </a>Batch Versus Interactive</h3>
+<h4>Interactive Jobs (pdebug)</h4>
+<ul><li>Most LC clusters have a pdebug partition that permits users to run "interactively" from a login node.</li>
+<li>Your job is launched from the login node command line using the <span class="cmd">srun</span> command - covered in the <a href="#Starting">Starting Jobs</a> section.</li>
+<li>The job then runs on a pdebug compute node(s) - NOT on the login node</li>
+<li>stdin, stdout, stderr are handled to make it appear the job is running locally on the login node</li>
+<li>Important: As the name pdebug implies, interactive jobs should be short, small debugging jobs, not production runs:
+<ul><li>Shorter time limit</li>
+<li>Fewer number of nodes permitted</li>
+<li>There is usually a "good neighbor" policy in effect - don't monopolize the queue</li>
+</ul></li>
+<li>Some clusters may have additional partitions permitting interactive jobs.</li>
+<li>Although the pdebug partition is generally associated with interactive use, it can also be used for debugging jobs submitted with a batch script (next).</li>
+</ul><h4>Batch Jobs (pbatch)</h4>
+<p> This section only provides a quick summary of batch usage on LC's clusters. For details, see the <a href="https://computing.llnl.gov/tutorials/moab/" target="_blank">Slurm and Moab Tutorial</a>.</p>
+<ul><li>Typically, most of a cluster's compute nodes are configured into a pbatch partition.</li>
+<li>The pbatch partition is intended for production work:
+<ul><li>Longer time limits</li>
+<li>Larger number of nodes per job</li>
+<li>Limits enforced by batch system rather than "good neighbor" policy</li>
+</ul></li>
+<li>The pbatch partition is managed by the workload manager</li>
+<li>Batch jobs must be submitted in the form of a job control script with the <span class="cmd">sbatch </span> or <span class="cmd">msub</span> command. Examples:<br /><pre>sbatch myjobscript
+sbatch myjobscript -p ppdebug -A mic
+msub myjobscript -t 45:00</pre><p> </p>
+<pre>msub myjobscript
+msub myjobscript -q ppdebug -A mic
+msub myjobscript -l walltime=45:00</pre></li>
+<li>Example Slurm job control script:<br /><pre>#!/bin/tcsh
+##### These lines are for Slurm
+#SBATCH -N 16
+#SBATCH -J parSolve34
+#SBATCH -t 2:00:00
+#SBATCH -p pbatch
+#SBATCH --mail-type=ALL
+#SBATCH -A myAccount
+#SBATCH -o /p/lustre1/joeuser/par_solve/myjob.out
+
+##### These are shell commands
+date
+cd /p/lustre1/joeuser/par_solve
+##### Launch parallel job using srun
+srun -n128 a.out
+echo 'Done'
+</pre></li>
+<li>After successfully submitting a job, you may then check its progress and interact with it (hold, release, alter, terminate) by means of other batch commands - discussed in the <a href="#Interacting">Interacting With Jobs</a> section.</li>
+<li>Some clusters have additional partitions permitting batch jobs.</li>
+<li>Interactive use of pbatch nodes is facilitated by using the <span class="cmd">mxterm</span> command.</li>
+<li>Interactive debugging of batch jobs is possible - covered in the <a href="#Debug">Debuggers</a> section.</li>
+</ul><h3><a name="Starting" id="Starting"> </a>Starting Jobs - srun</h3>
+<h4>The srun command</h4>
+<ul><li>The SLURM <span class="cmd">srun</span> command is an application task launcher utility for launching  parallel jobs (MPI-based, shared-mmeory and hybrid) - both batch and interactive.</li>
+<li>It should also be used to launch serial jobs in the pdebug and other interactive queues.</li>
+<li>Syntax:
+<p><a href="https://computing.llnl.gov/tutorials/moab/man/srun.txt" target="_blank">srun</a>   [option list]   [executable]   [args]</p>
+<p><span class="note-red">Note</span> that srun options must precede your executable.</p>
+</li>
+<li>Interactive use example, from the login node command line. Specifies 2 nodes (-N), 16 tasks (-n) and the interactive pdebug partition (-p):<br /><pre>% srun -N2 -n16 -ppdebug myexe
+</pre></li>
+<li>Batch use example requesting 16 nodes and 256 tasks (assumes nodes have 16 cores): First create a job script that requests nodes via <span class="cmd">#SBATCH -N</span> and uses <span class="cmd">srun</span> to specify the number of tasks and launch the job.<br /><pre>#!/bin/csh
+#SBATCH -N 16
+#SBATCH -t 2:00:00
+#SBATCH -p pbatch
+
+# Run info and srun job launch
+cd /p/lustre1/joeuser/par_solve
+srun -n256 a.out
+echo 'Done'
+        </pre></li>
+</ul><hr /><p>Then submit the job script from the login node command line:</p>
+<pre>% sbatch myjobscript</pre><ul><li>Primary differences between batch and interactive usage:<br /><table class="table table-striped table-bordered table-narrow"><tr><th>Difference</th>
+<th>Interactive</th>
+<th>Batch</th>
+</tr><tr><td>Where used:</td>
+<td>From login node command line</td>
+<td>In batch script</td>
+</tr><tr><td>Partition:</td>
+<td>Requires specification of an interactive partition, such as pdebug with the <span class="cmd">-p</span> flag</td>
+<td>pbatch is default</td>
+</tr><tr><td>Scheduling:</td>
+<td>If there are available interactive nodes, job will run immediately. Otherwise, it will queue up (fifo) and wait until there are enough free nodes to run it.</td>
+<td>The batch scheduler handles when to run your job regardless of the number of nodes available.</td>
+</tr></table></li>
+<li>More Examples:<br /><table class="table table-striped table-bordered table-narrow"><tr><td>
+<pre>srun -n64 -ppdebug my_app</pre></td>
+<td>64 process job run interactively in pdebug partition</td>
+</tr><tr><td>
+<pre>srun -N64 -n512 my_threaded_app</pre></td>
+<td>512 process job using 64 nodes. Assumes pbatch partition.</td>
+</tr><tr><td>
+<pre>srun -N4 -n32 -c2 my_threaded_app</pre></td>
+<td>2 node, 32 process job with 2 cores (threads) per process. Assumes pbatch partition.</td>
+</tr><tr><td>
+<pre>srun -N8 my_app</pre></td>
+<td>8 node job with a default value of one task per node (8 tasks). Assumes pbatch partition.</td>
+</tr><tr><td>
+<pre>srun -n128 -o my_app.out my_app</pre></td>
+<td>128 process job that redirects stdout to file my_app.out. Assumes pbatch partition.</td>
+</tr><tr><td>
+<pre>srun -n32 -ppdebug -i my.inp my_app</pre></td>
+<td>32 process interactive job; each process accepts input from a file called my.inp instead of stdin</td>
+</tr></table></li>
+<li>Behavior of <span class="cmd">srun</span> -N and -n flags - using 4 nodes in batch (#MSUB -l nodes=4), each of which has 16 cores:
+<p></p><div class="media media-element-container media-default"><div id="file-2139" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/srunnn-gif-1">srunNn.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="diagram of the behavior of srun -N and -n flags" height="288" width="810" class="media-element file-default" data-delta="1" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/srunNn_1.gif" /></div>
+
+  
+</div>
+</div>
+</li>
+</ul><h3>srun options</h3>
+<ul><li><span class="cmd">srun</span> is a powerful command with @100 options affecting a wide range of job parameters.</li>
+<li>Many <span class="cmd">srun</span> options may be set via @60 SLURM environment variables. For example, SLURM_NNODES behaves like the -N option.</li>
+<li>A short list of common <span class="cmd">srun</span> options appears below. <a href="https://computing.llnl.gov/tutorials/moab/" target="_blank">srun man page</a> for details on options and environment variables.<br /><table><tr><th>Option</th>
+<th>Description</th>
+</tr><tr><td>
+<pre>--auto-affinity=[args]</pre></td>
+<td>Specifies how to bind tasks to cpus. See also: <a href="/training/tutorials/srun-auto-affinity">auto affinity details</a>.</td>
+</tr><tr><td>
+<pre>-c [#cpus/task]</pre></td>
+<td>The number of CPUs used by each process. Use this option if each process in your code spawns multiple POSIX or OpenMP threads.</td>
+</tr><tr><td>
+<pre>-d</pre></td>
+<td>Specify a debug level - integer value between 0 and 5</td>
+</tr><tr><td>
+<pre>-i [file]
+-o [file]</pre></td>
+<td>Redirect input/output to file specified</td>
+</tr><tr><td>
+<pre>-I</pre></td>
+<td>Allocate CPUs immediately or fail. By default, srun blocks until resources become available.</td>
+</tr><tr><td>
+<pre>-J</pre></td>
+<td>Specify a name for the job</td>
+</tr><tr><td>
+<pre>-l</pre></td>
+<td>Label - prepend task number to lines of stdout/err</td>
+</tr><tr><td>
+<pre>-m block|cyclic</pre></td>
+<td>Specifies whether to use block (the default) or cyclic distribution of processes over nodes</td>
+</tr><tr><td>
+<pre>--multi-prog config_file</pre></td>
+<td>Run a job with different programs with/without different arguments for each task. Intended for MPMD (multiple program multiple data) model MPI programs. <a href="/training/tutorials/srun-multi-prog">See more srun --multi-prog information here.</a></td>
+</tr><tr><td>
+<pre>-n [#processes]</pre></td>
+<td>Number of processes that the job requires</td>
+</tr><tr><td>
+<pre>-N [#nodes]</pre></td>
+<td>Number of nodes on which to run job</td>
+</tr><tr><td>
+<pre>-O</pre></td>
+<td>Overcommit - srun will refuse to allocate more than one process per CPU unless this option is also specified</td>
+</tr><tr><td>
+<pre>-p [partition]</pre></td>
+<td>Specify a partition (cluster) on which to run job</td>
+</tr><tr><td>
+<pre>-s</pre></td>
+<td>Print usage stats as job exits</td>
+</tr><tr><td>
+<pre>-v -vv -vvv</pre></td>
+<td>Increasing levels of verbosity</td>
+</tr><tr><td>
+<pre>-V</pre></td>
+<td>Display version information</td>
+</tr></table></li>
+</ul><p>Clusters Without an Interconnect - Additional Notes</p>
+<ul><li>The agate, borax and rztrona clusters fall into this category.</li>
+<li>Don't forget that multiple users and jobs can run on a single node</li>
+<li>Important: Please see the <a href="https://computing.llnl.gov/tutorials/moab/index.html#Serial" target="_blank">"Running on Serial Clusters"</a> section of the Slurm and Moab tutorial for further discussion on running jobs on these clusters.</li>
+</ul><h3><a name="Interacting" id="Interacting"> </a> Interacting With Jobs</h3>
+<p>This section only provides a quick summary of commands used to interact with jobs. For additional information, see the <a href="https://computing.llnl.gov/tutorials/moab/index.html">Slurm and Moab tutorial</a>.</p>
+<h4>Monitoring Jobs and Displaying Job Information</h4>
+<ul><li>There are several different job monitoring commands. Some are based on Moab, some on Slurm, and some on other sources.</li>
+<li>The more commonly used job monitoring commands are summarized in the table below with links to additional information and examples.<br /><table class="table table-striped table-bordered"><tr><th>Command</th>
+<th>Description</th>
+</tr><tr><td><a href="https://computing.llnl.gov/tutorials/moab/index.html#squeue">squeue</a></td>
+<td>Displays one line of information per job by default. Numerous options.</td>
+</tr><tr><td><a href="https://computing.llnl.gov/tutorials/moab/index.html#showq">showq</a></td>
+<td>Displays one line of information per job. Similar to squeue. Several options.</td>
+</tr><tr><td><a href="https://computing.llnl.gov/tutorials/moab/index.html##mdiag-j">mdiag -j</a></td>
+<td>Displays one line of information per job. Similar to squeue.</td>
+</tr><tr><td><a href="https://computing.llnl.gov/tutorials/moab/index.html#mjstat">mjstat</a></td>
+<td>Summarizes queue usage and displays one line of information for active jobs.</td>
+</tr><tr><td><a href="https://computing.llnl.gov/tutorials/moab/index.html#checkjob">checkjob jobid</a></td>
+<td>Provides detailed information about a specific job.</td>
+</tr><tr><td><a href="https://computing.llnl.gov/tutorials/moab/index.html#sprio">sprio -l<br />mdiag -p -v</a></td>
+<td>Displays a list of queued jobs, their priority, and the primary factors used to calculate job priority.</td>
+</tr><tr><td><a href="https://computing.llnl.gov/tutorials/moab/index.html#sview">sview</a></td>
+<td>Provides a graphical view of a cluster and all job information.</td>
+</tr><tr><td><a href="https://computing.llnl.gov/tutorials/moab/index.html#sinfo">sinfo</a></td>
+<td>Displays state information about a cluster's queues and nodes</td>
+</tr></table></li>
+</ul><h4>Holding / Releasing Jobs</h4>
+<ul><li>Jobs can be placed "on hold" when they are submitted.</li>
+<li>They can also be placed on hold while they are waiting to run.</li>
+<li>Held jobs can then be released to run later</li>
+<li>More information/examples: see <a href="https://computing.llnl.gov/tutorials/moab/index.html#Hold/Release" target="_blank">Holding and Releasing Jobs</a> in the Slurm and Moab tutorial.<br /><table class="table table-striped table-bordered table-narrow"><tr><th>Command</th>
+<th>Description</th>
+</tr><tr><td><a href="https://computing.llnl.gov/tutorials/moab/index.html#Hold/Release" target="_blank">sbatch -H jobscript<br />msub -h jobscript</a></td>
+<td>Put job on hold when it is submitted</td>
+</tr><tr><td><a href="https://computing.llnl.gov/tutorials/moab/index.html#Hold/Release" target="_blank">scontrol hole jobid<br />mjobctl -h jobid</a></td>
+<td>Place a specific idle jobid on hold</td>
+</tr><tr><td><a href="https://computing.llnl.gov/tutorials/moab/index.html#Hold/Release" target="_blank">scontrol release jobid<br />mjobctl -u jobid</a></td>
+<td>Release a specific held jobid</td>
+</tr></table></li>
+</ul><h4>Modifying Jobs</h4>
+<ul><li>After a job has been submitted, certain attributes may be modified using the <span class="cmd">scontrol update</span> and <span class="cmd">mjobctl -m</span> commands.</li>
+<li>Examples of parameters that can be changed: account, queue, job name, wall clock limit...</li>
+<li>More information/examples: see <a href="https://computing.llnl.gov/tutorials/moab/index.html#ChangingParameters" target="_blank">Changing Job Parameters</a> in the Slurm and Moab tutorial.</li>
+</ul><h4>Terminating / Canceling Jobs</h4>
+<ul><li>Interactive <span class="cmd">srun</span> jobs launched from the command line should normally be terminated with a SIGINT (CTRL-C):
+<ul><li>The first CTRL-C will report the state of the tasks</li>
+<li>A second CTRL-C within one second will terminate the tasks</li>
+</ul></li>
+<li>For batch jobs, the <span class="cmd">mjobctl -c</span> and <span class="cmd">canceljob</span> commands can be used.</li>
+<li>More information/examples: see <a href="https://computing.llnl.gov/tutorials/moab/index.html#Cancel" target="_blank">Canceling Jobs</a> in the Slurm and Moab tutorial.</li>
+</ul><p><a name="Optimizing" id="Optimizing"></a></p>
+<h3>Optimizing CPU Usage</h3>
+<h4>Clusters with an Interconnect</h4>
+<ul><li>Fully utilizing the cores on a node requires that you use the right combination of <span class="cmd">srun</span> and Slurm/Moab options, depending upon what you want to do and which type of machine you are using.</li>
+<li>MPI only: for example, if you are running on a cluster that has 16 cores per node, and you want your job to use all 16 cores on 4 nodes (16 MPI tasks per node), then you would do something like:<br /><table class="table table-striped table-bordered table-narrow"><tr><td>Interactive</td>
+<td>Slurm Batch</td>
+<td>Moab Batch</td>
+</tr><tr><td>
+<pre>srun -n64 -ppdebug a.out</pre></td>
+<td>
+<pre>#SBATCH -N 4
+srun -n64 a.out</pre></td>
+<td>
+<pre>#MSUB -l nodes=4
+srun -n64 a.out</pre></td>
+</tr></table></li>
+<li>MPI with Threads: If your MPI job uses POSIX or OpenMP threads within each node, you will need to calculate how many cores will be required in addition to the number of tasks. For example, running on a cluster having 16 cores per node, an 8-task job where each task creates 4 OpenMP threads, would need a total of 32 cores, or 2 nodes:<br />8 tasks * 4 threads / 16 cores/node = 2 nodes<br /><table class="table table-striped table-bordered table-narrow"><tr><td>Interactive</td>
+<td>Slurm Batch</td>
+<td>Moab Batch</td>
+</tr><tr><td>
+<pre>srun -N2 -n8 -ppdebug a.out</pre></td>
+<td>
+<pre>#SBATCH -N 2
+srun -N2 -n8 a.out</pre></td>
+<td>
+<pre>#MSUB -l nodes=2
+srun -N2 -n8 a.out</pre></td>
+</tr></table></li>
+<li>You can include multiple <span class="cmd">srun</span> commands within your batch job command script. For example, suppose that you were conducting a scalability run on an 16 core/node Linux cluster. You could allocate the maximum number of nodes that you would use with <span class="cmd">#MSUB -l nodes=</span> and then have a series of srun commands that use varying numbers of nodes:<br /><pre>#MSUB -l nodes=8
+
+srun -N1 -n16 myjob
+srun -N2 -n32 myjob
+srun -N3 -n48 myjob
+....
+srun -N8 -n128 myjob</pre></li>
+</ul><h4>Clusters Without an Interconnect</h4>
+<ul><li>The issues for CPU utilization are different for clusters without a switch for several reasons:
+<ul><li>Jobs can be serial</li>
+<li>Nodes may be shared with other users</li>
+<li>Heavy utilization</li>
+<li>Jobs are limited to one node</li>
+</ul></li>
+<li>On these systems, the more important issue is over utilization of cores rather than under utilization.</li>
+<li>Important notes for Agate, Borax and RZTrona users: Please see the <a href="https://computing.llnl.gov/tutorials/moab/index.html#Serial" target="_blank">"Running on Serial Clusters"</a> section of the Slurm and Moab tutorial for important information about running MPI jobs on these clusters.</li>
+</ul><p><a name="MemoryConsiderations" id="MemoryConsiderations"> </a></p>
+<h3>Memory Considerations</h3>
+<h4>64-bit Architecture Memory Limit</h4>
+<ul><li>Because LC's Linux commodity clusters employ a 64-bit architecture, 16 exabytes of memory can be addressed - which is about 4 billion times more than 4 GB limit of 32-bit architectures. By current standards, this is virtually unlimited memory.</li>
+<li>In reality, systems are usually configured with only GBs of memory, so any address access that exceeds physical memory will result (on most systems) with paging and degraded performance.</li>
+<li>However, most LC commodity cluster systems are an exception to this because they have no local disk - see below.</li>
+</ul><h4>LC's Diskless Linux Clusters</h4>
+<ul><li>Most LC's Linux commodity clusters are configured with diskless compute nodes. This has very important implications for programs that exceed physical memory. For example, most compute nodes have 16-64 GB of physical memory.</li>
+<li>Because compute nodes don't have disks, there is no virtual (swap) memory, which means there is no paging. Programs that exceed physical memory will terminate with an OOM (out of memory) error and/or segmentation fault.</li>
+</ul><h4>Compiler, Shell, Pthreads and OpenMP Limits</h4>
+<ul><li>Compiler data structure limits are in effect, but may be handled differently by different compilers.</li>
+<li>Shell stack limits: most are set to "unlimited" by default.</li>
+<li>Pthreads stack limits apply, and may differ between compilers.</li>
+<li>OpenMP stack limits apply, and may differ between compilers.</li>
+</ul><h4>MPI Memory Use</h4>
+<ul><li>All MPI implementations require additional memory use. This varies between MPI implementations and between versions of any given implementation.</li>
+<li>The amount of memory used increases with the number of MPI tasks.</li>
+<li>Determining how much memory the MPI library uses can be accomplished by using various tools, such as TotalView's Memscape feature.</li>
+</ul><h4>Large Static Data</h4>
+<ul><li>If your executable contains a large amount of static data, LC recommends that you compile with the <span class="cmd">-mcmodel=medium</span> option.</li>
+<li>This flag allows the Data and .BSS sections of your executable to extend beyond a default 2 GB limit.</li>
+<li>True for all compilers (see the respective compiler man page).</li>
+</ul><h3><a name="VectorHyper" id="VectorHyper"> </a>Vectorization and Hyper-threading</h3>
+<h4>Vectorization</h4>
+<ul><li>Historically, the Xeon architecture has provided support for SIMD (Single Instruction Multiple Data) vector instructions through Intel's Streaming SIMD Extensions (SSE, SSE2, SSE3, SSE4) instruction sets.</li>
+<li>AVX - Advanced Vector Extension instruction set (2011) improved on SSE instructions by increasing the size of the vector registers from 128-bits to 256-bits. AVX2 (2013) offered further improvements, such as fused multiply-add (FMA) instructions to double FLOPS.</li>
+<li>The primary purpose of these instructions is to increase CPU throughput by performing operations on vectors of data elements, rather than on single data elements. For example:<br /><table class="table table-striped table-bordered table-narrow"><tr><td rowspan="4"><div class="media media-element-container media-default"><div id="file-714" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/simdgif">simd.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="SIMD diagram" height="245" width="438" class="media-element file-default" data-delta="2" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/simd.gif" /></div>
+
+  
+</div>
+</div></td>
+<th>Instruction Set</th>
+<th>Single-precision<br />Flops/Clock</th>
+<th>Double-precision<br />Flops/Clock</th>
+</tr><tr><td>SSE4</td>
+<td>8</td>
+<td>4</td>
+</tr><tr><td>AVX</td>
+<td>16</td>
+<td>8</td>
+</tr><tr><td>AVX2</td>
+<td>32</td>
+<td>16</td>
+</tr></table></li>
+<li>Sandy Bridge-EP (TLCC2) processors support SSE and AVX instructions.</li>
+<li>Broadwell (CTS-1) processors support SSE, AVX and AVX2.</li>
+<li>To take advantage of the potential performance improvements offered by vectorization, all you need to do is compile with the appropriate compiler flags. Some recommendations are shown in the table below.<br /><table><tr><th>Compiler</th>
+<th>SSE Flag</th>
+<th>AVX Flag</th>
+<th>Reporting</th>
+</tr><tr><th>Intel</th>
+<td>
+<pre>-vec (default)</pre></td>
+<td>
+<pre>-axAVX
+-axCORE-AVX2</pre></td>
+<td>
+<pre>-qopt_report</pre></td>
+</tr><tr><th>PGI</th>
+<td>
+<pre>-Mvect=simd:128</pre></td>
+<td>
+<pre>-Mvect=simd:256</pre></td>
+<td>
+<pre>-Minfo=all</pre></td>
+</tr><tr><th>GNU</th>
+<td>
+<pre>-O3</pre></td>
+<td>
+<pre>-mavx
+-mavx2</pre></td>
+<td>
+<pre>-fopt-info-all</pre></td>
+</tr></table></li>
+<li>Vectorization is performed on eligible loops. <span class="note-red">Note</span> that not all loops are able to be vectorized. A number of factors can prevent the compiler from vectorizing a loop, such as:
+<ul><li>Function calls</li>
+<li>I/O operations</li>
+<li>GOTOs in or out of the loop</li>
+<li>Recurrences</li>
+<li>Data dependence, such as needing a value from a previous loop iteration</li>
+<li>Complex coding (difficult loop analysis)</li>
+</ul></li>
+<li>To view/confirm that a loop has been vectorized, use one of the reporting flags shown above. You can also generate an assembler file and look at the instructions used. For example:<br /><pre>%icc -S -axAVX myprog.c
+
+% cat myprog.s
+...
+...
+.L8:
+	movdqa	%xmm3, %xmm1
+.L3:
+	movdqa	%xmm1, %xmm3
+	cvtdq2pd	%xmm1, %xmm0
+	pshufd	$238, %xmm1, %xmm1
+	addpd	%xmm2, %xmm0
+	paddd	%xmm6, %xmm3
+	cvtdq2pd	%xmm1, %xmm1
+	addpd	%xmm2, %xmm1
+	cvtpd2ps	%xmm0, %xmm0
+	cvtpd2ps	%xmm1, %xmm1
+	movlhps	%xmm1, %xmm0
+	movaps	%xmm4, %xmm1
+	movaps	%xmm0, (%rcx,%rax)
+	mulps	%xmm5, %xmm0
+	divps	%xmm0, %xmm1
+	movaps	%xmm0, (%rdx,%rax)
+	movaps	%xmm1, (%rsi,%rax)
+	addq	$16, %rax
+	cmpq	$400, %rax
+	jne	.L8
+	xorl	%eax, %eax
+...
+...
+</pre></li>
+<li>Most of the instructions shown above are SIMD instructions using the SIMD xmm registers. For a listing of SSE and AVX instructions, see <a href="http://en.wikipedia.org/wiki/X86_instruction_listings#SIMD_instructions" target="_blank"> en.wikipedia.org/wiki/X86_instruction_listings#SIMD_instructions</a></li>
+<li>More information:
+<ul><li>See your compiler's documentation and/or man page for vectorization options.</li>
+<li>"Streaming SIMD Extensions" at <a href="https://en.wikipedia.org/wiki/Streaming_SIMD_Extensions" target="_blank"> https://en.wikipedia.org/wiki/Streaming_SIMD_Extensions</a></li>
+<li>"Advanced Vector Instructions" at <a href="https://en.wikipedia.org/wiki/Advanced_Vector_Extensions" target="_blank"> https://en.wikipedia.org/wiki/Advanced_Vector_Extensions</a></li>
+</ul></li>
+</ul><p>Hyper-threading</p>
+<ul><li>On Intel processors, hyper-threading enables 2 hardware threads per core.</li>
+<li>Hyper-threading benefits some codes more than others. Tests performed on some LC codes (pF3D, IMC, Ares) showed improvements in the 10-30% range. Application performance can be expected to vary.</li>
+<li>On TOSS 3 systems, hyper-threading is turned on by default. Details are available at: <a href="https://lc.llnl.gov/confluence/display/TCE/Hyper-Threading" target="_blank">https://lc.llnl.gov/confluence/display/TCE/Hyper-Threading</a> (authentication required).</li>
+</ul><p><a name="Binding" id="Binding"> </a></p>
+<h3>Process and Thread Binding</h3>
+<h4>Process/Thread Binding to Cores</h4>
+<ul><li>By default, jobs run on LC's Linux clusters have their processes bound to the available cores on a node. For example:
+<pre>% srun -l -n2 numactl -s | grep physc | sort
+0: physcpubind: 0 1 2 3 4 5 6 7
+1: physcpubind: 8 9 10 11 12 13 14 15
+
+% srun -l -n4 numactl -s | grep physc | sort
+0: physcpubind: 0 1 2 3
+1: physcpubind: 4 5 6 7
+2: physcpubind: 8 9 10 11
+3: physcpubind: 12 13 14 15
+
+% srun -l -n8 numactl -s | grep physc |sort
+0: physcpubind: 0 1
+1: physcpubind: 2 3
+2: physcpubind: 4 5
+3: physcpubind: 6 7
+4: physcpubind: 8 9
+5: physcpubind: 10 11
+6: physcpubind: 12 13
+7: physcpubind: 14 15 </pre></li>
+<li>Binding processes to cores may improve performance by keeping in-cache data local to cores.</li>
+<li>If a process is multi-threaded (such as with OpenMP), the threads will run on any of the cores bound to their process.</li>
+<li>To bind an OpenMP thread to a single core, the OMP_PROC_BIND environment variable can be used (set to "TRUE").</li>
+<li>Additionally, LC provides a couple useful utilities for binding processes and threads to cores:
+<p>mpibind - automatically binds processes and threads to cores. Documentation at <a href="https://lc.llnl.gov/confluence/display/LC/mpibind ">https://lc.llnl.gov/confluence/display/LC/mpibind </a>(requires authentication)</p>
+<p>mpifind - reports on how processes and threads are bound to cores. <br />Example output for a 4-process job, each with 4 threads. Output on the left is with OMP_PROC_BIND unset, and on the right, with OMP_PROC_BIND=TRUE.</p>
+<table><tr><th>OMP_PROC_BIND unset</th>
+<th>OMP_PROC_BIND=TRUE</th>
+</tr><tr><td>
+<pre>cab690% mpifind 777601
+    HOST  RANK       ID LCPU      AFFINITY   CPUMASK  CMD
+   cab24     0    98152    3           0-3  0000000f  a.out
+                  98160    2           0-3  0000000f  a.out
+                  98163    1           0-3  0000000f  a.out
+                  98166    0           0-3  0000000f  a.out
+                  98173    2           0-3  0000000f  a.out
+   cab24     1    98153    7           4-7  000000f0  a.out
+                  98159    4           4-7  000000f0  a.out
+                  98161    5           4-7  000000f0  a.out
+                  98165    6           4-7  000000f0  a.out
+                  98171    4           4-7  000000f0  a.out
+   cab24     2    98154   11          8-11  00000f00  a.out
+                  98162    8          8-11  00000f00  a.out
+                  98167    9          8-11  00000f00  a.out
+                  98170   10          8-11  00000f00  a.out
+                  98174    8          8-11  00000f00  a.out
+   cab24     3    98155   15         12-15  0000f000  a.out
+                  98164   12         12-15  0000f000  a.out
+                  98168   13         12-15  0000f000  a.out
+                  98169   14         12-15  0000f000  a.out
+                  98172   12         12-15  0000f000  a.out
+</pre></td>
+<td>
+<pre>cab690% mpifind 777571
+    HOST  RANK       ID LCPU      AFFINITY   CPUMASK  CMD
+   cab28     0   151874    0             0  00000001  a.out
+                 151881    0           0-3  0000000f  a.out
+                 151883    1             1  00000002  a.out
+                 151886    2             2  00000004  a.out
+                 151892    3             3  00000008  a.out
+   cab28     1   151875    4             4  00000010  a.out
+                 151882    5           4-7  000000f0  a.out
+                 151884    5             5  00000020  a.out
+                 151885    6             6  00000040  a.out
+                 151887    7             7  00000080  a.out
+   cab28     2   151876    8             8  00000100  a.out
+                 151888    9          8-11  00000f00  a.out
+                 151890    9             9  00000200  a.out
+                 151893   10            10  00000400  a.out
+                 151896   11            11  00000800  a.out
+   cab28     3   151877   12            12  00001000  a.out
+                 151889   13         12-15  0000f000  a.out
+                 151891   13            13  00002000  a.out
+                 151894   14            14  00004000  a.out
+                 151895   15            15  00008000  a.out
+</pre></td>
+</tr></table></li>
+</ul><h2><a name="Debug" id="Debug"> </a>Debugging</h2>
+<p>This section only touches on selected highlights. For more information users will want to consult the relevant documentation mentioned below. Also, please see the Development Environment Software web page located at <a href="https://hpc.llnl.gov/software/development-environment-software" target="_blank"> hpc.llnl.gov/software/development-environment-software</a>.</p>
+<h3>TotalView</h3>
+<ul><li>TotalView is probably the most widely used debugger for parallel programs. It can be used with C/C++ and Fortran programs and supports all common forms of parallelism, including pthreads, openMP, MPI, accelerators and GPUs.</li>
+<li>Starting TotalView for serial codes: simply issue the command:
+<ul><li><span class="cmd">totalview myprog</span></li>
+</ul></li>
+<li>Starting TotalView for interactive parallel jobs:
+<ul><li>Some special command line options are required to run a parallel job through TotalView under SLURM. You need to run srun under TotalView, and then specify the -a flag followed by 1)srun options, 2)your program, and 3)your program flags (in that order). The general syntax is:
+<p><span class="cmd">totalview srun -a -n #processes -p pdebug myprog [prog args]</span></p>
+</li>
+<li>To debug an already running interactive parallel job, simply issue the totalview command and then attach to the srun process that started the job.</li>
+<li>Debugging batch jobs is covered in LC's <a href="/training/tutorials/totalview-tutorial" target="_blank">TotalView tutorial</a> and in the "Debugging in Batch" section below.</li>
+</ul></li>
+<li>Documentation:
+<ul><li>LC Tutorial: <a href="/training/tutorials/totalview-tutorial" target="_blank"> https://hpc.llnl.gov/training/tutorials/totalview-tutorial</a></li>
+<li>Vendor website: <a href="http://www.roguewave.com/" target="_blank">http://www.roguewave.com/</a></li>
+</ul></li>
+</ul><h3>DDT</h3>
+<ul><li>DDT stands for "Distributed Debugging Tool", a product of Allinea Software Ltd.</li>
+<li>DDT is a comprehensive graphical debugger designed specifically for debugging complex parallel codes. It is supported on a variety of platforms for C/C++ and Fortran. It is able to be used to debug multi-process MPI programs, and multi-threaded programs, including OpenMP.</li>
+<li>Currently, LC has a limited number of fixed and floating licenses for OCF and SCF Linux machines.</li>
+<li>Usage information: see LC's DDT Quick Start information located at: <a href="https://hpc.llnl.gov/software/development-environment-software/allinea-ddt">https://hpc.llnl.gov/software/development-environment-software/allinea-ddt</a></li>
+<li>Documentation:
+<ul><li>Vendor website: <a href="http://www.allinea.com" target="_blank">http://www.allinea.com</a></li>
+<li>Local copies of documentation under /usr/local/docs/ddt</li>
+</ul></li>
+</ul><h3>STAT - Stack Trace Analysis Tool</h3>
+<ul><li>The Stack Trace Analysis Tool (developed at LC) gathers and merges stack traces from a parallel application's processes.</li>
+<li>STAT is particularly useful for debugging hung programs.</li>
+<li>It produces call graphs: 2D spatial and 3D spatial-temporal
+<ul><li>The 2D spatial call prefix tree represents a single snapshot of the entire application (see image).</li>
+<li>The 3D spatial-temporal call prefix tree represents a series of snapshots from the application taken over time.</li>
+</ul></li>
+<li>In these graphs, the nodes are labeled by function names. The directed edges, showing the calling sequence from caller to callee, are labeled by the set of tasks that follow that call path. Nodes that are visited by the same set of tasks are assigned the same color, giving a visual reference to the various equivalence classes.</li>
+<li>This tool should be in your default path as:
+<ul><li><span class="file">/usr/local/bin/stat-gui</span> - GUI</li>
+<li><span class="file">/usr/local/bin/stat-cl</span> - command line</li>
+<li><span class="file">/usr/local/bin/stat-view</span> - viewer for DOT format output files</li>
+<li><span class="file">/usr/local/tools/stat</span> - install directory, documentation</li>
+</ul></li>
+<li>More information: see the STAT web page at: <a href="https://hpc.llnl.gov/software/development-environment-software/stat-stack-trace-analysis-tool" target="_blank">hpc.llnl.gov/software/development-environment-software/stat-stack-trace-analysis-tool</a> and the STAT man page.</li>
+</ul><h3>Other Debuggers</h3>
+<ul><li>Several other common debuggers are available on LC Linux clusters, though they are not recommended for parallel programs when compared to TotalView and DDT.</li>
+<li>PGDBG: the Portland Group Compiler debugger. Documentation: <a href="https://www.pgroup.com/products/pgdbg.htm" target="_blank">https://www.pgroup.com/products/pgdbg.htm</a></li>
+<li>GDB: GNU GDB debugger, a command-line, text-based, single process debugger. Documentation: <a href="http://www.gnu.org/software/gdb" target="_blank">http://www.gnu.org/software/gdb</a></li>
+<li>DDD: GNU DDD debugger is a graphical front-end for command-line debuggers such as GDB, DBX, WDB, Ladebug, JDB, XDB, the Perl debugger, the bash debugger, or the Python debugger. Documentation: <a href="http://www.gnu.org/software/ddd" target="_blank">http://www.gnu.org/software/ddd</a></li>
+</ul><h3>Debugging in Batch: mxterm</h3>
+<ul><li>Debugging batch parallel jobs on LC production clusters is fairly straightforward. The main idea is that you need to submit a batch job that gets your partition allocated and running.</li>
+<li>Once you have your partition, you can login to any of the nodes within it, and then starting running as though your in the interactive pdebug partition.</li>
+<li>For convenience, LC has developed a utility called <span class="cmd">mxterm</span> which makes the process even easier.</li>
+<li>How to use mxterm:
+<ol><li>If you are on a Windows PC, start your X11 application (such as X-Win32)</li>
+<li>Make sure you enable X11 tunneling for your ssh session</li>
+<li>ssh and login to your cluster</li>
+<li>Issue the command as follows:
+<p><span class="cmd">mxterm #nodes #tasks #minutes</span></p>
+<p>Where:<br />#nodes = number of nodes your job requires<br />#tasks = number of tasks your job requires<br />#minutes = how long you need to keep your partition for debugging</p>
+</li>
+<li>This will submit a batch job for you that will open an xterm when it starts to run.</li>
+<li>After the xterm appears, <span class="cmd">cd</span> to the directory with your source code and begin your debug session.</li>
+<li>This utility does not have a man page, however you can view the usage information by simple typing the name of the command.</li>
+</ol></li>
+</ul><h4>Core Files</h4>
+<ul><li>It is quite likely that your shell's core file size setting may limit the size of a core file so that it is inadequate for debugging, especially with TotalView.</li>
+<li>To check your shell's limit settings, use either the <span class="cmd">limit</span> (csh/tcsh) or <span class="cmd">ulimit -a</span> (sh/ksh/bash) command. For example:<br /><pre>% limit
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    unlimited
+coredumpsize 16 kbytes
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  1024
+memorylocked 7168 kbytes
+maxproc      1024
+
+$ ulimit -a
+address space limit (kbytes)   (-M)  unlimited
+core file size (blocks)        (-c)  32
+cpu time (seconds)             (-t)  unlimited
+data size (kbytes)             (-d)  unlimited
+file size (blocks)             (-f)  unlimited
+locks                          (-L)  unlimited
+locked address space (kbytes)  (-l)  7168
+nofile                         (-n)  1024
+nproc                          (-u)  1024
+pipe buffer size (bytes)       (-p)  4096
+resident set size (kbytes)     (-m)  unlimited
+socket buffer size (bytes)     (-b)  4096
+stack size (kbytes)            (-s)  unlimited
+threads                        (-T)  not supported
+process size (kbytes)          (-v)  unlimited
+</pre></li>
+<li>To override your default core file size setting, use one of the following commands:<br /><table class="table table-striped table-bordered"><tr><th>csh/tcsh</th>
+<td>unlimit<br />-or-<br />limit coredumpsize 64</td>
+</tr><tr><th>sh/ksh/bash</th>
+<td>
+<pre>ulimit -c 64
+</pre></td>
+</tr></table></li>
+<li>Some users have complained that for many-process jobs, they actually don't want core files or only want small core files because normal core files can fill up their disk space. The <span class="cmd">limit</span> (csh/tcsh) or <span class="cmd">ulimit -c</span> (sh/ksh/bash) commands can be used as shown above to set smaller / zero sizes.</li>
+</ul><p>A Few Additional Useful Debugging Hints</p>
+<ul><li>Add the <span class="cmd">sinfo</span> and <span class="cmd">squeue</span> commands to your batch scripts to assist in diagnosing problems. In particular, these commands will document which nodes your job is using.</li>
+<li>Also add the <span class="cmd">-l</span> option to your <span class="cmd">srun</span> command so that output statements are prepended with the task number that created them.</li>
+<li>Be sure to check the exit status of all I/O operations when reading or writing files in Lustre. This will allow you to detect any I/O problems with the underlying OST servers.</li>
+<li>If you know/suspect that there are problems with particular nodes, you can use the srun <span class="cmd">-x</span> option to skip these nodes. For example:
+<p><span class="cmd">srun -N12 -x "cab40 cab41" -ppdebug myjob</span></p>
+</li>
+</ul><h2><a name="Tools" id="Tools"> </a>Application Development Tools</h2>
+<h3><br />We Need a Book!</h3>
+<ul><li>The subject of "Tools" for Linux cluster applications is far too broad and deep to cover here. Instead, a few pointers are being provided for those who are interested in further research.</li>
+<li>The first place to check are LC's Software web pages at: <a href="https://hpc.llnl.gov/software" target="_blank">hpc.llnl.gov/software</a> for what may be available here. Some example tools are listed below.</li>
+</ul><h3>Memory Correctness Tools</h3>
+<dl><dt>Memcheck</dt>
+<dd>Valgrind's Memcheck tool detects a comprehensive set of memory errors, including reads and writes of unallocated or freed memory and memory leaks.</dd>
+<dt>TotalView</dt>
+<dd>Allows you to stop execution when heap API problems occur, list memory leaks, paint allocated and deallocated blocks, identify dangling pointers, hold onto deallocated memory, graphically browse the heap, identify the source line and stack backtrace of an allocation or deallocation, summarize heap use by routine, filter and dump heap information, and review memory usage by process or by library.</dd>
+<dt>memP</dt>
+<dd>The memP tool provides heap profiling through the generation of two reports: a summary of the heap high-water-mark across all processes in a parallel job as well as a detailed task-specific report that provides a snapshot of the heap memory currently in use, including the amount allocated at specific call sites.</dd>
+<dt>Intel Inspector</dt>
+<dd>Primarily a thread correctness tool, but memory debugging features are included.</dd>
+</dl><p>Profiling, Tracing and Performance Analysis</p>
+
+<p>Open|SpeedShop | Open|SpeedShop is a comprehensive performance tool set with a unified look and feel that covers most important performance analysis steps. It offers various different interfaces, including a flexible GUI, a scripting interface, and a Python class. Supported experiments include profiling using PC sampling, inclusive and exclusive execution time analysis, hardware counter support, as well as MPI, I/O, and floating point exception tracing. All analysis is applied on unmodified binaries and can be used on codes with MPI and/or thread parallelism.</p>
+<p>TAU | TAU is a robust profiling and tracing tool from the University of Oregon that includes support for MPI and OpenMP. TAU provides an instrumentation API, but source code can also be automatically instrumented and there is support for dynamic instrumentation as well. TAU is generally viewed as having a steep learning curve, but experienced users have applying the tool with good results at LLNL. TAU can be configured with many feature combinations. If the features you are interested in are not available in the public installation, please request the appropriate configuration through the hotline. TAU developer response is excellent, so if you are encountering a problem with TAU, there is a good chance it can be quickly addressed.</p>
+<p>HPCToolkit | HPCToolkit is an integrated suite of tools for measurement and analysis of program performance on computers ranging from multicore desktop systems to the largest supercomputers. It uses low overhead statistical sampling of timers and hardware performance counters to collect accurate measurements of a program's work, resource consumption, and inefficiency and attributes them to the full calling context in which they occur. HPCToolkit works with C/C++/Fortran applications that are either statically or dynamically linked. It supports measurement and analysis of serial codes, threaded codes (pthreads, OpenMP), MPI, and hybrid (MPI + threads) parallel codes.</p>
+<p>mpiP | A lightweight MPI profiling library that provides time spent in MPI functions by callsite and stacktrace. This tool is developed and maintained at LLNL, so support and modifications can be quickly addressed. New run-time functionality can be used to generate mpiP data without relinking through the srun-mpip and poe-mpip scripts on Linux and AIX systems.</p>
+<p>gprof | Displays call graph profile data. The gprof command is useful in identifying how a program consumes CPU resources. Gprof does simple function profiling and requires that the code be built and linked with <span class="cmd">-pg</span>. For parallel programs, in order to get a unique output file for each process, you will need to set the undocumented environment variable GMON_OUT_PREFIX to some non-null string. For example:</p>
+<pre><span class="cmd">setenv GMON_OUT_PREFIX 'gmon.out.'`/bin/uname -n`</span></pre><p> </p>
+<p>pgprof | PGI profiler - pgprof is a tool which analyzes data generated during execution of specially compiled programs. This information can be used to identify which portions of a program will benefit the most from performance tuning.</p>
+<p>PAPI | Portable hardware performance counter library.</p>
+<p>PapiEx | A PAPI-based performance profiler that measures hardware performance events of an application without having to instrument the application.</p>
+<p>VTune Amplifier | The Intel VTune Amplifier tool is a performance analysis tool for finding hotspots in serial and multithreaded codes. <span class="note-red">Note</span> the installation on LC machines does not include the advanced hardware analysis capabilities.</p>
+<p>Intel Profiler | The Intel Profiler tool is built into the Intel compiler along with a simple GUI to display the collected results.</p>
+<p>Vampir / Vampirtrace | Full featured trace file visualizer and library for generating trace files for parallel programs.</p>
+<h2>Beyond LC</h2>
+<ul><li>Beyond LC, the web offers endless opportunities for discovering tools for application development that aren't available here.</li>
+<li>In many cases, users can install tools in their own directories if LC doesn't have/support them. However, users are reminded of their responsibility to contact LC before installing non-approved software.</li>
+</ul><p><a name="Exercise2" id="Exercise2"> </a></p>
+<h2>Linux Clusters Overview Exercise 2</h2>
+<h3>Parallel Programs and More</h3>
+<h4>Overview:</h4>
+<ul><li>Login to an LC workshop cluster, if you are not already logged in </li>
+<li>Build and run parallel MPI programs </li>
+<li>Build and run parallel Pthreads programs </li>
+<li>Build and run parallel OpenMP programs </li>
+<li>Build and run a parallel benchmarks </li>
+<li>Build and run an MPI message passing bandwidth test </li>
+<li>Try hyper-threading </li>
+<li>Obtain online machine status information </li>
+</ul><p><a href="/training/tutorials/linux-tutorial-exercises#Exercise2" target="_blank">GO TO THE EXERCISE HERE</a> </p>
+<h2><a name="GPU" id="GPU"> </a>GPU Clusters</h2>
+<h3><a name="GPUAvailable" id="GPUAvailable"> </a>Available GPU Commodity Clusters</h3>
+<p>Intel Systems (May 2018)</p>
+<ul><li>LC currently has the following GPU enabled Linux clusters available for general usage:
+<ul><li>pascal: CZ; newer technology; moderate sized system; all compute nodes have GPUs</li>
+<li>surface: CZ; older technology; moderate sized system; all compute nodes have GPUs</li>
+<li>rzhasgpu: RZ; older technology; small system; all compute nodes have GPUs</li>
+<li>max: SCF; older technology; GPUs limited to 20 nodes in one queue</li>
+</ul></li>
+<li>Summary table of all GPU systems below:<br /><div class="view view-systems-summary-view view-id-systems_summary_view view-display-id-gpu_block view-dom-id-02f8a87de28a2580e6d9b2b63ce72114">
+<div class="view-content">
+<table class="views-table cols-15 footable fooicon-expanded-minus-circle fooicon-collapsed-plus-circle" id="footable"><thead><tr><th data-type="html" data-breakpoints="" class="views-field views-field-title active">
+          <a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two?order=title&amp;sort=desc" title="sort by " class="active"><img typeof="foaf:Image" src="https://hpc.llnl.gov/misc/arrow-desc.png" width="13" height="13" alt="sort descending" title="sort descending" /></a>        </th>
+<th data-type="text" data-breakpoints="xs" class="views-field views-field-field-ocf-scf">
+          <a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two?order=field_ocf_scf&amp;sort=asc" title="sort by Zone" class="active">Zone</a>        </th>
+<th data-type="numeric" data-breakpoints="xs" class="views-field views-field-field-nodes-dec">
+          <a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two?order=field_nodes_dec&amp;sort=asc" title="sort by Nodes" class="active">Nodes</a>        </th>
+<th data-type="text" data-breakpoints="xs sm" class="views-field views-field-field-memory-total-gb-dec">
+          <a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two?order=field_memory_total_gb_dec&amp;sort=asc" title="sort by Total Memory (GB)" class="active">Total Memory (GB)</a>        </th>
+<th data-type="text" data-breakpoints="xs" class="views-field views-field-field-gpu-type">
+          <a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two?order=field_gpu_type&amp;sort=asc" title="sort by GPU Architecture" class="active">GPU Architecture</a>        </th>
+<th data-type="numeric" data-breakpoints="xs" class="views-field views-field-field-total-gpus">
+          <a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two?order=field_total_gpus&amp;sort=asc" title="sort by Total GPUs" class="active">Total GPUs</a>        </th>
+<th data-type="numeric" data-breakpoints="xs" class="views-field views-field-field-gpus-per-compute-node">
+          <a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two?order=field_gpus_per_compute_node&amp;sort=asc" title="sort by GPUs per compute node" class="active">GPUs per compute node</a>        </th>
+<th data-type="numeric" data-breakpoints="xs sm md lg" class="views-field views-field-field-cores-nodes-dec">
+          <a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two?order=field_cores_nodes_dec&amp;sort=asc" title="sort by Cores/ Node" class="active">Cores/ Node</a>        </th>
+<th data-type="text" data-breakpoints="xs sm md lg" class="views-field views-field-field-total-cores">
+          <a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two?order=field_total_cores&amp;sort=asc" title="sort by Total Cores" class="active">Total Cores</a>        </th>
+<th data-type="numeric" data-breakpoints="xs sm md lg" class="views-field views-field-field-memory-node-gb--dec">
+          Memory/ Node        </th>
+<th data-type="numeric" data-breakpoints="xs sm" class="views-field views-field-field--gpu-peak-performance-tflo">
+          <a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two?order=field__gpu_peak_performance_tflo&amp;sort=asc" title="sort by     GPU peak performance (TFLOP/s double precision)" class="active">    GPU peak performance (TFLOP/s double precision)</a>        </th>
+<th data-type="text" data-breakpoints="xs sm md lg" class="views-field views-field-field-gpu-global-memory-gb-">
+          <a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two?order=field_gpu_global_memory_gb_&amp;sort=asc" title="sort by GPU global memory (GB)" class="active">GPU global memory (GB)</a>        </th>
+<th data-type="text" data-breakpoints="xs sm md lg" class="views-field views-field-field-switch">
+          Switch        </th>
+<th data-type="numeric" data-breakpoints="xs sm" class="views-field views-field-field-tflops-peak-gpus-">
+          <a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two?order=field_tflops_peak_gpus_&amp;sort=asc" title="sort by Peak TFLOPs (GPUs)" class="active">Peak TFLOPs (GPUs)</a>        </th>
+<th data-type="numeric" data-breakpoints="xs sm md lg" class="views-field views-field-field-peak-tflops-cpus-gpus-">
+          <a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two?order=field_peak_tflops_cpus_gpus_&amp;sort=asc" title="sort by Peak TFLOPS (CPUs+GPUs)" class="active">Peak TFLOPS (CPUs+GPUs)</a>        </th>
+</tr></thead><tbody><tr class="odd views-row-first"><td class="views-field views-field-title active">
+          <a href="/hardware/platforms/lassen">Lassen</a>        </td>
+<td class="views-field views-field-field-ocf-scf">
+          CZ        </td>
+<td class="views-field views-field-field-nodes-dec number-alignment">
+          795        </td>
+<td class="views-field views-field-field-memory-total-gb-dec number-alignment">
+          253,440        </td>
+<td class="views-field views-field-field-gpu-type">
+          NVIDIA V100 (Volta)        </td>
+<td class="views-field views-field-field-total-gpus">
+          3,168        </td>
+<td class="views-field views-field-field-gpus-per-compute-node">
+          4        </td>
+<td class="views-field views-field-field-cores-nodes-dec number-alignment">
+          44        </td>
+<td class="views-field views-field-field-total-cores number-alignment">
+          34,848        </td>
+<td class="views-field views-field-field-memory-node-gb--dec number-alignment">
+          256        </td>
+<td class="views-field views-field-field--gpu-peak-performance-tflo">
+          7.00        </td>
+<td class="views-field views-field-field-gpu-global-memory-gb-">
+                  </td>
+<td class="views-field views-field-field-switch">
+          IB EDR        </td>
+<td class="views-field views-field-field-tflops-peak-gpus-">
+          22 192.2        </td>
+<td class="views-field views-field-field-peak-tflops-cpus-gpus-">
+          23 047.2        </td>
+</tr><tr class="even"><td class="views-field views-field-title active">
+          <a href="/hardware/platforms/pascal">Pascal</a>        </td>
+<td class="views-field views-field-field-ocf-scf">
+          CZ        </td>
+<td class="views-field views-field-field-nodes-dec number-alignment">
+          164        </td>
+<td class="views-field views-field-field-memory-total-gb-dec number-alignment">
+          41,984        </td>
+<td class="views-field views-field-field-gpu-type">
+          NVIDIA Tesla P100 (Pascal)        </td>
+<td class="views-field views-field-field-total-gpus">
+          326        </td>
+<td class="views-field views-field-field-gpus-per-compute-node">
+          2        </td>
+<td class="views-field views-field-field-cores-nodes-dec number-alignment">
+          36        </td>
+<td class="views-field views-field-field-total-cores number-alignment">
+          5,904        </td>
+<td class="views-field views-field-field-memory-node-gb--dec number-alignment">
+          256        </td>
+<td class="views-field views-field-field--gpu-peak-performance-tflo">
+          5.00        </td>
+<td class="views-field views-field-field-gpu-global-memory-gb-">
+          16        </td>
+<td class="views-field views-field-field-switch">
+          Cornelis Networks Omni-Path        </td>
+<td class="views-field views-field-field-tflops-peak-gpus-">
+          1 727.8        </td>
+<td class="views-field views-field-field-peak-tflops-cpus-gpus-">
+          1 926.1        </td>
+</tr><tr class="odd"><td class="views-field views-field-title active">
+          <a href="/hardware/platforms/Ray">Ray</a>        </td>
+<td class="views-field views-field-field-ocf-scf">
+          CZ        </td>
+<td class="views-field views-field-field-nodes-dec number-alignment">
+          62        </td>
+<td class="views-field views-field-field-memory-total-gb-dec number-alignment">
+          17,280        </td>
+<td class="views-field views-field-field-gpu-type">
+          NVIDIA Tesla P100        </td>
+<td class="views-field views-field-field-total-gpus">
+          216        </td>
+<td class="views-field views-field-field-gpus-per-compute-node">
+          4        </td>
+<td class="views-field views-field-field-cores-nodes-dec number-alignment">
+          20        </td>
+<td class="views-field views-field-field-total-cores number-alignment">
+          1,240        </td>
+<td class="views-field views-field-field-memory-node-gb--dec number-alignment">
+          256        </td>
+<td class="views-field views-field-field--gpu-peak-performance-tflo">
+          1,015.00        </td>
+<td class="views-field views-field-field-gpu-global-memory-gb-">
+          3,456        </td>
+<td class="views-field views-field-field-switch">
+          IB EDR        </td>
+<td class="views-field views-field-field-tflops-peak-gpus-">
+          1 015.2        </td>
+<td class="views-field views-field-field-peak-tflops-cpus-gpus-">
+          1 040.4        </td>
+</tr><tr class="even"><td class="views-field views-field-title active">
+          <a href="/hardware/platforms/rzansel">RZAnsel</a>        </td>
+<td class="views-field views-field-field-ocf-scf">
+          RZ        </td>
+<td class="views-field views-field-field-nodes-dec number-alignment">
+          62        </td>
+<td class="views-field views-field-field-memory-total-gb-dec number-alignment">
+          17,280        </td>
+<td class="views-field views-field-field-gpu-type">
+          NVIDIA V100 (Volta)        </td>
+<td class="views-field views-field-field-total-gpus">
+          216        </td>
+<td class="views-field views-field-field-gpus-per-compute-node">
+          4        </td>
+<td class="views-field views-field-field-cores-nodes-dec number-alignment">
+          44        </td>
+<td class="views-field views-field-field-total-cores number-alignment">
+          2,376        </td>
+<td class="views-field views-field-field-memory-node-gb--dec number-alignment">
+          256        </td>
+<td class="views-field views-field-field--gpu-peak-performance-tflo">
+          7.00        </td>
+<td class="views-field views-field-field-gpu-global-memory-gb-">
+                  </td>
+<td class="views-field views-field-field-switch">
+          IB EDR        </td>
+<td class="views-field views-field-field-tflops-peak-gpus-">
+          1 512.0        </td>
+<td class="views-field views-field-field-peak-tflops-cpus-gpus-">
+          1 570.0        </td>
+</tr><tr class="odd"><td class="views-field views-field-title active">
+          <a href="/hardware/platforms/rzhasgpu">RZHasGPU</a>        </td>
+<td class="views-field views-field-field-ocf-scf">
+          RZ        </td>
+<td class="views-field views-field-field-nodes-dec number-alignment">
+          20        </td>
+<td class="views-field views-field-field-memory-total-gb-dec number-alignment">
+          2,560        </td>
+<td class="views-field views-field-field-gpu-type">
+          NVIDIA Tesla K80        </td>
+<td class="views-field views-field-field-total-gpus">
+          64        </td>
+<td class="views-field views-field-field-gpus-per-compute-node">
+          4        </td>
+<td class="views-field views-field-field-cores-nodes-dec number-alignment">
+          16        </td>
+<td class="views-field views-field-field-total-cores number-alignment">
+          320        </td>
+<td class="views-field views-field-field-memory-node-gb--dec number-alignment">
+          128        </td>
+<td class="views-field views-field-field--gpu-peak-performance-tflo">
+          60.00        </td>
+<td class="views-field views-field-field-gpu-global-memory-gb-">
+          768        </td>
+<td class="views-field views-field-field-switch">
+          IB QDR        </td>
+<td class="views-field views-field-field-tflops-peak-gpus-">
+          59.8        </td>
+<td class="views-field views-field-field-peak-tflops-cpus-gpus-">
+          68.0        </td>
+</tr><tr class="even"><td class="views-field views-field-title active">
+          <a href="/hardware/platforms/RZManta">RZManta</a>        </td>
+<td class="views-field views-field-field-ocf-scf">
+          RZ        </td>
+<td class="views-field views-field-field-nodes-dec number-alignment">
+          44        </td>
+<td class="views-field views-field-field-memory-total-gb-dec number-alignment">
+          11,520        </td>
+<td class="views-field views-field-field-gpu-type">
+          NVIDIA Tesla P100        </td>
+<td class="views-field views-field-field-total-gpus">
+          144        </td>
+<td class="views-field views-field-field-gpus-per-compute-node">
+          4        </td>
+<td class="views-field views-field-field-cores-nodes-dec number-alignment">
+          20        </td>
+<td class="views-field views-field-field-total-cores number-alignment">
+          880        </td>
+<td class="views-field views-field-field-memory-node-gb--dec number-alignment">
+          256        </td>
+<td class="views-field views-field-field--gpu-peak-performance-tflo">
+          677.00        </td>
+<td class="views-field views-field-field-gpu-global-memory-gb-">
+          2,304        </td>
+<td class="views-field views-field-field-switch">
+          IB EDR        </td>
+<td class="views-field views-field-field-tflops-peak-gpus-">
+          676.8        </td>
+<td class="views-field views-field-field-peak-tflops-cpus-gpus-">
+          693.6        </td>
+</tr><tr class="odd"><td class="views-field views-field-title active">
+          <a href="/hardware/platforms/rzwhamo">RZWhamo</a>        </td>
+<td class="views-field views-field-field-ocf-scf">
+          RZ        </td>
+<td class="views-field views-field-field-nodes-dec number-alignment">
+          37        </td>
+<td class="views-field views-field-field-memory-total-gb-dec number-alignment">
+          9,472        </td>
+<td class="views-field views-field-field-gpu-type">
+          Nivdia V100s / AMD Mi60        </td>
+<td class="views-field views-field-field-total-gpus">
+          64        </td>
+<td class="views-field views-field-field-gpus-per-compute-node">
+          2        </td>
+<td class="views-field views-field-field-cores-nodes-dec number-alignment">
+          64        </td>
+<td class="views-field views-field-field-total-cores number-alignment">
+          2,368        </td>
+<td class="views-field views-field-field-memory-node-gb--dec number-alignment">
+          256        </td>
+<td class="views-field views-field-field--gpu-peak-performance-tflo">
+          24.00        </td>
+<td class="views-field views-field-field-gpu-global-memory-gb-">
+          2        </td>
+<td class="views-field views-field-field-switch">
+          Mellanox HDR / Cray Slingshot        </td>
+<td class="views-field views-field-field-tflops-peak-gpus-">
+          761.6        </td>
+<td class="views-field views-field-field-peak-tflops-cpus-gpus-">
+          843.5        </td>
+</tr><tr class="even"><td class="views-field views-field-title active">
+          <a href="/hardware/platforms/Shark">Shark</a>        </td>
+<td class="views-field views-field-field-ocf-scf">
+          SCF        </td>
+<td class="views-field views-field-field-nodes-dec number-alignment">
+          44        </td>
+<td class="views-field views-field-field-memory-total-gb-dec number-alignment">
+          11,520        </td>
+<td class="views-field views-field-field-gpu-type">
+          NVIDIA Tesla P100        </td>
+<td class="views-field views-field-field-total-gpus">
+          144        </td>
+<td class="views-field views-field-field-gpus-per-compute-node">
+          4        </td>
+<td class="views-field views-field-field-cores-nodes-dec number-alignment">
+          20        </td>
+<td class="views-field views-field-field-total-cores number-alignment">
+          880        </td>
+<td class="views-field views-field-field-memory-node-gb--dec number-alignment">
+          256        </td>
+<td class="views-field views-field-field--gpu-peak-performance-tflo">
+          677.00        </td>
+<td class="views-field views-field-field-gpu-global-memory-gb-">
+          2,304        </td>
+<td class="views-field views-field-field-switch">
+          IB EDR        </td>
+<td class="views-field views-field-field-tflops-peak-gpus-">
+          676.8        </td>
+<td class="views-field views-field-field-peak-tflops-cpus-gpus-">
+          693.6        </td>
+</tr><tr class="odd"><td class="views-field views-field-title active">
+          <a href="/hardware/platforms/sierra">Sierra</a>        </td>
+<td class="views-field views-field-field-ocf-scf">
+          SCF        </td>
+<td class="views-field views-field-field-nodes-dec number-alignment">
+          4,474        </td>
+<td class="views-field views-field-field-memory-total-gb-dec number-alignment">
+          1,382,400        </td>
+<td class="views-field views-field-field-gpu-type">
+          NVIDIA V100 (Volta)        </td>
+<td class="views-field views-field-field-total-gpus">
+          17,280        </td>
+<td class="views-field views-field-field-gpus-per-compute-node">
+          4        </td>
+<td class="views-field views-field-field-cores-nodes-dec number-alignment">
+          44        </td>
+<td class="views-field views-field-field-total-cores number-alignment">
+          190,080        </td>
+<td class="views-field views-field-field-memory-node-gb--dec number-alignment">
+          256        </td>
+<td class="views-field views-field-field--gpu-peak-performance-tflo">
+          7.00        </td>
+<td class="views-field views-field-field-gpu-global-memory-gb-">
+                  </td>
+<td class="views-field views-field-field-switch">
+          IB EDR        </td>
+<td class="views-field views-field-field-tflops-peak-gpus-">
+          120 960.0        </td>
+<td class="views-field views-field-field-peak-tflops-cpus-gpus-">
+          125 626.0        </td>
+</tr><tr class="even views-row-last"><td class="views-field views-field-title active">
+          <a href="/hardware/platforms/surface">Surface</a>        </td>
+<td class="views-field views-field-field-ocf-scf">
+          CZ        </td>
+<td class="views-field views-field-field-nodes-dec number-alignment">
+          162        </td>
+<td class="views-field views-field-field-memory-total-gb-dec number-alignment">
+          41,500        </td>
+<td class="views-field views-field-field-gpu-type">
+          NVIDIA Tesla K40        </td>
+<td class="views-field views-field-field-total-gpus">
+          316        </td>
+<td class="views-field views-field-field-gpus-per-compute-node">
+          2        </td>
+<td class="views-field views-field-field-cores-nodes-dec number-alignment">
+          16        </td>
+<td class="views-field views-field-field-total-cores number-alignment">
+          2,592        </td>
+<td class="views-field views-field-field-memory-node-gb--dec number-alignment">
+          256        </td>
+<td class="views-field views-field-field--gpu-peak-performance-tflo">
+          452.00        </td>
+<td class="views-field views-field-field-gpu-global-memory-gb-">
+          3,792        </td>
+<td class="views-field views-field-field-switch">
+          IB QDR        </td>
+<td class="views-field views-field-field-tflops-peak-gpus-">
+          451.9        </td>
+<td class="views-field views-field-field-peak-tflops-cpus-gpus-">
+          505.8        </td>
+</tr></tbody></table></div>
+</div>
+
+</li>
+</ul><p>IBM Sierra Systems (May 2018 and beyond)</p>
+<ul><li>As part of the multi-lab CORAL procurement, LLNL has sited multiple IBM Power systems having NVIDIA GPUs.</li>
+<li>CORAL Early Access (EA) systems:
+<ul><li>IBM POWER8 with NVIDIA Pascal GPUs</li>
+<li>Consist of the Ray (CZ), RZManta (RZ) and Shark (SCF) clusters.</li>
+<li>These clusters are covered at: <a href="https://lc.llnl.gov/confluence/display/CORALEA/CORAL+EA+Systems" target="_blank">https://lc.llnl.gov/confluence/display/CORALEA/CORAL+EA+Systems</a></li>
+</ul></li>
+<li>Sierra systems:
+<ul><li>IBM POWER9 with NVIDIA Volta GPUs</li>
+<li>Consist of the Sierra (SCF), Lassen (CZ) and RZAnsel (RZ) clusters.</li>
+<li>These clusters are covered at: <a href="https://lc.llnl.gov/confluence/display/SIERRA/Sierra+Systems" target="_blank">https://lc.llnl.gov/confluence/display/SIERRA/Sierra+Systems</a></li>
+</ul></li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-2193" class="file file-image file-image-png">
+
+        <h2 class="element-invisible"><a href="/files/sierra-side-hpc-news-png">Sierra-Side-HPC-News.png</a></h2>
+    
+  
+  <div class="content">
+    <img height="170" width="280" class="media-element file-default" data-delta="14" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/Sierra-Side-HPC-News.png" alt="" /></div>
+
+  
+</div>
+</div>
+<h2>GPU Clusters</h2>
+<h3><a id="GPUHardware" name="GPUHardware"></a>Hardware Overview</h3>
+<h4>Linux Clusters</h4>
+<ul><li>From a hardware (and software) perspective, LC's GPU clusters are essentially the same as LC's other Linux clusters:
+<ul><li>Intel Xeon processor based</li>
+<li>InfiniBand interconnect</li>
+<li>Diskless, rack mounted "thin" nodes</li>
+<li>TOSS operating system/software stack</li>
+<li>Login nodes, compute nodes, gateway (I/O) and management nodes</li>
+<li>Compute nodes organized into partitions (pbatch, pdebug, pviz, etc.)</li>
+<li>Same compilers, debuggers and tools</li>
+</ul></li>
+<li>The only significant difference is that compute nodes (or a subset of compute nodes in the case of Max) include GPU hardware.</li>
+<li>Images below (click for larger image)</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-2222" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/surfacecluster-01-jpg">surfaceCluster.01.jpg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/surfaceCluster.01.jpg"><img alt="Surface" height="600" width="400" style="height: 600px; width: 400px;" class="media-element file-default" data-delta="3" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/surfaceCluster.01-400x600.jpg" /></a>  </div>
+
+  
+</div>
+</div><br />Surface GPU Cluster<sup> <a href="#credit05">5</a></sup><p></p><div class="media media-element-container media-default"><div id="file-2223" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/pascalcluster-img-3721-jpg">pascalCluster.IMG_3721.jpg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/pascalCluster.IMG_3721.jpg"><img alt="pascal supercomputer" height="298" width="400" style="width: 400px; height: 298px;" class="media-element file-default" data-delta="4" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/pascalCluster.IMG_3721-400x298.jpg" /></a>  </div>
+
+  
+</div>
+</div><br />Pascal GPU Cluster<sup> <a href="#credit10">10</a></sup><h4>GPU Boards</h4>
+<ul><li>The NVIDIA Tesla GPUs are PCI Express Gen3 x16 @32 GB/s bidirectional peak (except for Max which is Gen2 @16 GB/s), dual-slot computing modules that plug into PCI-e x16 slots in the compute node.</li>
+<li>GPU boards vary in their memory, number of GPUs and type of GPUs. Some examples below (click for larger image).</li>
+</ul><h5>Tesla K20<sup> <a href="#credit01">1</a></sup></h5>
+<div class="float-left"><div class="media media-element-container media-default"><div id="file-2225" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/teslak20-board-jpg">teslaK20.board_.jpg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/teslaK20.board_.jpg"><img alt="Tesla K20 Board" height="183" width="400" style="height: 183px; width: 400px;" class="media-element file-default" data-delta="6" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/teslaK20.board_-400x183.jpg" /></a>  </div>
+
+  
+</div>
+</div></div>
+<div class="float-left"><div class="media media-element-container media-default"><div id="file-2224" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/teslak20-01-gif">teslaK20.01.gif</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/teslaK20.01.gif"><img alt="tesla k20" height="358" width="400" style="height: 358px; width: 400px;" class="media-element file-default" data-delta="5" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/teslaK20.01-400x358.gif" /></a>  </div>
+
+  
+</div>
+</div></div>
+<h4 class="clear-float">Tesla K40<sup> <a href="#credit02">2</a></sup></h4>
+<div class="float-left"><div class="media media-element-container media-default"><div id="file-2226" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/teslak40-board-jpg">teslaK40.board_.jpg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/teslaK40.board_.jpg"><img alt="Tesla K40 board" height="184" width="400" style="height: 184px; width: 400px;" class="media-element file-default" data-delta="7" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/teslaK40.board_-400x184.jpg" /></a>  </div>
+
+  
+</div>
+</div></div>
+<div class="float-left"><div class="media media-element-container media-default"><div id="file-2227" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/teslak40-block-jpg">teslaK40.block_.jpg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/teslaK40.block_.jpg"><img alt="Tesla k40 block" height="242" width="400" style="height: 242px; width: 400px;" class="media-element file-default" data-delta="8" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/teslaK40.block_-400x242.jpg" /></a>  </div>
+
+  
+</div>
+</div></div>
+<h4 class="clear-float">Tesla K80<sup> <a href="#credit03">3</a></sup></h4>
+<div class="float-left"><div class="media media-element-container media-default"><div id="file-2228" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/teslak80-board-jpg">teslaK80.board_.jpg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/teslaK80.board_.jpg"><img alt="Tesla K80 Board image" height="181" width="400" style="height: 181px; width: 400px;" class="media-element file-default" data-delta="9" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/teslaK80.board_-400x181.jpg" /></a>  </div>
+
+  
+</div>
+</div></div>
+<p> </p>
+<div class="float-left"><div class="media media-element-container media-default"><div id="file-2229" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/teslak80-block-02-jpg">teslaK80.block_.02.jpg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/teslaK80.block_.02.jpg"><img alt="Tesla K80 Board diagram" height="170" width="400" style="height: 170px; width: 400px;" class="media-element file-default" data-delta="10" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/teslaK80.block_.02-400x170.jpg" /></a>  </div>
+
+  
+</div>
+</div></div>
+<div class="clear-float">Photos - from LC's Surface cluster (click for larger image)</div>
+<p class="clear-float"></p><div class="media media-element-container media-default"><div id="file-2230" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/surfacecomputenode-1000pix-jpg">surfaceComputeNode.1000pix.jpg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/surfaceComputeNode.1000pix.jpg"><img alt="Surface Compute Node" height="533" width="400" style="height: 533px; width: 400px;" class="media-element file-default" data-delta="11" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/surfaceComputeNode.1000pix-400x533.jpg" /></a>  </div>
+
+  
+</div>
+</div><br />Compute Node<sup> <a href="#credit04">4</a></sup><br />2 GPUs, 2 Sandy Bridge CPUs, no disk
+<p class="clear-float"></p><div class="media media-element-container media-default"><div id="file-2231" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/surfacegpus-1000pix-jpg">surfaceGPUs.1000pix.jpg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/surfaceGPUs.1000pix.jpg"><img alt="Surface GPUs" height="452" width="400" style="height: 452px; width: 400px;" class="media-element file-default" data-delta="12" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/surfaceGPUs.1000pix-400x452.jpg" /></a>  </div>
+
+  
+</div>
+</div>
+<p class="clear-float">Tesla K40 GPU Boards<sup> <a href="#credit04">4</a></sup><br />Close-up view; mounted bottom-side up</p>
+<p class="clear-float"></p><div class="media media-element-container media-default"><div id="file-2232" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/surfacemgmtnode-1000pix-jpg">surfaceMgmtNode.1000pix.jpg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/surfaceMgmtNode.1000pix.jpg"><img alt="Surface Management Node" height="533" width="400" style="height: 533px; width: 400px;" class="media-element file-default" data-delta="13" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/surfaceMgmtNode.1000pix-400x533.jpg" /></a>  </div>
+
+  
+</div>
+</div>
+<p class="clear-float">Non-compute Node<sup> <a href="#credit04">4</a></sup><br />No GPUs, 2 Sandy Bridge CPUs, disk drives</p>
+<p>GPU Chip - Primary Components (Tesla K20, K40, K80)</p>
+<ul><li><span class="note-red">Note</span> For details on NVIDIA's Pascal GPU (used in LC's Pascal cluster), see the <a href="/sites/default/files/pascal-architecture-whitepaper_0.pdf" target="_blank">NVIDIA Tesla P100 Whitepaper</a>.
+<p>The NVIDIA GPUs used in LC's Surface, RZHasgpu and Max clusters follow the basic design described below.</p>
+<p>Streaming Multiprocessors (SMX): | These are the actual computational units. NVIDIA calls these SMX units. LC's clusters have 13, 14 or 15 SMX units per GPU. Each SMX unit has 192 CUDA cores. Discussed in more detail below.</p>
+<p>L2 Cache: | Shared across the entire GPU. Amount of L2 cache varies by architecture. Primary point of data unification between the SMX units, servicing all load, store, and texture requests.</p>
+<p>Memory Controllers: | Interfaces between the chip's L2 cache and the global on-board DRAM memory</p>
+<p>PCI-e Interface: | PCI Express interface that connects the GPU to the host CPU(s). Primary function is to move data between the GPU and CPU memories.</p>
+<p>Scheduling, Control, Graphics Hardware: | Specialized hardware that manages all other operations on the chip.</p>
+<p><span class="heading3">Photos / diagrams (click for larger image)</span></p>
+<p></p><div class="media media-element-container media-default"><div id="file-2240" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/gk110-chip-01-jpg">GK110.chip_.01.jpg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/GK110.chip_.01.jpg"><img alt="GK110 Chip" height="175" width="300" style="height: 175px; width: 300px;" class="media-element file-default" data-delta="15" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/GK110.chip_.01-300x175.jpg" /></a>  </div>
+
+  
+</div>
+</div><br />NVIDIA GK110 GPU Chip<sup> <a href="#credit06">6</a></sup><br /><div class="media media-element-container media-default"><div id="file-2241" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="/files/gk110-die-01-jpg">GK110.die_.01.jpg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/GK110.die_.01.jpg"><img alt="GK110 Die" height="304" width="300" style="height: 304px; width: 300px;" class="media-element file-default" data-delta="16" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/GK110.die_.01-300x304.jpg" /></a>  </div>
+
+  
+</div>
+</div><br />and Die<sup> <a href="#credit07">7</a></sup><p></p><div class="media media-element-container media-default"><div id="file-2242" class="file file-image file-image-png">
+
+        <h2 class="element-invisible"><a href="/files/gk110blockdiagram-png">GK110blockDiagram.png</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/GK110blockDiagram.png"><img alt="GK110 BLock diagram" height="414" width="600" style="height: 414px; width: 600px;" class="media-element file-default" data-delta="17" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/GK110blockDiagram-600x414.png" /></a>  </div>
+
+  
+</div>
+</div><br />NVIDIA GK110-GK210 GPUs Block Diagram<sup> <a href="#credit08">8</a></sup><br />Demonstrating primary GPU components
+</li>
+</ul><p>SMX Details (Tesla K20, K40, K80)</p>
+<p></p><div class="media media-element-container media-default"><div id="file-2243" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/smx-gk210-01-gif">SMX.GK210.01.gif</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/SMX.GK210.01.gif"><img alt="SMX GK210 board" height="689" width="600" style="height: 689px; width: 600px;" class="media-element file-default" data-delta="18" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/SMX.GK210.01-600x689.gif" /></a>  </div>
+
+  
+</div>
+</div>
+<p><span class="note-red">Note</span>For details on NVIDIA's Pascal GPU (used in LC's Pascal cluster), see the <a href="/sites/default/files/pascal-architecture-whitepaper_0.pdf" target="_blank">NVIDIA Tesla P100 Whitepaper</a>.</p>
+<ul><li>The SMX unit is where the GPU's computational operations are performed.</li>
+<li>The number of SMX units per GPU chip varies, based on the type of GPU:
+<ul><li>Max: 14</li>
+<li>Surface: 15</li>
+<li>Rzhasgpu: 13</li>
+</ul></li>
+<li>SMX units have 192 single-precision CUDA cores</li>
+<li>Each CUDA core has one floating-point and one integer arithmetic unit; fully pipelined</li>
+<li>64 double-precision (DP) units are used for double-precision math</li>
+<li>32 special function units (SFU) are used for fast approximate transcendental operations</li>
+<li>Memory:
+<ul><li>GK110: 64 KB; divided between shared memory and L1 cache; configurable</li>
+<li>GK210: 128 KB; divided between shared memory and L1 cache; configurable</li>
+<li>48 KB Read-Only Data Cache; both GK110 and GK210</li>
+</ul></li>
+<li>Register File:
+<ul><li>GK110: 65,536 x 32-bit</li>
+<li>GK210: 131,072 x 32-bit</li>
+</ul></li>
+<li>Other hardware:
+<ul><li>Instruction Cache</li>
+<li>Warp Scheduler</li>
+<li>Dispatch Units</li>
+<li>Texture Filtering Units (16)</li>
+<li>Load/Store Units (32)</li>
+<li>Interconnect Network</li>
+</ul></li>
+</ul><p>NVIDIA GK210 GPU SMX Block Diagram<sup> <a href="#credit08">8</a></sup><br />Click for larger image </p>
+<ul><li>
+<h3><div class="media media-element-container media-default"><div id="file-2243--2" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="/files/smx-gk210-01-gif">SMX.GK210.01.gif</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/SMX.GK210.01.gif"><img alt="SMX GK210 board" height="689" width="600" style="height: 689px; width: 600px;" class="media-element file-default" data-delta="19" typeof="foaf:Image" src="https://hpc.llnl.gov/sites/default/files/resize/SMX.GK210.01-600x689.gif" /></a>  </div>
+
+  
+</div>
+</div></h3>
+<p> </p>
+<p>Additional Reading</p>
+<ul><li>Surfing the web will turn up a wealth of information. A few links to NVIDIA Tesla hardware specs are provided below for convenience:
+<ul><li><a href="/sites/default/files/pascal-architecture-whitepaper_0.pdf" target="_blank">NVIDIA Tesla P100 Whitepaper</a>.</li>
+<li><a href="/sites/default/files/Tesla-K10K40-datasheet.pdf">Tesla K10-K40 Datasheet</a></li>
+<li><a href="/sites/default/files/Tesla-K80K40-datasheet.pdf">Tesla K80-K40 Datasheet</a></li>
+<li><a href="/sites/default/files/Tesla-K20-Board-Specs.pdf">Tesla K20 Board Specs</a></li>
+<li><a href="/sites/default/files/Tesla-K40-Board-Specs.pdf">Tesla K40 Board Specs</a></li>
+<li><a href="/sites/default/files/Tesla-K80-Board-Specs.pdf">Tesla K80 Board Specs</a></li>
+</ul></li>
+</ul><h2><a name="GPUModels" id="GPUModels"> </a> <a name="CUDA" id="CUDA"> </a>GPU Programming APIs: CUDA</h2>
+<h3>Overview</h3>
+<ul><li>CUDA is both a parallel computing platform and an API for GPU programming.</li>
+<li>Created by NVIDIA (~2006) for use on its GPU hardware; does not currently run on non-NVIDIA hardware.</li>
+<li>CUDA originally stood for "Compute Unified Device Architecture", but this acronym is no longer used by NVIDIA.</li>
+<li>CUDA is accessible to developers through:
+<ul><li>CUDA accelerated libraries from NIVIDA and 3rd parties</li>
+<li>C/C++ compilers, such as nvcc from NVIDIA</li>
+<li>Fortran compilers, such as PGI's CUDA Fortran</li>
+<li>3rd party wrappers for Python, Perl, Java, Ruby, Lua, MATLAB, IDL...</li>
+<li>Compiler directives, such as <a href="#OpenACC">OpenACC</a></li>
+</ul></li>
+<li>NVIDIA's CUDA Toolkit is probably the most commonly used development environment:
+<ul><li>For C/C++ developers only</li>
+<li>Support for C++11</li>
+<li>C/C++ compiler (NVCC); based on the open source LLVM compiler infrastructure.</li>
+<li>GPU math libraries that provide single and double-precision C/C++ standard library math functions and intrinsics.</li>
+<li>GPU math libraries for FFT, BLAS, sparse matrix, dense and sparse direct solvers, random number generation, and more.</li>
+<li>Visual Profiler performance profiling tool (NVVP)</li>
+<li>CUDA-GDB debugger</li>
+<li>CUDA-MEMCHECK memory debugger</li>
+<li>Performance Primitives library (NPP) with GPU-accelerated image, video, and signal processing functions</li>
+<li>Graph Analytics library (nvGRAPH) providing parallel graph analytics</li>
+<li>Templated Parallel Algorithms &amp; Data Structures (Thrust) library for GPU accelerated sort, scan, transform and reduction operations</li>
+<li>Nsight IDE plugin for Eclipse or Visual Studio</li>
+</ul></li>
+</ul></li>
+</ul><h3>Basic Approach</h3>
+<p>The following steps describe a simple and typical scenario for developing CUDA code. Fully annotated vector addition example codes are provided, which you can pop open and view as you follow the steps below.<br />Follow Along:         </p>
+<ol><li>Identify which sections of code will be executed by the Host (CPU) and which sections by the Device (GPU).
+<ul><li>Device code is typically computationally intensive and able to be executed by many threads simultaneously in parallel.</li>
+<li>Host code is usually everything else</li>
+</ul></li>
+<li>Create kernels for the Device code:
+<ul><li>A kernel is a routine executed on the GPU as an array of threads in parallel</li>
+<li>Kernels are called from the Host</li>
+<li>Kernel syntax is similar to standard C/C++, but includes some CUDA extensions.</li>
+<li>All threads execute the same code</li>
+<li>Each thread has a unique ID</li>
+<li>Example with CUDA extensions highlighted:<br /><table><tr><td>Standard C Routine</td>
+<td>CUDA C Kernel</td>
+</tr><tr><td rowspan="2">
+<pre>void vecAdd(double *a, double *b, double *c, int n)
+{
+  for (int i = 0; i &lt; n; ++i)
+    c[i] = a[i] + b[i];
+}
+</pre></td>
+<td>
+<pre>__global__ void vecAdd(double *a, double *b, double *c, int n)
+{
+  int i = blockIdx.x * blockDim.x + threadIdx.x;
+  if (i &lt; n) c[i] = a[i] + b[i];
+}
+</pre></td>
+</tr></table></li>
+<li>Notes:<br />__global__ indicates a GPU kernel routine; must return void<br />blockIdx.x, blockDim.x, threadIdx.x are read-only built in variables used to compute each thread's unique ID as an index into the vectors</li>
+</ul></li>
+<li>Allocate space for data on the Host
+<ul><li>Use <span class="cmd">malloc</span> as usual in your Host code</li>
+<li>Initialize data (typically)</li>
+<li>Helpful convention: prepend Host variables with h_ to distinguish them from Device variables. Example:<br /><pre>h_a = (double*)malloc(bytes);
+h_b = (double*)malloc(bytes);
+h_c = (double*)malloc(bytes);</pre></li>
+</ul></li>
+<li>Allocate space for data on the Device
+<ul><li>Done in Host code, but actually allocates Device memory</li>
+<li>Use CUDA routine such as <span class="cmd">cudaMalloc</span></li>
+<li>Helpful convention: prepend Device variables with d_ to distinguish them from Host variables. Example:<br /><pre>cudaMalloc(&amp;d_a, bytes);
+cudaMalloc(&amp;d_b, bytes);
+cudaMalloc(&amp;d_c, bytes);</pre></li>
+</ul></li>
+<li>Copy data from the Host to the Device
+<ul><li>Done in Host code</li>
+<li>Use CUDA routine such as <span class="cmd">cudaMemcpy</span></li>
+<li>Example:<br /><pre>cudaMemcpy(d_a, h_a, bytes, cudaMemcpyHostToDevice);
+cudaMemcpy(d_b, h_b, bytes, cudaMemcpyHostToDevice);</pre></li>
+</ul></li>
+<li>Set the number of threads to use; threads per block (blocksize) and blocks per grid (gridsize):
+<ul><li>Can have significant impact on performance; need to experiment</li>
+<li>Optimal settings vary by GPU, application, memory, etc.</li>
+<li>One tool (a spreadsheet) that can assist is the "CUDA Occupancy Calculator". Available from NVIDIA - just google it.</li>
+</ul></li>
+<li>Launch kernel from the Host to run on the Device
+<ul><li>Called from Host code but actually executes on Device</li>
+<li>Uses a special syntax clearly showing that a kernel is being called</li>
+<li>Need to specify the gridsize and blocksize from previous step</li>
+<li>Arguments depend upon your kernel</li>
+<li>Example:<br /><pre>vecAdd&lt;&lt;&lt;gridSize, blockSize&gt;&gt;&gt;(d_a, d_b, d_c, n);</pre></li>
+</ul></li>
+<li>Copy results back from the Device to the Host
+<ul><li>Done in Host code</li>
+<li>Use CUDA routine such as <span class="cmd">cudaMemcpy</span></li>
+<li>Example:<br /><pre>cudaMemcpy(h_c, d_c, bytes, cudaMemcpyDeviceToHost);</pre></li>
+</ul></li>
+<li>Deallocate Host and/or Device space if no longer needed:
+<ul><li>Done in Host code</li>
+<li>Example:<br /><pre> // Release host memory
+free(h_a);
+free(h_b);
+free(h_c);
+// Release device memory
+cudaFree(d_a);
+cudaFree(d_b);
+cudaFree(d_c);
+</pre></li>
+</ul></li>
+<li>Continue processing on Host, making additional data allocations, copies and kernel calls as needed.</li>
+</ol><h3>Documentation and Further Reading</h3>
+<p> NVIDIA CUDA Zone: <a href="https://developer.nvidia.com/cuda-zone" target="_blank">https://developer.nvidia.com/cuda-zone</a>  Recommended - one stop shop for everything CUDA.</p>
+<ul><li>NVIDIA documentation installed on LC systems.<br />Complete and extensive set of manuals in pdf and html formats. Conveniently accessed online from all LC Linux clusters. See installation "doc" directories - for example: /opt/cudatoolkit/9.2/doc</li>
+<li>"An Even Easier Introduction to CUDA":  <a href="https://developer.nvidia.com/blog/even-easier-introduction-cuda">https://developer.nvidia.com/blog/even-easier-introduction-cuda</a></li>
+<li>CUDA Education &amp; Training: <a href="https://developer.nvidia.com/cuda-education-training">https://developer.nvidia.com/cuda-education-training</a></li>
+<li>"CUDA Refresher: The CUDA Programming Model": <a href="https://developer.nvidia.com/blog/cuda-refresher-cuda-programming-model/">https://developer.nvidia.com/blog/cuda-refresher-cuda-programming-model/</a></li>
+<li>"CUDA Programming on NVIDIA GPUs": <a href="http://people.maths.ox.ac.uk/~gilesm/cuda/" target="_blank">http://people.maths.ox.ac.uk/~gilesm/cuda/</a><br />5-day hands-on CUDA programming course by Mike Giles from Oxford University. Lecture and exercise materials available online for free.</li>
+</ul><h2><a id="OpenMP" name="OpenMP"></a>GPU Programming APIs: OpenMP</h2>
+<h3>Overview</h3>
+<ul><li>OpenMP (Open Multi-Processing) is a parallel programming industry standard and API used to explicitly direct multi-threaded, shared memory parallelism.</li>
+<li>The most recent versions of the API also include support for GPUs/accelerators.</li>
+<li>Comprised of three primary API components:
+<ul><li>Compiler Directives</li>
+<li>Runtime Library Routines</li>
+<li>Environment Variables&lt;</li>
+</ul></li>
+<li>Supports C, C++ and Fortran on most platforms and operating systems.</li>
+<li>Execution model:
+<ul><li>Main program running on Host begins as a serial thread (master thread) of execution.</li>
+<li>Regions of parallel execution are created as needed by the master thread</li>
+<li>Parallel regions are executed by a team of threads</li>
+<li>Work done by the team of threads in a parallel region can include loops or arbitrary blocks of code.</li>
+<li>Threads disband at the end of a parallel region and serial execution resumes until the next parallel region.</li>
+<li>Beginning with OpenMP4+, the programming model was expanded to include GPU/accelerators (Devices).</li>
+<li>Work is "offloaded" to a Device by using the appropriate compiler directives&lt;</li>
+</ul></li>
+<li>Memory model:
+<ul><li>Without GPUs: OpenMP is a shared memory model. Threads can all access common, shared memory. They may also have their own private memory.</li>
+<li>With GPUs: Host and Device memories are separate and managed through directives.</li>
+</ul></li>
+<li>The OpenMP API is defined and directed by the OpenMP Architecture Review Board, comprised of a group of major computer hardware and software vendors, and major parallel computing user facilities.</li>
+</ul><h3>Basic Approach</h3>
+<ul><li>Using OpenMP for non-GPU computing is covered in detail in LC's <a href="https://computing.llnl.gov/tutorials/openMP/" target="_blank">OpenMP Tutorial</a>.</li>
+<li>Developing GPU OpenMP codes can be much simpler than CUDA, since it is mostly a matter of inserting compiler directives into existing code. For example, a simple, annotated vector addition example is shown below.<br />Follow Along:        </li>
+</ul><ol><li>Identify which sections of code will be executed by the Host (CPU) and which sections by the Device (GPU).
+<ul><li>Device code is typically computationally intensive and able to be executed by many threads simultaneously in parallel.</li>
+<li>Host code is usually everything else</li>
+</ul></li>
+<li>Determine which data must be exchanged between the Host and Device</li>
+<li>Apply OpenMP directives to parallel regions and/or loops. In particular, use the OpenMP 4.5 "Device" directives.</li>
+<li>Apply OpenMP Device directives and/or directive clauses that define data transfer between Host and Device.</li>
+</ol><ul><li>In practice however, more work is usually needed in order to obtain improved/optimal performance. Other OpenMP directives, clauses and runtime library routines are used for such purposes as:
+<ul><li>Specifying the number of thread teams and distribution of work</li>
+<li>Collapsing loops</li>
+<li>Loop scheduling</li>
+</ul></li>
+</ul><h3>Documentation and Further Reading</h3>
+<p>OpenMP.org official website: <a href="http://openmp.org" target="_blank">http://openmp.org</a><br /> Recommended. Standard specifications, news, events, links to education resources, forums.</p>
+<ul><li>Example codes for OpenMP 4.5. For GPU/accelerator related examples, see section 4 for Devices: <a href="http://www.openmp.org/wp-content/uploads/openmp-examples-4.5.0.pdf" target="_blank">http://www.openmp.org/wp-content/uploads/openmp-examples-4.5.0.pdf</a></li>
+<li>"Targeting GPUs with OpenMP 4.5 Device Directives": <a href="http://on-demand.gputechconf.com/gtc/2016/presentation/s6510-jeff-larkin-targeting-gpus-openmp.pdf" target="_blank"> http://on-demand.gputechconf.com/gtc/2016/presentation/s6510-jeff-larkin-targeting-gpus-openmp.pdf</a><br />NVIDIA tutorial. Authors: James Beyer and Jeff Larkin, NVIDIA</li>
+</ul><h2><a name="OpenACC" id="OpenACC"> </a>GPU Programming APIs: OpenACC</h2>
+<h3>Overview</h3>
+<ul><li>OpenACC (Open ACCelerators) is a parallel programming industry standard and API designed to simplify heterogeneous CPU + acclerator (e.g., GPU) programming.</li>
+<li>API consists primarily of compiler directives used to specify loops and regions of code to be offloaded from a host CPU to an attached accelerator, such as a GPU. Also includes 30+ runtime routines and a few environment variables.</li>
+<li>Designed for portability across operating systems, host CPUs, and a wide range of accelerators, including APUs, GPUs, and many-core coprocessors.</li>
+<li>C/C++ and Fortran interfaces</li>
+<li>Execution model:
+<ul><li>User application executes on Host</li>
+<li>Parallel regions and loops that can be executed on an attached Device are identified with compiler directives</li>
+<li>Multiple levels of parallelism are supported: gang, worker and vector:
+<ul><li>Gang: parallel regions/loops are executed on the Device by one or more gangs of workers; coarse grained; equivalent to a CUDA threadblock</li>
+<li>Worker: equivalent to a CUDA warp of threads; fine grained; may be vector enabled</li>
+<li>Vector: SIMD / vector operations that may occur within a worker; equivalent to CUDA threads in warp executing in SIMT lockstep</li>
+</ul></li>
+<li>User should not attempt to implement barrier synchronization, critical sections or locks across gang, worker or vector parallelism.</li>
+</ul></li>
+<li>Memory model: Host and Device memories are separate; all data movement between Host memory and Device memory must be performed by the Host through system calls that explicitly move data between the separate memories,</li>
+<li>Similar to OpenMP, which it is expected to merge with at some point.</li>
+<li>Developed by Cray, Nvidia, PGI and CAPS enterprise <sup> <a href="#credit09">9</a></sup> (~2011). Currently includes over 20 member and supporter organizations.</li>
+</ul><h3>Basic Approach</h3>
+<ul><li>Developing OpenACC codes can be much simpler than CUDA, since it is mostly a matter of inserting compiler directives into existing code. For example, a simple, annotated vector addition example is shown below.<br />Follow Along:       </li>
+</ul><ol><li>Identify which sections of code will be executed by the Host (CPU) and which sections by the Device (GPU).
+<ul><li>Device code is typically computationally intensive and able to be executed by many threads simultaneously in parallel.</li>
+<li>Host code is usually everything else</li>
+</ul></li>
+<li>Determine which data must be exchanged between the Host and Device</li>
+<li>Apply OpenACC directives to parallel regions and/or loops.</li>
+<li>Apply OpenACC directives and/or directive clauses that define data transfer between Host and Device.</li>
+</ol><ul><li>In practice however, more work is usually needed in order to obtain improved/optimal performance. Other OpenACC directives, clauses and runtime library routines are used for such purposes as:
+<ul><li>Specifying the parallel scoping with gangs, workers, vectors</li>
+<li>Synchronizations</li>
+<li>Atomic operations</li>
+<li>Reductions</li>
+</ul></li>
+</ul><h3>Documentation and Further Reading</h3>
+<p>OpenACC.org official website: <a href="http://www.openacc-standard.org/" target="_blank">http://www.openacc-standard.org/</a><br /> Recommended. Standard specifications, news, events, links to education, software and application resources.</p>
+<ul><li>PGI Accelerator Compilers With OpenACC Directives (main page): <a href="http://www.pgroup.com/resources/accel.htm" target="_blank"> http://www.pgroup.com/resources/accel.htm </a></li>
+<li>Dr. Dobbs article series "Easy GPU Parallelism with OpenACC": <a href="http://www.drdobbs.com/parallel/easy-gpu-parallelism-with-openacc/240001776" target="_blank"> http://www.drdobbs.com/parallel/easy-gpu-parallelism-with-openacc/240001776</a></li>
+<li><a href="/sites/default/files/OpenACC_2.5_ref_guide.pdf" target="_blank">OpenACC API 2.5 Reference Guide</a> (local copy)</li>
+<li><a href="/sites/default/files/OpenACC.tutorial.NVIDIA.pdf" target="_blank">NVIDIA OpenACC Tutorial</a> (local copy)</li>
+</ul><h2><a name="OpenCL" id="OpenCL"> </a>GPU Programming APIs<br />OpenCL</h2>
+<h3>Overview</h3>
+<p>OpenCL (Open Computing Language) is an open industry standard and framework for writing parallel programs that execute across heterogeneous platforms.</p>
+<ul><li>Platforms may consist of central processing units (CPUs), graphics processing units (GPUs), digital signal processors (DSPs), field-programmable gate arrays (FPGAs) and other processors or hardware accelerators.</li>
+<li>The target of OpenCL is expert programmers wanting to write portable yet efficient code. Provides a low-level abstraction exposing details of the underlying hardware.</li>
+<li>Consists of a language (C/C++ based), an API, libraries and a runtime system.</li>
+<li>Execution model:
+<ul><li>Hardware consists of a Host connected to one or more OpenCL Devices.</li>
+<li>An OpenCL Device is divided into one or more compute units (CUs) which are further divided into one or more processing elements (PEs). Computations on a device occur within the processing elements.</li>
+<li>An OpenCL application is implemented as both Host code and Device kernel code. These are two distinct units of execution.</li>
+<li>Host code runs on a host processor according to the models native to the host platform.</li>
+<li>Device kernel code is where the computational work is done. It is called as a command from the Host code, and executes on an OpenCL Device.</li>
+<li>The Host manages the execution context/environment of kernels.</li>
+<li>The Host also interacts with kernels through a command-queue provided by the API. Permits specification of memory transactions and synchronization points.</li>
+<li>Work executed on a Device is decomposed into work-items, work-groups and work-subgroups. For details, see the API specs.</li>
+</ul></li>
+<li>Memory model:
+<ul><li>Memory in OpenCL is divided into two parts: Host memory and Device memory.</li>
+<li>Device memory is further divided into 4 memory regions: Global, Constant, Local and Private memory address space.</li>
+<li>Beyond this, the OpenCL memory model is complex and requires understanding the API specs in detail.</li>
+</ul></li>
+<li>OpenCL is an open standard maintained by the non-profit technology consortium <a href="https://www.khronos.org/" target="_blank">Khronos Group</a>.
+<ul><li>OpenCL is not discussed further in this document, as it is not commonly used or supported at LC.</li>
+</ul></li>
+</ul><h3>Documentation and Further Reading</h3>
+<ul><li>Khronos Group website: <a href="https://www.khronos.org/opencl" target="_blank"> https://www.khronos.org/opencl</a>  Recommended. Standard specifications, software, resources, documentation, forums</li>
+<li>
+<h2><a name="GPUCompiling" id="GPUCompiling"> </a> <a name="CompileCUDA" id="CompileCUDA"> </a>Compiling: CUDA</h2>
+<p>The following instructions apply to LC's TOSS 3 Linux GPU clusters:</p>
+<p>C/C++</p>
+<ul><li>NVIDIA CUDA software is directly accessible under <span class="file">/opt/cudatoolkit/</span>.</li>
+<li>Alternately, you may load an NVIDIA CUDA Toolkit module:<br /><table class="table table-striped table-bordered table-narrow"><tr><td><span class="cmd">module load opt</span></td>
+<td> </td>
+<td>(load the opt module first)</td>
+</tr><tr><td><span class="cmd">module avail cuda</span></td>
+<td> </td>
+<td>(display available cuda modules)</td>
+</tr><tr><td><span class="cmd">module load cudatoolkit/9.2</span></td>
+<td> </td>
+<td>(load a recent CUDA toolkit module)</td>
+</tr></table></li>
+<li>Source files containing CUDA code should be named with a .cu suffix. For example: myprog.cu</li>
+<li>Use NVIDIA's C/C++ nvcc compiler to compile your source files. Mixing .cu with .c or .cc is fine. For example:
+<p><span class="cmd">nvcc sub1.cu sub2.c myprog.cu -o myprog</span></p>
+</li>
+<li>Note: nvcc is actually a compiler driver and depends upon gcc as the native C/C++ compiler. Details can be found in the nvcc documentation.</li>
+</ul><h3>Fortran</h3>
+<ul><li>Source files containing CUDA code should be named with a .cuf suffix. For example: myprog.cuf</li>
+<li>Load a recent PGI compiler package:<br /><table class="table table-striped table-bordered table-narrow"><tr><td><span class="cmd">module avail pgi</span></td>
+<td> </td>
+<td>(display available PGI compiler packages)</td>
+</tr><tr><td><span class="cmd">module load pgi/18.5</span></td>
+<td> </td>
+<td>(load a recent version)</td>
+</tr></table></li>
+<li>Use the PGI pgfortran, pgf90 or pgf95 compiler command to compile your source files. Mixing .cuf with .f or .f90 is fine. For example:
+<p><span class="cmd">pgfortran sub1.cuf sub2.f myprog.f -o myprog</span></p>
+</li>
+<li>Optional: if you want to use tools from the NVIDIA CUDA Toolkit, you'll need to load an NVIDIA cudatoolkit module, as shown in the C/C++ example above.</li>
+</ul><h3>Getting Help</h3>
+<ul><li>C/C++
+<ul><li>Use the <span class="cmd">nvcc --help</span> command</li>
+<li>See the NVIDIA documentation installed in the /doc subdirectory /opt/cudatoolkit/version/.</li>
+<li>Consult NVIDIA's documentation online at <a href="http://nvidia.com" target="_blank">nvidia.com</a></li>
+</ul></li>
+<li>Fortran:
+<ul><li>pgfortran, pgf90, pgf95 man page - see the -Mcuda section</li>
+<li>PGI documentation: <a href="http://www.pgroup.com/resources/cudafortran.htm"> http://www.pgroup.com/resources/cudafortran.htm</a></li>
+</ul></li>
+</ul><h2><a name="CompileOpenMP" id="CompileOpenMP"> </a>Compiling: OpenMP</h2>
+<h3>Current Situation for LC's Linux Commodity Clusters</h3>
+<ul><li>The OpenMP 4.0 and 4.5 APIs provide constructs for GPU "Device" computing. OpenMP 4.5 in particular, provides support for offloading computations to GPUs.</li>
+<li>Support for these constructs varies between compilers.</li>
+<li>Support for OpenMP 4.5 offloading for NVIDIA GPU hardware is not expected from Intel or PGI anytime soon.</li>
+<li>GCC supports OpenMP 4.5 offloading in version 6.1, but only for Intel Knights Landing and AMD HSAIL. Support for NVDIA GPUs may come later.</li>
+<li>The Clang open-source C/C++ compiler OpenMP 4.5 offloading support for NVIDIA GPUs is under development and is expected to become available in a future version.</li>
+<li>The OpenMP website maintains of list of compilers and OpenMP support at: <a href="https://www.openmp.org/resources/openmp-compilers-tools/" target="_blank">https://www.openmp.org/resources/openmp-compilers-tools/</a>.</li>
+<li>In summary: there's not much available yet...</li>
+</ul><h2><a name="CompileOpenACC" id="CompileOpenACC"> </a>Compiling: OpenACC</h2>
+<h3>Load Required Modules</h3>
+<ul><li>Load a PGI compiler package:<br /><table class="table table-striped table-bordered table-narrow"><tr><td><span class="cmd">module avail pgi</span></td>
+<td> </td>
+<td>(display available PGI compiler packages)</td>
+</tr><tr><td><span class="cmd">module load pgi/18.5</span></td>
+<td> </td>
+<td>(load a recent version)</td>
+</tr></table></li>
+<li>Optional: load a recent NVIDIA cudatoolkit module. This is only needed if you plan on using NVIDIA profiling/debugging tools, such as nvprof or nvvp:<br /><table class="table table-striped table-bordered table-narrow"><tr><td><span class="cmd">module load opt</span></td>
+<td> </td>
+<td>(load the opt module first)</td>
+</tr><tr><td><span class="cmd">module avail cuda</span></td>
+<td> </td>
+<td>(display available cuda modules)</td>
+</tr><tr><td><span class="cmd">module load cudatoolkit/9.2</span></td>
+<td> </td>
+<td>(load a recent CUDA toolkit module)</td>
+</tr></table></li>
+<li>Alternately, the NVIDIA CUDA software is directly accessible under <span class="file">/opt/cudatoolkit/</span>.</li>
+</ul><h3>Compile Using a PGI Compiler Command</h3>
+<ul><li>Use the appropriate PGI compiler command, depending upon the source code type.<br /><table><tr><th>Language</th>
+<th>Compiler Command</th>
+<th>Flags</th>
+<th>Notes</th>
+</tr><tr><td>C</td>
+<td>pgcc</td>
+<td rowspan="3">-acc<br />-Minfo<br /><span>-Minfo=acc </span></td>
+<td rowspan="3">
+<ol><li>Same flags apply to all compiler commands.</li>
+<li>-acc flag is required to turn on OpenACC source code directives.</li>
+<li>-Minfo reports compiler optimizations. -Minfo=acc reports only optimizations related to parallelization and GPU code.</li>
+<li>Other compiler flags may be used as desired.</li>
+<li>pgf77 is not available for OpenACC</li>
+</ol></td>
+</tr><tr><td>C++</td>
+<td>pgCC</td>
+</tr><tr><td>Fortran</td>
+<td>pgfortran<br />pgf90</td>
+</tr></table></li>
+<li>Example:<br /><table><tr><td>
+<pre>% pgcc -acc -Minfo=acc -fast matmult.c
+main:
+     24, Generating copyin(a[:][:],b[:][:])
+         Generating copy(c[:][:])
+     25, Loop is parallelizable
+     26, Loop is parallelizable
+     27, Complex loop carried dependence of c prevents parallelization
+         Loop carried dependence of c prevents parallelization
+         Loop carried backward dependence of c prevents vectorization
+         Inner sequential loop scheduled on accelerator
+         Accelerator kernel generated
+         Generating Tesla code
+         25, #pragma acc loop gang /* blockIdx.y */
+         26, #pragma acc loop gang, vector(128) /* blockIdx.x threadIdx.x */
+</pre></td>
+</tr></table></li>
+</ul><h3>Getting Help</h3>
+<ul><li>PGI Accelerator Compilers With OpenACC Directives (main page): <a href="http://www.pgroup.com/resources/accel.htm" target="_blank"> http://www.pgroup.com/resources/accel.htm</a></li>
+<li>PGI Accelerator Compilers OpenACC Getting Started Guide: <a href="http://www.pgroup.com/doc/openacc_gs.pdf" target="_blank">http://www.pgroup.com/doc/openacc_gs.pdf</a></li>
+</ul><h2><a name="GPUMisc" id="GPUMisc"> </a>Misc. Tips &amp; Tools</h2>
+<p class="h5">The following information applies to LC's Linux GPU clusters surface, max and rzhasgpu.</p>
+<h3>Running Jobs</h3>
+<ul><li>Make sure that you are actually on a compute node with a GPU:
+<ul><li>Login nodes do NOT have GPUs</li>
+<li>max: be sure to specify the pgpu partition, as these are the only nodes with GPUs.</li>
+<li>surface: all compute nodes in pbatch are NVIDIA K40m GPUs. Compute nodes in gpgpu are NVIDIA M60 GPUs.</li>
+<li>rzhasgpu: all compute nodes (pdebug, pbatch, etc.) have GPUs.</li>
+</ul></li>
+<li>At runtime, on a GPU node, you may need to load the same modules/dotkits that you used when you built your executable. Depends on the situation and what you want to do.</li>
+<li>Visualization jobs have priority on surface and max gpu nodes. Users who are not running visualization work, should run in standby mode:
+<ul><li>Include #MSUB -l qos=standby in your batch script</li>
+<li>Or, submit your job with msub -l qos=standby</li>
+<li>Standy jobs can be preempted (terminated) if a non-standby job requires their nodes.</li>
+<li>Non-visualization jobs not using standby may be terminated</li>
+</ul></li>
+</ul><h3>GPU Hardware Info</h3>
+<ul><li>deviceQuery: command to display a variety of GPU hardware information. Must be executed on a node that actually has GPUs.</li>
+<li>You may need to build this yourself if LC hasn't already, or if it's not in your path. Typically found under:
+<p><span class="file">/opt/cudatoolkit/version/samples/1_Utilities/deviceQuery</span></p>
+<p>Example output below:</p>
+<pre>% deviceQuery
+./deviceQuery Starting...
+
+ CUDA Device Query (Runtime API) version (CUDART static linking)
+
+Detected 2 CUDA Capable device(s)
+
+Device 0: "Tesla P100-PCIE-16GB"
+  CUDA Driver Version / Runtime Version          9.2 / 9.1
+  CUDA Capability Major/Minor version number:    6.0
+  Total amount of global memory:                 16281 MBytes (17071734784 bytes)
+  (56) Multiprocessors, ( 64) CUDA Cores/MP:     3584 CUDA Cores
+  GPU Max Clock rate:                            1329 MHz (1.33 GHz)
+  Memory Clock rate:                             715 Mhz
+  Memory Bus Width:                              4096-bit
+  L2 Cache Size:                                 4194304 bytes
+  Maximum Texture Dimension Size (x,y,z)         1D=(131072), 2D=(131072, 65536), 3D=(16384, 16384, 16384)
+  Maximum Layered 1D Texture Size, (num) layers  1D=(32768), 2048 layers
+  Maximum Layered 2D Texture Size, (num) layers  2D=(32768, 32768), 2048 layers
+  Total amount of constant memory:               65536 bytes
+  Total amount of shared memory per block:       49152 bytes
+  Total number of registers available per block: 65536
+  Warp size:                                     32
+  Maximum number of threads per multiprocessor:  2048
+  Maximum number of threads per block:           1024
+  Max dimension size of a thread block (x,y,z): (1024, 1024, 64)
+  Max dimension size of a grid size    (x,y,z): (2147483647, 65535, 65535)
+  Maximum memory pitch:                          2147483647 bytes
+  Texture alignment:                             512 bytes
+  Concurrent copy and kernel execution:          Yes with 2 copy engine(s)
+  Run time limit on kernels:                     No
+  Integrated GPU sharing Host Memory:            No
+  Support host page-locked memory mapping:       Yes
+  Alignment requirement for Surfaces:            Yes
+  Device has ECC support:                        Enabled
+  Device supports Unified Addressing (UVA):      Yes
+  Supports Cooperative Kernel Launch:            Yes
+  Supports MultiDevice Co-op Kernel Launch:      Yes
+  Device PCI Domain ID / Bus ID / location ID:   0 / 4 / 0
+  Compute Mode:
+      Exclusive Process (many threads in one process is able to use ::cudaSetDevice() with this device)
+   ...
+</pre></li>
+<li>nvidia-smi: NVIDIA System Management Interface utility. Provides monitoring and management capabilities for NVIDIA GPUs. Example below - see man page, or use with -h flag for details.<br /><pre>% nvidia-smi
+Thu Mar 16 10:10:53 2017
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 367.48                 Driver Version: 367.48                    |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  Tesla K40m          On   | 0000:08:00.0     Off |                    0 |
+| N/A   22C    P8    19W / 235W |      0MiB / 11439MiB |      0%   E. Process |
++-------------------------------+----------------------+----------------------+
+|   1  Tesla K40m          On   | 0000:82:00.0     Off |                    0 |
+| N/A   20C    P8    19W / 235W |      0MiB / 11439MiB |      0%   E. Process |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID  Type  Process name                               Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+</pre></li>
+</ul><h3>Debuggers, Tools</h3>
+<ul><li>NVIDIA's nvprof is a simple to use, text based profiler for GPU codes. To use it, make sure your cudatoolkit module is loaded, and then call it with your executable. For example:
+<pre>% module list
+Currently Loaded Modulefiles:
+  1) java/1.8.0        2) cudatoolkit/9.2
+
+% nvprof a.out
+==60828== NVPROF is profiling process 60828, command: a.out
+final result: 1.000000
+==60828== Profiling application: a.out
+==60828== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 64.14%  217.82us         2  108.91us  108.42us  109.41us  [CUDA memcpy HtoD]
+ 31.86%  108.19us         1  108.19us  108.19us  108.19us  [CUDA memcpy DtoH]
+  4.00%  13.568us         1  13.568us  13.568us  13.568us  vecAdd(double*, double*, double*, int)
+
+==60828== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 98.88%  536.81ms         3  178.94ms  219.99us  536.37ms  cudaMalloc
+  0.63%  3.3933ms       332  10.220us     101ns  474.13us  cuDeviceGetAttribute
+  0.18%  955.34us         3  318.45us  86.272us  691.17us  cudaMemcpy
+  0.17%  946.59us         4  236.65us  218.84us  259.55us  cuDeviceTotalMem
+  0.09%  504.55us         3  168.18us  154.05us  192.83us  cudaFree
+  0.05%  244.76us         4  61.189us  55.944us  72.734us  cuDeviceGetName
+  0.00%  26.266us         1  26.266us  26.266us  26.266us  cudaLaunch
+  0.00%  2.8030us         4     700ns     180ns  2.0840us  cudaSetupArgument
+  0.00%  2.0060us         2  1.0030us     189ns  1.8170us  cuDeviceGetCount
+  0.00%  1.0600us         8     132ns      94ns     239ns  cuDeviceGet
+  0.00%     969ns         1     969ns     969ns     969ns  cudaConfigureCall
+</pre></li>
+<li>NVIDIA's Visual Profiler, nvvp is a very full featured, graphical profiler and performance analysis tool. It can provide very detailed information about how your code is using the GPU.
+<ul><li>To start it up, make sure your cudatoolkit and java modules are loaded, and then invoke it with your executable - as for nvprof above.</li>
+<li>See NVIDIA's documentation for more information.</li>
+<li>Screen shot below - click for larger image<span> </span></li>
+</ul></li>
+<li>NVIDIA Nsight provides a complete development platform for heterogeneous computing, that includes debugging and profiling tools. See NVIDIA's documentation for details.</li>
+<li>Debugging: several choices are available. See the respective documentation for details.
+<ul><li>NVIDIA cuda-debug</li>
+<li>NVIDIA cuda-memcheck</li>
+<li>TotalView</li>
+<li>Allinea DDT</li>
+</ul></li>
+</ul><hr /><p><span class="red-note">NOTE</span>This completes the tutorial.</p>
+<p>Pease complete the <a href="/training/tutorials/evaluation-form">online evaluation form</a> - unless you are doing the exercise, in which case please complete it at the end of the exercise.</p>
+<p>Where would you like to go now?</p>
+<ul><li><a href="/training/tutorials/linux-tutorial-exercises#Exercise2">Exercise 2</a></li>
+<li><a href="#top">Back to the top</a></li>
+</ul><h2><a name="References" id="References"> </a>References and More Information</h2>
+<ul><li> </li>
+<li>Original Author: Blaise Barney; Contact: <a href="mailto:hpc-tutorials@llnl.gov">hpc-tutorials@llnl.gov</a>, Livermore Computing.</li>
+<li>Hardware/Vendor Information:
+<ul><li>AMD: <a href="http://www.amd.com" target="_blank">amd.com</a></li>
+<li>Intel: <a href="http://www.intel.com" target="_blank">intel.com</a></li>
+<li>Mellanox: <a href="http://www.mellanox.com" target="_blank">mellanox.com</a></li>
+<li>QLogic: <a href="http://www.qlogic.com" target="_blank">qlogic.com</a></li>
+<li>Voltaire: <a href="http://www.voltaire.com" target="_blank">voltaire.com</a></li>
+</ul></li>
+<li>Documentation on LC's Confluence Wiki:
+<ul><li>TOSS 2: <a href="https://lc.llnl.gov/confluence/display/TLCC2" target="_blank"> https://lc.llnl.gov/confluence/display/TLCC2</a></li>
+<li>TCE/TOSS 3: <a href="https://lc.llnl.gov/confluence/display/TCE/TCE+Home" target="_blank">https://lc.llnl.gov/confluence/display/TCE/TCE+Home</a></li>
+</ul></li>
+<li>SLURM Documentation: <a href="http://slurm.schedmd.com/documentation.html" target="_blank">http://slurm.schedmd.com</a></li>
+<li>Linux Project Report: <a href="/sites/default/files/LinuxProjectReport.2002.08.18.pdf" target="_blank">2002 Linux Project Report</a></li>
+<li>Credits/Sources
+<ul><li><a name="credit01" id="credit01"><sup>1</sup>  NVIDIA: Tesla K20 GPU Accelerator Board Specification. BD-06455-001_v07, July 2013 </a></li>
+<li><a name="credit02" id="credit02"><sup>2</sup>  NVIDIA: Tesla K40 GPU Accelerator Board Specification. BD-06902-001_v05, November 2013 </a></li>
+<li><a name="credit03" id="credit03"><sup>3</sup>  NVIDIA: Tesla K80 GPU Accelerator Board Specification. BD-07317-001_v05, January 2015 </a></li>
+<li><a name="credit04" id="credit04"><sup>4</sup>  Blaise Barney, LLNL. Livermore Computing's Surface cluster. April 2016 </a></li>
+<li><a name="credit05" id="credit05"><sup>5</sup>  Adam Bertsch, LLNL. Livermore Computing's Surface cluster. </a></li>
+<li><a name="credit06" id="credit06"><sup>6</sup>  wikipedia.com </a></li>
+<li><a name="credit07" id="credit07"><sup>7</sup>  NVIDIA Whitepaper: NVIDIA's Next Generation CUDA Compute Architecture: Kepler GK110/210 V1.0. 2014. Annotations by Blaise Barney, LLNL </a></li>
+<li><a name="credit08" id="credit08"><sup>8</sup>  NVIDIA Whitepaper: NVIDIA's Next Generation CUDA Compute Architecture: Kepler GK110/210 V1.0. 2014. </a></li>
+</ul></li>
+</ul></li>
+</ul></div></div></div>    </div>
+  </div>
+</div>
+
+
+<!-- Needed to activate display suite support on forms -->
+  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                   		</div>
+                  </main>
+                </div>
+      		</div>
+    	</div>
+	</div>
+  	
+	
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 footer-top">
+
+                    <a class="llnl" href="https://www.llnl.gov/" target="_blank"><img src="/sites/all/themes/tid/images/llnl.png" alt="LLNL"></a>
+                    <p>
+                        Lawrence Livermore National Laboratory
+                        <br>7000 East Avenue • Livermore, CA 94550
+                    </p>
+                    <p>
+                        Operated by Lawrence Livermore National Security, LLC, for the
+                        <br>Department of Energy's National Nuclear Security Administration.
+                    </p>
+                    <div class="footer-top-logos">
+                        <a class="nnsa" href="https://www.energy.gov/nnsa/national-nuclear-security-administration" target="_blank"><img src="/sites/all/themes/tid/images/nnsa2.png" alt="NNSA"></a>
+                        <a class="doe" href="https://www.energy.gov/" target="_blank"><img src="/sites/all/themes/tid/images/doe_small.png" alt="U.S. DOE"></a>
+                        <a class="llns" href="https://www.llnsllc.com/" target="_blank"><img src="/sites/all/themes/tid/images/llns.png" alt="LLNS"></a>
+                	</div>
+
+
+
+                </div>
+                <div class="col-sm-12 footer-bottom">
+                	
+
+                    <span>UCRL-MI-131558  &nbsp;|&nbsp;&nbsp;</span><a href="https://www.llnl.gov/disclaimer" target="_blank">Privacy &amp; Legal Notice</a>	 &nbsp;|&nbsp;&nbsp; <a href="mailto:webmaster-comp@llnl.gov">Website Query</a> &nbsp;|&nbsp;&nbsp;<a href="/about-us/contact-us" >Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+  </body>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/jquery_update/replace/jquery/2.1/jquery.min.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-extend-3.4.0.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-html-prefilter-3.5.0-backport.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/drupal.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/jquery_update/replace/ui/external/jquery.cookie.js?v=67fb34f6a866c40d0570"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/jquery_update/replace/misc/jquery.form.min.js?v=2.69"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/ajax.js?v=7.80"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/jquery_update/js/jquery_update.js?v=0.0.1"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/extlink/extlink.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/jquery.flexslider.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/slide.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/lightbox2/js/lightbox.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/libraries/footable/footable.min.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/footable/footable.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/views/js/base.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/progress.js?v=7.80"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/views/js/ajax_view.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/matomo/matomo.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _paq = _paq || [];(function(){var u=(("https:" == document.location.protocol) ? "https://analytics.llnl.gov/" : "http://analytics.llnl.gov/");_paq.push(["setSiteId", "149"]);_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setDoNotTrack", 1]);_paq.push(["trackPageView"]);_paq.push(["setIgnoreClasses", ["no-tracking","colorbox"]]);_paq.push(["enableLinkTracking"]);var d=document,g=d.createElement("script"),s=d.getElementsByTagName("script")[0];g.type="text/javascript";g.defer=true;g.async=true;g.src="https://hpc.llnl.gov/sites/default/files/matomo/piwik.js?qsohrw";s.parentNode.insertBefore(g,s);})();
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/bootstrap.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mobilemenu.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/custom.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mods.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"tid","theme_token":"SuasRUgPyQAwGophWJqCtKn1pDNaV0Z6GtNHQtRiT1U","jquery_version":"2.1","js":{"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/2.1\/jquery.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/external\/jquery.cookie.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/misc\/jquery.form.min.js":1,"misc\/ajax.js":1,"sites\/all\/modules\/contrib\/jquery_update\/js\/jquery_update.js":1,"sites\/all\/modules\/contrib\/extlink\/extlink.js":1,"sites\/all\/themes\/tid\/js\/jquery.flexslider.js":1,"sites\/all\/themes\/tid\/js\/slide.js":1,"sites\/all\/modules\/contrib\/lightbox2\/js\/lightbox.js":1,"sites\/all\/libraries\/footable\/footable.min.js":1,"sites\/all\/modules\/contrib\/footable\/footable.js":1,"sites\/all\/modules\/contrib\/views\/js\/base.js":1,"misc\/progress.js":1,"sites\/all\/modules\/contrib\/views\/js\/ajax_view.js":1,"sites\/all\/modules\/contrib\/matomo\/matomo.js":1,"0":1,"sites\/all\/themes\/tid\/js\/bootstrap.js":1,"sites\/all\/themes\/tid\/js\/mobilemenu.js":1,"sites\/all\/themes\/tid\/js\/custom.js":1,"sites\/all\/themes\/tid\/js\/mods.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/book\/book.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/extlink\/extlink.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/lightbox2\/css\/lightbox.css":1,"sites\/all\/libraries\/footable\/footable.standalone.min.css":1,"sites\/all\/modules\/contrib\/footable\/css\/footable_standalone.css":1,"sites\/all\/modules\/contrib\/print\/print_ui\/css\/print_ui.theme.css":1,"sites\/all\/themes\/tid\/css\/bootstrap.css":1,"sites\/all\/themes\/tid\/css\/flexslider.css":1,"sites\/all\/themes\/tid\/css\/system.menus.css":1,"sites\/all\/themes\/tid\/css\/style.css":1,"sites\/all\/themes\/tid\/font-awesome\/css\/font-awesome.css":1,"sites\/all\/themes\/tid\/css\/treewalk.css":1,"sites\/all\/themes\/tid\/css\/popup.css":1,"sites\/all\/themes\/tid\/css\/mods.css":1}},"lightbox2":{"rtl":0,"file_path":"\/(\\w\\w\/)public:\/","default_image":"\/sites\/all\/modules\/contrib\/lightbox2\/images\/brokenimage.jpg","border_size":10,"font_color":"000","box_color":"fff","top_position":"","overlay_opacity":"0.8","overlay_color":"000","disable_close_click":true,"resize_sequence":0,"resize_speed":400,"fade_in_speed":400,"slide_down_speed":600,"use_alt_layout":false,"disable_resize":false,"disable_zoom":false,"force_show_nav":false,"show_caption":true,"loop_items":false,"node_link_text":"View Image Details","node_link_target":false,"image_count":"Image !current of !total","video_count":"Video !current of !total","page_count":"Page !current of !total","lite_press_x_close":"press \u003Ca href=\u0022#\u0022 onclick=\u0022hideLightbox(); return FALSE;\u0022\u003E\u003Ckbd\u003Ex\u003C\/kbd\u003E\u003C\/a\u003E to close","download_link_text":"","enable_login":false,"enable_contact":false,"keys_close":"c x 27","keys_previous":"p 37","keys_next":"n 39","keys_zoom":"z","keys_play_pause":"32","display_image_size":"original","image_node_sizes":"()","trigger_lightbox_classes":"","trigger_lightbox_group_classes":"","trigger_slideshow_classes":"","trigger_lightframe_classes":"","trigger_lightframe_group_classes":"","custom_class_handler":0,"custom_trigger_classes":"","disable_for_gallery_lists":true,"disable_for_acidfree_gallery_lists":true,"enable_acidfree_videos":true,"slideshow_interval":5000,"slideshow_automatic_start":true,"slideshow_automatic_exit":true,"show_play_pause":true,"pause_on_next_click":false,"pause_on_previous_click":true,"loop_slides":false,"iframe_width":600,"iframe_height":400,"iframe_border":1,"enable_video":false,"useragent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64; trendictionbot0.5.0; trendiction search; http:\/\/www.trendiction.de\/bot; please let us know of any problems; web at trendiction.com) Gecko\/20170101 Firefox\/67.0"},"footable":{"footable":{"expandAll":false,"expandFirst":false,"showHeader":true,"toggleColumn":"first","breakpoints":{"xs":480,"sm":768,"md":992,"lg":1200}}},"views":{"ajax_path":"\/views\/ajax","ajaxViews":{"views_dom_id:02f8a87de28a2580e6d9b2b63ce72114":{"view_name":"systems_summary_view","view_display_id":"gpu_block","view_args":"","view_path":"node\/833","view_base_path":null,"view_dom_id":"02f8a87de28a2580e6d9b2b63ce72114","pager_element":0}}},"urlIsAjaxTrusted":{"\/views\/ajax":true,"\/training\/tutorials\/livermore-computing-linux-commodity-clusters-overview-part-two":true},"extlink":{"extTarget":0,"extClass":"ext","extLabel":"(link is external)","extImgClass":0,"extIconPlacement":0,"extSubdomains":1,"extExclude":".gov|.com|.org|.io|.be|.us|.edu","extInclude":"-int.llnl.gov|lc.llnl.gov|caas.llnl.gov|exchangetools.llnl.gov","extCssExclude":"","extCssExplicit":"","extAlert":"_blank","extAlertText":"This page is routing you to a page which requires extra authentication. You must have on-site or VPN access.\r\n\r\nPress OK to continue or cancel to return.\r\n\r\nIf this fails or times-out, you are not allowed access to the internal page or the server may be temporarily unavailable.\r\n\r\nIf you have an on-site or VPN account and are still having trouble, please send e-mail to lc-hotline@llnl.gov or call 925-422-4531 for further assistance.","mailtoClass":"mailto","mailtoLabel":"(link sends e-mail)"},"matomo":{"trackMailto":1}});
+//--><!]]>
+</script>
+</html>

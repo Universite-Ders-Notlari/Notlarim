@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<head>
+<meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="/training/tutorials/linux-tutorial-exercises" />
+<link rel="shortlink" href="/node/831" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="shortcut icon" href="https://hpc.llnl.gov/sites/all/themes/tid/favicon.ico" type="image/vnd.microsoft.icon" />
+<title>Linux Tutorial Exercises | High Performance Computing</title>
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_kShW4RPmRstZ3SpIC-ZvVGNFVAi0WEMuCnI0ZkYIaFw.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_bq48Es_JAifg3RQWKsTF9oq1S79uSN2WHxC3KV06fK0.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_vAm-LJc0tkC-w_c6v7Ekq0bW26Pzl31HvPM6kbvK-pc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://hpc.llnl.gov/sites/default/files/css/css_ca6tstDbY9-H23Ty8uKiDyFQLT1AZftZKldhbTPPnm8.css" media="all" />
+<!--[if lt IE 9]><script src="/sites/all/themes/tid/js/html5.js"></script><![endif]-->
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-831 node-type-user-portal-one-column-page">
+  <div aria="contentinfo"><noscript><img src="https://analytics.llnl.gov/piwik.php?idsite=149" class="no-border" alt="" /></noscript></div>
+    <div id="page">
+	<div class="unclassified"></div>
+	<div class="headertop">
+					<div id="skip-nav" role="navigation" aria-labelledby="skip-nav" class="reveal">
+  			<a href="#main-content">Skip to main content</a>
+			</div>
+					</div>
+        <div class="headerwrapbg">
+                        <div class="headerwrap-portal">
+                <div id="masthead" class="site-header container" role="banner">
+                    <div class="row">
+                        <div class="llnl-logo col-sm-3">
+                            <a href="https://www.llnl.gov" target="_blank" title="Lawrence Livermore National Laboratory">
+                                <img src="/sites/all/themes/tid/images/llnl-tab-portal.png" alt="LLNL Home" />
+                            </a>
+                        </div>
+                        <div id="logo" class="site-branding col-sm-4">
+                                                            <div id="site-logo">
+                                        <!--High Performance Computing<br />Livermore Computing Center-->
+                                        																					<a href="/user-portal" class="text-dark" title="Livermore Computing Center High Performance Computing">
+                                            <img src="/sites/all/themes/tid/images/hpc.png" alt="Portal Home" />
+																					</a>
+																				
+                                </div>
+                                                    </div>
+                        <div class="col-sm-5">
+                            <div id="top-search">
+															<div class="input-group">
+																	<form class="navbar-form navbar-search navbar-right" action="/training/tutorials/linux-tutorial-exercises" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <div class="element-invisible">Search form</div>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-CdWEAg1jT_sEr-yr9mETkxcXsOfom-wM7BP1Ezzy0mE" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="mainnav">
+                    <div class="container">
+                        <div class="row">
+                            <nav id="Menu" aria-label="Mobile Menu" class="mobilenavi col-md-12"></nav>
+                            <nav id="navigation" aria-label="Main Menu">
+                                <div id="main-menu" class="main-menu-portal">
+                                    <ul class="menu"><li class="first collapsed"><a href="/user-portal">Portal</a></li>
+<li class="expanded"><a href="/accounts">Accounts</a><ul class="menu"><li class="first leaf"><a href="/accounts/new-account-setup">New Account Setup</a></li>
+<li class="leaf"><a href="/accounts/idm-account-management">IdM Account Management</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/manuals/access-lc-systems" title="">Access to LC Systems</a></li>
+<li class="leaf"><a href="/accounts/computer-coordinator-roles">Computer Coordinator Roles</a></li>
+<li class="collapsed"><a href="/accounts/forms">Forms</a></li>
+<li class="collapsed"><a href="/accounts/policies">Policies</a></li>
+<li class="last leaf"><a href="/accounts/mailing-lists">Mailing Lists</a></li>
+</ul></li>
+<li class="expanded"><a href="/banks-jobs">Banks &amp; Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/allocations">Allocations</a></li>
+<li class="expanded"><a href="/banks-jobs/running-jobs">Running Jobs</a><ul class="menu"><li class="first leaf"><a href="/banks-jobs/running-jobs/batch-system-primer">Batch System Primer</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-user-manual">LSF User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-quick-start-guide">LSF Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/lsf-commands">LSF Commands</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-user-manual" title="Guide to using the Slurm Workload/Resource Manager">Slurm User Manual</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-quick-start-guide">Slurm Quick Start Guide</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/slurm-commands">Slurm Commands</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab</a></li>
+<li class="leaf"><a href="/banks-jobs/running-jobs/batch-system-commands">Batch System Cross-Reference</a></li>
+<li class="last leaf"><a href="/banks-jobs/running-jobs/slurm-srun-versus-ibm-csm-jsrun">Slurm srun versus IBM CSM jsrun</a></li>
+</ul></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/accounts/forms/asc-dat" title="">ASC DAT Request</a></li>
+<li class="last leaf"><a href="https://hpc.llnl.gov/accounts/forms/mic-dat" title="">M&amp;IC DAT Request</a></li>
+</ul></li>
+<li class="expanded"><a href="/hardware">Hardware</a><ul class="menu"><li class="first collapsed"><a href="/hardware/archival-storage-hardware">Archival Storage Hardware</a></li>
+<li class="collapsed"><a href="/hardware/platforms">Compute Platforms</a></li>
+<li class="leaf"><a href="/hardware/compute-platforms-gpus">Compute Platforms with GPUs</a></li>
+<li class="collapsed"><a href="/hardware/file-systems">File Systems</a></li>
+<li class="leaf"><a href="/hardware/testbeds">Testbeds</a></li>
+<li class="collapsed"><a href="/hardware/zones">Zones (aka &quot;The Enclave&quot;)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/cgi-bin/lccgi/customstatus.cgi?" title="">CZ Compute Platform Status</a></li>
+<li class="leaf"><a href="https://rzlc.llnl.gov/cgi-bin/lccgi/customstatus.cgi" title="">RZ Compute System Status</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/fsstatus/fsstatus.cgi" title="">CZ File System Status</a></li>
+<li class="last leaf"><a href="https://rzlc.llnl.gov/fsstatus/fsstatus.cgi" title="">RZ File System Status</a></li>
+</ul></li>
+<li class="expanded"><a href="/services">Services</a><ul class="menu"><li class="first collapsed"><a href="/services/green-data-oasis">Green Data Oasis (GDO)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="">MyLC (Lorenz)</a></li>
+<li class="last leaf"><a href="/services/visualization-services">Visualization Services</a></li>
+</ul></li>
+<li class="expanded"><a href="/software">Software</a><ul class="menu"><li class="first leaf"><a href="/software/archival-storage-software">Archival Storage Software</a></li>
+<li class="collapsed"><a href="/software/data-management-tools-projects">Data Management Tools</a></li>
+<li class="collapsed"><a href="/software/development-environment-software">Development Environment Software</a></li>
+<li class="leaf"><a href="/software/mathematical-software">Mathematical Software</a></li>
+<li class="leaf"><a href="/software/modules-and-software-packaging">Modules and Software Packaging</a></li>
+<li class="collapsed"><a href="/software/visualization-software">Visualization Software</a></li>
+<li class="last leaf"><a href="https://computing.llnl.gov/projects/radiuss" title="">RADIUSS</a></li>
+</ul></li>
+<li class="last expanded active-trail"><a href="/training" class="active-trail">Training</a><ul class="menu"><li class="first expanded active-trail"><a href="/training/tutorials" class="active-trail">Tutorials</a><ul class="menu"><li class="first leaf"><a href="/training/tutorials/introduction-parallel-computing-tutorial">Introduction to Parallel Computing Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/llnl-covid-19-hpc-resource-guide">LLNL Covid-19 HPC Resource Guide for New Livermore Computing Users</a></li>
+<li class="leaf"><a href="/training/tutorials/using-lcs-sierra-system">Using LC&#039;s Sierra System</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-psaap3-quick-start-tutorial">Livermore Computing PSAAP3 Quick Start Tutorial</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/sites/default/files/PSAAP-alliance-quickguide.docx" title="">PSAAP Alliance Quick Guide</a></li>
+<li class="leaf active-trail"><a href="/training/tutorials/linux-tutorial-exercises" class="active-trail active">Linux Tutorial Exercise One</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-one">Livermore Computing Linux Clusters Overview Part One</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two">Livermore Computing Linux Clusters Overview Part Two</a></li>
+<li class="leaf"><a href="/training/tutorials/livermore-computing-resources-and-environment">Livermore Computing Resources and Environment</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab-exercise">Slurm and Moab Exercise</a></li>
+<li class="leaf"><a href="/training/tutorials/slurm-and-moab">Slurm and Moab Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-part-2-common-functions">TotalView Part 2:  Common Functions</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-part-3-debugging-parallel-programs">TotalView Part 3: Debugging Parallel Programs</a></li>
+<li class="leaf"><a href="/training/tutorials/totalview-tutorial">TotalView Tutorial</a></li>
+<li class="leaf"><a href="/training/tutorials/evaluation-form">Tutorial Evaluation Form</a></li>
+<li class="leaf"><a href="/training/tutorials/srun-auto-affinity">srun --auto-affinity</a></li>
+<li class="last leaf"><a href="/training/tutorials/srun-multi-prog">srun --multi-prog</a></li>
+</ul></li>
+<li class="collapsed"><a href="/training/documentation">Documentation &amp; User Manuals</a></li>
+<li class="leaf"><a href="/training/technical-bulletins-catalog">Technical Bulletins Catalog</a></li>
+<li class="collapsed"><a href="/training/workshop-schedule">Training Events</a></li>
+<li class="last leaf"><a href="/training/user-meeting-presentations-archive">User Meeting Presentation Archive</a></li>
+</ul></li>
+</ul>                                                                            <div id="pagetoggle" class="btn-group btn-toggle pull-right" style="margin-right: 15px;">
+                                            <a href="/" class="btn btn-default gs">General Site</a>
+                                            <a href="/user-portal" class="btn btn-primary up active">User Portal</a>
+                                        </div>
+                                                                    </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+		<div id="main-content" class="l2content">
+        <div class="container">
+    		<div class="row">
+        		                <div id="primary" class="content-area col-sm-12">
+					                                        <section id="content" role="nav" class="clearfix col-sm-12">
+
+                                                                                    <div id="breadcrumbs">
+                                    <h2 class="element-invisible">breadcrumb menu</h2><nav class="breadcrumb" aria-label="breadcrumb-navigation"><a href="/">Home</a> » <a href="/training">Training</a> » <a href="/training/tutorials">Tutorials</a> » Linux Tutorial Exercises</nav>                                </div>
+                                                    
+                                            </section>
+                  <main>
+
+                                              <div id="content_top">
+                                <div class="region region-content-top">
+  <div id="block-print-ui-print-links" class="block block-print-ui">
+
+    
+    
+  
+  <div class="content">
+    <span class="print_html"><a href="https://hpc.llnl.gov/print/831" title="Display a printer-friendly version of this page." class="print-page" onclick="window.open(this.href); return false" rel="nofollow">Printer-friendly</a></span>  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                            </div>
+                        
+                        <div id="content-wrap">
+                                                                                                                <div class="region region-content">
+  <div id="block-system-main" class="block block-system">
+
+    
+    
+  
+  <div class="content">
+    
+
+<div  about="/training/tutorials/linux-tutorial-exercises" typeof="sioc:Item foaf:Document" class="node node-user-portal-one-column-page node-full view-mode-full">
+    <div class="row">
+    <div class="col-sm-12 ">
+      <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even" property="dc:title"><h1 class="title">Linux Tutorial Exercises</h1></div></div></div><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><h2><a id="Excercise1" name="Excercise1"></a>Exercise 1</h2>
+<p>Preparation:</p>
+<ol><li>Login to the workshop machine
+<p>The instructor will demonstrate how to do this</p>
+</li>
+<li>After logging in, review the login banner. Specifically notice the various sections:
+<ul><li>Welcome section - where to get more info, help</li>
+<li>Announcements - All LC Machines and local machine related</li>
+<li>Any unread news items - trying reading a news item: news  <em>news_item </em><br /> </li>
+</ul></li>
+<li>Copy the example files
+<p>First create a linux_clusters subdirectory, then copy the files, and then cd into the linux_clusters subdirectory:</p>
+<pre>mkdir linux_clusters
+cp -R /usr/global/docs/training/blaise/linux_clusters/*   ~/linux_clusters
+cd linux_clusters
+</pre></li>
+<li>Verify your exercise files
+<p>Issue the <span class="fixed-width">ls -l</span></p>
+<table><tr><td>
+<pre>drwx------ 2 class07 class07 4096 Jan 15 07:31 benchmarks
+-rw------- 1 class07 class07  108 Jan 15 07:35 hello.c
+-rw------- 1 class07 class07   67 Jan 15 07:35 hello.f
+drwx------ 4 class07 class07 4096 Jan 15 07:31 mpi
+drwx------ 4 class07 class07 4096 Jan 15 07:31 openMP
+drwx------ 2 class07 class07 4096 Jan 15 07:31 pthreads
+drwx------ 4 class07 class07 4096 Jan 15 07:31 serial
+</pre></td>
+</tr></table></li>
+</ol><p>Configuration Information:</p>
+<p> </p>
+<ol><li>Before we attempt to actually compile and run anything, let's get familiar with some basic usage and configuration commands. For the most part, these commands can be used on any LC cluster.
+<p> </p>
+</li>
+<li>Login Nodes<br />Which node are you logged into? Use the nodeattr -c login command to display the all login nodes this cluster. Recall that the generic cluster login of rotates between these to balance user logins across available nodes.
+<p> </p>
+</li>
+<li>Compute Nodes and Partitions<br />Use the  sinfo -s  command to display a summary of this cluster's configuration.
+<ul><li>What compute partitions are available?</li>
+<li>How many nodes are in each partition? Active? Idle? Other/unavailable?</li>
+<li>Which nodes are in each partition?</li>
+</ul><p><br />Now try the sinfo  command (no flags). Note that its output is similar to the sinfo -s command, but provides more detail by breaking out nodes according to their "state".
+</p><p> </p>
+</li>
+<li>Batch Limits<br />All of LC's clusters have different batch limits. It's important to know these limits so that you don't submit jobs that request too many nodes or too many hours. Try the following command to view the limits for the machine you are logged into:<br /><pre>news job.lim. <em>machinename </em></pre><p>where  <em>machinename </em> is the actual name of your cluster.</p>
+<p> </p>
+</li>
+<li>File Systems<br />Use the bdf or df -h command to view available file systems. To view the Lustre parallel file systems, pipe the output into grep lscratch. For example: bdf | grep lscratch</li>
+</ol><p>Job Information:</p>
+<ol><li>Try each of the following commands, comparing and contrasting them to each other. Consult the man pages if you need more information.
+<p> </p>
+<table><tr><th>Command</th>
+<th>Description</th>
+</tr><tr><td>
+<pre><strong>ju</strong></pre></td>
+<td>Concise summary of partitions and running jobs</td>
+</tr><tr><td>
+<pre><strong>mjstat</strong></pre></td>
+<td>Partition summary plus one line of detailed information for each running job</td>
+</tr><tr><td>
+<pre><strong>squeue</strong></pre></td>
+<td>One line of detailed information per running job</td>
+</tr><tr><td>
+<pre><strong>showq</strong></pre></td>
+<td>Show all jobs, running, queued and blocked</td>
+</tr><tr><td>
+<pre><strong>showq -r</strong></pre></td>
+<td>Show only running jobs - note additional details</td>
+</tr><tr><td>
+<pre><strong>showq -i </strong></pre></td>
+<td>Show only queued, eligible/idle - note additional details</td>
+</tr><tr><td>
+<pre><strong>showq -b</strong></pre></td>
+<td>Show only blocked jobs</td>
+</tr></table></li>
+</ol><p>Compilers - What's Available?</p>
+<ol><li>Visit the <a href="https://computing.llnl.gov/?set=code&amp;page=compilers" target="_blank">Compilers Currently Installed on LC Platforms</a> webpage.
+<p> </p>
+</li>
+<li>Look for one of LC's Linux clusters, such as cab, zin or sierra, in the section near the top of the page. Then, click on a specific cluster name/link to see additional detail for that cluster. Note that this page shows the default compilers only. Most systems have several versions of each.
+<p> </p>
+</li>
+<li>Now, try the use -l compilers  command to display available compilers on the cluster you're logged into. You should see GNU, Intel, and PGI compilers - several versions of each.
+<ul><li>Question: Which version is the default version?</li>
+<li>Answer: Use the dpkg-defaults  command and look for the asterisk.</li>
+</ul><p> </p>
+</li>
+<li>Also, try the use -l command to see the full list of all available packages. The list is pretty long, you may want to pipe it through more. Remember this command for later on - it'll come in handy on LC systems.</li>
+</ol><p>Hello World</p>
+<ol><li>Now try to compile your serial <span class="file">hello.c and/or hello.f files with any/all of the available compilers. If you're not sure which command to use: </span>
+<ul><li><span class="file">See the <a href="https://computing.llnl.gov/tutorials/linux_clusters/index.html#Compilers" target="compilers">Compilers</a> section of the tutorial </span></li>
+<li><span class="file">See the <a href="https://computing.llnl.gov/?set=code&amp;page=compilers" target="_blank">Compilers Currently Installed on LC Platforms</a> webpage. </span></li>
+</ul><p><span class="file"> </span></p>
+<p><span class="file"> </span></p>
+</li>
+<li>After you've successfully built your hello world, execute it. Did it work?</li>
+</ol><p>Building and Running Serial Applications:</p>
+<ol><li>Go to either the C or Fortran versions of the serial codes:
+<pre>cd serial/c
+   or
+cd serial/fortran</pre></li>
+<li>Try your hand at compiling and executing any/all of the  ser_* codes with any/all of the compilers available.
+<p> </p>
+</li>
+<li>Notes:
+<ul><li>If using gcc, you will need the -lmflag for several of the C examples</li>
+<li>Fortran - use ifort, pgf90 or gfortran (not F77 flavors)</li>
+<li>Consult the compiler man page(s) for any compiler flags you'd like to try</li>
+<li>A Makefile has been provided for convenience - if you use it, be sure to edit the choice of compiler/flags first.</li>
+</ul></li>
+</ol><p>Compiler Optimizations:</p>
+<ol><li>Compilers differ in their ability to optimize code. They also differ in their default level of optimization, as demonstrated by this exercise.
+<p> </p>
+</li>
+<li>Review the  optimize code and the  opttest script so that you understand what's going on.
+<p> </p>
+</li>
+<li>Execute  opttest. When it completes, compare the various timings.
+<ul><li>Which compiler performed best/worst without optimization?</li>
+<li>Which compiler performed best/worst with -O3?</li>
+<li>Which compiler had the least/greatest difference between no opt and -O3 ?</li>
+</ul><p> </p>
+</li>
+<li>The Intel and PGI compilers perform some optimizations by default; the GNU compilers do not. To see the effects of this, modify the  opttest file to remove all occurrences of -O0and rerun the test.
+<p>Note: if you try both C and Fortran, the result differences are due to loop index variables - C starts at 0 and Fortran at 1.</p>
+</li>
+</ol><div class="hr">This completes Exercise 1<a name="Exercise2" id="Exercise2"></a><br /> </div>
+<h2><span><span><span><span><span><span><span><span><span><span><span><a id="Exercise2" name="Exercise2"></a>Exercise 2 </span></span></span></span></span></span></span></span></span></span></span></h2>
+<ol><li><strong>Still logged into the workshop cluster?</strong>
+<p>If so, then continue to the next step. If not, then login as you did previously for Exercise 1.</p>
+</li>
+</ol><p>Building and Running Parallel MPI Applications:</p>
+<p> </p>
+<ol><li>MPI is covered in the <a href="https://computing.llnl.gov/tutorials/mpi" target="_blank">MPI</a> tutorial later in the workshop. This part of the exercise simply shows how to compile and run codes using MPI.
+<p> </p>
+</li>
+<li>Go to either the C or Fortran versions of the MPI applications:<br /><pre>cd ~/linux_clusters/mpi/c  
+   or
+cd ~/linux_clusters/mpi/fortran   </pre><p> </p>
+</li>
+<li>Compile (but don't run yet) any/all of the  mpi_* codes with any/all of the available compilers. If you're not sure which command to use:
+<ul><li>See the <a href="https://computing.llnl.gov/tutorials/linux_clusters/index.html#Compilers" target="compilers">Compilers</a> section of the tutorial</li>
+<li>See the <a href="https://computing.llnl.gov/?set=code&amp;page=compilers" target="_blank">Compilers Currently Installed on LC Platforms</a> webpage.</li>
+</ul><p> </p>
+</li>
+<li>Notes:
+<ul><li>If using gcc, you will need the -lmflag for several of the C examples</li>
+<li>Fortran - use ifort, pgf90 or gfortran (not F77 flavors)</li>
+<li>Consult the compiler man page(s) for any compiler flags you'd like to try</li>
+<li>A Makefile has been provided for convenience - if you use it, be sure to edit the choice of compiler/flags first.</li>
+</ul><p><strong>INTERACTIVE RUNS:</strong></p>
+<p> </p>
+</li>
+<li>There is a special partition setup for the workshop: <strong>pReserved</strong>. Use this partition for all exercises.
+<p> </p>
+</li>
+<li>Run any/all of the codes directly using srunin the <strong>pReserved</strong> partition. For example:<br /><pre>srun -n4 -ppReserved mpi_array
+srun -N2 -ppReserved mpi_latency
+srun -N4 -n16 -ppReserved mpi_bandwidth   </pre><p><strong>NOTE:</strong> For interactive runs, if there aren't enough nodes available, your job will queue for awhile before it runs. The typical informational message looks something like below:</p>
+<p> </p>
+<table><tr><td>
+<pre><strong>
+srun: job 68821 queued and waiting for resources
+</strong></pre></td>
+</tr></table><p><strong>BATCH RUNS:</strong></p>
+<table><tr><td><strong>NOTE:</strong>This part of the exercise is trivial - it is simply shows how to submit and monitor a batch job. The batch system is covered in depth later during the <a href="/training/tutorials/slurm-and-moab" target="moab">Moab tutorial</a>.</td>
+</tr></table></li>
+<li>From the same directory that you ran your MPI codes interactively, open the msub_script file in a UNIX editor, such as vi (aliased to vim) or emacs.<br /> </li>
+<li>Review this very simple Moab script. The comments explain most of what's going on. <strong>IMPORTANT:</strong>
+<ul><li>The executable that will be run is  mpi_bandwidth . Make sure that you have created this - if in doubt, just run make.</li>
+<li><strong>Make sure that you edit the path specification line in the script to reflect the directory where your mpi_bandwidth executable is located - it will differ between C and Fortran.</strong></li>
+</ul><p> </p>
+</li>
+<li>Submit the script to Moab. For example:<br /><pre>msub msub_script    </pre><p> </p>
+</li>
+<li>Monitor the job's status by using the command:<br /><pre>showq | grep class <em>XX </em>    </pre><p>where <strong> <em>XX </em></strong> matches your workshop username/token. The sleepcommand in the script should allow you enough time to do so.</p>
+<p> </p>
+</li>
+<li>After you are convinced that your job has completed, review the batch log file. It should be named something like  output.NNNNN .</li>
+</ol><p>Building and Running Parallel Pthreads Applications:</p>
+<p> </p>
+<ol><li>Pthreads are covered in the <a href="https://computing.llnl.gov/tutorials/pthreads" target="_blank">POSIX Threads Programming</a> tutorial later in the workshop. This part of the exercise simply shows how to compile and run codes using Pthreads.
+<p> </p>
+</li>
+<li>cd ~/linux_clusters/pthreads . You will see several C files written with pthreads. There are no Fortran files because a standardized Fortran API for pthreads never happened.
+<p> </p>
+</li>
+<li>If you are already familiar with Pthreads, you can review the files to see what is intended. If you are not familiar with Pthreads, this part of the exercise will probably not be of interest.
+<p> </p>
+</li>
+<li>Compiling with pthreads is easy: just add the required flag to to your compile command.
+<p> </p>
+<table><tr><th>Compiler</th>
+<th>Flag</th>
+</tr><tr><td>Intel</td>
+<td>-pthread</td>
+</tr><tr><td>PGI</td>
+<td>-lpthread</td>
+</tr><tr><td>GNU</td>
+<td>-pthread</td>
+</tr></table><p>For example:</p>
+<pre>icc -pthread hello.c -o hello    </pre><p> </p>
+</li>
+<li>Compile any/all of the example codes.
+<p> </p>
+</li>
+<li>To run, just enter the name of the executable.</li>
+</ol><p>Building and Running Parallel OpenMP Applications:</p>
+<p> </p>
+<ol><li>OpenMP is covered in the <a href="https://computing.llnl.gov/tutorials/openMP" target="_blank">OpenMP</a> tutorial later in the workshop. This part of the exercise simply shows how to compile and run codes using OpenMP.
+<p> </p>
+</li>
+<li>Depending upon your preference for C or Fortan:<br /><pre>cd ~/linux_clusters/openMP/c/  
+-or-
+cd ~/linux_clusters/openMP/fortran/    </pre><p>You will see several OpenMP codes.</p>
+<p> </p>
+</li>
+<li>If you are already familiar with OpenMP, you can review the files to see what is intended. If you are not familiar with OpenMP, this part of the exercise will probably not be of interest.
+<p> </p>
+</li>
+<li>Compiling with OpenMP is easy: just add the required flag to your compile command.
+<p> </p>
+<table><tr><th>Compiler</th>
+<th>Flag</th>
+</tr><tr><td>Intel</td>
+<td>-openmp</td>
+</tr><tr><td>PGI</td>
+<td>-mp</td>
+</tr><tr><td>GNU</td>
+<td>-fopenmp</td>
+</tr></table><p>For example:</p>
+<pre>icc -openmp omp_hello.c -o hello  
+-or-
+ifort -openmp omp_reduction.f -o reduction    </pre><p> </p>
+</li>
+<li>Compile any/all of the example codes.
+<p> </p>
+</li>
+<li>Before running, set the OMP_NUM_THREADS environment variable to the number of threads that should be used. For example:<br /><pre>setenv OMP_NUM_THREADS 8</pre></li>
+<li>To run, just enter the name of the executable.</li>
+</ol><p>Run a Parallel Benchmark:</p>
+<p> </p>
+<ol><li>Run the STREAM memory bandwidth benchmark:
+<p> </p>
+<ol><li>cd ~/linux_clusters/benchmarks
+<p> </p>
+</li>
+<li>Depending on whether you like C or Fortran, compile the code. Note: the executable needs to be named something other than stream, as this conflicts with /usr/local/bin/stream, an unrelated utility.
+<p> </p>
+<table><tr><th>C</th>
+<td>
+<pre><span><span><span><strong>icc -O3 -openmp stream.c -o streambench</strong>  </span></span></span></pre></td>
+</tr><tr><th>Fortran</th>
+<td>
+<pre><strong>icc -O3 -DUNDERSCORE -c mysecond.c
+ifort -O3 -openmp stream.f mysecond.o  -o streambench</strong>  </pre></td>
+</tr></table><p> </p>
+</li>
+<li>This benchmark uses OpenMP threads, so set OMP_NUM_THREADS - for example:<br /><pre>setenv OMP_NUM_THREADS 8</pre></li>
+<li>Then run the code on a single node in the workshop queue:<br /><pre>srun -n1 -ppReserved streambench</pre></li>
+<li>Note the bandwidths/timings when it completes.
+<p> </p>
+</li>
+<li>For more information on this benchmark, see <a href="http://www.cs.virginia.edu/stream/" target="stream">http://www.cs.virginia.edu/stream/</a></li>
+</ol></li>
+</ol><p>Run an MPI Message Passing Bandwidth Test:</p>
+<p> </p>
+<ol><li>This MPI message passing test shows the bandwidth depending upon the number of cores used and type of MPI routine used. This isn't an official benchmark - just a local test. MPI hasn't been covered yet - it will be in the <a href="https://computing.llnl.gov/tutorials/mpi" target="_blank">MPI tutorial</a>.
+<p> </p>
+<ol><li>Assuming you are still in your  ~/linux_clusters/benchmarks subdirectory, compile the code (sorry, only a C version at this time):
+<pre>mpiicc -O3 mpi_multibandwidth.c -o mpitest</pre><p> </p>
+</li>
+<li>Run it using one core per node on 2 different nodes. Also be sure to specify where to send output instead of stdout:<br /><pre>srun -N2 -n2 -ppReserved mpitest &gt; mpitest.output1</pre><p> </p>
+</li>
+<li>After the test runs, check the output file for the results. Notice how:
+<ul><li>Bandwidth improves with message size</li>
+<li>Variation in bandwidth between MPI message routines</li>
+<li>Variation between best / avg / worst bandwidths</li>
+</ul><p> </p>
+</li>
+<li>To find the best (or worst) OVERALL average do something like this:<br /><pre>grep OVERALL mpitest.output1 | sort</pre><p>You can then search within your output file for the case that had the best (or worst) performance.</p>
+<p> </p>
+</li>
+<li>Now repeat the run using all cores on 2 different nodes and send the output to a new file:<br /><pre>srun -N2 -n24 -ppReserved mpitest &gt; mpitest.output2</pre><p> </p>
+</li>
+<li>Find the best (or worst) OVERALL average again for this run:<br /><pre>grep OVERALL mpitest.output2 | sort</pre><p> </p>
+</li>
+<li>Compare the results using 1 core per node against 12 cores per node:<br /><pre>xdiff mpitest.output1 mpitest.output2
+-or-
+sdiff mpitest.output1 mpitest.output2</pre><p>Using the "avg" bandwidth per case, which performs better?<br />Why?</p>
+</li>
+</ol><p> </p>
+<table><tr><td><strong>Synopsis:</strong> The type of MPI routine used, message size, the number of tasks per node, and the underlying hardware architecture all work to influence the communications throughput you can expect. Non-blocking operations with large message sizes perform best. The fewer tasks per node competing for the network adapter, the better (especially as the number of cores per node increase). Your mileage may vary.</td>
+</tr></table></li>
+</ol><p>Hyper-threading:</p>
+<p> </p>
+<ol><li>LC's more recent Intel clusters support hyper-threading but it is turned "off" by default. To confirm this, run the following command:
+<pre>srun -n1 -ppReserved /usr/sbin/hyperthread-control --report</pre><p>What does the output tell you?</p>
+<p> </p>
+</li>
+<li>Now run the following command, which uses srun's flag to turn hyper-threading "on":<br /><pre>srun -n1 -ppReserved --enable-hyperthreads /usr/sbin/hyperthread-control --report</pre><p>What does the output tell you this time?</p>
+<p> </p>
+</li>
+<li>Moral of the story: the performance benefits of using hyper-threads will vary by application. Try your real applications both with and without hyper-threading to see which perform best.</li>
+</ol><p>Online Machine Status Information...and More:</p>
+<ul><li>Two of the most useful sources for system status and usage information are:
+<ul><li>MyLC User Portal: <a href="https://mylc.llnl.gov/" target="_blank">mylc.llnl.gov</a></li>
+<li>LC Home Page: <a href="http://computing.llnl.gov/" target="_blank">computing.llnl.gov</a></li>
+</ul><p>Try the following:</p>
+</li>
+</ul><table><tr><td>
+<p> </p>
+<ol><li>Go to <a href="http://computing.llnl.gov/" target="_blank">computing.llnl.gov</a>. It will open a new tab/window so you can follow along with the rest of the instructions.
+<p> </p>
+<ol><li>In the upper left corner, you'll notice the little green/red arrows for "System Status". Mouse-over them and select <strong>CZ Machines</strong>.
+<p> </p>
+</li>
+<li>When prompted for your user name and password, use your <strong>class##</strong> userid and the class### PIN + OTP token for your passcode. Ask the instructor if you're not sure what this means.
+<p> </p>
+</li>
+<li>You will then be taken to the "LC OCF CZ Machines Status" matrix. Find one of the Linux cluster machines and note what info is displayed.
+<p> </p>
+</li>
+<li>Now actually click on the hyperlinked name of that machine and you will be taken to lots of additional information about it, including links to yet more information, which you can follow if you like.
+<p> </p>
+</li>
+<li>Then go back to the red/green System Status arrows and select <strong>CZ File Systems</strong>. This will take you to a matrix showing details about CZ file systems.
+<ul><li>This page is particularly useful for checking the up/down status of important file systems.</li>
+</ul><p> </p>
+</li>
+<li>Notice that <strong>computing.llnl.gov</strong> hosts much more than machine status information. In fact, it's LC's primary user documentation portal.</li>
+</ol></li>
+</ol></td>
+<td><br br="" /><br /><br /></td>
+</tr><tr><td>
+<p> </p>
+<ol start="2"><li>Now go to <a href="https://mylc.llnl.gov/" target="_blank">mylc.llnl.gov</a>. It will open a new tab/window so you can follow along with the rest of the instructions.
+<p> </p>
+<ol><li>If you are prompted for your user name and password, use your <strong>class##</strong> userid and the <strong>class###</strong> PIN + OTP token for your passcode. Ask the instructor if you're not sure what this means.
+<p> </p>
+</li>
+<li>The MyLC portal displays a wealth of information pertaining to LC systems.
+<p> </p>
+</li>
+<li>Take some time to explore this information. Much of it is interactive, allowing you to dive into additional detail.
+<p> </p>
+</li>
+<li>For example, go to the <strong>my accounts</strong> container, and click on a machine name, such as <strong>sierra</strong>. Notice the multi-tab window that appears with details on the state of the machine.</li>
+</ol></li>
+</ol></td>
+<td></td>
+</tr></table><p> </p>
+</div></div></div>    </div>
+  </div>
+</div>
+
+
+<!-- Needed to activate display suite support on forms -->
+  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                   		</div>
+                  </main>
+                </div>
+      		</div>
+    	</div>
+	</div>
+  	
+	
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 footer-top">
+
+                    <a class="llnl" href="https://www.llnl.gov/" target="_blank"><img src="/sites/all/themes/tid/images/llnl.png" alt="LLNL"></a>
+                    <p>
+                        Lawrence Livermore National Laboratory
+                        <br>7000 East Avenue • Livermore, CA 94550
+                    </p>
+                    <p>
+                        Operated by Lawrence Livermore National Security, LLC, for the
+                        <br>Department of Energy's National Nuclear Security Administration.
+                    </p>
+                    <div class="footer-top-logos">
+                        <a class="nnsa" href="https://www.energy.gov/nnsa/national-nuclear-security-administration" target="_blank"><img src="/sites/all/themes/tid/images/nnsa2.png" alt="NNSA"></a>
+                        <a class="doe" href="https://www.energy.gov/" target="_blank"><img src="/sites/all/themes/tid/images/doe_small.png" alt="U.S. DOE"></a>
+                        <a class="llns" href="https://www.llnsllc.com/" target="_blank"><img src="/sites/all/themes/tid/images/llns.png" alt="LLNS"></a>
+                	</div>
+
+
+
+                </div>
+                <div class="col-sm-12 footer-bottom">
+                	
+
+                    <span>UCRL-MI-131558  &nbsp;|&nbsp;&nbsp;</span><a href="https://www.llnl.gov/disclaimer" target="_blank">Privacy &amp; Legal Notice</a>	 &nbsp;|&nbsp;&nbsp; <a href="mailto:webmaster-comp@llnl.gov">Website Query</a> &nbsp;|&nbsp;&nbsp;<a href="/about-us/contact-us" >Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+  </body>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/jquery_update/replace/jquery/2.1/jquery.min.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-extend-3.4.0.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery-html-prefilter-3.5.0-backport.js?v=2.1.4"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/misc/drupal.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/extlink/extlink.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/jquery.flexslider.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/slide.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/lightbox2/js/lightbox.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/modules/contrib/matomo/matomo.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _paq = _paq || [];(function(){var u=(("https:" == document.location.protocol) ? "https://analytics.llnl.gov/" : "http://analytics.llnl.gov/");_paq.push(["setSiteId", "149"]);_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setDoNotTrack", 1]);_paq.push(["trackPageView"]);_paq.push(["setIgnoreClasses", ["no-tracking","colorbox"]]);_paq.push(["enableLinkTracking"]);var d=document,g=d.createElement("script"),s=d.getElementsByTagName("script")[0];g.type="text/javascript";g.defer=true;g.async=true;g.src="https://hpc.llnl.gov/sites/default/files/matomo/piwik.js?qsohrw";s.parentNode.insertBefore(g,s);})();
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/bootstrap.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mobilemenu.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/custom.js?qsohrw"></script>
+<script type="text/javascript" src="https://hpc.llnl.gov/sites/all/themes/tid/js/mods.js?qsohrw"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"tid","theme_token":"gjTCxBuVDGlni1KDjJR1WknSwhUFviIsNovystjICso","js":{"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/2.1\/jquery.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/contrib\/extlink\/extlink.js":1,"sites\/all\/themes\/tid\/js\/jquery.flexslider.js":1,"sites\/all\/themes\/tid\/js\/slide.js":1,"sites\/all\/modules\/contrib\/lightbox2\/js\/lightbox.js":1,"sites\/all\/modules\/contrib\/matomo\/matomo.js":1,"0":1,"sites\/all\/themes\/tid\/js\/bootstrap.js":1,"sites\/all\/themes\/tid\/js\/mobilemenu.js":1,"sites\/all\/themes\/tid\/js\/custom.js":1,"sites\/all\/themes\/tid\/js\/mods.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/book\/book.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/extlink\/extlink.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/lightbox2\/css\/lightbox.css":1,"sites\/all\/modules\/contrib\/print\/print_ui\/css\/print_ui.theme.css":1,"sites\/all\/themes\/tid\/css\/bootstrap.css":1,"sites\/all\/themes\/tid\/css\/flexslider.css":1,"sites\/all\/themes\/tid\/css\/system.menus.css":1,"sites\/all\/themes\/tid\/css\/style.css":1,"sites\/all\/themes\/tid\/font-awesome\/css\/font-awesome.css":1,"sites\/all\/themes\/tid\/css\/treewalk.css":1,"sites\/all\/themes\/tid\/css\/popup.css":1,"sites\/all\/themes\/tid\/css\/mods.css":1}},"lightbox2":{"rtl":0,"file_path":"\/(\\w\\w\/)public:\/","default_image":"\/sites\/all\/modules\/contrib\/lightbox2\/images\/brokenimage.jpg","border_size":10,"font_color":"000","box_color":"fff","top_position":"","overlay_opacity":"0.8","overlay_color":"000","disable_close_click":true,"resize_sequence":0,"resize_speed":400,"fade_in_speed":400,"slide_down_speed":600,"use_alt_layout":false,"disable_resize":false,"disable_zoom":false,"force_show_nav":false,"show_caption":true,"loop_items":false,"node_link_text":"View Image Details","node_link_target":false,"image_count":"Image !current of !total","video_count":"Video !current of !total","page_count":"Page !current of !total","lite_press_x_close":"press \u003Ca href=\u0022#\u0022 onclick=\u0022hideLightbox(); return FALSE;\u0022\u003E\u003Ckbd\u003Ex\u003C\/kbd\u003E\u003C\/a\u003E to close","download_link_text":"","enable_login":false,"enable_contact":false,"keys_close":"c x 27","keys_previous":"p 37","keys_next":"n 39","keys_zoom":"z","keys_play_pause":"32","display_image_size":"original","image_node_sizes":"()","trigger_lightbox_classes":"","trigger_lightbox_group_classes":"","trigger_slideshow_classes":"","trigger_lightframe_classes":"","trigger_lightframe_group_classes":"","custom_class_handler":0,"custom_trigger_classes":"","disable_for_gallery_lists":true,"disable_for_acidfree_gallery_lists":true,"enable_acidfree_videos":true,"slideshow_interval":5000,"slideshow_automatic_start":true,"slideshow_automatic_exit":true,"show_play_pause":true,"pause_on_next_click":false,"pause_on_previous_click":true,"loop_slides":false,"iframe_width":600,"iframe_height":400,"iframe_border":1,"enable_video":false,"useragent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/90.0.4430.93 Safari\/537.36"},"extlink":{"extTarget":0,"extClass":"ext","extLabel":"(link is external)","extImgClass":0,"extIconPlacement":0,"extSubdomains":1,"extExclude":".gov|.com|.org|.io|.be|.us|.edu","extInclude":"-int.llnl.gov|lc.llnl.gov|caas.llnl.gov|exchangetools.llnl.gov","extCssExclude":"","extCssExplicit":"","extAlert":"_blank","extAlertText":"This page is routing you to a page which requires extra authentication. You must have on-site or VPN access.\r\n\r\nPress OK to continue or cancel to return.\r\n\r\nIf this fails or times-out, you are not allowed access to the internal page or the server may be temporarily unavailable.\r\n\r\nIf you have an on-site or VPN account and are still having trouble, please send e-mail to lc-hotline@llnl.gov or call 925-422-4531 for further assistance.","mailtoClass":"mailto","mailtoLabel":"(link sends e-mail)"},"matomo":{"trackMailto":1},"urlIsAjaxTrusted":{"\/training\/tutorials\/linux-tutorial-exercises":true}});
+//--><!]]>
+</script>
+</html>

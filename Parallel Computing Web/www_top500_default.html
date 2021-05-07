@@ -1,0 +1,2381 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Home -  | TOP500</title>
+
+    <!-- Bootstrap -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/top500.css" rel="stylesheet">
+    <link href="/static/css/menu.css" rel="stylesheet">
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+  <link rel="icon" type="image/png" href="/static/images/Top.png">
+
+    
+
+    
+
+
+    
+        <style>
+            html, body {
+                height: 80%;
+            }
+        </style>
+    
+
+    <script type="text/javascript">var switchTo5x = true;</script>
+    <script src="https://www.google.com/jsapi?key=ABQIAAAAjBc6iR40aJtAwcj9HMZBYhRJaxAAofxHq0gEaifsfToGnpixdBQJC_bTjQIXv67MMRk0TIy-pv04GQ"
+            type="text/javascript"></script>
+    <script type='text/javascript' src='https://partner.googleadservices.com/gampad/google_service.js'></script>
+
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+
+    <script type='text/javascript'>
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+        (function () {
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            var useSSL = 'https:' == document.location.protocol;
+            gads.src = (useSSL ? 'https:' : 'http:') +
+                '//www.googletagservices.com/tag/js/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+        })();
+    </script>
+
+    <script type='text/javascript'>
+        googletag.cmd.push(function () {
+            googletag.defineSlot('/2924242/leaderboard', [728, 90], 'div-gpt-ad-1416441378536-15').addService(googletag.pubads());
+            googletag.defineSlot('/2924242/mobile_leaderboard', [320, 50], 'div-gpt-ad-1488790360617-0').addService(googletag.pubads());
+            googletag.defineSlot('/2924242/2013_square_popup_1', [250, 250], 'div-gpt-ad-1416441378536-5').addService(googletag.pubads());
+            googletag.defineSlot('/2924242/2013_square_popup_2', [250, 250], 'div-gpt-ad-1453380928566-0').addService(googletag.pubads());
+            googletag.defineSlot('/2924242/2013_square_popup_3', [250, 250], 'div-gpt-ad-1509611081669-0').addService(googletag.pubads());
+
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+        });
+    </script>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+
+        // Der Button wird mit JavaScript erzeugt und vor dem Ende des body eingebunden.
+        var back_to_top_button = ['<img href="#top" class="back-to-top" src="/static//images/Top.png" width="100">'].join("");
+        $("body").append(back_to_top_button)
+
+        // Der Button wird ausgeblendet
+        $(".back-to-top").hide();
+
+        // Funktion für das Scroll-Verhalten
+        $(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 500) { // Wenn 100 Pixel gescrolled wurde
+                    $('.back-to-top').fadeIn();
+                } else {
+                    $('.back-to-top').fadeOut();
+                }
+            });
+
+            $('.back-to-top').click(function () { // Klick auf den Button
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 800);
+                return false;
+            });
+        });
+
+    });
+    </script>
+
+    <script type="text/javascript">
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    </script>
+    
+    
+  </head>
+  <body>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-3 left header">
+                    
+                    
+                    <a href="/">
+                    <img src="/static//images/Top500_logo.png" width="150" style="margin-left: 10px;">
+                    </a>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-9">
+                <div class="leaderboard">
+                    
+                        <!-- leadearboard -->
+                        <div id='div-gpt-ad-1416441378536-15' style='width:728px; height:90px;'>
+                            <script type='text/javascript'>
+                                googletag.cmd.push(function () {
+                                    googletag.display('div-gpt-ad-1416441378536-15');
+                                });
+                            </script>
+                        </div>
+                    
+                </div>
+                <div class="leaderboard_mobile">
+                    <div id='div-gpt-ad-1488790360617-0' style='height:50px; width:320px; margin-bottom: 20px'>
+                        <script>
+                            googletag.cmd.push(function () {
+                                googletag.display('div-gpt-ad-1488790360617-0');
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-default navbar-expand-md navbar-light" role="navigation">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                    
+
+<ul class="navbar-nav mr-auto">
+
+    <li class="
+               active"
+         id="2">
+        <a href="/"
+           >
+           Home
+           
+        </a>
+        
+    </li>
+
+    <li class="dropdown
+               "
+         id="11">
+        <a href="/lists/"
+            class="dropdown-toggle" >
+           Lists
+           
+               <b class="caret"></b>
+           
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-lists">
+
+    <li class="dropdown-submenu
+               "
+        id="13">
+        <a href="/lists/top500/"
+           class=" dropdown-toggle">
+           TOP500
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-top500">
+
+    <li class="
+               "
+        id="307">
+        <a href="/lists/top500/2020/11/"
+           class="">
+           November 2020
+        </a>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="292">
+        <a href="/lists/top500/2020/06/"
+           class=" dropdown-toggle">
+           June 2020
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-june-2020">
+
+    <li class="
+               "
+        id="296">
+        <a href="/news/japan-captures-top500-crown-arm-powered-supercomputer/"
+           class="">
+           Press Release
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="
+               "
+        id="14">
+        <a href="/lists/top500/2019/11/"
+           class="">
+           November 2019
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="146">
+        <a href="/lists/top500/2019/06/"
+           class="">
+           June 2019
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="147">
+        <a href="/lists/top500/2018/11/"
+           class="">
+           November 2018
+        </a>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="151">
+        <a href="/lists/top500/2018/06/"
+           class=" dropdown-toggle">
+           June 2018
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-june-2018">
+
+    <li class="
+               "
+        id="274">
+        <a href="/lists/top500/2018/06/highlights/"
+           class="">
+           Highlights - June 2018
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="149">
+        <a href="/lists/top500/2017/11/"
+           class=" dropdown-toggle">
+           November 2017
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-november-2017">
+
+    <li class="
+               "
+        id="286">
+        <a href="/lists/top500/2017/11/highlights/"
+           class="">
+           Highlights - November 2017
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="152">
+        <a href="/lists/top500/2017/06/"
+           class=" dropdown-toggle">
+           June 2017
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-june-2017">
+
+    <li class="
+               "
+        id="285">
+        <a href="/lists/top500/2017/06/highlights/"
+           class="">
+           Highlights - June 2017
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="150">
+        <a href="/lists/top500/2016/11/"
+           class=" dropdown-toggle">
+           November 2016
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-november-2016">
+
+    <li class="
+               "
+        id="284">
+        <a href="/lists/top500/2016/11/highlights/"
+           class="">
+           Highlights - November 2016
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="148">
+        <a href="/lists/top500/2016/06/"
+           class=" dropdown-toggle">
+           June 2016
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-june-2016">
+
+    <li class="
+               "
+        id="283">
+        <a href="/lists/top500/2016/06/highlights/"
+           class="">
+           Highlights - June 2016
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="153">
+        <a href="/lists/top500/2015/11/"
+           class=" dropdown-toggle">
+           Novermber 2015
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-novermber-2015">
+
+    <li class="
+               "
+        id="280">
+        <a href="/lists/top500/2015/11/highlights/"
+           class="">
+           Highlights - November 2015
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="143">
+        <a href="/lists/top500/2015/06/"
+           class=" dropdown-toggle">
+           June 2015
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-june-2015">
+
+    <li class="
+               "
+        id="276">
+        <a href="/lists/top500/2015/06/highlights/"
+           class="">
+           Highlights - June 2015
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="160">
+        <a href="/lists/top500/2014/11/"
+           class=" dropdown-toggle">
+           November 2014
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-november-2014">
+
+    <li class="
+               "
+        id="266">
+        <a href="/lists/top500/2014/11/highlights/"
+           class="">
+           Highlights - November 2014
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="171">
+        <a href="/lists/top500/2014/06/"
+           class=" dropdown-toggle">
+           June 2014
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-june-2014">
+
+    <li class="
+               "
+        id="261">
+        <a href="/lists/top500/2014/06/highlights/"
+           class="">
+           Highlights - June 2014
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="178">
+        <a href="/lists/top500/2013/11/"
+           class=" dropdown-toggle">
+           November 2013
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-november-2013">
+
+    <li class="
+               "
+        id="282">
+        <a href="/lists/top500/2013/11/highlights/"
+           class="">
+           Highlights - November 2013
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="183">
+        <a href="/lists/top500/2013/06/"
+           class=" dropdown-toggle">
+           June 2013
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-june-2013">
+
+    <li class="
+               "
+        id="281">
+        <a href="/lists/top500/2013/06/highlights/"
+           class="">
+           Highlights - June 2013
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="186">
+        <a href="/lists/top500/2012/11/"
+           class=" dropdown-toggle">
+           November 2012
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-november-2012">
+
+    <li class="
+               "
+        id="279">
+        <a href="/lists/top500/2012/11/highlights/"
+           class="">
+           Highlights - November 2012
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="189">
+        <a href="/lists/top500/2012/06/"
+           class=" dropdown-toggle">
+           June 2012
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-june-2012">
+
+    <li class="
+               "
+        id="278">
+        <a href="/lists/top500/2012/06/highlights/"
+           class="">
+           Highlights - June 2012
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="190">
+        <a href="/lists/top500/2011/11/"
+           class=" dropdown-toggle">
+           November 2011
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-november-2011">
+
+    <li class="
+               "
+        id="277">
+        <a href="/lists/top500/2011/11/highlights/"
+           class="">
+           Highlights - November 2011
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="192">
+        <a href="/lists/top500/2011/06/"
+           class=" dropdown-toggle">
+           June 2011
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-june-2011">
+
+    <li class="
+               "
+        id="275">
+        <a href="/lists/top500/2011/06/highlights/"
+           class="">
+           Highlights - June 2011
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="193">
+        <a href="/lists/top500/2010/11/"
+           class=" dropdown-toggle">
+           November 2010
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-november-2010">
+
+    <li class="
+               "
+        id="267">
+        <a href="/lists/top500/2010/11/highlights/"
+           class="">
+           Highlights - November 2010
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="194">
+        <a href="/lists/top500/2010/06/"
+           class=" dropdown-toggle">
+           June 2010
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-june-2010">
+
+    <li class="
+               "
+        id="264">
+        <a href="/lists/top500/2010/06/highlights/"
+           class="">
+           Highlights - June 2010
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="196">
+        <a href="/lists/top500/2009/11/"
+           class=" dropdown-toggle">
+           November 2009
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-november-2009">
+
+    <li class="
+               "
+        id="263">
+        <a href="/lists/top500/2009/11/highlights/"
+           class="">
+           Highlights - November 2009
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="197">
+        <a href="/lists/top500/2009/06/"
+           class=" dropdown-toggle">
+           June 2009
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-june-2009">
+
+    <li class="
+               "
+        id="262">
+        <a href="/lists/top500/2009/06/highlights/"
+           class="">
+           Highlights - June 2009
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="203">
+        <a href="/lists/top500/2008/11/"
+           class=" dropdown-toggle">
+           November 2008
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-november-2008">
+
+    <li class="
+               "
+        id="260">
+        <a href="/lists/top500/2008/11/highlights/"
+           class="">
+           Highlights - November 2008
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="204">
+        <a href="/lists/top500/2008/06/"
+           class=" dropdown-toggle">
+           June 2008
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-june-2008">
+
+    <li class="
+               "
+        id="259">
+        <a href="/lists/top500/2008/06/highlights/"
+           class="">
+           Highlights - June 2008
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="205">
+        <a href="/lists/top500/2007/11/"
+           class=" dropdown-toggle">
+           November 2007
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-november-2007">
+
+    <li class="
+               "
+        id="273">
+        <a href="/lists/top500/2007/11/highlights/"
+           class="">
+           Highlights - November 2007
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="206">
+        <a href="/lists/top500/2007/06/"
+           class=" dropdown-toggle">
+           June 2007
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-june-2007">
+
+    <li class="
+               "
+        id="269">
+        <a href="/lists/top500/2007/06/highlights/"
+           class="">
+           Highlights - June 2007
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="154">
+        <a href="/lists/top500/2006/11/"
+           class=" dropdown-toggle">
+           November 2006
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-november-2006">
+
+    <li class="
+               "
+        id="268">
+        <a href="/lists/top500/2006/11/highlights/"
+           class="">
+           Highlights - November 2006
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="155">
+        <a href="/lists/top500/2006/06/"
+           class=" dropdown-toggle">
+           June 2006
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-june-2006">
+
+    <li class="
+               "
+        id="272">
+        <a href="/lists/top500/2006/06/highlights/"
+           class="">
+           Highlights - June 2006
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="156">
+        <a href="/lists/top500/2005/11/"
+           class=" dropdown-toggle">
+           November 2005
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-november-2005">
+
+    <li class="
+               "
+        id="265">
+        <a href="/lists/top500/2005/11/highlights/"
+           class="">
+           Highlights - November 2005
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="157">
+        <a href="/lists/top500/2005/06/"
+           class=" dropdown-toggle">
+           June 2005
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-june-2005">
+
+    <li class="
+               "
+        id="271">
+        <a href="/lists/top500/2005/06/highlights/"
+           class="">
+           Highlights - June 2005
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="158">
+        <a href="/lists/top500/2004/11/"
+           class=" dropdown-toggle">
+           November 2004
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-november-2004">
+
+    <li class="
+               "
+        id="270">
+        <a href="/lists/top500/2004/11/highlights/"
+           class="">
+           Highlights - November 2004
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="
+               "
+        id="159">
+        <a href="/lists/top500/2004/06/"
+           class="">
+           June 2004
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="161">
+        <a href="/lists/top500/2003/11/"
+           class="">
+           November 2003
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="162">
+        <a href="/lists/top500/2003/06/"
+           class="">
+           June 2003
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="163">
+        <a href="/lists/top500/2002/11/"
+           class="">
+           November 2002
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="165">
+        <a href="/lists/top500/2002/06/"
+           class="">
+           June 2002
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="164">
+        <a href="/lists/top500/2001/11/"
+           class="">
+           November 2001
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="166">
+        <a href="/lists/top500/2001/06/"
+           class="">
+           June 2001
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="167">
+        <a href="/lists/top500/2000/11/"
+           class="">
+           November 2000
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="168">
+        <a href="/lists/top500/2000/06/"
+           class="">
+           June 2000
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="169">
+        <a href="/lists/top500/1999/11/"
+           class="">
+           November 1999
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="170">
+        <a href="/lists/top500/1999/06/"
+           class="">
+           June 1999
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="172">
+        <a href="/lists/top500/1998/11/"
+           class="">
+           November 1998
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="173">
+        <a href="/lists/top500/1998/06/"
+           class="">
+           June 1998
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="174">
+        <a href="/lists/top500/1997/11/"
+           class="">
+           November 1997
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="175">
+        <a href="/lists/top500/1997/06/"
+           class="">
+           June 1997
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="176">
+        <a href="/lists/top500/1996/11/"
+           class="">
+           November 1996
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="177">
+        <a href="/lists/top500/1996/06/"
+           class="">
+           June 1996
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="179">
+        <a href="/lists/top500/1995/11/"
+           class="">
+           November 1995
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="202">
+        <a href="/lists/top500/1995/06/"
+           class="">
+           June 1995
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="201">
+        <a href="/lists/top500/1994/11/"
+           class="">
+           November 1994
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="200">
+        <a href="/lists/top500/1994/06/"
+           class="">
+           June 1994
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="199">
+        <a href="/lists/top500/1993/11/"
+           class="">
+           November 1993
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="198">
+        <a href="/lists/top500/1993/06/"
+           class="">
+           June 1993
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="15">
+        <a href="/lists/hpcg/"
+           class=" dropdown-toggle">
+           HPCG
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-hpcg">
+
+    <li class="
+               "
+        id="304">
+        <a href="/lists/hpcg/hpcg-november-2020/"
+           class="">
+           HPCG - November 2020
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="293">
+        <a href="/lists/hpcg/06/"
+           class="">
+           HPCG - June 2020
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="144">
+        <a href="/lists/hpcg/2019/11/"
+           class="">
+           HPCG - November 2019
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="180">
+        <a href="/lists/hpcg/2019/06/"
+           class="">
+           HPCG - June 2019
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="145">
+        <a href="/lists/hpcg/2018/11/"
+           class="">
+           HPCG - November 2018
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="182">
+        <a href="/lists/hpcg/2018/06/"
+           class="">
+           HPCG - June 2018
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="184">
+        <a href="/lists/hpcg/2017/11/"
+           class="">
+           HPCG - November 2017
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="16">
+        <a href="/lists/green500/"
+           class=" dropdown-toggle">
+           Green500
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-green500">
+
+    <li class="
+               "
+        id="305">
+        <a href="/lists/green500/2020/11/"
+           class="">
+           November 2020
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="294">
+        <a href="/lists/green500/2020/06/"
+           class="">
+           June 2020
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="187">
+        <a href="/lists/green500/2019/11/"
+           class="">
+           November 2019
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="191">
+        <a href="/lists/green500/2019/06/"
+           class="">
+           June 2019
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="195">
+        <a href="/lists/green500/2018/11/"
+           class="">
+           November 2018
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="181">
+        <a href="/lists/green500/2018/06/"
+           class="">
+           June 2018
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="188">
+        <a href="/lists/green500/2017/11/"
+           class="">
+           November 2017
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="207">
+        <a href="/lists/green500/2017/06/"
+           class="">
+           June 2017
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="209">
+        <a href="/lists/green500/2016/11/"
+           class="">
+           November 2016
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="185">
+        <a href="/lists/green500/2016/06/"
+           class="">
+           June 2016
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="208">
+        <a href="/lists/green500/2015/11/"
+           class="">
+           November 2015
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="210">
+        <a href="/lists/green500/2015/06/"
+           class="">
+           June 2015
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="255">
+        <a href="/lists/green500/2014/11/"
+           class="">
+           November 2014
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="256">
+        <a href="/lists/green500/2014/06/"
+           class="">
+           June 2014
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="257">
+        <a href="/lists/green500/2013/11/"
+           class="">
+           November 2013
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="258">
+        <a href="/lists/green500/2013/06/"
+           class="">
+           June 2013
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown
+               "
+         id="48">
+        <a href="/statistics/"
+            class="dropdown-toggle" >
+           Statistics
+           
+               <b class="caret"></b>
+           
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-statistics">
+
+    <li class="
+               "
+        id="128">
+        <a href="/statistics/sublist/"
+           class="">
+           Sublist Generator
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="130">
+        <a href="/statistics/list/"
+           class="">
+           List Statistics
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="131">
+        <a href="/statistics/treemaps/"
+           class="">
+           Treemaps
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="133">
+        <a href="/statistics/overtime/"
+           class="">
+           Development over Time
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="134">
+        <a href="/statistics/efficiency-power-cores/"
+           class="">
+           Efficiency, Power, ...
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="135">
+        <a href="/statistics/perfdevel/"
+           class="">
+           Performance Development
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown
+               "
+         id="12">
+        <a href="/resources/"
+            class="dropdown-toggle" >
+           Resources
+           
+               <b class="caret"></b>
+           
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-resources">
+
+    <li class="
+               "
+        id="248">
+        <a href="/submit_results/"
+           class="">
+           Submit Results
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="53">
+        <a href="/certificates/"
+           class="">
+           TOP500 Certificates
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="47">
+        <a href="/resources/top-systems/"
+           class="">
+           TOP #1 Systems
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="46">
+        <a href="/timeline/"
+           class="">
+           Timeline
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="4">
+        <a href="/news/"
+           class="">
+           News
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="27">
+        <a href="/resources/videos/"
+           class="">
+           Videos
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="45">
+        <a href="/resources/frequently-asked-questions/"
+           class="">
+           Frequently Asked Questions
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="52">
+        <a href="/resources/top500-logo-usage/"
+           class="">
+           TOP500 Logo Usage
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="dropdown
+               "
+         id="44">
+        <a href="/project/"
+            class="dropdown-toggle" >
+           About
+           
+               <b class="caret"></b>
+           
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-about">
+
+    <li class="
+               "
+        id="140">
+        <a href="/project/call-for-participation/"
+           class="">
+           Call for Participation in the TOP500 / Green500 Lists
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="127">
+        <a href="/project/introduction/"
+           class="">
+           Introduction and Objectives
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="129">
+        <a href="/project/linpack/"
+           class="">
+           The Linpack Benchmark
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="132">
+        <a href="/project/top500_description/"
+           class="">
+           TOP500 Description
+        </a>
+        
+    </li>
+
+    <li class="dropdown-submenu
+               "
+        id="136">
+        <a href="/project/authors/"
+           class=" dropdown-toggle">
+           TOP500 Authors
+        </a>
+        
+            
+<ul class="dropdown-menu" aria-labelledby="dropdown-top500-authors">
+
+    <li class="
+               "
+        id="137">
+        <a href="/project/authors/hans-werner-meuer/"
+           class="">
+           Hans Werner Meuer (1936 - 2014†)
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="138">
+        <a href="/project/authors/erich-strohmaier/"
+           class="">
+           Erich Strohmaier
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="139">
+        <a href="/project/authors/jack-dongarra/"
+           class="">
+           Jack Dongarra
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="141">
+        <a href="/project/authors/horst-simon/"
+           class="">
+           Horst Simon
+        </a>
+        
+    </li>
+
+    <li class="
+               "
+        id="142">
+        <a href="/project/authors/martin-meuer/"
+           class="">
+           Martin Meuer
+        </a>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+</ul>
+        
+    </li>
+
+    <li class="
+               "
+         id="43">
+        <a href="/media-kit/"
+           >
+           MEDIA KIT
+           
+        </a>
+        
+    </li>
+
+</ul>
+
+                
+            </div>
+        </div>
+    </nav>
+
+    
+        <div class="container py-3">
+
+          <div class="row">
+            <div class="col-sm-12 col-md-9 col-lg-9" style="border: none; padding-left: 10px;">
+                
+
+            <h1 style="text-transform: uppercase"></h1>
+            
+            
+            
+            
+	
+
+<div class="container">
+    
+        
+
+<div style="    min-height: 20px;     padding: 19px;     margin-bottom: 20px;     background-color: #F2F3F4;     border: none;" class="container sticky">
+    
+        
+    
+        <div class="plugin plugin-blog"><div class="blog-latest-entries"><article id="post-top500-expands-exaflops-capacity-amidst-low-turnover" class="post-item"><div class="blog-visual"></div><header><h5><a href="/news/top500-expands-exaflops-capacity-amidst-low-turnover/">TOP500 Expands Exaflops Capacity Amidst Low Turnover</a></h5><h6 class="post-detail">
+    
+        Nov. 16, 2020
+    
+</h6></header><div class="blog-lead" style=""><p><span lang="EN-US">FRANKFURT, Germany; BERKELEY, Calif.; and KNOXVILLE, Tenn.—</span>The 56th edition of the TOP500 saw the Japanese Fugaku supercomputer solidify its number one status in a list that reflects a flattening performance growth curve.  Although two new systems managed to make it into the top 10, the full list recorded the smallest number of new entries since the project began in 1993.</p><p>The entry level to the list moved up to 1.32 petaflops on the High Performance Linpack (HPL) benchmark, a small increase from 1.23 petaflops recorded in the June 2020 rankings. In a similar vein, the aggregate performance of all …</p></div><footer class="read-more"><a href="/news/top500-expands-exaflops-capacity-amidst-low-turnover/">read more &raquo;</a></footer></article><hr /></div></div>
+    
+</div>
+
+    
+        
+    
+        
+
+<div class="row">
+    
+        
+
+<div class="col col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 newsfeed" style="margin-top: 18px">
+    
+        <h1 class="sectionheader">TOP500 News</h1>
+    
+        <div class="plugin plugin-blog"><div class="blog-latest-entries"><article id="post-top500-event-isc-high-performance-2020-digital" class="post-item"><div class="blog-visual" style="float: right; margin: 15px;"><img src="/media/filer_public_thumbnails/filer_public/c8/69/c8691419-c6e2-45dd-a60a-f5448a7908b7/top500_55th_event.png__100x100_q85_crop_subsampling-2.png" alt="None" width="100" height="100" /></div><header><h5><a href="/news/top500-event-isc-high-performance-2020-digital/">TOP500  Event at ISC High Performance 2020 Digital</a></h5><h6 class="post-detail">
+    
+        June 23, 2020
+    
+</h6></header><div class="blog-lead" style=""><p>Find the highlights of the 55th TOP500 list below, presented by Erich Strohmaier. Slides from the session are also available now.</p></div><footer class="read-more"><a href="/news/top500-event-isc-high-performance-2020-digital/">read more &raquo;</a></footer></article><hr /><article id="post-report-fujitsu-fugaku-system-jack-dongarra" class="post-item"><div class="blog-visual" style="float: right; margin: 15px;"><img src="/media/filer_public_thumbnails/filer_public/cb/a3/cba36aba-7815-407b-8e3a-2c5e5bbf50e4/fugaku.png__100x100_q85_crop_subsampling-2.png" alt="None" width="100" height="100" /></div><header><h5><a href="/news/report-fujitsu-fugaku-system-jack-dongarra/">Report on the Fujitsu Fugaku system by Jack Dongarra</a></h5><h6 class="post-detail">
+    
+        June 22, 2020
+    
+</h6></header><div class="blog-lead" style=""><p>Detailed report on the Fujitsu Fugaku system.</p></div><footer class="read-more"><a href="/news/report-fujitsu-fugaku-system-jack-dongarra/">read more &raquo;</a></footer></article><hr /><article id="post-top500-certificates-top-ranking-systems-55th-list" class="post-item"><div class="blog-visual" style="float: right; margin: 15px;"><img src="/media/filer_public_thumbnails/filer_public/2b/83/2b83794e-a1f7-48d2-acc2-c9b16d2c794b/top500_top1_55.png__100x100_q85_crop_subsampling-2.png" alt="None" width="100" height="100" /></div><header><h5><a href="/news/top500-certificates-top-ranking-systems-55th-list/">TOP500 Certificates for top ranking systems in the 55th List</a></h5><h6 class="post-detail">
+    
+        June 22, 2020
+    
+</h6></header><div class="blog-lead" style=""><p>Certificates for the top ranking systems in the TOP500 list, Green500 list, HPCG and HPL-AI benchmarks.</p><p></p><p></p></div><footer class="read-more"><a href="/news/top500-certificates-top-ranking-systems-55th-list/">read more &raquo;</a></footer></article><hr /></div></div>
+    
+        
+        <h1 class="sectionheader" style="margin-top: 19px;">News Feed</h1>
+            
+                <h2><a href="https://www.hpcwire.com/off-the-wire/olcf-deputy-project-director-organizing-massive-effort-to-install-frontier-on-schedule/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=olcf-deputy-project-director-organizing-massive-effort-to-install-frontier-on-schedule">OLCF Deputy Project Director Organizing Massive Effort to Install Frontier on Schedule</a></h2>
+                <p>May 6, 2021 &#8212; Oak Ridge National Laboratory&#8217;s (OLCF) “Pioneering Frontier” series features stories profiling the many talented ORNL employees behind the construction and operation of the OLCF’s incoming exascale supercomputer, Frontier. The HPE Cray system is scheduled for delivery in 2021, with full user operations in 2022. Matt Sieger has the sort of job [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.hpcwire.com/off-the-wire/olcf-deputy-project-director-organizing-massive-effort-to-install-frontier-on-schedule/">OLCF Deputy Project Director Organizing Massive Effort to Install Frontier on Schedule</a> appeared first on <a rel="nofollow" href="https://www.hpcwire.com">HPCwire</a>.</p>
+            
+                <h2><a href="https://www.hpcwire.com/off-the-wire/2021-lustre-user-group-virtual-event-hosted-by-opensfs-and-university-of-florida-may-19-20/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=2021-lustre-user-group-virtual-event-hosted-by-opensfs-and-university-of-florida-may-19-20">2021 Lustre User Group Virtual Event Hosted by OpenSFS and University of Florida, May 19-20</a></h2>
+                <p>BEAVERTON, Ore., May 6, 2021 &#8212; Open Scalable File Systems (OpenSFS), a premier non-profit organization advancing and coordinating the Lustre file system community, has announced plans for the 2021 Lustre User Group (LUG) conference. LUG 2021 will take place May 19-20, 2021 in cyberspace, hosted by OpenSFS and the University of Florida. Mid-May is the [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.hpcwire.com/off-the-wire/2021-lustre-user-group-virtual-event-hosted-by-opensfs-and-university-of-florida-may-19-20/">2021 Lustre User Group Virtual Event Hosted by OpenSFS and University of Florida, May 19-20</a> appeared first on <a rel="nofollow" href="https://www.hpcwire.com">HPCwire</a>.</p>
+            
+                <h2><a href="https://insidehpc.com/2021/05/doe-10m-for-quantum-information-science-and-nuclear-physics-research/">DOE: $10M for Quantum Information Science and Nuclear Physics Research</a></h2>
+                <p>May 6, 2021 &#8212; Today, the U.S. Department of Energy (DOE) announced $10 million for interdisciplinary research in Quantum Information Science (QIS) and nuclear physics. The aim of this funding is to draw on the expertise and capabilities of the nuclear physics community to advance areas of interest such as quantum computing and quantum sensors, and [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://insidehpc.com/2021/05/doe-10m-for-quantum-information-science-and-nuclear-physics-research/">DOE: $10M for Quantum Information Science and Nuclear Physics Research</a> appeared first on <a rel="nofollow" href="https://insidehpc.com">insideHPC</a>.</p>
+            
+                <h2><a href="https://insidehpc.com/2021/05/2-seconds-of-hair-growth-ibm-claims-1st-2-nanometer-chip-technology/">2 Seconds of Hair Growth: IBM Claims 1st 2 Nanometer Chip Technology</a></h2>
+                <img width="150" height="120" src="https://insidehpc.com/wp-content/uploads/2021/05/IBM-2nm-wafer-held-0521-150x120.jpg" class="webfeedsFeaturedVisual wp-post-image" alt="" loading="lazy" style="float: right; margin-left: 5px;" link_thumbnail="" srcset="https://insidehpc.com/wp-content/uploads/2021/05/IBM-2nm-wafer-held-0521-150x120.jpg 150w, https://insidehpc.com/wp-content/uploads/2021/05/IBM-2nm-wafer-held-0521-300x240.jpg 300w, https://insidehpc.com/wp-content/uploads/2021/05/IBM-2nm-wafer-held-0521.jpg 600w" sizes="(max-width: 150px) 100vw, 150px" /><p>IBM today unveiled what it said is the first chip with 2 nanometer (nm) nanosheet technology. Though still more than two years away from going into production, the company said the 2nm chip will be used to power devices ranging from cell phones to HPC-class data center servers and will deliver nearly 50 percent higher [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://insidehpc.com/2021/05/2-seconds-of-hair-growth-ibm-claims-1st-2-nanometer-chip-technology/">2 Seconds of Hair Growth: IBM Claims 1st 2 Nanometer Chip Technology</a> appeared first on <a rel="nofollow" href="https://insidehpc.com">insideHPC</a>.</p>
+            
+                <h2><a href="https://www.nextplatform.com/2021/05/06/getting-the-cloud-but-keeping-control/">Getting The Cloud But Keeping Control</a></h2>
+                <p>The public cloud for years has tempted enterprises with the promise of much-needed agility and scalability that come with an elastic IT environment and of cost savings from not having to invest a lot of money upfront to buy a lot of infrastructure, adopting instead more flexible consumption models that allow organizations to pay only for what they use. <a href="https://www.nextplatform.com/2021/05/06/getting-the-cloud-but-keeping-control/" class="read-more">&#8230; </a></p>
+<p><a rel="nofollow" href="https://www.nextplatform.com/2021/05/06/getting-the-cloud-but-keeping-control/">Getting The Cloud But Keeping Control</a> was written by <a rel="nofollow" href="https://www.nextplatform.com/author/jeffrey/">Jeffrey Burt</a> at <a rel="nofollow" href="https://www.nextplatform.com">The Next Platform</a>.</p>
+            
+                <h2><a href="https://www.nextplatform.com/2021/05/06/ibm-chips-in-to-drive-2-nanometer-semiconductor-manufacturing/">IBM Chips In To Drive 2 Nanometer Semiconductor Manufacturing</a></h2>
+                <p>Big Blue got out of the chip foundry business when it sold off its IBM Microelectronics division to GlobalFoundries, itself a spinout of AMD, in 2014. <a href="https://www.nextplatform.com/2021/05/06/ibm-chips-in-to-drive-2-nanometer-semiconductor-manufacturing/" class="read-more">&#8230; </a></p>
+<p><a rel="nofollow" href="https://www.nextplatform.com/2021/05/06/ibm-chips-in-to-drive-2-nanometer-semiconductor-manufacturing/">IBM Chips In To Drive 2 Nanometer Semiconductor Manufacturing</a> was written by <a rel="nofollow" href="https://www.nextplatform.com/author/tpmn/">Timothy Prickett Morgan</a> at <a rel="nofollow" href="https://www.nextplatform.com">The Next Platform</a>.</p>
+            
+
+    
+</div>
+
+    
+        
+
+<div class="col col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+    
+        
+
+<div class="container front-section indepth">
+    
+        <h1 class="sectionheader">The List</h1>
+    
+        <h2><a href="/lists/top500/2020/11/highs">11/2020 Highlights</a></h2>
+
+<p>After a make-over of the Top10 in June we again see some interesting changes driven by two system upgrades (#1 Fugaku and #5 Selene) and two new systems (#7 JUWELS Booster Module and #10 Dammam-7). The full list however recorded the smallest number of new entries ever since the project started in 1993.</p>
+
+<p>Supercomputer Fugaku, a system based on Fujitsu’s custom ARM A64FX processor remains the new No. 1. It is installed at the RIKEN Center for Computational Science (R-CCS) in Kobe, Japan, the location of the former K-Computer. It was co-developed in close partnership by Riken and Fujitsu and uses Fujitsu’s Tofu D interconnect to transfer data between nodes. It increased in size by about 5% which allowed it to improve its HPL benchmark score to 442 Pflop/s easily exceeding the No. 2 Summit by 3x.</p>
+
+<p><a href="/news/top500-expands-exaflops-capacity-amidst-low-turnover/">read more »</a></p>
+
+<h2><a href="/statistics/list">List Statistics</a></h2>
+    
+        
+
+
+
+
+
+<script type='text/javascript'>
+      google.load("visualization", "1.0", {packages:["geomap", "table","corechart"]});
+    </script>
+    <script type='text/javascript'>
+        google.setOnLoadCallback(drawChart);
+        google.setOnLoadCallback(drawVisualization);
+
+        function drawChart() {
+            var dataTable = new google.visualization.DataTable();
+            dataTable.addColumn('string', 'Country');
+            dataTable.addColumn('number', 'Count');
+            dataTable.addRows([
+                ['Lenovo', 182],['Inspur', 66],['Sugon', 51],['HPE', 43],['Cray/HPE', 32],['Atos', 31],['Dell EMC', 16],['Fujitsu', 15],['IBM', 9],['Penguin Computing, Inc.', 8],['Nvidia', 7],['NEC', 6],['Huawei Technologies Co., Ltd.', 6],['NUDT', 3],['Intel', 2],['IBM / NVIDIA / Mellanox', 2],['Cray Inc./Hitachi', 2],['ACTION', 2],['Quanta Computer / Taiwan Fixed Network / ASUS Cloud', 2],['NEC/MEGWARE', 1],['Amazon Web Services', 1],['NRCPC', 1],['MEGWARE', 1],['Lenovo/IBM', 1],['ClusterVision / Hammer', 1],['Fujitsu / Lenovo', 1],['Preferred Networks', 1],['Atipa Technology', 1],['NTT Communications / NTT PC Communications', 1],['SuperMicro/DellEMC', 1],['Self-made', 1],['T-Platforms', 1],['T-Platforms, Intel, Dell', 1],['Supermicro', 1],['Others', 47],
+            ]);
+
+            var options = {
+                dataMode: 'regions',
+                width: '760px',
+                is3D: true,
+            };
+
+            var container = document.getElementById('map_div');
+            var geomap = new google.visualization.GeoMap(container);
+            geomap.draw(dataTable, options);
+        }
+
+        _printf = function () {
+            var num = arguments.length;
+            var oStr = arguments[0];
+            for (var i = 1; i < num; i++) {
+                var pattern = "\\{" + (i - 1) + "\\}";
+                var re = new RegExp(pattern, "g");
+                oStr = oStr.replace(re, arguments[i]);
+            }
+            return oStr;
+        }
+        function drawVisualization() {
+            // Create and populate the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'ID');
+            data.addColumn('string', 'Vendors');
+            data.addColumn('number', 'Count');
+            data.addColumn('number', 'System Share (%)');
+            data.addColumn('number', 'Rmax (GFlops)');
+            data.addColumn('number', 'Rpeak (GFlops)');
+            data.addColumn('number', 'Cores');
+            data.addRows([
+                ["1656", "Lenovo", 182, 182 / 5, 358044326, 667386241, 13313744 ],["1662", "Inspur", 66, 66 / 5, 129755280, 310529380, 3061336 ],["1694", "Sugon", 51, 51 / 5, 94172000, 246253000, 3974964 ],["1598", "HPE", 43, 43 / 5, 195618570, 309615942, 5339200 ],["1558", "Cray/HPE", 32, 32 / 5, 161491330, 247079520, 5618128 ],["1614", "Atos", 31, 31 / 5, 161191330, 251838560, 3802552 ],["1560", "Dell EMC", 16, 16 / 5, 100435700, 160397353, 2417060 ],["1561", "Fujitsu", 15, 15 / 5, 525854860, 662084922, 9511856 ],["1565", "IBM", 9, 9 / 5, 206397102, 279028250, 3509888 ],["1663", "Penguin Computing, Inc.", 8, 8 / 5, 20239160, 27847610, 516792 ],["1657", "Nvidia", 7, 7 / 5, 95159000, 120634434, 1018336 ],["1568", "NEC", 6, 6 / 5, 18085500, 27023984, 322600 ],["1696", "Huawei Technologies Co., Ltd.", 6, 6 / 5, 12033460, 21729090, 261380 ],["1658", "NUDT", 3, 3 / 5, 66081890, 108454198, 5342848 ],["1566", "Intel", 2, 2 / 5, 7266750, 12261235, 159044 ],["1722", "IBM / NVIDIA / Mellanox", 2, 2 / 5, 112840000, 148759200, 1860768 ],["1720", "Cray Inc./Hitachi", 2, 2 / 5, 11461000, 18250444, 271584 ],["1648", "ACTION", 2, 2 / 5, 5978980, 10729939, 135168 ],["1724", "Quanta Computer / Taiwan Fixed Network / ASUS Cloud", 2, 2 / 5, 11297560, 19562790, 220752 ],["1715", "NEC/MEGWARE", 1, 1 / 5, 1967810, 2800870, 49432 ],["1726", "Amazon Web Services", 1, 1 / 5, 1926400, 3981312, 41472 ],["1705", "NRCPC", 1, 1 / 5, 93014594, 125435904, 10649600 ],["1585", "MEGWARE", 1, 1 / 5, 3148380, 4352410, 59136 ],["1695", "Lenovo/IBM", 1, 1 / 5, 2813620, 3578266, 86016 ],["1723", "ClusterVision / Hammer", 1, 1 / 5, 2969190, 4335206, 64512 ],["1729", "Fujitsu / Lenovo", 1, 1 / 5, 9264310, 15142195, 204032 ],["1730", "Preferred Networks", 1, 1 / 5, 1652900, 3137870, 1664 ],["1579", "Atipa Technology", 1, 1 / 5, 2539130, 3388032, 194616 ],["1716", "NTT Communications / NTT PC Communications", 1, 1 / 5, 1391000, 4917658, 59392 ],["1725", "SuperMicro/DellEMC", 1, 1 / 5, 1403000, 3068928, 32640 ],["1596", "Self-made", 1, 1 / 5, 3307000, 4896512, 60512 ],["1626", "T-Platforms", 1, 1 / 5, 2478000, 4946790, 64384 ],["1718", "T-Platforms, Intel, Dell", 1, 1 / 5, 3782570, 6563840, 155150 ],["1665", "Supermicro", 1, 1 / 5, 3700150, 6023990, 85568 ],["0", "Others", 47, 47 / 5, 475562194, 0, 0 ],
+        ]);
+
+            var formatter = new google.visualization.NumberFormat({ groupingSymbol: ",", fractionDigits: 0});
+            formatter.format(data, 5);
+            formatter.format(data, 4);
+            formatter.format(data, 6);
+
+            // Create and draw the visualization.
+            var view = new google.visualization.DataView(data);
+            view.setColumns([1, 2, 3, 4, 5, 6]);
+            if (data.getNumberOfRows() > 12) {
+                view.hideRows([data.getNumberOfRows() - 1])
+            }
+
+            
+
+            var countView = new google.visualization.DataView(data);
+            countView.setColumns([1, 2]);
+            if (data.getNumberOfRows() > 12) {
+                countView.setRows([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, data.getNumberOfRows() - 1]);
+            }
+
+            var rmaxView = new google.visualization.DataView(data);
+            rmaxView.setColumns([1, 4]);
+            if (data.getNumberOfRows() > 12) {
+                rmaxView.setRows([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, data.getNumberOfRows() - 1]);
+            }
+
+
+            
+                var colors = ["#207e27", "#ba7301", "#b1b3b4", "#004578", "#0285aa", "#ce7f00",  "#254a40", "#498d7b", "#03317e", "#3d3c3f","#03317e", "#BED5B9", "#F8D5B1"];
+
+                var chart = new google.visualization.PieChart(document.getElementById('chart_count_' + 7561));
+                chart.draw(countView,
+                        {
+                            colors: colors,
+                            height: 400,
+                            fontName: 'DIN',
+                            title: 'Vendors System Share',
+                            is3D: true,
+                        }
+                );
+
+                var chart = new google.visualization.PieChart(document.getElementById('chart_rmax_' + 7561));
+                chart.draw(rmaxView,
+                        {
+                            colors: colors,
+                            height: 400,
+                            fontName: 'DIN',
+                            title: 'Vendors Performance Share',
+                            is3D: true,
+                        }
+                );
+
+            
+
+        }
+    </script>
+
+
+
+
+
+    <div id="chart_count_7561"></div><div id="chart_rmax_7561"></div>
+
+
+
+    
+        
+
+
+
+
+
+<script type='text/javascript'>
+      google.load("visualization", "1.0", {packages:["geomap", "table","corechart"]});
+    </script>
+    <script type='text/javascript'>
+        google.setOnLoadCallback(drawChart);
+        google.setOnLoadCallback(drawVisualization);
+
+        function drawChart() {
+            var dataTable = new google.visualization.DataTable();
+            dataTable.addColumn('string', 'Country');
+            dataTable.addColumn('number', 'Count');
+            dataTable.addRows([
+                ['China', 214],['United States', 113],['Japan', 34],['France', 18],['Germany', 17],['Netherlands', 15],['Ireland', 14],['United Kingdom', 12],['Canada', 12],['Italy', 6],['Saudi Arabia', 5],['Brazil', 4],['Singapore', 4],['South Korea', 3],['Taiwan', 3],['Switzerland', 3],['India', 3],['Norway', 3],['Finland', 2],['United Arab Emirates', 2],['Russia', 2],['Poland', 2],['Australia', 2],['Sweden', 2],['Spain', 1],['Czechia', 1],['Morocco', 1],['Austria', 1],['Hong Kong', 1],['Others', 45],
+            ]);
+
+            var options = {
+                dataMode: 'regions',
+                width: '760px',
+                is3D: true,
+            };
+
+            var container = document.getElementById('map_div');
+            var geomap = new google.visualization.GeoMap(container);
+            geomap.draw(dataTable, options);
+        }
+
+        _printf = function () {
+            var num = arguments.length;
+            var oStr = arguments[0];
+            for (var i = 1; i < num; i++) {
+                var pattern = "\\{" + (i - 1) + "\\}";
+                var re = new RegExp(pattern, "g");
+                oStr = oStr.replace(re, arguments[i]);
+            }
+            return oStr;
+        }
+        function drawVisualization() {
+            // Create and populate the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'ID');
+            data.addColumn('string', 'Countries');
+            data.addColumn('number', 'Count');
+            data.addColumn('number', 'System Share (%)');
+            data.addColumn('number', 'Rmax (GFlops)');
+            data.addColumn('number', 'Rpeak (GFlops)');
+            data.addColumn('number', 'Cores');
+            data.addRows([
+                ["CN", "China", 214, 214 / 5, 566635422, 1231757033, 30704256 ],["US", "United States", 113, 113 / 5, 668704300, 942339598, 15373432 ],["JP", "Japan", 34, 34 / 5, 593700080, 766195745, 10947524 ],["FR", "France", 18, 18 / 5, 89828330, 135469318, 2669472 ],["DE", "Germany", 17, 17 / 5, 131048770, 197689472, 2664446 ],["NL", "Netherlands", 15, 15 / 5, 24736650, 31795200, 864000 ],["IE", "Ireland", 14, 14 / 5, 23087540, 29675520, 806400 ],["GB", "United Kingdom", 12, 12 / 5, 34067502, 44283532, 1248840 ],["CA", "Canada", 12, 12 / 5, 26698060, 47707321, 716096 ],["IT", "Italy", 6, 6 / 5, 78529000, 114511528, 1447536 ],["SA", "Saudi Arabia", 5, 5 / 5, 35997040, 76126574, 1084020 ],["BR", "Brazil", 4, 4 / 5, 10991000, 19270566, 214040 ],["SG", "Singapore", 4, 4 / 5, 6596440, 8478720, 230400 ],["KR", "South Korea", 3, 3 / 5, 18720660, 31496620, 709220 ],["TW", "Taiwan", 3, 3 / 5, 12622710, 21651750, 247952 ],["CH", "Switzerland", 3, 3 / 5, 26215350, 33955305, 581140 ],["IN", "India", 3, 3 / 5, 10953340, 12082026, 244488 ],["NO", "Norway", 3, 3 / 5, 8023010, 10432510, 287232 ],["FI", "Finland", 2, 2 / 5, 7095250, 9748685, 209728 ],["AE", "United Arab Emirates", 2, 2 / 5, 9013750, 12164803, 142368 ],["RU", "Russia", 2, 2 / 5, 9147000, 13736550, 163984 ],["PL", "Poland", 2, 2 / 5, 5203700, 8228450, 119088 ],["AU", "Australia", 2, 2 / 5, 10913420, 17261875, 261632 ],["SE", "Sweden", 2, 2 / 5, 4771700, 6773346, 131968 ],["ES", "Spain", 1, 1 / 5, 6470800, 10296115, 153216 ],["CZ", "Czechia", 1, 1 / 5, 1457730, 2011641, 76896 ],["MA", "Morocco", 1, 1 / 5, 3158110, 5014730, 71232 ],["AT", "Austria", 1, 1 / 5, 2726078, 3761664, 37920 ],["HK", "Hong Kong", 1, 1 / 5, 1649110, 2119680, 57600 ],["0", "Others", 45, 45 / 5, 191726198, 0, 0 ],
+        ]);
+
+            var formatter = new google.visualization.NumberFormat({ groupingSymbol: ",", fractionDigits: 0});
+            formatter.format(data, 5);
+            formatter.format(data, 4);
+            formatter.format(data, 6);
+
+            // Create and draw the visualization.
+            var view = new google.visualization.DataView(data);
+            view.setColumns([1, 2, 3, 4, 5, 6]);
+            if (data.getNumberOfRows() > 12) {
+                view.hideRows([data.getNumberOfRows() - 1])
+            }
+
+            
+
+            var countView = new google.visualization.DataView(data);
+            countView.setColumns([1, 2]);
+            if (data.getNumberOfRows() > 12) {
+                countView.setRows([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, data.getNumberOfRows() - 1]);
+            }
+
+            var rmaxView = new google.visualization.DataView(data);
+            rmaxView.setColumns([1, 4]);
+            if (data.getNumberOfRows() > 12) {
+                rmaxView.setRows([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, data.getNumberOfRows() - 1]);
+            }
+
+
+            
+                var colors = ["#207e27", "#ba7301", "#b1b3b4", "#004578", "#0285aa", "#ce7f00",  "#254a40", "#498d7b", "#03317e", "#3d3c3f","#03317e", "#BED5B9", "#F8D5B1"];
+
+                var chart = new google.visualization.PieChart(document.getElementById('chart_count_' + 7562));
+                chart.draw(countView,
+                        {
+                            colors: colors,
+                            height: 400,
+                            fontName: 'DIN',
+                            title: 'Countries System Share',
+                            is3D: true,
+                        }
+                );
+
+                var chart = new google.visualization.PieChart(document.getElementById('chart_rmax_' + 7562));
+                chart.draw(rmaxView,
+                        {
+                            colors: colors,
+                            height: 400,
+                            fontName: 'DIN',
+                            title: 'Countries Performance Share',
+                            is3D: true,
+                        }
+                );
+
+            
+
+        }
+    </script>
+
+
+
+
+
+    <div id="chart_count_7562"></div><div id="chart_rmax_7562"></div>
+
+
+
+    
+</div>
+
+    
+</div>
+
+    
+</div>
+
+    
+</div>
+
+
+            </div>
+
+           <div class="col-sm-12 col-md-3 col-lg-3">
+                
+                    <div id="right" style="width: 250px;">
+                        <ul class="kachel-nav ">
+                            <li><a class="top500" title="TOP500" href="/">TOP500</a></li>
+                            <li><a class="list" title="Current List" href="/lists/top500/2020/11"><h1>Current List</h1></a></li>
+                            <li><a class="anniv" title="25 Year Anniversary" href="/25years"><h1>25 Year Anniversary</h1></a></li>
+                            <li><a class="newsletter" title="Newsletter" href="https://www.top500.org/accounts/signup"><h1>Newsletter Signup</h1></a></li>
+                        </ul>
+                    </div>
+                
+                <a class="twitter-timeline" data-height="600" href="https://twitter.com/top500supercomp?ref_src=twsrc%5Etfw">Tweets by top500supercomp</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div class="panel">
+                    <iframe src="https://www.facebook.com/plugins/like.php?app_id=124489460969110&amp;href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FTop500-Supercomputing-Sites%2F203473106331290&amp;send=false&amp;layout=standard&amp;width=250&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:80px;" allowTransparency="true"></iframe>
+</div>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-325590-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-325590-1');
+</script>
+
+                
+
+
+
+
+
+    
+    
+    
+        
+            
+
+
+
+
+
+<table class="table table-condensed table-striped">
+    
+    
+        <tr>
+
+            <td>1</td>
+            <td>
+                <a href="/system/179807">
+                    <b>Supercomputer Fugaku</b> - Supercomputer Fugaku, A64FX 48C 2.2GHz, Tofu interconnect D,
+                </a> Fujitsu
+                <br/>
+                
+            </td>
+            
+        </tr>
+    
+        <tr>
+
+            <td>2</td>
+            <td>
+                <a href="/system/179397">
+                    <b>Summit</b> - IBM Power System AC922, IBM POWER9 22C 3.07GHz, NVIDIA Volta GV100, Dual-rail Mellanox EDR Infiniband,
+                </a> IBM
+                <br/>
+                
+            </td>
+            
+        </tr>
+    
+        <tr>
+
+            <td>3</td>
+            <td>
+                <a href="/system/179398">
+                    <b>Sierra</b> - IBM Power System AC922, IBM POWER9 22C 3.1GHz, NVIDIA Volta GV100, Dual-rail Mellanox EDR Infiniband,
+                </a> IBM / NVIDIA / Mellanox
+                <br/>
+                
+            </td>
+            
+        </tr>
+    
+        <tr>
+
+            <td>4</td>
+            <td>
+                <a href="/system/178764">
+                    <b>Sunway TaihuLight</b> - Sunway MPP, Sunway SW26010 260C 1.45GHz, Sunway,
+                </a> NRCPC
+                <br/>
+                
+            </td>
+            
+        </tr>
+    
+        <tr>
+
+            <td>5</td>
+            <td>
+                <a href="/system/179842">
+                    <b>Selene</b> - NVIDIA DGX A100, AMD EPYC 7742 64C 2.25GHz, NVIDIA A100, Mellanox HDR Infiniband,
+                </a> Nvidia
+                <br/>
+                
+            </td>
+            
+        </tr>
+    
+        <tr>
+
+            <td>6</td>
+            <td>
+                <a href="/system/177999">
+                    <b>Tianhe-2A</b> - TH-IVB-FEP Cluster, Intel Xeon E5-2692v2 12C 2.2GHz, TH Express-2, Matrix-2000,
+                </a> NUDT
+                <br/>
+                
+            </td>
+            
+        </tr>
+    
+        <tr>
+
+            <td>7</td>
+            <td>
+                <a href="/system/179894">
+                    <b>JUWELS Booster Module</b> - Bull Sequana XH2000 , AMD EPYC 7402 24C 2.8GHz, NVIDIA A100, Mellanox HDR InfiniBand/ParTec ParaStation ClusterSuite,
+                </a> Atos
+                <br/>
+                
+            </td>
+            
+        </tr>
+    
+        <tr>
+
+            <td>8</td>
+            <td>
+                <a href="/system/179856">
+                    <b>HPC5</b> - PowerEdge C4140, Xeon Gold 6252 24C 2.1GHz, NVIDIA Tesla V100, Mellanox HDR Infiniband,
+                </a> Dell EMC
+                <br/>
+                
+            </td>
+            
+        </tr>
+    
+        <tr>
+
+            <td>9</td>
+            <td>
+                <a href="/system/179607">
+                    <b>Frontera</b> - Dell C6420, Xeon Platinum 8280 28C 2.7GHz, Mellanox InfiniBand HDR,
+                </a> Dell EMC
+                <br/>
+                
+            </td>
+            
+        </tr>
+    
+        <tr>
+
+            <td>10</td>
+            <td>
+                <a href="/system/179885">
+                    <b>Dammam-7</b> - Cray CS-Storm, Xeon Gold 6248 20C 2.5GHz, NVIDIA Tesla V100 SXM2, InfiniBand HDR 100,
+                </a> HPE
+                <br/>
+                
+            </td>
+            
+        </tr>
+    
+</table>
+
+
+
+
+
+        
+    
+
+
+           </div>
+          </div>
+        </div>
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+      var $tabs = $('#t_draggable2')
+      $("tbody.t_sortable").sortable({
+        connectWith: ".t_sortable",
+        items: "> tr:not(:first)",
+        appendTo: $tabs,
+        helper:"clone",
+        zIndex: 999990
+      }).disableSelection();
+
+      var $tab_items = $(".nav-tabs > li", $tabs).droppable({
+        accept: ".t_sortable tr",
+        hoverClass: "ui-state-hover",
+        drop: function( event, ui ) { return false; }
+      });
+    });
+    </script>
+    
+    
+
+    
+
+    
+
+  <footer class="page">
+    <div class="container">
+        <div class="row">
+            <p class="site-info text-left">
+                <a href="/imprint" class="footer-link">Imprint</a>
+                <a href="/contact" class="footer-link">Contact</a>
+
+
+     <a class="footer-link" href="/accounts/login/?next=/">
+        <span class="glyphicon glyphicon-log-in"></span> Log in</a>
+        &nbsp;or&nbsp;
+    <a href="/accounts/signup/?next=/">
+        <span class="glyphicon glyphicon-edit"></span> Sign up</a>
+
+
+<br/>
+                Copyright 1993-2020 TOP500.org (c)<span class="separator"></span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+  </body>
+</html>

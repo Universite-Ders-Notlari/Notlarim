@@ -1,0 +1,456 @@
+<!-- Notice: header.php and footer.php contains the necessary html, head
+and content tags as well as the header information.
+This page is not valid xhtml without them! //-->
+
+    
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml/strict.dtd">             
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/> 
+    <meta name="description" content="Analysis of high performance
+computing. Designing profiling and tracing tool for scientific computing." />
+    <meta name="keywords" content="TAU,profiling,tracing,performance computing,instrumentation" />
+    <title>TAU - Tuning and Analysis Utilities - </title>
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.cs.uoregon.edu/research/tau/config/core-style.css"/>
+    <link rel="stylesheet" type="text/css" media="print" href="https://www.cs.uoregon.edu/research/tau/config/print-style.css"/>
+    <link rel="shortcut icon" href="https://www.cs.uoregon.edu/research/tau/config/images/icon.gif" type="image/gif" />
+
+		<link rel="icon" type="image/gif" href="https://www.cs.uoregon.edu/research/tau/config/images/icon.gif" />
+
+
+<!--- Google analytics --->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7050423-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<!--- Google analytics --->
+
+  </head>
+  <body>
+    <div class="header">
+      <div id="tauheader" class="clearfix">
+        <h1>Tuning and Analysis Utilities</h1>
+        <h2>TAU</h2>
+        <h3>PRL</h3>
+        <div class="taulinklist">
+          <ul>
+            <li>
+              <a href="https://www.cs.uoregon.edu/research/tau/home.php">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="https://www.cs.uoregon.edu/research/tau/about.php">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="https://www.cs.uoregon.edu/research/tau/news.php">
+                News
+              </a>
+            </li>
+            <li>
+              <a href="https://www.cs.uoregon.edu/research/tau/docs.php">
+                Documentation
+              </a>
+            </li>
+            <li>
+              <a href="http://www.nic.uoregon.edu/tau-wiki">
+                Wiki
+              </a>
+            </li>
+            <li>
+              <a href="https://www.cs.uoregon.edu/research/tau/downloads.php">
+                Downloads
+              </a>
+            </li>
+            <li>
+              <a href="https://www.cs.uoregon.edu/research/tau/pubs.php">
+                Publications
+              </a>
+            </li>
+            <li>
+              <a href="https://www.cs.uoregon.edu/research/tau/contact.php">
+                Contact
+              </a>
+            </li>
+            <li>
+              <a href="http://www.tau.uoregon.edu/apps">
+                Applications 
+              </a>
+            </li>
+            <li>
+              <a href="http://www.e4s.io/">
+                ECP
+              </a>
+            </li>
+	    <li>
+              <a href="https://www.cs.uoregon.edu/research/tau/cca/index.php">
+                CCA
+              </a>
+	    </li>
+            <li>
+              <a href="https://www.cs.uoregon.edu/research/tau/../ktau/home.php">
+                KTAU
+              </a>
+            </li>
+            <li>
+              <a href="https://www.cs.uoregon.edu/research/tau/links.php">
+                External links
+              </a>
+            </li>
+            <li>
+              <a href="https://www.cs.uoregon.edu/research/tau/search.php"> 
+                Search
+              </a>
+            </li>
+          </ul>
+        </div>
+     </div>
+     <div id="strip">
+     </div>
+  </div>
+    <div id="content">
+      <div class="panel">
+        <span class="title"><a href="docs/newguide/bk01.html">Users Guide</a></span> [<a
+				  href="tau-usersguide.pdf">PDF</a>]
+        <span class="date">January 12th, 2021</span>
+				<ul>
+					<li><a
+					href="docs/newguide/bk01ch01.html">Instrumentation Options</a></li>
+					<li><a
+					href="docs/newguide/bk01ch02.html">Runtime Options (Profiling)</a></li>
+					<li><a
+					href="docs/newguide/bk01ch03.html">Runtime Options (Tracing)</a></li>
+					<li><a
+					href="docs/newguide/bk01ch04.html">Performance Analysis</a></li>
+				  <li><a
+					href="docs/newguide/bk01ch05.html">Starter's
+					Guide</a></li>
+					<li><a href="docs/newguide/bk01ch06.html">Common Profiling Requests
+		  				</a></li><!-- These section need to be added to the usersguide
+					<li>ParaProf</li>
+					<li>PerfExplorer</li> -->
+				</ul>
+      </div>
+		  <div class="panel">
+        <span class="title">Video Guide</span><span
+				class="date">November 9, 2012</span>
+				<ul>
+					<li><a href="demo/TauInstrument.mov">Instrumentation
+					</a></li>
+					<li><a href="demo/PerfDMF.mov">PerfDMF</a></li>
+					<li><a href="demo/paraprof.mov">Paraprof</a></li>
+					<ul>
+						<li> <a href="demo/ParaProf/ParaProfLoadTrials.mov">Load Profiles</li>
+						<li> <a href="demo/ParaProf/ParaProfMetricWindow.mov">Metric Window</li>
+						<li> <a href="demo/ParaProf/ParaProfThreadWindows.mov">Thread Windows</li>
+						<li> <a href="demo/ParaProf/ParaProfCommMatrix.mov">Communication Matrix</li>
+						<li> <a href="demo/ParaProf/ParaProf3d.mov">3D Visualization</li>
+						<li> <a href="demo/ParaProf/ParaProfDerivedMetrics.mov">Derived Metrics</li>
+						<li> <a href="demo/ParaProf/ParaProfSelective.mov">Selective Instrumentation</li>
+					</ul>
+                 
+					<li><a href="demo/PerfExplorer/PerfExplorerIntro.mov">PerfExplorer
+					</a></li>
+					<ul>
+						<li> <a href="demo/PerfExplorer/PerfExplorerCluster.mov">Cluster Analysis</li>
+						<li> <a href="demo/PerfExplorer/PerfExplorerCorrelation.mov ">Correlation Analysis</li>
+						<li> <a href="demo/PerfExplorer/PerfExplorerStackedBar.mov">Scalability Chart</li>
+						<li> <a href="demo/PerfExplorer/PerfExplorerCharts.mov">Preset Charts</li>
+						<li> <a href="demo/PerfExplorer/PerfExplorerCustomCharts.mov">Custom Charts</li>
+						<li> <a href="demo/PerfExplorer/PerfExplorerVis.mov">Visualizations</li>
+
+					</ul>
+					<li><a href="demo/EclipseIntro.mov">Eclipse Introduction
+					</a></li>
+					<li><a href="demo/eclipse3_selective.mov">Selective Instrumentation</a></li>
+					<li><a href="demo/eclipse.mov">Instrumenting Java</a></li>
+					<li><a href="demo/tauinstall.mov">Configuration Manager</a></li>
+				</ul>
+		  </div>
+		  <div class="panel"> <!-- formerly bk04.html -->
+			  <span class="title"><a href="docs/newguide/bk02.html">Install Guide</a></span> [<a
+				  href="tau-installguide.pdf">PDF</a>]
+				<span class="date">January 12th, 2021</span>
+				<ul>
+				  <li><a
+					href="docs/newguide/bk04ch01.html#d0e2562">Configuration options</a></li>
+				  <li><a
+					href="docs/newguide/bk04ch02.html">Windows Installation</a></li>
+				  <li><a
+					href="docs/newguide/bk04ch01.html#d0e2992">Validating an
+					Installation</a></li>
+        </ul>
+			</div>
+		  <div class="panel"><!--formerly bk05.html -->
+			  <span class="title"><a href="docs/newguide/index.html">Reference Guide</a></span> [<a
+				  href="tau-referenceguide.pdf">PDF</a>]
+				<span class="date">January 12th, 2021</span>
+				<ul>
+					<li><a href="docs/newguide/bk01pt02.html">ParaProf</a></li>
+					<li><a href="docs/newguide/bk01pt03.html">PerfExplorer</a></li>
+					<li><a href="docs/newguide/bk01pt04.html">TAUdb</a></li>
+					<li><a href="docs/newguide/bk05ch04.html">Memory Tracking</a> </li>
+				  <li><a href="docs/newguide/bk05ch02s10.html">JAVA</a></li>
+				  <li><a href="docs/newguide/bk03ch01s07.html">Python</a></li>
+				  <li><a href="docs/newguide/bk05ch05.html">Eclipse</a></li>
+				  <li><a href="docs/newguide/bk05ch07.html">Tool manuals</a></li>
+				  <li><a href="docs/newguide/bk05rn01.html">Instrumentation API</a></li>
+					 
+        </ul>
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+<!--
+        <h2><a href="#tool">Tools</a></h2>
+        <span><a href="docs/paraprof/index.html">Paraprof</a></span>&nbsp
+        <span><a href="docs/newguide/pt04.html">Perfdmf</a></span>&nbsp
+        <span><a
+		  href="docs/perfexplorer/index.html">PerfExplorer</a></span>&nbsp
+        <span><a href="docs/taucompiler/index.html">TAU compiler</a></span>&nbsp
+        <span><a href="docs/ktau/index.html">KTAU</a></span>&nbsp
+        <span><a href="cca/index.php">CCA</a></span>&nbsp
+        <span><a href="docs/taudocs/index.html">TAU utilites</a></span>&nbsp
+        <span><a href="docs/taujava/index.html">Eclipse Java</a></span>
+        <span><a href="docs/newguide/ch05.html">Eclipse Plugins</a></span>
+
+ 
+        <h2><a href="#api">APIs</a></h2>
+        <span><a href="docs/TraceFileReaderHelp/index.html">Trace File
+		  Reader</a></span>&nbsp
+        <span><a href="docs/TraceFileWriter/index.html">Trace File
+		  Writer</a></span>&nbsp
+        <span><a href="docs/diagram.pdf">TAU file type conversion diagram</a></span>
+      <div class="paragraph">
+        <a name="usersguide" />
+        <h2>TAU Users' Guide</h2>
+        <p>
+            Explains the interactions of tau's instrumentation libraries for C++, C, 
+            Fortran, Java, and Python. Includes tutorials for profiling and tracing 
+            operations. This HTML is updated periodically to reflect the new
+						feature available in the latest version of tau, if you are
+						experience difficulty using some feature in this manual download and
+						use the latest version of tau. This manual was last updated on
+            Febraury 29, 2012.
+        </p>   
+        <p><a href="docs/newguide/index.html">HTML</a>&nbsp&nbsp<a
+		  href="tau-usersguide.pdf">PDF</a> </p>
+
+      </div> 
+   </div>
+      <div class="paragraph">
+		  <a name="demo" />
+		   <h1>Demos</h1>
+			<p>Each movie requires the latest version of Quicktime.</p>
+			<p><a href="http://www.apple.com/quicktime/download/">Download
+			Quicktime</a></p>
+			
+			<h2>Profiling Applications with TAU</h2>
+			<p>Demonstrates the steps involed in profiling an eclipse application
+			with tau and viewing the resulting parallel proformance data.
+			</p>
+			<p><a href="demo/eclipse2.mov">View</a></p>
+         
+			<h2>Selective Instrumentation with TAU</h2>
+			<p>Shows how to customize TAU profiling in eclipse by creating static timers or
+			phases.</p>	
+			<p><a href="demo/eclipse2.mov">View</a></p>
+			
+			<h2>Building TAU with PTP</h2>
+			<p>Tutorial on how to unpack, configure, and build PDT and TAU so that you
+			can instrument programs using Eclipse's PTP plugin.</p>
+			<p><a href="demo/ptpinstall.mov">View</a></p>
+			
+         <h2>Instrumenting Java with Eclipse</h2>
+			<p>Demonstration of installing and runing Java applications that are
+			instrumented with TAU through an eclipse plugin.</p>
+			<p><a href="demo/eclipse.mov">View</a></p>
+         
+			<h2>Paraprof</h2>
+			<p>Demonstrates various features of tau's profiling analysis tool.
+			Both basic functions as well as advanced feature like: callpath
+			or phase profiling, and database management are demostrated.</p>
+			<p><a href="demo/paraprof.mov">View</a></p>
+			
+			<h2>Using TAU's Configuration Manager</h2>
+			<p>Introduction to TAU's graphical configuration manager, which allows
+			for custom installation and configuration of TAU for different platforms.</p>
+			<p><a href="demo/tauinstall.mov">View</a></p>
+			
+      </div>
+      <div class="paragraph">
+        <a name="tutorial" />
+        <h1>Tutorials</h1>
+        <h2>TAU Tutorial</h2>
+	<p>A tutorial that walks the reader through a the complete process 
+	of installing PDT and TAU and instrumenting a program using 
+	tau_compiler and tau_reduce. 
+	A great place to start for someone new to TAU.</p>
+        <p><a href="docs/tutorial/index.html">HTML</a>&nbsp;&nbsp;<a
+        href="docs/tutorial/tutorial.pdf">PDF</a> </p>
+
+		  <h2>Memory Tracking Tutorial</h2>
+		  <p>A tutorial that show examples of how to use TAU's ability to track
+		  memory usage and headroom.</p>
+		  <p><a href="docs/memorytracking/index.html">HTML</a></p>
+		  <h2>Common Profiling Requests</h2>
+		  <p>Common profiling goals and a short guide on how to use TAU
+			to accomplish them. Start here if you have question about profiling loops,
+			retrieving callgraphs,
+			hardware counters or generating traces with TAU.</p>
+		  <p><a href="docs/scenario/index.html">HTML</a></p>
+      </div> 
+      <a name="tool" />
+      <h1>Tools</h1>
+
+      <div class="paragraph">
+        <a name="paraprof" />
+        <h2>Paraprof</h2>
+        <p>Manual for TAU's graphical profiling tool.</p>
+        <p><a href="docs/paraprof/index.html">HTML</a></p>
+
+      </div> 
+      <div class="paragraph">
+        <a name="perfdmf" />
+        <h2>Perfdmf</h2>
+        <p>Manual for TAU's profiling database. Perfdmf serves as a 
+        framework for the API/Toolkit that manages the analyze 
+        performance data</p>
+        <p><a href="docs/newguide/pt04.html">HTML</a></p>
+
+      </div> 
+      <div class="paragraph">
+        <a name="perfexplorer" />
+        <h2>PerfExplorer</h2>
+        <p>Manual for TAU's profiling data-mining tool. Perfexplorer serves as a 
+        framework enabling the developer to
+		  data mine operations in large-scale parallel
+		  performance profiles.</p>
+        <p><a href="docs/perfexplorer/index.html">HTML</a></p>
+
+      </div> 
+      <div class="paragraph">
+        <a name="taucompiler" />
+        <h2>TAU Compiler</h2>
+        <p>The Tuning and Analysis Utilities (TAU) offers two methods for 
+        instrumenting C, C++, and Fortran code for profiling and tracing. 
+        The first is to instrument software by hand. While it gives the 
+        user complete control over what methods are instrumented, it has 
+        several disadvantages; the primary one being that process of 
+        inserting and removing code can be time consuming and error 
+        prone. The second method is to have TAU automatically instrument 
+        your source using the pMPI library and the TAU Compiler.</p>
+
+        <p><a href="docs/taucompiler/index.html">HTML</a></p>
+
+      </div> 
+      <div class="paragraph">
+        <a name="ktau" />
+        <h2>KTAU</h2>
+        <p>Manual for TAU's kernel libraries. KTAU is used to extend 
+        TAU's profiling ability to the kernel space. Included is a 
+        description of KTAU's API library and Utilities which TAU using 
+        when gathering profile data. </p>
+        <p><a href="docs/ktau/index.html">HTML</a></p>
+      </div> 
+
+      <div class="paragraph">
+        <a name="CCA" />
+        <h2>CCA</h2>
+        <p>Instructions on Installing, testing and using the Common Component 
+        Architecture. TAU allows the user to build custom performance
+        component using CCA and Interface them with TAU at runtime.</p>
+        <p><a href="cca/index.php">HTML</a></p>
+      </div> 
+      <div class="paragraph">
+        <a name="TAU utilites" />
+        <h2>TAU utilities</h2>
+        <p>HTMLation on some useful tau conversion utilities</p>
+		  <p><a href="docs/taudocs/index.html">HTML</a></p>
+      </div> 
+      <div class="paragraph">
+        <a name="Eclipse Plugin" />
+        <h2>Eclipse Java</h2>
+        <p>HTMLation on TAU's eclipse plugin that can automatically instrument
+		  Java programs.</p>
+		  <p><a href="docs/taujava/index.html">HTML</a></p>
+      </div> 
+      <div class="paragraph">
+        <a name="Eclipse Plugin" />
+        <h2>Eclipse PTP/CDT plugins</h2>
+        <p>HTMLation on TAU's PTP/CDT eclipse plugin that allow
+				multiprocessor application to be run natively within eclipse. 
+				</p>
+		  <p><a href="docs/newguide/ch06.html">HTML</a></p>
+      </div> 
+        <h2>APIs</h2>
+
+      <div class="paragraph">
+        <a name="api" />
+       <h2>Trace File Reader</h2>
+       <p>Trace File Reader is an API for reading data from TAU 
+       trace-files. </p>
+       <p><a href="docs/TraceFileReaderHelp/index.html">HTML</a></p>
+      </div> 
+      <div class="paragraph">
+        <a name="api" />
+       <h2>Trace File Writer</h2>
+       <p>Trace File Reader is an API for reading data from TAU 
+       trace-files. </p>
+       <p><a href="docs/TraceFileWriter/index.html">HTML</a></p>
+      </div> 
+      <div class="paragraph">
+        <a name="diagram" />
+        <h2>TAU file type conversion diagram</h2>
+        <p>Data flow diagram showing the relationships between the 
+        profile, tracing and analysis modules within the TAU family of 
+        applications.</p>
+        <p><a href="docs/diagram.php">HTML</a>&nbsp&nbsp<a
+		  href="docs/diagram.pdf">PDF</a></p>
+
+      </div> 
+-->
+
+   </div>
+  
+<div id="strip2">
+</div>
+  <div class="footer">
+    <div id="taufooter" class="clearfix">
+      <ul>
+        <li>
+          <a href="http://www.uoregon.edu">University of Oregon</a>
+        </li>
+        <li>
+          <a href="http://www.cs.uoregon.edu">Department of Computer Science</a>
+        <li>
+          <a href="http://nic.uoregon.edu/prl/home.php">Performance Research Lab</a>
+        </li>
+        <li>
+          <a href="http://www.cs.uoregon.edu/research/tau/home.php">Tuning and Analysis Utilities</a>
+        </li> 
+      </ul>
+ 
+      <div id="copyright">
+ 
+          <p>
+              Copyright &copy; 1997-2020
+          </p>
+          <ul>
+              <li>
+              Department of Computer and Information Science, University of Oregon
+              </li>
+          </ul>
+      </div>
+  </div>
+
+</div>
+</body>
+</html>
+

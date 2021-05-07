@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Chapel: Productive Parallel Programming</title>
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="favicon.ico" />
+<!--[if lte IE 7]>
+<link href="ie.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+
+<body>
+<div id="wrapper">
+    <div id="headerBox" onclick="document.location='./'" onmouseover="style.cursor='pointer'" onmouseout="style.cursor='default'">
+        <div id="headerTitle">
+        <h1 class="title">The Chapel Parallel Programming Language</h1>
+        </div>
+    </div>
+<div id = "sidebar-wrapper">
+    <div id="sidebar">
+        <ul>
+            <li><a href="./">Home</a></li>
+        </ul>
+
+        <ul>
+            <li><a href="overview.html">What is Chapel?</a></li>
+            <li><a href="whatsnew.html">What&#39;s New?</a></li>
+        </ul>
+
+        <ul>
+            <li><a href="events.html">Upcoming Events</a></li>
+            <li><a href="jobs.html">Job Opportunities</a></li>
+        </ul>
+
+        <ul>
+          <li><a href="learning.html">How Can I Learn Chapel?</a></li>
+        </ul>
+
+        <ul>
+          <li><a href="contributing.html">Contributing to Chapel</a></li>
+          <li><a href="community.html">Community</a></li>
+        </ul>
+
+        <ul>
+            <li><a href="download.html">Download Chapel</a></li>
+            <li><a href="tryit.html">Try Chapel Online</a></li>
+        </ul>
+
+        <ul>
+          <li><a href="docs/">Documentation</a></li>
+          <li><a href="releaseNotes.html">Release Notes</a></li>
+        </ul>
+
+        <ul>
+          <li><a href="performance.html">Performance</a></li>
+          <li><a href="poweredby.html">Powered by Chapel</a></li>
+        </ul>
+
+        <ul>
+          <li><a href="presentations.html">Presentations</a></li>
+          <li><a href="papers.html">Papers / Publications</a></li>
+        </ul>
+    
+        <ul>
+          <li><a href = "CHIUW.html">CHIUW</a></li>
+          <li><a href = "CHUG.html">CHUG</a></li>
+        </ul>
+
+        <ul>
+            <li><a href="contributors.html">Contributors / Credits</a></li>
+        </ul>
+        
+        <div id="email">
+        c<!-- DISGUISEME -->h<!-- DISGUISEME -->a<!-- DISGUISEME -->p<!-- DISGUISEME -->e<!-- DISGUISEME -->l<!-- DISGUISEME -->+<!-- DISGUISEME -->i<!-- DISGUISEME -->n<!-- DISGUISEME -->f<!-- DISGUISEME -->o<!-- DISGUISEME -->@<!-- DISGUISEME -->d<!-- DISGUISEME -->i<!-- DISGUISEME -->s<!-- DISGUISEME -->c<!-- DISGUISEME -->o<!-- DISGUISEME -->u<!-- DISGUISEME -->r<!-- DISGUISEME -->s<!-- DISGUISEME -->e<!-- DISGUISEME -->m<!-- DISGUISEME -->a<!-- DISGUISEME -->i<!-- DISGUISEME -->l<!-- DISGUISEME -->.<!-- DISGUISEME -->c<!-- DISGUISEME -->o<!-- DISGUISEME -->m
+        </div>
+    </div>
+    &nbsp;
+    <center>
+      <a href = "https://github.com/chapel-lang/"><img src = "images/github-cropped.png" alt="Chapel GitHub Project" height="20" hspace="3"></a> 
+
+      <a href = "http://stackoverflow.com/questions/tagged/chapel"><img src = "images/stackoverflow.png" alt="Chapel on Stack Overflow" height="20" hspace="3"></a>
+
+      <a href = "https://gitter.im/chapel-lang/chapel"><img src = "images/gitter.png" alt="Chapel Gitter channel" height="20" hspace="3"></a>
+
+      <a href = "https://tio.run/#chapel"><img src = "images/tio.png" alt="Chapel on Try It Online" height="20"></a>
+
+      <a href = "gsoc/index.html"><img src = "images/gsoc.png" alt="Chapel Google Summer of Code information" height="20" hspace="3"></a>
+
+      <p></p>
+
+      <a href = "https://twitter.com/ChapelLanguage"><img src = "images/twitter-cropped.png" alt="Chapel Twitter feed" height="20" hspace="3"></a>
+
+      <a href = "https://www.facebook.com/ChapelLanguage"><img border="0" src = "images/facebook-20.png" alt="Chapel Facebook page" height="20" hspace="3"></a>
+
+      <a href = "http://www.youtube.com/c/ChapelParallelProgrammingLanguage"><img src = "images/YouTube-icon-full_color.png" alt="Chapel YouTube videos" height="20" hspace="3"></a>
+
+      <a href = "https://chapel.discourse.group/"><img src = "images/discourse.png" alt="Chapel Discourse site" height="20" hspace="3"></a>
+
+    </center>
+</div>
+
+
+	<div id="content">
+
+<p>&nbsp;</p>
+
+<h2>What is Chapel?</h2>
+
+<p>Chapel is a programming language designed for productive parallel computing
+at scale.
+
+<p>
+
+<font color="#444"><b color:#444>Why Chapel?</b></font>&nbsp;&nbsp;Because it simplifies parallel programming through elegant support for:<br>
+<ul>
+<li> <font color="#444"><b>distributed arrays</b></font> that can leverage thousands of nodes' memories and cores
+<li> <font color="#444"><b>a global namespace</b></font> supporting direct access to local or remote variables
+<li> <font color="#444"><b>data parallelism</b></font> to trivially use the cores of a laptop, cluster, or supercomputer
+<li> <font color="#444"><b>task parallelism</b></font> to create concurrency within a node or across the system
+</ul>
+
+<font color="#444"><b color:#444>Chapel Characteristics</b></font>
+<ul>
+<li> <font color="#444"><b>productive:</b></font> code tends to be similarly readable/writable as Python
+<li> <font color="#444"><b>scalable:</b></font> runs on laptops, clusters, the cloud, and HPC systems
+<li> <font color="#444"><b>fast:</b></font> performance <a href = "performance.html">competes with or beats</a> C/C++ & MPI & OpenMP
+<li> <font color="#444"><b>portable:</b></font> compiles and runs in virtually any *nix environment
+<li> <font color="#444"><b>open-source:</b></font> hosted on <a href = "https://github.com/chapel-lang/">GitHub</a>, permissively <a href = "license.html">licensed</a><br>
+</ul>
+
+
+
+
+<h2>New to Chapel?</h2>
+
+As an introduction to Chapel, you may want to...<br>
+
+<ul>
+  <li> watch <a href = "https://www.youtube.com/watch?v=ko11tLuchvg">an overview
+                        talk</a> or browse its <a href =
+                        "https://chapel-lang.org/presentations/ChapelForHPCKM-presented.pdf">slides</a>
+
+  <li> read a <!--<a href =
+                        "http://www.cray.com/blog/chapel-productive-parallel-programming/">blog-length</a> or --> <a href =
+                        "publications/PMfPC-Chapel.pdf">chapter-length</a> introduction to Chapel</li>
+
+                        
+  <li> learn about <a href = "poweredby.html">projects powered by
+  Chapel</a>
+
+  <li> check out <a href = "performance.html">performance
+  highlights</a> like these:<br>
+
+<table border="0" cellpadding="0">
+
+<tr>
+
+<td align="center" valign="bottom">
+<a href = "performance.html">
+ <img src="images/prk-stencil-perf.png" style="max-width:100%; height:auto;"
+      alt="HPCC Random Access performance">
+</a>
+</td>
+
+<td align="center" valign="bottom">
+<a href = "performance.html">
+ <img src="images/npb-ft-E-perf.png" style="max-width:100%; height:auto;"
+      alt="HPCC Random Access performance">
+</a>
+</td>
+
+</tr>
+</table>
+
+  <li> browse <a href = "docs/examples/index.html">sample programs</a>
+                        or <a href = "learning.html">learn</a> how to
+                        write distributed programs like this one:</li>
+
+  <p>
+    <div class="code-snippet">
+      <pre class="code">
+<b>use</b> CyclicDist;           <i>// use the Cyclic distribution library</i>
+<b>config const</b> n = 100;     <i>// use</i> --n=&lt;val&gt; <i>when executing to override this default</i>
+
+<b>forall</b> i <b>in</b> {1..n} <b>dmapped</b> Cyclic(startIdx=1) <b>do</b>
+  writeln("Hello from iteration ", i, " of ", n, " running on node ", <b>here</b>.id);</pre>
+    </div>
+  </p>
+
+</ul>
+    
+
+
+<h2 id="whatshot">What's Hot?</h2>
+
+<p>
+<ul>
+
+  <p>
+
+    <li> <b>Chapel 1.24.1</b> is now available&mdash;<a href =
+      "download.html">download</a> a copy or browse its <a href =
+      "releaseNotes.html">release notes</a></li>
+
+<p>
+
+  <li> New <a href =
+  "https://hal.archives-ouvertes.fr/hal-03149394/document">paper</a>/<a href
+  = "papers/Carneiro_et_al_GPU_slidesHPCS2020.pdf">slides</a> about
+  GPU-based tree search (<b>HPCS 2020 best paper winner</b>)
+
+<p>
+
+  <li> <a href =
+  "https://developer.hpe.com/blog/chapel-technical-lead-brad-chamberlain-opens-up-about-open-source/"><b>Interview</b></a>
+  with Brad Chamberlain about open source on the HPE Developer Blog
+
+<p>
+
+    <li> See the <a href =
+    "papers/Scitech_2021_CHAMPS.pdf">paper</a>/<a href
+    =
+    "papers/Scitech_2021_CHAMPS_presentation.pdf">slides</a>/<a href
+    = "https://youtu.be/Ivtus_YACCQ">talk</a> from Parenteau et al. on
+    their <b>CFD</b> framework in Chapel
+
+<p>
+
+  <li> We're proud to announce that Chapel was named a <a href =
+  "https://www.idg.com/news/infoworld-announces-2020-bossie-award-winners-for-the-most-innovative-open-source-projects-and-next-generation-tools/"><b>Bossie
+  2020 award winner</b></a>
+
+<p>
+
+  <li> See Brad Chamberlain's <b>PACT'20 keynote</b> on
+  Compiling Chapel: <a href =
+  "presentations/Chamberlain-PACT2020-final.pdf">slides</a>/<a href =
+  "https://www.youtube.com/watch?v=4FAONGgnLWw">video</a></li>
+
+<p>
+
+  <li> Watch Bill Reus' keynote, <a href =
+       "https://youtu.be/g-G_Z_3pgUE"><b>Arkouda:</b> Interactive
+       Supercomputing for Data Science</a>
+
+<p>
+
+    <li> Also see: <a href = "whatsnew.html"><b>What's New?</b></a></li>
+</ul>
+</p>
+
+</div>
+</div>
+
+</body>
+</html>
