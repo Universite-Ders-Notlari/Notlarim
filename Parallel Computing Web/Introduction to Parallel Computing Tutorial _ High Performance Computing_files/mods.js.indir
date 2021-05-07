@@ -1,0 +1,64 @@
+(function($)
+{
+
+	$('.dropdown-toggle').dropdown();
+
+	$('.dropdown input, .dropdown label').click(function(e) {
+	//e.stopPropagation();
+	});
+
+
+	//$( ".flex-prev" ).hide();
+	//$( ".flex-next" ).hide();
+
+	if ($(window).width() >= 480) {
+		var portal = $(".portal-header");
+		portal.hide().fadeIn('slow', function() {
+			portal.removeAttr('style');
+		});
+	}
+
+	//Popup removal for mobile devices.
+	if (window.matchMedia("(min-width: 400px)").matches) {
+		/* the viewport is at least 400 pixels wide */
+	} else {
+		/* the viewport is lower than 400 pixels wide */
+		$('#block-popup-announcement-popup-announcement-1').hide();
+	}
+
+	$('.collapse').on('shown.bs.collapse', function(){
+	$(this).parent().find(".glyphicon-plus").removeClass("glyphicon-plus").addClass("glyphicon-minus");
+	}).on('hidden.bs.collapse', function(){
+	$(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass("glyphicon-plus");
+	});
+
+
+	/*
+	 $('[data-toggle="popover3"]').popover({
+        placement : 'bottom',
+		trigger : 'hover',
+        html : true,
+        content : '<div class=""><a href="#" class="pull-left"><img src="../images/avatar-tiny.jpg" class="media-object" alt="Sample Image"></a><div class=""><h4 class="media-heading">Jhon Carter</h4><p>Excellent Bootstrap popover! I really love it.</p></div></div>'
+    });
+	*/
+
+
+
+	//var pageToggle = $("#pagetoggle");
+	//var pageTogglePosition = pageToggle.position();
+
+//	var newLeft = Math.floor(pageTogglePosition.left - (5 / 2));
+
+	//alert(newLeft);
+
+
+    // Add anchors on DOMContentLoaded - This will add anchor.js to each heading tag
+	// We can also add other elements to be selected by using anchors.add('anchored');
+	// Then use that class where you want it to be exposed.
+  //  document.addEventListener('DOMContentLoaded', function(event) {
+   //     anchors.add();
+  //  });
+
+
+})(jQuery);
+

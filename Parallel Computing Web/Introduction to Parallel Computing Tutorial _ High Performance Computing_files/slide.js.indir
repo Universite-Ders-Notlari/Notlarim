@@ -1,0 +1,26 @@
+jQuery(window).load(function() {
+
+  jQuery('#slidebox').flexslider({
+    animation: "fade",
+    directionNav:true,
+    controlNav:true,
+	slideshowSpeed:10000,
+	//slideshow: false
+  });
+
+
+		/*
+	$('.flexslider').flexslider({
+    	slideshow: false
+ 	});
+	*/
+
+	jQuery('.flexslider').flexslider(
+	{
+		//animation: "fade",
+		directionNav:true,
+		slideshowSpeed:10000,
+  	});
+
+	
+});

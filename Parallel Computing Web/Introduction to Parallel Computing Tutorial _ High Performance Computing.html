@@ -1,0 +1,2595 @@
+<!DOCTYPE html>
+<!-- saved from url=(0099)https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#DesignDependencies -->
+<html lang="en" dir="ltr" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:og="http://ogp.me/ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:sioc="http://rdfs.org/sioc/ns#" xmlns:sioct="http://rdfs.org/sioc/types#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" class="js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" defer="" async="" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/piwik.js.indir"></script>
+
+<meta name="Generator" content="Drupal 7 (http://drupal.org)">
+<link rel="canonical" href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial">
+<link rel="shortlink" href="https://hpc.llnl.gov/node/588">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="shortcut icon" href="https://hpc.llnl.gov/sites/all/themes/tid/favicon.ico" type="image/vnd.microsoft.icon">
+<title>Introduction to Parallel Computing Tutorial | High Performance Computing</title>
+<link type="text/css" rel="stylesheet" href="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/css_kShW4RPmRstZ3SpIC-ZvVGNFVAi0WEMuCnI0ZkYIaFw.css" media="all">
+<link type="text/css" rel="stylesheet" href="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/css_bq48Es_JAifg3RQWKsTF9oq1S79uSN2WHxC3KV06fK0.css" media="all">
+<link type="text/css" rel="stylesheet" href="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/css_vAm-LJc0tkC-w_c6v7Ekq0bW26Pzl31HvPM6kbvK-pc.css" media="all">
+<link type="text/css" rel="stylesheet" href="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/css_ca6tstDbY9-H23Ty8uKiDyFQLT1AZftZKldhbTPPnm8.css" media="all">
+<!--[if lt IE 9]><script src="/sites/all/themes/tid/js/html5.js"></script><![endif]-->
+<style type="text/css">@font-face {
+  font-family: 'rbicon';
+  src: url(chrome-extension://dipiagiiohfljcicegpgffpbnjmgjcnf/fonts/rbicon.woff2) format("woff2");
+  font-weight: normal;
+  font-style: normal; }
+</style></head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-588 node-type-user-portal-one-column-page lightbox-processed" style="">
+  <div aria="contentinfo"><noscript><img src="https://analytics.llnl.gov/piwik.php?idsite=149" class="no-border" alt="" /></noscript></div>
+    <div id="page">
+	<div class="unclassified"></div>
+	<div class="headertop">
+					<div id="skip-nav" role="navigation" aria-labelledby="skip-nav" class="reveal">
+  			<a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#main-content">Skip to main content</a>
+			</div>
+					</div>
+        <div class="headerwrapbg">
+                        <div class="headerwrap-portal">
+                <div id="masthead" class="site-header container" role="banner">
+                    <div class="row">
+                        <div class="llnl-logo col-sm-3">
+                            <a href="https://www.llnl.gov/" target="_blank" title="Lawrence Livermore National Laboratory">
+                                <img src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/llnl-tab-portal.png" alt="LLNL Home">
+                            </a>
+                        </div>
+                        <div id="logo" class="site-branding col-sm-4">
+                                                            <div id="site-logo">
+                                        <!--High Performance Computing<br />Livermore Computing Center-->
+                                        																					<a href="https://hpc.llnl.gov/user-portal" class="text-dark" title="Livermore Computing Center High Performance Computing">
+                                            <img src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/hpc.png" alt="Portal Home">
+																					</a>
+																				
+                                </div>
+                                                    </div>
+                        <div class="col-sm-5">
+                            <div id="top-search">
+															<div class="input-group">
+																	<form class="navbar-form navbar-search navbar-right" action="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <div class="element-invisible">Search form</div>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text">
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="" class="form-submit"></div><input type="hidden" name="form_build_id" value="form-tKn4T2SfqjmU6fSPb0tmbXfmo13UtgEPaqsy8yPQats">
+<input type="hidden" name="form_id" value="search_block_form">
+</div>
+</div></form>                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="mainnav">
+                    <div class="container">
+                        <div class="row">
+                            <nav id="Menu" aria-label="Mobile Menu" class="mobilenavi col-md-12"></nav>
+                            <nav id="navigation" aria-label="Main Menu">
+                                <div id="main-menu" class="main-menu-portal">
+                                    <ul class="menu"><li class="first collapsed"><a href="https://hpc.llnl.gov/user-portal">Portal</a></li>
+<li class="expanded"><a href="https://hpc.llnl.gov/accounts">Accounts</a><ul class="menu"><li class="first leaf"><a href="https://hpc.llnl.gov/accounts/new-account-setup">New Account Setup</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/accounts/idm-account-management">IdM Account Management</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/manuals/access-lc-systems" title="">Access to LC Systems</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/accounts/computer-coordinator-roles">Computer Coordinator Roles</a></li>
+<li class="collapsed"><a href="https://hpc.llnl.gov/accounts/forms">Forms</a></li>
+<li class="collapsed"><a href="https://hpc.llnl.gov/accounts/policies">Policies</a></li>
+<li class="last leaf"><a href="https://hpc.llnl.gov/accounts/mailing-lists">Mailing Lists</a></li>
+</ul></li>
+<li class="expanded"><a href="https://hpc.llnl.gov/banks-jobs">Banks &amp; Jobs</a><ul class="menu"><li class="first leaf"><a href="https://hpc.llnl.gov/banks-jobs/allocations">Allocations</a></li>
+<li class="expanded"><a href="https://hpc.llnl.gov/banks-jobs/running-jobs">Running Jobs</a><ul class="menu"><li class="first leaf"><a href="https://hpc.llnl.gov/banks-jobs/running-jobs/batch-system-primer">Batch System Primer</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/banks-jobs/running-jobs/lsf-user-manual">LSF User Manual</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/banks-jobs/running-jobs/lsf-quick-start-guide">LSF Quick Start Guide</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/banks-jobs/running-jobs/lsf-commands">LSF Commands</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/banks-jobs/running-jobs/slurm-user-manual" title="Guide to using the Slurm Workload/Resource Manager">Slurm User Manual</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/banks-jobs/running-jobs/slurm-quick-start-guide">Slurm Quick Start Guide</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/banks-jobs/running-jobs/slurm-commands">Slurm Commands</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/training/tutorials/slurm-and-moab">Slurm and Moab</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/banks-jobs/running-jobs/batch-system-commands">Batch System Cross-Reference</a></li>
+<li class="last leaf"><a href="https://hpc.llnl.gov/banks-jobs/running-jobs/slurm-srun-versus-ibm-csm-jsrun">Slurm srun versus IBM CSM jsrun</a></li>
+</ul></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/accounts/forms/asc-dat" title="">ASC DAT Request</a></li>
+<li class="last leaf"><a href="https://hpc.llnl.gov/accounts/forms/mic-dat" title="">M&amp;IC DAT Request</a></li>
+</ul></li>
+<li class="expanded"><a href="https://hpc.llnl.gov/hardware">Hardware</a><ul class="menu"><li class="first collapsed"><a href="https://hpc.llnl.gov/hardware/archival-storage-hardware">Archival Storage Hardware</a></li>
+<li class="collapsed"><a href="https://hpc.llnl.gov/hardware/platforms">Compute Platforms</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/hardware/compute-platforms-gpus">Compute Platforms with GPUs</a></li>
+<li class="collapsed"><a href="https://hpc.llnl.gov/hardware/file-systems">File Systems</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/hardware/testbeds">Testbeds</a></li>
+<li class="collapsed"><a href="https://hpc.llnl.gov/hardware/zones">Zones (aka "The Enclave")</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="" class="ext">MyLC (Lorenz)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/cgi-bin/lccgi/customstatus.cgi?" title="" class="ext">CZ Compute Platform Status</a></li>
+<li class="leaf"><a href="https://rzlc.llnl.gov/cgi-bin/lccgi/customstatus.cgi" title="" class="ext">RZ Compute System Status</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/fsstatus/fsstatus.cgi" title="" class="ext">CZ File System Status</a></li>
+<li class="last leaf"><a href="https://rzlc.llnl.gov/fsstatus/fsstatus.cgi" title="" class="ext">RZ File System Status</a></li>
+</ul></li>
+<li class="expanded"><a href="https://hpc.llnl.gov/services">Services</a><ul class="menu"><li class="first collapsed"><a href="https://hpc.llnl.gov/services/green-data-oasis">Green Data Oasis (GDO)</a></li>
+<li class="leaf"><a href="https://lc.llnl.gov/lorenz/mylc/mylc.cgi" title="" class="ext">MyLC (Lorenz)</a></li>
+<li class="last leaf"><a href="https://hpc.llnl.gov/services/visualization-services">Visualization Services</a></li>
+</ul></li>
+<li class="expanded"><a href="https://hpc.llnl.gov/software">Software</a><ul class="menu"><li class="first leaf"><a href="https://hpc.llnl.gov/software/archival-storage-software">Archival Storage Software</a></li>
+<li class="collapsed"><a href="https://hpc.llnl.gov/software/data-management-tools-projects">Data Management Tools</a></li>
+<li class="collapsed"><a href="https://hpc.llnl.gov/software/development-environment-software">Development Environment Software</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/software/mathematical-software">Mathematical Software</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/software/modules-and-software-packaging">Modules and Software Packaging</a></li>
+<li class="collapsed"><a href="https://hpc.llnl.gov/software/visualization-software">Visualization Software</a></li>
+<li class="last leaf"><a href="https://computing.llnl.gov/projects/radiuss" title="">RADIUSS</a></li>
+</ul></li>
+<li class="last expanded active-trail"><a href="https://hpc.llnl.gov/training" class="active-trail">Training</a><ul class="menu"><li class="first expanded active-trail"><a href="https://hpc.llnl.gov/training/tutorials" class="active-trail">Tutorials</a><ul class="menu"><li class="first leaf active-trail"><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial" class="active-trail active">Introduction to Parallel Computing Tutorial</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/training/tutorials/llnl-covid-19-hpc-resource-guide">LLNL Covid-19 HPC Resource Guide for New Livermore Computing Users</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/training/tutorials/using-lcs-sierra-system">Using LC's Sierra System</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/training/tutorials/livermore-computing-psaap3-quick-start-tutorial">Livermore Computing PSAAP3 Quick Start Tutorial</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/sites/default/files/PSAAP-alliance-quickguide.docx" title="">PSAAP Alliance Quick Guide</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/training/tutorials/linux-tutorial-exercises">Linux Tutorial Exercise One</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-one">Livermore Computing Linux Clusters Overview Part One</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/training/tutorials/livermore-computing-linux-commodity-clusters-overview-part-two">Livermore Computing Linux Clusters Overview Part Two</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/training/tutorials/livermore-computing-resources-and-environment">Livermore Computing Resources and Environment</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/training/tutorials/slurm-and-moab-exercise">Slurm and Moab Exercise</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/training/tutorials/slurm-and-moab">Slurm and Moab Tutorial</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/training/tutorials/totalview-part-2-common-functions">TotalView Part 2:  Common Functions</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/training/tutorials/totalview-part-3-debugging-parallel-programs">TotalView Part 3: Debugging Parallel Programs</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/training/tutorials/totalview-tutorial">TotalView Tutorial</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/training/tutorials/evaluation-form">Tutorial Evaluation Form</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/training/tutorials/srun-auto-affinity">srun --auto-affinity</a></li>
+<li class="last leaf"><a href="https://hpc.llnl.gov/training/tutorials/srun-multi-prog">srun --multi-prog</a></li>
+</ul></li>
+<li class="collapsed"><a href="https://hpc.llnl.gov/training/documentation">Documentation &amp; User Manuals</a></li>
+<li class="leaf"><a href="https://hpc.llnl.gov/training/technical-bulletins-catalog">Technical Bulletins Catalog</a></li>
+<li class="collapsed"><a href="https://hpc.llnl.gov/training/workshop-schedule">Training Events</a></li>
+<li class="last leaf"><a href="https://hpc.llnl.gov/training/user-meeting-presentations-archive">User Meeting Presentation Archive</a></li>
+</ul></li>
+</ul>                                                                            <div id="pagetoggle" class="btn-group btn-toggle pull-right" style="margin-right: 15px;">
+                                            <a href="https://hpc.llnl.gov/" class="btn btn-default gs">General Site</a>
+                                            <a href="https://hpc.llnl.gov/user-portal" class="btn btn-primary up active">User Portal</a>
+                                        </div>
+                                                                    </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+		<div id="main-content" class="l2content">
+        <div class="container">
+    		<div class="row">
+        		                <div id="primary" class="content-area col-sm-12">
+					                                        <section id="content" role="nav" class="clearfix col-sm-12">
+
+                                                                                    <div id="breadcrumbs">
+                                    <h2 class="element-invisible">breadcrumb menu</h2><nav class="breadcrumb" aria-label="breadcrumb-navigation"><a href="https://hpc.llnl.gov/">Home</a> » <a href="https://hpc.llnl.gov/training">Training</a> » <a href="https://hpc.llnl.gov/training/tutorials">Tutorials</a> » Introduction to Parallel Computing Tutorial</nav>                                </div>
+                                                    
+                                            </section>
+                  <main>
+
+                                              <div id="content_top">
+                                <div class="region region-content-top">
+  <div id="block-print-ui-print-links" class="block block-print-ui">
+
+    
+    
+  
+  <div class="content">
+    <span class="print_html"><a href="https://hpc.llnl.gov/print/588" title="Display a printer-friendly version of this page." class="print-page" onclick="window.open(this.href); return false" rel="nofollow">Printer-friendly</a></span>  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                            </div>
+                        
+                        <div id="content-wrap">
+                                                                                                                <div class="region region-content">
+  <div id="block-system-main" class="block block-system">
+
+    
+    
+  
+  <div class="content">
+    
+
+<div about="/training/tutorials/introduction-parallel-computing-tutorial" typeof="sioc:Item foaf:Document" class="node node-user-portal-one-column-page node-full view-mode-full">
+    <div class="row">
+    <div class="col-sm-12 ">
+      <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even" property="dc:title"><h1 class="title">Introduction to Parallel Computing Tutorial</h1></div></div></div><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><h2>Table of Contents<a name="contents" id="contents"></a></h2>
+<ol><li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#Abstract">Abstract</a>
+<ol><li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#Overview">Parallel Computing Overview</a>
+<ol><li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#Whatis">What is Parallel Computing?</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#WhyUse">Why Use Parallel Computing?</a></li>
+<li>&nbsp;<a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#Who">Who is Using Parallel Computing?</a></li>
+</ol></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#Concepts">Concepts and Terminology</a>
+<ol><li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#Neumann">von Neumann Computer Architecture</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#Flynn">Flynn's Taxonomy</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#Terminology">Some General Parallel Terminology</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#LimitsCosts">Limits and Costs of Parallel Programming</a></li>
+</ol></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#MemoryArch">Parallel Computer Memory Architectures</a>
+<ol><li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#SharedMemory">Shared Memory</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#DistributedMemory">Distributed Memory</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#HybridMemory">Hybrid Distributed-Shared Memory</a></li>
+</ol></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#Models">Parallel Programming Models</a>
+<ol><li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#ModelsOverview">Parallel Programming Models Overview</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#ModelsShared">Shared Memory Model</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#ModelsThreads">Threads Model</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#ModelsMessage">Distributed Memory / Message Passing Model</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#ModelsData">Data Parallel Model</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#Hybrid">Hybrid Model</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#SPMD-MPMD">SPMD and MPMP</a></li>
+</ol></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#Designing">Designing Parallel Programs</a>
+<ol><li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#DesignAutomatic">Automatic vs. Manual Parallelization</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#DesignUnderstand">Understand the Problem and the Program</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#DesignPartitioning">Partitioning</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#DesignCommunications">Communications</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#DesignSynchronization">Synchronization</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#DesignDependencies">Data Dependencies</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#DesignLoadBalancing">Load Balancing</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#DesignGranularity">Granularity</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#DesignIO">I/O</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#DesignDebug">Debugging</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#DesignPerformance">Performance Analysis and Tuning</a></li>
+</ol></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#Examples">Parallel Examples</a>
+<ol><li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#ExamplesArray">Array Processing</a></li>
+<li>&nbsp;<a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#ExamplesPI">PI Calculation</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#ExamplesHeat">Simple Heat Equation</a></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#ExamplesWave">1-D Wave Equation</a></li>
+</ol></li>
+<li><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#References">References and More Information</a></li>
+</ol></li>
+</ol><h2><a name="Abstract" id="Abstract"></a>Abstract</h2>
+<p>This is the first tutorial in the "Livermore Computing Getting Started" workshop. It is intended to provide only a brief overview of the extensive and broad topic of Parallel Computing, as a lead-in for the tutorials that follow it. As such, it covers just the very basics of parallel computing, and is intended for someone who is just becoming acquainted with the subject and who is planning to attend one or more of the other tutorials in this workshop. It is not intended to cover Parallel Programming in depth, as this would require significantly more time. The tutorial begins with a discussion on parallel computing - what it is and how it's used, followed by a discussion on concepts and terminology associated with parallel computing. The topics of parallel memory architectures and programming models are then explored. These topics are followed by a series of practical discussions on a number of the complex issues related to designing and running parallel programs. The tutorial concludes with several examples of how to parallelize simple serial programs. References are included for further self-study.</p>
+<h2><a name="Overview" id="Overview"></a>Overview</h2>
+<h3><a name="Whatis" id="Whatis"></a>What is Parallel Computing?</h3>
+<h4>Serial Computing</h4>
+<p>&nbsp;Traditionally, software has been written for <strong><em>serial</em></strong> computation:</p>
+<ul><li>A problem is broken into a discrete series of instructions</li>
+<li>Instructions are executed sequentially one after another</li>
+<li>Executed on a single processor</li>
+<li>Only one instruction may execute at any moment in time</li>
+</ul><p class="left-indent"></p><div class="media media-element-container media-default"><div id="file-676" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/serialproblemgif">serialProblem.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Serial computing example diagram" height="250" width="604" class="media-element file-default" data-delta="1" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/serialProblem.gif"></div>
+
+  
+</div>
+</div>
+<p><strong>&nbsp;For example:</strong></p>
+<p class="left-indent"></p><div class="media media-element-container media-default"><div id="file-677" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/serialproblem2gif">serialProblem2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Serial computing problem example diagram " height="250" width="604" class="media-element file-default" data-delta="2" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/serialProblem2.gif"></div>
+
+  
+</div>
+</div>
+<h4>Parallel Computing</h4>
+<p>In the simplest sense, <strong><em>parallel computing</em></strong> is the simultaneous use of multiple compute resources to solve a computational problem:</p>
+<ul><li>A problem is broken into discrete parts that can be solved concurrently</li>
+<li>Each part is further broken down to a series of instructions</li>
+<li>Instructions from each part execute simultaneously on different processors</li>
+<li>An overall control/coordination mechanism is employed</li>
+</ul><p class="left-indent"></p><div class="media media-element-container media-default"><div id="file-678" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/parallelproblemgif">parallelProblem.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Parallel computing example diagram" height="372" width="683" class="media-element file-default" data-delta="3" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/parallelProblem.gif"></div>
+
+  
+</div>
+</div>
+<p><strong>For example:</strong></p>
+<p class="left-indent"></p><div class="media media-element-container media-default"><div id="file-679" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/parallelproblem2gif">parallelProblem2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Parallel computing problem example diagram" height="372" width="683" class="media-element file-default" data-delta="4" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/parallelProblem2.gif"></div>
+
+  
+</div>
+</div>
+<ul><li>The computational problem should be able to:
+<ul><li>Be broken apart into discrete pieces of work that can be solved simultaneously;</li>
+<li>Execute multiple program instructions at any moment in time;</li>
+<li>Be solved in less time with multiple compute resources than with a single compute resource.</li>
+</ul></li>
+<li>The compute resources are typically:
+<ul><li>A single computer with multiple processors/cores</li>
+<li>An arbitrary number of such computers connected by a network</li>
+</ul></li>
+</ul><h4>Parallel Computers</h4>
+<ul><li>Virtually all stand-alone computers today are parallel from a hardware perspective:
+<ul><li>Multiple functional units (L1 cache, L2 cache, branch, prefetch, decode, floating-point, graphics processing (GPU), integer, etc.)</li>
+<li>Multiple execution units/cores</li>
+<li>Multiple hardware threads</li>
+</ul></li>
+</ul><p class="left-indent"></p><div class="media media-element-container media-default"><div id="file-680" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/bgqcomputechipjpeg">bgqComputeChip.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt=" IBM BG/Q Compute Chip with 18 cores (PU) and 16 L2 Cache units (L2)" title=" IBM BG/Q Compute Chip with 18 cores (PU) and 16 L2 Cache units (L2)" height="453" width="450" class="media-element file-default" data-delta="5" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/bgqComputeChip.jpeg"></div>
+
+  
+</div>
+</div>
+<h6>IBM BG/Q Compute Chip with 18 cores (PU) and 16 L2 Cache units (L2)</h6>
+<p>&nbsp;</p>
+<ul><li>Networks connect multiple stand-alone computers (nodes) to make larger parallel computer clusters.</li>
+</ul><p class="left-indent">&nbsp;</p><div class="media media-element-container media-default"><div id="file-681" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/nodesnetworkgif">nodesNetwork.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Nodes network" height="249" width="720" class="media-element file-default" data-delta="6" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/nodesNetwork.gif"></div>
+
+  
+</div>
+</div>
+<ul><li>For example, the schematic below shows a typical LLNL parallel computer cluster:
+<ul><li>Each compute node is a multi-processor parallel computer in itself</li>
+<li>Multiple compute nodes are networked together with an Infiniband network</li>
+<li>Special purpose nodes, also multi-processor, are used for other purposes</li>
+</ul></li>
+</ul><p class="left-indent"></p><div class="media media-element-container media-default"><div id="file-682" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/parallelcomputer1gif">parallelComputer1.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Example parallel computer cluster" height="402" width="781" class="media-element file-default" data-delta="7" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/parallelComputer1.gif"></div>
+
+  
+</div>
+</div>
+<ul><li>The majority of the world's large parallel computers (supercomputers) are clusters of hardware produced by a handful of (mostly) well known vendors.</li>
+</ul><p class="left-indent"></p><div class="media media-element-container media-default"><div id="file-683" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/top500vendorsjpeg">top500Vendors.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Pie chart of vendors systems share and performance share" height="680" width="835" class="media-element file-default" data-delta="8" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/top500Vendors.jpeg"></div>
+
+  
+</div>
+</div>
+<p><em>Source: <a href="https://www.top500.org/">Top500.org</a></em></p>
+<h3><a name="WhyUse" id="WhyUse"></a>Why Use Parallel Computing?</h3>
+<h4>The Real World is Massively Complex</h4>
+<ul><li>In the natural world, many complex, interrelated events are happening at the same time, yet within a temporal sequence.</li>
+<li>Compared to serial computing, parallel computing is much better suited for modeling, simulating and understanding complex, real world phenomena.</li>
+<li>For example, imagine modeling these serially:</li>
+</ul><p class="left-indent"></p><div class="media media-element-container media-default"><div id="file-685" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/realworldcollage1jpeg">realWorldCollage1.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="&amp;quot;Real world&amp;quot; events that can be modeled with parallel computing" height="220" width="760" class="media-element file-default" data-delta="10" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/realWorldCollage1.jpeg"></div>
+
+  
+</div>
+</div>
+<p class="left-indent"></p><div class="media media-element-container media-default"><div id="file-684" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/realworldcollage2jpeg">realWorldCollage2.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="&amp;quot;Real world&amp;quot; events that can be modeled with parallel computing" height="230" width="760" class="media-element file-default" data-delta="9" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/realWorldCollage2.jpeg"></div>
+
+  
+</div>
+</div>
+<p class="left-indent">&nbsp;</p>
+<h4>Main Reasons</h4>
+<h5>SAVE TIME AND/OR MONEY</h5>
+<ul><li>In theory, throwing more resources at a task will shorten its time to completion, with potential cost savings.</li>
+<li>Parallel computers can be built from cheap, commodity components.</li>
+</ul><p class="left-indent"></p><div class="media media-element-container media-default"><div id="file-691" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/timemoney2jpeg">timeMoney2.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Tasks are completed faster with more resources, as shown with several people constructing a house and several plows on a field." height="182" width="600" class="media-element file-default" data-delta="16" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/timeMoney2.jpeg"></div>
+
+  
+</div>
+</div>
+<h5>SOLVE LARGER / MORE COMPLEX PROBLEMS</h5>
+<ul><li>Many problems are so large and/or complex that it is impractical or impossible to solve them using a serial program, especially given limited computer memory.</li>
+<li>Example: "Grand Challenge Problems" (<a href="https://en.wikipedia.org/wiki/Grand_Challenges">en.wikipedia.org/wiki/Grand_Challenge</a>) requiring petaflops and petabytes of computing resources.</li>
+<li>Example: Web search engines/databases processing millions of transactions every second</li>
+</ul><p class="left-indent"></p><div class="media media-element-container media-default"><div id="file-687" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/biggerproblemsjpeg">biggerProblems.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Bigger problems" height="180" width="600" class="media-element file-default" data-delta="12" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/biggerProblems.jpeg"></div>
+
+  
+</div>
+</div>
+<h5>PROVIDE CONCURRENCY</h5>
+<ul><li>A single compute resource can only do one thing at a time. Multiple compute resources can do many things simultaneously.</li>
+<li>Example: Collaborative Networks provide a global venue where people from around the world can meet and conduct work "virtually".</li>
+</ul><p class="left-indent"></p><div class="media media-element-container media-default"><div id="file-688" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/collaborativenetworksjpeg">collaborativeNetworks.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="COllaborative networks connecting people globally " height="182" width="600" class="media-element file-default" data-delta="13" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/collaborativeNetworks.jpeg"></div>
+
+  
+</div>
+</div>
+<h5>TAKE ADVANTAGE OF NON-LOCAL RESOURCES</h5>
+<ul><li>Using compute resources on a wide area network, or even the Internet when local compute resources are scarce or insufficient.</li>
+<li>Example: <a href="mailto:SETI@home" class="mailto">SETI@home<span class="mailto" aria-label="(link sends e-mail)"></span></a> (<a href="http://setiathome.berkeley.edu/">setiathome.berkeley.edu</a>) has over 1.7&nbsp;million users in nearly every country in the world. (May, 2018).</li>
+</ul><p class="left-indent"></p><div class="media media-element-container media-default"><div id="file-689" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/setilogojpeg">SETILogo.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="SETI@home logo" height="122" width="600" class="media-element file-default" data-delta="14" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/SETILogo.jpeg"></div>
+
+  
+</div>
+</div>
+<h5>MAKE BETTER USE OF UNDERLYING PARALLEL HARDWARE</h5>
+<ul><li>Modern computers, even laptops, are parallel in architecture with multiple processors/cores.</li>
+<li>Parallel software is specifically intended for parallel hardware with multiple cores, threads, etc.</li>
+<li>In most cases, serial programs run on modern computers "waste" potential computing power.</li>
+</ul><p class="left-indent"></p><div class="media media-element-container media-default"><div id="file-690" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/xeon5600processordie3jpeg">xeon5600processorDie3.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Intel Xeon processor with 6 cores and 6 L3 cache units" title="Intel Xeon processor with 6 cores and 6 L3 cache units" height="321" width="600" class="media-element file-default" data-delta="15" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/xeon5600processorDie3.jpeg"></div>
+
+  
+</div>
+</div>
+<h4>The Future</h4>
+<ul><li>During the past 20+ years, the trends indicated by ever faster networks, distributed systems, and multi-processor computer architectures (even at the desktop level) clearly show that <strong><em>parallelism is the future of computing</em></strong>.</li>
+<li>In this same time period, there has been a greater than <strong>500,000x</strong> increase in supercomputer performance, with no end currently in sight.</li>
+<li><strong><em>The race is already on for Exascale Computing - we are entering Exascale era </em></strong>
+<ul><li>Exaflop = 10<sup>18</sup> calculations per second</li>
+<li>US DOE Exascale Project: <a href="https://www.exascaleproject.org/">https://www.exascaleproject.org</a></li>
+</ul></li>
+</ul><p class="left-indent"></p><div class="media media-element-container media-default"><div id="file-692" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/top5001993-2016gif">top500.1993-2016.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Graph of increasing computer performance development from 1994-2016" height="637" width="662" class="media-element file-default" data-delta="17" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/top500.1993-2016.gif"></div>
+
+  
+</div>
+</div>
+<p><em>Source: <a href="https://www.top500.org/">Top500.org</a></em></p>
+<h3><a name="Who" id="Who"></a>Who is Using Parallel Computing?</h3>
+<h4>Science and Engineering</h4>
+<ul><li>Historically, parallel computing has been considered to be "the high end of computing", and has been used to model difficult problems in many areas of science and engineering:</li>
+<li>Atmosphere, Earth, Environment</li>
+<li>Physics - applied, nuclear, particle, condensed matter, high pressure, fusion, photonics</li>
+<li>Bioscience, Biotechnology, Genetics</li>
+<li>Chemistry, Molecular Sciences</li>
+<li>Geology, Seismology</li>
+<li>Mechanical Engineering - from prosthetics to spacecraft</li>
+<li>Electrical Engineering, Circuit Design, Microelectronics</li>
+<li>Computer Science, Mathematics</li>
+<li>Defense, Weapons</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-693" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/simulations01jpeg">simulations01.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Examples of science and engineering simulations" height="357" width="781" class="media-element file-default" data-delta="118" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/simulations01.jpeg"></div>
+
+  
+</div>
+</div>
+<h4>Industrial and Commercial</h4>
+<ul><li>Today, commercial applications provide an equal or greater driving force in the development of faster computers. These applications require the processing of large amounts of data in sophisticated ways. For example:</li>
+<li>"Big Data", databases, data mining</li>
+<li>Artificial Intelligence (AI)</li>
+<li>Oil exploration</li>
+<li>Web search engines, web based business services</li>
+<li>Medical imaging and diagnosis</li>
+<li>Pharmaceutical design</li>
+<li>Financial and economic modeling</li>
+<li>Management of national and multi-national corporations</li>
+<li>Advanced graphics and virtual reality, particularly in the entertainment industry</li>
+<li>Networked video and multi-media technologies</li>
+<li>Collaborative work environments</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-2036" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/simulations03-jpg">simulations03.jpg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Industrial and Commercial uses of supercomputing" height="360" width="781" class="media-element file-default" data-delta="119" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/simulations03.jpg"></div>
+
+  
+</div>
+</div>
+<h4>Global Applications</h4>
+<ul><li>Parallel computing is now being used extensively around the world, in a wide variety of applications.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-695" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/top500appsgif">top500Apps.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Top 500 HPC Application Areas" height="446" width="753" class="media-element file-default" data-delta="20" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/top500Apps.gif"></div>
+
+  
+</div>
+</div>
+<p><em>Source: <a href="https://www.top500.org/">Top500.org</a></em></p>
+<p></p><div class="media media-element-container media-default"><div id="file-696" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/top500segmentstimejpeg">top500SegmentsTime.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Top 500 performance shares by segment over time" height="1072" width="729" class="media-element file-default" data-delta="21" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/top500SegmentsTime.jpeg"></div>
+
+  
+</div>
+</div>
+<p></p><div class="media media-element-container media-default"><div id="file-697" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/top500countriestimejpeg">top500CountriesTime.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Top 500 systems shares by country over time" height="961" width="647" class="media-element file-default" data-delta="22" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/top500CountriesTime.jpeg"></div>
+
+  
+</div>
+</div><br><em>Source: <a href="https://www.top500.org/">Top500.org</a></em>
+<h2><a name="Concepts" id="Concepts"></a>Concepts and Terminology</h2>
+<h3><a name="Neumann" id="Neumann"></a><span>von Neumann Architecture</span></h3>
+<div class="clear-floats"><div class="media media-element-container media-default"><div id="file-699" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/vonneumann2jpeg">vonNeumann2.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="John von Neumann circa 1940s " title="John von Neumann circa 1940s " height="287" width="221" class="media-element file-default" data-delta="24" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/vonNeumann2.jpeg"></div>
+
+  
+</div>
+</div></div>
+<h6 class="clear-floats"><em>John von Neumann circa 1940s<br>(Source: LANL archives)</em></h6>
+<ul><li>Named after the Hungarian mathematician John von Neumann who first authored the general requirements for an electronic computer in his 1945 papers.</li>
+<li>Also known as "stored-program computer" - both program instructions and data are kept in electronic memory. Differs from earlier computers which were programmed through "hard wiring".</li>
+<li>Since then, virtually all computers have followed this basic design:</li>
+</ul><div class="float-left"><div class="media media-element-container media-default"><div id="file-698" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/vonneumann1gif">vonNeumann1.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Diagram of a basic computer design, based on vn Neumann&amp;#039;s requirements" height="277" width="293" class="media-element file-default" data-delta="23" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/vonNeumann1.gif"></div>
+
+  
+</div>
+</div></div>
+<ul><li>Comprised of four main components:</li>
+</ul><ol><li>Memory</li>
+<li>Control Unit</li>
+<li>Arithmetic Logic Unit</li>
+<li>Input/Output</li>
+</ol><p>&nbsp;</p>
+<ul><li>Read/write, random access memory is used to store both program instructions and data</li>
+</ul><p>&lt;ol style="list-style-type: lower-alpha;"&gt;</p>
+<p>&lt;li&gt;Program instructions are coded data which tell the computer to do something&lt;/li&gt;<br>&lt;li&gt;Data is simply information to be used by the program&lt;/li&gt;<br>&lt;/ol&gt;</p>
+<ul><li>Control unit fetches instructions/data from memory, decodes the instructions and then <strong><em>sequentially</em></strong> coordinates operations to accomplish the programmed task.</li>
+<li>Arithmetic Unit performs basic arithmetic operations</li>
+<li>Input/Output is the interface to the human operator</li>
+</ul><div class="clear-floats">&nbsp;</div>
+<div class="clear-floats">&nbsp;</div>
+<p>&nbsp;</p>
+<ul><li>More info on his other remarkable accomplishments: <a href="http://en.wikipedia.org/wiki/John_von_Neumann">http://en.wikipedia.org/wiki/John_von_Neumann</a></li>
+<li>So what? Who cares?
+<ul><li>Well, parallel computers still follow this basic design, just multiplied in units. The basic, fundamental architecture remains the same.</li>
+</ul></li>
+</ul><h3><a name="Flynn" id="Flynn"></a><span>Flynn's Classical Taxonomy</span></h3>
+<ul><li>There are different ways to classify parallel computers. Examples are available in the references<a href="https://hpc.llnl.gov/sites/default/files/parallelClassifications_0.pdf" target="_blank">.</a></li>
+<li>One of the more widely used classifications, in use since 1966, is called Flynn's Taxonomy.</li>
+<li>Flynn's taxonomy distinguishes multi-processor computer architectures according to how they can be classified along the two independent dimensions of<strong><em> Instruction Stream</em></strong> and <em><strong>Data Stream</strong></em>. Each of these dimensions can have only one of two possible states: <em><strong>Single</strong></em> or <em><strong>Multiple</strong></em>.</li>
+<li>The matrix below defines the 4 possible classifications according to Flynn:</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-701" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/flynnstaxonomygif">flynnsTaxonomy.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="The four classifications of Flynn&amp;#039;s Taxonomy" height="289" width="468" class="media-element file-default" data-delta="26" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/flynnsTaxonomy.gif"></div>
+
+  
+</div>
+</div>
+<h4>Single Instruction, Single Data (SISD)</h4>
+<ul><li>A serial (non-parallel) computer</li>
+<li><strong>Single Instruction:</strong> Only one instruction stream is being acted on by the CPU during any one clock cycle</li>
+<li><strong>Single Data:</strong> Only one data stream is being used as input during any one clock cycle</li>
+<li>Deterministic execution</li>
+<li>This is the oldest type of computer</li>
+<li>Examples: older generation mainframes, minicomputers, workstations and single processor/core PCs.</li>
+</ul><table class="table table-bordered"><tbody><tr><td><div class="media media-element-container media-default"><div id="file-702" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/sisd2gif">sisd2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="SISD diagram" height="400" width="400" class="media-element file-default" data-delta="27" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/sisd2.gif"></div>
+
+  
+</div>
+</div></td>
+<td>&nbsp;</td>
+<td>
+<p></p><div class="media media-element-container media-default"><div id="file-703" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/sisdgif">sisd.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="SISD diagram" height="224" width="188" class="media-element file-default" data-delta="28" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/sisd.gif"></div>
+
+  
+</div>
+</div>
+</td>
+</tr><tr><td><div class="media media-element-container media-default"><div id="file-705" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/univac1llnl200pixjpeg">univac1.LLNL_.200pix.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="UNIVAC1" title="UNIVAC1" height="200" width="262" class="media-element file-default" data-delta="29" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/univac1.LLNL_.200pix.jpeg"></div>
+
+  
+</div>
+</div></td>
+<td><div class="media media-element-container media-default"><div id="file-706" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/ibm360200pixjpeg">ibm.360.200pix.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="IBM 360" title="IBM 360" height="200" width="300" class="media-element file-default" data-delta="30" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/ibm.360.200pix.jpeg"></div>
+
+  
+</div>
+</div></td>
+<td><div class="media media-element-container media-default"><div id="file-707" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/cray1llnl200pixjpeg">cray1.LLNL_.200pix.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="CRAY1" title="CRAY1" height="200" width="200" class="media-element file-default" data-delta="31" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/cray1.LLNL_.200pix.jpeg"></div>
+
+  
+</div>
+</div></td>
+</tr><tr><td><div class="media media-element-container media-default"><div id="file-708" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/cdc7600llnl200pixjpeg">cdc7600.LLNL_.200pix.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="CDC 7600" title="CDC 7600" height="200" width="262" class="media-element file-default" data-delta="32" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/cdc7600.LLNL_.200pix.jpeg"></div>
+
+  
+</div>
+</div></td>
+<td><div class="media media-element-container media-default"><div id="file-710" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/pdp1llnl200pixjpeg-0">pdp1.LLNL_.200pix.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="PDP 1" height="200" width="298" class="media-element file-default" data-delta="34" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/pdp1.LLNL_.200pix_0.jpeg"></div>
+
+  
+</div>
+</div></td>
+<td><div class="media media-element-container media-default"><div id="file-711" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/delllaptop200pixjpeg">dellLaptop.200pix.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Dell Laptop" title="Dell Laptop" height="200" width="201" class="media-element file-default" data-delta="35" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/dellLaptop.200pix.jpeg"></div>
+
+  
+</div>
+</div></td>
+</tr></tbody></table><h4>Single Instruction, Multiple Data (SIMD)</h4>
+<ul><li>A type of parallel computer</li>
+<li><strong>Single Instruction:</strong> All processing units execute the same instruction at any given clock cycle</li>
+<li><strong>Multiple Data:</strong> Each processing unit can operate on a different data element</li>
+<li>Best suited for specialized problems characterized by a high degree of regularity, such as graphics/image processing.</li>
+<li>Synchronous (lockstep) and deterministic execution</li>
+<li>Two varieties: Processor Arrays and Vector Pipelines</li>
+<li>Examples:
+<ul><li>Processor Arrays: Thinking Machines CM-2, MasPar MP-1 &amp; MP-2, ILLIAC IV</li>
+<li>Vector Pipelines: IBM 9000, Cray X-MP, Y-MP &amp; C90, Fujitsu VP, NEC SX-2, Hitachi S820, ETA10</li>
+</ul></li>
+<li>Most modern computers, particularly those with graphics processor units (GPUs) employ SIMD instructions and execution units.</li>
+</ul><table class="table table-bordered"><tbody><tr><td><div class="media media-element-container media-default"><div id="file-713" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/simd3gif">simd3.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="SIMD diagram" height="400" width="400" class="media-element file-default" data-delta="36" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/simd3.gif"></div>
+
+  
+</div>
+</div></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>
+<p></p><div class="media media-element-container media-default"><div id="file-714" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/simdgif">simd.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="SIMD diagram" height="245" width="438" class="media-element file-default" data-delta="37" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/simd.gif"></div>
+
+  
+</div>
+</div>
+</td>
+</tr><tr><td><div class="media media-element-container media-default"><div id="file-715" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/illiaciv200pixjpeg">illiacIV.200pix.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="ILLIAC IV" title="ILLIAC IV" height="200" width="293" class="media-element file-default" data-delta="38" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/illiacIV.200pix.jpeg"></div>
+
+  
+</div>
+</div></td>
+<td><div class="media media-element-container media-default"><div id="file-716" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/maspar200pixjpeg">MasPar.200pix.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="MasPar" title="MasPar" height="200" width="172" class="media-element file-default" data-delta="39" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/MasPar.200pix.jpeg"></div>
+
+  
+</div>
+</div></td>
+<td>&nbsp;</td>
+<td><div class="media media-element-container media-default"><div id="file-717" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/simd2gif">simd2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="SIMD diagram" title="SIMD diagram" height="147" width="400" class="media-element file-default" data-delta="40" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/simd2.gif"></div>
+
+  
+</div>
+</div></td>
+</tr><tr><td><div class="media media-element-container media-default"><div id="file-718" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/crayxmp200pixjpeg">crayXMP.200pix.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Cray X-MP" title="Cray X-MP" height="200" width="150" class="media-element file-default" data-delta="41" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/crayXMP.200pix.jpeg"></div>
+
+  
+</div>
+</div></td>
+<td><div class="media media-element-container media-default"><div id="file-719" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/crayymp200pixjpeg">crayYMP.200pix.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Cray Y-MP" title="Cray Y-MP" height="200" width="282" class="media-element file-default" data-delta="42" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/crayYMP.200pix.jpeg"></div>
+
+  
+</div>
+</div></td>
+<td><div class="media media-element-container media-default"><div id="file-720" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/cm2200pixjpeg">cm2.200pix.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Thinking Machines CM-2" title="Thinking Machines CM-2" height="200" width="298" class="media-element file-default" data-delta="43" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/cm2.200pix.jpeg"></div>
+
+  
+</div>
+</div></td>
+<td><div class="media media-element-container media-default"><div id="file-721" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/cellprocessor200pixjpeg">cellProcessor.200pix.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Cell Processor (GPU)" title="Cell Processor (GPU) " height="200" width="179" class="media-element file-default" data-delta="44" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/cellProcessor.200pix.jpeg"></div>
+
+  
+</div>
+</div></td>
+</tr></tbody></table><h4>Multiple Instruction, Single Data (MISD)</h4>
+<ul><li>A type of parallel computer</li>
+<li><strong>Multiple Instruction:</strong> Each processing unit operates on the data independently via separate instruction streams.</li>
+<li><strong>Single Data:</strong> A single data stream is fed into multiple processing units.</li>
+<li>Few (if any) actual examples of this class of parallel computer have ever existed.</li>
+<li>Some conceivable uses might be:
+<ul><li>multiple frequency filters operating on a single signal stream</li>
+<li>multiple cryptography algorithms attempting to crack a single coded message.</li>
+</ul></li>
+</ul><table class="table table-bordered"><tbody><tr><td><div class="media media-element-container media-default"><div id="file-722" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/misd4gif">misd4.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="MISD diagram" height="400" width="400" class="media-element file-default" data-delta="45" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/misd4.gif"></div>
+
+  
+</div>
+</div></td>
+<td>
+<p></p><div class="media media-element-container media-default"><div id="file-723" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/misdgif">misd.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="MISD diagram" title="MISD diagram" height="207" width="438" class="media-element file-default" data-delta="46" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/misd.gif"></div>
+
+  
+</div>
+</div>
+</td>
+</tr></tbody></table><p><span>Multiple Instruction, Multiple Data (MIMD)</span></p>
+<ul><li>A type of parallel computer</li>
+<li><strong>Multiple Instruction: </strong>Every processor may be executing a different instruction stream</li>
+<li><strong>Multiple Data:</strong> Every processor may be working with a different data stream</li>
+<li>Execution can be synchronous or asynchronous, deterministic or non-deterministic</li>
+<li>Currently, the most common type of parallel computer - most modern supercomputers fall into this category.</li>
+<li>Examples: most current supercomputers, networked parallel computer clusters and "grids", multi-processor SMP computers, multi-core PCs.</li>
+<li><span class="note-red"><strong>Note</strong></span>&nbsp;many MIMD architectures also include SIMD execution sub-components</li>
+</ul><table class="table table-bordered"><tbody><tr><td><div class="media media-element-container media-default"><div id="file-724" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/mimd2gif">mimd2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="MIMD diagram" height="400" width="400" class="media-element file-default" data-delta="47" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/mimd2.gif"></div>
+
+  
+</div>
+</div></td>
+<td>&nbsp;</td>
+<td colspan="2" rowspan="1">
+<p></p><div class="media media-element-container media-default"><div id="file-725" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/mimdgif">mimd.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="MIMD diagram" height="245" width="438" class="media-element file-default" data-delta="48" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/mimd.gif"></div>
+
+  
+</div>
+</div>
+</td>
+</tr><tr><td><div class="media media-element-container media-default"><div id="file-726" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/ibmpower5cluster200pixjpeg">ibmPower5Cluster.200pix.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="IBM POWER5" title="IBM POWER5" height="200" width="301" class="media-element file-default" data-delta="49" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/ibmPower5Cluster.200pix.jpeg"></div>
+
+  
+</div>
+</div></td>
+<td><div class="media media-element-container media-default"><div id="file-727" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/alphaservercluster200pixjpeg">alphaserverCluster.200pix.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="HP/Compaq Alphaserver" title="HP/Compaq Alphaserver" height="200" width="302" class="media-element file-default" data-delta="50" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/alphaserverCluster.200pix.jpeg"></div>
+
+  
+</div>
+</div></td>
+<td><div class="media media-element-container media-default"><div id="file-728" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/ia32cluster200pixjpeg">ia32Cluster.200pix.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Intel IA32" title="Intel IA32" height="200" width="299" class="media-element file-default" data-delta="51" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/ia32Cluster.200pix.jpeg"></div>
+
+  
+</div>
+</div></td>
+</tr><tr><td><div class="media media-element-container media-default"><div id="file-729" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/opteroncluster200pixjpeg">opteronCluster.200pix.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="AMD Opteron" title="AMD Opteron" height="200" width="299" class="media-element file-default" data-delta="52" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/opteronCluster.200pix.jpeg"></div>
+
+  
+</div>
+</div></td>
+<td><div class="media media-element-container media-default"><div id="file-730" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/crayxt3cluster200pixjpeg">crayXT3Cluster.200pix.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Cray XT3" title="Cray XT3" height="200" width="300" class="media-element file-default" data-delta="53" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/crayXT3Cluster.200pix.jpeg"></div>
+
+  
+</div>
+</div></td>
+<td><div class="media media-element-container media-default"><div id="file-731" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/bglcluster200pixjpeg">bglCluster.200pix.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="IBM BG/L " title="IBM BG/L" height="200" width="301" class="media-element file-default" data-delta="54" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/bglCluster.200pix.jpeg"></div>
+
+  
+</div>
+</div></td>
+</tr></tbody></table><h3><a name="Terminology" id="Terminology"></a>Some General Parallel Terminology</h3>
+<ul><li>Like everything else, parallel computing has its own "jargon". Some of the more commonly used terms associated with parallel computing are listed below.</li>
+<li>Most of these will be discussed in more detail later.</li>
+</ul><h5>Supercomputing / High Performance Computing (HPC)</h5>
+<p>Using the world's fastest and largest computers to solve large problems.</p>
+<h5>Node</h5>
+<p>A standalone "computer in a box". Usually comprised of multiple CPUs/processors/cores, memory, network interfaces, etc. Nodes are networked together to comprise a supercomputer.</p>
+<h5>CPU / Socket / Processor / Core</h5>
+<p>This varies, depending upon who you talk to. In the past, a CPU (Central Processing Unit) was a singular execution component for a computer. Then, multiple CPUs were incorporated into a node. Then, individual CPUs were subdivided into multiple "cores", each being a unique execution unit. CPUs with multiple cores are sometimes called "sockets" - vendor dependent. The result is a node with multiple CPUs, each containing multiple cores. The nomenclature is confused at times. Wonder why?</p>
+<p></p><div class="media media-element-container media-default"><div id="file-732" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/nodesocketcoresjpeg">nodeSocketCores.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Diagram of nodes, each of which contains multiple CPUs with multiple cores" height="375" width="800" class="media-element file-default" data-delta="55" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/nodeSocketCores.jpeg"></div>
+
+  
+</div>
+</div>
+<h5>Task</h5>
+<p>A logically discrete section of computational work. A task is typically a program or program-like set of instructions that is executed by a processor. A parallel program consists of multiple tasks running on multiple processors.</p>
+<h5>Pipelining</h5>
+<p>Breaking a task into steps performed by different processor units, with inputs streaming through, much like an assembly line; a type of parallel computing.</p>
+<h5>Shared Memory</h5>
+<p>From a strictly hardware point of view, describes a computer architecture where all processors have direct (usually bus based) access to common physical memory. In a programming sense, it describes a model where parallel tasks all have the same "picture" of memory and can directly address and access the same logical memory locations regardless of where the physical memory actually exists.</p>
+<h5>Symmetric Multi-Processor (SMP)</h5>
+<p>Shared memory hardware architecture where multiple processors share a single address space and have equal access to all resources.</p>
+<h5>Distributed Memory</h5>
+<p>In hardware, refers to network based memory access for physical memory that is not common. As a programming model, tasks can only logically "see" local machine memory and must use communications to access memory on other machines where other tasks are executing.</p>
+<h5>Communications</h5>
+<p>Parallel tasks typically need to exchange data. There are several ways this can be accomplished, such as through a shared memory bus or over a network, however the actual event of data exchange is commonly referred to as communications regardless of the method employed.</p>
+<h5>Synchronization</h5>
+<p>The coordination of parallel tasks in real time, very often associated with communications. Often implemented by establishing a synchronization point within an application where a task may not proceed further until another task(s) reaches the same or logically equivalent point.</p>
+<p>Synchronization usually involves waiting by at least one task, and can therefore cause a parallel application's wall clock execution time to increase.</p>
+<h5>Granularity</h5>
+<p>In parallel computing, granularity is a qualitative measure of the ratio of computation to communication.</p>
+<ul><li><em><strong>Coarse:</strong></em> relatively large amounts of computational work are done between communication events</li>
+<li><strong><em>Fine:</em></strong> relatively small amounts of computational work are done between communication events</li>
+</ul><h5>Observed Speedup</h5>
+<p>Observed speedup of a code which has been parallelized, defined as:</p>
+<pre>        wall-clock time of serial execution
+        -----------------------------------
+        wall-clock time of parallel execution</pre><p>One of the simplest and most widely used indicators for a parallel program's performance.</p>
+<h5>Parallel Overhead</h5>
+<p>The amount of time required to coordinate parallel tasks, as opposed to doing useful work. Parallel overhead can include factors such as:</p>
+<ul><li>Task start-up time</li>
+<li>Synchronizations</li>
+<li>Data communications</li>
+<li>Software overhead imposed by parallel languages, libraries, operating system, etc.</li>
+<li>Task termination time</li>
+</ul><h5>Massively Parallel</h5>
+<p>Refers to the hardware that comprises a given parallel system - having many processing elements. The meaning of "many" keeps increasing, but currently, the largest parallel computers are comprised of processing elements numbering in the hundreds of thousands to millions.</p>
+<h5>Embarrassingly Parallel</h5>
+<p>Solving many similar, but independent tasks simultaneously; little to no need for coordination between the tasks.</p>
+<h5>Scalability</h5>
+<p>Refers to a parallel system's (hardware and/or software) ability to demonstrate a proportionate increase in parallel speedup with the addition of more resources. Factors that contribute to scalability include:</p>
+<ul><li>Hardware - particularly memory-cpu bandwidths and network communication properties</li>
+<li>Application algorithm</li>
+<li>Parallel overhead related</li>
+<li>Characteristics of your specific application</li>
+</ul><h3><a name="LimitsCosts" id="LimitsCosts"></a>Limits and Costs of Parallel Programming</h3>
+<h4>Amdahl's Law</h4>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-849" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/amdahl1gif-0">amdahl1.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Graph demonstraing potential program speedup relative to the portion of parallelized code" height="390" width="509" class="media-element file-default" data-delta="112" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/amdahl1_0.gif"></div>
+
+  
+</div>
+</div><br><div class="media media-element-container media-default"><div id="file-850" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/amdahl2gif-0">amdahl2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Graph demonstrating the limits of parallelization." height="391" width="509" class="media-element file-default" data-delta="114" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/amdahl2_0.gif"></div>
+
+  
+</div>
+</div></div>
+<div class="clear-floats">&nbsp;</div>
+<ul><li>Amdahl's Law states that potential program speedup is defined by the fraction of code (P) that can be parallelized:</li>
+</ul><pre>                         1
+        speedup   =   --------
+                       1  - P</pre><ul><li>If none of the code can be parallelized, P = 0 and the speedup = 1 (no speedup).</li>
+<li>If all of the code is parallelized, P = 1 and the speedup is infinite (in theory).</li>
+<li>If 50% of the code can be parallelized, maximum speedup = 2, meaning the code will run twice as fast.</li>
+<li>Introducing the number of processors performing the parallel fraction of work, the relationship can be modeled by:</li>
+</ul><pre>                           1 
+        speedup   =   ------------
+                        P   +  S
+                       ---
+                        N</pre><ul><li>where P = parallel fraction, N = number of processors and S = serial fraction.</li>
+</ul><div class="clear-floats">&nbsp;</div>
+<div class="clear-floats"><br>&nbsp;</div>
+<ul><li>It soon becomes obvious that there are limits to the scalability of parallelism. For example:</li>
+</ul><pre>                           speedup
+              -------------------------------------
+        N     P = .50   P = .90   P = .95   P = .99
+      -----   -------   -------   -------   -------
+         10      1.82      5.26      6.89      9.17
+        100      1.98      9.17     16.80     50.25    
+      1,000      1.99      9.91     19.62     90.99
+     10,000      1.99      9.91     19.96     99.02
+    100,000      1.99      9.99     19.99     99.90</pre><ul><li><strong>"Famous" quote:</strong> <em>You can spend a lifetime getting 95% of your code to be parallel, and never achieve better than 20x speedup no matter how many processors you throw at it!</em></li>
+</ul><ul><li>However, certain problems demonstrate increased performance by increasing the problem size. For example:</li>
+</ul><pre>        2D Grid Calculations    
+        Parallel fraction        85 seconds 85%   
+        Serial fraction          15 seconds   15%   </pre><ul><li>We can increase the problem size by doubling the grid dimensions and halving the time step. This results in four times the number of grid points and twice the number of time steps. The timings then look like:</li>
+</ul><p>&nbsp;</p>
+<pre>        2D Grid Calculations 
+        Parallel fraction         680 seconds 97.84%   
+        Serial fraction           15 seconds    2.16%   </pre><ul><li>Problems that increase the percentage of parallel time with their size are more <strong><em>scalable</em></strong> than problems with a fixed percentage of parallel time.</li>
+</ul><h4>Complexity</h4>
+<ul><li>In general, parallel applications are much more complex than corresponding serial applications, perhaps an order of magnitude. Not only do you have multiple instruction streams executing at the same time, but you also have data flowing between them.</li>
+<li>The costs of complexity are measured in programmer time in virtually every aspect of the software development cycle:
+<ul><li>Design</li>
+<li>Coding</li>
+<li>Debugging</li>
+<li>Tuning</li>
+<li>Maintenance</li>
+</ul></li>
+<li>Adhering to "good" software development practices is essential when working with parallel applications - especially if somebody besides you will have to work with the software.</li>
+</ul><h4>Portability</h4>
+<ul><li>Thanks to standardization in several APIs, such as MPI, POSIX threads, and OpenMP, portability issues with parallel programs are not as serious as in years past. However...</li>
+<li>All of the usual portability issues associated with serial programs apply to parallel programs. For example, if you use vendor "enhancements" to Fortran, C or C++, portability will be a problem.</li>
+<li>Even though standards exist for several APIs, implementations will differ in a number of details, sometimes to the point of requiring code modifications in order to effect portability.</li>
+<li>Operating systems can play a key role in code portability issues.</li>
+<li>Hardware architectures are characteristically highly variable and can affect portability.</li>
+</ul><h4>Resource Requirements</h4>
+<ul><li>The primary intent of parallel programming is to decrease execution wall clock time, however in order to accomplish this, more CPU time is required. For example, a parallel code that runs in 1 hour on 8 processors actually uses 8 hours of CPU time.</li>
+<li>The amount of memory required can be greater for parallel codes than serial codes, due to the need to replicate data and for overheads associated with parallel support libraries and subsystems.</li>
+<li>For short running parallel programs, there can actually be a decrease in performance compared to a similar serial implementation. The overhead costs associated with setting up the parallel environment, task creation, communications and task termination can comprise a significant portion of the total execution time for short runs.</li>
+</ul><h4>Scalability</h4>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-735" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/strongweakscalinggif">strongWeakScaling.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Strong scaling vs. weak scaling" height="535" width="376" class="media-element file-default" data-delta="58" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/strongWeakScaling.gif"></div>
+
+  
+</div>
+</div></div>
+<ul><li>Two types of scaling based on time to solution: strong scaling and weak scaling.</li>
+<li><strong>Strong scaling:</strong>
+<ul><li>The total problem size stays fixed as more processors are added.</li>
+<li>Goal is to run the same problem size faster</li>
+<li>Perfect scaling means problem is solved in 1/P time (compared to serial)</li>
+</ul></li>
+<li><strong>Weak scaling:</strong>
+<ul><li>The problem size <em>per processor</em> stays fixed as more processors are added.&nbsp;The total problem size is proportional to the number of processors used.</li>
+<li>Goal is to run larger problem in same amount of time</li>
+<li>Perfect scaling means problem Px runs in same time as single processor run</li>
+</ul></li>
+<li>The ability of a parallel program's performance to scale is a result of a number of interrelated factors. Simply adding more processors is rarely the answer.</li>
+<li>The algorithm may have inherent limits to scalability. At some point, adding more resources causes performance to decrease. This is a common situation with many parallel applications.</li>
+<li>Hardware factors play a significant role in scalability. Examples:
+<ul><li>Memory-cpu bus bandwidth on an SMP machine</li>
+<li>Communications network bandwidth</li>
+<li>Amount of memory available on any given machine or set of machines</li>
+<li>Processor clock speed</li>
+</ul></li>
+</ul><ul><li>Parallel support libraries and subsystems software can limit scalability independent of your application.</li>
+</ul><div class="clear-floats">&nbsp;</div>
+<h2><a name="MemoryArch" id="MemoryArch"></a>Parallel Computer Memory Architectures</h2>
+<h3><a name="SharedMemory" id="SharedMemory"></a>Shared Memory</h3>
+<div class="clear-floats">&nbsp;</div>
+<h4>General Characteristics</h4>
+<ul><li>Shared memory parallel computers vary widely, but generally have in common the ability for all processors to access all memory as global address space.</li>
+<li>Multiple processors can operate independently but share the same memory resources.</li>
+<li>Changes in a memory location effected by one processor are visible to all other processors.</li>
+<li>Historically, shared memory machines have been classified as <em><strong>UMA</strong></em> and <em><strong>NUMA</strong></em>, based upon memory access times.</li>
+</ul><h4>Uniform Memory Access (UMA)</h4>
+<ul><li>Most commonly represented today by <em><strong>Symmetric Multiprocessor (SMP)</strong></em> machines</li>
+<li>Identical processors</li>
+<li>Equal access and access times to memory</li>
+<li>Sometimes called CC-UMA - Cache Coherent UMA. Cache coherent means if one processor updates a location in shared memory, all the other processors know about the update. Cache coherency is accomplished at the hardware level.<div class="media media-element-container media-default"><div id="file-736" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/sharedmemgif">shared_mem.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Diagram of shared memory (UMA) " title="Shared Memory (UMA) " height="285" width="414" class="media-element file-default" data-delta="59" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/shared_mem.gif"></div>
+
+  
+</div>
+</div></li>
+</ul><h4>Non-Uniform Memory Access (NUMA)</h4>
+<ul><li>Often made by physically linking two or more SMPs</li>
+<li>One SMP can directly access memory of another SMP</li>
+<li>Not all processors have equal access time to all memories</li>
+<li>Memory access across link is slower</li>
+<li>If cache coherency is maintained, then may also be called CC-NUMA - Cache Coherent NUMA</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-737" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/numagif">numa.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Diagram of shared memory (NUMA)" title="Shared Memory (NUMA)" height="196" width="484" class="media-element file-default" data-delta="60" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/numa.gif"></div>
+
+  
+</div>
+</div>
+<h4>Advantages</h4>
+<ul><li>Global address space provides a user-friendly programming perspective to memory</li>
+<li>Data sharing between tasks is both fast and uniform due to the proximity of memory to CPUs</li>
+</ul><h4>Disadvantages</h4>
+<ul><li>Primary disadvantage is the lack of scalability between memory and CPUs. Adding more CPUs can geometrically increases traffic on the shared memory-CPU path, and for cache coherent systems, geometrically increase traffic associated with cache/memory management.</li>
+<li>Programmer responsibility for synchronization constructs that ensure "correct" access of global memory.</li>
+</ul><h3><a name="DistributedMemory" id="DistributedMemory"></a>Distributed Memory</h3>
+<h4>General Characteristics</h4>
+<ul><li>Like shared memory systems, distributed memory systems vary widely but share a common characteristic. Distributed memory systems require a communication network to connect inter-processor memory.</li>
+<li>Processors have their own local memory. Memory addresses in one processor do not map to another processor, so there is no concept of global address space across all processors.</li>
+<li>Because each processor has its own local memory, it operates independently. Changes it makes to its local memory have no effect on the memory of other processors. Hence, the concept of cache coherency does not apply.</li>
+<li>When a processor needs access to data in another processor, it is usually the task of the programmer to explicitly define how and when data is communicated. Synchronization between tasks is likewise the programmer's responsibility.</li>
+<li>The network "fabric" used for data transfer varies widely, though it can be as simple as Ethernet.
+<p></p><div class="media media-element-container media-default"><div id="file-738" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/distributedmemgif">distributed_mem.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Diagram of a distributed memory system" height="196" width="484" class="media-element file-default" data-delta="61" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/distributed_mem.gif"></div>
+
+  
+</div>
+</div>
+</li>
+</ul><h4>Advantages</h4>
+<ul><li>Memory is scalable with the number of processors. Increase the number of processors and the size of memory increases proportionately.</li>
+<li>Each processor can rapidly access its own memory without interference and without the overhead incurred with trying to maintain global cache coherency.</li>
+<li>Cost effectiveness: can use commodity, off-the-shelf processors and networking.</li>
+</ul><h4>Disadvantages</h4>
+<ul><li>The programmer is responsible for many of the details associated with data communication between processors.</li>
+<li>It may be difficult to map existing data structures, based on global memory, to this memory organization.</li>
+<li>Non-uniform memory access times - data residing on a remote node takes longer to access than node local data.</li>
+</ul><h3><a name="HybridMemory" id="HybridMemory"></a>Hybrid Distributed-Shared Memory</h3>
+<h4>General Characteristics</h4>
+<ul><li>The largest and fastest computers in the world today employ both shared and distributed memory architectures.</li>
+</ul><table class="table table-bordered"><tbody><tr><td><div class="media media-element-container media-default"><div id="file-739" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/hybridmemgif">hybrid_mem.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Diagram of hybrid distributed-shared memory" height="196" width="484" class="media-element file-default" data-delta="62" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/hybrid_mem.gif"></div>
+
+  
+</div>
+</div></td>
+<td>
+<p></p><div class="media media-element-container media-default"><div id="file-740" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/hybridmem2gif">hybrid_mem2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Diagram of hybrid distributed-shared memory" height="196" width="484" class="media-element file-default" data-delta="63" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/hybrid_mem2.gif"></div>
+
+  
+</div>
+</div>
+</td>
+</tr></tbody></table><p>&nbsp;</p>
+<ul><li>The shared memory component can be a shared memory machine and/or graphics processing units (GPU).</li>
+<li>The distributed memory component is the networking of multiple shared memory/GPU machines, which know only about their own memory - not the memory on another machine. Therefore, network communications are required to move data from one machine to another.</li>
+<li>Current trends seem to indicate that this type of memory architecture will continue to prevail and increase at the high end of computing for the foreseeable future.</li>
+</ul><h4>Advantages and Disadvantages</h4>
+<ul><li>Whatever is common to both shared and distributed memory architectures.</li>
+<li>Increased scalability is an important advantage</li>
+<li>Increased programmer complexity is an important disadvantage</li>
+</ul><h2><a name="Models" id="Models"></a>Parallel Programming Models</h2>
+<h3><a name="ModelsOverview" id="ModelsOverview"></a>Overview</h3>
+<ul><li>There are several parallel programming models in common use:
+<ul><li>Shared Memory (without threads)</li>
+<li>Threads</li>
+<li>Distributed Memory / Message Passing</li>
+<li>Data Parallel</li>
+<li>Hybrid</li>
+<li>Single Program Multiple Data (SPMD)</li>
+<li>Multiple Program Multiple Data (MPMD)</li>
+</ul></li>
+<li><strong>Parallel programming models exist as an abstraction above hardware and memory architectures.</strong></li>
+<li>Although it might not seem apparent, these models are <strong>NOT</strong> specific to a particular type of machine or memory architecture. In fact, any of these models can (theoretically) be implemented on any underlying hardware. Two examples from the past are discussed below.</li>
+</ul><h5>SHARED memory model on a DISTRIBUTED memory machine</h5>
+<p>Kendall Square Research (KSR) ALLCACHE approach. Machine memory was physically distributed across networked machines, but appeared to the user as a single shared memory global address space. Generically, this approach is referred to as "virtual shared memory".</p>
+<table class="table table-bordered"><tbody><tr><td><div class="media media-element-container media-default"><div id="file-741" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/modelabstraction1gif">modelAbstraction1.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Shared memory model abstraction" height="179" width="383" class="media-element file-default" data-delta="64" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/modelAbstraction1.gif"></div>
+
+  
+</div>
+</div></td>
+<td><div class="media media-element-container media-default"><div id="file-742" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/ksr1gif">ksr1.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="KSR approach networked machines " height="130" width="198" class="media-element file-default" data-delta="65" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/ksr1.gif"></div>
+
+  
+</div>
+</div></td>
+</tr></tbody></table><p>&nbsp;</p>
+<h5>DISTRIBUTED memory model on a SHARED memory machine</h5>
+<p>Message Passing Interface (MPI) on SGI Origin 2000. The SGI Origin 2000 employed the CC-NUMA type of shared memory architecture, where every task has direct access to global address space spread across all machines. However, the ability to send and receive messages using MPI, as is commonly done over a network of distributed memory machines, was implemented and commonly used.</p>
+<table class="table table-bordered"><tbody><tr><td><div class="media media-element-container media-default"><div id="file-743" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/modelabstraction2gif">modelAbstraction2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Distributed memory model abstraction" height="178" width="383" class="media-element file-default" data-delta="66" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/modelAbstraction2.gif"></div>
+
+  
+</div>
+</div></td>
+<td><div class="media media-element-container media-default"><div id="file-744" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/sgiorigin2000jpeg">sgiOrigin2000.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="SGI Origin 2000" height="149" width="198" class="media-element file-default" data-delta="67" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/sgiOrigin2000.jpeg"></div>
+
+  
+</div>
+</div></td>
+</tr></tbody></table><p>&nbsp;</p>
+<ul><li><strong>Which model to use?</strong> This is often a combination of what is available and personal choice. There is no "best" model, although there certainly are better implementations of some models over others.</li>
+<li>The following sections describe each of the models mentioned above, and also discuss some of their actual implementations.</li>
+</ul><h3><a name="ModelsShared" id="ModelsShared"></a>Shared Memory Model (without threads)</h3>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-745" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/sharedmemorymodelgif">sharedMemoryModel.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Shared memory model " height="353" width="381" class="media-element file-default" data-delta="68" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/sharedMemoryModel.gif"></div>
+
+  
+</div>
+</div></div>
+<ul><li>In this programming model, processes/tasks share a common address space, which they read and write to asynchronously.</li>
+<li>Various mechanisms such as locks / semaphores are used to control access to the shared memory, resolve contentions and to prevent race conditions and deadlocks.</li>
+<li>This is perhaps the simplest parallel programming model.</li>
+<li>An advantage of this model from the programmer's point of view is that the notion of data "ownership" is lacking, so there is no need to specify explicitly the communication of data between tasks. All processes see and have equal access to shared memory. Program development can often be simplified.</li>
+<li>An important disadvantage in terms of performance is that it becomes more difficult to understand and manage <strong><em>data locality</em></strong>:
+<ul><li>Keeping data local to the process that works on it conserves memory accesses, cache refreshes and bus traffic that occurs when multiple processes use the same data.</li>
+<li>Unfortunately, controlling data locality is hard to understand and may be beyond the control of the average user.</li>
+</ul></li>
+</ul><p class="clear-floats"><strong>Implementations:</strong></p>
+<ul><li>On stand-alone shared memory machines, native operating systems, compilers and/or hardware provide support for shared memory programming. For example, the POSIX standard provides an API for using shared memory, and UNIX provides shared memory segments (shmget, shmat, shmctl, etc).</li>
+<li>On distributed memory machines, memory is physically distributed across a network of machines, but made global through specialized hardware and software. A variety of SHMEM implementations are available: <a href="https://en.wikipedia.org/wiki/SHMEM">http://en.wikipedia.org/wiki/SHMEM</a>.</li>
+</ul><h3><a name="ModelsThreads" id="ModelsThreads"></a>Threads Model</h3>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-746" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/threadsmodel2gif">threadsModel2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Threads Model diagram" height="550" width="350" class="media-element file-default" data-delta="69" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/threadsModel2.gif"></div>
+
+  
+</div>
+</div></div>
+<ul><li>This programming model is a type of shared memory programming.</li>
+<li>In the threads model of parallel programming, a single "heavy weight" process can have multiple "light weight", concurrent execution paths.</li>
+<li>For example:
+<ul><li>The main program <strong>a.out</strong> is scheduled to run by the native operating system. <strong>a.out</strong> loads and acquires all of the necessary system and user resources to run. This is the "heavy weight" process.</li>
+<li><strong>a.out</strong> performs some serial work, and then creates a number of tasks (threads) that can be scheduled and run by the operating system concurrently.</li>
+<li>Each thread has local data, but also, shares the entire resources of <strong>a.out</strong>. This saves the overhead associated with replicating a program's resources for each thread ("light weight"). Each thread also benefits from a global memory view because it shares the memory space of <strong>a.out</strong>.</li>
+<li>A thread's work may best be described as a subroutine within the main program. Any thread can execute any subroutine at the same time as other threads.</li>
+<li>Threads communicate with each other through global memory (updating address locations). This requires synchronization constructs to ensure that more than one thread is not updating the same global address at any time.</li>
+<li>Threads can come and go, but <strong>a.out</strong> remains present to provide the necessary shared resources until the application has completed.</li>
+</ul></li>
+</ul><p><strong>Implementations:</strong></p>
+<ul><li>From a programming perspective, threads implementations commonly comprise:
+<ul><li>A library of subroutines that are called from within parallel source code</li>
+<li>A set of compiler directives imbedded in either serial or parallel source code</li>
+</ul></li>
+</ul><p>In both cases, the programmer is responsible for determining the parallelism (although compilers can sometimes help).</p>
+<ul><li>Threaded implementations are not new in computing. Historically, hardware vendors have implemented their own proprietary versions of threads. These implementations differed substantially from each other making it difficult for programmers to develop portable threaded applications.</li>
+<li>Unrelated standardization efforts have resulted in two very different implementations of threads: <strong><em>POSIX Threads</em></strong> and <strong><em>OpenMP.</em></strong></li>
+</ul><h5>POSIX Threads</h5>
+<ul><li>Specified by the IEEE POSIX 1003.1c standard (1995). C Language only.</li>
+<li>Part of Unix/Linux operating systems</li>
+<li>Library based</li>
+<li>Commonly referred to as Pthreads.</li>
+<li>Very explicit parallelism; requires significant programmer attention to detail.</li>
+</ul><h5>OpenMP</h5>
+<ul><li>&nbsp;Industry standard, jointly defined and endorsed by a group of major computer hardware and software vendors, organizations and individuals.</li>
+<li>Compiler directive based</li>
+<li>Portable / multi-platform, including Unix and Windows platforms</li>
+<li>Available in C/C++ and Fortran implementations</li>
+<li>Can be very easy and simple to use - provides for "incremental parallelism". Can begin with serial code.</li>
+<li>Other threaded implementations are common, but not discussed here:
+<ul><li>Microsoft threads</li>
+<li>Java, Python threads</li>
+<li>CUDA threads for GPUs</li>
+</ul></li>
+</ul><h4>More Information</h4>
+<ul><li>POSIX Threads tutorial: <a href="https://computing.llnl.gov/tutorials/pthreads/">computing.llnl.gov/tutorials/pthreads</a></li>
+<li>OpenMP tutorial: <a href="https://computing.llnl.gov/tutorials/openMP/">computing.llnl.gov/tutorials/openMP</a></li>
+</ul><h3><a name="ModelsMessage" id="ModelsMessage"></a>Distributed Memory / Message Passing Model</h3>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-747" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/msgpassmodelgif">msg_pass_model.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Distributed memory/message passing model diagram" height="310" width="446" class="media-element file-default" data-delta="70" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/msg_pass_model.gif"></div>
+
+  
+</div>
+</div></div>
+<ul><li>This model demonstrates the following characteristics:
+<ul><li>A set of tasks that use their own local memory during computation. Multiple tasks can reside on the same physical machine and/or across an arbitrary number of machines.</li>
+<li>Tasks exchange data through communications by sending and receiving messages.</li>
+<li>Data transfer usually requires cooperative operations to be performed by each process. For example, a send operation must have a matching receive operation.</li>
+</ul></li>
+</ul><p><strong>Implementations:</strong></p>
+<ul><li>From a programming perspective, message passing implementations usually comprise a library of subroutines. Calls to these subroutines are imbedded in source code. The programmer is responsible for determining all parallelism.</li>
+<li>Historically, a variety of message passing libraries have been available since the 1980s. These implementations differed substantially from each other making it difficult for programmers to develop portable applications.</li>
+<li>In 1992, the MPI Forum was formed with the primary goal of establishing a standard interface for message passing implementations.</li>
+<li>Part 1 of the <strong>Message Passing Interface (MPI)</strong> was released in 1994. Part 2 (MPI-2) was released in 1996 and MPI-3 in 2012. All MPI specifications are available on the web at <a href="http://www.mpi-forum.org/docs/">http://www.mpi-forum.org/docs/</a>.</li>
+<li>MPI is the "de facto" industry standard for message passing, replacing virtually all other message passing implementations used for production work. MPI implementations exist for virtually all popular parallel computing platforms. Not all implementations include everything in MPI-1, MPI-2 or MPI-3.</li>
+</ul><h4>More Information</h4>
+<ul><li>MPI tutorial: <a href="https://computing.llnl.gov/tutorials/mpi/">computing.llnl.gov/tutorials/mpi</a></li>
+</ul><h3><a name="ModelsData" id="ModelsData"></a><span>Data Parallel Model</span></h3>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-748" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/dataparallelmodelgif">data_parallel_model.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Data parallel model diagram" height="362" width="409" class="media-element file-default" data-delta="71" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/data_parallel_model.gif"></div>
+
+  
+</div>
+</div></div>
+<ul><li>May also be referred to as the <strong>Partitioned Global Address Space (PGAS)</strong> model.</li>
+<li>The data parallel model demonstrates the following characteristics:
+<ul><li>Address space is treated globally</li>
+<li>Most of the parallel work focuses on performing operations on a data set. The data set is typically organized into a common structure, such as an array or cube.</li>
+<li>A set of tasks work collectively on the same data structure, however, each task works on a different partition of the same data structure.</li>
+<li>Tasks perform the same operation on their partition of work, for example, "add 4 to every array element".</li>
+</ul></li>
+<li>On shared memory architectures, all tasks may have access to the data structure through global memory.</li>
+<li>On distributed memory architectures, the global data structure can be split up logically and/or physically across tasks.</li>
+</ul><p><strong>Implementations:</strong></p>
+<ul><li>Currently, there are several relatively popular, and sometimes developmental, parallel programming implementations based on the Data Parallel / PGAS model.</li>
+<li><strong>Coarray Fortran:</strong> a small set of extensions to Fortran 95 for SPMD parallel programming. Compiler dependent. More information: <a href="https://en.wikipedia.org/wiki/Coarray_Fortran">https://en.wikipedia.org/wiki/Coarray_Fortran</a></li>
+<li><strong>Unified Parallel C (UPC):</strong> an extension to the C programming language for SPMD parallel programming. Compiler dependent. More information: <a href="https://upc.lbl.gov/">https://upc.lbl.gov/</a></li>
+<li><strong>Global Arrays:</strong> provides a shared memory style programming environment in the context of distributed array data structures. Public domain library with C and Fortran77 bindings. More information: <a href="https://en.wikipedia.org/wiki/Global_Arrays">https://en.wikipedia.org/wiki/Global_Arrays</a></li>
+<li><strong>X10: a PGAS</strong> based parallel programming language being developed by IBM at the Thomas J. Watson Research Center. More information: <a href="http://x10-lang.org/">http://x10-lang.org/</a></li>
+<li><strong>Chapel:</strong> an open source parallel programming language project being led by Cray. More information: <a href="http://chapel.cray.com/">http://chapel.cray.com/</a></li>
+</ul><h3><a name="Hybrid" id="Hybrid"></a>Hybrid Model</h3>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-749" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/hybridmodelgif">hybrid_model.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Hybrid model diagram" height="241" width="485" class="media-element file-default" data-delta="72" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/hybrid_model.gif"></div>
+
+  
+</div>
+</div><br><div class="media media-element-container media-default"><div id="file-750" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/hybridmodel2gif">hybrid_model2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Hybrid model diagram" height="209" width="485" class="media-element file-default" data-delta="73" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/hybrid_model2.gif"></div>
+
+  
+</div>
+</div></div>
+<ul><li>A hybrid model combines more than one of the previously described programming models.</li>
+<li>Currently, a common example of a hybrid model is the combination of the message passing model (MPI) with the threads model (OpenMP).
+<ul><li>Threads perform computationally intensive kernels using local, on-node data</li>
+<li>Communications between processes on different nodes occurs over the network using MPI</li>
+</ul></li>
+<li>This hybrid model lends itself well to the most popular (currently) hardware environment of clustered multi/many-core machines.</li>
+<li>Another similar and increasingly popular example of a hybrid model is using MPI with CPU-GPU (Graphics Processing Unit) programming.
+<ul><li>MPI tasks run on CPUs using local memory and communicating with each other over a network.</li>
+<li>Computationally intensive kernels are off-loaded to GPUs on-node.</li>
+<li>Data exchange between node-local memory and GPUs uses CUDA (or something equivalent).</li>
+</ul></li>
+<li>Other hybrid models are common:
+<ul><li>MPI with Pthreads</li>
+<li>MPI with non-GPU accelerators</li>
+<li>...</li>
+</ul></li>
+</ul><p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3><a name="SPMD-MPMD" id="SPMD-MPMD"></a>SPMD and MPMD</h3>
+<h4>Single Program Multiple Data (SPMD)</h4>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-751" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/spmdmodelgif">spmd_model.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="SPMD model diagram" height="110" width="395" style="width: 395px; height: 110px;" class="media-element file-default" data-delta="74" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/spmd_model.gif"></div>
+
+  
+</div>
+</div></div>
+<ul><li>SPMD is actually a "high level" programming model that can be built upon any combination of the previously mentioned parallel programming models.</li>
+<li>SINGLE PROGRAM: All tasks execute their copy of the same program simultaneously. This program can be threads, message passing, data parallel or hybrid.</li>
+<li>MULTIPLE DATA: All tasks may use different data</li>
+<li>SPMD programs usually have the necessary logic programmed into them to allow different tasks to branch or conditionally execute only those parts of the program they are designed to execute. That is, tasks do not necessarily have to execute the entire program - perhaps only a portion of it.</li>
+<li>The SPMD model, using message passing or hybrid programming, is probably the most commonly used parallel programming model for multi-node clusters.</li>
+</ul><p>&nbsp;</p>
+<h4>Multiple Program Multiple Data (MPMD)</h4>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-753" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/mpmdmodelgif">mpmd_model.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="MPMD model diagram" height="110" width="395" class="media-element file-default" data-delta="76" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/mpmd_model.gif"></div>
+
+  
+</div>
+</div></div>
+<ul><li>Like SPMD, MPMD is actually a "high level" programming model that can be built upon any combination of the previously mentioned parallel programming models.</li>
+<li>MULTIPLE PROGRAM: Tasks may execute different programs simultaneously. The programs can be threads, message passing, data parallel or hybrid.</li>
+<li>MULTIPLE DATA: All tasks may use different data</li>
+<li>MPMD applications are not as common as SPMD applications, but may be better suited for certain types of problems, particularly those that lend themselves better to functional decomposition than domain decomposition (discussed later under Partitioning).</li>
+</ul><h2><a name="Designing" id="Designing"></a>Designing Parallel Programs</h2>
+<h3><a name="DesignAutomatic" id="DesignAutomatic"></a>Automatic vs. Manual Parallelization</h3>
+<ul><li>Designing and developing parallel programs has characteristically been a very manual process. The programmer is typically responsible for both identifying and actually implementing parallelism.</li>
+<li>Very often, manually developing parallel codes is a time consuming, complex, error-prone and iterative process.</li>
+<li>For a number of years now, various tools have been available to assist the programmer with converting serial programs into parallel programs. The most common type of tool used to automatically parallelize a serial program is a parallelizing compiler or pre-processor.</li>
+<li>A parallelizing compiler generally works in two different ways:</li>
+</ul><h5>Fully Automatic</h5>
+<ul><li>The compiler analyzes the source code and identifies opportunities for parallelism.</li>
+<li>The analysis includes identifying inhibitors to parallelism and possibly a cost weighting on whether or not the parallelism would actually improve performance.</li>
+<li>Loops (do, for) are the most frequent target for automatic parallelization.</li>
+</ul><h5>Programmer Directed</h5>
+<ul><li>Using "compiler directives" or possibly compiler flags, the programmer explicitly tells the compiler how to parallelize the code.</li>
+<li>May be able to be used in conjunction with some degree of automatic parallelization also.</li>
+</ul><ul><li>The most common compiler generated parallelization is done using on-node shared memory and threads (such as OpenMP).</li>
+<li>If you are beginning with an existing serial code and have time or budget constraints, then automatic parallelization may be the answer. However, there are several important caveats that apply to automatic parallelization:
+<ul><li>Wrong results may be produced</li>
+<li>Performance may actually degrade</li>
+<li>Much less flexible than manual parallelization</li>
+<li>Limited to a subset (mostly loops) of code</li>
+<li>May actually not parallelize code if the compiler analysis suggests there are inhibitors or the code is too complex</li>
+</ul></li>
+</ul><ul><li>The remainder of this section applies to the manual method of developing parallel codes.</li>
+</ul><h3><a name="DesignUnderstand" id="DesignUnderstand"></a><span>Understand the Problem and the Program</span></h3>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-754" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/hotspotbottleneck2jpeg">hotspotBottleneck2.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Visual representations of hotspots and bottlenecking to be identified in programs." height="500" width="400" class="media-element file-default" data-delta="77" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/hotspotBottleneck2.jpeg"></div>
+
+  
+</div>
+</div></div>
+<ul><li>Undoubtedly, the first step in developing parallel software is to first understand the problem that you wish to solve in parallel. If you are starting with a serial program, this necessitates understanding the existing code also.</li>
+<li>Before spending time in an attempt to develop a parallel solution for a problem, determine whether or not the problem is one that can actually be parallelized.
+<ul><li>Example of an easy-to-parallelize problem:</li>
+</ul></li>
+</ul><p class="left-indent"><strong>Calculate the potential energy for each of several thousand independent conformations of a molecule. When done, find the minimum energy conformation.</strong></p>
+<p class="left-indent">This problem is able to be solved in parallel. Each of the molecular conformations is independently determinable. The calculation of the minimum energy conformation is also a parallelizable problem.</p>
+<ul><li>Example of a problem with little-to-no parallelism:</li>
+</ul><p class="left-indent"><strong>Calculation of the Fibonacci series (0,1,1,2,3,5,8,13,21,...) by use of the formula:</strong><br><strong>F(n) = F(n-1) + F(n-2)</strong></p>
+<p class="left-indent">The calculation of the F(n) value uses those of both F(n-1) and F(n-2), which must be computed first.</p>
+<ul><li>Identify the program's <strong><em>hotspots</em></strong>:
+<ul><li>Know where most of the real work is being done. The majority of scientific and technical programs usually accomplish most of their work in a few places.</li>
+<li>Profilers and performance analysis tools can help here</li>
+<li>Focus on parallelizing the hotspots and ignore those sections of the program that account for little CPU usage.</li>
+</ul></li>
+<li>Identify <em><strong>bottlenecks</strong></em> in the program:
+<ul><li>Are there areas that are disproportionately slow, or cause parallelizable work to halt or be deferred? For example, I/O is usually something that slows a program down.</li>
+<li>May be possible to restructure the program or use a different algorithm to reduce or eliminate unnecessary slow areas</li>
+</ul></li>
+<li>Identify inhibitors to parallelism. One common class of inhibitor is <em>data dependence</em>, as demonstrated by the Fibonacci sequence above.</li>
+<li>Investigate other algorithms if possible. This may be the single most important consideration when designing a parallel application.</li>
+<li>Take advantage of optimized third party parallel software and highly optimized math libraries available from leading vendors (IBM's ESSL, Intel's MKL, AMD's AMCL, etc.).</li>
+</ul><h3><a name="DesignPartitioning" id="DesignPartitioning"></a><span>Partitioning</span></h3>
+<ul><li>One of the first steps in designing a parallel program is to break the problem into discrete "chunks" of work that can be distributed to multiple tasks. This is known as decomposition or partitioning.</li>
+<li>There are two basic ways to partition computational work among parallel tasks: <strong><em>domain decomposition</em></strong> and <strong><em>functional decomposition</em></strong>.</li>
+</ul><h4>Domain Decomposition</h4>
+<ul><li>In this type of partitioning, the data associated with a problem is decomposed. Each parallel task then works on a portion of the data.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-755" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/domaindecompgif">domain_decomp.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Domain decomposition diagram" height="216" width="388" class="media-element file-default" data-delta="78" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/domain_decomp.gif"></div>
+
+  
+</div>
+</div>
+<ul><li>There are different ways to partition data:</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-756" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/distributionsgif">distributions.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Varying data distributions" height="386" width="502" class="media-element file-default" data-delta="79" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/distributions.gif"></div>
+
+  
+</div>
+</div>
+<h4>Functional Decomposition</h4>
+<ul><li>In this approach, the focus is on the computation that is to be performed rather than on the data manipulated by the computation. The problem is decomposed according to the work that must be done. Each task then performs a portion of the overall work.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-757" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/functionaldecompgif">functional_decomp.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Functional decomposition diagram" height="353" width="587" class="media-element file-default" data-delta="80" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/functional_decomp.gif"></div>
+
+  
+</div>
+</div>
+<ul><li>Functional decomposition lends itself well to problems that can be split into different tasks. For example:</li>
+</ul><h5>Ecosystem Modeling</h5>
+<p>Each program calculates the population of a given group, where each group's growth depends on that of its neighbors. As time progresses, each process calculates its current state, then exchanges information with the neighbor populations. All tasks then progress to calculate the state at the next time step.</p>
+<p></p><div class="media media-element-container media-default"><div id="file-758" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/functionalex1gif">functional_ex1.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Ecosystem modeling diagram" height="221" width="567" class="media-element file-default" data-delta="81" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/functional_ex1.gif"></div>
+
+  
+</div>
+</div>
+<h5>Signal Processing</h5>
+<p>An audio signal data set is passed through four distinct computational filters. Each filter is a separate process. The first segment of data must pass through the first filter before progressing to the second. When it does, the second segment of data passes through the first filter. By the time the fourth segment of data is in the first filter, all four tasks are busy.</p>
+<p></p><div class="media media-element-container media-default"><div id="file-759" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/functionalex2gif">functional_ex2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Signal processing diagram" height="272" width="703" class="media-element file-default" data-delta="82" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/functional_ex2.gif"></div>
+
+  
+</div>
+</div>
+<h5>Climate Modeling</h5>
+<p>Each model component can be thought of as a separate task. Arrows represent exchanges of data between components during computation: the atmosphere model generates wind velocity data that are used by the ocean model, the ocean model generates sea surface temperature data that are used by the atmosphere model, and so on.</p>
+<div class="float-left"><div class="media media-element-container media-default"><div id="file-760" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/functionalex3gif">functional_ex3.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Climate modeling diagram" height="257" width="372" class="media-element file-default" data-delta="83" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/functional_ex3.gif"></div>
+
+  
+</div>
+</div></div>
+<p></p><div class="media media-element-container media-default"><div id="file-2037" class="file file-image file-image-png">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/climatemodelling-png">climateModelling.png</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/climateModelling.png"><img alt="Climate Modelling" height="292" width="300" style="height: 292px; width: 300px;" class="media-element file-default" data-delta="120" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/climateModelling-300x292.png"></a>  </div>
+
+  
+</div>
+</div>
+<ul><li>Combining these two types of problem decomposition is common and natural.</li>
+</ul><h3><a name="DesignCommunications" id="DesignCommunications"></a>Communications</h3>
+<h4>Who Needs Communications?</h4>
+<ul><li>The need for communications between tasks depends upon your problem:</li>
+</ul><h5>You DON'T need communications</h5>
+<ul><li>Some types of problems can be decomposed and executed in parallel with virtually no need for tasks to share data. These types of problems are often called <strong><em>embarrassingly parallel</em></strong> - little or no communications are required.</li>
+<li>For example, imagine an image processing operation where every pixel in a black and white image needs to have its color reversed. The image data can easily be distributed to multiple tasks that then act independently of each other to do their portion of the work.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-761" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/black2whitegif">black2white.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Example of an &amp;quot;embarrassingly parallel&amp;quot; problem as described above." height="301" width="300" class="media-element file-default" data-delta="84" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/black2white.gif"></div>
+
+  
+</div>
+</div>
+<h5 class="clear-floats">You DO need communications</h5>
+<ul><li>Most parallel applications are not quite so simple, and do require tasks to share data with each other.</li>
+<li>For example, a 2-D heat diffusion problem requires a task to know the temperatures calculated by the tasks that have neighboring data. Changes to neighboring data has a direct effect on that task's data.</li>
+</ul><div><div class="media media-element-container media-default"><div id="file-762" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/heatpartitionedgif">heat_partitioned.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="2-D heat diffusion problem as described above" height="301" width="300" style="width: 300px; height: 301px;" class="media-element file-default" data-delta="85" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/heat_partitioned.gif"></div>
+
+  
+</div>
+</div></div>
+<h4>Factors to Consider</h4>
+<p>There are a number of important factors to consider when designing your program's inter-task communications:</p>
+<h5>Communication overhead</h5>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-851" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/commoverheadjpeg">commOverhead.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/commOverhead.jpeg"><img alt="telephone wires" height="120" width="200" style="width: 200px; height: 120px;" class="media-element file-default" data-delta="115" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/commOverhead-200x120.jpeg"></a>  </div>
+
+  
+</div>
+</div></div>
+<ul><li>Inter-task communication virtually always implies overhead.</li>
+<li>Machine cycles and resources that could be used for computation are instead used to package and transmit data.</li>
+<li>Communications frequently require some type of synchronization between tasks, which can result in tasks spending time "waiting" instead of doing work.</li>
+<li>Competing communication traffic can saturate the available network bandwidth, further aggravating performance problems.</li>
+</ul><h5>Latency vs. Bandwidth</h5>
+<ul><li><strong><em>Latency</em></strong> is the time it takes to send a minimal (0 byte) message from point A to point B. Commonly expressed as microseconds.</li>
+<li><strong><em>Bandwidth</em></strong> is the amount of data that can be communicated per unit of time. Commonly expressed as megabytes/sec or gigabytes/sec.</li>
+<li>Sending many small messages can cause latency to dominate communication overheads. Often it is more efficient to package small messages into a larger message, thus increasing the effective communications bandwidth.</li>
+</ul><h5>Visibility of communications</h5>
+<ul><li>With the Message Passing Model, communications are explicit and generally quite visible and under the control of the programmer.</li>
+<li>With the Data Parallel Model, communications often occur transparently to the programmer, particularly on distributed memory architectures. The programmer may not even be able to know exactly how inter-task communications are being accomplished.</li>
+</ul><h5>Synchronous vs. asynchronous communications</h5>
+<ul><li>Synchronous communications require some type of "handshaking" between tasks that are sharing data. This can be explicitly structured in code by the programmer, or it may happen at a lower level unknown to the programmer.</li>
+<li>Synchronous communications are often referred to as <strong><em>blocking</em></strong> communications since other work must wait until the communications have completed.</li>
+<li>Asynchronous communications allow tasks to transfer data independently from one another. For example, task 1 can prepare and send a message to task 2, and then immediately begin doing other work. When task 2 actually receives the data doesn't matter.</li>
+<li>Asynchronous communications are often referred to as <em><strong>non-blocking </strong></em>communications since other work can be done while the communications are taking place.</li>
+<li>Interleaving computation with communication is the single greatest benefit for using asynchronous communications.</li>
+</ul><h5>Scope of communications</h5>
+<ul><li>Knowing which tasks must communicate with each other is critical during the design stage of a parallel code. Both of the two scopings described below can be implemented synchronously or asynchronously.</li>
+<li><em><strong>Point-to-point</strong></em> - involves two tasks with one task acting as the sender/producer of data, and the other acting as the receiver/consumer.</li>
+<li><strong><em>Collective</em></strong> - involves data sharing between more than two tasks, which are often specified as being members in a common group, or collective. Some common variations (there are more):</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-763" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/collectivecommgif">collective_comm.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Examples of collective communication: broadcast, scatter, gather and reduction." height="458" width="695" class="media-element file-default" data-delta="86" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/collective_comm.gif"></div>
+
+  
+</div>
+</div>
+<h5>Efficiency of communications</h5>
+<ul><li>Oftentimes, the programmer has choices that can affect communications performance. Only a few are mentioned here.</li>
+<li>Which implementation for a given model should be used? Using the Message Passing Model as an example, one MPI implementation may be faster on a given hardware platform than another.</li>
+<li>What type of communication operations should be used? As mentioned previously, asynchronous communication operations can improve overall program performance.</li>
+<li>Network fabric—different platforms use different networks. Some networks perform better than others. Choosing a platform with a faster network may be an option.</li>
+</ul><h5>Overhead and Complexity</h5>
+<p></p><div class="media media-element-container media-default"><div id="file-764" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/helloworldparallelcallgraphgif">helloWorldParallelCallgraph.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Example of parallel Communications and Complexity: actual callgraph from the simple parallel &amp;quot;hello world&amp;quot; program shown." height="497" width="914" class="media-element file-default" data-delta="87" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/helloWorldParallelCallgraph.gif"></div>
+
+  
+</div>
+</div>
+<ul><li>Finally, realize that this is only a partial list of things to consider!</li>
+</ul><h3><a name="DesignSynchronization" id="DesignSynchronization"></a>Synchronization</h3>
+<ul><li>Managing the sequence of work and the tasks performing it is a critical design consideration for most parallel programs.</li>
+<li>Can be a significant factor in program performance (or lack of it)</li>
+<li>Often requires "serialization" of segments of the program.</li>
+</ul><div class="clear-floats"><div class="media media-element-container media-default"><div id="file-765" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/sychronization2jpeg">sychronization2.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Synchronization example" height="312" width="468" class="media-element file-default" data-delta="88" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/sychronization2.jpeg"></div>
+
+  
+</div>
+</div></div>
+<h4>Types of Synchronization</h4>
+<h5>Barrier</h5>
+<ul><li>Usually implies that all tasks are involved</li>
+<li>Each task performs its work until it reaches the barrier. It then stops, or "blocks".</li>
+<li>When the last task reaches the barrier, all tasks are synchronized.</li>
+<li>What happens from here varies. Often, a serial section of work must be done. In other cases, the tasks are automatically released to continue their work.</li>
+</ul><h5>Lock / semaphore</h5>
+<ul><li>Can involve any number of tasks</li>
+<li>Typically used to serialize (protect) access to global data or a section of code. Only one task at a time may use (own) the lock / semaphore / flag.</li>
+<li>The first task to acquire the lock "sets" it. This task can then safely (serially) access the protected data or code.</li>
+<li>Other tasks can attempt to acquire the lock but must wait until the task that owns the lock releases it.</li>
+<li>Can be blocking or non-blocking.</li>
+</ul><h5>Synchronous communication operations</h5>
+<ul><li>Involves only those tasks executing a communication operation.</li>
+<li>When a task performs a communication operation, some form of coordination is required with the other task(s) participating in the communication. For example, before a task can perform a send operation, it must first receive an acknowledgment from the receiving task that it is OK to send.</li>
+<li>Discussed previously in the Communications section.</li>
+</ul><h3><a name="DesignDependencies" id="DesignDependencies"></a>Data Dependencies</h3>
+<h4>Definition</h4>
+<ul><li>A <strong><em>dependence</em></strong> exists between program statements when the order of statement execution affects the results of the program.</li>
+<li>A <strong><em>data dependence</em></strong> results from multiple use of the same location(s) in storage by different tasks.</li>
+<li>Dependencies are important to parallel programming because they are one of the primary inhibitors to parallelism.<br><div class="clear-floats"><div class="media media-element-container media-default"><div id="file-766" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/dependencies1jpeg">dependencies1.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Data dependencies" height="319" width="321" class="media-element file-default" data-delta="89" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/dependencies1.jpeg"></div>
+
+  
+</div>
+</div></div>
+</li>
+</ul><h4>Examples</h4>
+<h5>Loop carried data dependence</h5>
+<pre>    DO J = MYSTART,MYEND
+       A(J) = A(J-1) * 2.0
+    END DO</pre><ul><li>The value of A(J-1) must be computed before the value of A(J), therefore A(J) exhibits a data dependency on A(J-1). Parallelism is inhibited.</li>
+<li>If Task 2 has A(J) and task 1 has A(J-1), computing the correct value of A(J) necessitates:
+<ul><li>Distributed memory architecture - task 2 must obtain the value of A(J-1) from task 1 after task 1 finishes its computation</li>
+<li>Shared memory architecture - task 2 must read A(J-1) after task 1 updates it</li>
+</ul></li>
+</ul><h5>Loop independent data dependence</h5>
+<pre>    task 1        task 2
+    ------        ------
+
+    X = 2         X = 4
+      .             .
+      .             .
+    Y = X**2      Y = X**3</pre><ul><li>As with the previous example, parallelism is inhibited. The value of Y is dependent on:
+<ul><li>Distributed memory architecture - if or when the value of X is communicated between the tasks.</li>
+<li>Shared memory architecture - which task last stores the value of X.</li>
+</ul></li>
+<li>Although all data dependencies are important to identify when designing parallel programs, loop carried dependencies are particularly important since loops are possibly the most common target of parallelization efforts.</li>
+</ul><h4>How to Handle Data Dependencies</h4>
+<ul><li>Distributed memory architectures - communicate required data at synchronization points.</li>
+<li>Shared memory architectures -synchronize read/write operations between tasks.</li>
+</ul><h3><a name="DesignLoadBalancing" id="DesignLoadBalancing"></a>Load Balancing</h3>
+<ul><li>Load balancing refers to the practice of distributing approximately equal amounts of work among tasks so that all tasks are kept busy all of the time. It can be considered a minimization of task idle time.</li>
+<li>Load balancing is important to parallel programs for performance reasons. For example, if all tasks are subject to a barrier synchronization point, the slowest task will determine the overall performance.</li>
+</ul><table class="table table-bordered"><tbody><tr><td><div class="media media-element-container media-default"><div id="file-767" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/loadbal1gif">load_bal1.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Load imbalance diagram with differing wait/work times" height="188" width="403" class="media-element file-default" data-delta="90" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/load_bal1.gif"></div>
+
+  
+</div>
+</div></td>
+<td><div class="media media-element-container media-default"><div id="file-768" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/loadimbalance2jpeg">loadImbalance2.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/loadImbalance2.jpeg"><img alt="Traffic as an example of load imbalance" height="193" width="300" style="width: 300px; height: 193px;" class="media-element file-default" data-delta="91" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/loadImbalance2-300x193.jpeg"></a>  </div>
+
+  
+</div>
+</div></td>
+</tr></tbody></table><h4>How to Achieve Load Balance</h4>
+<h5>Equally partition the work each task receives</h5>
+<ul><li>For array/matrix operations where each task performs similar work, evenly distribute the data set among the tasks.</li>
+<li>For loop iterations where the work done in each iteration is similar, evenly distribute the iterations across the tasks.</li>
+<li>If a heterogeneous mix of machines with varying performance characteristics are being used, be sure to use some type of performance analysis tool to detect any load imbalances. Adjust work accordingly.</li>
+</ul><h5>Use dynamic work assignment</h5>
+<ul><li>Certain classes of problems result in load imbalances even if data is evenly distributed among tasks:</li>
+</ul><table class="table table-bordered"><tbody><tr><td><div class="media media-element-container media-default"><div id="file-769" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/sparsematrixgif">sparseMatrix.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Sparse arrays" height="373" width="377" class="media-element file-default" data-delta="92" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/sparseMatrix.gif"></div>
+
+  
+</div>
+</div></td>
+<td>
+<p class="left-indent"></p><div class="media media-element-container media-default"><div id="file-770" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/adaptivegridjpeg">adaptiveGrid.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Adaptive grid methods" height="287" width="284" class="media-element file-default" data-delta="93" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/adaptiveGrid.jpeg"></div>
+
+  
+</div>
+</div>
+</td>
+<td>
+<p class="left-indent"></p><div class="media media-element-container media-default"><div id="file-771" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/n-bodyjpeg">n-body.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="N-body simulation" height="481" width="502" class="media-element file-default" data-delta="94" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/n-body.jpeg"></div>
+
+  
+</div>
+</div>
+</td>
+</tr><tr><td>Sparse arrays - some tasks will have actual data to work on while others have mostly "zeros".</td>
+<td>Adaptive grid methods - some tasks may need to refine their mesh while others don't.</td>
+<td>N-body simulations - particles may migrate across task domains requiring more work for some tasks.</td>
+</tr></tbody></table><ul><li>When the amount of work each task will perform is intentionally variable, or is unable to be predicted, it may be helpful to use a <strong><em>scheduler-task pool </em></strong>approach. As each task finishes its work, it receives a new piece from the work queue.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-772" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/schedulertaskpoolgif">schedulerTaskPool.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="scheduler-task pool diagram" height="269" width="684" class="media-element file-default" data-delta="95" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/schedulerTaskPool.gif"></div>
+
+  
+</div>
+</div>
+<ul><li>Ultimately, it may become necessary to design an algorithm which detects and handles load imbalances as they occur dynamically within the code.</li>
+</ul><h3><a name="DesignGranularity" id="DesignGranularity"></a>Granularity</h3>
+<h4>Computation / Communication Ratio</h4>
+<ul><li>In parallel computing, granularity is a qualitative measure of the ratio of computation to communication.</li>
+<li>Periods of computation are typically separated from periods of communication by synchronization events.</li>
+</ul><h4>Fine-grain Parallelism</h4>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-773" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/granularity2gif">granularity2.gif</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/granularity2.gif"><img alt="Fine-grain parallelism" height="184" width="250" style="width: 250px; height: 184px;" class="media-element file-default" data-delta="96" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/granularity2-250x184.gif"></a>  </div>
+
+  
+</div>
+</div></div>
+<ul><li>Relatively small amounts of computational work are done between communication events.</li>
+<li>Low computation to communication ratio.</li>
+<li>Facilitates load balancing.</li>
+<li>Implies high communication overhead and less opportunity for performance enhancement.</li>
+<li>If granularity is too fine it is possible that the overhead required for communications and synchronization between tasks takes longer than the computation.</li>
+</ul><div class="clear-floats">&nbsp;</div>
+<h4>Coarse-grain Parallelism</h4>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-774" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/granularity3gif">granularity3.gif</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/granularity3.gif"><img alt="Coarse-grain parallelism" height="184" width="250" style="width: 250px; height: 184px;" class="media-element file-default" data-delta="97" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/granularity3-250x184.gif"></a>  </div>
+
+  
+</div>
+</div></div>
+<ul><li>Relatively large amounts of computational work are done between communication/synchronization events</li>
+<li>High computation to communication ratio</li>
+<li>Implies more opportunity for performance increase</li>
+<li>Harder to load balance efficiently</li>
+</ul><p>&nbsp;</p>
+<h4>Which is Best?</h4>
+<ul><li>The most efficient granularity is dependent on the algorithm and the hardware environment in which it runs.</li>
+<li>In most cases the overhead associated with communications and synchronization is high relative to execution speed so it is advantageous to have coarse granularity.</li>
+<li>Fine-grain parallelism can help reduce overheads due to load imbalance.</li>
+</ul><h3><a name="DesignIO" id="DesignIO"></a>I/O</h3>
+<h4>The Bad News</h4>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-775" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/memoryaccesstimesgif">memoryAccessTimes.gif</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/memoryAccessTimes.gif"><img alt="Memory hierarchy" height="209" width="450" style="width: 450px; height: 209px;" class="media-element file-default" data-delta="98" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/memoryAccessTimes-450x209.gif"></a>  </div>
+
+  
+</div>
+</div></div>
+<ul><li>I/O operations are generally regarded as inhibitors to parallelism.</li>
+<li>I/O operations require orders of magnitude more time than memory operations.</li>
+<li>Parallel I/O systems may be immature or not available for all platforms.</li>
+<li>In an environment where all tasks see the same file space, write operations can result in file overwriting.</li>
+<li>Read operations can be affected by the file server's ability to handle multiple read requests at the same time.</li>
+<li>I/O that must be conducted over the network (NFS, non-local) can cause severe bottlenecks and even crash file servers.</li>
+</ul><p>&nbsp;</p>
+<h4>The Good News</h4>
+<ul><li>Parallel file systems are available. For example:
+<ul><li>GPFS: General Parallel File System (IBM). Now called IBM Spectrum Scale.</li>
+<li>Lustre: for Linux clusters (Intel)</li>
+<li>HDFS: Hadoop Distributed File System (Apache)</li>
+<li>PanFS: Panasas ActiveScale File System for Linux clusters (Panasas, Inc.)</li>
+<li>And more - see <a href="http://en.wikipedia.org/wiki/List_of_file_systems#Distributed_parallel_file_systems">http://en.wikipedia.org/wiki/List_of_file_systems#Distributed_parallel_file_systems</a></li>
+</ul></li>
+</ul><ul><li>The parallel I/O programming interface specification for MPI has been available since 1996 as part of MPI-2. Vendor and "free" implementations are now commonly available.</li>
+</ul><ul><li>A few pointers:</li>
+<li>Rule #1: Reduce overall I/O as much as possible.</li>
+<li>If you have access to a parallel file system, use it.</li>
+<li>Writing large chunks of data rather than small chunks is usually significantly more efficient.</li>
+<li>Fewer, larger files performs better than many small files.</li>
+<li>Confine I/O to specific serial portions of the job, and then use parallel communications to distribute data to parallel tasks. For example, Task 1 could read an input file and then communicate required data to other tasks. Likewise, Task 1 could perform write operation after receiving required data from all other tasks.</li>
+<li>Aggregate I/O operations across tasks - rather than having many tasks perform I/O, have a subset of tasks perform it.</li>
+</ul><h3><a name="DesignDebug" id="DesignDebug"></a>Debugging</h3>
+<ul><li>Debugging parallel codes can be incredibly difficult, particularly as codes scale upwards.</li>
+<li>The good news is that there are some excellent debuggers available to assist:
+<ul><li>Threaded - pthreads and OpenMP</li>
+<li>MPI</li>
+<li>GPU / accelerator</li>
+<li>Hybrid</li>
+</ul></li>
+<li>Livermore Computing users have access to several parallel debugging tools installed on LC's clusters:
+<ul><li>TotalView from RogueWave Software</li>
+<li>DDT from Allinea</li>
+<li>Inspector from Intel</li>
+<li>Stack Trace Analysis Tool (STAT) - locally developed</li>
+</ul></li>
+<li>All of these tools have a learning curve associated with them - some more than others.</li>
+<li>For details and getting started information, see:
+<ul><li>LC's web pages at <a href="https://hpc.llnl.gov/software/development-environment-software">https://hpc.llnl.gov/software/development-environment-software</a></li>
+<li>TotalView tutorial: <a href="https://computing.llnl.gov/tutorials/totalview/">https://computing.llnl.gov/tutorials/totalview/</a></li>
+</ul></li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-776" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/debug1gif">debug1.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Screenshots of various debugging tools (Allinea DDT, Totalview, STAT, Inspector)" height="509" width="1000" class="media-element file-default" data-delta="99" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/debug1.gif"></div>
+
+  
+</div>
+</div>
+<h3><a name="DesignPerformance" id="DesignPerformance"></a>Performance Analysis and Tuning</h3>
+<ul><li>As with debugging, analyzing and tuning parallel program performance can be much more challenging than for serial programs.</li>
+<li>Fortunately, there are a number of excellent tools for parallel program performance analysis and tuning.</li>
+<li>Livermore Computing users have access to several such tools, most of which are available on all production clusters.</li>
+<li>Some starting points for tools installed on LC systems:
+<ul><li>LC's web pages at <a href="https://hpc.llnl.gov/software/development-environment-software">https://hpc.llnl.gov/software/development-environment-software</a></li>
+<li>TAU: <a href="http://www.cs.uoregon.edu/research/tau/docs.php">http://www.cs.uoregon.edu/research/tau/docs.php</a></li>
+<li>HPCToolkit: <a href="http://hpctoolkit.org/documentation.html">http://hpctoolkit.org/documentation.html</a></li>
+<li>Open|Speedshop: <a href="https://www.openspeedshop.org/" target="_blank">https://www.openspeedshop.org/</a></li>
+<li>Vampir / Vampirtrace: <a href="http://vampir.eu/" class="ext">http://vampir.eu/<span class="ext" aria-label="(link is external)"></span></a></li>
+<li>Valgrind: <a href="http://valgrind.org/">http://valgrind.org/</a></li>
+<li>PAPI: <a href="http://icl.cs.utk.edu/papi/">http://icl.cs.utk.edu/papi/</a></li>
+<li>mpiP: <a href="http://mpip.sourceforge.net/">http://mpip.sourceforge.net/</a></li>
+<li>memP: <a href="http://memp.sourceforge.net/">http://memp.sourceforge.net/</a></li>
+</ul></li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-777" class="file file-image file-image-jpeg">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/perfanalysisjpeg">perfAnalysis.jpeg</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Screenshots of various performance analysis tools, such as Vampirtrace and Open|Speedshop" height="627" width="981" class="media-element file-default" data-delta="100" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/perfAnalysis.jpeg"></div>
+
+  
+</div>
+</div>
+<h2><a name="Examples" id="Examples"></a>Parallel Examples</h2>
+<h3><a name="ExamplesArray" id="ExamplesArray"></a>Array Processing</h3>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-778" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/arrayproc1gif">array_proc1.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Array processing" height="369" width="297" class="media-element file-default" data-delta="101" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/array_proc1.gif"></div>
+
+  
+</div>
+</div></div>
+<ul><li>This example demonstrates calculations on 2-dimensional array elements; a function is evaluated on each array element.</li>
+<li>The computation on each array element is independent from other array elements.</li>
+<li>The problem is computationally intensive.</li>
+<li>The serial program calculates one element at a time in sequential order.</li>
+<li>Serial code could be of the form:</li>
+</ul><pre>    do j = 1,n
+      do i = 1,n
+        a(i,j) = fcn(i,j)
+      end do
+    end do</pre><ul><li>Questions to ask:
+<ul><li>Is this problem able to be parallelized?</li>
+<li>How would the problem be partitioned?</li>
+<li>Are communications needed?</li>
+<li>Are there any data dependencies?</li>
+<li>Are there synchronization needs?</li>
+<li>Will load balancing be a concern?</li>
+</ul></li>
+</ul><h4>Parallel Solution 1</h4>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-779" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/arrayproc2gif">array_proc2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Array processing with elements evenly distributed" height="247" width="297" class="media-element file-default" data-delta="102" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/array_proc2.gif"></div>
+
+  
+</div>
+</div></div>
+<ul><li>The calculation of elements is independent of one another - leads to an embarrassingly parallel solution.</li>
+<li>Arrays elements are evenly distributed so that each process owns a portion of the array (subarray).
+<ul><li>Distribution scheme is chosen for efficient memory access; e.g. unit stride (stride of 1) through the subarrays. Unit stride maximizes cache/memory usage.</li>
+<li>Since it is desirable to have unit stride through the subarrays, the choice of a distribution scheme depends on the programming language. See the <a href="https://hpc.llnl.gov/sites/default/files/distributions_0.gif">Block - Cyclic Distributions Diagram</a> for the options.</li>
+</ul></li>
+</ul><p>&nbsp;</p>
+<ul><li>Independent calculation of array elements ensures there is no need for communication or synchronization between tasks.</li>
+<li>Since the amount of work is evenly distributed across processes, there should not be load balance concerns.</li>
+<li>After the array is distributed, each task executes the portion of the loop corresponding to the data it owns.</li>
+<li>For example, both Fortran (column-major) and C (row-major) block distributions are shown:</li>
+</ul><p>Column-major:</p>
+<pre>do j = <span class="text-danger">mystart, myend</span> 
+  do i = 1, n 
+    a(i,j) = fcn(i,j) 
+  end do 
+end do</pre><p>Row-major:</p>
+<pre>for i (i = <span class="text-danger">mystart</span>; i &lt; <span class="text-danger">myend</span>; i++) { 
+&nbsp; for j (j = 0; j &lt; n; j++) { 
+&nbsp;   a(i,j) = fcn(i,j); 
+&nbsp; }
+}</pre><ul><li>Notice that only the outer loop variables are different from the serial solution.</li>
+</ul><h5>One Possible Solution:</h5>
+<ul><li>Implement as a Single Program Multiple Data (SPMD) model - every task executes the same program.</li>
+<li>Master process initializes array, sends info to worker processes and receives results.</li>
+<li>Worker process receives info, performs its share of computation and sends results to master.</li>
+<li>Using the Fortran storage scheme, perform block distribution of the array.</li>
+<li>Pseudo code solution: <span class="text-danger">red</span> highlights changes for parallelism.</li>
+</ul><pre><span class="text-danger">    find out if I am MASTER or WORKER
+      
+    if I am MASTER
+      
+      initialize the array
+      send each WORKER info on part of array it owns
+      send each WORKER its portion of initial array
+      
+      receive from each WORKER results
+      
+    else if I am WORKER
+      receive from MASTER info on part of array I own
+      receive from MASTER my portion of initial array</span>
+
+      # calculate my portion of array
+      do j = <span class="text-danger">my first column,my last column</span>
+        do i = 1,n
+          a(i,j) = fcn(i,j)
+        end do
+      end do
+
+      <span class="text-danger">send MASTER results</span>
+
+    <span class="text-danger">endif</span></pre><h5>Example Programs</h5>
+<ul><li><a href="https://computing.llnl.gov/tutorials/mpi/samples/C/mpi_array.c">MPI Array Program in C</a></li>
+<li><a href="https://computing.llnl.gov/tutorials/mpi/samples/Fortran/mpi_array.f">MPI Array Program in Fortran</a></li>
+</ul><h4>Parallel Solution 2: Pool of Tasks</h4>
+<ul><li>The previous array solution demonstrated static load balancing:
+<ul><li>Each task has a fixed amount of work to do</li>
+<li>May be significant idle time for faster or more lightly loaded processors - slowest tasks determines overall performance.</li>
+</ul></li>
+<li>Static load balancing is not usually a major concern if all tasks are performing the same amount of work on identical machines.</li>
+<li>If you have a load balance problem (some tasks work faster than others), you may benefit by using a "pool of tasks" scheme.</li>
+</ul><h5>Pool of Tasks Scheme</h5>
+<ul><li>Two processes are employed</li>
+</ul><p>Master Process:</p>
+<ul><li>Holds pool of tasks for worker processes to do</li>
+<li>Sends worker a task when requested</li>
+<li>Collects results from workers</li>
+</ul><p>Worker Process: repeatedly does the following</p>
+<ul><li>Gets task from master process</li>
+<li>Performs computation</li>
+<li>Sends results to master</li>
+</ul><ul><li>Worker processes do not know before runtime which portion of array they will handle or how many tasks they will perform.</li>
+<li>Dynamic load balancing occurs at run time: the faster tasks will get more work to do.</li>
+<li>Pseudo code solution: <span class="text-danger">red</span> highlights changes for parallelism.</li>
+</ul><pre><span class="text-danger">    find out if I am MASTER or WORKER
+
+    if I am MASTER
+
+      do until no more jobs
+        if request send to WORKER next job
+        else receive results from WORKER
+      end do
+
+    else if I am WORKER
+
+      do until no more jobs
+        request job from MASTER
+        receive from MASTER next job</span>
+
+        calculate array element: a(i,j) = fcn(i,j)
+
+        <span class="text-danger">send results to MASTER
+      end do
+
+    endif</span></pre><h5>Discussion</h5>
+<ul><li>In the above pool of tasks example, each task calculated an individual array element as a job. The computation to communication ratio is finely granular.</li>
+<li>Finely granular solutions incur more communication overhead in order to reduce task idle time.</li>
+<li>A more optimal solution might be to distribute more work with each job. The "right" amount of work is problem dependent.</li>
+</ul><h3><a name="ExamplesPI" id="ExamplesPI"></a>PI Calculation</h3>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-780" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/pi1gif">pi1.gif</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/pi1.gif"><img alt="PI calculation" height="465" width="360" style="width: 360px; height: 465px;" class="media-element file-default" data-delta="103" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/pi1-360x465.gif"></a>  </div>
+
+  
+</div>
+</div></div>
+<ul><li>The value of PI can be calculated in various ways. Consider the Monte Carlo method of approximating PI:
+<ul><li>Inscribe a circle with radius <strong>r</strong> in a square with side length of<strong> 2<em>r</em></strong></li>
+<li>The area of the circle is <strong>Πr2</strong> and the area of the square is <strong>4r2</strong></li>
+<li>The ratio of the area of the circle to the area of the square is:<br><strong>Πr2 / 4r2 = Π / 4</strong></li>
+<li>If you randomly generate <strong>N</strong> points inside the square, approximately<br><strong>N * Π / 4</strong> of those points (<strong>M</strong>) should fall inside the circle.</li>
+<li><strong>Π </strong>is then approximated as:<br><strong>N * Π / 4 = M<br>Π / 4 = M / N<br>Π = 4 * M / N</strong></li>
+<li>Note that increasing the number of points generated improves the approximation.</li>
+</ul></li>
+</ul><p>&nbsp;</p>
+<ul><li>Serial pseudo code for this procedure:</li>
+</ul><pre>    npoints = 10000
+    circle_count = 0
+
+    do j = 1,npoints
+      generate 2 random numbers between 0 and 1
+      xcoordinate = random1
+      ycoordinate = random2
+      if (xcoordinate, ycoordinate) inside circle
+      then circle_count = circle_count + 1
+    end do
+
+    PI = 4.0*circle_count/npoints</pre><ul><li>The problem is computationally intensive—most of the time is spent executing the loop</li>
+<li>Questions to ask:
+<ul><li>Is this problem able to be parallelized?</li>
+<li>How would the problem be partitioned?</li>
+<li>Are communications needed?</li>
+<li>Are there any data dependencies?</li>
+<li>Are there synchronization needs?</li>
+<li>Will load balancing be a concern?</li>
+</ul></li>
+</ul><h4>Parallel Solution</h4>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-781" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/pi2gif">pi2.gif</a></h2>
+    
+  
+  <div class="content">
+    <a href="https://hpc.llnl.gov/sites/default/files/pi2.gif"><img alt="Parallel PI calculation" height="428" width="360" style="width: 360px; height: 428px;" class="media-element file-default" data-delta="104" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/pi2-360x428.gif"></a>  </div>
+
+  
+</div>
+</div></div>
+<ul><li>Another problem that's easy to parallelize:
+<ul><li>All point calculations are independent; no data dependencies</li>
+<li>Work can be evenly divided; no load balance concerns</li>
+<li>No need for communication or synchronization between tasks</li>
+</ul></li>
+<li>Parallel strategy:
+<ul><li>Divide the loop into equal portions that can be executed by the pool of tasks</li>
+<li>Each task independently performs its work</li>
+<li>A SPMD model is used</li>
+<li>One task acts as the master to collect results and compute the value of PI</li>
+</ul></li>
+</ul><p>&nbsp;</p>
+<ul><li>Pseudo code solution: <span class="text-danger">red </span>highlights changes for parallelism.</li>
+</ul><pre>    npoints = 10000
+    circle_count = 0
+
+    <span class="text-danger">p = number of tasks
+    num = npoints/p
+
+    find out if I am MASTER or WORKER</span>
+
+    do j = 1,<span class="text-danger">num</span>
+      generate 2 random numbers between 0 and 1
+      xcoordinate = random1
+      ycoordinate = random2
+      if (xcoordinate, ycoordinate) inside circle
+      then circle_count = circle_count + 1
+    end do
+
+    <span class="text-danger">if I am MASTER
+
+      receive from WORKERS their circle_counts
+      compute PI (use MASTER and WORKER calculations)
+
+    else if I am WORKER
+
+      send to MASTER circle_count
+
+    endif</span></pre><h4>Example Programs</h4>
+<ul><li><a href="https://computing.llnl.gov/tutorials/mpi/samples/C/mpi_pi_reduce.c">MPI Pi Calculation Program in C</a></li>
+<li><a href="https://computing.llnl.gov/tutorials/mpi/samples/Fortran/mpi_pi_reduce.f">MPI Pi Calculation Program in Fortran</a></li>
+</ul><h3><a name="ExamplesHeat" id="ExamplesHeat"></a>Simple Heat Equation</h3>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-782" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/heatinitialgif">heat_initial.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Heat equation on a square region" height="301" width="300" class="media-element file-default" data-delta="105" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/heat_initial.gif"></div>
+
+  
+</div>
+</div>
+<p></p><div class="media media-element-container media-default"><div id="file-783" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/heatequationgif">heat_equation.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="2-D heat equation" height="258" width="261" class="media-element file-default" data-delta="106" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/heat_equation.gif"></div>
+
+  
+</div>
+</div>
+</div>
+<ul><li>Most problems in parallel computing require communication among the tasks. A number of common problems require communication with "neighbor" tasks.</li>
+<li>The 2-D heat equation describes the temperature change over time, given initial temperature distribution and boundary conditions.</li>
+<li>A finite differencing scheme is employed to solve the heat equation numerically on a square region.
+<ul><li>The elements of a 2-dimensional array represent the temperature at points on the square.</li>
+<li>The initial temperature is zero on the boundaries and high in the middle.</li>
+<li>The boundary temperature is held at zero.</li>
+<li>A time stepping algorithm is used.</li>
+</ul></li>
+</ul><p>&nbsp;</p>
+<p>&nbsp;</p>
+<ul><li>The calculation of an element is <strong><em>dependent</em></strong> upon neighbor element values:</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-784" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/heatequation2gif">heat_equation2.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Heat equation dependency values " height="114" width="276" class="media-element file-default" data-delta="107" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/heat_equation2.gif"></div>
+
+  
+</div>
+</div>
+<ul><li>A serial program would contain code like:</li>
+</ul><pre>   do iy = 2, ny - 1
+      do ix = 2, nx - 1
+        u2(ix, iy) =  u1(ix, iy)  +
+            cx * (u1(ix+1,iy) + u1(ix-1,iy) - 2.*u1(ix,iy)) +
+            cy * (u1(ix,iy+1) + u1(ix,iy-1) - 2.*u1(ix,iy))
+      end do
+    end do</pre><ul><li>Questions to ask:
+<ul><li>Is this problem able to be parallelized?</li>
+<li>How would the problem be partitioned?</li>
+<li>Are communications needed?</li>
+<li>Are there any data dependencies?</li>
+<li>Are there synchronization needs?</li>
+<li>Will load balancing be a concern?</li>
+</ul></li>
+</ul><h4>Parallel Solution</h4>
+<div class="float-right"><div class="media media-element-container media-default"><div id="file-852" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/heatpartitionedgif-0">heat_partitioned.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="Simple Heat Equation Parallel Solution" height="301" width="300" style="width: 300px; height: 301px;" class="media-element file-default" data-delta="116" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/heat_partitioned_0.gif"></div>
+
+  
+</div>
+</div></div>
+<ul><li>This problem is more challenging, since there are data dependencies, which require communications and synchronization.</li>
+<li>The entire array is partitioned and distributed as subarrays to all tasks. Each task owns an equal portion of the total array.</li>
+<li>Because the amount of work is equal, load balancing should not be a concern</li>
+<li>Determine data dependencies:
+<ul><li><a href="https://hpc.llnl.gov/sites/default/files/heat_interior_0.gif">interior elements</a> belonging to a task are independent of other tasks</li>
+<li><a href="https://hpc.llnl.gov/sites/default/files/heat_edge.gif">border elements</a> are dependent upon a neighbor task's data, necessitating communication.</li>
+</ul></li>
+<li>Implement as an SPMD model:
+<ul><li>Master process sends initial info to workers, and then waits to collect results from all workers</li>
+<li>Worker processes calculate solution within specified number of time steps, communicating as necessary with neighbor processes</li>
+</ul></li>
+<li>Pseudo code solution: <span class="text-danger">red</span> highlights changes for parallelism.</li>
+</ul><pre><span class="text-danger">    find out if I am MASTER or WORKER
+
+    if I am MASTER
+      initialize array
+      send each WORKER starting info and subarray
+      receive results from each WORKER
+
+    else if I am WORKER
+      receive from MASTER starting info and subarray</span>
+
+      # Perform time steps
+      do t = 1, nsteps
+        update time
+        <span class="text-danger">send neighbors my border info
+        receive from neighbors their border info</span>
+        update my portion of solution array
+       
+      end do
+     
+     <span class="text-danger"> send MASTER results
+         
+    endif</span></pre><h4>Example Programs</h4>
+<ul><li><a href="https://computing.llnl.gov/tutorials/mpi/samples/C/mpi_heat2D.c">MPI Heat Equation Program in C</a></li>
+<li><a href="https://computing.llnl.gov/tutorials/mpi/samples/Fortran/mpi_heat2D.f">MPI Heat Equation Program in Fortran</a></li>
+</ul><h3><a name="ExamplesWave" id="ExamplesWave"></a>1-D Wave Equation</h3>
+<ul><li>In this example, the amplitude along a uniform, vibrating string is calculated after a specified amount of time has elapsed.</li>
+<li>The calculation involves:
+<ul><li>the amplitude on the y axis</li>
+<li>i as the position index along the x axis</li>
+<li>node points imposed along the string</li>
+<li>update of the amplitude at discrete time steps.</li>
+</ul></li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-786" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/wave3gif">wave3.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="1-D wave" height="225" width="600" class="media-element file-default" data-delta="109" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/wave3.gif"></div>
+
+  
+</div>
+</div>
+<ul><li>The equation to be solved is the one-dimensional wave equation:</li>
+</ul><pre>    A(i,t+1) = (2.0 * A(i,t)) - A(i,t-1) + (c * (A(i-1,t) - (2.0 * A(i,t)) + A(i+1,t)))</pre><p class="left-indent">where c is a constant</p>
+<ul><li>Note that amplitude will depend on previous timesteps (t, t-1) and neighboring points (i-1, i+1).</li>
+<li>Questions to ask:
+<ul><li>Is this problem able to be parallelized?</li>
+<li>How would the problem be partitioned?</li>
+<li>Are communications needed?</li>
+<li>Are there any data dependencies?</li>
+<li>Are there synchronization needs?</li>
+<li>Will load balancing be a concern?</li>
+</ul></li>
+</ul><h4>1-D Wave Equation Parallel Solution</h4>
+<ul><li>This is another example of a problem involving data dependencies. A parallel solution will involve communications and synchronization.</li>
+<li>The entire amplitude array is partitioned and distributed as subarrays to all tasks. Each task owns an equal portion of the total array.</li>
+<li>Load balancing: all points require equal work, so the points should be divided equally</li>
+<li>A block decomposition would have the work partitioned into the number of tasks as chunks, allowing each task to own mostly contiguous data points.</li>
+<li>Communication need only occur on data borders. The larger the block size the less the communication.</li>
+</ul><p></p><div class="media media-element-container media-default"><div id="file-787" class="file file-image file-image-gif">
+
+        <h2 class="element-invisible"><a href="https://hpc.llnl.gov/files/wave4gif">wave4.gif</a></h2>
+    
+  
+  <div class="content">
+    <img alt="1-D wave partitioned into tasks" height="225" width="600" class="media-element file-default" data-delta="110" typeof="foaf:Image" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/wave4.gif"></div>
+
+  
+</div>
+</div>
+<ul><li>Implement as an SPMD model:
+<ul><li>Master process sends initial info to workers, and then waits to collect results from all workers</li>
+<li>Worker processes calculate solution within specified number of time steps, communicating as necessary with neighbor processes</li>
+</ul></li>
+<li>Pseudo code solution:<span class="text-danger"> red </span>highlights changes for parallelism.</li>
+</ul><pre><span class="text-danger">    find out number of tasks and task identities
+
+    #Identify left and right neighbors
+    left_neighbor = mytaskid - 1
+    right_neighbor = mytaskid +1
+    if mytaskid = first then left_neigbor = last
+    if mytaskid = last then right_neighbor = first
+
+    find out if I am MASTER or WORKER
+    if I am MASTER
+      initialize array
+      send each WORKER starting info and subarray
+    else if I am WORKER`
+      receive starting info and subarray from MASTER
+    endif</span>
+
+    #Perform time steps
+    <span class="text-danger">#In this example the master participates in calculations</span>
+    do t = 1, nsteps
+      <span class="text-danger">send left endpoint to left neighbor
+      receive left endpoint from right neighbor
+      send right endpoint to right neighbor
+      receive right endpoint from left neighbor</span>
+
+      #Update points along line
+      do i = 1, npoints
+        newval(i) = (2.0 * values(i)) - oldval(i)
+        + (sqtau * (values(i-1) - (2.0 * values(i)) + values(i+1)))
+      end do
+
+    end do
+
+   <span class="text-danger"> #Collect results and write to file
+    if I am MASTER
+      receive results from each WORKER
+      write results to file
+    else if I am WORKER
+      send results to MASTER
+    endif</span></pre><h4>Example Programs</h4>
+<ul><li><a href="https://computing.llnl.gov/tutorials/mpi/samples/C/mpi_wave.c">MPI Concurrent Wave Equation Program in C</a></li>
+<li><a href="https://computing.llnl.gov/tutorials/mpi/samples/Fortran/mpi_wave.f">MPI Concurrent Wave Equation Program in Fortran</a></li>
+</ul><h3>This completes the tutorial.</h3>
+<h4><button>Evaluation Form</button></h4>
+<p>Please complete the online evaluation form.</p>
+<h2><a name="References" id="References"></a>References and More Information</h2>
+<ul><li>Author: Blaise Barney, Livermore Computing (retired)</li>
+<li>Contact: <a href="mailto:hpc-tutorials@llnl.gov" class="mailto">hpc-tutorials@llnl.gov<span class="mailto" aria-label="(link sends e-mail)"></span></a></li>
+<li>A search on the Web for "parallel programming" or "parallel computing" will yield a wide variety of information.</li>
+<li>Recommended reading:
+<ul><li>"Designing and Building Parallel Programs", Ian Foster - from the early days of parallel computing, but still illluminating.<br><a href="http://www.mcs.anl.gov/~itf/dbpp/">http://www.mcs.anl.gov/~itf/dbpp/</a></li>
+<li>"Introduction to Parallel Computing", Ananth Grama, Anshul Gupta, George Karypis, Vipin Kumar.<br><a href="http://www-users.cs.umn.edu/~karypis/parbook/">http://www-users.cs.umn.edu/~karypis/parbook/</a></li>
+<li>University of Orgegon - Intel Parallel Computing Curriculum<br><a href="https://ipcc.cs.uoregon.edu/curriculum.html">https://ipcc.cs.uoregon.edu/curriculum.html</a></li>
+<li>UC Berkeley CS267, Applications of Paralele Computing - <a href="https://sites.google.com/lbl.gov/cs267-spr2020">https://sites.google.com/lbl.gov/cs267-spr2020</a></li>
+<li>Udacity CS344: Intro to Parallel Programming&nbsp; - <a href="https://developer.nvidia.com/udacity-cs344-intro-parallel-programming">https://developer.nvidia.com/udacity-cs344-intro-parallel-programming</a></li>
+</ul></li>
+<li>Photos/Graphics have been created by the author, created by other LLNL employees, obtained from non-copyrighted, government or public domain (such as <a href="http://commons.wikimedia.org/">http://commons.wikimedia.org/</a>) sources, or used with the permission of authors from other presentations and web pages.</li>
+<li>History: These materials have evolved from the following sources, which are no longer maintained or available.
+<ul><li>Tutorials located in the Maui High Performance Computing Center's "SP Parallel Programming Workshop".</li>
+<li>Tutorials developed by the Cornell University Center for Advanced Computing (CAC), now available as Cornell Virtual Workshops at:&nbsp;<a href="https://cvw.cac.cornell.edu/topics">https://cvw.cac.cornell.edu/topics</a>.</li>
+</ul></li>
+</ul></div></div></div>    </div>
+  </div>
+</div>
+
+
+<!-- Needed to activate display suite support on forms -->
+  </div>
+  
+</div> <!-- /.block --></div>
+ <!-- /.region -->
+                   		</div>
+                  </main>
+                </div>
+      		</div>
+    	</div>
+	</div>
+  	
+	
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 footer-top">
+
+                    <a class="llnl" href="https://www.llnl.gov/" target="_blank"><img src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/llnl.png" alt="LLNL"></a>
+                    <p>
+                        Lawrence Livermore National Laboratory
+                        <br>7000 East Avenue • Livermore, CA 94550
+                    </p>
+                    <p>
+                        Operated by Lawrence Livermore National Security, LLC, for the
+                        <br>Department of Energy's National Nuclear Security Administration.
+                    </p>
+                    <div class="footer-top-logos">
+                        <a class="nnsa" href="https://www.energy.gov/nnsa/national-nuclear-security-administration" target="_blank"><img src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/nnsa2.png" alt="NNSA"></a>
+                        <a class="doe" href="https://www.energy.gov/" target="_blank"><img src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/doe_small.png" alt="U.S. DOE"></a>
+                        <a class="llns" href="https://www.llnsllc.com/" target="_blank"><img src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/llns.png" alt="LLNS"></a>
+                	</div>
+
+
+
+                </div>
+                <div class="col-sm-12 footer-bottom">
+                	
+
+                    <span>UCRL-MI-131558  &nbsp;|&nbsp;&nbsp;</span><a href="https://www.llnl.gov/disclaimer" target="_blank">Privacy &amp; Legal Notice</a>	 &nbsp;|&nbsp;&nbsp; <a href="mailto:webmaster-comp@llnl.gov" class="mailto">Website Query<span class="mailto" aria-label="(link sends e-mail)"></span></a> &nbsp;|&nbsp;&nbsp;<a href="https://hpc.llnl.gov/about-us/contact-us">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+  
+<script type="text/javascript" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/jquery.min.js.indir"></script>
+<script type="text/javascript" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/jquery-extend-3.4.0.js.indir"></script>
+<script type="text/javascript" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/jquery-html-prefilter-3.5.0-backport.js.indir"></script>
+<script type="text/javascript" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/jquery.once.js.indir"></script>
+<script type="text/javascript" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/drupal.js.indir"></script>
+<script type="text/javascript" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/extlink.js.indir"></script>
+<script type="text/javascript" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/jquery.flexslider.js.indir"></script>
+<script type="text/javascript" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/slide.js.indir"></script>
+<script type="text/javascript" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/lightbox.js.indir"></script>
+<script type="text/javascript" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/matomo.js.indir"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _paq = _paq || [];(function(){var u=(("https:" == document.location.protocol) ? "https://analytics.llnl.gov/" : "http://analytics.llnl.gov/");_paq.push(["setSiteId", "149"]);_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setDoNotTrack", 1]);_paq.push(["trackPageView"]);_paq.push(["setIgnoreClasses", ["no-tracking","colorbox"]]);_paq.push(["enableLinkTracking"]);var d=document,g=d.createElement("script"),s=d.getElementsByTagName("script")[0];g.type="text/javascript";g.defer=true;g.async=true;g.src="https://hpc.llnl.gov/sites/default/files/matomo/piwik.js?qsohrw";s.parentNode.insertBefore(g,s);})();
+//--><!]]>
+</script>
+<script type="text/javascript" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/bootstrap.js.indir"></script>
+<script type="text/javascript" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/mobilemenu.js.indir"></script>
+<script type="text/javascript" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/custom.js.indir"></script>
+<script type="text/javascript" src="./Introduction to Parallel Computing Tutorial _ High Performance Computing_files/mods.js.indir"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"tid","theme_token":"Bnurv57qgCr9H4dG6CIfovvS1Y6Qu2IsbUY0hixblps","js":{"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/2.1\/jquery.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/contrib\/extlink\/extlink.js":1,"sites\/all\/themes\/tid\/js\/jquery.flexslider.js":1,"sites\/all\/themes\/tid\/js\/slide.js":1,"sites\/all\/modules\/contrib\/lightbox2\/js\/lightbox.js":1,"sites\/all\/modules\/contrib\/matomo\/matomo.js":1,"0":1,"sites\/all\/themes\/tid\/js\/bootstrap.js":1,"sites\/all\/themes\/tid\/js\/mobilemenu.js":1,"sites\/all\/themes\/tid\/js\/custom.js":1,"sites\/all\/themes\/tid\/js\/mods.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/book\/book.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/extlink\/extlink.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/lightbox2\/css\/lightbox.css":1,"sites\/all\/modules\/contrib\/print\/print_ui\/css\/print_ui.theme.css":1,"sites\/all\/themes\/tid\/css\/bootstrap.css":1,"sites\/all\/themes\/tid\/css\/flexslider.css":1,"sites\/all\/themes\/tid\/css\/system.menus.css":1,"sites\/all\/themes\/tid\/css\/style.css":1,"sites\/all\/themes\/tid\/font-awesome\/css\/font-awesome.css":1,"sites\/all\/themes\/tid\/css\/treewalk.css":1,"sites\/all\/themes\/tid\/css\/popup.css":1,"sites\/all\/themes\/tid\/css\/mods.css":1}},"lightbox2":{"rtl":0,"file_path":"\/(\\w\\w\/)public:\/","default_image":"\/sites\/all\/modules\/contrib\/lightbox2\/images\/brokenimage.jpg","border_size":10,"font_color":"000","box_color":"fff","top_position":"","overlay_opacity":"0.8","overlay_color":"000","disable_close_click":true,"resize_sequence":0,"resize_speed":400,"fade_in_speed":400,"slide_down_speed":600,"use_alt_layout":false,"disable_resize":false,"disable_zoom":false,"force_show_nav":false,"show_caption":true,"loop_items":false,"node_link_text":"View Image Details","node_link_target":false,"image_count":"Image !current of !total","video_count":"Video !current of !total","page_count":"Page !current of !total","lite_press_x_close":"press \u003Ca href=\u0022#\u0022 onclick=\u0022hideLightbox(); return FALSE;\u0022\u003E\u003Ckbd\u003Ex\u003C\/kbd\u003E\u003C\/a\u003E to close","download_link_text":"","enable_login":false,"enable_contact":false,"keys_close":"c x 27","keys_previous":"p 37","keys_next":"n 39","keys_zoom":"z","keys_play_pause":"32","display_image_size":"original","image_node_sizes":"()","trigger_lightbox_classes":"","trigger_lightbox_group_classes":"","trigger_slideshow_classes":"","trigger_lightframe_classes":"","trigger_lightframe_group_classes":"","custom_class_handler":0,"custom_trigger_classes":"","disable_for_gallery_lists":true,"disable_for_acidfree_gallery_lists":true,"enable_acidfree_videos":true,"slideshow_interval":5000,"slideshow_automatic_start":true,"slideshow_automatic_exit":true,"show_play_pause":true,"pause_on_next_click":false,"pause_on_previous_click":true,"loop_slides":false,"iframe_width":600,"iframe_height":400,"iframe_border":1,"enable_video":false,"useragent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/90.0.4430.93 Safari\/537.36"},"extlink":{"extTarget":0,"extClass":"ext","extLabel":"(link is external)","extImgClass":0,"extIconPlacement":0,"extSubdomains":1,"extExclude":".gov|.com|.org|.io|.be|.us|.edu","extInclude":"-int.llnl.gov|lc.llnl.gov|caas.llnl.gov|exchangetools.llnl.gov","extCssExclude":"","extCssExplicit":"","extAlert":"_blank","extAlertText":"This page is routing you to a page which requires extra authentication. You must have on-site or VPN access.\r\n\r\nPress OK to continue or cancel to return.\r\n\r\nIf this fails or times-out, you are not allowed access to the internal page or the server may be temporarily unavailable.\r\n\r\nIf you have an on-site or VPN account and are still having trouble, please send e-mail to lc-hotline@llnl.gov or call 925-422-4531 for further assistance.","mailtoClass":"mailto","mailtoLabel":"(link sends e-mail)"},"matomo":{"trackMailto":1},"urlIsAjaxTrusted":{"\/training\/tutorials\/introduction-parallel-computing-tutorial":true}});
+//--><!]]>
+</script>
+
+<div id="lightbox2-overlay" style="display: none;"></div>      <div id="lightbox" style="display: none;" class="lightbox2-orig-layout">        <div id="outerImageContainer" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); --darkreader-inline-bgcolor:#181a1b; --darkreader-inline-color:#e8e6e3;" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><div id="modalContainer" style="display: none; padding: 10px;"></div><div id="frameContainer" style="display: none; padding: 10px;"></div><div id="imageContainer" style="display: none; padding: 10px;"><img id="lightboxImage" alt=""><div id="hoverNav"><a id="prevLink" title="Previous" href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#" style="padding-top: 10px;"></a><a id="nextLink" title="Next" href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#" style="padding-top: 10px;"></a></div></div><div id="loading"><a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#" id="loadingLink"></a></div></div>        <div id="imageDataContainer" class="clearfix" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); --darkreader-inline-bgcolor:#181a1b; --darkreader-inline-color:#e8e6e3;" data-darkreader-inline-bgcolor="" data-darkreader-inline-color="">          <div id="imageData"><div id="imageDetails"><span id="caption"></span><span id="numberDisplay"></span></div><div id="bottomNav"><div id="frameHoverNav"><a id="framePrevLink" title="Previous" href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#" style="padding-top: 10px;"></a><a id="frameNextLink" title="Next" href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#" style="padding-top: 10px;"></a></div><a id="bottomNavClose" title="Close" href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); --darkreader-inline-bgcolor:#181a1b; --darkreader-inline-color:#e8e6e3;" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""></a><a id="bottomNavZoom" href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#"></a><a id="bottomNavZoomOut" href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#"></a><a id="lightshowPause" title="Pause Slideshow" href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#" style="display: none;"></a><a id="lightshowPlay" title="Play Slideshow" href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial#" style="display: none;"></a></div></div>        </div>      </div><div id="rememberry__extension__root" style="all: unset;"></div></body></html>

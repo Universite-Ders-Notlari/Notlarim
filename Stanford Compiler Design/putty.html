@@ -1,0 +1,311 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD>
+<TITLE>PuTTY: a free SSH and Telnet client</TITLE>
+<link rel="canonical" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">
+<link rel="stylesheet" type="text/css" href="sitestyle.css" title="PuTTY Home Page Style">
+<link rel="shortcut icon" href="putty.ico">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</HEAD>
+<BODY>
+<h1 align=center>PuTTY: a free SSH and Telnet client</h1>
+
+
+<p align=center>
+
+  <b>Home</b>
+ |
+
+<a href="faq.html">FAQ</a>
+ |
+
+<a href="feedback.html">Feedback</a>
+ |
+
+<a href="licence.html">Licence</a>
+ |
+
+<a href="maillist.html">Updates</a>
+ |
+
+<a href="mirrors.html">Mirrors</a>
+ |
+
+<a href="keys.html">Keys</a>
+ |
+
+<a href="links.html">Links</a>
+ |
+
+<a href="team.html">Team</a>
+<br>
+Download:
+
+<a href="latest.html">Stable</a>
+ &#183;
+
+<a href="prerel.html">Pre-release</a>
+ &#183;
+
+<a href="snapshot.html">Snapshot</a>
+ |
+
+<a href="docs.html">Docs</a>
+ |
+
+<a href="changes.html">Changes</a>
+ |
+
+<a href="wishlist/">Wishlist</a>
+</p>
+
+<p>
+PuTTY is a free implementation of SSH and Telnet for Windows and Unix
+platforms, along with an <code>xterm</code> terminal emulator. It is
+written and maintained primarily by
+<a href="https://www.chiark.greenend.org.uk/~sgtatham/">Simon Tatham</a>.
+
+<p>
+The latest version is 0.74.
+<a href="latest.html"><b>Download it here</b></a>.
+
+<p><b>LEGAL WARNING</b>:
+Use of PuTTY, PSCP, PSFTP and Plink is illegal in countries where
+encryption is outlawed. We believe it is legal to use PuTTY, PSCP,
+PSFTP and Plink in England and Wales and in many other countries, but
+we are not lawyers, and so if in doubt you should seek legal advice
+before downloading it. You may find useful information at
+<a href="http://www.cryptolaw.org/">cryptolaw.org</a>, which collects
+information on cryptography laws in many countries, but we
+can't vouch for its correctness.
+</p>
+
+<p>
+Use of the Telnet-only binary (PuTTYtel) is unrestricted by any
+cryptography laws.
+
+
+
+<h2>Latest news</h2>
+
+<p>
+<b>2021-04-18 Pre-releases of 0.75 now available</b>
+
+
+<p>
+We're working towards a 0.75 release. Pre-release builds are <a
+href="prerel.html">available</a>, and we'd appreciate people testing
+them and reporting any issues.
+<p>
+0.75 will be a feature release. The biggest changes all relate to
+Pageant and/or SSH public keys. User-visible behaviour changes include:
+<ul>
+<li>Pageant now allows you to load a key without decrypting it, in
+which case it will wait until you first use it to ask for the
+passphrase.</li>
+<li>We've switched to the modern OpenSSH-style SHA-256 style of key
+fingerprint.</li>
+</ul>
+Back-end changes that affect compatibility:
+<ul>
+<li>We've added support for the <code>rsa-sha2-256</code> and
+<code>rsa-sha2-512</code> signature methods, which some servers now
+require in order to use RSA keys.</li>
+<li>We've introduced a new version of the PPK format for private key
+files, to remove weak crypto and improve password-guessing
+resistance.</li>
+<li>We've introduced a new method for applications to talk to Pageant
+on Windows, based on the same named-pipe system used by connection
+sharing instead of window messages.</li>
+</ul>
+
+
+<p>
+<b>2020-11-22 Primary git branch renamed</b>
+
+
+<p>
+The primary branch in the PuTTY git repository is now called <code>main</code>,
+instead of git's default of <code>master</code>. For now, both branch names
+continue to exist, and are kept automatically in sync by a symbolic-ref on the
+server. In a few months' time, the alias <code>master</code> will be withdrawn.
+<p>
+To update a normal downstream clone or checkout to use the new branch name, you
+can run commands such as ‘<code>git branch -m master main</code>’ followed by
+‘<code>git branch -u origin/main main</code>’.
+
+
+<p>
+<b>2020-06-27 PuTTY 0.74 released</b>
+
+
+<p>
+PuTTY 0.74, released today, is a bug-fix and security release. It
+fixes bugs in 0.73, including one possible vulnerability, and also
+adds a
+<a href="https://the.earth.li/~sgtatham/putty/0.74/htmldoc/Chapter4.html#config-ssh-prefer-known-hostkeys">new configuration option</a>
+to mitigate a minor information leak in SSH host key policy.
+
+
+<p>
+<b>2019-09-29 PuTTY 0.73 released</b>
+
+
+<p>
+PuTTY 0.73, released today, is a bug-fix release. It fixes a small number of bugs since 0.72, and a couple of them have potential security implications.
+
+
+<p>
+<b>2019-07-20 PuTTY 0.72 released</b>
+
+
+<p>
+PuTTY 0.72, released today, is a bug-fix release. It fixes a small
+number of further security issues found by the 2019 EU-funded
+HackerOne bug bounty, and a variety of other bugs introduced in 0.71.
+
+
+<p>
+<b>2019-07-08 Bug bounty concluded</b>
+
+
+<p>
+The EU-funded bug bounty programme is now closed. Many thanks to
+everybody who sent in reports!
+
+<p>
+Anyone with a vulnerability to report should now go back to reporting
+it in the old way, via email to the PuTTY team, as described on the
+<a href="feedback.html">Feedback page</a>.
+If you think it needs to be reported confidentially, encrypt it with
+our Secure Contact Key.
+
+
+<p>
+<b>2019-03-25 Bug bounty continues</b>
+
+
+<p>
+This year's EU-funded bug bounty programme is <strong>still
+running</strong>. It was originally scheduled to end on 7th March, but
+there was money left over in the budget. So while that money lasts,
+you still have a chance to earn some by finding vulnerabilities in
+PuTTY 0.71 or the development snapshots!
+
+<p>
+As before, vulnerabilities should be reported through the
+<a href="https://hackerone.com/putty_h1c">HackerOne web site</a>
+in order to qualify for a bounty: if you send reports directly to the
+PuTTY team in the usual way, then we'll still fix them, but we can't
+provide money for them.
+
+
+<p>
+<b>2019-03-16 PuTTY 0.71 released</b>
+
+
+<p>
+PuTTY 0.71, released today, includes a large number of security fixes,
+many of which were found by the recent EU-funded HackerOne bug bounty.
+There are also other security enhancements (side-channel resistance),
+and a few new features.
+
+It's also the first release to be built for Windows on Arm.
+
+
+<p>
+<b>2019-01-18 EU bug bounty for finding vulnerabilities in PuTTY</b>
+
+
+<p>
+From now until 7th March, you can earn money by reporting security
+vulnerabilities in PuTTY!
+
+<p>
+HackerOne is running a <a href="https://hackerone.com/putty_h1c">bug
+bounty programme</a> for PuTTY, funded by the European Union as part
+of the &lsquo;Free and Open Source Software Audit&rsquo; project
+(EU-FOSSA 2). If you report a vulnerability through their web site, it
+may qualify for a bounty. (The exact amount will depend on how serious
+the problem is, and there's also a bonus for providing a patch that
+fixes it.)
+
+<p>
+For more details, or if you have something to report, see the link
+above.
+
+<p>
+(Please note that HackerOne will only consider vulnerabilities
+reported <em>to them</em>. If you send a report directly to the PuTTY
+team in the usual way, then of course we'll still fix it, but we can't
+also arrange for you to get paid.)
+
+
+<p>
+<b>2018-08-25 GPG key rollover</b>
+
+
+<p>
+This week we've generated a fresh set of GPG keys for signing PuTTY
+release and snapshot builds. We will begin signing snapshots with the
+new snapshot key, and future releases with the new release key. The
+new master key is signed with the old master keys, of course. See
+the <a href="keys.html">keys page</a> for more information.
+
+
+
+<p>
+<b>2017-07-08 PuTTY 0.70 released, containing security and bug fixes</b>
+
+
+<p>
+PuTTY 0.70, released today, fixes further problems with Windows DLL
+hijacking, and also fixes a small number of bugs in 0.69, including
+broken printing support and Unicode keyboard input on Windows.
+
+
+
+<h2>Site map</h2>
+
+<ul>
+<li>
+<a href="licence.html">Licence conditions</a> under which you may
+use PuTTY.
+<li>
+<a href="faq.html">The FAQ</a>.
+<li>
+<a href="docs.html">The documentation</a>.
+<li>
+Download PuTTY:
+<ul>
+<li><a href="latest.html">latest release</a> 0.74
+<li><a href="prerel.html">pre-releases</a> of 0.75
+<li><a href="snapshot.html">development snapshots</a>
+</ul>
+<br>
+<li>
+Subscribe to the <a href="maillist.html">PuTTY-announce</a>
+mailing list to be notified of new releases.
+<li>
+<a href="feedback.html">Feedback</a> and bug reporting: contact
+address and guidelines. <em>Please</em> read the guidelines before
+sending us mail; we get a very large amount of mail and it will help
+us answer you more quickly.
+<li>
+<a href="changes.html">Changes in recent releases</a>.
+<li>
+<a href="wishlist/">Wish list</a> and list of known bugs.
+<li>
+<a href="links.html">Links</a> to related software and
+specifications elsewhere.
+<li>
+A page about the PuTTY <a href="team.html">team members</a>.
+</ul>
+
+
+<p><hr>
+If you want to comment on this web site, see the
+<a href="feedback.html">Feedback page</a>.
+<br>
+
+(last modified on <!--LASTMOD-->Sun Apr 18 09:19:51 2021<!--END-->)
+</BODY></HTML>

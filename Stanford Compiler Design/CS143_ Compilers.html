@@ -1,0 +1,336 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0059)https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+	<meta http-equiv="Content-Language" content="en-us"> 
+	 
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="./CS143_ Compilers_files/stylesheet.css">	
+	
+	<title>CS143: Compilers</title> 
+<style type="text/css">@font-face {
+  font-family: 'rbicon';
+  src: url(chrome-extension://dipiagiiohfljcicegpgffpbnjmgjcnf/fonts/rbicon.woff2) format("woff2");
+  font-weight: normal;
+  font-style: normal; }
+</style></head>
+<body style=""> 
+<div id="data" align="center"> 
+	<div id="header_bar"></div> 
+	<div id="announcement_bar"> 
+		<h2>Announcements</h2>
+		
+		<div class="header">Programming Assignment 4 Out</div> 
+		<div class="date">August 7, 2012</div> 
+		<div class="announcement"> 
+			<p> 
+				The <a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/250%20Assignment%204.pdf">final programming assignment</a> (IR generation) is out and is due on <b>Saturday, August 18</b> at <b>11:30 AM</b> (note the time change).  Once you've completed this assignment, you'll have a full working compiler for Decaf.  Isn't that cool? 
+			</p>
+			<p>
+				As a logistical note, be aware that there will be <b>no late submissions allowed</b> for this assignment.  The due date for pp4 is the latest possible time that we can have assignments due, so please try to get it in on time.
+			</p>
+			<p>
+				Good luck!
+			</p>
+			
+		</div> 
+		
+		
+		<div class="header">Windows Starter Code for pp3</div> 
+		<div class="date">July 20, 2012</div> 
+		<div class="announcement"> 
+			<p>
+				<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/assignments/pp3.zip">Windows starter code for pp3</a> is now available.  If you have done pp1 and pp2 on Windows, you should be all set to go.  Otherwise, you will need to follow the setup instructions for those assignments before proceeding to ensure that the appropriate tools are installed on your system.
+			</p>
+		</div>
+		
+		<div class="header">Programming Assignment 3 Out</div> 
+		<div class="date">July 20, 2012</div> 
+		<div class="announcement"> 
+			<p> 
+				The <a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/190%20Assignment%203.pdf">third programming assignment</a> (semantic analysis) goes out today.  This assignment is broken into two portions - a checkpoint assignment due on Monday, July 30 at 11:59PM (hard deadline), and the main assignment, which is due on Monday, August 6 at 11:59PM.  In this assignment, you will perform the final set of checks necessary to confirm that the input program is indeed well-formed, setting the stage for IR generation in the next assignment.
+			</p>
+			<p>
+				This assignment is substantially larger than the previous assignments, so be sure to start early.
+			</p>
+			<p>
+				Good luck!
+			</p>
+			
+		</div> 
+		
+		<div class="header">Midterm Logistics</div> 
+		<div class="date">July 18, 2012</div> 
+		<div class="announcement"> 
+			<p> 
+				The CS143 midterm exam is next Wednesday, July 25, from 11:00AM - 1:00PM.  We'll meet in the normal room (Thornton 102).  The exam covers the material up to and including Earley parsing, with an emphasis on scanning, LL, and LR parsing.  The exam is open-book, open-note, open-computer, but closed-network, meaning that you can have the slides and other notes available during the exam.  You just can't go Googling the answers.
+			</p>
+			<p>
+				There is a <a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/200%20Practice%20CS143%20Midterm.pdf">practice exam</a> available, which is the exam that was given last summer quarter.  The structure and content of this exam is similar to that of the upcoming exam.
+			</p>
+			<p>
+				If you are taking this class remotely, you will receive an electronic copy of the exam at around 11:00AM on July 25 and can start taking the exam any time between 11:00AM on July 25 and 11:00AM on July 26.  You should return the exam to us no later than 1:00PM on July 26, and we'll include submission instructions along with the exam itself.
+			</p>
+			<p>
+				There will be a review session on Monday, so please feel free to show up with questions!
+			</p>
+		</div> 
+		
+		<div class="header">Visual Studio Starter Files for PP2</div> 
+		<div class="date">July 11, 2012</div> 
+		<div class="announcement"> 
+			<p> 
+				Windows starter files for the second programming project are now available.  To use them, you will need to follow these instructions:
+			</p>
+			<ol>
+			<li> Download the <a href="http://downloads.sourceforge.net/project/gnuwin32/bison/2.4.1/bison-2.4.1-setup.exe?r=http%3A%2F%2Fgnuwin32.sourceforge.net%2Fpackages%2Fbison.htm&amp;ts=1341786261&amp;use_mirror=voxel">Windows version of <tt>bison</tt></a>.  When prompted for an installation directory, <b>do not use the default directory</b>.  Instead, install <tt>bison</tt> to <tt>C:\GnuWin32</tt>, not in "Program Files."  This is due to a bug in the <tt>bison</tt> implementation that causes it not to work correctly if it's placed in a directory whose name contains a space.</li>
+			<li> Download the <a href="http://downloads.sourceforge.net/project/gnuwin32/sed/4.2.1/sed-4.2.1-setup.exe?r=&amp;ts=1341786285&amp;use_mirror=iweb">Windows version of <tt>sed</tt> and <tt>m4</tt></a>.  When prompted for an installation directory, <b>do not use the default directory</b>.  Instead, install <tt>bison</tt> to <tt>C:\GnuWin32</tt>, not in "Program Files."</li>
+			<li> Download the <a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/assignments/pp2.zip">Windows pp2 starter project</a>.  The project should be all set up to go, so if you're encountering any problems please let us know so we can try to fix them.</li>
+			</ol>
+			<p>
+				If you do your development work in Windows, you will still need to submit using the existing submissions framework.
+			</p>
+			<p>
+				Hope this helps!
+			</p>
+			
+		</div> 
+		
+		<div class="header">Written Assignment 2 Out</div> 
+		<div class="date">July 11, 2012</div> 
+		<div class="announcement"> 
+			<p> 
+				The second <a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/170%20Problem%20Set%202.pdf">written assignment</a> is out
+				and comes due next Wednesday, July 18 at 5:00PM.  This will give you a chance to explore the strengths, weaknesses, and nuances of the parsing algorithms we've developed over the past few weeks.
+			</p>
+			<p>
+				Good luck!
+			</p>
+			
+		</div> 
+		
+				<div class="header">Programming Assignment 2 Out</div> 
+		<div class="date">July 9, 2012</div> 
+		<div class="announcement"> 
+			<p> 
+				<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/130%20Assignment%202.pdf">Programming Assignment 2 (Syntax Analysis)</a> goes out today.  It's due on Friday, July 20 at 11:59PM.  In this assignment, you will build up the parser for Decaf, and will learn how to use the <tt>bison</tt> tool in the process.  Additionally, you will get experience introducing new features into the language as you add <tt>switch</tt> statements and a few other extensions to Decaf.
+			</p> 
+			<p>
+				We will be releasing a Windows version of this assignment later today once we've confirmed that our starter project files work correctly.
+			</p>
+			<p>
+				Good luck!
+			</p>
+		</div> 
+		
+		
+		<div class="header">Logging in Remotely</div> 
+		<div class="date">July 4, 2011</div> 
+		<div class="announcement"> 
+			<p> 
+				Several of you have asked how to log in to the Stanford machines remotely.  To do so, you will need an SSH client.  On
+				Linux or Mac computers, you can do this from the command-line with <tt>ssh</tt>.  On Windows, you will need to download
+				a SSH client such as <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a> or SecureCRT (available with
+				your SUNetID <a href="https://itservices.stanford.edu/service/ess/pc"><b>here</b></a>).  From there, you will want to
+				connect to either <tt>myth.stanford.edu</tt> or <tt>corn.stanford.edu</tt>. You will probably get a warning about a RSA 
+				key not matching, which is perfectly fine; these above hostnames will forward you to a free machine on the cluster. From
+				 there, you should be good to go!
+			</p>
+			<p>
+				If you're having trouble logging in, or if you have any other questions, as always feel free to contact us.
+			</p>
+			<p>
+				Hope this helps!
+			</p>
+		</div>
+
+                  <div class="header">Phone Numbers</div>
+                  <div class="date">July 3, 2012</div>
+                  <div class="announcement">
+                        <p></p><div>Phone Numbers During Office Hours:</div>
+			<div>Keith: (650) 723-4350</div>
+			<div>Jinchao: (650) 736-1817</div><p></p>  
+                  </div>
+                  
+		<div class="header">Discussion Forum</div>
+		<div class="date">June 29, 2012</div>
+                <div class="announcement">
+			<p>
+				Please use <a href="http://piazza.com/class#summer2012/cs143">Piazza</a> to ask and discuss questions.
+			</p>
+		</div>
+		<div class="header">Office Hours</div>
+                <div class="date">June 29, 2012</div>
+                <div class="announcement">
+                        <p>
+				We have scheduled our office hours as following:
+				</p><ul>
+				  <li>Keith Schwarz  
+					<ul>
+						<li>	Monday 2-4pm 		Gates 178 </li>
+                                                <li>    Tuesday 2-4pm           Gates 178 </li>
+					</ul>
+				  </li>
+				  <li>Jinchao Ye 	
+					<ul>
+						<li>	Wednesday 6-8pm 	Gates B26</li>
+                                 		<li>	Thursday 6-8pm        	Gates B26</li>
+					</ul>
+				  </li>
+				</ul>
+                        <p></p>
+                        
+                </div>
+	
+		<div class="header">Written Assignment 1 Out</div> 
+		<div class="date">June 29, 2012</div> 
+		<div class="announcement"> 
+			<p> 
+				The first <a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/070%20Problem%20Set%201.pdf">written assignment</a> is out
+				and comes due next Friday, July 6 at 5:00PM.  This problem set explores the
+				theoretical aspects of scanning, and will ask you to play around with the
+				different algorithms we explored in lecture.
+			</p>
+			<p>
+				Good luck!
+			</p>
+			
+		</div> 
+		
+		<div class="header">Visual Studio Starter Files for PP1</div> 
+		<div class="date">June 27, 2012</div> 
+		<div class="announcement"> 
+			<p> 
+				As an experiment this quarter, we've put together Windows starter files for the first programming assignment.  To use these starter files, follow these steps:
+			</p>
+			<ol>
+			<li> Download the <a href="http://sourceforge.net/projects/gnuwin32/files/flex/2.5.4a-1/flex-2.5.4a-1.exe/download">Windows version of flex</a>.  When prompted for an installation directory, please use the default; the project file I've cooked up will assume that the binary is in this folder.</li>
+			<li> Download the <a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/assignments/pp1.zip">Windows pp1 starter project</a>.  The project should be all set up to go, so if you're encountering any problems please let me know and I can try to fix them.  I built this project using <a href="http://www.microsoft.com/visualstudio/en-us/products/2008-editions/express">Visual C++ 2008</a>, which is available free for download.</li>
+			</ol>
+			<p>
+				If you do your development work in Windows, you will still need to submit using the existing submissions framework.  I'll get directions on how to do this posted later.
+			</p>
+			<p>
+				Hope this helps!
+			</p>
+			
+		</div> 
+		
+		<div class="header">Programming Assignment 1 Out</div> 
+		<div class="date">June 27, 2012</div> 
+		<div class="announcement"> 
+			<p> 
+				<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/060%20Assignment%201.pdf">Programming Assignment 1 (lexical analysis)</a> goes out today.  It's due on Monday, July 9 at 11:59PM.  This assignment asks you to build the very first piece of the Decaf compiler.  In doing so, you'll learn about the <tt>flex</tt> tool, and will master regular expressions.  You have plenty of time to complete this assignment, but I would strongly suggest starting early.
+			</p> 
+			<p>
+				Good luck!
+			</p>
+		</div> 
+
+		<div class="header">Welcome to CS143!</div> 
+		<div class="date">June 25, 2012</div> 
+		<div class="announcement"> 
+			<p> 
+				Welcome to CS143, Stanford's course in the practical and theoretical aspects of compiler construction.  We have an
+				exciting quarter ahead of us loaded with that wonderful combination of concepts and coding that makes compilers so
+				cool.  Class meets Monday/Wednesday/Friday in Thornton 102 from 11:00AM - 12:15PM, and I hope that you're able to join.
+			</p> 
+			<p> 
+				In the meantime, feel free to check out the <a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/000%20Course%20Information.pdf">course information handout</a>
+				to learn more about what this class is all
+				about, the prerequisites, and the course policies.  If you have any questions in the meantime, feel free to email
+				me at <a href="mailto:htiek@cs.stanford.edu">htiek@cs.stanford.edu</a>.
+			</p> 
+		</div> 
+	</div> 
+	<div id="non_code_bar"> 
+		<h2>Handouts</h2> 
+		<p> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/000%20Course%20Information.pdf">00: Course Information</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/010%20Syllabus.pdf">01: Syllabus</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/020%20CS143%20Course%20Overview.pdf">02: Course Overview</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/030%20Decaf%20Specification.pdf">03: Decaf Specification</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/040%20Lexical%20Analysis.pdf">04: Lexical Analysis</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/050%20Flex%20In%20A%20Nutshell.pdf">05: <tt>flex</tt> in a Nutshell</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/060%20Assignment%201.pdf">06: Programming Assignment 1</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/070%20Problem%20Set%201.pdf">07: Written Assignment 1</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/070S%20Problem%20Set%201%20Solutions.pdf">07S: Written Assignment 1 Solutions</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/080%20Formal%20Grammars.pdf">08: Formal Grammars</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/090%20Top-Down%20Parsing.pdf">09: Top-Down Parsing</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/100%20Bottom-Up%20Parsing.pdf">10: Bottom-Up Parsing</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/110%20LR%20and%20SLR%20Parsing.pdf">11: LR and SLR Parsing</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/120%20Introducing%20bison.pdf">12: Introducing <tt>bison</tt></a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/130%20Assignment%202.pdf">13: Programming Assignment 2</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/140%20LALR%20Parsing.pdf">14: LALR Parsing</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/150%20Miscellaneous%20Parsing.pdf">15: Miscellaneous Parsing</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/160%20Syntax-Directed%20Translation.pdf">16: Syntax-Directed Translation</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/170%20Problem%20Set%202.pdf">17: Written Assignment 2</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/170S%20Problem%20Set%202%20Solutions.pdf">17S: Written Assignment 2 Solutions</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/180%20Semantic%20Analysis.pdf">18: Semantic Analysis</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/190%20Assignment%203.pdf">19: Programming Assignment 3</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/200%20Practice%20CS143%20Midterm.pdf">20: Practice CS143 Midterm</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/200S%20Practice%20CS143%20Midterm%20Solutions.pdf">20S: Practice CS143 Midterm Solutions</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/210%20CS143%20Midterm.pdf">21: CS143 Midterm</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/210S%20CS143%20Midterm%20Solutions.pdf">21S: CS143 Midterm Solutions</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/220%20Runtime%20Environments.pdf">22: Runtime Environments</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/230%20Intermediate%20Rep.pdf">23: Intermediate Representations</a><br>  
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/240%20TAC%20Examples.pdf">24: Three-Address Code Examples</a><br>  
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/250%20Assignment%204.pdf">25: Programming Assignment 4</a><br>  
+		</p> 
+		<h2>Assignments</h2> 
+		<p> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/060%20Assignment%201.pdf">Programming Assignment 1</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/070%20Problem%20Set%201.pdf">Written Assignment 1</a> (<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/070S%20Problem%20Set%201%20Solutions.pdf">solutions</a>)<br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/130%20Assignment%202.pdf">Programming Assignment 2</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/170%20Problem%20Set%202.pdf">Written Assignment 2</a> (<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/170S%20Problem%20Set%202%20Solutions.pdf">solutions</a>)<br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/190%20Assignment%203.pdf">Programming Assignment 3</a><br> 
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/250%20Assignment%204.pdf">Programming Assignment 4</a><br>  
+		</p> 
+		<h2>Resources</h2> 
+		<p> 
+  			<b><a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/submit.html">Submission Instructions</a></b><br><br>
+			<a href="http://en.wikipedia.org/wiki/Regular_expression">Regular Expressions</a><br>
+			<a href="http://flex.sourceforge.net/manual/">Flex Online Manual</a><br>
+			<a href="http://www.delorie.com/gnu/docs/bison/bison_toc.html">Bison Online Manual</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/documents/spim-documentation.pdf">SPIM Simulator Documentation</a><br>
+			&nbsp;<br>
+			<a href="http://openclassroom.stanford.edu/MainFolder/CoursePage.php?course=PracticalUnix">CS1U: Practical Unix Videos</a><br>
+			<a href="http://unixdocs.stanford.edu/">Unix Reference Documentation</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/documents/xemacs.pdf">xemacs Command Reference</a><br>
+			<a href="http://www.lagmonster.org/docs/vi.html">vi Command Reference</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/documents/gdbref.pdf">gdb Command Reference</a><br>
+			<a href="http://www.cplusplus.com/reference">cplusplus.com C++ Reference</a><br>
+			<a href="http://www.keithschwarz.com/coursereader.pdf">CS106L Course Reader (C++ Reference)</a><br>
+			&nbsp;<br>
+			<a href="http://www.stanford.edu/class/archive/cs/cs143/cs143.1112">Fall 2010 CS143 Page</a>
+		</p> 
+	</div> 
+	<div id="code_bar"> 
+		<h2>Lectures</h2> 
+		<p>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/00/Slides00.pdf">00: Intro to Compilers</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/01/Slides01.pdf">01: Lexical Analysis</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/02/Slides02.pdf">02: Syntax Analysis</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/03/Slides03.pdf">03: Top-Down Parsing, Part I</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/04/Slides04A.pdf">04A: Top-Down Parsing, Part II</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/04/Slides04B.pdf">04B: Bottom-Up Parsing, Part I</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/05/Slides05.pdf">05: Bottom-Up Parsing, Part II</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/06/Slides06.pdf">06: Bottom-Up Parsing, Part III</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/07/Slides07.pdf">07: Advanced Parsing</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/08/Slides08.pdf">08: Semantic Analysis</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/09/Slides09.pdf">09: Type-Checking, Part I</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/10/Slides10.pdf">10: Type-Checking, Part II</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/11/Slides11.pdf">11: Runtime Environments, Part I</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/12/Slides12.pdf">12: Runtime Environments, Part II</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/13/Slides13.pdf">13: TAC</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/14/Slides14.pdf">14: Local Optimization</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/15/Slides15.pdf">15: Global Optimization, Part I</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/16/Slides16.pdf">16: Global Optimization, Part II</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/17/Slides17.pdf">17: Register Allocation</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/18/Slides18.pdf">18: Garbage Collection</a><br>
+			<a href="https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/lectures/19/Slides19.pdf">19: Code Optimization</a><br>
+		</p>
+	</div> 
+</div> 
+ 
+ 
+<div id="rememberry__extension__root" style="all: unset;"></div></body></html>
